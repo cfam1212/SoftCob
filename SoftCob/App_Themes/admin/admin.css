@@ -1,0 +1,359 @@
+﻿table {
+    font-size: 12px;
+    border: 0;
+}
+
+table1 {
+    font-size: 12px;
+    background-color: #123456;
+    border: 0;
+}
+
+td1 {
+    background-color: #B3C1FF;
+    background: #B3C1FF;
+}
+
+td2 {
+    background-color: #FFFFFF;
+}
+
+tabled {
+    background-color: #0066cc;
+}
+
+
+h1, h2, h3, h4 {
+    margin: 0;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+}
+
+p {
+    line-height: 1.4em;
+}
+
+hr {
+    border-top: 1px solid #505050;
+    height: 0px;
+    border-left-style: none;
+    border-left-color: inherit;
+    border-left-width: 0;
+    border-right-style: none;
+    border-right-color: inherit;
+    border-right-width: 0;
+    border-bottom-style: none;
+    border-bottom-color: inherit;
+    border-bottom-width: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+
+    a:hover {
+        text-decoration: underline;
+        color: #FFFFFF;
+    }
+
+    a:active {
+        color: #FFFFFC;
+    }
+
+body {
+    /*background-image: url(Images/Banner_interno.jpg);*/
+    background-repeat: repeat;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 0.7em;
+    color: White;
+    font-size: 12px;
+}
+
+
+img {
+    border-width: 0;
+    margin-left: 0px;
+}
+
+
+in-left: 0px;
+}
+
+
+-image: url(Images/header.png);
+background-repeat: no-repeat;
+position: relative;
+width: 789px;
+height: 76px;
+margin: 0 auto 5px auto;
+}
+
+.titulo {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Arial;
+    font-size: 1.2pc;
+    vertical-align: top;
+    color: #20365F;
+    width: 100%;
+}
+
+.buscador {
+    background-color: #E3E4F2;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Arial;
+    font-size: 0.7em;
+    font-size: 2pc;
+    vertical-align: middle;
+    color: #20365F;
+    width: 75%;
+}
+
+.detalleMant {
+    background-color: #BEB48C;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-family: Arial;
+    font-size: 0.7em;
+    font-size: xx-small;
+    vertical-align: middle;
+    width: 100%;
+    color: #20365F;
+}
+
+round-color {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Arial;
+    font-size: 0.7em;
+    font-size: 2pc;
+    vertical-align: middle;
+    color: #20365F;
+    width: 75%;
+}
+
+.menuaccions {
+    background-color: #FFFFFF;
+    border-style: ridge double double ridge;
+    width: 100%;
+    border-top-width: 4px;
+    border-top-color: #FF0000;
+    border-left-color: #FF0000;
+}
+
+h1 {
+    position: absolute;
+    left: 37px;
+    top: 12px;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+h2 {
+    position: absolute;
+    left: 37px;
+    top: 45px;
+    font-size: 11px;
+}
+
+h3 {
+    font-size: 15px;
+}
+
+h4 {
+    font-size: 25px;
+}
+
+.menua {
+    color: #FFFFFF;
+}
+
+.nav {
+    position: absolute;
+    right: 37px;
+    top: 51px;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.shim {
+    display: none;
+}
+
+
+/* 2 PAGE */
+
+.page {
+    background-repeat: repeat-y;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+h3 {
+    margin-top: 1.0em;
+    margin-bottom: 1.12em;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+h4 {
+    margin-top: 1.0em;
+    margin-bottom: 1.12em;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+/* 2.1 ALL PAGES */
+
+#home, #resume, #links, #albums, #photos, #details, #register, #admin-albums, #admin-photos, #admin-details {
+    position: relative;
+    width: 686px;
+    padding: 0px 37px;
+    padding-top: 1px; /* Weird Mozilla Bug */
+    padding-bottom: 40px; /* Weird Mozilla Bug */
+}
+
+#sidebar {
+    float: left;
+    width: 214px;
+    height: 100%;
+}
+
+#content {
+    margin-left: 256px;
+}
+
+#coollinks {
+    margin-left: 220px;
+}
+
+#resume h4, #links h4 {
+    margin-top: 0;
+    border-top: 1px solid #505050;
+    padding-top: 1.0em;
+    position: absolute;
+    left: 37px;
+    width: 214px;
+}
+
+#resume #photo {
+    position: absolute;
+    left: 37px;
+    top: 20px;
+    width: 214px;
+}
+
+#resume .first {
+    margin-top: 0;
+    border-top: 1px solid #505050;
+    padding-top: 1.5em;
+}
+
+dl {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: 1px solid #505050;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    position: relative;
+}
+
+dt {
+    position: absolute;
+    left: 0;
+}
+
+dd {
+    margin-left: 150px;
+    height: 2.0em;
+}
+
+.emptydata td {
+    padding: 50px;
+    color: #aeaeae;
+}
+
+.view {
+    margin-left: auto;
+    margin-right: auto;
+    width: 686px;
+    text-align: center;
+}
+
+    .view .photo-frame {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+.item {
+    padding: 20px 50px;
+    color: #B2B2B2;
+}
+
+    .item h4 {
+        margin-bottom: 0.4em;
+    }
+
+.nullpanel {
+    padding: 150px;
+    width: auto;
+    text-align: center;
+}
+
+.buttonbar, .buttonbar-top {
+    width: 686px;
+    height: 36px;
+    /*background-image: url(Images/photonav.gif);*/
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* 3 FOOTER */
+
+.footerbg {
+    width: auto;
+    height: 50px;
+    text-align: center;
+}
+
+.footer {
+    background-image: url(Images/footer.png);
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+    width: 770px;
+    height: 50px;
+    text-align: center;
+    font-size: 10px;
+    color: #ffffff;
+}
+
+.menub {
+    margin: 8px auto 2px auto;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.pdf {
+    color: Black;
+    padding: 0 0 0 22px;
+    background: url(Images/excel.jpg) no-repeat left center;
+}
+
+.upperCase {
+    text-transform: uppercase;
+    margin-left: 0px;
+}

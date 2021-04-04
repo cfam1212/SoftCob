@@ -1,0 +1,2689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SoftCobModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SoftCob_ACCION">
+          <Key>
+            <PropertyRef Name="ARAC_CODIGO" />
+          </Key>
+          <Property Name="ARAC_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CPCE_CODIGO" Type="int" Nullable="false" />
+          <Property Name="arac_descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="arac_estado" Type="bit" Nullable="false" />
+          <Property Name="arac_contacto" Type="bit" Nullable="false" />
+          <Property Name="arac_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="arac_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="arac_auxi1" Type="int" />
+          <Property Name="arac_auxi2" Type="int" />
+          <Property Name="arac_fechacreacion" Type="datetime" />
+          <Property Name="arac_usuariocracion" Type="int" />
+          <Property Name="arac_terminalcreacion" Type="varchar" MaxLength="50" />
+          <Property Name="arac_fum" Type="datetime" />
+          <Property Name="arac_uum" Type="int" />
+          <Property Name="arac_tum" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SoftCob_BRENCH">
+          <Key>
+            <PropertyRef Name="BRCH_CODIGO" />
+          </Key>
+          <Property Name="BRCH_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brch_cedecodigo" Type="int" Nullable="false" />
+          <Property Name="brch_cpcecodigo" Type="int" Nullable="false" />
+          <Property Name="brch_estado" Type="bit" Nullable="false" />
+          <Property Name="brch_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="brch_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="brch_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="brch_auxi1" Type="int" />
+          <Property Name="brch_auxi2" Type="int" />
+          <Property Name="brch_auxi3" Type="int" />
+          <Property Name="brch_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="brch_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="brch_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="brch_fum" Type="datetime" Nullable="false" />
+          <Property Name="brch_uum" Type="int" Nullable="false" />
+          <Property Name="brch_tum" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_CAMPOS_SPEECH">
+          <Key>
+            <PropertyRef Name="CASP_CODIGO" />
+          </Key>
+          <Property Name="CASP_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="casp_campo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="casp_etiqueta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="casp_tipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="casp_estado" Type="bit" Nullable="false" />
+          <Property Name="casp_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="casp_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="casp_auxi1" Type="int" />
+          <Property Name="casp_auxi2" Type="int" />
+          <Property Name="casp_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="casp_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="casp_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="casp_fum" Type="datetime" Nullable="false" />
+          <Property Name="casp_uum" Type="int" Nullable="false" />
+          <Property Name="casp_tum" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+          <Key>
+            <PropertyRef Name="CPCE_CODIGO" />
+          </Key>
+          <Property Name="CPCE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRCE_CODIGO" Type="int" Nullable="false" />
+          <Property Name="cpce_codigoproducto" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cpce_producto" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="cpce_codigofamilia" Type="varchar" MaxLength="10" />
+          <Property Name="cpce_familia" Type="varchar" MaxLength="250" />
+          <Property Name="cpce_estado" Type="bit" Nullable="false" />
+          <Property Name="cpce_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="cpce_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="cpce_auxi1" Type="int" />
+          <Property Name="cpce_auxi2" Type="int" />
+        </EntityType>
+        <EntityType Name="SoftCob_CEDENTE">
+          <Key>
+            <PropertyRef Name="CEDE_CODIGO" />
+          </Key>
+          <Property Name="CEDE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cede_provcod" Type="int" Nullable="false" />
+          <Property Name="cede_ciudcod" Type="int" Nullable="false" />
+          <Property Name="cede_nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="cede_direccion" Type="varchar" MaxLength="150" />
+          <Property Name="cede_ruc" Type="varchar" MaxLength="13" />
+          <Property Name="cede_url" Type="varchar" MaxLength="80" />
+          <Property Name="cede_telefono1" Type="varchar" MaxLength="15" />
+          <Property Name="cede_telefono2" Type="varchar" MaxLength="15" />
+          <Property Name="cede_fax" Type="varchar" MaxLength="10" />
+          <Property Name="cede_estado" Type="bit" Nullable="false" />
+          <Property Name="cede_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="cede_auxiv2" Type="varchar" MaxLength="50" />
+          <Property Name="cede_auxiv3" Type="varchar" MaxLength="50" />
+          <Property Name="cede_auxi1" Type="int" />
+          <Property Name="cede_auxi2" Type="int" />
+          <Property Name="cede_auxi3" Type="int" />
+          <Property Name="cede_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="cede_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="cede_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cede_fum" Type="datetime" Nullable="false" />
+          <Property Name="cede_uum" Type="int" Nullable="false" />
+          <Property Name="cede_tum" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_CIUDAD">
+          <Key>
+            <PropertyRef Name="CIUD_CODIGO" />
+          </Key>
+          <Property Name="CIUD_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROV_CODIGO" Type="int" Nullable="false" />
+          <Property Name="ciud_nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ciud_estado" Type="bit" Nullable="false" />
+          <Property Name="ciud_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="ciud_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="ciud_terminalcreacion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="ciud_fum" Type="datetime" Nullable="false" />
+          <Property Name="ciud_uum" Type="int" Nullable="false" />
+          <Property Name="ciud_tum" Type="varchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_CONTACTO">
+          <Key>
+            <PropertyRef Name="ARCO_CODIGO" />
+          </Key>
+          <Property Name="ARCO_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ARRE_CODIGO" Type="int" Nullable="false" />
+          <Property Name="arco_descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="arco_estado" Type="bit" Nullable="false" />
+          <Property Name="arco_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="arco_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="arco_auxi1" Type="int" />
+          <Property Name="arco_auxi2" Type="int" />
+        </EntityType>
+        <EntityType Name="SoftCob_DEPARTAMENTO">
+          <Key>
+            <PropertyRef Name="DEPA_CODIGO" />
+          </Key>
+          <Property Name="DEPA_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empr_codigo" Type="int" Nullable="false" />
+          <Property Name="depa_descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="depa_estado" Type="bit" Nullable="false" />
+          <Property Name="depa_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="depa_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="depa_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="depa_auxi1" Type="int" />
+          <Property Name="depa_auxi2" Type="int" />
+          <Property Name="depa_auxi3" Type="int" />
+          <Property Name="depa_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="depa_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="depa_terminalcreacion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="depa_fum" Type="datetime" Nullable="false" />
+          <Property Name="depa_uum" Type="int" Nullable="false" />
+          <Property Name="depa_tum" Type="varchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_EFECTO">
+          <Key>
+            <PropertyRef Name="AREF_CODIGO" />
+          </Key>
+          <Property Name="AREF_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ARAC_CODIGO" Type="int" Nullable="false" />
+          <Property Name="aref_descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="aref_estado" Type="bit" Nullable="false" />
+          <Property Name="aref_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="aref_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="aref_auxi1" Type="int" />
+          <Property Name="aref_auxi2" Type="int" />
+        </EntityType>
+        <EntityType Name="SoftCob_GESTOR_SUPERVISOR">
+          <Key>
+            <PropertyRef Name="GEST_CODIGO" />
+          </Key>
+          <Property Name="GEST_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SUPE_CODIGO" Type="int" Nullable="false" />
+          <Property Name="USUA_CODIGO" Type="int" Nullable="false" />
+          <Property Name="gest_estado" Type="bit" Nullable="false" />
+          <Property Name="gest_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="gest_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="gest_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="gest_auxi1" Type="int" />
+          <Property Name="gest_auxi2" Type="int" />
+          <Property Name="gest_auxi3" Type="int" />
+          <Property Name="gest_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="gest_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="gest_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gest_fum" Type="datetime" Nullable="false" />
+          <Property Name="gest_uum" Type="int" Nullable="false" />
+          <Property Name="gest_tum" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_LISTATRABAJO_ACTIVAS">
+          <Key>
+            <PropertyRef Name="LSAC_CODIGO" />
+          </Key>
+          <Property Name="LSAC_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lsac_listatrabajo" Type="int" Nullable="false" />
+          <Property Name="lsac_gestorasignado" Type="int" Nullable="false" />
+          <Property Name="lsac_estado" Type="bit" Nullable="false" />
+          <Property Name="lsac_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="lsac_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="lsac_auxi1" Type="int" />
+          <Property Name="lsac_auxi2" Type="int" />
+        </EntityType>
+        <EntityType Name="SoftCob_LISTATRABAJO_CABECERA">
+          <Key>
+            <PropertyRef Name="LTCA_CODIGO" />
+          </Key>
+          <Property Name="LTCA_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ltca_lista" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ltca_descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="ltca_fechainicio" Type="date" Nullable="false" />
+          <Property Name="ltca_fechafin" Type="date" Nullable="false" />
+          <Property Name="ltca_escacodigo" Type="int" Nullable="false" />
+          <Property Name="ltca_cedecodigo" Type="int" Nullable="false" />
+          <Property Name="ltca_cpcecodigo" Type="int" Nullable="false" />
+          <Property Name="ltca_estado" Type="bit" Nullable="false" />
+          <Property Name="ltca_tipomarcado" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="ltca_campania" Type="varchar" MaxLength="50" />
+          <Property Name="ltca_porgestion" Type="int" />
+          <Property Name="ltca_tipogestion" Type="varchar" MaxLength="2" />
+          <Property Name="ltca_porarbol" Type="int" />
+          <Property Name="ltca_araccodigo" Type="int" />
+          <Property Name="ltca_porfecha" Type="int" />
+          <Property Name="ltca_fechadesde" Type="varchar" MaxLength="10" />
+          <Property Name="ltca_fechahasta" Type="varchar" MaxLength="10" />
+          <Property Name="ltca_auxvi1" Type="varchar" MaxLength="50" />
+          <Property Name="ltca_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="ltca_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="ltca_auxi1" Type="int" />
+          <Property Name="ltca_auxi2" Type="int" />
+          <Property Name="ltca_auxi3" Type="int" />
+          <Property Name="ltca_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="ltca_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="ltca_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ltca_fum" Type="datetime" Nullable="false" />
+          <Property Name="ltca_uum" Type="int" Nullable="false" />
+          <Property Name="ltca_tum" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_LISTATRABAJO_DETALLE">
+          <Key>
+            <PropertyRef Name="LTDE_CODIGO" />
+          </Key>
+          <Property Name="LTDE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LTCA_CODIGO" Type="int" Nullable="false" />
+          <Property Name="ltde_cldecodigo" Type="int" Nullable="false" />
+          <Property Name="ltde_perscodigo" Type="int" Nullable="false" />
+          <Property Name="ltde_gestorasignado" Type="int" Nullable="false" />
+          <Property Name="ltde_estado" Type="bit" Nullable="false" />
+          <Property Name="ltde_gestionado" Type="varchar" MaxLength="2" />
+          <Property Name="ltde_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="ltde_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="ltde_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="ltde_auxi1" Type="int" />
+          <Property Name="ltde_auxi2" Type="int" />
+          <Property Name="ltde_auxi3" Type="int" />
+        </EntityType>
+        <EntityType Name="SoftCob_LOGUEO_TIEMPOS">
+          <Key>
+            <PropertyRef Name="LOTI_CODIGO" />
+          </Key>
+          <Property Name="LOTI_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USUA_CODIGO" Type="int" Nullable="false" />
+          <Property Name="empr_codigo" Type="int" Nullable="false" />
+          <Property Name="cpce_codigo" Type="int" Nullable="false" />
+          <Property Name="ltca_codigo" Type="int" Nullable="false" />
+          <Property Name="loti_tipologueo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="loti_fechalogueo" Type="date" Nullable="false" />
+          <Property Name="loti_horalogueo" Type="time" Precision="7" Nullable="false" />
+          <Property Name="loti_fechacompleta" Type="datetime" Nullable="false" />
+          <Property Name="loti_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="loti_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="loti_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="loti_auxv4" Type="varchar" MaxLength="50" />
+          <Property Name="loti_auxv5" Type="varchar" MaxLength="50" />
+          <Property Name="loti_auxi1" Type="int" />
+          <Property Name="loti_auxi2" Type="int" />
+          <Property Name="loti_auxi3" Type="int" />
+          <Property Name="loti_auxi4" Type="int" />
+          <Property Name="loti_auxi5" Type="int" />
+          <Property Name="loti_auxd1" Type="datetime" />
+          <Property Name="loti_auxd2" Type="datetime" />
+          <Property Name="loti_auxd3" Type="datetime" />
+          <Property Name="loti_auxd4" Type="datetime" />
+          <Property Name="loti_auxd5" Type="datetime" />
+          <Property Name="loti_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="loti_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="loti_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_MENU">
+          <Key>
+            <PropertyRef Name="MENU_CODIGO" />
+          </Key>
+          <Property Name="MENU_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empr_codigo" Type="int" Nullable="false" />
+          <Property Name="menu_descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="menu_nivel" Type="int" Nullable="false" />
+          <Property Name="menu_estado" Type="bit" Nullable="false" />
+          <Property Name="menu_orden" Type="int" Nullable="false" />
+          <Property Name="menu_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="menu_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="menu_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="menu_auxi1" Type="int" />
+          <Property Name="menu_auxi2" Type="int" />
+          <Property Name="menu_auxi3" Type="int" />
+          <Property Name="menu_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="menu_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="menu_terminalcreacion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="menu_fum" Type="datetime" Nullable="false" />
+          <Property Name="menu_uum" Type="int" Nullable="false" />
+          <Property Name="menu_tum" Type="varchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_MENU_TAREA">
+          <Key>
+            <PropertyRef Name="META_CODIGO" />
+          </Key>
+          <Property Name="META_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MENU_CODIGO" Type="int" Nullable="false" />
+          <Property Name="TARE_CODIGO" Type="int" Nullable="false" />
+          <Property Name="empr_codigo" Type="int" Nullable="false" />
+          <Property Name="meta_estado" Type="bit" Nullable="false" />
+          <Property Name="meta_orden" Type="int" Nullable="false" />
+          <Property Name="meta_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="meta_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="meta_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="meta_auxi1" Type="int" />
+          <Property Name="meta_auxi2" Type="int" />
+          <Property Name="meta_auxi3" Type="int" />
+          <Property Name="meta_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="meta_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="meta_terminalcreacion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="meta_fum" Type="datetime" Nullable="false" />
+          <Property Name="meta_uum" Type="int" Nullable="false" />
+          <Property Name="meta_tum" Type="varchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_PARAMETRO_CABECERA">
+          <Key>
+            <PropertyRef Name="PARA_CODIGO" />
+          </Key>
+          <Property Name="PARA_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="para_nombre" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="para_descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="para_estado" Type="bit" Nullable="false" />
+          <Property Name="para_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="para_auxiv2" Type="varchar" MaxLength="50" />
+          <Property Name="para_auxii1" Type="int" />
+          <Property Name="para_auxii2" Type="int" />
+          <Property Name="para_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="para_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="para_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="para_fum" Type="datetime" Nullable="false" />
+          <Property Name="para_uum" Type="int" Nullable="false" />
+          <Property Name="para_tum" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_PARAMETRO_DETALLE">
+          <Key>
+            <PropertyRef Name="PADE_CODIGO" />
+          </Key>
+          <Property Name="PADE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PARA_CODIGO" Type="int" Nullable="false" />
+          <Property Name="pade_nombre" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="pade_valorV" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="pade_valorI" Type="int" Nullable="false" />
+          <Property Name="pade_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="pade_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="pade_auxi1" Type="int" />
+          <Property Name="pade_auxi2" Type="int" />
+          <Property Name="pade_orden" Type="int" />
+          <Property Name="pade_estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_PERFIL">
+          <Key>
+            <PropertyRef Name="PERF_CODIGO" />
+          </Key>
+          <Property Name="PERF_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empr_codigo" Type="int" Nullable="false" />
+          <Property Name="perf_descripcion" Type="varchar" MaxLength="80" />
+          <Property Name="perf_observacion" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="perf_estado" Type="bit" />
+          <Property Name="perf_crearparametro" Type="bit" />
+          <Property Name="perf_modiparametro" Type="bit" />
+          <Property Name="perf_eliminaparametro" Type="bit" />
+          <Property Name="perf_perfilactitudinal" Type="bit" />
+          <Property Name="perf_estilosnegociacion" Type="bit" />
+          <Property Name="perf_metaprogramas" Type="bit" />
+          <Property Name="perf_modalidades" Type="bit" />
+          <Property Name="perf_estadosdelyo" Type="bit" />
+          <Property Name="perf_impulsores" Type="bit" />
+          <Property Name="perf_auxb1" Type="bit" />
+          <Property Name="perf_auxb2" Type="bit" />
+          <Property Name="perf_auxb3" Type="bit" />
+          <Property Name="perf_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="perf_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="perf_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="perf_auxi1" Type="int" />
+          <Property Name="perf_auxi2" Type="int" />
+          <Property Name="perf_auxi3" Type="int" />
+          <Property Name="perf_fechacreacion" Type="datetime" />
+          <Property Name="perf_usuariocreacion" Type="int" />
+          <Property Name="perf_terminalcreacion" Type="varchar" MaxLength="80" />
+          <Property Name="perf_fum" Type="datetime" />
+          <Property Name="perf_uum" Type="int" />
+          <Property Name="perf_tum" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="SoftCob_PERFIL_MENU_TAREA">
+          <Key>
+            <PropertyRef Name="PEMT_CODIGO" />
+          </Key>
+          <Property Name="PEMT_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PERF_CODIGO" Type="int" Nullable="false" />
+          <Property Name="META_CODIGO" Type="int" Nullable="false" />
+          <Property Name="empr_codigo" Type="int" Nullable="false" />
+          <Property Name="pemt_estado" Type="bit" Nullable="false" />
+          <Property Name="pemt_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="pemt_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="pemt_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="pemt_auxi1" Type="int" />
+          <Property Name="pemt_auxi2" Type="int" />
+          <Property Name="pemt_auxi3" Type="int" />
+        </EntityType>
+        <EntityType Name="SoftCob_PRODUCTOS_CEDENTE">
+          <Key>
+            <PropertyRef Name="PRCE_CODIGO" />
+          </Key>
+          <Property Name="PRCE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CEDE_CODIGO" Type="int" Nullable="false" />
+          <Property Name="prce_producto" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="prce_descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="prce_estado" Type="bit" Nullable="false" />
+          <Property Name="prce_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="prce_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="prce_auxi1" Type="int" />
+          <Property Name="prce_auxi2" Type="int" />
+        </EntityType>
+        <EntityType Name="SoftCob_PROVINCIA">
+          <Key>
+            <PropertyRef Name="PROV_CODIGO" />
+          </Key>
+          <Property Name="PROV_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PAIS_CODIGO" Type="int" Nullable="false" />
+          <Property Name="REGI_CODIGO" Type="int" Nullable="false" />
+          <Property Name="prov_nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="prov_codigomarca" Type="varchar" MaxLength="5" />
+          <Property Name="prov_estado" Type="bit" Nullable="false" />
+          <Property Name="prov_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="prov_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="prov_terminalcreacion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="prov_fum" Type="datetime" Nullable="false" />
+          <Property Name="prov_uum" Type="int" Nullable="false" />
+          <Property Name="prov_tum" Type="varchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_REGISTRO_VOLVERALLAMAR">
+          <Key>
+            <PropertyRef Name="REVL_CODIGO" />
+          </Key>
+          <Property Name="REVL_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="revl_ltcacodigo" Type="int" Nullable="false" />
+          <Property Name="revl_ltdecodigo" Type="int" Nullable="false" />
+          <Property Name="revl_cldecodigo" Type="int" Nullable="false" />
+          <Property Name="revl_perscodigo" Type="int" Nullable="false" />
+          <Property Name="revl_gestorasignado" Type="int" Nullable="false" />
+          <Property Name="revl_fechallamar" Type="date" Nullable="false" />
+          <Property Name="revl_horallamar" Type="time" Precision="7" Nullable="false" />
+          <Property Name="revl_fechatotal" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="revl_telefonollamar" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="revl_tipo" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="revl_propietario" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="revl_gestionado" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="revl_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="revl_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="revl_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="revl_auxi1" Type="int" />
+          <Property Name="revl_auxi2" Type="int" />
+          <Property Name="revl_auxi3" Type="int" />
+          <Property Name="revl_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="revl_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="revl_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_RESPUESTA">
+          <Key>
+            <PropertyRef Name="ARRE_CODIGO" />
+          </Key>
+          <Property Name="ARRE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AREF_CODIGO" Type="int" Nullable="false" />
+          <Property Name="arre_descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="arre_estado" Type="bit" Nullable="false" />
+          <Property Name="arre_pago" Type="bit" Nullable="false" />
+          <Property Name="arre_llamar" Type="bit" Nullable="false" />
+          <Property Name="arre_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="arre_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="arre_auxi1" Type="int" />
+          <Property Name="arre_auxi2" Type="int" />
+        </EntityType>
+        <EntityType Name="SoftCob_SPEECH_CABECERA">
+          <Key>
+            <PropertyRef Name="SPCA_CODIGO" />
+          </Key>
+          <Property Name="SPCA_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="spca_cedecodigo" Type="int" Nullable="false" />
+          <Property Name="spca_cpcecodigo" Type="int" Nullable="false" />
+          <Property Name="spca_speechbv" Type="varchar(max)" Nullable="false" />
+          <Property Name="spca_estado" Type="bit" Nullable="false" />
+          <Property Name="spca_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="spca_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="spca_auxi1" Type="int" />
+          <Property Name="spca_auxi2" Type="int" />
+          <Property Name="spca_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="spca_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="spca_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="spca_fum" Type="datetime" Nullable="false" />
+          <Property Name="spca_uum" Type="int" Nullable="false" />
+          <Property Name="spca_tum" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_SPEECH_DETALLE">
+          <Key>
+            <PropertyRef Name="SPDE_CODIGO" />
+          </Key>
+          <Property Name="SPDE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SPCA_CODIGO" Type="int" Nullable="false" />
+          <Property Name="spde_araccodigo" Type="int" Nullable="false" />
+          <Property Name="spde_arefcodigo" Type="int" Nullable="false" />
+          <Property Name="spde_arrecodigo" Type="int" Nullable="false" />
+          <Property Name="spde_arcocodigo" Type="int" Nullable="false" />
+          <Property Name="spde_speechad" Type="varchar(max)" Nullable="false" />
+          <Property Name="spde_observacion" Type="varchar" MaxLength="150" />
+          <Property Name="spde_estado" Type="bit" Nullable="false" />
+          <Property Name="spde_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="spde_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="spde_auxi1" Type="int" />
+          <Property Name="spde_auxi2" Type="int" />
+        </EntityType>
+        <EntityType Name="SoftCob_TAREA">
+          <Key>
+            <PropertyRef Name="TARE_CODIGO" />
+          </Key>
+          <Property Name="TARE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empr_codigo" Type="int" Nullable="false" />
+          <Property Name="tare_descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="tare_programa" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="tare_estado" Type="bit" Nullable="false" />
+          <Property Name="tare_orden" Type="int" Nullable="false" />
+          <Property Name="tare_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="tare_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="tare_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="tare_auxi1" Type="int" />
+          <Property Name="tare_auxi2" Type="int" />
+          <Property Name="tare_auxi3" Type="int" />
+          <Property Name="tare_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="tare_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="tare_terminalcreacion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="tare_fum" Type="datetime" Nullable="false" />
+          <Property Name="tare_uum" Type="int" Nullable="false" />
+          <Property Name="tare_tum" Type="varchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_TELEFONOS_CEDENTE">
+          <Key>
+            <PropertyRef Name="TECE_CODIGO" />
+          </Key>
+          <Property Name="TECE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tece_cedecodigo" Type="int" Nullable="false" />
+          <Property Name="tece_perscodigo" Type="int" Nullable="false" />
+          <Property Name="tece_telecodigo" Type="int" Nullable="false" />
+          <Property Name="tece_numero" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="tece_tipo" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="tece_propietario" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="tece_score" Type="int" Nullable="false" />
+          <Property Name="tece_estado" Type="bit" Nullable="false" />
+          <Property Name="tece_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="tece_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="tece_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="tece_auxi1" Type="int" />
+          <Property Name="tece_auxi2" Type="int" />
+          <Property Name="tece_auxi3" Type="int" />
+          <Property Name="tece_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="tece_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="tece_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_USUARIO">
+          <Key>
+            <PropertyRef Name="USUA_CODIGO" />
+          </Key>
+          <Property Name="USUA_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PERF_CODIGO" Type="int" Nullable="false" />
+          <Property Name="DEPA_CODIGO" Type="int" Nullable="false" />
+          <Property Name="empr_codigo" Type="int" Nullable="false" />
+          <Property Name="empl_codigo" Type="int" />
+          <Property Name="usua_tipousuario" Type="varchar" MaxLength="2" />
+          <Property Name="usua_nombres" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="usua_apellidos" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="usua_cedula" Type="varchar" MaxLength="30" />
+          <Property Name="usua_login" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="usua_password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usua_estado" Type="bit" Nullable="false" />
+          <Property Name="usua_contador" Type="int" />
+          <Property Name="usua_caducapass" Type="bit" Nullable="false" />
+          <Property Name="usua_fechacaduca" Type="datetime" Nullable="false" />
+          <Property Name="usua_cambiarpass" Type="bit" Nullable="false" />
+          <Property Name="usua_statuslogin" Type="bit" Nullable="false" />
+          <Property Name="usua_permisosespeciales" Type="bit" Nullable="false" />
+          <Property Name="usua_terminallogin" Type="varchar" MaxLength="80" />
+          <Property Name="usua_logobienvenida" Type="varchar" MaxLength="150" />
+          <Property Name="usua_logomenu" Type="varchar" MaxLength="150" />
+          <Property Name="usua_mail" Type="varchar" MaxLength="80" />
+          <Property Name="usua_celular" Type="varchar" MaxLength="10" />
+          <Property Name="usua_foto" Type="varbinary(max)" />
+          <Property Name="usua_imagepath" Type="varchar" MaxLength="150" />
+          <Property Name="usua_imagefullpath" Type="varchar" MaxLength="150" />
+          <Property Name="usua_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="usua_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="usua_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="usua_auxv4" Type="varchar" MaxLength="50" />
+          <Property Name="usua_auxv5" Type="varchar" MaxLength="50" />
+          <Property Name="usua_auxi1" Type="int" />
+          <Property Name="usua_auxi2" Type="int" />
+          <Property Name="usua_auxi3" Type="int" />
+          <Property Name="usua_auxi4" Type="int" />
+          <Property Name="usua_auxi5" Type="int" />
+          <Property Name="usua_fechacreacion" Type="datetime" />
+          <Property Name="usua_usuariocreacion" Type="int" />
+          <Property Name="usua_terminalcreacion" Type="varchar" MaxLength="80" />
+          <Property Name="usua_fum" Type="datetime" />
+          <Property Name="usua_uum" Type="int" />
+          <Property Name="usua_tum" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <Association Name="FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+          <End Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Type="Self.SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Multiplicity="1" />
+          <End Role="SoftCob_ACCION" Type="Self.SoftCob_ACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+              <PropertyRef Name="CPCE_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_ACCION">
+              <PropertyRef Name="CPCE_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE">
+          <End Role="SoftCob_PRODUCTOS_CEDENTE" Type="Self.SoftCob_PRODUCTOS_CEDENTE" Multiplicity="1" />
+          <End Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Type="Self.SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_PRODUCTOS_CEDENTE">
+              <PropertyRef Name="PRCE_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+              <PropertyRef Name="PRCE_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_CIUDAD_SoftCob_PROVINCIA">
+          <End Role="SoftCob_PROVINCIA" Type="Self.SoftCob_PROVINCIA" Multiplicity="1" />
+          <End Role="SoftCob_CIUDAD" Type="Self.SoftCob_CIUDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_PROVINCIA">
+              <PropertyRef Name="PROV_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_CIUDAD">
+              <PropertyRef Name="PROV_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_CONTACTO_SoftCob_RESPUESTA">
+          <End Role="SoftCob_RESPUESTA" Type="Self.SoftCob_RESPUESTA" Multiplicity="1" />
+          <End Role="SoftCob_CONTACTO" Type="Self.SoftCob_CONTACTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_RESPUESTA">
+              <PropertyRef Name="ARRE_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_CONTACTO">
+              <PropertyRef Name="ARRE_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_EFECTO_SoftCob_ACCION">
+          <End Role="SoftCob_ACCION" Type="Self.SoftCob_ACCION" Multiplicity="1" />
+          <End Role="SoftCob_EFECTO" Type="Self.SoftCob_EFECTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_ACCION">
+              <PropertyRef Name="ARAC_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_EFECTO">
+              <PropertyRef Name="ARAC_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_GESTOR_SUPERVISOR_SoftCob_USUARIO">
+          <End Role="SoftCob_USUARIO" Type="Self.SoftCob_USUARIO" Multiplicity="1" />
+          <End Role="SoftCob_GESTOR_SUPERVISOR" Type="Self.SoftCob_GESTOR_SUPERVISOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_USUARIO">
+              <PropertyRef Name="USUA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_GESTOR_SUPERVISOR">
+              <PropertyRef Name="USUA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_LISTATRABAJO_DETALLE_SoftCob_LISTATRABAJO_CABECERA">
+          <End Role="SoftCob_LISTATRABAJO_CABECERA" Type="Self.SoftCob_LISTATRABAJO_CABECERA" Multiplicity="1" />
+          <End Role="SoftCob_LISTATRABAJO_DETALLE" Type="Self.SoftCob_LISTATRABAJO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_LISTATRABAJO_CABECERA">
+              <PropertyRef Name="LTCA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_LISTATRABAJO_DETALLE">
+              <PropertyRef Name="LTCA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_LOGUEO_TIEMPOS_SoftCob_USUARIO">
+          <End Role="SoftCob_USUARIO" Type="Self.SoftCob_USUARIO" Multiplicity="1" />
+          <End Role="SoftCob_LOGUEO_TIEMPOS" Type="Self.SoftCob_LOGUEO_TIEMPOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_USUARIO">
+              <PropertyRef Name="USUA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_LOGUEO_TIEMPOS">
+              <PropertyRef Name="USUA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_LOGUEO_TIEMPOS_USUARIO">
+          <End Role="SoftCob_USUARIO" Type="Self.SoftCob_USUARIO" Multiplicity="1" />
+          <End Role="SoftCob_LOGUEO_TIEMPOS" Type="Self.SoftCob_LOGUEO_TIEMPOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_USUARIO">
+              <PropertyRef Name="USUA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_LOGUEO_TIEMPOS">
+              <PropertyRef Name="USUA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_MENU_TAREA_SoftCob_MENU">
+          <End Role="SoftCob_MENU" Type="Self.SoftCob_MENU" Multiplicity="1" />
+          <End Role="SoftCob_MENU_TAREA" Type="Self.SoftCob_MENU_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_MENU">
+              <PropertyRef Name="MENU_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_MENU_TAREA">
+              <PropertyRef Name="MENU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_MENU_TAREA_SoftCob_TAREA">
+          <End Role="SoftCob_TAREA" Type="Self.SoftCob_TAREA" Multiplicity="1" />
+          <End Role="SoftCob_MENU_TAREA" Type="Self.SoftCob_MENU_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_TAREA">
+              <PropertyRef Name="TARE_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_MENU_TAREA">
+              <PropertyRef Name="TARE_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_PARAMETRO_DETALLE_SoftCob_PARAMETRO_CABECERA">
+          <End Role="SoftCob_PARAMETRO_CABECERA" Type="Self.SoftCob_PARAMETRO_CABECERA" Multiplicity="1" />
+          <End Role="SoftCob_PARAMETRO_DETALLE" Type="Self.SoftCob_PARAMETRO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_PARAMETRO_CABECERA">
+              <PropertyRef Name="PARA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_PARAMETRO_DETALLE">
+              <PropertyRef Name="PARA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_MENU_TAREA">
+          <End Role="SoftCob_MENU_TAREA" Type="Self.SoftCob_MENU_TAREA" Multiplicity="1" />
+          <End Role="SoftCob_PERFIL_MENU_TAREA" Type="Self.SoftCob_PERFIL_MENU_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_MENU_TAREA">
+              <PropertyRef Name="META_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_PERFIL_MENU_TAREA">
+              <PropertyRef Name="META_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_PERFIL">
+          <End Role="SoftCob_PERFIL" Type="Self.SoftCob_PERFIL" Multiplicity="1" />
+          <End Role="SoftCob_PERFIL_MENU_TAREA" Type="Self.SoftCob_PERFIL_MENU_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_PERFIL">
+              <PropertyRef Name="PERF_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_PERFIL_MENU_TAREA">
+              <PropertyRef Name="PERF_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_PRODUCTOS_CEDENTE_SoftCob_CEDENTE">
+          <End Role="SoftCob_CEDENTE" Type="Self.SoftCob_CEDENTE" Multiplicity="1" />
+          <End Role="SoftCob_PRODUCTOS_CEDENTE" Type="Self.SoftCob_PRODUCTOS_CEDENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_CEDENTE">
+              <PropertyRef Name="CEDE_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_PRODUCTOS_CEDENTE">
+              <PropertyRef Name="CEDE_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_RESPUESTA_SoftCob_EFECTO">
+          <End Role="SoftCob_EFECTO" Type="Self.SoftCob_EFECTO" Multiplicity="1" />
+          <End Role="SoftCob_RESPUESTA" Type="Self.SoftCob_RESPUESTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_EFECTO">
+              <PropertyRef Name="AREF_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_RESPUESTA">
+              <PropertyRef Name="AREF_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA">
+          <End Role="SoftCob_SPEECH_CABECERA" Type="Self.SoftCob_SPEECH_CABECERA" Multiplicity="1" />
+          <End Role="SoftCob_SPEECH_DETALLE" Type="Self.SoftCob_SPEECH_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_SPEECH_CABECERA">
+              <PropertyRef Name="SPCA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_SPEECH_DETALLE">
+              <PropertyRef Name="SPCA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_USUARIO_SoftCob_DEPARTAMENTO">
+          <End Role="SoftCob_DEPARTAMENTO" Type="Self.SoftCob_DEPARTAMENTO" Multiplicity="1" />
+          <End Role="SoftCob_USUARIO" Type="Self.SoftCob_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_DEPARTAMENTO">
+              <PropertyRef Name="DEPA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_USUARIO">
+              <PropertyRef Name="DEPA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_USUARIO_SoftCob_PERFIL">
+          <End Role="SoftCob_PERFIL" Type="Self.SoftCob_PERFIL" Multiplicity="1" />
+          <End Role="SoftCob_USUARIO" Type="Self.SoftCob_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_PERFIL">
+              <PropertyRef Name="PERF_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_USUARIO">
+              <PropertyRef Name="PERF_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_MenuEditUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="in_check" Type="varchar" Mode="In" />
+          <Parameter Name="in_codigomenu" Type="int" Mode="In" />
+          <Parameter Name="in_codigotarea" Type="int" Mode="In" />
+          <Parameter Name="in_emprcodigo" Type="int" Mode="In" />
+          <Parameter Name="in_auxv1" Type="varchar" Mode="In" />
+          <Parameter Name="in_auxv2" Type="varchar" Mode="In" />
+          <Parameter Name="in_auxv3" Type="varchar" Mode="In" />
+          <Parameter Name="in_auxi1" Type="int" Mode="In" />
+          <Parameter Name="in_auxi2" Type="int" Mode="In" />
+          <Parameter Name="in_auxi3" Type="int" Mode="In" />
+          <Parameter Name="in_usucodigo" Type="int" Mode="In" />
+          <Parameter Name="in_terminal" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateParametroDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="in_paracodigo" Type="int" Mode="In" />
+          <Parameter Name="in_padecodigo" Type="int" Mode="In" />
+          <Parameter Name="in_padenombre" Type="varchar" Mode="In" />
+          <Parameter Name="in_padevalorV" Type="varchar" Mode="In" />
+          <Parameter Name="in_padevalorI" Type="int" Mode="In" />
+          <Parameter Name="in_padeorden" Type="int" Mode="In" />
+          <Parameter Name="in_padeestado" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="SoftCobModelStoreContainer">
+          <EntitySet Name="SoftCob_ACCION" EntityType="Self.SoftCob_ACCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_BRENCH" EntityType="Self.SoftCob_BRENCH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_CAMPOS_SPEECH" EntityType="Self.SoftCob_CAMPOS_SPEECH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" EntityType="Self.SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_CEDENTE" EntityType="Self.SoftCob_CEDENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_CIUDAD" EntityType="Self.SoftCob_CIUDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_CONTACTO" EntityType="Self.SoftCob_CONTACTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_DEPARTAMENTO" EntityType="Self.SoftCob_DEPARTAMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_EFECTO" EntityType="Self.SoftCob_EFECTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_GESTOR_SUPERVISOR" EntityType="Self.SoftCob_GESTOR_SUPERVISOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_LISTATRABAJO_ACTIVAS" EntityType="Self.SoftCob_LISTATRABAJO_ACTIVAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_LISTATRABAJO_CABECERA" EntityType="Self.SoftCob_LISTATRABAJO_CABECERA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_LISTATRABAJO_DETALLE" EntityType="Self.SoftCob_LISTATRABAJO_DETALLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_LOGUEO_TIEMPOS" EntityType="Self.SoftCob_LOGUEO_TIEMPOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_MENU" EntityType="Self.SoftCob_MENU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_MENU_TAREA" EntityType="Self.SoftCob_MENU_TAREA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_PARAMETRO_CABECERA" EntityType="Self.SoftCob_PARAMETRO_CABECERA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_PARAMETRO_DETALLE" EntityType="Self.SoftCob_PARAMETRO_DETALLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_PERFIL" EntityType="Self.SoftCob_PERFIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_PERFIL_MENU_TAREA" EntityType="Self.SoftCob_PERFIL_MENU_TAREA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_PRODUCTOS_CEDENTE" EntityType="Self.SoftCob_PRODUCTOS_CEDENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_PROVINCIA" EntityType="Self.SoftCob_PROVINCIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_REGISTRO_VOLVERALLAMAR" EntityType="Self.SoftCob_REGISTRO_VOLVERALLAMAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_RESPUESTA" EntityType="Self.SoftCob_RESPUESTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_SPEECH_CABECERA" EntityType="Self.SoftCob_SPEECH_CABECERA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_SPEECH_DETALLE" EntityType="Self.SoftCob_SPEECH_DETALLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_TAREA" EntityType="Self.SoftCob_TAREA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_TELEFONOS_CEDENTE" EntityType="Self.SoftCob_TELEFONOS_CEDENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_USUARIO" EntityType="Self.SoftCob_USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Association="Self.FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+            <End Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" EntitySet="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
+            <End Role="SoftCob_ACCION" EntitySet="SoftCob_ACCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE" Association="Self.FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE">
+            <End Role="SoftCob_PRODUCTOS_CEDENTE" EntitySet="SoftCob_PRODUCTOS_CEDENTE" />
+            <End Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" EntitySet="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_CIUDAD_SoftCob_PROVINCIA" Association="Self.FK_SoftCob_CIUDAD_SoftCob_PROVINCIA">
+            <End Role="SoftCob_PROVINCIA" EntitySet="SoftCob_PROVINCIA" />
+            <End Role="SoftCob_CIUDAD" EntitySet="SoftCob_CIUDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_CONTACTO_SoftCob_RESPUESTA" Association="Self.FK_SoftCob_CONTACTO_SoftCob_RESPUESTA">
+            <End Role="SoftCob_RESPUESTA" EntitySet="SoftCob_RESPUESTA" />
+            <End Role="SoftCob_CONTACTO" EntitySet="SoftCob_CONTACTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_EFECTO_SoftCob_ACCION" Association="Self.FK_SoftCob_EFECTO_SoftCob_ACCION">
+            <End Role="SoftCob_ACCION" EntitySet="SoftCob_ACCION" />
+            <End Role="SoftCob_EFECTO" EntitySet="SoftCob_EFECTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_GESTOR_SUPERVISOR_SoftCob_USUARIO" Association="Self.FK_SoftCob_GESTOR_SUPERVISOR_SoftCob_USUARIO">
+            <End Role="SoftCob_USUARIO" EntitySet="SoftCob_USUARIO" />
+            <End Role="SoftCob_GESTOR_SUPERVISOR" EntitySet="SoftCob_GESTOR_SUPERVISOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_LISTATRABAJO_DETALLE_SoftCob_LISTATRABAJO_CABECERA" Association="Self.FK_SoftCob_LISTATRABAJO_DETALLE_SoftCob_LISTATRABAJO_CABECERA">
+            <End Role="SoftCob_LISTATRABAJO_CABECERA" EntitySet="SoftCob_LISTATRABAJO_CABECERA" />
+            <End Role="SoftCob_LISTATRABAJO_DETALLE" EntitySet="SoftCob_LISTATRABAJO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_LOGUEO_TIEMPOS_SoftCob_USUARIO" Association="Self.FK_SoftCob_LOGUEO_TIEMPOS_SoftCob_USUARIO">
+            <End Role="SoftCob_USUARIO" EntitySet="SoftCob_USUARIO" />
+            <End Role="SoftCob_LOGUEO_TIEMPOS" EntitySet="SoftCob_LOGUEO_TIEMPOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_LOGUEO_TIEMPOS_USUARIO" Association="Self.FK_SoftCob_LOGUEO_TIEMPOS_USUARIO">
+            <End Role="SoftCob_USUARIO" EntitySet="SoftCob_USUARIO" />
+            <End Role="SoftCob_LOGUEO_TIEMPOS" EntitySet="SoftCob_LOGUEO_TIEMPOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_MENU_TAREA_SoftCob_MENU" Association="Self.FK_SoftCob_MENU_TAREA_SoftCob_MENU">
+            <End Role="SoftCob_MENU" EntitySet="SoftCob_MENU" />
+            <End Role="SoftCob_MENU_TAREA" EntitySet="SoftCob_MENU_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_MENU_TAREA_SoftCob_TAREA" Association="Self.FK_SoftCob_MENU_TAREA_SoftCob_TAREA">
+            <End Role="SoftCob_TAREA" EntitySet="SoftCob_TAREA" />
+            <End Role="SoftCob_MENU_TAREA" EntitySet="SoftCob_MENU_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_PARAMETRO_DETALLE_SoftCob_PARAMETRO_CABECERA" Association="Self.FK_SoftCob_PARAMETRO_DETALLE_SoftCob_PARAMETRO_CABECERA">
+            <End Role="SoftCob_PARAMETRO_CABECERA" EntitySet="SoftCob_PARAMETRO_CABECERA" />
+            <End Role="SoftCob_PARAMETRO_DETALLE" EntitySet="SoftCob_PARAMETRO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_MENU_TAREA" Association="Self.FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_MENU_TAREA">
+            <End Role="SoftCob_MENU_TAREA" EntitySet="SoftCob_MENU_TAREA" />
+            <End Role="SoftCob_PERFIL_MENU_TAREA" EntitySet="SoftCob_PERFIL_MENU_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_PERFIL" Association="Self.FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_PERFIL">
+            <End Role="SoftCob_PERFIL" EntitySet="SoftCob_PERFIL" />
+            <End Role="SoftCob_PERFIL_MENU_TAREA" EntitySet="SoftCob_PERFIL_MENU_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_PRODUCTOS_CEDENTE_SoftCob_CEDENTE" Association="Self.FK_SoftCob_PRODUCTOS_CEDENTE_SoftCob_CEDENTE">
+            <End Role="SoftCob_CEDENTE" EntitySet="SoftCob_CEDENTE" />
+            <End Role="SoftCob_PRODUCTOS_CEDENTE" EntitySet="SoftCob_PRODUCTOS_CEDENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_RESPUESTA_SoftCob_EFECTO" Association="Self.FK_SoftCob_RESPUESTA_SoftCob_EFECTO">
+            <End Role="SoftCob_EFECTO" EntitySet="SoftCob_EFECTO" />
+            <End Role="SoftCob_RESPUESTA" EntitySet="SoftCob_RESPUESTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA" Association="Self.FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA">
+            <End Role="SoftCob_SPEECH_CABECERA" EntitySet="SoftCob_SPEECH_CABECERA" />
+            <End Role="SoftCob_SPEECH_DETALLE" EntitySet="SoftCob_SPEECH_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_USUARIO_SoftCob_DEPARTAMENTO" Association="Self.FK_SoftCob_USUARIO_SoftCob_DEPARTAMENTO">
+            <End Role="SoftCob_DEPARTAMENTO" EntitySet="SoftCob_DEPARTAMENTO" />
+            <End Role="SoftCob_USUARIO" EntitySet="SoftCob_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_USUARIO_SoftCob_PERFIL" Association="Self.FK_SoftCob_USUARIO_SoftCob_PERFIL">
+            <End Role="SoftCob_PERFIL" EntitySet="SoftCob_PERFIL" />
+            <End Role="SoftCob_USUARIO" EntitySet="SoftCob_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SoftCobModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="SoftCob_DEPARTAMENTO">
+          <Key>
+            <PropertyRef Name="DEPA_CODIGO" />
+          </Key>
+          <Property Name="DEPA_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empr_codigo" Type="Int32" Nullable="false" />
+          <Property Name="depa_descripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="depa_estado" Type="Boolean" Nullable="false" />
+          <Property Name="depa_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="depa_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="depa_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="depa_auxi1" Type="Int32" />
+          <Property Name="depa_auxi2" Type="Int32" />
+          <Property Name="depa_auxi3" Type="Int32" />
+          <Property Name="depa_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="depa_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="depa_terminalcreacion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="depa_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="depa_uum" Type="Int32" Nullable="false" />
+          <Property Name="depa_tum" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SoftCob_USUARIO" Relationship="SoftCobModel.FK_SoftCob_USUARIO_SoftCob_DEPARTAMENTO" FromRole="SoftCob_DEPARTAMENTO" ToRole="SoftCob_USUARIO" />
+        </EntityType>
+        <EntityType Name="SoftCob_MENU">
+          <Key>
+            <PropertyRef Name="MENU_CODIGO" />
+          </Key>
+          <Property Name="MENU_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empr_codigo" Type="Int32" Nullable="false" />
+          <Property Name="menu_descripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="menu_nivel" Type="Int32" Nullable="false" />
+          <Property Name="menu_estado" Type="Boolean" Nullable="false" />
+          <Property Name="menu_orden" Type="Int32" Nullable="false" />
+          <Property Name="menu_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="menu_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="menu_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="menu_auxi1" Type="Int32" />
+          <Property Name="menu_auxi2" Type="Int32" />
+          <Property Name="menu_auxi3" Type="Int32" />
+          <Property Name="menu_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="menu_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="menu_terminalcreacion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="menu_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="menu_uum" Type="Int32" Nullable="false" />
+          <Property Name="menu_tum" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SoftCob_MENU_TAREA" Relationship="Self.FK_SoftCob_MENU_TAREA_SoftCob_MENU" FromRole="SoftCob_MENU" ToRole="SoftCob_MENU_TAREA" />
+        </EntityType>
+        <EntityType Name="SoftCob_MENU_TAREA">
+          <Key>
+            <PropertyRef Name="META_CODIGO" />
+          </Key>
+          <Property Name="META_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MENU_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="TARE_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="empr_codigo" Type="Int32" Nullable="false" />
+          <Property Name="meta_estado" Type="Boolean" Nullable="false" />
+          <Property Name="meta_orden" Type="Int32" Nullable="false" />
+          <Property Name="meta_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="meta_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="meta_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="meta_auxi1" Type="Int32" />
+          <Property Name="meta_auxi2" Type="Int32" />
+          <Property Name="meta_auxi3" Type="Int32" />
+          <Property Name="meta_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="meta_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="meta_terminalcreacion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="meta_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="meta_uum" Type="Int32" Nullable="false" />
+          <Property Name="meta_tum" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SoftCob_MENU" Relationship="Self.FK_SoftCob_MENU_TAREA_SoftCob_MENU" FromRole="SoftCob_MENU_TAREA" ToRole="SoftCob_MENU" />
+          <NavigationProperty Name="SoftCob_TAREA" Relationship="Self.FK_SoftCob_MENU_TAREA_SoftCob_TAREA" FromRole="SoftCob_MENU_TAREA" ToRole="SoftCob_TAREA" />
+          <NavigationProperty Name="SoftCob_PERFIL_MENU_TAREA" Relationship="Self.FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_MENU_TAREA" FromRole="SoftCob_MENU_TAREA" ToRole="SoftCob_PERFIL_MENU_TAREA" />
+        </EntityType>
+        <EntityType Name="SoftCob_PERFIL">
+          <Key>
+            <PropertyRef Name="PERF_CODIGO" />
+          </Key>
+          <Property Name="PERF_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empr_codigo" Type="Int32" Nullable="false" />
+          <Property Name="perf_descripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="perf_observacion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="perf_estado" Type="Boolean" />
+          <Property Name="perf_crearparametro" Type="Boolean" />
+          <Property Name="perf_modiparametro" Type="Boolean" />
+          <Property Name="perf_eliminaparametro" Type="Boolean" />
+          <Property Name="perf_perfilactitudinal" Type="Boolean" />
+          <Property Name="perf_estilosnegociacion" Type="Boolean" />
+          <Property Name="perf_metaprogramas" Type="Boolean" />
+          <Property Name="perf_modalidades" Type="Boolean" />
+          <Property Name="perf_estadosdelyo" Type="Boolean" />
+          <Property Name="perf_impulsores" Type="Boolean" />
+          <Property Name="perf_auxb1" Type="Boolean" />
+          <Property Name="perf_auxb2" Type="Boolean" />
+          <Property Name="perf_auxb3" Type="Boolean" />
+          <Property Name="perf_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="perf_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="perf_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="perf_auxi1" Type="Int32" />
+          <Property Name="perf_auxi2" Type="Int32" />
+          <Property Name="perf_auxi3" Type="Int32" />
+          <Property Name="perf_fechacreacion" Type="DateTime" Precision="3" />
+          <Property Name="perf_usuariocreacion" Type="Int32" />
+          <Property Name="perf_terminalcreacion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="perf_fum" Type="DateTime" Precision="3" />
+          <Property Name="perf_uum" Type="Int32" />
+          <Property Name="perf_tum" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SoftCob_PERFIL_MENU_TAREA" Relationship="Self.FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_PERFIL" FromRole="SoftCob_PERFIL" ToRole="SoftCob_PERFIL_MENU_TAREA" />
+          <NavigationProperty Name="SoftCob_USUARIO" Relationship="SoftCobModel.FK_SoftCob_USUARIO_SoftCob_PERFIL" FromRole="SoftCob_PERFIL" ToRole="SoftCob_USUARIO" />
+        </EntityType>
+        <EntityType Name="SoftCob_PERFIL_MENU_TAREA">
+          <Key>
+            <PropertyRef Name="PEMT_CODIGO" />
+          </Key>
+          <Property Name="PEMT_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PERF_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="META_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="empr_codigo" Type="Int32" Nullable="false" />
+          <Property Name="pemt_estado" Type="Boolean" Nullable="false" />
+          <Property Name="pemt_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pemt_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pemt_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pemt_auxi1" Type="Int32" />
+          <Property Name="pemt_auxi2" Type="Int32" />
+          <Property Name="pemt_auxi3" Type="Int32" />
+          <NavigationProperty Name="SoftCob_MENU_TAREA" Relationship="Self.FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_MENU_TAREA" FromRole="SoftCob_PERFIL_MENU_TAREA" ToRole="SoftCob_MENU_TAREA" />
+          <NavigationProperty Name="SoftCob_PERFIL" Relationship="Self.FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_PERFIL" FromRole="SoftCob_PERFIL_MENU_TAREA" ToRole="SoftCob_PERFIL" />
+        </EntityType>
+        <EntityType Name="SoftCob_TAREA">
+          <Key>
+            <PropertyRef Name="TARE_CODIGO" />
+          </Key>
+          <Property Name="TARE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empr_codigo" Type="Int32" Nullable="false" />
+          <Property Name="tare_descripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tare_programa" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tare_estado" Type="Boolean" Nullable="false" />
+          <Property Name="tare_orden" Type="Int32" Nullable="false" />
+          <Property Name="tare_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tare_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tare_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tare_auxi1" Type="Int32" />
+          <Property Name="tare_auxi2" Type="Int32" />
+          <Property Name="tare_auxi3" Type="Int32" />
+          <Property Name="tare_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tare_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="tare_terminalcreacion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tare_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tare_uum" Type="Int32" Nullable="false" />
+          <Property Name="tare_tum" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SoftCob_MENU_TAREA" Relationship="Self.FK_SoftCob_MENU_TAREA_SoftCob_TAREA" FromRole="SoftCob_TAREA" ToRole="SoftCob_MENU_TAREA" />
+        </EntityType>
+        <Association Name="FK_SoftCob_MENU_TAREA_SoftCob_MENU">
+          <End Role="SoftCob_MENU" Type="Self.SoftCob_MENU" Multiplicity="1" />
+          <End Role="SoftCob_MENU_TAREA" Type="Self.SoftCob_MENU_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_MENU">
+              <PropertyRef Name="MENU_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_MENU_TAREA">
+              <PropertyRef Name="MENU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_MENU_TAREA_SoftCob_TAREA">
+          <End Role="SoftCob_TAREA" Type="Self.SoftCob_TAREA" Multiplicity="1" />
+          <End Role="SoftCob_MENU_TAREA" Type="Self.SoftCob_MENU_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_TAREA">
+              <PropertyRef Name="TARE_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_MENU_TAREA">
+              <PropertyRef Name="TARE_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_MENU_TAREA">
+          <End Role="SoftCob_MENU_TAREA" Type="Self.SoftCob_MENU_TAREA" Multiplicity="1" />
+          <End Role="SoftCob_PERFIL_MENU_TAREA" Type="Self.SoftCob_PERFIL_MENU_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_MENU_TAREA">
+              <PropertyRef Name="META_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_PERFIL_MENU_TAREA">
+              <PropertyRef Name="META_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_PERFIL">
+          <End Role="SoftCob_PERFIL" Type="Self.SoftCob_PERFIL" Multiplicity="1" />
+          <End Role="SoftCob_PERFIL_MENU_TAREA" Type="Self.SoftCob_PERFIL_MENU_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_PERFIL">
+              <PropertyRef Name="PERF_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_PERFIL_MENU_TAREA">
+              <PropertyRef Name="PERF_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SoftCobEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SoftCob_DEPARTAMENTO" EntityType="Self.SoftCob_DEPARTAMENTO" />
+          <EntitySet Name="SoftCob_MENU" EntityType="Self.SoftCob_MENU" />
+          <EntitySet Name="SoftCob_MENU_TAREA" EntityType="Self.SoftCob_MENU_TAREA" />
+          <EntitySet Name="SoftCob_PERFIL" EntityType="Self.SoftCob_PERFIL" />
+          <EntitySet Name="SoftCob_PERFIL_MENU_TAREA" EntityType="Self.SoftCob_PERFIL_MENU_TAREA" />
+          <EntitySet Name="SoftCob_TAREA" EntityType="Self.SoftCob_TAREA" />
+          <AssociationSet Name="FK_SoftCob_MENU_TAREA_SoftCob_MENU" Association="Self.FK_SoftCob_MENU_TAREA_SoftCob_MENU">
+            <End Role="SoftCob_MENU" EntitySet="SoftCob_MENU" />
+            <End Role="SoftCob_MENU_TAREA" EntitySet="SoftCob_MENU_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_MENU_TAREA_SoftCob_TAREA" Association="Self.FK_SoftCob_MENU_TAREA_SoftCob_TAREA">
+            <End Role="SoftCob_TAREA" EntitySet="SoftCob_TAREA" />
+            <End Role="SoftCob_MENU_TAREA" EntitySet="SoftCob_MENU_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_MENU_TAREA" Association="Self.FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_MENU_TAREA">
+            <End Role="SoftCob_MENU_TAREA" EntitySet="SoftCob_MENU_TAREA" />
+            <End Role="SoftCob_PERFIL_MENU_TAREA" EntitySet="SoftCob_PERFIL_MENU_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_PERFIL" Association="Self.FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_PERFIL">
+            <End Role="SoftCob_PERFIL" EntitySet="SoftCob_PERFIL" />
+            <End Role="SoftCob_PERFIL_MENU_TAREA" EntitySet="SoftCob_PERFIL_MENU_TAREA" />
+          </AssociationSet>
+          <EntitySet Name="SoftCob_USUARIO" EntityType="SoftCobModel.SoftCob_USUARIO" />
+          <AssociationSet Name="FK_SoftCob_USUARIO_SoftCob_DEPARTAMENTO" Association="SoftCobModel.FK_SoftCob_USUARIO_SoftCob_DEPARTAMENTO">
+            <End Role="SoftCob_DEPARTAMENTO" EntitySet="SoftCob_DEPARTAMENTO" />
+            <End Role="SoftCob_USUARIO" EntitySet="SoftCob_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_USUARIO_SoftCob_PERFIL" Association="SoftCobModel.FK_SoftCob_USUARIO_SoftCob_PERFIL">
+            <End Role="SoftCob_PERFIL" EntitySet="SoftCob_PERFIL" />
+            <End Role="SoftCob_USUARIO" EntitySet="SoftCob_USUARIO" />
+          </AssociationSet>
+          <EntitySet Name="SoftCob_GESTOR_SUPERVISOR" EntityType="SoftCobModel.SoftCob_GESTOR_SUPERVISOR" />
+          <EntitySet Name="SoftCob_LOGUEO_TIEMPOS" EntityType="SoftCobModel.SoftCob_LOGUEO_TIEMPOS" />
+          <AssociationSet Name="FK_SoftCob_GESTOR_SUPERVISOR_SoftCob_USUARIO" Association="SoftCobModel.FK_SoftCob_GESTOR_SUPERVISOR_SoftCob_USUARIO">
+            <End Role="SoftCob_USUARIO" EntitySet="SoftCob_USUARIO" />
+            <End Role="SoftCob_GESTOR_SUPERVISOR" EntitySet="SoftCob_GESTOR_SUPERVISOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_LOGUEO_TIEMPOS_SoftCob_USUARIO" Association="SoftCobModel.FK_SoftCob_LOGUEO_TIEMPOS_SoftCob_USUARIO">
+            <End Role="SoftCob_USUARIO" EntitySet="SoftCob_USUARIO" />
+            <End Role="SoftCob_LOGUEO_TIEMPOS" EntitySet="SoftCob_LOGUEO_TIEMPOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_LOGUEO_TIEMPOS_USUARIO" Association="SoftCobModel.FK_SoftCob_LOGUEO_TIEMPOS_USUARIO">
+            <End Role="SoftCob_USUARIO" EntitySet="SoftCob_USUARIO" />
+            <End Role="SoftCob_LOGUEO_TIEMPOS" EntitySet="SoftCob_LOGUEO_TIEMPOS" />
+          </AssociationSet>
+          <FunctionImport Name="FunMenuEditUpdate" ReturnType="Collection(String)">
+            <Parameter Name="in_check" Mode="In" Type="String" />
+            <Parameter Name="in_codigomenu" Mode="In" Type="Int32" />
+            <Parameter Name="in_codigotarea" Mode="In" Type="Int32" />
+            <Parameter Name="in_emprcodigo" Mode="In" Type="Int32" />
+            <Parameter Name="in_auxv1" Mode="In" Type="String" />
+            <Parameter Name="in_auxv2" Mode="In" Type="String" />
+            <Parameter Name="in_auxv3" Mode="In" Type="String" />
+            <Parameter Name="in_auxi1" Mode="In" Type="Int32" />
+            <Parameter Name="in_auxi2" Mode="In" Type="Int32" />
+            <Parameter Name="in_auxi3" Mode="In" Type="Int32" />
+            <Parameter Name="in_usucodigo" Mode="In" Type="Int32" />
+            <Parameter Name="in_terminal" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="SoftCob_CIUDAD" EntityType="SoftCobModel.SoftCob_CIUDAD" />
+          <EntitySet Name="SoftCob_PARAMETRO_CABECERA" EntityType="SoftCobModel.SoftCob_PARAMETRO_CABECERA" />
+          <EntitySet Name="SoftCob_PARAMETRO_DETALLE" EntityType="SoftCobModel.SoftCob_PARAMETRO_DETALLE" />
+          <EntitySet Name="SoftCob_PROVINCIA" EntityType="SoftCobModel.SoftCob_PROVINCIA" />
+          <AssociationSet Name="FK_SoftCob_CIUDAD_SoftCob_PROVINCIA" Association="SoftCobModel.FK_SoftCob_CIUDAD_SoftCob_PROVINCIA">
+            <End Role="SoftCob_PROVINCIA" EntitySet="SoftCob_PROVINCIA" />
+            <End Role="SoftCob_CIUDAD" EntitySet="SoftCob_CIUDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_PARAMETRO_DETALLE_SoftCob_PARAMETRO_CABECERA" Association="SoftCobModel.FK_SoftCob_PARAMETRO_DETALLE_SoftCob_PARAMETRO_CABECERA">
+            <End Role="SoftCob_PARAMETRO_CABECERA" EntitySet="SoftCob_PARAMETRO_CABECERA" />
+            <End Role="SoftCob_PARAMETRO_DETALLE" EntitySet="SoftCob_PARAMETRO_DETALLE" />
+          </AssociationSet>
+          <FunctionImport Name="FunUpdateParametroDetalle" ReturnType="Collection(String)">
+            <Parameter Name="in_paracodigo" Mode="In" Type="Int32" />
+            <Parameter Name="in_padecodigo" Mode="In" Type="Int32" />
+            <Parameter Name="in_padenombre" Mode="In" Type="String" />
+            <Parameter Name="in_padevalorV" Mode="In" Type="String" />
+            <Parameter Name="in_padevalorI" Mode="In" Type="Int32" />
+            <Parameter Name="in_padeorden" Mode="In" Type="Int32" />
+            <Parameter Name="in_padeestado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <EntitySet Name="SoftCob_CEDENTE" EntityType="SoftCobModel.SoftCob_CEDENTE" />
+          <EntitySet Name="SoftCob_PRODUCTOS_CEDENTE" EntityType="SoftCobModel.SoftCob_PRODUCTOS_CEDENTE" />
+          <AssociationSet Name="FK_SoftCob_PRODUCTOS_CEDENTE_SoftCob_CEDENTE" Association="SoftCobModel.FK_SoftCob_PRODUCTOS_CEDENTE_SoftCob_CEDENTE">
+            <End Role="SoftCob_CEDENTE" EntitySet="SoftCob_CEDENTE" />
+            <End Role="SoftCob_PRODUCTOS_CEDENTE" EntitySet="SoftCob_PRODUCTOS_CEDENTE" />
+          </AssociationSet>
+          <EntitySet Name="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" EntityType="SoftCobModel.SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
+          <AssociationSet Name="FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE" Association="SoftCobModel.FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE">
+            <End Role="SoftCob_PRODUCTOS_CEDENTE" EntitySet="SoftCob_PRODUCTOS_CEDENTE" />
+            <End Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" EntitySet="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
+          </AssociationSet>
+          <EntitySet Name="SoftCob_ACCION" EntityType="SoftCobModel.SoftCob_ACCION" />
+          <AssociationSet Name="FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Association="SoftCobModel.FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+            <End Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" EntitySet="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
+            <End Role="SoftCob_ACCION" EntitySet="SoftCob_ACCION" />
+          </AssociationSet>
+          <EntitySet Name="SoftCob_CONTACTO" EntityType="SoftCobModel.SoftCob_CONTACTO" />
+          <EntitySet Name="SoftCob_EFECTO" EntityType="SoftCobModel.SoftCob_EFECTO" />
+          <EntitySet Name="SoftCob_RESPUESTA" EntityType="SoftCobModel.SoftCob_RESPUESTA" />
+          <AssociationSet Name="FK_SoftCob_EFECTO_SoftCob_ACCION" Association="SoftCobModel.FK_SoftCob_EFECTO_SoftCob_ACCION">
+            <End Role="SoftCob_ACCION" EntitySet="SoftCob_ACCION" />
+            <End Role="SoftCob_EFECTO" EntitySet="SoftCob_EFECTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_CONTACTO_SoftCob_RESPUESTA" Association="SoftCobModel.FK_SoftCob_CONTACTO_SoftCob_RESPUESTA">
+            <End Role="SoftCob_RESPUESTA" EntitySet="SoftCob_RESPUESTA" />
+            <End Role="SoftCob_CONTACTO" EntitySet="SoftCob_CONTACTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_RESPUESTA_SoftCob_EFECTO" Association="SoftCobModel.FK_SoftCob_RESPUESTA_SoftCob_EFECTO">
+            <End Role="SoftCob_EFECTO" EntitySet="SoftCob_EFECTO" />
+            <End Role="SoftCob_RESPUESTA" EntitySet="SoftCob_RESPUESTA" />
+          </AssociationSet>
+          <EntitySet Name="SoftCob_SPEECH_CABECERA" EntityType="SoftCobModel.SoftCob_SPEECH_CABECERA" />
+          <EntitySet Name="SoftCob_SPEECH_DETALLE" EntityType="SoftCobModel.SoftCob_SPEECH_DETALLE" />
+          <AssociationSet Name="FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA" Association="SoftCobModel.FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA">
+            <End Role="SoftCob_SPEECH_CABECERA" EntitySet="SoftCob_SPEECH_CABECERA" />
+            <End Role="SoftCob_SPEECH_DETALLE" EntitySet="SoftCob_SPEECH_DETALLE" />
+          </AssociationSet>
+          <EntitySet Name="SoftCob_CAMPOS_SPEECH" EntityType="SoftCobModel.SoftCob_CAMPOS_SPEECH" />
+          <EntitySet Name="SoftCob_REGISTRO_VOLVERALLAMAR" EntityType="SoftCobModel.SoftCob_REGISTRO_VOLVERALLAMAR" />
+          <EntitySet Name="SoftCob_TELEFONOS_CEDENTE" EntityType="SoftCobModel.SoftCob_TELEFONOS_CEDENTE" />
+          <EntitySet Name="SoftCob_BRENCH" EntityType="SoftCobModel.SoftCob_BRENCH" />
+          <EntitySet Name="SoftCob_LISTATRABAJO_ACTIVAS" EntityType="SoftCobModel.SoftCob_LISTATRABAJO_ACTIVAS" />
+          <EntitySet Name="SoftCob_LISTATRABAJO_CABECERA" EntityType="SoftCobModel.SoftCob_LISTATRABAJO_CABECERA" />
+          <EntitySet Name="SoftCob_LISTATRABAJO_DETALLE" EntityType="SoftCobModel.SoftCob_LISTATRABAJO_DETALLE" />
+          <AssociationSet Name="FK_SoftCob_LISTATRABAJO_DETALLE_SoftCob_LISTATRABAJO_CABECERA" Association="SoftCobModel.FK_SoftCob_LISTATRABAJO_DETALLE_SoftCob_LISTATRABAJO_CABECERA">
+            <End Role="SoftCob_LISTATRABAJO_CABECERA" EntitySet="SoftCob_LISTATRABAJO_CABECERA" />
+            <End Role="SoftCob_LISTATRABAJO_DETALLE" EntitySet="SoftCob_LISTATRABAJO_DETALLE" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SoftCob_USUARIO">
+          <Key>
+            <PropertyRef Name="USUA_CODIGO" />
+          </Key>
+          <Property Name="USUA_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PERF_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="DEPA_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="empr_codigo" Type="Int32" Nullable="false" />
+          <Property Name="empl_codigo" Type="Int32" />
+          <Property Name="usua_tipousuario" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="usua_nombres" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="usua_apellidos" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="usua_cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="usua_login" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="usua_password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usua_estado" Type="Boolean" Nullable="false" />
+          <Property Name="usua_contador" Type="Int32" />
+          <Property Name="usua_caducapass" Type="Boolean" Nullable="false" />
+          <Property Name="usua_fechacaduca" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usua_cambiarpass" Type="Boolean" Nullable="false" />
+          <Property Name="usua_statuslogin" Type="Boolean" Nullable="false" />
+          <Property Name="usua_permisosespeciales" Type="Boolean" Nullable="false" />
+          <Property Name="usua_terminallogin" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="usua_logobienvenida" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="usua_logomenu" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="usua_mail" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="usua_celular" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="usua_foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="usua_imagepath" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="usua_imagefullpath" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="usua_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usua_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usua_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usua_auxv4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usua_auxv5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usua_auxi1" Type="Int32" />
+          <Property Name="usua_auxi2" Type="Int32" />
+          <Property Name="usua_auxi3" Type="Int32" />
+          <Property Name="usua_auxi4" Type="Int32" />
+          <Property Name="usua_auxi5" Type="Int32" />
+          <Property Name="usua_fechacreacion" Type="DateTime" Precision="3" />
+          <Property Name="usua_usuariocreacion" Type="Int32" />
+          <Property Name="usua_terminalcreacion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="usua_fum" Type="DateTime" Precision="3" />
+          <Property Name="usua_uum" Type="Int32" />
+          <Property Name="usua_tum" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SoftCob_DEPARTAMENTO" Relationship="SoftCobModel.FK_SoftCob_USUARIO_SoftCob_DEPARTAMENTO" FromRole="SoftCob_USUARIO" ToRole="SoftCob_DEPARTAMENTO" />
+          <NavigationProperty Name="SoftCob_PERFIL" Relationship="SoftCobModel.FK_SoftCob_USUARIO_SoftCob_PERFIL" FromRole="SoftCob_USUARIO" ToRole="SoftCob_PERFIL" />
+          <NavigationProperty Name="SoftCob_GESTOR_SUPERVISOR" Relationship="SoftCobModel.FK_SoftCob_GESTOR_SUPERVISOR_SoftCob_USUARIO" FromRole="SoftCob_USUARIO" ToRole="SoftCob_GESTOR_SUPERVISOR" />
+          <NavigationProperty Name="SoftCob_LOGUEO_TIEMPOS" Relationship="SoftCobModel.FK_SoftCob_LOGUEO_TIEMPOS_SoftCob_USUARIO" FromRole="SoftCob_USUARIO" ToRole="SoftCob_LOGUEO_TIEMPOS" />
+          <NavigationProperty Name="SoftCob_LOGUEO_TIEMPOS1" Relationship="SoftCobModel.FK_SoftCob_LOGUEO_TIEMPOS_USUARIO" FromRole="SoftCob_USUARIO" ToRole="SoftCob_LOGUEO_TIEMPOS" />
+        </EntityType>
+        <Association Name="FK_SoftCob_USUARIO_SoftCob_DEPARTAMENTO">
+          <End Type="SoftCobModel.SoftCob_DEPARTAMENTO" Role="SoftCob_DEPARTAMENTO" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_USUARIO" Role="SoftCob_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_DEPARTAMENTO">
+              <PropertyRef Name="DEPA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_USUARIO">
+              <PropertyRef Name="DEPA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_USUARIO_SoftCob_PERFIL">
+          <End Type="SoftCobModel.SoftCob_PERFIL" Role="SoftCob_PERFIL" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_USUARIO" Role="SoftCob_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_PERFIL">
+              <PropertyRef Name="PERF_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_USUARIO">
+              <PropertyRef Name="PERF_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SoftCob_GESTOR_SUPERVISOR">
+          <Key>
+            <PropertyRef Name="GEST_CODIGO" />
+          </Key>
+          <Property Name="GEST_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SUPE_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="USUA_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="gest_estado" Type="Boolean" Nullable="false" />
+          <Property Name="gest_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gest_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gest_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gest_auxi1" Type="Int32" />
+          <Property Name="gest_auxi2" Type="Int32" />
+          <Property Name="gest_auxi3" Type="Int32" />
+          <Property Name="gest_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="gest_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="gest_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gest_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="gest_uum" Type="Int32" Nullable="false" />
+          <Property Name="gest_tum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SoftCob_USUARIO" Relationship="SoftCobModel.FK_SoftCob_GESTOR_SUPERVISOR_SoftCob_USUARIO" FromRole="SoftCob_GESTOR_SUPERVISOR" ToRole="SoftCob_USUARIO" />
+        </EntityType>
+        <EntityType Name="SoftCob_LOGUEO_TIEMPOS">
+          <Key>
+            <PropertyRef Name="LOTI_CODIGO" />
+          </Key>
+          <Property Name="LOTI_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USUA_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="empr_codigo" Type="Int32" Nullable="false" />
+          <Property Name="cpce_codigo" Type="Int32" Nullable="false" />
+          <Property Name="ltca_codigo" Type="Int32" Nullable="false" />
+          <Property Name="loti_tipologueo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="loti_fechalogueo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="loti_horalogueo" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="loti_fechacompleta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="loti_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="loti_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="loti_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="loti_auxv4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="loti_auxv5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="loti_auxi1" Type="Int32" />
+          <Property Name="loti_auxi2" Type="Int32" />
+          <Property Name="loti_auxi3" Type="Int32" />
+          <Property Name="loti_auxi4" Type="Int32" />
+          <Property Name="loti_auxi5" Type="Int32" />
+          <Property Name="loti_auxd1" Type="DateTime" Precision="3" />
+          <Property Name="loti_auxd2" Type="DateTime" Precision="3" />
+          <Property Name="loti_auxd3" Type="DateTime" Precision="3" />
+          <Property Name="loti_auxd4" Type="DateTime" Precision="3" />
+          <Property Name="loti_auxd5" Type="DateTime" Precision="3" />
+          <Property Name="loti_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="loti_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="loti_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SoftCob_USUARIO" Relationship="SoftCobModel.FK_SoftCob_LOGUEO_TIEMPOS_SoftCob_USUARIO" FromRole="SoftCob_LOGUEO_TIEMPOS" ToRole="SoftCob_USUARIO" />
+          <NavigationProperty Name="SoftCob_USUARIO1" Relationship="SoftCobModel.FK_SoftCob_LOGUEO_TIEMPOS_USUARIO" FromRole="SoftCob_LOGUEO_TIEMPOS" ToRole="SoftCob_USUARIO" />
+        </EntityType>
+        <Association Name="FK_SoftCob_GESTOR_SUPERVISOR_SoftCob_USUARIO">
+          <End Type="SoftCobModel.SoftCob_USUARIO" Role="SoftCob_USUARIO" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_GESTOR_SUPERVISOR" Role="SoftCob_GESTOR_SUPERVISOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_USUARIO">
+              <PropertyRef Name="USUA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_GESTOR_SUPERVISOR">
+              <PropertyRef Name="USUA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_LOGUEO_TIEMPOS_SoftCob_USUARIO">
+          <End Type="SoftCobModel.SoftCob_USUARIO" Role="SoftCob_USUARIO" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_LOGUEO_TIEMPOS" Role="SoftCob_LOGUEO_TIEMPOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_USUARIO">
+              <PropertyRef Name="USUA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_LOGUEO_TIEMPOS">
+              <PropertyRef Name="USUA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_LOGUEO_TIEMPOS_USUARIO">
+          <End Type="SoftCobModel.SoftCob_USUARIO" Role="SoftCob_USUARIO" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_LOGUEO_TIEMPOS" Role="SoftCob_LOGUEO_TIEMPOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_USUARIO">
+              <PropertyRef Name="USUA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_LOGUEO_TIEMPOS">
+              <PropertyRef Name="USUA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SoftCob_CIUDAD">
+          <Key>
+            <PropertyRef Name="CIUD_CODIGO" />
+          </Key>
+          <Property Name="CIUD_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROV_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="ciud_nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ciud_estado" Type="Boolean" Nullable="false" />
+          <Property Name="ciud_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ciud_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="ciud_terminalcreacion" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ciud_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ciud_uum" Type="Int32" Nullable="false" />
+          <Property Name="ciud_tum" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SoftCob_PROVINCIA" Relationship="SoftCobModel.FK_SoftCob_CIUDAD_SoftCob_PROVINCIA" FromRole="SoftCob_CIUDAD" ToRole="SoftCob_PROVINCIA" />
+        </EntityType>
+        <EntityType Name="SoftCob_PARAMETRO_CABECERA">
+          <Key>
+            <PropertyRef Name="PARA_CODIGO" />
+          </Key>
+          <Property Name="PARA_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="para_nombre" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="para_descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="para_estado" Type="Boolean" Nullable="false" />
+          <Property Name="para_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="para_auxiv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="para_auxii1" Type="Int32" />
+          <Property Name="para_auxii2" Type="Int32" />
+          <Property Name="para_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="para_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="para_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="para_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="para_uum" Type="Int32" Nullable="false" />
+          <Property Name="para_tum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SoftCob_PARAMETRO_DETALLE" Relationship="SoftCobModel.FK_SoftCob_PARAMETRO_DETALLE_SoftCob_PARAMETRO_CABECERA" FromRole="SoftCob_PARAMETRO_CABECERA" ToRole="SoftCob_PARAMETRO_DETALLE" />
+        </EntityType>
+        <EntityType Name="SoftCob_PARAMETRO_DETALLE">
+          <Key>
+            <PropertyRef Name="PADE_CODIGO" />
+          </Key>
+          <Property Name="PADE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PARA_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="pade_nombre" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="pade_valorV" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pade_valorI" Type="Int32" Nullable="false" />
+          <Property Name="pade_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pade_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pade_auxi1" Type="Int32" />
+          <Property Name="pade_auxi2" Type="Int32" />
+          <Property Name="pade_orden" Type="Int32" />
+          <Property Name="pade_estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SoftCob_PARAMETRO_CABECERA" Relationship="SoftCobModel.FK_SoftCob_PARAMETRO_DETALLE_SoftCob_PARAMETRO_CABECERA" FromRole="SoftCob_PARAMETRO_DETALLE" ToRole="SoftCob_PARAMETRO_CABECERA" />
+        </EntityType>
+        <EntityType Name="SoftCob_PROVINCIA">
+          <Key>
+            <PropertyRef Name="PROV_CODIGO" />
+          </Key>
+          <Property Name="PROV_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PAIS_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="REGI_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="prov_nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="prov_codigomarca" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="prov_estado" Type="Boolean" Nullable="false" />
+          <Property Name="prov_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="prov_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="prov_terminalcreacion" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="prov_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="prov_uum" Type="Int32" Nullable="false" />
+          <Property Name="prov_tum" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SoftCob_CIUDAD" Relationship="SoftCobModel.FK_SoftCob_CIUDAD_SoftCob_PROVINCIA" FromRole="SoftCob_PROVINCIA" ToRole="SoftCob_CIUDAD" />
+        </EntityType>
+        <Association Name="FK_SoftCob_CIUDAD_SoftCob_PROVINCIA">
+          <End Type="SoftCobModel.SoftCob_PROVINCIA" Role="SoftCob_PROVINCIA" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_CIUDAD" Role="SoftCob_CIUDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_PROVINCIA">
+              <PropertyRef Name="PROV_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_CIUDAD">
+              <PropertyRef Name="PROV_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_PARAMETRO_DETALLE_SoftCob_PARAMETRO_CABECERA">
+          <End Type="SoftCobModel.SoftCob_PARAMETRO_CABECERA" Role="SoftCob_PARAMETRO_CABECERA" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_PARAMETRO_DETALLE" Role="SoftCob_PARAMETRO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_PARAMETRO_CABECERA">
+              <PropertyRef Name="PARA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_PARAMETRO_DETALLE">
+              <PropertyRef Name="PARA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SoftCob_CEDENTE">
+          <Key>
+            <PropertyRef Name="CEDE_CODIGO" />
+          </Key>
+          <Property Name="CEDE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cede_provcod" Type="Int32" Nullable="false" />
+          <Property Name="cede_ciudcod" Type="Int32" Nullable="false" />
+          <Property Name="cede_nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="cede_direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="cede_ruc" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="cede_url" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="cede_telefono1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cede_telefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cede_fax" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cede_estado" Type="Boolean" Nullable="false" />
+          <Property Name="cede_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cede_auxiv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cede_auxiv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cede_auxi1" Type="Int32" />
+          <Property Name="cede_auxi2" Type="Int32" />
+          <Property Name="cede_auxi3" Type="Int32" />
+          <Property Name="cede_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cede_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="cede_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cede_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cede_uum" Type="Int32" Nullable="false" />
+          <Property Name="cede_tum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SoftCob_PRODUCTOS_CEDENTE" Relationship="SoftCobModel.FK_SoftCob_PRODUCTOS_CEDENTE_SoftCob_CEDENTE" FromRole="SoftCob_CEDENTE" ToRole="SoftCob_PRODUCTOS_CEDENTE" />
+        </EntityType>
+        <EntityType Name="SoftCob_PRODUCTOS_CEDENTE">
+          <Key>
+            <PropertyRef Name="PRCE_CODIGO" />
+          </Key>
+          <Property Name="PRCE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CEDE_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="prce_producto" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="prce_descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="prce_estado" Type="Boolean" Nullable="false" />
+          <Property Name="prce_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prce_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prce_auxi1" Type="Int32" />
+          <Property Name="prce_auxi2" Type="Int32" />
+          <NavigationProperty Name="SoftCob_CEDENTE" Relationship="SoftCobModel.FK_SoftCob_PRODUCTOS_CEDENTE_SoftCob_CEDENTE" FromRole="SoftCob_PRODUCTOS_CEDENTE" ToRole="SoftCob_CEDENTE" />
+          <NavigationProperty Name="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Relationship="SoftCobModel.FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE" FromRole="SoftCob_PRODUCTOS_CEDENTE" ToRole="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
+        </EntityType>
+        <Association Name="FK_SoftCob_PRODUCTOS_CEDENTE_SoftCob_CEDENTE">
+          <End Type="SoftCobModel.SoftCob_CEDENTE" Role="SoftCob_CEDENTE" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_PRODUCTOS_CEDENTE" Role="SoftCob_PRODUCTOS_CEDENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_CEDENTE">
+              <PropertyRef Name="CEDE_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_PRODUCTOS_CEDENTE">
+              <PropertyRef Name="CEDE_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+          <Key>
+            <PropertyRef Name="CPCE_CODIGO" />
+          </Key>
+          <Property Name="CPCE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRCE_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="cpce_codigoproducto" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cpce_producto" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="cpce_codigofamilia" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cpce_familia" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="cpce_estado" Type="Boolean" Nullable="false" />
+          <Property Name="cpce_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cpce_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cpce_auxi1" Type="Int32" />
+          <Property Name="cpce_auxi2" Type="Int32" />
+          <NavigationProperty Name="SoftCob_PRODUCTOS_CEDENTE" Relationship="SoftCobModel.FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE" FromRole="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" ToRole="SoftCob_PRODUCTOS_CEDENTE" />
+          <NavigationProperty Name="SoftCob_ACCION" Relationship="SoftCobModel.FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" FromRole="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" ToRole="SoftCob_ACCION" />
+        </EntityType>
+        <Association Name="FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE">
+          <End Type="SoftCobModel.SoftCob_PRODUCTOS_CEDENTE" Role="SoftCob_PRODUCTOS_CEDENTE" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_PRODUCTOS_CEDENTE">
+              <PropertyRef Name="PRCE_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+              <PropertyRef Name="PRCE_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SoftCob_ACCION">
+          <Key>
+            <PropertyRef Name="ARAC_CODIGO" />
+          </Key>
+          <Property Name="ARAC_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CPCE_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="arac_descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="arac_estado" Type="Boolean" Nullable="false" />
+          <Property Name="arac_contacto" Type="Boolean" Nullable="false" />
+          <Property Name="arac_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="arac_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="arac_auxi1" Type="Int32" />
+          <Property Name="arac_auxi2" Type="Int32" />
+          <Property Name="arac_fechacreacion" Type="DateTime" Precision="3" />
+          <Property Name="arac_usuariocracion" Type="Int32" />
+          <Property Name="arac_terminalcreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="arac_fum" Type="DateTime" Precision="3" />
+          <Property Name="arac_uum" Type="Int32" />
+          <Property Name="arac_tum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Relationship="SoftCobModel.FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" FromRole="SoftCob_ACCION" ToRole="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
+          <NavigationProperty Name="SoftCob_EFECTO" Relationship="SoftCobModel.FK_SoftCob_EFECTO_SoftCob_ACCION" FromRole="SoftCob_ACCION" ToRole="SoftCob_EFECTO" />
+        </EntityType>
+        <Association Name="FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+          <End Type="SoftCobModel.SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_ACCION" Role="SoftCob_ACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+              <PropertyRef Name="CPCE_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_ACCION">
+              <PropertyRef Name="CPCE_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SoftCob_CONTACTO">
+          <Key>
+            <PropertyRef Name="ARCO_CODIGO" />
+          </Key>
+          <Property Name="ARCO_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ARRE_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="arco_descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="arco_estado" Type="Boolean" Nullable="false" />
+          <Property Name="arco_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="arco_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="arco_auxi1" Type="Int32" />
+          <Property Name="arco_auxi2" Type="Int32" />
+          <NavigationProperty Name="SoftCob_RESPUESTA" Relationship="SoftCobModel.FK_SoftCob_CONTACTO_SoftCob_RESPUESTA" FromRole="SoftCob_CONTACTO" ToRole="SoftCob_RESPUESTA" />
+        </EntityType>
+        <EntityType Name="SoftCob_EFECTO">
+          <Key>
+            <PropertyRef Name="AREF_CODIGO" />
+          </Key>
+          <Property Name="AREF_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ARAC_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="aref_descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="aref_estado" Type="Boolean" Nullable="false" />
+          <Property Name="aref_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aref_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aref_auxi1" Type="Int32" />
+          <Property Name="aref_auxi2" Type="Int32" />
+          <NavigationProperty Name="SoftCob_ACCION" Relationship="SoftCobModel.FK_SoftCob_EFECTO_SoftCob_ACCION" FromRole="SoftCob_EFECTO" ToRole="SoftCob_ACCION" />
+          <NavigationProperty Name="SoftCob_RESPUESTA" Relationship="SoftCobModel.FK_SoftCob_RESPUESTA_SoftCob_EFECTO" FromRole="SoftCob_EFECTO" ToRole="SoftCob_RESPUESTA" />
+        </EntityType>
+        <EntityType Name="SoftCob_RESPUESTA">
+          <Key>
+            <PropertyRef Name="ARRE_CODIGO" />
+          </Key>
+          <Property Name="ARRE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AREF_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="arre_descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="arre_estado" Type="Boolean" Nullable="false" />
+          <Property Name="arre_pago" Type="Boolean" Nullable="false" />
+          <Property Name="arre_llamar" Type="Boolean" Nullable="false" />
+          <Property Name="arre_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="arre_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="arre_auxi1" Type="Int32" />
+          <Property Name="arre_auxi2" Type="Int32" />
+          <NavigationProperty Name="SoftCob_CONTACTO" Relationship="SoftCobModel.FK_SoftCob_CONTACTO_SoftCob_RESPUESTA" FromRole="SoftCob_RESPUESTA" ToRole="SoftCob_CONTACTO" />
+          <NavigationProperty Name="SoftCob_EFECTO" Relationship="SoftCobModel.FK_SoftCob_RESPUESTA_SoftCob_EFECTO" FromRole="SoftCob_RESPUESTA" ToRole="SoftCob_EFECTO" />
+        </EntityType>
+        <Association Name="FK_SoftCob_EFECTO_SoftCob_ACCION">
+          <End Type="SoftCobModel.SoftCob_ACCION" Role="SoftCob_ACCION" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_EFECTO" Role="SoftCob_EFECTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_ACCION">
+              <PropertyRef Name="ARAC_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_EFECTO">
+              <PropertyRef Name="ARAC_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_CONTACTO_SoftCob_RESPUESTA">
+          <End Type="SoftCobModel.SoftCob_RESPUESTA" Role="SoftCob_RESPUESTA" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_CONTACTO" Role="SoftCob_CONTACTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_RESPUESTA">
+              <PropertyRef Name="ARRE_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_CONTACTO">
+              <PropertyRef Name="ARRE_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoftCob_RESPUESTA_SoftCob_EFECTO">
+          <End Type="SoftCobModel.SoftCob_EFECTO" Role="SoftCob_EFECTO" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_RESPUESTA" Role="SoftCob_RESPUESTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_EFECTO">
+              <PropertyRef Name="AREF_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_RESPUESTA">
+              <PropertyRef Name="AREF_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SoftCob_SPEECH_CABECERA">
+          <Key>
+            <PropertyRef Name="SPCA_CODIGO" />
+          </Key>
+          <Property Name="SPCA_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="spca_cedecodigo" Type="Int32" Nullable="false" />
+          <Property Name="spca_cpcecodigo" Type="Int32" Nullable="false" />
+          <Property Name="spca_speechbv" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="spca_estado" Type="Boolean" Nullable="false" />
+          <Property Name="spca_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="spca_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="spca_auxi1" Type="Int32" />
+          <Property Name="spca_auxi2" Type="Int32" />
+          <Property Name="spca_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="spca_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="spca_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="spca_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="spca_uum" Type="Int32" Nullable="false" />
+          <Property Name="spca_tum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SoftCob_SPEECH_DETALLE" Relationship="SoftCobModel.FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA" FromRole="SoftCob_SPEECH_CABECERA" ToRole="SoftCob_SPEECH_DETALLE" />
+        </EntityType>
+        <EntityType Name="SoftCob_SPEECH_DETALLE">
+          <Key>
+            <PropertyRef Name="SPDE_CODIGO" />
+          </Key>
+          <Property Name="SPDE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SPCA_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="spde_araccodigo" Type="Int32" Nullable="false" />
+          <Property Name="spde_arefcodigo" Type="Int32" Nullable="false" />
+          <Property Name="spde_arrecodigo" Type="Int32" Nullable="false" />
+          <Property Name="spde_arcocodigo" Type="Int32" Nullable="false" />
+          <Property Name="spde_speechad" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="spde_observacion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="spde_estado" Type="Boolean" Nullable="false" />
+          <Property Name="spde_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="spde_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="spde_auxi1" Type="Int32" />
+          <Property Name="spde_auxi2" Type="Int32" />
+          <NavigationProperty Name="SoftCob_SPEECH_CABECERA" Relationship="SoftCobModel.FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA" FromRole="SoftCob_SPEECH_DETALLE" ToRole="SoftCob_SPEECH_CABECERA" />
+        </EntityType>
+        <Association Name="FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA">
+          <End Type="SoftCobModel.SoftCob_SPEECH_CABECERA" Role="SoftCob_SPEECH_CABECERA" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_SPEECH_DETALLE" Role="SoftCob_SPEECH_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_SPEECH_CABECERA">
+              <PropertyRef Name="SPCA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_SPEECH_DETALLE">
+              <PropertyRef Name="SPCA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SoftCob_CAMPOS_SPEECH">
+          <Key>
+            <PropertyRef Name="CASP_CODIGO" />
+          </Key>
+          <Property Name="CASP_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="casp_campo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="casp_etiqueta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="casp_tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="casp_estado" Type="Boolean" Nullable="false" />
+          <Property Name="casp_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="casp_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="casp_auxi1" Type="Int32" />
+          <Property Name="casp_auxi2" Type="Int32" />
+          <Property Name="casp_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="casp_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="casp_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="casp_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="casp_uum" Type="Int32" Nullable="false" />
+          <Property Name="casp_tum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_REGISTRO_VOLVERALLAMAR">
+          <Key>
+            <PropertyRef Name="REVL_CODIGO" />
+          </Key>
+          <Property Name="REVL_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="revl_ltcacodigo" Type="Int32" Nullable="false" />
+          <Property Name="revl_ltdecodigo" Type="Int32" Nullable="false" />
+          <Property Name="revl_cldecodigo" Type="Int32" Nullable="false" />
+          <Property Name="revl_perscodigo" Type="Int32" Nullable="false" />
+          <Property Name="revl_gestorasignado" Type="Int32" Nullable="false" />
+          <Property Name="revl_fechallamar" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="revl_horallamar" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="revl_fechatotal" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="revl_telefonollamar" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="revl_tipo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="revl_propietario" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="revl_gestionado" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="revl_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="revl_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="revl_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="revl_auxi1" Type="Int32" />
+          <Property Name="revl_auxi2" Type="Int32" />
+          <Property Name="revl_auxi3" Type="Int32" />
+          <Property Name="revl_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="revl_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="revl_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_TELEFONOS_CEDENTE">
+          <Key>
+            <PropertyRef Name="TECE_CODIGO" />
+          </Key>
+          <Property Name="TECE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tece_cedecodigo" Type="Int32" Nullable="false" />
+          <Property Name="tece_perscodigo" Type="Int32" Nullable="false" />
+          <Property Name="tece_telecodigo" Type="Int32" Nullable="false" />
+          <Property Name="tece_numero" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tece_tipo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="tece_propietario" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="tece_score" Type="Int32" Nullable="false" />
+          <Property Name="tece_estado" Type="Boolean" Nullable="false" />
+          <Property Name="tece_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tece_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tece_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tece_auxi1" Type="Int32" />
+          <Property Name="tece_auxi2" Type="Int32" />
+          <Property Name="tece_auxi3" Type="Int32" />
+          <Property Name="tece_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tece_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="tece_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_BRENCH">
+          <Key>
+            <PropertyRef Name="BRCH_CODIGO" />
+          </Key>
+          <Property Name="BRCH_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brch_cedecodigo" Type="Int32" Nullable="false" />
+          <Property Name="brch_cpcecodigo" Type="Int32" Nullable="false" />
+          <Property Name="brch_estado" Type="Boolean" Nullable="false" />
+          <Property Name="brch_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="brch_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="brch_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="brch_auxi1" Type="Int32" />
+          <Property Name="brch_auxi2" Type="Int32" />
+          <Property Name="brch_auxi3" Type="Int32" />
+          <Property Name="brch_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="brch_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="brch_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="brch_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="brch_uum" Type="Int32" Nullable="false" />
+          <Property Name="brch_tum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_LISTATRABAJO_ACTIVAS">
+          <Key>
+            <PropertyRef Name="LSAC_CODIGO" />
+          </Key>
+          <Property Name="LSAC_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lsac_listatrabajo" Type="Int32" Nullable="false" />
+          <Property Name="lsac_gestorasignado" Type="Int32" Nullable="false" />
+          <Property Name="lsac_estado" Type="Boolean" Nullable="false" />
+          <Property Name="lsac_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lsac_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lsac_auxi1" Type="Int32" />
+          <Property Name="lsac_auxi2" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SoftCob_LISTATRABAJO_CABECERA">
+          <Key>
+            <PropertyRef Name="LTCA_CODIGO" />
+          </Key>
+          <Property Name="LTCA_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ltca_lista" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ltca_descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ltca_fechainicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ltca_fechafin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ltca_escacodigo" Type="Int32" Nullable="false" />
+          <Property Name="ltca_cedecodigo" Type="Int32" Nullable="false" />
+          <Property Name="ltca_cpcecodigo" Type="Int32" Nullable="false" />
+          <Property Name="ltca_estado" Type="Boolean" Nullable="false" />
+          <Property Name="ltca_tipomarcado" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ltca_campania" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ltca_porgestion" Type="Int32" />
+          <Property Name="ltca_tipogestion" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ltca_porarbol" Type="Int32" />
+          <Property Name="ltca_araccodigo" Type="Int32" />
+          <Property Name="ltca_porfecha" Type="Int32" />
+          <Property Name="ltca_fechadesde" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ltca_fechahasta" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ltca_auxvi1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ltca_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ltca_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ltca_auxi1" Type="Int32" />
+          <Property Name="ltca_auxi2" Type="Int32" />
+          <Property Name="ltca_auxi3" Type="Int32" />
+          <Property Name="ltca_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ltca_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="ltca_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ltca_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ltca_uum" Type="Int32" Nullable="false" />
+          <Property Name="ltca_tum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SoftCob_LISTATRABAJO_DETALLE" Relationship="SoftCobModel.FK_SoftCob_LISTATRABAJO_DETALLE_SoftCob_LISTATRABAJO_CABECERA" FromRole="SoftCob_LISTATRABAJO_CABECERA" ToRole="SoftCob_LISTATRABAJO_DETALLE" />
+        </EntityType>
+        <EntityType Name="SoftCob_LISTATRABAJO_DETALLE">
+          <Key>
+            <PropertyRef Name="LTDE_CODIGO" />
+          </Key>
+          <Property Name="LTDE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LTCA_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="ltde_cldecodigo" Type="Int32" Nullable="false" />
+          <Property Name="ltde_perscodigo" Type="Int32" Nullable="false" />
+          <Property Name="ltde_gestorasignado" Type="Int32" Nullable="false" />
+          <Property Name="ltde_estado" Type="Boolean" Nullable="false" />
+          <Property Name="ltde_gestionado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ltde_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ltde_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ltde_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ltde_auxi1" Type="Int32" />
+          <Property Name="ltde_auxi2" Type="Int32" />
+          <Property Name="ltde_auxi3" Type="Int32" />
+          <NavigationProperty Name="SoftCob_LISTATRABAJO_CABECERA" Relationship="SoftCobModel.FK_SoftCob_LISTATRABAJO_DETALLE_SoftCob_LISTATRABAJO_CABECERA" FromRole="SoftCob_LISTATRABAJO_DETALLE" ToRole="SoftCob_LISTATRABAJO_CABECERA" />
+        </EntityType>
+        <Association Name="FK_SoftCob_LISTATRABAJO_DETALLE_SoftCob_LISTATRABAJO_CABECERA">
+          <End Type="SoftCobModel.SoftCob_LISTATRABAJO_CABECERA" Role="SoftCob_LISTATRABAJO_CABECERA" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_LISTATRABAJO_DETALLE" Role="SoftCob_LISTATRABAJO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_LISTATRABAJO_CABECERA">
+              <PropertyRef Name="LTCA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_LISTATRABAJO_DETALLE">
+              <PropertyRef Name="LTCA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SoftCobModelStoreContainer" CdmEntityContainer="SoftCobEntities">
+          <EntitySetMapping Name="SoftCob_DEPARTAMENTO">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_DEPARTAMENTO">
+              <MappingFragment StoreEntitySet="SoftCob_DEPARTAMENTO">
+                <ScalarProperty Name="DEPA_CODIGO" ColumnName="DEPA_CODIGO" />
+                <ScalarProperty Name="empr_codigo" ColumnName="empr_codigo" />
+                <ScalarProperty Name="depa_descripcion" ColumnName="depa_descripcion" />
+                <ScalarProperty Name="depa_estado" ColumnName="depa_estado" />
+                <ScalarProperty Name="depa_auxv1" ColumnName="depa_auxv1" />
+                <ScalarProperty Name="depa_auxv2" ColumnName="depa_auxv2" />
+                <ScalarProperty Name="depa_auxv3" ColumnName="depa_auxv3" />
+                <ScalarProperty Name="depa_auxi1" ColumnName="depa_auxi1" />
+                <ScalarProperty Name="depa_auxi2" ColumnName="depa_auxi2" />
+                <ScalarProperty Name="depa_auxi3" ColumnName="depa_auxi3" />
+                <ScalarProperty Name="depa_fechacreacion" ColumnName="depa_fechacreacion" />
+                <ScalarProperty Name="depa_usuariocreacion" ColumnName="depa_usuariocreacion" />
+                <ScalarProperty Name="depa_terminalcreacion" ColumnName="depa_terminalcreacion" />
+                <ScalarProperty Name="depa_fum" ColumnName="depa_fum" />
+                <ScalarProperty Name="depa_uum" ColumnName="depa_uum" />
+                <ScalarProperty Name="depa_tum" ColumnName="depa_tum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_MENU">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_MENU">
+              <MappingFragment StoreEntitySet="SoftCob_MENU">
+                <ScalarProperty Name="MENU_CODIGO" ColumnName="MENU_CODIGO" />
+                <ScalarProperty Name="empr_codigo" ColumnName="empr_codigo" />
+                <ScalarProperty Name="menu_descripcion" ColumnName="menu_descripcion" />
+                <ScalarProperty Name="menu_nivel" ColumnName="menu_nivel" />
+                <ScalarProperty Name="menu_estado" ColumnName="menu_estado" />
+                <ScalarProperty Name="menu_orden" ColumnName="menu_orden" />
+                <ScalarProperty Name="menu_auxv1" ColumnName="menu_auxv1" />
+                <ScalarProperty Name="menu_auxv2" ColumnName="menu_auxv2" />
+                <ScalarProperty Name="menu_auxv3" ColumnName="menu_auxv3" />
+                <ScalarProperty Name="menu_auxi1" ColumnName="menu_auxi1" />
+                <ScalarProperty Name="menu_auxi2" ColumnName="menu_auxi2" />
+                <ScalarProperty Name="menu_auxi3" ColumnName="menu_auxi3" />
+                <ScalarProperty Name="menu_fechacreacion" ColumnName="menu_fechacreacion" />
+                <ScalarProperty Name="menu_usuariocreacion" ColumnName="menu_usuariocreacion" />
+                <ScalarProperty Name="menu_terminalcreacion" ColumnName="menu_terminalcreacion" />
+                <ScalarProperty Name="menu_fum" ColumnName="menu_fum" />
+                <ScalarProperty Name="menu_uum" ColumnName="menu_uum" />
+                <ScalarProperty Name="menu_tum" ColumnName="menu_tum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_MENU_TAREA">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_MENU_TAREA">
+              <MappingFragment StoreEntitySet="SoftCob_MENU_TAREA">
+                <ScalarProperty Name="META_CODIGO" ColumnName="META_CODIGO" />
+                <ScalarProperty Name="MENU_CODIGO" ColumnName="MENU_CODIGO" />
+                <ScalarProperty Name="TARE_CODIGO" ColumnName="TARE_CODIGO" />
+                <ScalarProperty Name="empr_codigo" ColumnName="empr_codigo" />
+                <ScalarProperty Name="meta_estado" ColumnName="meta_estado" />
+                <ScalarProperty Name="meta_orden" ColumnName="meta_orden" />
+                <ScalarProperty Name="meta_auxv1" ColumnName="meta_auxv1" />
+                <ScalarProperty Name="meta_auxv2" ColumnName="meta_auxv2" />
+                <ScalarProperty Name="meta_auxv3" ColumnName="meta_auxv3" />
+                <ScalarProperty Name="meta_auxi1" ColumnName="meta_auxi1" />
+                <ScalarProperty Name="meta_auxi2" ColumnName="meta_auxi2" />
+                <ScalarProperty Name="meta_auxi3" ColumnName="meta_auxi3" />
+                <ScalarProperty Name="meta_fechacreacion" ColumnName="meta_fechacreacion" />
+                <ScalarProperty Name="meta_usuariocreacion" ColumnName="meta_usuariocreacion" />
+                <ScalarProperty Name="meta_terminalcreacion" ColumnName="meta_terminalcreacion" />
+                <ScalarProperty Name="meta_fum" ColumnName="meta_fum" />
+                <ScalarProperty Name="meta_uum" ColumnName="meta_uum" />
+                <ScalarProperty Name="meta_tum" ColumnName="meta_tum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_PERFIL">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_PERFIL">
+              <MappingFragment StoreEntitySet="SoftCob_PERFIL">
+                <ScalarProperty Name="PERF_CODIGO" ColumnName="PERF_CODIGO" />
+                <ScalarProperty Name="empr_codigo" ColumnName="empr_codigo" />
+                <ScalarProperty Name="perf_descripcion" ColumnName="perf_descripcion" />
+                <ScalarProperty Name="perf_observacion" ColumnName="perf_observacion" />
+                <ScalarProperty Name="perf_estado" ColumnName="perf_estado" />
+                <ScalarProperty Name="perf_crearparametro" ColumnName="perf_crearparametro" />
+                <ScalarProperty Name="perf_modiparametro" ColumnName="perf_modiparametro" />
+                <ScalarProperty Name="perf_eliminaparametro" ColumnName="perf_eliminaparametro" />
+                <ScalarProperty Name="perf_perfilactitudinal" ColumnName="perf_perfilactitudinal" />
+                <ScalarProperty Name="perf_estilosnegociacion" ColumnName="perf_estilosnegociacion" />
+                <ScalarProperty Name="perf_metaprogramas" ColumnName="perf_metaprogramas" />
+                <ScalarProperty Name="perf_modalidades" ColumnName="perf_modalidades" />
+                <ScalarProperty Name="perf_estadosdelyo" ColumnName="perf_estadosdelyo" />
+                <ScalarProperty Name="perf_impulsores" ColumnName="perf_impulsores" />
+                <ScalarProperty Name="perf_auxb1" ColumnName="perf_auxb1" />
+                <ScalarProperty Name="perf_auxb2" ColumnName="perf_auxb2" />
+                <ScalarProperty Name="perf_auxb3" ColumnName="perf_auxb3" />
+                <ScalarProperty Name="perf_auxv1" ColumnName="perf_auxv1" />
+                <ScalarProperty Name="perf_auxv2" ColumnName="perf_auxv2" />
+                <ScalarProperty Name="perf_auxv3" ColumnName="perf_auxv3" />
+                <ScalarProperty Name="perf_auxi1" ColumnName="perf_auxi1" />
+                <ScalarProperty Name="perf_auxi2" ColumnName="perf_auxi2" />
+                <ScalarProperty Name="perf_auxi3" ColumnName="perf_auxi3" />
+                <ScalarProperty Name="perf_fechacreacion" ColumnName="perf_fechacreacion" />
+                <ScalarProperty Name="perf_usuariocreacion" ColumnName="perf_usuariocreacion" />
+                <ScalarProperty Name="perf_terminalcreacion" ColumnName="perf_terminalcreacion" />
+                <ScalarProperty Name="perf_fum" ColumnName="perf_fum" />
+                <ScalarProperty Name="perf_uum" ColumnName="perf_uum" />
+                <ScalarProperty Name="perf_tum" ColumnName="perf_tum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_PERFIL_MENU_TAREA">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_PERFIL_MENU_TAREA">
+              <MappingFragment StoreEntitySet="SoftCob_PERFIL_MENU_TAREA">
+                <ScalarProperty Name="PEMT_CODIGO" ColumnName="PEMT_CODIGO" />
+                <ScalarProperty Name="PERF_CODIGO" ColumnName="PERF_CODIGO" />
+                <ScalarProperty Name="META_CODIGO" ColumnName="META_CODIGO" />
+                <ScalarProperty Name="empr_codigo" ColumnName="empr_codigo" />
+                <ScalarProperty Name="pemt_estado" ColumnName="pemt_estado" />
+                <ScalarProperty Name="pemt_auxv1" ColumnName="pemt_auxv1" />
+                <ScalarProperty Name="pemt_auxv2" ColumnName="pemt_auxv2" />
+                <ScalarProperty Name="pemt_auxv3" ColumnName="pemt_auxv3" />
+                <ScalarProperty Name="pemt_auxi1" ColumnName="pemt_auxi1" />
+                <ScalarProperty Name="pemt_auxi2" ColumnName="pemt_auxi2" />
+                <ScalarProperty Name="pemt_auxi3" ColumnName="pemt_auxi3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_TAREA">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_TAREA">
+              <MappingFragment StoreEntitySet="SoftCob_TAREA">
+                <ScalarProperty Name="TARE_CODIGO" ColumnName="TARE_CODIGO" />
+                <ScalarProperty Name="empr_codigo" ColumnName="empr_codigo" />
+                <ScalarProperty Name="tare_descripcion" ColumnName="tare_descripcion" />
+                <ScalarProperty Name="tare_programa" ColumnName="tare_programa" />
+                <ScalarProperty Name="tare_estado" ColumnName="tare_estado" />
+                <ScalarProperty Name="tare_orden" ColumnName="tare_orden" />
+                <ScalarProperty Name="tare_auxv1" ColumnName="tare_auxv1" />
+                <ScalarProperty Name="tare_auxv2" ColumnName="tare_auxv2" />
+                <ScalarProperty Name="tare_auxv3" ColumnName="tare_auxv3" />
+                <ScalarProperty Name="tare_auxi1" ColumnName="tare_auxi1" />
+                <ScalarProperty Name="tare_auxi2" ColumnName="tare_auxi2" />
+                <ScalarProperty Name="tare_auxi3" ColumnName="tare_auxi3" />
+                <ScalarProperty Name="tare_fechacreacion" ColumnName="tare_fechacreacion" />
+                <ScalarProperty Name="tare_usuariocreacion" ColumnName="tare_usuariocreacion" />
+                <ScalarProperty Name="tare_terminalcreacion" ColumnName="tare_terminalcreacion" />
+                <ScalarProperty Name="tare_fum" ColumnName="tare_fum" />
+                <ScalarProperty Name="tare_uum" ColumnName="tare_uum" />
+                <ScalarProperty Name="tare_tum" ColumnName="tare_tum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_USUARIO">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_USUARIO">
+              <MappingFragment StoreEntitySet="SoftCob_USUARIO">
+                <ScalarProperty Name="usua_tum" ColumnName="usua_tum" />
+                <ScalarProperty Name="usua_uum" ColumnName="usua_uum" />
+                <ScalarProperty Name="usua_fum" ColumnName="usua_fum" />
+                <ScalarProperty Name="usua_terminalcreacion" ColumnName="usua_terminalcreacion" />
+                <ScalarProperty Name="usua_usuariocreacion" ColumnName="usua_usuariocreacion" />
+                <ScalarProperty Name="usua_fechacreacion" ColumnName="usua_fechacreacion" />
+                <ScalarProperty Name="usua_auxi5" ColumnName="usua_auxi5" />
+                <ScalarProperty Name="usua_auxi4" ColumnName="usua_auxi4" />
+                <ScalarProperty Name="usua_auxi3" ColumnName="usua_auxi3" />
+                <ScalarProperty Name="usua_auxi2" ColumnName="usua_auxi2" />
+                <ScalarProperty Name="usua_auxi1" ColumnName="usua_auxi1" />
+                <ScalarProperty Name="usua_auxv5" ColumnName="usua_auxv5" />
+                <ScalarProperty Name="usua_auxv4" ColumnName="usua_auxv4" />
+                <ScalarProperty Name="usua_auxv3" ColumnName="usua_auxv3" />
+                <ScalarProperty Name="usua_auxv2" ColumnName="usua_auxv2" />
+                <ScalarProperty Name="usua_auxv1" ColumnName="usua_auxv1" />
+                <ScalarProperty Name="usua_imagefullpath" ColumnName="usua_imagefullpath" />
+                <ScalarProperty Name="usua_imagepath" ColumnName="usua_imagepath" />
+                <ScalarProperty Name="usua_foto" ColumnName="usua_foto" />
+                <ScalarProperty Name="usua_celular" ColumnName="usua_celular" />
+                <ScalarProperty Name="usua_mail" ColumnName="usua_mail" />
+                <ScalarProperty Name="usua_logomenu" ColumnName="usua_logomenu" />
+                <ScalarProperty Name="usua_logobienvenida" ColumnName="usua_logobienvenida" />
+                <ScalarProperty Name="usua_terminallogin" ColumnName="usua_terminallogin" />
+                <ScalarProperty Name="usua_permisosespeciales" ColumnName="usua_permisosespeciales" />
+                <ScalarProperty Name="usua_statuslogin" ColumnName="usua_statuslogin" />
+                <ScalarProperty Name="usua_cambiarpass" ColumnName="usua_cambiarpass" />
+                <ScalarProperty Name="usua_fechacaduca" ColumnName="usua_fechacaduca" />
+                <ScalarProperty Name="usua_caducapass" ColumnName="usua_caducapass" />
+                <ScalarProperty Name="usua_contador" ColumnName="usua_contador" />
+                <ScalarProperty Name="usua_estado" ColumnName="usua_estado" />
+                <ScalarProperty Name="usua_password" ColumnName="usua_password" />
+                <ScalarProperty Name="usua_login" ColumnName="usua_login" />
+                <ScalarProperty Name="usua_cedula" ColumnName="usua_cedula" />
+                <ScalarProperty Name="usua_apellidos" ColumnName="usua_apellidos" />
+                <ScalarProperty Name="usua_nombres" ColumnName="usua_nombres" />
+                <ScalarProperty Name="usua_tipousuario" ColumnName="usua_tipousuario" />
+                <ScalarProperty Name="empl_codigo" ColumnName="empl_codigo" />
+                <ScalarProperty Name="empr_codigo" ColumnName="empr_codigo" />
+                <ScalarProperty Name="DEPA_CODIGO" ColumnName="DEPA_CODIGO" />
+                <ScalarProperty Name="PERF_CODIGO" ColumnName="PERF_CODIGO" />
+                <ScalarProperty Name="USUA_CODIGO" ColumnName="USUA_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_GESTOR_SUPERVISOR">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_GESTOR_SUPERVISOR">
+              <MappingFragment StoreEntitySet="SoftCob_GESTOR_SUPERVISOR">
+                <ScalarProperty Name="gest_tum" ColumnName="gest_tum" />
+                <ScalarProperty Name="gest_uum" ColumnName="gest_uum" />
+                <ScalarProperty Name="gest_fum" ColumnName="gest_fum" />
+                <ScalarProperty Name="gest_terminalcreacion" ColumnName="gest_terminalcreacion" />
+                <ScalarProperty Name="gest_usuariocreacion" ColumnName="gest_usuariocreacion" />
+                <ScalarProperty Name="gest_fechacreacion" ColumnName="gest_fechacreacion" />
+                <ScalarProperty Name="gest_auxi3" ColumnName="gest_auxi3" />
+                <ScalarProperty Name="gest_auxi2" ColumnName="gest_auxi2" />
+                <ScalarProperty Name="gest_auxi1" ColumnName="gest_auxi1" />
+                <ScalarProperty Name="gest_auxv3" ColumnName="gest_auxv3" />
+                <ScalarProperty Name="gest_auxv2" ColumnName="gest_auxv2" />
+                <ScalarProperty Name="gest_auxv1" ColumnName="gest_auxv1" />
+                <ScalarProperty Name="gest_estado" ColumnName="gest_estado" />
+                <ScalarProperty Name="USUA_CODIGO" ColumnName="USUA_CODIGO" />
+                <ScalarProperty Name="SUPE_CODIGO" ColumnName="SUPE_CODIGO" />
+                <ScalarProperty Name="GEST_CODIGO" ColumnName="GEST_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_LOGUEO_TIEMPOS">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_LOGUEO_TIEMPOS">
+              <MappingFragment StoreEntitySet="SoftCob_LOGUEO_TIEMPOS">
+                <ScalarProperty Name="loti_terminalcreacion" ColumnName="loti_terminalcreacion" />
+                <ScalarProperty Name="loti_usuariocreacion" ColumnName="loti_usuariocreacion" />
+                <ScalarProperty Name="loti_fechacreacion" ColumnName="loti_fechacreacion" />
+                <ScalarProperty Name="loti_auxd5" ColumnName="loti_auxd5" />
+                <ScalarProperty Name="loti_auxd4" ColumnName="loti_auxd4" />
+                <ScalarProperty Name="loti_auxd3" ColumnName="loti_auxd3" />
+                <ScalarProperty Name="loti_auxd2" ColumnName="loti_auxd2" />
+                <ScalarProperty Name="loti_auxd1" ColumnName="loti_auxd1" />
+                <ScalarProperty Name="loti_auxi5" ColumnName="loti_auxi5" />
+                <ScalarProperty Name="loti_auxi4" ColumnName="loti_auxi4" />
+                <ScalarProperty Name="loti_auxi3" ColumnName="loti_auxi3" />
+                <ScalarProperty Name="loti_auxi2" ColumnName="loti_auxi2" />
+                <ScalarProperty Name="loti_auxi1" ColumnName="loti_auxi1" />
+                <ScalarProperty Name="loti_auxv5" ColumnName="loti_auxv5" />
+                <ScalarProperty Name="loti_auxv4" ColumnName="loti_auxv4" />
+                <ScalarProperty Name="loti_auxv3" ColumnName="loti_auxv3" />
+                <ScalarProperty Name="loti_auxv2" ColumnName="loti_auxv2" />
+                <ScalarProperty Name="loti_auxv1" ColumnName="loti_auxv1" />
+                <ScalarProperty Name="loti_fechacompleta" ColumnName="loti_fechacompleta" />
+                <ScalarProperty Name="loti_horalogueo" ColumnName="loti_horalogueo" />
+                <ScalarProperty Name="loti_fechalogueo" ColumnName="loti_fechalogueo" />
+                <ScalarProperty Name="loti_tipologueo" ColumnName="loti_tipologueo" />
+                <ScalarProperty Name="ltca_codigo" ColumnName="ltca_codigo" />
+                <ScalarProperty Name="cpce_codigo" ColumnName="cpce_codigo" />
+                <ScalarProperty Name="empr_codigo" ColumnName="empr_codigo" />
+                <ScalarProperty Name="USUA_CODIGO" ColumnName="USUA_CODIGO" />
+                <ScalarProperty Name="LOTI_CODIGO" ColumnName="LOTI_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FunMenuEditUpdate" FunctionName="SoftCobModel.Store.sp_MenuEditUpdate" />
+          <EntitySetMapping Name="SoftCob_CIUDAD">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_CIUDAD">
+              <MappingFragment StoreEntitySet="SoftCob_CIUDAD">
+                <ScalarProperty Name="ciud_tum" ColumnName="ciud_tum" />
+                <ScalarProperty Name="ciud_uum" ColumnName="ciud_uum" />
+                <ScalarProperty Name="ciud_fum" ColumnName="ciud_fum" />
+                <ScalarProperty Name="ciud_terminalcreacion" ColumnName="ciud_terminalcreacion" />
+                <ScalarProperty Name="ciud_usuariocreacion" ColumnName="ciud_usuariocreacion" />
+                <ScalarProperty Name="ciud_fechacreacion" ColumnName="ciud_fechacreacion" />
+                <ScalarProperty Name="ciud_estado" ColumnName="ciud_estado" />
+                <ScalarProperty Name="ciud_nombre" ColumnName="ciud_nombre" />
+                <ScalarProperty Name="PROV_CODIGO" ColumnName="PROV_CODIGO" />
+                <ScalarProperty Name="CIUD_CODIGO" ColumnName="CIUD_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_PARAMETRO_CABECERA">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_PARAMETRO_CABECERA">
+              <MappingFragment StoreEntitySet="SoftCob_PARAMETRO_CABECERA">
+                <ScalarProperty Name="para_tum" ColumnName="para_tum" />
+                <ScalarProperty Name="para_uum" ColumnName="para_uum" />
+                <ScalarProperty Name="para_fum" ColumnName="para_fum" />
+                <ScalarProperty Name="para_terminalcreacion" ColumnName="para_terminalcreacion" />
+                <ScalarProperty Name="para_usuariocreacion" ColumnName="para_usuariocreacion" />
+                <ScalarProperty Name="para_fechacreacion" ColumnName="para_fechacreacion" />
+                <ScalarProperty Name="para_auxii2" ColumnName="para_auxii2" />
+                <ScalarProperty Name="para_auxii1" ColumnName="para_auxii1" />
+                <ScalarProperty Name="para_auxiv2" ColumnName="para_auxiv2" />
+                <ScalarProperty Name="para_auxv1" ColumnName="para_auxv1" />
+                <ScalarProperty Name="para_estado" ColumnName="para_estado" />
+                <ScalarProperty Name="para_descripcion" ColumnName="para_descripcion" />
+                <ScalarProperty Name="para_nombre" ColumnName="para_nombre" />
+                <ScalarProperty Name="PARA_CODIGO" ColumnName="PARA_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_PARAMETRO_DETALLE">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_PARAMETRO_DETALLE">
+              <MappingFragment StoreEntitySet="SoftCob_PARAMETRO_DETALLE">
+                <ScalarProperty Name="pade_estado" ColumnName="pade_estado" />
+                <ScalarProperty Name="pade_orden" ColumnName="pade_orden" />
+                <ScalarProperty Name="pade_auxi2" ColumnName="pade_auxi2" />
+                <ScalarProperty Name="pade_auxi1" ColumnName="pade_auxi1" />
+                <ScalarProperty Name="pade_auxv2" ColumnName="pade_auxv2" />
+                <ScalarProperty Name="pade_auxv1" ColumnName="pade_auxv1" />
+                <ScalarProperty Name="pade_valorI" ColumnName="pade_valorI" />
+                <ScalarProperty Name="pade_valorV" ColumnName="pade_valorV" />
+                <ScalarProperty Name="pade_nombre" ColumnName="pade_nombre" />
+                <ScalarProperty Name="PARA_CODIGO" ColumnName="PARA_CODIGO" />
+                <ScalarProperty Name="PADE_CODIGO" ColumnName="PADE_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_PROVINCIA">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_PROVINCIA">
+              <MappingFragment StoreEntitySet="SoftCob_PROVINCIA">
+                <ScalarProperty Name="prov_tum" ColumnName="prov_tum" />
+                <ScalarProperty Name="prov_uum" ColumnName="prov_uum" />
+                <ScalarProperty Name="prov_fum" ColumnName="prov_fum" />
+                <ScalarProperty Name="prov_terminalcreacion" ColumnName="prov_terminalcreacion" />
+                <ScalarProperty Name="prov_usuariocreacion" ColumnName="prov_usuariocreacion" />
+                <ScalarProperty Name="prov_fechacreacion" ColumnName="prov_fechacreacion" />
+                <ScalarProperty Name="prov_estado" ColumnName="prov_estado" />
+                <ScalarProperty Name="prov_codigomarca" ColumnName="prov_codigomarca" />
+                <ScalarProperty Name="prov_nombre" ColumnName="prov_nombre" />
+                <ScalarProperty Name="REGI_CODIGO" ColumnName="REGI_CODIGO" />
+                <ScalarProperty Name="PAIS_CODIGO" ColumnName="PAIS_CODIGO" />
+                <ScalarProperty Name="PROV_CODIGO" ColumnName="PROV_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FunUpdateParametroDetalle" FunctionName="SoftCobModel.Store.sp_UpdateParametroDetalle" />
+          <EntitySetMapping Name="SoftCob_CEDENTE">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_CEDENTE">
+              <MappingFragment StoreEntitySet="SoftCob_CEDENTE">
+                <ScalarProperty Name="cede_tum" ColumnName="cede_tum" />
+                <ScalarProperty Name="cede_uum" ColumnName="cede_uum" />
+                <ScalarProperty Name="cede_fum" ColumnName="cede_fum" />
+                <ScalarProperty Name="cede_terminalcreacion" ColumnName="cede_terminalcreacion" />
+                <ScalarProperty Name="cede_usuariocreacion" ColumnName="cede_usuariocreacion" />
+                <ScalarProperty Name="cede_fechacreacion" ColumnName="cede_fechacreacion" />
+                <ScalarProperty Name="cede_auxi3" ColumnName="cede_auxi3" />
+                <ScalarProperty Name="cede_auxi2" ColumnName="cede_auxi2" />
+                <ScalarProperty Name="cede_auxi1" ColumnName="cede_auxi1" />
+                <ScalarProperty Name="cede_auxiv3" ColumnName="cede_auxiv3" />
+                <ScalarProperty Name="cede_auxiv2" ColumnName="cede_auxiv2" />
+                <ScalarProperty Name="cede_auxv1" ColumnName="cede_auxv1" />
+                <ScalarProperty Name="cede_estado" ColumnName="cede_estado" />
+                <ScalarProperty Name="cede_fax" ColumnName="cede_fax" />
+                <ScalarProperty Name="cede_telefono2" ColumnName="cede_telefono2" />
+                <ScalarProperty Name="cede_telefono1" ColumnName="cede_telefono1" />
+                <ScalarProperty Name="cede_url" ColumnName="cede_url" />
+                <ScalarProperty Name="cede_ruc" ColumnName="cede_ruc" />
+                <ScalarProperty Name="cede_direccion" ColumnName="cede_direccion" />
+                <ScalarProperty Name="cede_nombre" ColumnName="cede_nombre" />
+                <ScalarProperty Name="cede_ciudcod" ColumnName="cede_ciudcod" />
+                <ScalarProperty Name="cede_provcod" ColumnName="cede_provcod" />
+                <ScalarProperty Name="CEDE_CODIGO" ColumnName="CEDE_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_PRODUCTOS_CEDENTE">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_PRODUCTOS_CEDENTE">
+              <MappingFragment StoreEntitySet="SoftCob_PRODUCTOS_CEDENTE">
+                <ScalarProperty Name="prce_auxi2" ColumnName="prce_auxi2" />
+                <ScalarProperty Name="prce_auxi1" ColumnName="prce_auxi1" />
+                <ScalarProperty Name="prce_auxv2" ColumnName="prce_auxv2" />
+                <ScalarProperty Name="prce_auxv1" ColumnName="prce_auxv1" />
+                <ScalarProperty Name="prce_estado" ColumnName="prce_estado" />
+                <ScalarProperty Name="prce_descripcion" ColumnName="prce_descripcion" />
+                <ScalarProperty Name="prce_producto" ColumnName="prce_producto" />
+                <ScalarProperty Name="CEDE_CODIGO" ColumnName="CEDE_CODIGO" />
+                <ScalarProperty Name="PRCE_CODIGO" ColumnName="PRCE_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+              <MappingFragment StoreEntitySet="SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
+                <ScalarProperty Name="cpce_auxi2" ColumnName="cpce_auxi2" />
+                <ScalarProperty Name="cpce_auxi1" ColumnName="cpce_auxi1" />
+                <ScalarProperty Name="cpce_auxv2" ColumnName="cpce_auxv2" />
+                <ScalarProperty Name="cpce_auxv1" ColumnName="cpce_auxv1" />
+                <ScalarProperty Name="cpce_estado" ColumnName="cpce_estado" />
+                <ScalarProperty Name="cpce_familia" ColumnName="cpce_familia" />
+                <ScalarProperty Name="cpce_codigofamilia" ColumnName="cpce_codigofamilia" />
+                <ScalarProperty Name="cpce_producto" ColumnName="cpce_producto" />
+                <ScalarProperty Name="cpce_codigoproducto" ColumnName="cpce_codigoproducto" />
+                <ScalarProperty Name="PRCE_CODIGO" ColumnName="PRCE_CODIGO" />
+                <ScalarProperty Name="CPCE_CODIGO" ColumnName="CPCE_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_ACCION">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_ACCION">
+              <MappingFragment StoreEntitySet="SoftCob_ACCION">
+                <ScalarProperty Name="arac_tum" ColumnName="arac_tum" />
+                <ScalarProperty Name="arac_uum" ColumnName="arac_uum" />
+                <ScalarProperty Name="arac_fum" ColumnName="arac_fum" />
+                <ScalarProperty Name="arac_terminalcreacion" ColumnName="arac_terminalcreacion" />
+                <ScalarProperty Name="arac_usuariocracion" ColumnName="arac_usuariocracion" />
+                <ScalarProperty Name="arac_fechacreacion" ColumnName="arac_fechacreacion" />
+                <ScalarProperty Name="arac_auxi2" ColumnName="arac_auxi2" />
+                <ScalarProperty Name="arac_auxi1" ColumnName="arac_auxi1" />
+                <ScalarProperty Name="arac_auxv2" ColumnName="arac_auxv2" />
+                <ScalarProperty Name="arac_auxv1" ColumnName="arac_auxv1" />
+                <ScalarProperty Name="arac_contacto" ColumnName="arac_contacto" />
+                <ScalarProperty Name="arac_estado" ColumnName="arac_estado" />
+                <ScalarProperty Name="arac_descripcion" ColumnName="arac_descripcion" />
+                <ScalarProperty Name="CPCE_CODIGO" ColumnName="CPCE_CODIGO" />
+                <ScalarProperty Name="ARAC_CODIGO" ColumnName="ARAC_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_CONTACTO">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_CONTACTO">
+              <MappingFragment StoreEntitySet="SoftCob_CONTACTO">
+                <ScalarProperty Name="arco_auxi2" ColumnName="arco_auxi2" />
+                <ScalarProperty Name="arco_auxi1" ColumnName="arco_auxi1" />
+                <ScalarProperty Name="arco_auxv2" ColumnName="arco_auxv2" />
+                <ScalarProperty Name="arco_auxv1" ColumnName="arco_auxv1" />
+                <ScalarProperty Name="arco_estado" ColumnName="arco_estado" />
+                <ScalarProperty Name="arco_descripcion" ColumnName="arco_descripcion" />
+                <ScalarProperty Name="ARRE_CODIGO" ColumnName="ARRE_CODIGO" />
+                <ScalarProperty Name="ARCO_CODIGO" ColumnName="ARCO_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_EFECTO">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_EFECTO">
+              <MappingFragment StoreEntitySet="SoftCob_EFECTO">
+                <ScalarProperty Name="aref_auxi2" ColumnName="aref_auxi2" />
+                <ScalarProperty Name="aref_auxi1" ColumnName="aref_auxi1" />
+                <ScalarProperty Name="aref_auxv2" ColumnName="aref_auxv2" />
+                <ScalarProperty Name="aref_auxv1" ColumnName="aref_auxv1" />
+                <ScalarProperty Name="aref_estado" ColumnName="aref_estado" />
+                <ScalarProperty Name="aref_descripcion" ColumnName="aref_descripcion" />
+                <ScalarProperty Name="ARAC_CODIGO" ColumnName="ARAC_CODIGO" />
+                <ScalarProperty Name="AREF_CODIGO" ColumnName="AREF_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_RESPUESTA">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_RESPUESTA">
+              <MappingFragment StoreEntitySet="SoftCob_RESPUESTA">
+                <ScalarProperty Name="arre_auxi2" ColumnName="arre_auxi2" />
+                <ScalarProperty Name="arre_auxi1" ColumnName="arre_auxi1" />
+                <ScalarProperty Name="arre_auxv2" ColumnName="arre_auxv2" />
+                <ScalarProperty Name="arre_auxv1" ColumnName="arre_auxv1" />
+                <ScalarProperty Name="arre_llamar" ColumnName="arre_llamar" />
+                <ScalarProperty Name="arre_pago" ColumnName="arre_pago" />
+                <ScalarProperty Name="arre_estado" ColumnName="arre_estado" />
+                <ScalarProperty Name="arre_descripcion" ColumnName="arre_descripcion" />
+                <ScalarProperty Name="AREF_CODIGO" ColumnName="AREF_CODIGO" />
+                <ScalarProperty Name="ARRE_CODIGO" ColumnName="ARRE_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_SPEECH_CABECERA">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_SPEECH_CABECERA">
+              <MappingFragment StoreEntitySet="SoftCob_SPEECH_CABECERA">
+                <ScalarProperty Name="spca_tum" ColumnName="spca_tum" />
+                <ScalarProperty Name="spca_uum" ColumnName="spca_uum" />
+                <ScalarProperty Name="spca_fum" ColumnName="spca_fum" />
+                <ScalarProperty Name="spca_terminalcreacion" ColumnName="spca_terminalcreacion" />
+                <ScalarProperty Name="spca_usuariocreacion" ColumnName="spca_usuariocreacion" />
+                <ScalarProperty Name="spca_fechacreacion" ColumnName="spca_fechacreacion" />
+                <ScalarProperty Name="spca_auxi2" ColumnName="spca_auxi2" />
+                <ScalarProperty Name="spca_auxi1" ColumnName="spca_auxi1" />
+                <ScalarProperty Name="spca_auxv2" ColumnName="spca_auxv2" />
+                <ScalarProperty Name="spca_auxv1" ColumnName="spca_auxv1" />
+                <ScalarProperty Name="spca_estado" ColumnName="spca_estado" />
+                <ScalarProperty Name="spca_speechbv" ColumnName="spca_speechbv" />
+                <ScalarProperty Name="spca_cpcecodigo" ColumnName="spca_cpcecodigo" />
+                <ScalarProperty Name="spca_cedecodigo" ColumnName="spca_cedecodigo" />
+                <ScalarProperty Name="SPCA_CODIGO" ColumnName="SPCA_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_SPEECH_DETALLE">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_SPEECH_DETALLE">
+              <MappingFragment StoreEntitySet="SoftCob_SPEECH_DETALLE">
+                <ScalarProperty Name="spde_auxi2" ColumnName="spde_auxi2" />
+                <ScalarProperty Name="spde_auxi1" ColumnName="spde_auxi1" />
+                <ScalarProperty Name="spde_auxv2" ColumnName="spde_auxv2" />
+                <ScalarProperty Name="spde_auxv1" ColumnName="spde_auxv1" />
+                <ScalarProperty Name="spde_estado" ColumnName="spde_estado" />
+                <ScalarProperty Name="spde_observacion" ColumnName="spde_observacion" />
+                <ScalarProperty Name="spde_speechad" ColumnName="spde_speechad" />
+                <ScalarProperty Name="spde_arcocodigo" ColumnName="spde_arcocodigo" />
+                <ScalarProperty Name="spde_arrecodigo" ColumnName="spde_arrecodigo" />
+                <ScalarProperty Name="spde_arefcodigo" ColumnName="spde_arefcodigo" />
+                <ScalarProperty Name="spde_araccodigo" ColumnName="spde_araccodigo" />
+                <ScalarProperty Name="SPCA_CODIGO" ColumnName="SPCA_CODIGO" />
+                <ScalarProperty Name="SPDE_CODIGO" ColumnName="SPDE_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_CAMPOS_SPEECH">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_CAMPOS_SPEECH">
+              <MappingFragment StoreEntitySet="SoftCob_CAMPOS_SPEECH">
+                <ScalarProperty Name="casp_tum" ColumnName="casp_tum" />
+                <ScalarProperty Name="casp_uum" ColumnName="casp_uum" />
+                <ScalarProperty Name="casp_fum" ColumnName="casp_fum" />
+                <ScalarProperty Name="casp_terminalcreacion" ColumnName="casp_terminalcreacion" />
+                <ScalarProperty Name="casp_usuariocreacion" ColumnName="casp_usuariocreacion" />
+                <ScalarProperty Name="casp_fechacreacion" ColumnName="casp_fechacreacion" />
+                <ScalarProperty Name="casp_auxi2" ColumnName="casp_auxi2" />
+                <ScalarProperty Name="casp_auxi1" ColumnName="casp_auxi1" />
+                <ScalarProperty Name="casp_auxv2" ColumnName="casp_auxv2" />
+                <ScalarProperty Name="casp_auxv1" ColumnName="casp_auxv1" />
+                <ScalarProperty Name="casp_estado" ColumnName="casp_estado" />
+                <ScalarProperty Name="casp_tipo" ColumnName="casp_tipo" />
+                <ScalarProperty Name="casp_etiqueta" ColumnName="casp_etiqueta" />
+                <ScalarProperty Name="casp_campo" ColumnName="casp_campo" />
+                <ScalarProperty Name="CASP_CODIGO" ColumnName="CASP_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_REGISTRO_VOLVERALLAMAR">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_REGISTRO_VOLVERALLAMAR">
+              <MappingFragment StoreEntitySet="SoftCob_REGISTRO_VOLVERALLAMAR">
+                <ScalarProperty Name="revl_terminalcreacion" ColumnName="revl_terminalcreacion" />
+                <ScalarProperty Name="revl_usuariocreacion" ColumnName="revl_usuariocreacion" />
+                <ScalarProperty Name="revl_fechacreacion" ColumnName="revl_fechacreacion" />
+                <ScalarProperty Name="revl_auxi3" ColumnName="revl_auxi3" />
+                <ScalarProperty Name="revl_auxi2" ColumnName="revl_auxi2" />
+                <ScalarProperty Name="revl_auxi1" ColumnName="revl_auxi1" />
+                <ScalarProperty Name="revl_auxv3" ColumnName="revl_auxv3" />
+                <ScalarProperty Name="revl_auxv2" ColumnName="revl_auxv2" />
+                <ScalarProperty Name="revl_auxv1" ColumnName="revl_auxv1" />
+                <ScalarProperty Name="revl_gestionado" ColumnName="revl_gestionado" />
+                <ScalarProperty Name="revl_propietario" ColumnName="revl_propietario" />
+                <ScalarProperty Name="revl_tipo" ColumnName="revl_tipo" />
+                <ScalarProperty Name="revl_telefonollamar" ColumnName="revl_telefonollamar" />
+                <ScalarProperty Name="revl_fechatotal" ColumnName="revl_fechatotal" />
+                <ScalarProperty Name="revl_horallamar" ColumnName="revl_horallamar" />
+                <ScalarProperty Name="revl_fechallamar" ColumnName="revl_fechallamar" />
+                <ScalarProperty Name="revl_gestorasignado" ColumnName="revl_gestorasignado" />
+                <ScalarProperty Name="revl_perscodigo" ColumnName="revl_perscodigo" />
+                <ScalarProperty Name="revl_cldecodigo" ColumnName="revl_cldecodigo" />
+                <ScalarProperty Name="revl_ltdecodigo" ColumnName="revl_ltdecodigo" />
+                <ScalarProperty Name="revl_ltcacodigo" ColumnName="revl_ltcacodigo" />
+                <ScalarProperty Name="REVL_CODIGO" ColumnName="REVL_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_TELEFONOS_CEDENTE">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_TELEFONOS_CEDENTE">
+              <MappingFragment StoreEntitySet="SoftCob_TELEFONOS_CEDENTE">
+                <ScalarProperty Name="tece_terminalcreacion" ColumnName="tece_terminalcreacion" />
+                <ScalarProperty Name="tece_usuariocreacion" ColumnName="tece_usuariocreacion" />
+                <ScalarProperty Name="tece_fechacreacion" ColumnName="tece_fechacreacion" />
+                <ScalarProperty Name="tece_auxi3" ColumnName="tece_auxi3" />
+                <ScalarProperty Name="tece_auxi2" ColumnName="tece_auxi2" />
+                <ScalarProperty Name="tece_auxi1" ColumnName="tece_auxi1" />
+                <ScalarProperty Name="tece_auxv3" ColumnName="tece_auxv3" />
+                <ScalarProperty Name="tece_auxv2" ColumnName="tece_auxv2" />
+                <ScalarProperty Name="tece_auxv1" ColumnName="tece_auxv1" />
+                <ScalarProperty Name="tece_estado" ColumnName="tece_estado" />
+                <ScalarProperty Name="tece_score" ColumnName="tece_score" />
+                <ScalarProperty Name="tece_propietario" ColumnName="tece_propietario" />
+                <ScalarProperty Name="tece_tipo" ColumnName="tece_tipo" />
+                <ScalarProperty Name="tece_numero" ColumnName="tece_numero" />
+                <ScalarProperty Name="tece_telecodigo" ColumnName="tece_telecodigo" />
+                <ScalarProperty Name="tece_perscodigo" ColumnName="tece_perscodigo" />
+                <ScalarProperty Name="tece_cedecodigo" ColumnName="tece_cedecodigo" />
+                <ScalarProperty Name="TECE_CODIGO" ColumnName="TECE_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_BRENCH">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_BRENCH">
+              <MappingFragment StoreEntitySet="SoftCob_BRENCH">
+                <ScalarProperty Name="brch_tum" ColumnName="brch_tum" />
+                <ScalarProperty Name="brch_uum" ColumnName="brch_uum" />
+                <ScalarProperty Name="brch_fum" ColumnName="brch_fum" />
+                <ScalarProperty Name="brch_terminalcreacion" ColumnName="brch_terminalcreacion" />
+                <ScalarProperty Name="brch_usuariocreacion" ColumnName="brch_usuariocreacion" />
+                <ScalarProperty Name="brch_fechacreacion" ColumnName="brch_fechacreacion" />
+                <ScalarProperty Name="brch_auxi3" ColumnName="brch_auxi3" />
+                <ScalarProperty Name="brch_auxi2" ColumnName="brch_auxi2" />
+                <ScalarProperty Name="brch_auxi1" ColumnName="brch_auxi1" />
+                <ScalarProperty Name="brch_auxv3" ColumnName="brch_auxv3" />
+                <ScalarProperty Name="brch_auxv2" ColumnName="brch_auxv2" />
+                <ScalarProperty Name="brch_auxv1" ColumnName="brch_auxv1" />
+                <ScalarProperty Name="brch_estado" ColumnName="brch_estado" />
+                <ScalarProperty Name="brch_cpcecodigo" ColumnName="brch_cpcecodigo" />
+                <ScalarProperty Name="brch_cedecodigo" ColumnName="brch_cedecodigo" />
+                <ScalarProperty Name="BRCH_CODIGO" ColumnName="BRCH_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_LISTATRABAJO_ACTIVAS">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_LISTATRABAJO_ACTIVAS">
+              <MappingFragment StoreEntitySet="SoftCob_LISTATRABAJO_ACTIVAS">
+                <ScalarProperty Name="lsac_auxi2" ColumnName="lsac_auxi2" />
+                <ScalarProperty Name="lsac_auxi1" ColumnName="lsac_auxi1" />
+                <ScalarProperty Name="lsac_auxv2" ColumnName="lsac_auxv2" />
+                <ScalarProperty Name="lsac_auxv1" ColumnName="lsac_auxv1" />
+                <ScalarProperty Name="lsac_estado" ColumnName="lsac_estado" />
+                <ScalarProperty Name="lsac_gestorasignado" ColumnName="lsac_gestorasignado" />
+                <ScalarProperty Name="lsac_listatrabajo" ColumnName="lsac_listatrabajo" />
+                <ScalarProperty Name="LSAC_CODIGO" ColumnName="LSAC_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_LISTATRABAJO_CABECERA">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_LISTATRABAJO_CABECERA">
+              <MappingFragment StoreEntitySet="SoftCob_LISTATRABAJO_CABECERA">
+                <ScalarProperty Name="ltca_tum" ColumnName="ltca_tum" />
+                <ScalarProperty Name="ltca_uum" ColumnName="ltca_uum" />
+                <ScalarProperty Name="ltca_fum" ColumnName="ltca_fum" />
+                <ScalarProperty Name="ltca_terminalcreacion" ColumnName="ltca_terminalcreacion" />
+                <ScalarProperty Name="ltca_usuariocreacion" ColumnName="ltca_usuariocreacion" />
+                <ScalarProperty Name="ltca_fechacreacion" ColumnName="ltca_fechacreacion" />
+                <ScalarProperty Name="ltca_auxi3" ColumnName="ltca_auxi3" />
+                <ScalarProperty Name="ltca_auxi2" ColumnName="ltca_auxi2" />
+                <ScalarProperty Name="ltca_auxi1" ColumnName="ltca_auxi1" />
+                <ScalarProperty Name="ltca_auxv3" ColumnName="ltca_auxv3" />
+                <ScalarProperty Name="ltca_auxv2" ColumnName="ltca_auxv2" />
+                <ScalarProperty Name="ltca_auxvi1" ColumnName="ltca_auxvi1" />
+                <ScalarProperty Name="ltca_fechahasta" ColumnName="ltca_fechahasta" />
+                <ScalarProperty Name="ltca_fechadesde" ColumnName="ltca_fechadesde" />
+                <ScalarProperty Name="ltca_porfecha" ColumnName="ltca_porfecha" />
+                <ScalarProperty Name="ltca_araccodigo" ColumnName="ltca_araccodigo" />
+                <ScalarProperty Name="ltca_porarbol" ColumnName="ltca_porarbol" />
+                <ScalarProperty Name="ltca_tipogestion" ColumnName="ltca_tipogestion" />
+                <ScalarProperty Name="ltca_porgestion" ColumnName="ltca_porgestion" />
+                <ScalarProperty Name="ltca_campania" ColumnName="ltca_campania" />
+                <ScalarProperty Name="ltca_tipomarcado" ColumnName="ltca_tipomarcado" />
+                <ScalarProperty Name="ltca_estado" ColumnName="ltca_estado" />
+                <ScalarProperty Name="ltca_cpcecodigo" ColumnName="ltca_cpcecodigo" />
+                <ScalarProperty Name="ltca_cedecodigo" ColumnName="ltca_cedecodigo" />
+                <ScalarProperty Name="ltca_escacodigo" ColumnName="ltca_escacodigo" />
+                <ScalarProperty Name="ltca_fechafin" ColumnName="ltca_fechafin" />
+                <ScalarProperty Name="ltca_fechainicio" ColumnName="ltca_fechainicio" />
+                <ScalarProperty Name="ltca_descripcion" ColumnName="ltca_descripcion" />
+                <ScalarProperty Name="ltca_lista" ColumnName="ltca_lista" />
+                <ScalarProperty Name="LTCA_CODIGO" ColumnName="LTCA_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_LISTATRABAJO_DETALLE">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_LISTATRABAJO_DETALLE">
+              <MappingFragment StoreEntitySet="SoftCob_LISTATRABAJO_DETALLE">
+                <ScalarProperty Name="ltde_auxi3" ColumnName="ltde_auxi3" />
+                <ScalarProperty Name="ltde_auxi2" ColumnName="ltde_auxi2" />
+                <ScalarProperty Name="ltde_auxi1" ColumnName="ltde_auxi1" />
+                <ScalarProperty Name="ltde_auxv3" ColumnName="ltde_auxv3" />
+                <ScalarProperty Name="ltde_auxv2" ColumnName="ltde_auxv2" />
+                <ScalarProperty Name="ltde_auxv1" ColumnName="ltde_auxv1" />
+                <ScalarProperty Name="ltde_gestionado" ColumnName="ltde_gestionado" />
+                <ScalarProperty Name="ltde_estado" ColumnName="ltde_estado" />
+                <ScalarProperty Name="ltde_gestorasignado" ColumnName="ltde_gestorasignado" />
+                <ScalarProperty Name="ltde_perscodigo" ColumnName="ltde_perscodigo" />
+                <ScalarProperty Name="ltde_cldecodigo" ColumnName="ltde_cldecodigo" />
+                <ScalarProperty Name="LTCA_CODIGO" ColumnName="LTCA_CODIGO" />
+                <ScalarProperty Name="LTDE_CODIGO" ColumnName="LTDE_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

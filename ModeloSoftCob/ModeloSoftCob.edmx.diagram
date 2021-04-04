@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0d3436d2efee478f91008b5cd821305b" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_DEPARTAMENTO" Width="1.5" PointX="4.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_MENU" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_MENU_TAREA" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_PERFIL" Width="1.5" PointX="8" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_PERFIL_MENU_TAREA" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_TAREA" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_MENU_TAREA_SoftCob_MENU" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_MENU_TAREA_SoftCob_TAREA" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_MENU_TAREA" ManuallyRouted="false" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_PERFIL_MENU_TAREA_SoftCob_PERFIL" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_USUARIO" Width="1.5" PointX="11.75" PointY="2.125" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_USUARIO_SoftCob_DEPARTAMENTO" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_USUARIO_SoftCob_PERFIL" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_GESTOR_SUPERVISOR" Width="1.5" PointX="14.875" PointY="8.125" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_LOGUEO_TIEMPOS" Width="1.5" PointX="8.125" PointY="11.75" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_GESTOR_SUPERVISOR_SoftCob_USUARIO" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_LOGUEO_TIEMPOS_SoftCob_USUARIO" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_LOGUEO_TIEMPOS_USUARIO" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_CIUDAD" Width="1.5" PointX="12.625" PointY="14.25" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_PARAMETRO_CABECERA" Width="1.5" PointX="14.375" PointY="1" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_PARAMETRO_DETALLE" Width="1.5" PointX="16.625" PointY="1.25" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_PROVINCIA" Width="1.5" PointX="10.375" PointY="14" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_CIUDAD_SoftCob_PROVINCIA" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_PARAMETRO_DETALLE_SoftCob_PARAMETRO_CABECERA" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_CEDENTE" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_PRODUCTOS_CEDENTE" Width="1.5" PointX="3" PointY="17.125" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_PRODUCTOS_CEDENTE_SoftCob_CEDENTE" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Width="1.5" PointX="5.25" PointY="18" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_ACCION" Width="1.5" PointX="7.5" PointY="19.75" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_CONTACTO" Width="1.5" PointX="14.25" PointY="20.5" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_EFECTO" Width="1.5" PointX="9.75" PointY="20.375" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_RESPUESTA" Width="1.5" PointX="12" PointY="20.25" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_EFECTO_SoftCob_ACCION" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_CONTACTO_SoftCob_RESPUESTA" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_RESPUESTA_SoftCob_EFECTO" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_SPEECH_CABECERA" Width="1.5" PointX="15.375" PointY="14" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_SPEECH_DETALLE" Width="1.5" PointX="17.625" PointY="14.25" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_CAMPOS_SPEECH" Width="1.5" PointX="17.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_REGISTRO_VOLVERALLAMAR" Width="1.5" PointX="17.375" PointY="18.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_TELEFONOS_CEDENTE" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_BRENCH" Width="1.5" PointX="19.375" PointY="6.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_LISTATRABAJO_ACTIVAS" Width="1.5" PointX="3.375" PointY="7.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_LISTATRABAJO_CABECERA" Width="1.5" PointX="19.375" PointY="19.125" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_LISTATRABAJO_DETALLE" Width="1.5" PointX="21.625" PointY="20.75" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_LISTATRABAJO_DETALLE_SoftCob_LISTATRABAJO_CABECERA" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
