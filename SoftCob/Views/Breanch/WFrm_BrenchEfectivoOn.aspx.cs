@@ -29,7 +29,7 @@
         }
         #endregion
 
-        #region Procedimientos y Funciones EFECTIVO
+        #region Procedimientos y Funciones
         private void FunCargarCombos(int opcion)
         {
             switch (opcion)
