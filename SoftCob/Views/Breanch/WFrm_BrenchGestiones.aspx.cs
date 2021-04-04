@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.Breanch
+﻿namespace SoftCob.Views.Breanch
 {
     using ControllerSoftCob;
     using System;
@@ -29,7 +27,7 @@ namespace SoftCob.Views.Breanch
         }
         #endregion
 
-        #region Procedimientos y Funciones
+        #region Procedimientos y Funciones Brench
         private void FunCargarDatos()
         {
             _dts = new ConsultaDatosDAO().FunConsultaDatos(223, int.Parse(ViewState["CodigoCPCE"].ToString()),
