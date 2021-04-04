@@ -9,6 +9,7 @@
         #region Variables
         DataSet _dts = new DataSet();
         SoftCobEntities _dtb = new SoftCobEntities();
+        List<CatalogoDTO> _catalogo = new List<CatalogoDTO>();
         string _mensaje = "";
 
         #endregion
