@@ -27,7 +27,7 @@
         }
         #endregion
 
-        #region Procedimientos y Funciones
+        #region Procedimientos y Funciones BRENCH
         private void FunCargarDatos()
         {
             _dts = new ConsultaDatosDAO().FunConsultaDatos(223, int.Parse(ViewState["CodigoCPCE"].ToString()),
