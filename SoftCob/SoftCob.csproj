@@ -263,6 +263,7 @@
     <Content Include="Views\Bitacora\WFrm_DatosBitacora.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchAdmin.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchEfectivoOn.aspx" />
+    <Content Include="Views\Breanch\WFrm_BrenchGestiones.aspx" />
     <Content Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx" />
     <Content Include="Views\Configuracion\WFrm_DepartamentoNuevo.aspx" />
     <Content Include="Views\Configuracion\WFrm_DesloguearAdmin.aspx" />
@@ -456,6 +457,13 @@
     </Compile>
     <Compile Include="Views\Breanch\WFrm_BrenchEfectivoOn.aspx.designer.cs">
       <DependentUpon>WFrm_BrenchEfectivoOn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Breanch\WFrm_BrenchGestiones.aspx.cs">
+      <DependentUpon>WFrm_BrenchGestiones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Breanch\WFrm_BrenchGestiones.aspx.designer.cs">
+      <DependentUpon>WFrm_BrenchGestiones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx.cs">
       <DependentUpon>WFrm_DepartamentoAdmin.aspx</DependentUpon>
