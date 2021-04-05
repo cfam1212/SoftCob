@@ -3,8 +3,6 @@
 namespace SoftCob.Views.Breanch
 {
     using ControllerSoftCob;
-    using Entidad_GSBPO;
-    using Negocio_GSBPO;
     using System;
     using System.Collections.Generic;
     using System.Configuration;
