@@ -267,6 +267,7 @@
     <Content Include="Views\Breanch\wFrm_BrenchGestorAdmin.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchPorGestor.aspx" />
     <Content Include="Views\Breanch\WFrm_CompararBrench.aspx" />
+    <Content Include="Views\Breanch\WFrm_NuevoBrench.aspx" />
     <Content Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx" />
     <Content Include="Views\Configuracion\WFrm_DepartamentoNuevo.aspx" />
     <Content Include="Views\Configuracion\WFrm_DesloguearAdmin.aspx" />
@@ -488,6 +489,13 @@
     </Compile>
     <Compile Include="Views\Breanch\WFrm_CompararBrench.aspx.designer.cs">
       <DependentUpon>WFrm_CompararBrench.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Breanch\WFrm_NuevoBrench.aspx.cs">
+      <DependentUpon>WFrm_NuevoBrench.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Breanch\WFrm_NuevoBrench.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevoBrench.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx.cs">
       <DependentUpon>WFrm_DepartamentoAdmin.aspx</DependentUpon>
