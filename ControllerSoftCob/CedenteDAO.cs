@@ -2,6 +2,7 @@
 {
     using ModeloSoftCob;
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Linq;
     public class CedenteDAO
@@ -9,7 +10,7 @@
         #region Variables
         DataSet _dts = new DataSet();
         SoftCobEntities _dtb = new SoftCobEntities();
-        List<CatalogoDTO> _catalogo = new List<CatalogoDTO>();
+        List<CatalogosDTO> _catalogo = new List<CatalogosDTO>();
         string _mensaje = "";
 
         #endregion
@@ -137,6 +138,57 @@
                                 Descripcion = CTP.cpce_producto,
                                 Codigo = CTP.CPCE_CODIGO.ToString(),
                                 Nivel = CED.cede_auxi1
+                            };
+
+                return _dts = new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataSet FunGetCedentes()
+        {
+            List<SoftCob_CEDENTE> _cedente = new List<SoftCob_CEDENTE>();
+
+            _cedente = _dtb.SoftCob_CEDENTE.Where(pd => pd.cede_estado).OrderBy(o => o.cede_nombre).ToList();
+
+            _catalogo.Add(new CatalogosDTO()
+            {
+                Descripcion = "--Seleccione Cedente--",
+                Codigo = "0"
+            });
+
+            foreach (SoftCob_CEDENTE _tab in _cedente)
+            {
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = _tab.cede_nombre,
+                    Codigo = _tab.CEDE_CODIGO.ToString()
+                });
+            }
+
+            _dts = new FuncionesDAO().FunCambiarDataSet(_catalogo);
+            return _dts;
+        }
+        public DataSet FunGetCatalogoProducto(int _codigocedente)
+        {
+            try
+            {
+                var query = from Productos in _dtb.SoftCob_PRODUCTOS_CEDENTE
+                            from Catalogo in _dtb.SoftCob_CATALOGO_PRODUCTOS_CEDENTE
+                            where Productos.CEDE_CODIGO.Equals(_codigocedente) && Catalogo.PRCE_CODIGO.Equals(Productos.PRCE_CODIGO)
+                            orderby Catalogo.CPCE_CODIGO
+                            select new CatalogoProductos
+                            {
+                                Producto = Productos.prce_producto,
+                                CodigoCatalogo = Catalogo.CPCE_CODIGO.ToString(),
+                                CodigoProducto = Catalogo.cpce_codigoproducto,
+                                CatalogoProducto = Catalogo.cpce_producto,
+                                CodigoFamilia = Catalogo.cpce_codigofamilia,
+                                Familia = Catalogo.cpce_familia,
+                                Estado = Catalogo.cpce_estado ? "Activo" : "Inactivo",
+                                CodProducto = Catalogo.PRCE_CODIGO.ToString()
                             };
 
                 return _dts = new FuncionesDAO().FunCambiarDataSet(query.ToList());

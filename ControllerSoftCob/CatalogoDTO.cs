@@ -73,6 +73,12 @@
         public int Orden { get; set; }
         public bool Estado { get; set; }
     }
+    public class ParametroDetalle
+    {
+        public string Prametro { get; set; }
+        public string ValorV { get; set; }
+        public int ValorI { get; set; }
+    }
     #endregion
     public class BrenchAdminDTO
     {
@@ -81,12 +87,65 @@
         public string Catalogo { get; set; }
         public string Brench { get; set; }
         public string Estado { get; set; }
-        public string auxv1 { get; set; }
-        public string auxv2 { get; set; }
-        public string auxv3 { get; set; }
-        public int auxi1 { get; set; }
-        public int auxi2 { get; set; }
-        public int auxi3 { get; set; }
+        public string Auxv1 { get; set; }
+        public string Auxv2 { get; set; }
+        public string Auxv3 { get; set; }
+        public int Auxi1 { get; set; }
+        public int Auxi2 { get; set; }
+        public int Auxi3 { get; set; }
     }
-
+    public class CatalogoProductos
+    {
+        public string Producto { get; set; }
+        public string CodigoCatalogo { get; set; }
+        public string CodigoProducto { get; set; }
+        public string CatalogoProducto { get; set; }
+        public string CodigoFamilia { get; set; }
+        public string Familia { get; set; }
+        public string Estado { get; set; }
+        public string CodProducto { get; set; }
+    }
+    public class SpeechAdminDTO
+    {
+        public int Codigo { get; set; }
+        public int AracCodigo { get; set; }
+        public string Accion { get; set; }
+        public int ArefCodigo { get; set; }
+        public string Efecto { get; set; }
+        public int ArreCodigo { get; set; }
+        public string Respuesta { get; set; }
+        public int ArcoCodigo { get; set; }
+        public string Contacto { get; set; }
+        public string Speech { get; set; }
+        public string Estado { get; set; }
+        public string Auxv1 { get; set; }
+        public string Auxv2 { get; set; }
+        public int Auxi1 { get; set; }
+        public int Auxi2 { get; set; }
+    }
+    public class SpeechCabeceraDTO
+    {
+        public int CodigoSpeech { get; set; }
+        public string Speechbv { get; set; }
+        public string Estado { get; set; }
+    }
+    public class ArbolSpeechDTO
+    {
+        public string Codigo { get; set; }
+        public int CodigoARAC { get; set; }
+        public string Accion { get; set; }
+        public int CodigoAREF { get; set; }
+        public string Efecto { get; set; }
+        public int CodigoARRE { get; set; }
+        public string Respuesta { get; set; }
+        public int CodigoARCO { get; set; }
+        public string Contacto { get; set; }
+        public string Speech { get; set; }
+        public string Observacion { get; set; }
+        public string Estado { get; set; }
+        public string Auxv1 { get; set; }
+        public string Auxv2 { get; set; }
+        public int Auxi1 { get; set; }
+        public int Auxi2 { get; set; }
+    }
 }

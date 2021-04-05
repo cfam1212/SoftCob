@@ -56,6 +56,11 @@ namespace ModeloSoftCob
         public virtual DbSet<SoftCob_LISTATRABAJO_ACTIVAS> SoftCob_LISTATRABAJO_ACTIVAS { get; set; }
         public virtual DbSet<SoftCob_LISTATRABAJO_CABECERA> SoftCob_LISTATRABAJO_CABECERA { get; set; }
         public virtual DbSet<SoftCob_LISTATRABAJO_DETALLE> SoftCob_LISTATRABAJO_DETALLE { get; set; }
+        public virtual DbSet<SoftCob_ESTRATEGIA_CABECERA> SoftCob_ESTRATEGIA_CABECERA { get; set; }
+        public virtual DbSet<SoftCob_SUPERVISORES> SoftCob_SUPERVISORES { get; set; }
+        public virtual DbSet<SoftCob_TABLAS_BDD> SoftCob_TABLAS_BDD { get; set; }
+        public virtual DbSet<SoftCob_PAGOSCARTERA> SoftCob_PAGOSCARTERA { get; set; }
+        public virtual DbSet<SoftCob_PAGOSCABECERA> SoftCob_PAGOSCABECERA { get; set; }
     
         public virtual ObjectResult<string> FunMenuEditUpdate(string in_check, Nullable<int> in_codigomenu, Nullable<int> in_codigotarea, Nullable<int> in_emprcodigo, string in_auxv1, string in_auxv2, string in_auxv3, Nullable<int> in_auxi1, Nullable<int> in_auxi2, Nullable<int> in_auxi3, Nullable<int> in_usucodigo, string in_terminal)
         {

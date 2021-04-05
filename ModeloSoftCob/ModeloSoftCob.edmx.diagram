@@ -53,6 +53,15 @@
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_LISTATRABAJO_CABECERA" Width="1.5" PointX="19.375" PointY="19.125" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_LISTATRABAJO_DETALLE" Width="1.5" PointX="21.625" PointY="20.75" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_LISTATRABAJO_DETALLE_SoftCob_LISTATRABAJO_CABECERA" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_ESTRATEGIA_CABECERA" Width="1.5" PointX="21.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_SUPERVISORES" Width="1.5" PointX="20" PointY="12.25" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_SUPERVISORES_SoftCob_CEDENTE" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_GESTOR_SUPERVISOR_SoftCob_SUPERVISORES" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_SUPERVISORES_SoftCob_USUARIO" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_TABLAS_BDD" Width="1.5" PointX="0.75" PointY="21.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_PAGOSCARTERA" Width="1.5" PointX="21.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_PAGOSCABECERA" Width="1.5" PointX="23.625" PointY="6.5" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_PAGOSCABECERA_SoftCob_PAGOSCARTERA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

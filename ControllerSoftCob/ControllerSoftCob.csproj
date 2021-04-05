@@ -56,12 +56,14 @@
   <ItemGroup>
     <Compile Include="ArbolDecisionDAO.cs" />
     <Compile Include="CatalogoDTO.cs" />
+    <Compile Include="CatalogosDAO.cs" />
     <Compile Include="CedenteDAO.cs" />
     <Compile Include="ConsultaDatosDAO.cs" />
     <Compile Include="ControllerDAO.cs" />
     <Compile Include="ElastixDAO.cs" />
     <Compile Include="FuncionesDAO.cs" />
     <Compile Include="ListaTrabajoDAO.cs" />
+    <Compile Include="PagoCarteraDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpeechDAO.cs" />
   </ItemGroup>

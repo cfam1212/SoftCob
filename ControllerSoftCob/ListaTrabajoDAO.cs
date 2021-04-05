@@ -12,7 +12,6 @@
         DataSet _dts = new DataSet();
         SqlDataAdapter _dap = new SqlDataAdapter();
         SoftCobEntities _db = new SoftCobEntities();
-        string _mensaje = "";
         bool _respuesta = false;
         int _codigo = 0;
         #endregion
@@ -170,7 +169,7 @@
             }
             catch (Exception ex)
             {
-                _mensaje = ex.ToString();
+                throw ex;
             }
         }
 
@@ -253,12 +252,12 @@
                                 Cedente = Cedente.cede_nombre,
                                 Catalogo = Catalogo.cpce_producto,
                                 Estado = datos.brch_estado == true ? "Activo" : "Inactivo",
-                                auxv1 = datos.brch_auxv1,
-                                auxv2 = datos.brch_auxv2,
-                                auxv3 = datos.brch_auxv3,
-                                auxi1 = (int)datos.brch_auxi1,
-                                auxi2 = (int)datos.brch_auxi2,
-                                auxi3 = (int)datos.brch_auxi3
+                                Auxv1 = datos.brch_auxv1,
+                                Auxv2 = datos.brch_auxv2,
+                                Auxv3 = datos.brch_auxv3,
+                                Auxi1 = (int)datos.brch_auxi1,
+                                Auxi2 = (int)datos.brch_auxi2,
+                                Auxi3 = (int)datos.brch_auxi3
                             };
 
                 return _dts = new FuncionesDAO().FunCambiarDataSet(query.ToList());

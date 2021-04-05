@@ -51,14 +51,14 @@
 
                     break;
                 case 1:
-                    _dts = new CatalogosDTO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--",
-                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(12, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
                     DdlGestores.DataSource = _dts;
                     DdlGestores.DataTextField = "Descripcion";
                     DdlGestores.DataValueField = "Codigo";
                     DdlGestores.DataBind();
 
-                    DdlCatalogo.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                     DdlCatalogo.DataTextField = "CatalogoProducto";
                     DdlCatalogo.DataValueField = "CodigoCatalogo";
                     DdlCatalogo.DataBind();
@@ -79,7 +79,7 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
                     return;
                 }
 
@@ -87,7 +87,7 @@
                 {
                     if (string.IsNullOrEmpty(TxtDocumento.Text.Trim()))
                     {
-                        new FuncionesBAS().FunShowJSMessage("Ingrese No. de Documento..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingrese No. de Documento..!", this);
                         return;
                     }
                 }

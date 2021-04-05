@@ -2,6 +2,7 @@
 {
     using ModeloSoftCob;
     using System;
+    using System.Data;
     using System.Collections.Generic;
     using System.Data.Entity.Validation;
     using System.Diagnostics;
@@ -9,6 +10,7 @@
     public class ArbolDecisionDAO
     {
         #region Variables
+        SoftCobEntities _dtb = new SoftCobEntities();
         string _mensaje = "";
         int _codigo = 0;
         #endregion
@@ -279,6 +281,102 @@
                 throw ex;
             }
             return _codigo;
+        }
+        public DataSet FunGetArbolSpeechDet(int codigoSPCA)
+        {
+            try
+            {
+
+                var query = from SPD in _dtb.SoftCob_SPEECH_DETALLE
+                            join ACC in _dtb.SoftCob_ACCION on SPD.spde_araccodigo equals ACC.ARAC_CODIGO
+                            join EFE in _dtb.SoftCob_EFECTO on SPD.spde_arefcodigo equals EFE.AREF_CODIGO
+                            join ARE in _dtb.SoftCob_RESPUESTA on SPD.spde_arrecodigo equals ARE.ARRE_CODIGO
+                            join ACO in _dtb.SoftCob_CONTACTO on SPD.spde_arcocodigo equals ACO.ARCO_CODIGO
+                            where SPD.SPCA_CODIGO == codigoSPCA
+                            orderby ACC.arac_descripcion
+                            select new ArbolSpeechDTO
+                            {
+                                Codigo = SPD.SPDE_CODIGO.ToString(),
+                                CodigoARAC = SPD.spde_araccodigo,
+                                Accion = ACC.arac_descripcion,
+                                CodigoAREF = SPD.spde_arefcodigo,
+                                Efecto = EFE.aref_descripcion,
+                                CodigoARRE = SPD.spde_arrecodigo,
+                                Respuesta = ARE.arre_descripcion,
+                                CodigoARCO = SPD.spde_arcocodigo,
+                                Contacto = ACO.arco_descripcion,
+                                Speech = SPD.spde_speechad,
+                                Observacion = SPD.spde_observacion,
+                                Estado = SPD.spde_estado ? "Activo" : "Inactivo",
+                                Auxv1 = SPD.spde_auxv1,
+                                Auxv2 = SPD.spde_auxv2,
+                                Auxi1 = (int)SPD.spde_auxi1,
+                                Auxi2 = (int)SPD.spde_auxi2
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataSet FunGetArbolSpeechDet1(int codigoSPCA)
+        {
+            try
+            {
+
+                var query = from SPD in _dtb.SoftCob_SPEECH_DETALLE
+                            join ACC in _dtb.SoftCob_ACCION on SPD.spde_araccodigo equals ACC.ARAC_CODIGO
+                            join EFE in _dtb.SoftCob_EFECTO on SPD.spde_arefcodigo equals EFE.AREF_CODIGO
+                            join ARE in _dtb.SoftCob_RESPUESTA on SPD.spde_arrecodigo equals ARE.ARRE_CODIGO
+                            where SPD.SPCA_CODIGO == codigoSPCA
+                            orderby ACC.arac_descripcion
+                            select new ArbolSpeechDTO
+                            {
+                                Codigo = SPD.SPDE_CODIGO.ToString(),
+                                CodigoARAC = SPD.spde_araccodigo,
+                                Accion = ACC.arac_descripcion,
+                                CodigoAREF = SPD.spde_arefcodigo,
+                                Efecto = EFE.aref_descripcion,
+                                CodigoARRE = SPD.spde_arrecodigo,
+                                Respuesta = ARE.arre_descripcion,
+                                CodigoARCO = SPD.spde_arcocodigo,
+                                Contacto = SPD.spde_arcocodigo > 0 ? "CON CATALOGO" : "",
+                                Speech = SPD.spde_speechad,
+                                Observacion = SPD.spde_observacion,
+                                Estado = SPD.spde_estado ? "Activo" : "Inactivo",
+                                Auxv1 = SPD.spde_auxv1,
+                                Auxv2 = SPD.spde_auxv2,
+                                Auxi1 = (int)SPD.spde_auxi1,
+                                Auxi2 = (int)SPD.spde_auxi2
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataSet FunGetArbolSpeechDetPorID(int codigoSPCA, int codigoSPDE)
+        {
+            try
+            {
+                var query = from SPD in _dtb.SoftCob_SPEECH_DETALLE
+                            where SPD.SPCA_CODIGO == codigoSPCA && SPD.SPDE_CODIGO == codigoSPDE
+                            select new ArbolSpeechDTO
+                            {
+                                Estado = SPD.spde_estado ? "Activo" : "Inactivo"
+                            };
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         #endregion
     }

@@ -32,5 +32,6 @@ namespace ModeloSoftCob
         public string gest_tum { get; set; }
     
         public virtual SoftCob_USUARIO SoftCob_USUARIO { get; set; }
+        public virtual SoftCob_SUPERVISORES SoftCob_SUPERVISORES { get; set; }
     }
 }

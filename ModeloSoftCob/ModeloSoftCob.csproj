@@ -93,6 +93,9 @@
     <Compile Include="SoftCob_EFECTO.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
+    <Compile Include="SoftCob_ESTRATEGIA_CABECERA.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_GESTOR_SUPERVISOR.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
@@ -112,6 +115,12 @@
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_MENU_TAREA.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_PAGOSCABECERA.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_PAGOSCARTERA.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_PARAMETRO_CABECERA.cs">
@@ -142,6 +151,12 @@
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_SPEECH_DETALLE.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_SUPERVISORES.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_TABLAS_BDD.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_TAREA.cs">
