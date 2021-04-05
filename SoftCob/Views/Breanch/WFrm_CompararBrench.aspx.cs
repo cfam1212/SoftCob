@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.Breanch
+﻿namespace SoftCob.Views.Breanch
 {
     using ControllerSoftCob;
     using System;
