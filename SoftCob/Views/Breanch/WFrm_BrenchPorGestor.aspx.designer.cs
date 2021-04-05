@@ -11,7 +11,7 @@ namespace SoftCob.Views.Breanch
 {
 
 
-    public partial class wFrm_BrenchGestorAdmin
+    public partial class WFrm_BrenchPorGestor
     {
 
         /// <summary>
@@ -60,15 +60,6 @@ namespace SoftCob.Views.Breanch
         protected global::System.Web.UI.WebControls.Label Lblerror;
 
         /// <summary>
-        /// Control updProgress.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress updProgress;
-
-        /// <summary>
         /// Control updCabecera.
         /// </summary>
         /// <remarks>
@@ -76,33 +67,6 @@ namespace SoftCob.Views.Breanch
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updCabecera;
-
-        /// <summary>
-        /// Control DdlCedente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlCedente;
-
-        /// <summary>
-        /// Control DdlCatalogo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlCatalogo;
-
-        /// <summary>
-        /// Control TxtFechaPago.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtFechaPago;
 
         /// <summary>
         /// Control pnlDiv1.
@@ -114,31 +78,13 @@ namespace SoftCob.Views.Breanch
         protected global::System.Web.UI.WebControls.Panel pnlDiv1;
 
         /// <summary>
-        /// Control ImgExportar.
+        /// Control PnlBrenchGlobal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgExportar;
-
-        /// <summary>
-        /// Control LblExportar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblExportar;
-
-        /// <summary>
-        /// Control pnlBrenchMes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlBrenchMes;
+        protected global::System.Web.UI.WebControls.Panel PnlBrenchGlobal;
 
         /// <summary>
         /// Control GrdvBrenchGestor.
@@ -157,6 +103,33 @@ namespace SoftCob.Views.Breanch
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlDiv2;
+
+        /// <summary>
+        /// Control PnlBrenchPagos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlBrenchPagos;
+
+        /// <summary>
+        /// Control GrdvBrenchPago.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrdvBrenchPago;
+
+        /// <summary>
+        /// Control Panel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
         /// Control pnlDetalleBrench.

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="wFrm_BrenchGestorAdmin.aspx.cs" Inherits="SoftCob.Views.Breanch.wFrm_BrenchGestorAdmin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_BrenchPorGestor.aspx.cs" Inherits="SoftCob.Views.Breanch.WFrm_BrenchPorGestor" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -73,7 +73,7 @@
     </script>
     <script>
         function asegurar() {
-            rc = confirm("¿Seguro que desea Realizar Cierre?");
+            rc = confirm("¿Seguro que desea Grabar?");
             return rc;
         }
     </script>
@@ -92,7 +92,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-info">
+            <%-- <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -102,7 +102,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>
+            </div>--%>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
@@ -117,50 +117,9 @@
                                 <td style="width: 5%"></td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td>
-                                    <h5>Cedente:</h5>
-                                </td>
-                                <td colspan="2">
-                                    <asp:DropDownList ID="DdlCedente" runat="server" Width="100%" TabIndex="1" AutoPostBack="True" OnSelectedIndexChanged="DdlCedente_SelectedIndexChanged">
-                                    </asp:DropDownList>
-                                </td>
-                                <td>
-                                    <h5>Catálogo:</h5>
-                                </td>
-                                <td colspan="2">
-                                    <asp:DropDownList ID="DdlCatalogo" runat="server" AutoPostBack="True" TabIndex="2" Width="100%" OnSelectedIndexChanged="DdlCatalogo_SelectedIndexChanged">
-                                    </asp:DropDownList>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <h5>Fecha Generada:</h5>
-                                </td>
-                                <td colspan="2">
-
-                                    <asp:TextBox ID="TxtFechaPago" runat="server" TabIndex="10" Width="100%" Enabled="False"></asp:TextBox>
-
-                                </td>
-                                <td colspan="3"></td>
-                            </tr>
-                            <tr>
                                 <td colspan="7">
-                                    <asp:Panel ID="pnlDiv1" runat="server" Height="30px"></asp:Panel>
+                                    <asp:Panel ID="pnlDiv1" runat="server" Height="20px"></asp:Panel>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" Visible="false" TabIndex="9" OnClick="ImgExportar_Click" />
-                                    <asp:Label ID="LblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -174,44 +133,30 @@
                             <tr>
                                 <td></td>
                                 <td colspan="5">
-                                    <asp:Panel ID="pnlBrenchMes" runat="server" ScrollBars="Vertical" Height="250px"
-                                        GroupingText="Brench Mensual" Visible="false">
+                                    <asp:Panel ID="PnlBrenchGlobal" runat="server" Height="200px" GroupingText="Presupuesto (Año) - (Mes) Por Compromiso de Pago">
                                         <asp:GridView ID="GrdvBrenchGestor" runat="server" Width="100%"
-                                            CssClass="table table-condensed table-bordered table-hover table-responsive" EmptyDataText="No existen datos para mostrar" TabIndex="7" AutoGenerateColumns="False" PageSize="12" DataKeyNames="CodigoGestor,CodigoBRMC,Fecha,PorCumplido" OnRowDataBound="GrdvBrenchGestor_RowDataBound" ShowFooter="True">
+                                            CssClass="table table-condensed table-bordered table-hover table-responsive" EmptyDataText="No existen datos para mostrar" TabIndex="7" AutoGenerateColumns="False" PageSize="12" DataKeyNames="CodigoBRMC" OnRowDataBound="GrdvBrenchGestor_RowDataBound">
                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                             <Columns>
-                                                <asp:BoundField DataField="Gestor" HeaderText="Gestor" />
-                                                <asp:BoundField DataField="Anio" HeaderText="Año">
-                                                    <ItemStyle HorizontalAlign="Center" />
+                                                <asp:BoundField DataField="Operaciones" HeaderText="Operaciones">
+                                                    <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="MesLabel" HeaderText="Mes">
-                                                    <ItemStyle HorizontalAlign="Center" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="Presupuesto" HeaderText="Presupuesto">
+                                                <asp:BoundField DataField="Exigible" HeaderText="Exigible">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Porcentaje" HeaderText="%">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="Fecha" HeaderText="Ult. Fecha">
-                                                    <ItemStyle Font-Bold="True" Font-Size="Small" ForeColor="Maroon" HorizontalAlign="Center" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="ValCumplido" HeaderText="Pagos">
+                                                <asp:BoundField DataField="Presupuesto" HeaderText="Presupuesto">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="PorCumplido" HeaderText="% Cumplido">
+                                                <asp:BoundField DataField="ValCumplido" HeaderText="Val. Compromiso">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
-                                                <asp:TemplateField HeaderText="Detalle">
-                                                    <ItemTemplate>
-                                                        <asp:ImageButton ID="ImgVer" runat="server" Height="20px" ImageUrl="~/Botones/Buscar.png" OnClick="ImgVer_Click" />
-                                                    </ItemTemplate>
-                                                    <ItemStyle HorizontalAlign="Center" />
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Cierre">
-                                                    <ItemTemplate>
-                                                        <asp:CheckBox ID="ChkCierre" runat="server" OnCheckedChanged="ChkCierre_CheckedChanged" AutoPostBack="True" />
-                                                    </ItemTemplate>
+                                                <asp:BoundField DataField="PorCumplido" HeaderText="%">
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                </asp:BoundField>
+                                                <asp:TemplateField HeaderText="Calif.">
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
                                             </Columns>
@@ -232,9 +177,59 @@
                             <tr>
                                 <td></td>
                                 <td colspan="5">
-                                    <asp:Panel ID="pnlDetalleBrench" runat="server" Height="200px"
-                                        GroupingText="Brench Por Rangos" ScrollBars="Vertical" Visible="false">
-                                        <asp:GridView ID="GrdvBrenchRango" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" EmptyDataText="No existen datos para mostrar" PageSize="12" TabIndex="7" Width="100%" OnRowDataBound="GrdvBrenchRango_RowDataBound" ShowFooter="True">
+                                    <asp:Panel ID="PnlBrenchPagos" runat="server" Height="200px" GroupingText="Presupuesto (Año) - (Mes) Pagos Realizados">
+                                        <asp:GridView ID="GrdvBrenchPago" runat="server" Width="100%"
+                                            CssClass="table table-condensed table-bordered table-hover table-responsive" EmptyDataText="No existen datos para mostrar" TabIndex="7" AutoGenerateColumns="False" PageSize="12" DataKeyNames="CodigoGEST,CodigoBRMC" OnRowDataBound="GrdvBrenchPago_RowDataBound">
+                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                            <Columns>
+                                                <asp:BoundField DataField="Operaciones" HeaderText="Operaciones">
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Exigible" HeaderText="Exigible">
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Porcentaje" HeaderText="%">
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Presupuesto" HeaderText="Presupuesto">
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="ValCumplido" HeaderText="Pres. Cumplido">
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="PorCumplido" HeaderText="%">
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                </asp:BoundField>
+                                                <asp:TemplateField HeaderText="Detalle">
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton ID="ImgVer" runat="server" Height="20px" ImageUrl="~/Botones/Buscar.png" OnClick="ImgVer_Click" />
+                                                    </ItemTemplate>
+                                                    <ItemStyle HorizontalAlign="Center" />
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Calif.">
+                                                    <ItemStyle HorizontalAlign="Center" />
+                                                </asp:TemplateField>
+                                            </Columns>
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                        </asp:GridView>
+                                    </asp:Panel>
+                                    <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="7">
+                                    <asp:Panel ID="Panel1" runat="server" Height="40px"></asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="5">
+                                    <asp:Panel ID="pnlDetalleBrench" runat="server" Height="180px" GroupingText="Brench Por Rangos" Visible="false">
+                                        <asp:GridView ID="GrdvBrenchRango" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" EmptyDataText="No existen datos para mostrar" PageSize="12" TabIndex="7" Width="100%" OnRowDataBound="GrdvBrenchRango_RowDataBound">
                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                             <Columns>
                                                 <asp:BoundField DataField="Rango" HeaderText="Rango Dias" />
@@ -244,10 +239,10 @@
                                                 <asp:BoundField DataField="Porcentaje" HeaderText="%">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="ValCumplido" HeaderText="Pagos">
+                                                <asp:BoundField DataField="PresuCumplido" HeaderText="Pres. Cumplido">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="PorCumplido" HeaderText="% Cumplido">
+                                                <asp:BoundField DataField="PorcenCumplido" HeaderText="%">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
                                             </Columns>
@@ -270,7 +265,7 @@
                         <table style="width: 100%">
                             <tr>
                                 <td style="text-align: right; width: 45%">
-                                    <asp:Button ID="BtnGrabar" runat="server" Text="Grabar" Width="120px" CausesValidation="False" CssClass="button" TabIndex="8" OnClick="BtnGrabar_Click" OnClientClick="return asegurar();" />
+                                    <asp:Button ID="BtnGrabar" runat="server" Text="Grabar" Width="120px" CausesValidation="False" CssClass="button" TabIndex="8" OnClientClick="return asegurar();" />
                                 </td>
                                 <td style="width: 10%"></td>
                                 <td style="text-align: left; width: 45%">
