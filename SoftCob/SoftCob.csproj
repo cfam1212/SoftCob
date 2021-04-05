@@ -264,6 +264,9 @@
     <Content Include="Views\Breanch\WFrm_BrenchAdmin.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchEfectivoOn.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchGestiones.aspx" />
+    <Content Include="Views\Breanch\wFrm_BrenchGestorAdmin.aspx" />
+    <Content Include="Views\Breanch\WFrm_BrenchPorGestor.aspx" />
+    <Content Include="Views\Breanch\WFrm_CompararBrench.aspx" />
     <Content Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx" />
     <Content Include="Views\Configuracion\WFrm_DepartamentoNuevo.aspx" />
     <Content Include="Views\Configuracion\WFrm_DesloguearAdmin.aspx" />
@@ -464,6 +467,27 @@
     </Compile>
     <Compile Include="Views\Breanch\WFrm_BrenchGestiones.aspx.designer.cs">
       <DependentUpon>WFrm_BrenchGestiones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Breanch\wFrm_BrenchGestorAdmin.aspx.cs">
+      <DependentUpon>wFrm_BrenchGestorAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Breanch\wFrm_BrenchGestorAdmin.aspx.designer.cs">
+      <DependentUpon>wFrm_BrenchGestorAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Breanch\WFrm_BrenchPorGestor.aspx.cs">
+      <DependentUpon>WFrm_BrenchPorGestor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Breanch\WFrm_BrenchPorGestor.aspx.designer.cs">
+      <DependentUpon>WFrm_BrenchPorGestor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Breanch\WFrm_CompararBrench.aspx.cs">
+      <DependentUpon>WFrm_CompararBrench.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Breanch\WFrm_CompararBrench.aspx.designer.cs">
+      <DependentUpon>WFrm_CompararBrench.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx.cs">
       <DependentUpon>WFrm_DepartamentoAdmin.aspx</DependentUpon>
