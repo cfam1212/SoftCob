@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Drawing;
     using System.Globalization;
@@ -53,8 +52,7 @@
                 {
                     Lbltitulo.Text = "Editando Bitacora << " + ViewState["Bitacora"].ToString() + " >>";
                 }
-
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                
                 TxtHoraAT.Text = DateTime.Now.ToString("HH:mm");
                 TxtFechaPE.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 ViewState["FechaActual"] = DateTime.Now.ToString("MM/dd/yyyy");
@@ -82,14 +80,14 @@
                 }
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(169, int.Parse(Session["usuCodigo"].ToString()),
-                    0, 0, "", Session["MachineName"].ToString(), ViewState["Bitacora"].ToString(), ViewState["Conectar"].ToString());
+                    0, 0, "", Session["MachineName"].ToString(), ViewState["Bitacora"].ToString(), Session["Conectar"].ToString());
 
                 ViewState["Bitacora"] = _dts.Tables[0].Rows[0][0].ToString();
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(170, 0, 0, 0, "", ViewState["Bitacora"].ToString(), "",
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
 
                     GrdvSupervisores.DataSource = _dts.Tables[0];
                     GrdvSupervisores.DataBind();
@@ -216,13 +214,13 @@
                 switch (tipo)
                 {
                     case 0:
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(168, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(168, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
                         DdlGestor.DataSource = _dts;
                         DdlGestor.DataTextField = "Descripcion";
                         DdlGestor.DataValueField = "Codigo";
                         DdlGestor.DataBind();
 
-                        _dts = new CatalogosDAO().FunGetParametroDetalle("TIPO TURNO", "--Seleccione Turno--");
+                        _dts = new ControllerDAO().FunGetParametroDetalle("TIPO TURNO", "--Seleccione Turno--", "S");
                         DdlTurnoA.DataSource = _dts;
                         DdlTurnoA.DataTextField = "Descripcion";
                         DdlTurnoA.DataValueField = "Codigo";
@@ -455,7 +453,7 @@
                 _resultado.Delete();
                 _dtbatrasos.AcceptChanges();
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(174, int.Parse(ViewState["CodigoAtraso"].ToString()),
-                    0, 0, "", "ATR", ViewState["Bitacora"].ToString(), ViewState["Conectar"].ToString());
+                    0, 0, "", "ATR", ViewState["Bitacora"].ToString(), Session["Conectar"].ToString());
                 GrdvAtrasos.DataSource = _dtbatrasos;
                 GrdvAtrasos.DataBind();
 
@@ -689,7 +687,7 @@
                 _dtbfaltasj.AcceptChanges();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(174, int.Parse(ViewState["CodigoFaltaJ"].ToString()),
-                    0, 0, "", "FTJ", ViewState["Bitacora"].ToString(), ViewState["Conectar"].ToString());
+                    0, 0, "", "FTJ", ViewState["Bitacora"].ToString(), Session["Conectar"].ToString());
                 GrdvFaltasJ.DataSource = _dtbfaltasj;
                 GrdvFaltasJ.DataBind();
 
@@ -819,7 +817,7 @@
                 _resultado.Delete();
                 _dtbfaltasi.AcceptChanges();
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(174, int.Parse(ViewState["CodigoFaltaI"].ToString()),
-                    0, 0, "", "FTI", ViewState["Bitacora"].ToString(), ViewState["Conectar"].ToString());
+                    0, 0, "", "FTI", ViewState["Bitacora"].ToString(), Session["Conectar"].ToString());
                 GrdvFaltasI.DataSource = _dtbfaltasi;
                 GrdvFaltasI.DataBind();
 
@@ -1012,7 +1010,7 @@
                 _dtbpermisos.AcceptChanges();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(174, int.Parse(ViewState["CodigoPermiso"].ToString()),
-                    0, 0, "", "PER", ViewState["Bitacora"].ToString(), ViewState["Conectar"].ToString());
+                    0, 0, "", "PER", ViewState["Bitacora"].ToString(), Session["Conectar"].ToString());
 
                 GrdvPermisos.DataSource = _dtbpermisos;
                 GrdvPermisos.DataBind();
@@ -1242,7 +1240,7 @@
                 _dtbcambioturno.AcceptChanges();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(174, int.Parse(ViewState["CodigoCambioT"].ToString()),
-                    0, 0, "", "CTU", ViewState["Bitacora"].ToString(), ViewState["Conectar"].ToString());
+                    0, 0, "", "CTU", ViewState["Bitacora"].ToString(), Session["Conectar"].ToString());
 
                 GrdvCambioTurno.DataSource = _dtbcambioturno;
                 GrdvCambioTurno.DataBind();
@@ -1384,7 +1382,7 @@
                 _dtbvarios.AcceptChanges();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(174, int.Parse(ViewState["CodigoVarios"].ToString()),
-                    0, 0, "", "VAR", ViewState["Bitacora"].ToString(), ViewState["Conectar"].ToString());
+                    0, 0, "", "VAR", ViewState["Bitacora"].ToString(), Session["Conectar"].ToString());
 
                 GrdvVarios.DataSource = _dtbvarios;
                 GrdvVarios.DataBind();
@@ -1565,7 +1563,7 @@
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(174, int.Parse(ViewState["CodigoNovedad"].ToString()),
                     0, 0, "", "NOV", ViewState["Bitacora"].ToString(),
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 GrdvNovedad.DataSource = _dtbvarios;
                 GrdvNovedad.DataBind();
@@ -1695,7 +1693,7 @@
                 _dtbrefuerzos.AcceptChanges();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(174, int.Parse(ViewState["CodigoRefuerzo"].ToString()),
-                    0, 0, "", "REF", ViewState["Bitacora"].ToString(), ViewState["Conectar"].ToString());
+                    0, 0, "", "REF", ViewState["Bitacora"].ToString(), Session["Conectar"].ToString());
 
                 GrdvRefuerzo.DataSource = _dtbrefuerzos;
                 GrdvRefuerzo.DataBind();
@@ -1847,7 +1845,7 @@
                 _dtbterreno.AcceptChanges();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(174, int.Parse(ViewState["CodigoTerreno"].ToString()),
-                    0, 0, "", "GTE", ViewState["Bitacora"].ToString(), ViewState["Conectar"].ToString());
+                    0, 0, "", "GTE", ViewState["Bitacora"].ToString(), Session["Conectar"].ToString());
 
                 GrdvTerreno.DataSource = _dtbterreno;
                 GrdvTerreno.DataBind();
@@ -1998,7 +1996,7 @@
                 _dtbsistemas.AcceptChanges();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(174, int.Parse(ViewState["CodigoSistemas"].ToString()),
-                    0, 0, "", "SIS", ViewState["Bitacora"].ToString(), ViewState["Conectar"].ToString());
+                    0, 0, "", "SIS", ViewState["Bitacora"].ToString(), Session["Conectar"].ToString());
 
                 GrdvSistemas.DataSource = _dtbsistemas;
                 GrdvSistemas.DataBind();
@@ -2149,7 +2147,7 @@
                 _dtbpagos.AcceptChanges();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(174, int.Parse(ViewState["CodigoPagos"].ToString()),
-                    0, 0, "", "CPA", ViewState["Bitacora"].ToString(), ViewState["Conectar"].ToString());
+                    0, 0, "", "CPA", ViewState["Bitacora"].ToString(), Session["Conectar"].ToString());
 
                 GrdvPagos.DataSource = _dtbpagos;
                 GrdvPagos.DataBind();
@@ -2299,7 +2297,7 @@
                 _dtbadicional.AcceptChanges();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(174, int.Parse(ViewState["CodigoAdicional"].ToString()),
-                    0, 0, "", "ADI", ViewState["Bitacora"].ToString(), ViewState["Conectar"].ToString());
+                    0, 0, "", "ADI", ViewState["Bitacora"].ToString(), Session["Conectar"].ToString());
                 GrdvAdicionales.DataSource = _dtbadicional;
                 GrdvAdicionales.DataBind();
 
@@ -2377,7 +2375,7 @@
                         int.Parse(_drfila["CodigoGestorAT"].ToString()), _drfila["Descripcion"].ToString(),
                         ViewState["FechaActual"].ToString(), _drfila["Hora"].ToString(), "", "",
                         int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0,
-                        Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _dtbfaltasj = (DataTable)ViewState["FaltasJ"];
@@ -2389,7 +2387,7 @@
                         int.Parse(_drfila["CodigoGestorFJ"].ToString()), _drfila["Descripcion"].ToString(),
                         DateTime.Now.ToString("MM/dd/yyyy"), DateTime.Now.ToString("HH:mm"), "", "",
                         int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0,
-                        Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _dtbfaltasi = (DataTable)ViewState["FaltasI"];
@@ -2401,7 +2399,7 @@
                         int.Parse(_drfila["CodigoGestorFI"].ToString()), _drfila["Descripcion"].ToString(),
                         DateTime.Now.ToString("MM/dd/yyyy"), DateTime.Now.ToString("HH:mm"), "", "",
                         int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0,
-                        Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _dtbpermisos = (DataTable)ViewState["Permiso"];
@@ -2413,7 +2411,7 @@
                         int.Parse(_drfila["CodigoGestorPE"].ToString()), _drfila["Descripcion"].ToString(),
                         _drfila["FechaPermiso"].ToString(), DateTime.Now.ToString("HH:mm"), "", "",
                         int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0,
-                        Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _dtbcambioturno = (DataTable)ViewState["CambioTurno"];
@@ -2423,7 +2421,7 @@
                     _dts = new BitacoraDAO().FunNewBitacora(0, ViewState["Bitacora"].ToString(), "CTU",
                         int.Parse(_drfila["Codigo"].ToString()), _drfila["Observacion"].ToString(),
                         int.Parse(_drfila["CodigoGestorCT"].ToString()), _drfila["Descripcion"].ToString(),
-                        DateTime.Now.ToString("MM/dd/yyyy"), DateTime.Now.ToString("HH:mm"), _drfila["TurnoA"].ToString(), _drfila["TurnoN"].ToString(), int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0, Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        DateTime.Now.ToString("MM/dd/yyyy"), DateTime.Now.ToString("HH:mm"), _drfila["TurnoA"].ToString(), _drfila["TurnoN"].ToString(), int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0, Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _dtbvarios = (DataTable)ViewState["Varios"];
@@ -2435,7 +2433,7 @@
                         int.Parse(_drfila["CodigoGestorVA"].ToString()), _drfila["Descripcion"].ToString(),
                         DateTime.Now.ToString("MM/dd/yyyy"), DateTime.Now.ToString("HH:mm"), "", "",
                         int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0,
-                        Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _dtbrefuerzos = (DataTable)ViewState["Refuerzos"];
@@ -2447,7 +2445,7 @@
                         int.Parse(_drfila["CodigoGestorRE"].ToString()), _drfila["Descripcion"].ToString(),
                         DateTime.Now.ToString("MM/dd/yyyy"), DateTime.Now.ToString("HH:mm"), "", "",
                         int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0,
-                        Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _dtbnovedades = (DataTable)ViewState["Novedades"];
@@ -2457,7 +2455,7 @@
                     _dts = new BitacoraDAO().FunNewBitacora(1, ViewState["Bitacora"].ToString(), "NOV",
                         int.Parse(_drfila["Codigo"].ToString()), _drfila["Observacion"].ToString(),
                         0, _drfila["Descripcion"].ToString(), DateTime.Now.ToString("MM/dd/yyyy"),
-                        DateTime.Now.ToString("HH:mm"), "", "", int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0, Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        DateTime.Now.ToString("HH:mm"), "", "", int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0, Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _dtbterreno = (DataTable)ViewState["Terreno"];
@@ -2467,7 +2465,7 @@
                     _dts = new BitacoraDAO().FunNewBitacora(1, ViewState["Bitacora"].ToString(), "GTE",
                         int.Parse(_drfila["Codigo"].ToString()), _drfila["Observacion"].ToString(),
                         0, _drfila["Descripcion"].ToString(), DateTime.Now.ToString("MM/dd/yyyy"),
-                        DateTime.Now.ToString("HH:mm"), "", "", int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0, Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        DateTime.Now.ToString("HH:mm"), "", "", int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0, Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _dtbsistemas = (DataTable)ViewState["Sistemas"];
@@ -2478,7 +2476,7 @@
                         int.Parse(_drfila["Codigo"].ToString()), _drfila["Observacion"].ToString(),
                         0, _drfila["Descripcion"].ToString(), DateTime.Now.ToString("MM/dd/yyyy"), DateTime.Now.ToString("HH:mm"),
                         "", "", int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0,
-                        Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _dtbpagos = (DataTable)ViewState["Pagos"];
@@ -2487,7 +2485,7 @@
                 {
                     _dts = new BitacoraDAO().FunNewBitacora(1, ViewState["Bitacora"].ToString(), "CPA",
                         int.Parse(_drfila["Codigo"].ToString()), _drfila["Observacion"].ToString(),
-                        0, _drfila["Descripcion"].ToString(), DateTime.Now.ToString("MM/dd/yyyy"), DateTime.Now.ToString("HH:mm"), "", "", int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0, Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        0, _drfila["Descripcion"].ToString(), DateTime.Now.ToString("MM/dd/yyyy"), DateTime.Now.ToString("HH:mm"), "", "", int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0, Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _dtbadicional = (DataTable)ViewState["Adicionales"];
@@ -2498,7 +2496,7 @@
                         int.Parse(_drfila["Codigo"].ToString()), _drfila["Observacion"].ToString(),
                         0, _drfila["Descripcion"].ToString(), DateTime.Now.ToString("MM/dd/yyyy"), DateTime.Now.ToString("HH:mm"),
                         "", "", int.Parse(Session["usuCodigo"].ToString()), "", "", "", "", "", 0, 0, 0, 0, 0,
-                        Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _response = string.Format("{0}?MensajeRetornado={1}&Bitacora={2}&Estado={3}&Fecha={4}",

@@ -82,7 +82,9 @@
             return _dts;
         }
 
-        public DataSet FunRegReasignaCartera(int tipo, int codigocedente, int cpcecodigo, string motivo, string observacion, int gestorasignado, int diasmora, string auxv1, string auxv2, string auxv3, int auxi1, int auxi2, int auxi3, int usucodigo, string terminal, string conexion)
+        public DataSet FunRegReasignaCartera(int tipo, int codigocedente, int cpcecodigo, string motivo, string observacion, 
+            int gestorasignado, int diasmora, string auxv1, string auxv2, string auxv3, int auxi1, int auxi2, int auxi3, int usucodigo,
+            string terminal, string conexion)
         {
             try
             {
@@ -122,7 +124,8 @@
         }
 
         public string FunEditarTelefonos(int tipo, int perscodigo, int cldecodigo, string tipotelefono, string propietario,
-            string nombreref, string apellidoref, string telefono, string prefijo, string telefonoanterior, string auxv1, string auxv2, string auxv3, int auxi1, int auxi2, int auxi3, int usucodigo, string terminal, string conexion)
+            string nombreref, string apellidoref, string telefono, string prefijo, string telefonoanterior, string auxv1, string auxv2, 
+            string auxv3, int auxi1, int auxi2, int auxi3, int usucodigo, string terminal, string conexion)
         {
             try
             {
@@ -663,7 +666,9 @@
             return _dts;
         }
 
-        public DataSet FunRepGerencialG(int tipo, int cedecodigo, int cpcecodigo, string fechadesde, string fechahasta, int gestor, string sp, string auxv1, string auxv2, string auxv3, string auxv4, string auxv5, string auxv6, int auxi1, int auxi2, int auxi3, int auxi4, int auxi5, int auxi6, string conexion)
+        public DataSet FunRepGerencialG(int tipo, int cedecodigo, int cpcecodigo, string fechadesde, string fechahasta, int gestor, 
+            string sp, string auxv1, string auxv2, string auxv3, string auxv4, string auxv5, string auxv6, int auxi1, int auxi2, 
+            int auxi3, int auxi4, int auxi5, int auxi6, string conexion)
         {
             try
             {
@@ -816,8 +821,9 @@
             }
             return _dts;
         }
-        public string FunCrearArbolDecision(int codigocatalago, int codigoaccion, string descripcion, bool estado, bool contacto, string auxv1,
-            string auxv2, int auxi1, int auxi2, int usucodigo, string terminal, DataTable dtbEfecto, DataTable dtbRespuesta, DataTable dtbContacto,
+        public string FunCrearArbolDecision(int codigocatalago, int codigoaccion, string descripcion, bool estado, bool contacto, 
+            string auxv1, string auxv2, int auxi1, int auxi2, int usucodigo, string terminal, DataTable dtbEfecto, 
+            DataTable dtbRespuesta, DataTable dtbContacto,
             string sp, string conexion)
         {
             try

@@ -80,6 +80,8 @@
         public int ValorI { get; set; }
     }
     #endregion
+
+    #region Catalogo BRENCH
     public class BrenchAdminDTO
     {
         public int Codigo { get; set; }
@@ -93,18 +95,34 @@
         public int Auxi1 { get; set; }
         public int Auxi2 { get; set; }
         public int Auxi3 { get; set; }
+        public string Urllink { get; set; }
     }
-    public class CatalogoProductos
+    public class NuevoBrenchDTO
     {
-        public string Producto { get; set; }
-        public string CodigoCatalogo { get; set; }
-        public string CodigoProducto { get; set; }
-        public string CatalogoProducto { get; set; }
-        public string CodigoFamilia { get; set; }
-        public string Familia { get; set; }
+        public string Codigo { get; set; }
+        public int RangoIni { get; set; }
+        public int RangoFin { get; set; }
+        public string Etiqueta { get; set; }
+        public string Orden { get; set; }
         public string Estado { get; set; }
-        public string CodProducto { get; set; }
+        public string Auxv1 { get; set; }
+        public string Auxv2 { get; set; }
+        public string Auxv3 { get; set; }
+        public int Auxi1 { get; set; }
+        public int Auxi2 { get; set; }
+        public int Auxi3 { get; set; }
     }
+    public class BrenchDET
+    {
+        public int Codigo { get; set; }
+        public int RangoIni { get; set; }
+        public int RangoFin { get; set; }
+        public string Etiqueta { get; set; }
+        public int Orden { get; set; }
+    }
+    #endregion
+
+    #region Catalogo ARBOL DECISION
     public class SpeechAdminDTO
     {
         public int Codigo { get; set; }
@@ -148,4 +166,78 @@
         public int Auxi1 { get; set; }
         public int Auxi2 { get; set; }
     }
+    #endregion
+
+    #region Catalogo CEDENTES
+    public class CedenteAdminDTO
+    {
+        public int Codigo { get; set; }
+        public string Ciudad { get; set; }
+        public string Cedente { get; set; }
+        public string Telefono { get; set; }
+        public string Estado { get; set; }
+        public string Urllink { get; set; }
+
+    }
+    public class CedenteContactos
+    {
+        public int CodigoContacto { get; set; }
+        public string Contacto { get; set; }
+        public string CodigoCargo { get; set; }
+        public string Cargo { get; set; }
+        public string Ext { get; set; }
+        public string Celular { get; set; }
+        public string Email1 { get; set; }
+        public string Email2 { get; set; }
+    }
+
+    public class CedenteProductos
+    {
+        public string CodigoProducto { get; set; }
+        public string Producto { get; set; }
+        public string Descripcion { get; set; }
+        public string Estado { get; set; }
+    }
+    public class CedenteAgencias
+    {
+        public int AgenCodigo { get; set; }
+        public string CodigoAgencia { get; set; }
+        public string NombreAgencia { get; set; }
+        public string Sucursal { get; set; }
+        public string Zona { get; set; }
+        public string Estado { get; set; }
+        public string CodigoSucursal { get; set; }
+        public string CodigoZona { get; set; }
+    }
+    public class CatalogoProductos
+    {
+        public string Producto { get; set; }
+        public string CodigoCatalogo { get; set; }
+        public string CodigoProducto { get; set; }
+        public string CatalogoProducto { get; set; }
+        public string CodigoFamilia { get; set; }
+        public string Familia { get; set; }
+        public string Estado { get; set; }
+        public string CodProducto { get; set; }
+    }
+    #endregion
+
+    #region Catalogo SEGMENTO
+    public class SegmentoAdmin
+    {
+        public string Codigo { get; set; }
+        public string Segmento { get; set; }
+        public string Descripcion { get; set; }
+        public int ValorI { get; set; }
+        public int ValorF { get; set; }
+        public string Estado { get; set; }
+        public string Auxv1 { get; set; }
+        public string Auxv2 { get; set; }
+        public string Auxv3 { get; set; }
+        public int Auxi1 { get; set; }
+        public int Auxi2 { get; set; }
+        public int Auxi3 { get; set; }
+    }  
+    #endregion
+
 }

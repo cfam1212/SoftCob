@@ -67,7 +67,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <div class="panel-info">
+<%--                <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updOpciones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -77,7 +77,7 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>
+                </div>--%>
                 <div class="panel-body">
                     <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
@@ -128,9 +128,10 @@
                                                     <asp:UpdatePanel ID="updAccion" runat="server">
                                                         <ContentTemplate>
                                                             <asp:Panel ID="pnlAccion" runat="server" Height="180px" ScrollBars="Vertical" Visible="false">
-                                                                <asp:GridView ID="GrdvAccion" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,Estado,Contacto" ForeColor="#333333" PageSize="5" TabIndex="5" Width="100%" OnRowDataBound="GrdvAccion_RowDataBound">
+                                                                <asp:GridView ID="GrdvAccion" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,Estado,Contacto" ForeColor="#333333" PageSize="5" TabIndex="5" Width="100%" OnRowDataBound="GrdvAccion_RowDataBound" OnSelectedIndexChanged="GrdvAccion_SelectedIndexChanged">
                                                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                     <Columns>
+                                                                        <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
                                                                         <asp:BoundField DataField="Descripcion" HeaderText="Acción" />
                                                                         <asp:TemplateField HeaderText="Activo">
                                                                             <ItemTemplate>

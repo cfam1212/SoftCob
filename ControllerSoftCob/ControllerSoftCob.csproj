@@ -57,12 +57,12 @@
     <Compile Include="ArbolDecisionDAO.cs" />
     <Compile Include="BitacoraDAO.cs" />
     <Compile Include="CatalogoDTO.cs" />
-    <Compile Include="CatalogosDAO.cs" />
     <Compile Include="CedenteDAO.cs" />
     <Compile Include="ConsultaDatosDAO.cs" />
     <Compile Include="ControllerDAO.cs" />
     <Compile Include="ElastixDAO.cs" />
     <Compile Include="FuncionesDAO.cs" />
+    <Compile Include="GestionTelefonicaDAO.cs" />
     <Compile Include="ListaTrabajoDAO.cs" />
     <Compile Include="PagoCarteraDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

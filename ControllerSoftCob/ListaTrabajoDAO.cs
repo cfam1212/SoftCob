@@ -50,11 +50,14 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    if (_opcion == 0) _respuesta = _db.SoftCob_RESPUESTA.Where(r => r.ARRE_CODIGO == _arrecodigo && r.arre_estado).FirstOrDefault().arre_pago;
+                    if (_opcion == 0) _respuesta = _db.SoftCob_RESPUESTA.Where(r => r.ARRE_CODIGO == _arrecodigo 
+                    && r.arre_estado).FirstOrDefault().arre_pago;
 
-                    if (_opcion == 1) _respuesta = _db.SoftCob_RESPUESTA.Where(r => r.ARRE_CODIGO == _arrecodigo && r.arre_estado).FirstOrDefault().arre_llamar;
+                    if (_opcion == 1) _respuesta = _db.SoftCob_RESPUESTA.Where(r => r.ARRE_CODIGO == _arrecodigo 
+                    && r.arre_estado).FirstOrDefault().arre_llamar;
 
-                    if (_opcion == 2) _respuesta = bool.Parse(_db.SoftCob_RESPUESTA.Where(r => r.ARRE_CODIGO == _arrecodigo && r.arre_estado == true).FirstOrDefault().arre_auxv2);
+                    if (_opcion == 2) _respuesta = bool.Parse(_db.SoftCob_RESPUESTA.Where(r => r.ARRE_CODIGO == _arrecodigo 
+                    && r.arre_estado == true).FirstOrDefault().arre_auxv2);
                 }
             }
             catch (Exception)
@@ -70,7 +73,8 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    List<SoftCob_TELEFONOS_CEDENTE> _dato = _db.SoftCob_TELEFONOS_CEDENTE.Where(c => c.tece_cedecodigo == _cedecodigo && c.tece_perscodigo == _perscodigo && c.tece_numero == _telefono).ToList();
+                    List<SoftCob_TELEFONOS_CEDENTE> _dato = _db.SoftCob_TELEFONOS_CEDENTE.Where(c => c.tece_cedecodigo == _cedecodigo
+                    && c.tece_perscodigo == _perscodigo && c.tece_numero == _telefono).ToList();
 
                     if (_dato.Count > 0) _codigo = 1;
                     else _codigo = 0;
@@ -89,7 +93,8 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    SoftCob_REGISTRO_VOLVERALLAMAR _original = _db.SoftCob_REGISTRO_VOLVERALLAMAR.Where(r => r.REVL_CODIGO == _regllamar.REVL_CODIGO && r.revl_cldecodigo == _regllamar.revl_cldecodigo).FirstOrDefault();
+                    SoftCob_REGISTRO_VOLVERALLAMAR _original = _db.SoftCob_REGISTRO_VOLVERALLAMAR.Where(r => 
+                    r.REVL_CODIGO == _regllamar.REVL_CODIGO && r.revl_cldecodigo == _regllamar.revl_cldecodigo).FirstOrDefault();
 
                     _db.SoftCob_REGISTRO_VOLVERALLAMAR.Attach(_original);
                     _original.revl_gestionado = _regllamar.revl_gestionado;
@@ -108,7 +113,8 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    return _db.SoftCob_LISTATRABAJO_DETALLE.Where(x => x.LTCA_CODIGO == _codigoltca && x.ltde_cldecodigo == _codigoclde && x.ltde_gestorasignado == _gestorasignado).FirstOrDefault().ltde_perscodigo;
+                    return _db.SoftCob_LISTATRABAJO_DETALLE.Where(x => x.LTCA_CODIGO == _codigoltca && x.ltde_cldecodigo == _codigoclde
+                    && x.ltde_gestorasignado == _gestorasignado).FirstOrDefault().ltde_perscodigo;
                 }
             }
             catch (Exception ex)
@@ -123,7 +129,8 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    SoftCob_LISTATRABAJO_ACTIVAS _original = _db.SoftCob_LISTATRABAJO_ACTIVAS.Where(x => x.lsac_listatrabajo == _listatrab.lsac_listatrabajo && x.lsac_gestorasignado == _listatrab.lsac_gestorasignado).FirstOrDefault();
+                    SoftCob_LISTATRABAJO_ACTIVAS _original = _db.SoftCob_LISTATRABAJO_ACTIVAS.Where(x => x.lsac_listatrabajo ==
+                    _listatrab.lsac_listatrabajo && x.lsac_gestorasignado == _listatrab.lsac_gestorasignado).FirstOrDefault();
 
                     _db.SoftCob_LISTATRABAJO_ACTIVAS.Attach(_original);
                     _original.lsac_estado = false;
@@ -142,7 +149,8 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    SoftCob_LISTATRABAJO_DETALLE _original = _db.SoftCob_LISTATRABAJO_DETALLE.Where(x => x.LTCA_CODIGO == _listadetalle.LTCA_CODIGO && x.LTDE_CODIGO == _listadetalle.LTDE_CODIGO).FirstOrDefault();
+                    SoftCob_LISTATRABAJO_DETALLE _original = _db.SoftCob_LISTATRABAJO_DETALLE.Where(x => x.LTCA_CODIGO ==
+                    _listadetalle.LTCA_CODIGO && x.LTDE_CODIGO == _listadetalle.LTDE_CODIGO).FirstOrDefault();
                     _db.SoftCob_LISTATRABAJO_DETALLE.Attach(_original);
                     _original.ltde_estado = _listadetalle.ltde_estado;
                     _original.ltde_gestionado = _listadetalle.ltde_gestionado;
@@ -161,7 +169,8 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    SoftCob_LISTATRABAJO_CABECERA _original = _db.SoftCob_LISTATRABAJO_CABECERA.Where(x => x.LTCA_CODIGO == _listacabecera.LTCA_CODIGO).FirstOrDefault();
+                    SoftCob_LISTATRABAJO_CABECERA _original = _db.SoftCob_LISTATRABAJO_CABECERA.Where(x => x.LTCA_CODIGO == 
+                    _listacabecera.LTCA_CODIGO).FirstOrDefault();
                     _db.SoftCob_LISTATRABAJO_CABECERA.Attach(_original);
                     _original.ltca_estado = _listacabecera.ltca_estado;
                     _db.SaveChanges();
@@ -257,7 +266,56 @@
                                 Auxv3 = datos.brch_auxv3,
                                 Auxi1 = (int)datos.brch_auxi1,
                                 Auxi2 = (int)datos.brch_auxi2,
-                                Auxi3 = (int)datos.brch_auxi3
+                                Auxi3 = (int)datos.brch_auxi3,
+                                Urllink = "WFrm_NuevoBrench.aspx?CodigoBrench=" + datos.BRCH_CODIGO
+                            };
+
+                return _dts = new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataSet FunGetBrenchDet(int codigo)
+        {
+            try
+            {
+                var query = from datos in _db.SoftCob_BRENCHDET
+                            where datos.BRCH_CODIGO == codigo
+                            orderby datos.brde_orden
+                            select new NuevoBrenchDTO
+                            {
+                                Codigo = datos.BRDE_CODIGO.ToString(),
+                                RangoIni = datos.brde_rangoinicial,
+                                RangoFin = datos.brde_rangofinal,
+                                Etiqueta = datos.brde_etiqueta,
+                                Orden = datos.brde_orden.ToString(),
+                                Estado = datos.brde_estado == true ? "Activo" : "Inactivo",
+                                Auxv1 = datos.brde_auxv1,
+                                Auxv2 = datos.brde_auxv2,
+                                Auxv3 = datos.brde_auxv3,
+                                Auxi1 = (int)datos.brde_auxi1,
+                                Auxi2 = (int)datos.brde_auxi1,
+                                Auxi3 = (int)datos.brde_auxi3
+                            };
+
+                return _dts = new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataSet FunGetBrenchDetPorID(int codigoBRCH, int codigoBRDE)
+        {
+            try
+            {
+                var query = from datos in _db.SoftCob_BRENCHDET
+                            where datos.BRCH_CODIGO == codigoBRCH && datos.BRDE_CODIGO == codigoBRDE
+                            select new NuevoBrenchDTO
+                            {
+                                Estado = datos.brde_estado == true ? "Activo" : "Inactivo"
                             };
 
                 return _dts = new FuncionesDAO().FunCambiarDataSet(query.ToList());

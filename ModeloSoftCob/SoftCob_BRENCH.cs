@@ -14,6 +14,12 @@ namespace ModeloSoftCob
     
     public partial class SoftCob_BRENCH
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SoftCob_BRENCH()
+        {
+            this.SoftCob_BRENCHDET = new HashSet<SoftCob_BRENCHDET>();
+        }
+    
         public int BRCH_CODIGO { get; set; }
         public int brch_cedecodigo { get; set; }
         public int brch_cpcecodigo { get; set; }
@@ -30,5 +36,8 @@ namespace ModeloSoftCob
         public System.DateTime brch_fum { get; set; }
         public int brch_uum { get; set; }
         public string brch_tum { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SoftCob_BRENCHDET> SoftCob_BRENCHDET { get; set; }
     }
 }

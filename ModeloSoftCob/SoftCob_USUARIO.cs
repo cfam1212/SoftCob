@@ -21,6 +21,7 @@ namespace ModeloSoftCob
             this.SoftCob_LOGUEO_TIEMPOS = new HashSet<SoftCob_LOGUEO_TIEMPOS>();
             this.SoftCob_LOGUEO_TIEMPOS1 = new HashSet<SoftCob_LOGUEO_TIEMPOS>();
             this.SoftCob_SUPERVISORES = new HashSet<SoftCob_SUPERVISORES>();
+            this.SoftCob_CONFIGURACION_PHONE = new HashSet<SoftCob_CONFIGURACION_PHONE>();
         }
     
         public int USUA_CODIGO { get; set; }
@@ -76,5 +77,7 @@ namespace ModeloSoftCob
         public virtual ICollection<SoftCob_LOGUEO_TIEMPOS> SoftCob_LOGUEO_TIEMPOS1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoftCob_SUPERVISORES> SoftCob_SUPERVISORES { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SoftCob_CONFIGURACION_PHONE> SoftCob_CONFIGURACION_PHONE { get; set; }
     }
 }

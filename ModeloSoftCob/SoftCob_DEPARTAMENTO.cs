@@ -18,6 +18,7 @@ namespace ModeloSoftCob
         public SoftCob_DEPARTAMENTO()
         {
             this.SoftCob_USUARIO = new HashSet<SoftCob_USUARIO>();
+            this.SoftCob_EMPLOYEE = new HashSet<SoftCob_EMPLOYEE>();
         }
     
         public int DEPA_CODIGO { get; set; }
@@ -39,5 +40,7 @@ namespace ModeloSoftCob
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoftCob_USUARIO> SoftCob_USUARIO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SoftCob_EMPLOYEE> SoftCob_EMPLOYEE { get; set; }
     }
 }

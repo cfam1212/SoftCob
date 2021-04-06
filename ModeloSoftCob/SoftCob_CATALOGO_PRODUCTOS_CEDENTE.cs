@@ -18,6 +18,7 @@ namespace ModeloSoftCob
         public SoftCob_CATALOGO_PRODUCTOS_CEDENTE()
         {
             this.SoftCob_ACCION = new HashSet<SoftCob_ACCION>();
+            this.SoftCob_CLIENTE_DEUDOR = new HashSet<SoftCob_CLIENTE_DEUDOR>();
         }
     
         public int CPCE_CODIGO { get; set; }
@@ -35,5 +36,7 @@ namespace ModeloSoftCob
         public virtual SoftCob_PRODUCTOS_CEDENTE SoftCob_PRODUCTOS_CEDENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoftCob_ACCION> SoftCob_ACCION { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SoftCob_CLIENTE_DEUDOR> SoftCob_CLIENTE_DEUDOR { get; set; }
     }
 }

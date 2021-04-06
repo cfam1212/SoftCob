@@ -66,10 +66,49 @@
       <DependentUpon>ModeloSoftCob.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoftCob_ACCESOLISTA.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_ACCESO_CONSULTA_CEDENTES.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_ACCION.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
+    <Compile Include="SoftCob_ACCIONGESTION.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_AGENCIAS_CEDENTE.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_ARBOL_SCORETELEFONO.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_BITACORA_CAB.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_BITACORA_DET.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_BRENCH.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_BRENCHDET.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_BRENCHGESTORCAB.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_BRENCHMESCAB.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_BRENCHMESDET.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_CAMPOS_ADICIONALES.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_CAMPOS_ESTRATEGIA.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_CAMPOS_SPEECH.cs">
@@ -81,22 +120,97 @@
     <Compile Include="SoftCob_CEDENTE.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
+    <Compile Include="SoftCob_CITACIONES_CAB.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_CITACIONES_DET.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_CITACIONES_REV.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_CIUDAD.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_CLIENTE_DEUDOR.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_CONFIGURACION_PHONE.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_CONTACTO.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
+    <Compile Include="SoftCob_CONTACTOS_CEDENTE.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_CUENTA_DEUDOR.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_DEPARTAMENTO.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_DEUDOR_REFERENCIAS.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_EFECTO.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
+    <Compile Include="SoftCob_EMPLOYEE.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_ESTADOS_DELYO.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_ESTILOS_NEGOCIACION.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_ESTRACAB_HISTO.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_ESTRADET_HISTO.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_ESTRATEGIA_CABECERA.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
+    <Compile Include="SoftCob_ESTRATEGIA_DETALLE.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_ESTUDIOS.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_EVALUACION_CAB.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_EVALUACION_DET.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_EVALUACION_USU.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_EXPERIENCIA.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_GESTION_TELEFONICA.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_GESTORES_LISTASFDA.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_GESTOR_SUPERVISOR.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_HORARIOS_CAB.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_HORARIOS_DET.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_IDIOMAS.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_IMPULSORES.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_LISTATRABAJO_ACTIVAS.cs">
@@ -108,6 +222,12 @@
     <Compile Include="SoftCob_LISTATRABAJO_DETALLE.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
+    <Compile Include="SoftCob_LOG.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_LOGO_CEDENTES.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_LOGUEO_TIEMPOS.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
@@ -117,10 +237,31 @@
     <Compile Include="SoftCob_MENU_TAREA.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
+    <Compile Include="SoftCob_METAPROGRAMAS.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_MODALIDADES.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_NOTAS_GESTION.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_OTROSESTUDIOS.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_PAGOSBRENCH_CAB.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_PAGOSBRENCH_DET.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_PAGOSCABECERA.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_PAGOSCARTERA.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_PAIS.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_PARAMETRO_CABECERA.cs">
@@ -132,19 +273,61 @@
     <Compile Include="SoftCob_PERFIL.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
+    <Compile Include="SoftCob_PERFIL_ACTITUDINAL.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_PERFIL_DEUDOR.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_PERFIL_MENU_TAREA.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_PERSONA.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_PRODUCTOS_CEDENTE.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
+    <Compile Include="SoftCob_PROTOCOLO_EVALUACION.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_PROVINCIA.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_PROYECCION_CAB.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_PROYECCION_DET.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_REFERENCIASLABORALES.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_REFERENCIASPERSONALES.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_REGION.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_REGISTRO_ABONOSPAGO.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_REGISTRO_BROADCAST.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_REGISTRO_VOLVERALLAMAR.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_RESPUESTA.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_SCORETELEFONO.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_SCORING_TELEFONICO.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_SEGMENTO_CABECERA.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_SPEECH_CABECERA.cs">

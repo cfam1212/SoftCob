@@ -1,8 +1,7 @@
-﻿
-
-namespace SoftCob.Views.Breanch
+﻿namespace SoftCob.Views.Breanch
 {
     using ControllerSoftCob;
+    using ModeloSoftCob;
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -72,7 +71,7 @@ namespace SoftCob.Views.Breanch
         #region Procedimientos y Funciones
         private void FunCargaMantenimiento()
         {
-            GSBPO_BRENCH datos = new ListaTrabajoDAO().FunGetBrenchAdminPorID(int.Parse(ViewState["CodigoBrench"].ToString()));
+            SoftCob_BRENCH datos = new ListaTrabajoDAO().FunGetBrenchAdminPorID(int.Parse(ViewState["CodigoBrench"].ToString()));
             DdlCedente.SelectedValue = datos.brch_cedecodigo.ToString();
             ChkEstadoBrench.Checked = datos.brch_estado;
             ChkEstadoBrench.Text = datos.brch_estado ? "Activo" : "Inactivo";
@@ -82,7 +81,7 @@ namespace SoftCob.Views.Breanch
             ViewState["fechacreacion"] = datos.brch_fechacreacion.ToString();
             ViewState["usucreacion"] = datos.brch_usuariocreacion;
             ViewState["terminalcreacion"] = datos.brch_terminalcreacion;
-            dts = new ListaTrabajoDTO().FunGetBrenchDet(int.Parse(ViewState["CodigoBrench"].ToString()));
+            dts = new ListaTrabajoDAO().FunGetBrenchDet(int.Parse(ViewState["CodigoBrench"].ToString()));
             ViewState["BrenchDet"] = dts.Tables[0];
             GrdvBrench.DataSource = dts;
             GrdvBrench.DataBind();
@@ -99,7 +98,7 @@ namespace SoftCob.Views.Breanch
             switch (opcion)
             {
                 case 0:
-                    DdlCedente.DataSource = new CatalogosDTO().FunGetCedentes();
+                    DdlCedente.DataSource = new CedenteDAO().FunGetCedentes();
                     DdlCedente.DataTextField = "Descripcion";
                     DdlCedente.DataValueField = "Codigo";
                     DdlCedente.DataBind();
@@ -109,7 +108,7 @@ namespace SoftCob.Views.Breanch
                     DdlCatalogo.Items.Add(itemC);
                     break;
                 case 1:
-                    DdlCatalogo.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                     DdlCatalogo.DataTextField = "CatalogoProducto";
                     DdlCatalogo.DataValueField = "CodigoCatalogo";
                     DdlCatalogo.DataBind();
@@ -123,11 +122,11 @@ namespace SoftCob.Views.Breanch
         {
             try
             {
-                dts = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                 if (dts.Tables[0].Rows.Count > 0)
                 {
                     ViewState["CodigoCedente"] = DdlCedente.SelectedValue;
-                    DdlCatalogo.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                     DdlCatalogo.DataTextField = "CatalogoProducto";
                     DdlCatalogo.DataValueField = "CodigoCatalogo";
                     DdlCatalogo.DataBind();
@@ -164,27 +163,27 @@ namespace SoftCob.Views.Breanch
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
                     return;
                 }
                 if (DdlCatalogo.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Catálogo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this);
                     return;
                 }
                 if (string.IsNullOrEmpty(TxtRinicio.Text.Trim()) || TxtRinicio.Text.Trim() == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Rango Inicio..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Rango Inicio..!", this);
                     return;
                 }
                 if (string.IsNullOrEmpty(TxtRFin.Text.Trim()) || TxtRFin.Text.Trim() == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Rango Fin..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Rango Fin..!", this);
                     return;
                 }
                 if (int.Parse(TxtRFin.Text.Trim()) <= int.Parse(TxtRinicio.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Rango Final no puede ser menor o igual al Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Rango Final no puede ser menor o igual al Inicial..!", this);
                     return;
                 }
                 if (ViewState["BrenchDet"] != null)
@@ -202,7 +201,7 @@ namespace SoftCob.Views.Breanch
                     {
                         foreach (DataRow dr in dtbBrench.Rows)
                         {
-                            between = new FuncionesBAS().FunBetween(int.Parse(dr[1].ToString()), int.Parse(dr[2].ToString()),
+                            between = new FuncionesDAO().FunBetween(int.Parse(dr[1].ToString()), int.Parse(dr[2].ToString()),
                                 int.Parse(TxtRinicio.Text), int.Parse(TxtRFin.Text));
                             if (between > 0)
                             {
@@ -214,7 +213,7 @@ namespace SoftCob.Views.Breanch
                 }
                 if (lexiste)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Rango ya existe creado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Rango ya existe creado..!", this);
                     return;
                 }
                 rangox = orden + 1;
@@ -272,7 +271,7 @@ namespace SoftCob.Views.Breanch
                     ChkEstado = (CheckBox)(e.Row.Cells[3].FindControl("chkEstado"));
                     ImgEliminar = (ImageButton)(e.Row.Cells[4].FindControl("imgEliminar"));
                     codigo = int.Parse(GrdvBrench.DataKeys[e.Row.RowIndex].Values["Codigo"].ToString());
-                    dtsX = new ListaTrabajoDTO().FunGetBrenchDetPorID(int.Parse(ViewState["CodigoBrench"].ToString()), codigo);
+                    dtsX = new ListaTrabajoDAO().FunGetBrenchDetPorID(int.Parse(ViewState["CodigoBrench"].ToString()), codigo);
                     if (dtsX.Tables[0].Rows.Count > 0)
                     {
                         ImgEliminar.Enabled = false;
@@ -298,31 +297,31 @@ namespace SoftCob.Views.Breanch
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
                     return;
                 }
 
                 if (DdlCatalogo.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Catálogo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtRinicio.Text.Trim()) || TxtRinicio.Text.Trim() == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Rango Inicio..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Rango Inicio..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtRFin.Text.Trim()) || TxtRFin.Text.Trim() == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Rango Fin..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Rango Fin..!", this);
                     return;
                 }
 
                 if (int.Parse(TxtRFin.Text.Trim()) <= int.Parse(TxtRinicio.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Rango Final no puede ser menor o igual al Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Rango Final no puede ser menor o igual al Inicial..!", this);
                     return;
                 }
 
@@ -332,7 +331,7 @@ namespace SoftCob.Views.Breanch
                     resultado = dtbBrench.Select("Codigo<>'" + ViewState["Codigo"].ToString() + "'");
                     foreach (DataRow dr in resultado)
                     {
-                        between = new FuncionesBAS().FunBetween(int.Parse(dr["RangoIni"].ToString()), int.Parse(dr["RangoFin"].ToString()),
+                        between = new FuncionesDAO().FunBetween(int.Parse(dr["RangoIni"].ToString()), int.Parse(dr["RangoFin"].ToString()),
                             int.Parse(TxtRinicio.Text), int.Parse(TxtRFin.Text));
                         if (between > 0)
                         {
@@ -344,7 +343,7 @@ namespace SoftCob.Views.Breanch
 
                 if (lexiste)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Rango ya existe creado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Rango ya existe creado..!", this);
                     return;
                 }
 
@@ -464,13 +463,13 @@ namespace SoftCob.Views.Breanch
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
                     return;
                 }
 
                 if (DdlCatalogo.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Catálogo/Producto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this);
                     return;
                 }
 
@@ -478,25 +477,27 @@ namespace SoftCob.Views.Breanch
 
                 if (dtbBrench.Rows.Count == 0)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese al menos un Rango para Brench..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese al menos un Rango para Brench..!", this);
                     return;
                 }
 
                 System.Threading.Thread.Sleep(300);
-                GSBPO_BRENCH datos = new GSBPO_BRENCH();
-                datos.BRCH_CODIGO = int.Parse(ViewState["CodigoBrench"].ToString());
-                datos.brch_cedecodigo = int.Parse(DdlCedente.SelectedValue);
-                datos.brch_cpcecodigo = int.Parse(DdlCatalogo.SelectedValue);
-                datos.brch_estado = ChkEstadoBrench.Checked;
-                datos.brch_auxv1 = "";
-                datos.brch_auxv2 = "";
-                datos.brch_auxv3 = "";
-                datos.brch_auxi1 = 0;
-                datos.brch_auxi2 = 0;
-                datos.brch_auxi3 = 0;
-                datos.brch_fum = DateTime.Now;
-                datos.brch_uum = int.Parse(Session["usuCodigo"].ToString());
-                datos.brch_tum = Session["MachineName"].ToString();
+                SoftCob_BRENCH datos = new SoftCob_BRENCH();
+                {
+                    datos.BRCH_CODIGO = int.Parse(ViewState["CodigoBrench"].ToString());
+                    datos.brch_cedecodigo = int.Parse(DdlCedente.SelectedValue);
+                    datos.brch_cpcecodigo = int.Parse(DdlCatalogo.SelectedValue);
+                    datos.brch_estado = ChkEstadoBrench.Checked;
+                    datos.brch_auxv1 = "";
+                    datos.brch_auxv2 = "";
+                    datos.brch_auxv3 = "";
+                    datos.brch_auxi1 = 0;
+                    datos.brch_auxi2 = 0;
+                    datos.brch_auxi3 = 0;
+                    datos.brch_fum = DateTime.Now;
+                    datos.brch_uum = int.Parse(Session["usuCodigo"].ToString());
+                    datos.brch_tum = Session["MachineName"].ToString();
+                }
 
                 if (int.Parse(ViewState["CodigoBrench"].ToString()) == 0)
                 {
@@ -515,13 +516,15 @@ namespace SoftCob.Views.Breanch
 
                 if (dtb.Rows.Count > 0)
                 {
-                    codigo = new CedenteDTO().FunGetCodigoBrench(int.Parse(DdlCedente.SelectedValue),
+                    codigo = new CedenteDAO().FunGetCodigoBrench(int.Parse(DdlCedente.SelectedValue),
                         int.Parse(DdlCatalogo.SelectedValue), int.Parse(ViewState["CodigoBrench"].ToString()));
-                    List<GSBPO_BRENCHDET> datos1 = new List<GSBPO_BRENCHDET>();
+
+                    List<SoftCob_BRENCHDET> datos1 = new List<SoftCob_BRENCHDET>();
+
                     foreach (DataRow dr in dtb.Rows)
                     {
-                        codigodet = new CedenteDTO().FunGetCodigoBrenchDet(codigo, int.Parse(dr["Codigo"].ToString()));
-                        datos1.Add(new GSBPO_BRENCHDET()
+                        codigodet = new CedenteDAO().FunGetCodigoBrenchDet(codigo, int.Parse(dr["Codigo"].ToString()));
+                        datos1.Add(new SoftCob_BRENCHDET()
                         {
                             BRDE_CODIGO = codigodet,
                             BRCH_CODIGO = codigo,
@@ -539,14 +542,14 @@ namespace SoftCob.Views.Breanch
                         });
                     }
 
-                    datos.GSBPO_BRENCHDET = new List<GSBPO_BRENCHDET>();
-                    foreach (GSBPO_BRENCHDET addDatos in datos1)
+                    datos.SoftCob_BRENCHDET = new List<SoftCob_BRENCHDET>();
+                    foreach (SoftCob_BRENCHDET addDatos in datos1)
                     {
-                        datos.GSBPO_BRENCHDET.Add(addDatos);
+                        datos.SoftCob_BRENCHDET.Add(addDatos);
                     }
 
-                    if (datos.BRCH_CODIGO == 0) new CedenteDTO().FunCrearBrench(datos);
-                    else new CedenteDTO().FunEditBrench(datos);
+                    if (datos.BRCH_CODIGO == 0) new CedenteDAO().FunCrearBrench(datos);
+                    else new CedenteDAO().FunEditBrench(datos);
 
                     Response.Redirect("WFrm_BrenchAdmin.aspx?MensajeRetornado=Guardado con Éxito", true);
                 }

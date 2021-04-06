@@ -35,5 +35,7 @@ namespace ModeloSoftCob
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoftCob_CIUDAD> SoftCob_CIUDAD { get; set; }
+        public virtual SoftCob_PAIS SoftCob_PAIS { get; set; }
+        public virtual SoftCob_REGION SoftCob_REGION { get; set; }
     }
 }

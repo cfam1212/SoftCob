@@ -53,11 +53,15 @@
                                         ShowHeaderWhenEmpty="True" DataKeyNames="Codigo">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:BoundField DataField="Cedente" HeaderText="Cedente" />
-                                            <asp:BoundField DataField="Catalogo" HeaderText="Catálogo/Producto" />
-                                            <asp:BoundField DataField="Estado" HeaderText="Estado">
-                                            <ItemStyle HorizontalAlign="Center" />
-                                            </asp:BoundField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Cedente" HeaderText="Cedente">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Catalogo" HeaderText="Catálogo/Producto">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Estado" HeaderText="Estado">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
                                             <asp:TemplateField HeaderText="Editar">
                                                 <ItemTemplate>
                                                     <asp:ImageButton ID="Btnselecc" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="Btnselecc_Click" />

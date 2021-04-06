@@ -61,6 +61,67 @@ namespace ModeloSoftCob
         public virtual DbSet<SoftCob_TABLAS_BDD> SoftCob_TABLAS_BDD { get; set; }
         public virtual DbSet<SoftCob_PAGOSCARTERA> SoftCob_PAGOSCARTERA { get; set; }
         public virtual DbSet<SoftCob_PAGOSCABECERA> SoftCob_PAGOSCABECERA { get; set; }
+        public virtual DbSet<SoftCob_BRENCHMESCAB> SoftCob_BRENCHMESCAB { get; set; }
+        public virtual DbSet<SoftCob_BRENCHMESDET> SoftCob_BRENCHMESDET { get; set; }
+        public virtual DbSet<SoftCob_BRENCHDET> SoftCob_BRENCHDET { get; set; }
+        public virtual DbSet<SoftCob_CONTACTOS_CEDENTE> SoftCob_CONTACTOS_CEDENTE { get; set; }
+        public virtual DbSet<SoftCob_CLIENTE_DEUDOR> SoftCob_CLIENTE_DEUDOR { get; set; }
+        public virtual DbSet<SoftCob_AGENCIAS_CEDENTE> SoftCob_AGENCIAS_CEDENTE { get; set; }
+        public virtual DbSet<SoftCob_ACCIONGESTION> SoftCob_ACCIONGESTION { get; set; }
+        public virtual DbSet<SoftCob_ARBOL_SCORETELEFONO> SoftCob_ARBOL_SCORETELEFONO { get; set; }
+        public virtual DbSet<SoftCob_BITACORA_CAB> SoftCob_BITACORA_CAB { get; set; }
+        public virtual DbSet<SoftCob_BITACORA_DET> SoftCob_BITACORA_DET { get; set; }
+        public virtual DbSet<SoftCob_BRENCHGESTORCAB> SoftCob_BRENCHGESTORCAB { get; set; }
+        public virtual DbSet<SoftCob_CAMPOS_ADICIONALES> SoftCob_CAMPOS_ADICIONALES { get; set; }
+        public virtual DbSet<SoftCob_CAMPOS_ESTRATEGIA> SoftCob_CAMPOS_ESTRATEGIA { get; set; }
+        public virtual DbSet<SoftCob_DEUDOR_REFERENCIAS> SoftCob_DEUDOR_REFERENCIAS { get; set; }
+        public virtual DbSet<SoftCob_EMPLOYEE> SoftCob_EMPLOYEE { get; set; }
+        public virtual DbSet<SoftCob_ESTADOS_DELYO> SoftCob_ESTADOS_DELYO { get; set; }
+        public virtual DbSet<SoftCob_ESTILOS_NEGOCIACION> SoftCob_ESTILOS_NEGOCIACION { get; set; }
+        public virtual DbSet<SoftCob_ESTRACAB_HISTO> SoftCob_ESTRACAB_HISTO { get; set; }
+        public virtual DbSet<SoftCob_ESTRADET_HISTO> SoftCob_ESTRADET_HISTO { get; set; }
+        public virtual DbSet<SoftCob_ESTRATEGIA_DETALLE> SoftCob_ESTRATEGIA_DETALLE { get; set; }
+        public virtual DbSet<SoftCob_ESTUDIOS> SoftCob_ESTUDIOS { get; set; }
+        public virtual DbSet<SoftCob_EXPERIENCIA> SoftCob_EXPERIENCIA { get; set; }
+        public virtual DbSet<SoftCob_HORARIOS_CAB> SoftCob_HORARIOS_CAB { get; set; }
+        public virtual DbSet<SoftCob_HORARIOS_DET> SoftCob_HORARIOS_DET { get; set; }
+        public virtual DbSet<SoftCob_IDIOMAS> SoftCob_IDIOMAS { get; set; }
+        public virtual DbSet<SoftCob_IMPULSORES> SoftCob_IMPULSORES { get; set; }
+        public virtual DbSet<SoftCob_OTROSESTUDIOS> SoftCob_OTROSESTUDIOS { get; set; }
+        public virtual DbSet<SoftCob_PAGOSBRENCH_CAB> SoftCob_PAGOSBRENCH_CAB { get; set; }
+        public virtual DbSet<SoftCob_PAGOSBRENCH_DET> SoftCob_PAGOSBRENCH_DET { get; set; }
+        public virtual DbSet<SoftCob_PAIS> SoftCob_PAIS { get; set; }
+        public virtual DbSet<SoftCob_PERFIL_ACTITUDINAL> SoftCob_PERFIL_ACTITUDINAL { get; set; }
+        public virtual DbSet<SoftCob_PERFIL_DEUDOR> SoftCob_PERFIL_DEUDOR { get; set; }
+        public virtual DbSet<SoftCob_PROYECCION_CAB> SoftCob_PROYECCION_CAB { get; set; }
+        public virtual DbSet<SoftCob_PROYECCION_DET> SoftCob_PROYECCION_DET { get; set; }
+        public virtual DbSet<SoftCob_REGION> SoftCob_REGION { get; set; }
+        public virtual DbSet<SoftCob_REGISTRO_ABONOSPAGO> SoftCob_REGISTRO_ABONOSPAGO { get; set; }
+        public virtual DbSet<SoftCob_REGISTRO_BROADCAST> SoftCob_REGISTRO_BROADCAST { get; set; }
+        public virtual DbSet<SoftCob_SEGMENTO_CABECERA> SoftCob_SEGMENTO_CABECERA { get; set; }
+        public virtual DbSet<SoftCob_ACCESO_CONSULTA_CEDENTES> SoftCob_ACCESO_CONSULTA_CEDENTES { get; set; }
+        public virtual DbSet<SoftCob_ACCESOLISTA> SoftCob_ACCESOLISTA { get; set; }
+        public virtual DbSet<SoftCob_CITACIONES_CAB> SoftCob_CITACIONES_CAB { get; set; }
+        public virtual DbSet<SoftCob_CITACIONES_DET> SoftCob_CITACIONES_DET { get; set; }
+        public virtual DbSet<SoftCob_CITACIONES_REV> SoftCob_CITACIONES_REV { get; set; }
+        public virtual DbSet<SoftCob_CONFIGURACION_PHONE> SoftCob_CONFIGURACION_PHONE { get; set; }
+        public virtual DbSet<SoftCob_CUENTA_DEUDOR> SoftCob_CUENTA_DEUDOR { get; set; }
+        public virtual DbSet<SoftCob_EVALUACION_CAB> SoftCob_EVALUACION_CAB { get; set; }
+        public virtual DbSet<SoftCob_EVALUACION_DET> SoftCob_EVALUACION_DET { get; set; }
+        public virtual DbSet<SoftCob_EVALUACION_USU> SoftCob_EVALUACION_USU { get; set; }
+        public virtual DbSet<SoftCob_GESTION_TELEFONICA> SoftCob_GESTION_TELEFONICA { get; set; }
+        public virtual DbSet<SoftCob_GESTORES_LISTASFDA> SoftCob_GESTORES_LISTASFDA { get; set; }
+        public virtual DbSet<SoftCob_LOG> SoftCob_LOG { get; set; }
+        public virtual DbSet<SoftCob_LOGO_CEDENTES> SoftCob_LOGO_CEDENTES { get; set; }
+        public virtual DbSet<SoftCob_METAPROGRAMAS> SoftCob_METAPROGRAMAS { get; set; }
+        public virtual DbSet<SoftCob_MODALIDADES> SoftCob_MODALIDADES { get; set; }
+        public virtual DbSet<SoftCob_NOTAS_GESTION> SoftCob_NOTAS_GESTION { get; set; }
+        public virtual DbSet<SoftCob_PERSONA> SoftCob_PERSONA { get; set; }
+        public virtual DbSet<SoftCob_PROTOCOLO_EVALUACION> SoftCob_PROTOCOLO_EVALUACION { get; set; }
+        public virtual DbSet<SoftCob_REFERENCIASLABORALES> SoftCob_REFERENCIASLABORALES { get; set; }
+        public virtual DbSet<SoftCob_REFERENCIASPERSONALES> SoftCob_REFERENCIASPERSONALES { get; set; }
+        public virtual DbSet<SoftCob_SCORETELEFONO> SoftCob_SCORETELEFONO { get; set; }
+        public virtual DbSet<SoftCob_SCORING_TELEFONICO> SoftCob_SCORING_TELEFONICO { get; set; }
     
         public virtual ObjectResult<string> FunMenuEditUpdate(string in_check, Nullable<int> in_codigomenu, Nullable<int> in_codigotarea, Nullable<int> in_emprcodigo, string in_auxv1, string in_auxv2, string in_auxv3, Nullable<int> in_auxi1, Nullable<int> in_auxi2, Nullable<int> in_auxi3, Nullable<int> in_usucodigo, string in_terminal)
         {

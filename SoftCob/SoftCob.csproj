@@ -274,11 +274,19 @@
     <Content Include="Views\CarteraPropia\WFrm_PagoCartera.aspx" />
     <Content Include="Views\Cedente\WFrm_AsignarCartera.aspx" />
     <Content Include="Views\Cedente\WFrm_CedenteAdmin.aspx" />
+    <Content Include="Views\Cedente\WFrm_GestorSupervisor.aspx" />
+    <Content Include="Views\Cedente\WFrm_NuevoCedente.aspx" />
+    <Content Include="Views\Cedente\WFrm_NuevoDeudor.aspx" />
+    <Content Include="Views\Cedente\WFrm_ReasignarCartera.aspx" />
+    <Content Include="Views\Cedente\WFrm_SupervisorCedente.aspx" />
+    <Content Include="Views\Cedente\WFrm_UpdateDeudor.aspx" />
+    <Content Include="Views\Cedente\WFrm_UpdateGarante.aspx" />
     <Content Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx" />
     <Content Include="Views\Configuracion\WFrm_DepartamentoNuevo.aspx" />
     <Content Include="Views\Configuracion\WFrm_DesloguearAdmin.aspx" />
     <Content Include="Views\Configuracion\WFrm_ParametroAdmin.aspx" />
     <Content Include="Views\Configuracion\WFrm_ParametroNuevo.aspx" />
+    <Content Include="Views\ConsultasManager\WFrm_AccionConsulta.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Detalle.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Menu.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Principal.aspx" />
@@ -545,6 +553,55 @@
     <Compile Include="Views\Cedente\WFrm_CedenteAdmin.aspx.designer.cs">
       <DependentUpon>WFrm_CedenteAdmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Cedente\WFrm_GestorSupervisor.aspx.cs">
+      <DependentUpon>WFrm_GestorSupervisor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_GestorSupervisor.aspx.designer.cs">
+      <DependentUpon>WFrm_GestorSupervisor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_NuevoCedente.aspx.cs">
+      <DependentUpon>WFrm_NuevoCedente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_NuevoCedente.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevoCedente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_NuevoDeudor.aspx.cs">
+      <DependentUpon>WFrm_NuevoDeudor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_NuevoDeudor.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevoDeudor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_ReasignarCartera.aspx.cs">
+      <DependentUpon>WFrm_ReasignarCartera.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_ReasignarCartera.aspx.designer.cs">
+      <DependentUpon>WFrm_ReasignarCartera.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_SupervisorCedente.aspx.cs">
+      <DependentUpon>WFrm_SupervisorCedente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_SupervisorCedente.aspx.designer.cs">
+      <DependentUpon>WFrm_SupervisorCedente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_UpdateDeudor.aspx.cs">
+      <DependentUpon>WFrm_UpdateDeudor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_UpdateDeudor.aspx.designer.cs">
+      <DependentUpon>WFrm_UpdateDeudor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_UpdateGarante.aspx.cs">
+      <DependentUpon>WFrm_UpdateGarante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_UpdateGarante.aspx.designer.cs">
+      <DependentUpon>WFrm_UpdateGarante.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx.cs">
       <DependentUpon>WFrm_DepartamentoAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -579,6 +636,13 @@
     </Compile>
     <Compile Include="Views\Configuracion\WFrm_ParametroNuevo.aspx.designer.cs">
       <DependentUpon>WFrm_ParametroNuevo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConsultasManager\WFrm_AccionConsulta.aspx.cs">
+      <DependentUpon>WFrm_AccionConsulta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ConsultasManager\WFrm_AccionConsulta.aspx.designer.cs">
+      <DependentUpon>WFrm_AccionConsulta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Mantenedor\WFrm_Detalle.aspx.cs">
       <DependentUpon>WFrm_Detalle.aspx</DependentUpon>

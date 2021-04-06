@@ -9,7 +9,7 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
-        string _bitacora, _estado, _fecha;
+        string _estado = "";
         #endregion
 
         #region Load
@@ -86,16 +86,6 @@
         protected void BtnNuevo_Click(object sender, EventArgs e)
         {
             Response.Redirect("WFrm_NuevaBitacora.aspx?Bitacora=&Estado=Activo&Fecha=" + DateTime.Now.ToString("yyyy-MM-dd"), true);
-        }
-
-        protected void Btnselecc_Click(object sender, ImageClickEventArgs e)
-        {
-            GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
-            _bitacora = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Bitacora"].ToString();
-            _estado = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Estado"].ToString();
-            _fecha = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Fecha"].ToString();
-            Response.Redirect("WFrm_NuevaBitacora.aspx?Bitacora=" + _bitacora + "&Estado=" + _estado +
-                "&Fecha=" + _fecha, true);
         }
         #endregion
     }

@@ -109,7 +109,7 @@
                         DdlCatalogo.DataBind();
                         break;
                     case 1:
-                        _dts = new CatalogosDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", codigo, 0, 0, "", "", "",
+                        _dts = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", codigo, 0, 0, "", "", "",
                             Session["Conectar"].ToString());
                         DdlGestores.DataSource = _dts;
                         DdlGestores.DataTextField = "Descripcion";
@@ -122,7 +122,6 @@
                         DdlGestorCli.DataBind();
                         break;
                 }
-
             }
             catch (Exception ex)
             {

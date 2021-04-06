@@ -19,6 +19,8 @@ namespace ModeloSoftCob
         {
             this.SoftCob_PRODUCTOS_CEDENTE = new HashSet<SoftCob_PRODUCTOS_CEDENTE>();
             this.SoftCob_SUPERVISORES = new HashSet<SoftCob_SUPERVISORES>();
+            this.SoftCob_CONTACTOS_CEDENTE = new HashSet<SoftCob_CONTACTOS_CEDENTE>();
+            this.SoftCob_AGENCIAS_CEDENTE = new HashSet<SoftCob_AGENCIAS_CEDENTE>();
         }
     
         public int CEDE_CODIGO { get; set; }
@@ -49,5 +51,9 @@ namespace ModeloSoftCob
         public virtual ICollection<SoftCob_PRODUCTOS_CEDENTE> SoftCob_PRODUCTOS_CEDENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoftCob_SUPERVISORES> SoftCob_SUPERVISORES { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SoftCob_CONTACTOS_CEDENTE> SoftCob_CONTACTOS_CEDENTE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SoftCob_AGENCIAS_CEDENTE> SoftCob_AGENCIAS_CEDENTE { get; set; }
     }
 }

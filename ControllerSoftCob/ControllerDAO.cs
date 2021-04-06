@@ -906,6 +906,33 @@
         #endregion
 
         #region Procedimientos y Funciones (PERFIL)
+        public DataSet FunGetPerfil()
+        {
+            List<SoftCob_PERFIL> _perfil = null;
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                _perfil = _db.SoftCob_PERFIL.Where(p => p.perf_estado == true).OrderBy(p => p.perf_descripcion).ToList();
+            }
+
+            _catalogo.Add(new CatalogosDTO()
+            {
+                Descripcion = "--Seleccione Perfil--",
+                Codigo = "0"
+            });
+
+            foreach (SoftCob_PERFIL _per in _perfil)
+            {
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = _per.perf_descripcion,
+                    Codigo = _per.PERF_CODIGO.ToString()
+                });
+            }
+
+            _dts = new FuncionesDAO().FunCambiarDataSet(_catalogo);
+            return _dts;
+        }
         public SoftCob_PERFIL FunGetPerfilPorID(int _codigoperfil, int _emprcodigo)
         {
             try
@@ -992,6 +1019,33 @@
         #endregion
 
         #region Procedimientos y Funciones (DEPARTAMENTO)
+        public DataSet FunGetDepartamento()
+        {
+            List<SoftCob_DEPARTAMENTO> _depar = null;
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                _depar = _db.SoftCob_DEPARTAMENTO.Where(d => d.depa_estado == true).OrderBy(d => d.depa_descripcion).ToList();
+            }
+
+            _catalogo.Add(new CatalogosDTO()
+            {
+                Descripcion = "--Seleccione Departamento--",
+                Codigo = "0"
+            });
+
+            foreach (SoftCob_DEPARTAMENTO _dep in _depar)
+            {
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = _dep.depa_descripcion,
+                    Codigo = _dep.DEPA_CODIGO.ToString()
+                });
+            }
+
+            _dts = new FuncionesDAO().FunCambiarDataSet(_catalogo);
+            return _dts;
+        }
         public SoftCob_DEPARTAMENTO FunGetDepartamentoPorCodigo(int _codigodepa, int _emprcodigo)
         {
             SoftCob_DEPARTAMENTO _datos = new SoftCob_DEPARTAMENTO();
@@ -1008,7 +1062,6 @@
             }
             return _datos;
         }
-
         public string FunConsultaDepartamento(string _descripcion, int _emprcodigo)
         {
 
@@ -1127,6 +1180,32 @@
                     Codigo = _xdat.CIUD_CODIGO.ToString()
                 });
             }
+            return new FuncionesDAO().FunCambiarDataSet(_catalogo);
+        }
+        public DataSet FunGetCiudadPorID(int _codprov)
+        {
+            List<SoftCob_CIUDAD> _ciudad = null;
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                _ciudad = _db.SoftCob_CIUDAD.Where(c => c.ciud_estado == true && c.PROV_CODIGO == _codprov).ToList();
+            }
+
+            _catalogo.Add(new CatalogosDTO()
+            {
+                Descripcion = "--Seleccione Ciudad--",
+                Codigo = "0"
+            });
+
+            foreach (SoftCob_CIUDAD _ciu in _ciudad)
+            {
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = _ciu.ciud_nombre,
+                    Codigo = _ciu.CIUD_CODIGO.ToString()
+                });
+            }
+
             return new FuncionesDAO().FunCambiarDataSet(_catalogo);
         }
         #endregion
@@ -1276,8 +1355,8 @@
             using (SoftCobEntities _db = new SoftCobEntities())
             {
                 _datos = _db.SoftCob_PARAMETRO_DETALLE.Where(x => x.pade_estado &&
-                    x.PARA_CODIGO == x.SoftCob_PARAMETRO_CABECERA.PARA_CODIGO && x.SoftCob_PARAMETRO_CABECERA.para_nombre == _parametro &&
-                    x.SoftCob_PARAMETRO_CABECERA.para_estado).OrderBy(x => x.pade_nombre).ToList();
+                    x.PARA_CODIGO == x.SoftCob_PARAMETRO_CABECERA.PARA_CODIGO && x.SoftCob_PARAMETRO_CABECERA.para_nombre == _parametro
+                    && x.SoftCob_PARAMETRO_CABECERA.para_estado).OrderBy(x => x.pade_nombre).ToList();
             }
 
             _catalogo.Add(new CatalogosDTO()
@@ -1313,6 +1392,31 @@
             return new FuncionesDAO().FunCambiarDataSet(_catalogo);
         }
         #endregion
-        
+
+        #region Procedimientos y Funciones CONSULTA DATOS
+        public DataSet FunGetConsultasCatalogo(int _tipo, string _descripcion, int _int1, int _int2, int _int3, string _str1,
+            string _str2, string _str3, string _conexion)
+        {
+            _dts = new ConsultaDatosDAO().FunConsultaDatos(_tipo, _int1, _int2, _int3, _str1, _str2, _str3, _conexion);
+
+            _catalogo.Add(new CatalogosDTO()
+            {
+                Descripcion = _descripcion,
+                Codigo = "0"
+            });
+
+            foreach (DataRow _dr in _dts.Tables[0].Rows)
+            {
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = _dr[0].ToString(),
+                    Codigo = _dr[1].ToString()
+                });
+            }
+
+            _dts = new FuncionesDAO().FunCambiarDataSet(_catalogo);
+            return _dts;
+        } 
+        #endregion
     }
 }

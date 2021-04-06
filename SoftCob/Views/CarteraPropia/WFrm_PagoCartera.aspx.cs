@@ -143,7 +143,7 @@
                 case 1:
                     break;
                 case 2:
-                    DdlTipoPago.DataSource = new CatalogosDAO().FunGetParametroDetalle("TIPO PAGO", "--Seleccione Tipo--");
+                    DdlTipoPago.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO PAGO", "--Seleccione Tipo--", "S");
                     DdlTipoPago.DataTextField = "Descripcion";
                     DdlTipoPago.DataValueField = "Codigo";
                     DdlTipoPago.DataBind();

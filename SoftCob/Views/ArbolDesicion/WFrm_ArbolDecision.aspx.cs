@@ -772,6 +772,29 @@
                 Lblerror.Text = ex.Message;
             }
         }
+
+        protected void GrdvAccion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (GridViewRow fr in GrdvAccion.Rows)
+                {
+                    fr.Cells[0].BackColor = System.Drawing.Color.White;
+                }
+
+                GrdvAccion.Rows[GrdvAccion.SelectedIndex].Cells[0].BackColor = System.Drawing.Color.Coral;
+                _codigo = int.Parse(GrdvAccion.DataKeys[GrdvAccion.SelectedIndex].Values["Codigo"].ToString());
+                ViewState["CodigoAccion"] = _codigo;
+                _dtbaccion = (DataTable)ViewState["ArbolAccion"];
+                _result = _dtbaccion.Select("Codigo='" + _codigo + "'").FirstOrDefault();
+                TxtAccion.Text = _result["Descripcion"].ToString();
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
+
         protected void ChkEfectivo_CheckedChanged(object sender, EventArgs e)
         {
             try

@@ -14,6 +14,12 @@ namespace ModeloSoftCob
     
     public partial class SoftCob_ESTRATEGIA_CABECERA
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SoftCob_ESTRATEGIA_CABECERA()
+        {
+            this.SoftCob_ESTRATEGIA_DETALLE = new HashSet<SoftCob_ESTRATEGIA_DETALLE>();
+        }
+    
         public int ESCA_CODIGO { get; set; }
         public string esca_estrategia { get; set; }
         public string esca_descripcion { get; set; }
@@ -30,5 +36,8 @@ namespace ModeloSoftCob
         public System.DateTime esca_fum { get; set; }
         public int esca_uum { get; set; }
         public string esca_tum { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SoftCob_ESTRATEGIA_DETALLE> SoftCob_ESTRATEGIA_DETALLE { get; set; }
     }
 }

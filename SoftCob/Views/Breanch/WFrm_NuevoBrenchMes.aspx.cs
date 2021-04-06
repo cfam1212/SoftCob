@@ -1,16 +1,14 @@
-﻿
-
-namespace SoftCob.Views.Breanch
+﻿namespace SoftCob.Views.Breanch
 {
-
+    using ControllerSoftCob;
+    using ModeloSoftCob;
     using System;
     using System.Collections.Generic;
-    using System.Configuration;
     using System.Data;
+    using System.Globalization;
     using System.Linq;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using System.Globalization;
     public partial class WFrm_NuevoBrenchMes : Page
     {
         #region Variables
@@ -37,8 +35,7 @@ namespace SoftCob.Views.Breanch
             TxtPresupuesto.Attributes.Add("onchange", "ValidarDecimales();");
             if (!IsPostBack)
             {
-                ViewState["Procesado"] = "NO";
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                ViewState["Procesado"] = "NO";                
                 FunCargarCombos(0);
                 ViewState["Anio"] = DateTime.Now.Year.ToString();
                 ViewState["MesName"] = DateTime.Now.ToString("MMMM").ToUpper();
@@ -64,7 +61,7 @@ namespace SoftCob.Views.Breanch
 
                 dts = new ConsultaDatosDAO().FunConsultaDatos(116, int.Parse(DdlCedente.SelectedValue),
                     int.Parse(DdlCatalogo.SelectedValue), int.Parse(DdlGestores.SelectedValue), "", "", "",
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 if (dts.Tables[0].Rows.Count > 0) ViewState["CodigoBRMC"] = dts.Tables[0].Rows[0]["Codigo"].ToString();
 
@@ -113,13 +110,13 @@ namespace SoftCob.Views.Breanch
                     casos += "WHERE ISNULL(rango_dias,'')!='' ";
                     casos += "GROUP BY rango_dias ORDER BY rango_dias";
                     sql = sql + casos;
-                    dts = new ConsultaDatosDTO().FunConsultaDatos(15, 0, 0, 0, sql, "", "", ViewState["Conectar"].ToString());
+                    dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, sql, "", "", Session["Conectar"].ToString());
                     ViewState["BrenchDet"] = dts.Tables[0];
                     GrdvBrenchDet.DataSource = dts;
                     GrdvBrenchDet.DataBind();
 
                     //dts = new ConsultaDatosDTO().funConsultaDatos(111, int.Parse(ddlCedente.SelectedValue), int.Parse(ddlCatalogo.SelectedValue),
-                    //    int.Parse(ddlGestores.SelectedValue), "", ViewState["Anio"].ToString(), ViewState["Mes"].ToString(), ViewState["Conectar"].ToString());
+                    //    int.Parse(ddlGestores.SelectedValue), "", ViewState["Anio"].ToString(), ViewState["Mes"].ToString(), Session["Conectar"].ToString());
                     //if (dts.Tables[0].Rows.Count > 0)
                     //{
                     //    ViewState["Procesado"] = "SI";
@@ -154,13 +151,13 @@ namespace SoftCob.Views.Breanch
                     //    casos += "where isnull(rango_dias,'')!='' ";
                     //    casos += "group by rango_dias order by rango_dias";
                     //    sql = sql + casos;
-                    //    dts = new ConsultaDatosDTO().funConsultaDatos(15, 0, 0, 0, sql, "", "", ViewState["Conectar"].ToString());
+                    //    dts = new ConsultaDatosDTO().funConsultaDatos(15, 0, 0, 0, sql, "", "", Session["Conectar"].ToString());
                     //    ViewState["BrenchDet"] = dts.Tables[0];
                     //    grdvBrenchDet.DataSource = dts;
                     //    grdvBrenchDet.DataBind();
                     //}
                 }
-                else new FuncionesBAS().FunShowJSMessage("No existe Brench Creado para el Cedente..!", this);
+                else new FuncionesDAO().FunShowJSMessage("No existe Brench Creado para el Cedente..!", this);
             }
             catch (Exception ex)
             {
@@ -173,7 +170,7 @@ namespace SoftCob.Views.Breanch
             switch (opcion)
             {
                 case 0:
-                    DdlCedente.DataSource = new CatalogosDTO().FunGetCedentes();
+                    DdlCedente.DataSource = new CedenteDAO().FunGetCedentes();
                     DdlCedente.DataTextField = "Descripcion";
                     DdlCedente.DataValueField = "Codigo";
                     DdlCedente.DataBind();
@@ -194,12 +191,13 @@ namespace SoftCob.Views.Breanch
                     GrdvBrenchDet.DataSource = dtbBrenchDet;
                     GrdvBrenchDet.DataBind();
 
-                    DdlCatalogo.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                     DdlCatalogo.DataTextField = "CatalogoProducto";
                     DdlCatalogo.DataValueField = "CodigoCatalogo";
                     DdlCatalogo.DataBind();
 
-                    dts = new CatalogosDTO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                    dts = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", int.Parse(DdlCedente.SelectedValue), 
+                        0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlGestores.DataSource = dts;
                     DdlGestores.DataTextField = "Descripcion";
                     DdlGestores.DataValueField = "Codigo";
@@ -214,7 +212,7 @@ namespace SoftCob.Views.Breanch
                     GrdvBrenchCab.DataBind();
                     GrdvBrenchDet.DataSource = dtbBrenchDet;
                     GrdvBrenchDet.DataBind();
-                    dts = new CedenteDTO().FunGetBrenchDet(int.Parse(DdlCedente.SelectedValue), int.Parse(ViewState["codigoCPCE"].ToString()));
+                    dts = new CedenteDAO().FunGetBrenchDet(int.Parse(DdlCedente.SelectedValue), int.Parse(ViewState["codigoCPCE"].ToString()));
                     GrdvBrenchCab.DataSource = dts;
                     GrdvBrenchCab.DataBind();
                     ViewState["BrenchCab"] = dts.Tables[0];
@@ -229,11 +227,11 @@ namespace SoftCob.Views.Breanch
             try
             {
                 FunCargarCombos(1);
-                dts = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                 if (dts.Tables[0].Rows.Count > 0)
                 {
                     ViewState["codigoCEDE"] = DdlCedente.SelectedValue;
-                    DdlCatalogo.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                     DdlCatalogo.DataTextField = "CatalogoProducto";
                     DdlCatalogo.DataValueField = "CodigoCatalogo";
                     DdlCatalogo.DataBind();
@@ -272,7 +270,7 @@ namespace SoftCob.Views.Breanch
             {
                 if (string.IsNullOrEmpty(TxtPresupuesto.Text.Trim()) || TxtPresupuesto.Text.Trim() == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Presupuesto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Presupuesto..!", this);
                     return;
                 }
 
@@ -343,7 +341,7 @@ namespace SoftCob.Views.Breanch
                 {
                     if (dr["Presupuesto"].ToString() == "0.00")
                     {
-                        new FuncionesBAS().FunShowJSMessage("Debe registrar todos los Presupuestos..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Debe registrar todos los Presupuestos..!", this);
                         continuar = false;
                         break;
                     }
@@ -351,48 +349,50 @@ namespace SoftCob.Views.Breanch
                 }
                 if (continuar)
                 {
-                    GSBPO_BRENCHMESCAB dato1 = new GSBPO_BRENCHMESCAB();
-                    dato1.BRMC_CODIGO = int.Parse(ViewState["CodigoBRMC"].ToString());
-                    dato1.brmc_cedecodigo = int.Parse(DdlCedente.SelectedValue);
-                    dato1.brmc_cpcecodigo = int.Parse(DdlCatalogo.SelectedValue);
-                    dato1.brmc_gestorasignado = int.Parse(DdlGestores.SelectedValue);
-                    dato1.brmc_presupuestoanio = int.Parse(ViewState["Anio"].ToString());
-                    dato1.brmc_presupuestomes = int.Parse(ViewState["Mes"].ToString());
-                    dato1.brmc_presumeslabel = ViewState["MesName"].ToString();
-                    dato1.brmc_totalmonto = decimal.Parse(ViewState["TotalMonto"].ToString());
-                    dato1.brmc_totalexigible = decimal.Parse(ViewState["TotalExigible"].ToString());
-                    dato1.brmc_presuporcentaje = decimal.Parse(ViewState["TotalPorcentaje"].ToString());
-                    dato1.brmc_presupuestototal = decimal.Parse(ViewState["TotalPresupuesto"].ToString());
-                    dato1.brmc_presupuestofecha = DateTime.Now;
-                    dato1.brmc_presuporcencumplido = 0;
-                    dato1.brmc_presutotalcumplido = 0;
-                    dato1.brmc_presupuestogenerado = true;
-                    dato1.brmc_fechacierre = DateTime.Now;
-                    dato1.brmc_usuariocierre = 0;
-                    dato1.brmc_terminalcierre = "";
-                    dato1.brmc_auxv1 = "";
-                    dato1.brmc_auxv2 = "";
-                    dato1.brmc_auxv3 = "";
-                    dato1.brmc_auxi1 = int.Parse(ViewState["TotalOperaciones"].ToString());
-                    dato1.brmc_auxi2 = 0;
-                    dato1.brmc_auxi3 = 0;
-                    dato1.brmc_auxd1 = 0;
-                    dato1.brmc_auxd2 = 0;
-                    dato1.brmc_auxd3 = 0;
-                    dato1.brmc_auxf1 = DateTime.Now;
-                    dato1.brmc_auxf2 = DateTime.Now;
-                    dato1.brmc_auxf3 = DateTime.Now;
-                    dato1.brmc_fechacreacion = DateTime.Now;
-                    dato1.brmc_usuariocreacion = int.Parse(Session["usuCodigo"].ToString());
-                    dato1.brmc_terminalcreacion = Session["MachineName"].ToString();
-                    dato1.brmc_fum = DateTime.Now;
-                    dato1.brmc_uum = int.Parse(Session["usuCodigo"].ToString());
-                    dato1.brmc_tum = Session["MachineName"].ToString();
+                    SoftCob_BRENCHMESCAB dato1 = new SoftCob_BRENCHMESCAB();
+                    {
+                        dato1.BRMC_CODIGO = int.Parse(ViewState["CodigoBRMC"].ToString());
+                        dato1.brmc_cedecodigo = int.Parse(DdlCedente.SelectedValue);
+                        dato1.brmc_cpcecodigo = int.Parse(DdlCatalogo.SelectedValue);
+                        dato1.brmc_gestorasignado = int.Parse(DdlGestores.SelectedValue);
+                        dato1.brmc_presupuestoanio = int.Parse(ViewState["Anio"].ToString());
+                        dato1.brmc_presupuestomes = int.Parse(ViewState["Mes"].ToString());
+                        dato1.brmc_presumeslabel = ViewState["MesName"].ToString();
+                        dato1.brmc_totalmonto = decimal.Parse(ViewState["TotalMonto"].ToString());
+                        dato1.brmc_totalexigible = decimal.Parse(ViewState["TotalExigible"].ToString());
+                        dato1.brmc_presuporcentaje = decimal.Parse(ViewState["TotalPorcentaje"].ToString());
+                        dato1.brmc_presupuestototal = decimal.Parse(ViewState["TotalPresupuesto"].ToString());
+                        dato1.brmc_presupuestofecha = DateTime.Now;
+                        dato1.brmc_presuporcencumplido = 0;
+                        dato1.brmc_presutotalcumplido = 0;
+                        dato1.brmc_presupuestogenerado = true;
+                        dato1.brmc_fechacierre = DateTime.Now;
+                        dato1.brmc_usuariocierre = 0;
+                        dato1.brmc_terminalcierre = "";
+                        dato1.brmc_auxv1 = "";
+                        dato1.brmc_auxv2 = "";
+                        dato1.brmc_auxv3 = "";
+                        dato1.brmc_auxi1 = int.Parse(ViewState["TotalOperaciones"].ToString());
+                        dato1.brmc_auxi2 = 0;
+                        dato1.brmc_auxi3 = 0;
+                        dato1.brmc_auxd1 = 0;
+                        dato1.brmc_auxd2 = 0;
+                        dato1.brmc_auxd3 = 0;
+                        dato1.brmc_auxf1 = DateTime.Now;
+                        dato1.brmc_auxf2 = DateTime.Now;
+                        dato1.brmc_auxf3 = DateTime.Now;
+                        dato1.brmc_fechacreacion = DateTime.Now;
+                        dato1.brmc_usuariocreacion = int.Parse(Session["usuCodigo"].ToString());
+                        dato1.brmc_terminalcreacion = Session["MachineName"].ToString();
+                        dato1.brmc_fum = DateTime.Now;
+                        dato1.brmc_uum = int.Parse(Session["usuCodigo"].ToString());
+                        dato1.brmc_tum = Session["MachineName"].ToString();
+                    }
 
-                    List<GSBPO_BRENCHMESDET> dato2 = new List<GSBPO_BRENCHMESDET>();
+                    List<SoftCob_BRENCHMESDET> dato2 = new List<SoftCob_BRENCHMESDET>();
                     foreach (DataRow dr in dtbBrenchDet.Rows)
                     {
-                        dato2.Add(new GSBPO_BRENCHMESDET()
+                        dato2.Add(new SoftCob_BRENCHMESDET()
                         {
                             BRMD_CODIGO = int.Parse(dr["Codigo"].ToString()),
                             BRMC_CODIGO = int.Parse(ViewState["CodigoBRMC"].ToString()),
@@ -413,18 +413,20 @@ namespace SoftCob.Views.Breanch
                             brmd_auxi3 = 0
                         });
                     }
-                    dato1.GSBPO_BRENCHMESDET = new List<GSBPO_BRENCHMESDET>();
-                    foreach (GSBPO_BRENCHMESDET addDatos in dato2)
+                    dato1.SoftCob_BRENCHMESDET = new List<SoftCob_BRENCHMESDET>();
+
+                    foreach (SoftCob_BRENCHMESDET addDatos in dato2)
                     {
-                        dato1.GSBPO_BRENCHMESDET.Add(addDatos);
+                        dato1.SoftCob_BRENCHMESDET.Add(addDatos);
                     }
-                    if (ViewState["CodigoBRMC"].ToString() == "0") new CedenteDTO().FunCrearBrenchDet(dato1);
-                    else new CedenteDTO().FunEditBrenchDet(dato1);
+
+                    if (ViewState["CodigoBRMC"].ToString() == "0") new CedenteDAO().FunCrearBrenchDet(dato1);
+                    else new CedenteDAO().FunEditBrenchDet(dato1);
 
                     redirect = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Guardado con Exito..!");
                     Response.Redirect(redirect, true);
                 }
-                else new FuncionesBAS().FunShowJSMessage("No Existe Datos para el Brench..!", this);
+                else new FuncionesDAO().FunShowJSMessage("No Existe Datos para el Brench..!", this);
             }
             catch (Exception ex)
             {

@@ -14,6 +14,12 @@ namespace ModeloSoftCob
     
     public partial class SoftCob_TABLAS_BDD
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SoftCob_TABLAS_BDD()
+        {
+            this.SoftCob_CAMPOS_ESTRATEGIA = new HashSet<SoftCob_CAMPOS_ESTRATEGIA>();
+        }
+    
         public int TABD_CODIGO { get; set; }
         public string tadb_nombre { get; set; }
         public System.DateTime tadb_createdate { get; set; }
@@ -32,5 +38,8 @@ namespace ModeloSoftCob
         public System.DateTime tadb_fum { get; set; }
         public int tadb_uum { get; set; }
         public string tadb_tum { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SoftCob_CAMPOS_ESTRATEGIA> SoftCob_CAMPOS_ESTRATEGIA { get; set; }
     }
 }

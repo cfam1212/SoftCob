@@ -185,7 +185,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="4">
-                                        <asp:TabContainer ID="TabDatosBitacora" runat="server" Width="100%" Height="400px" ActiveTabIndex="11">
+                                        <asp:TabContainer ID="TabDatosBitacora" runat="server" Width="100%" Height="400px" ActiveTabIndex="0">
                                             <asp:TabPanel runat="server" HeaderText="Atrasos" ID="TabAtrasos">
                                                 <HeaderTemplate>Atrasos</HeaderTemplate>
                                                 <ContentTemplate>

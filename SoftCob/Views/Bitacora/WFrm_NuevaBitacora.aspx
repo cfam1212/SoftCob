@@ -216,7 +216,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="4">
-                                        <asp:TabContainer ID="TabDatosBitacora" runat="server" Width="100%" Height="400px" ActiveTabIndex="5">
+                                        <asp:TabContainer ID="TabDatosBitacora" runat="server" Width="100%" Height="400px" ActiveTabIndex="8">
                                             <asp:TabPanel runat="server" HeaderText="Atrasos" ID="TabAtrasos">
                                                 <HeaderTemplate>Atrasos</HeaderTemplate>
                                                 <ContentTemplate>
@@ -254,13 +254,13 @@
                                                                 <asp:TextBox ID="TxtHoraAT" runat="server" MaxLength="9" TabIndex="4"></asp:TextBox><asp:MaskedEditExtender ID="TxtHoraAT_MaskedEditExtender" runat="server" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" Mask="99:99" MaskType="Time" TargetControlID="TxtHoraAT"></asp:MaskedEditExtender>
                                                             </td>
                                                             <td style="text-align: right">
-                                                                <asp:ImageButton ID="ImgAddAT" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddAT_Click" TabIndex="5" />
+                                                                <asp:ImageButton ID="ImgAddAT" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddAT_Click" TabIndex="5" />
                                                             </td>
                                                             <td style="text-align: center">
-                                                                <asp:ImageButton ID="ImgModAT" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModAT_Click" TabIndex="6" Visible="False" />
+                                                                <asp:ImageButton ID="ImgModAT" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModAT_Click" TabIndex="6" Visible="False" />
                                                             </td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgDelAT" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelAT_Click" OnClientClick="return asegurar();" TabIndex="7" Visible="False" />
+                                                                <asp:ImageButton ID="ImgDelAT" runat="server" Height="25px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelAT_Click" OnClientClick="return asegurar();" TabIndex="7" Visible="False" />
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -365,11 +365,11 @@
                                                             <td></td>
                                                             <td></td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgAddFJ" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" TabIndex="12" OnClick="ImgAddFJ_Click" /></td>
+                                                                <asp:ImageButton ID="ImgAddFJ" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="12" OnClick="ImgAddFJ_Click" /></td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgModFJ" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" Visible="False" TabIndex="13" OnClick="ImgModFJ_Click" /></td>
+                                                                <asp:ImageButton ID="ImgModFJ" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" Visible="False" TabIndex="13" OnClick="ImgModFJ_Click" /></td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgDelFJ" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" Visible="False" TabIndex="14" OnClick="ImgDelFJ_Click" OnClientClick="return asegurar();" /></td>
+                                                                <asp:ImageButton ID="ImgDelFJ" runat="server" Height="25px" ImageUrl="~/Botones/eliminar.png" Visible="False" TabIndex="14" OnClick="ImgDelFJ_Click" OnClientClick="return asegurar();" /></td>
                                                             <td></td>
                                                         </tr>
                                                         <tr>
@@ -468,11 +468,11 @@
                                                             <td></td>
                                                             <td></td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgAddFI" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" TabIndex="18" OnClick="ImgAddFI_Click" /></td>
+                                                                <asp:ImageButton ID="ImgAddFI" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="18" OnClick="ImgAddFI_Click" /></td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgModFI" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" Visible="False" TabIndex="19" OnClick="ImgModFI_Click" /></td>
+                                                                <asp:ImageButton ID="ImgModFI" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" Visible="False" TabIndex="19" OnClick="ImgModFI_Click" /></td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgDelFI" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" Visible="False" TabIndex="20" OnClick="ImgDelFI_Click" OnClientClick="return asegurar();" /></td>
+                                                                <asp:ImageButton ID="ImgDelFI" runat="server" Height="25px" ImageUrl="~/Botones/eliminar.png" Visible="False" TabIndex="20" OnClick="ImgDelFI_Click" OnClientClick="return asegurar();" /></td>
                                                             <td></td>
                                                         </tr>
                                                         <tr>
@@ -569,13 +569,13 @@
                                                                 </asp:CalendarExtender>
                                                             </td>
                                                             <td style="text-align: center">
-                                                                <asp:ImageButton ID="ImgAddPE" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddPE_Click" TabIndex="24" />
+                                                                <asp:ImageButton ID="ImgAddPE" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddPE_Click" TabIndex="24" />
                                                             </td>
                                                             <td style="text-align: center">
-                                                                <asp:ImageButton ID="ImgModPE" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModPE_Click" TabIndex="25" Visible="False" />
+                                                                <asp:ImageButton ID="ImgModPE" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModPE_Click" TabIndex="25" Visible="False" />
                                                             </td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgDelPE" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelPE_Click" OnClientClick="return asegurar();" TabIndex="26" Visible="False" />
+                                                                <asp:ImageButton ID="ImgDelPE" runat="server" Height="25px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelPE_Click" OnClientClick="return asegurar();" TabIndex="26" Visible="False" />
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -683,11 +683,11 @@
                                                             <td>
                                                                 <asp:DropDownList ID="DdlTurnoN" runat="server" CssClass="form-control" TabIndex="31" Width="100%"></asp:DropDownList></td>
                                                             <td style="text-align: right">
-                                                                <asp:ImageButton ID="ImgAddCT" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" TabIndex="32" OnClick="ImgAddCT_Click" /></td>
+                                                                <asp:ImageButton ID="ImgAddCT" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="32" OnClick="ImgAddCT_Click" /></td>
                                                             <td style="text-align: right">
-                                                                <asp:ImageButton ID="ImgModCT" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" Visible="False" TabIndex="33" OnClick="ImgModCT_Click" /></td>
+                                                                <asp:ImageButton ID="ImgModCT" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" Visible="False" TabIndex="33" OnClick="ImgModCT_Click" /></td>
                                                             <td style="text-align: center">
-                                                                <asp:ImageButton ID="ImgDelCT" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" Visible="False" TabIndex="34" OnClick="ImgDelCT_Click" OnClientClick="return asegurar();" /></td>
+                                                                <asp:ImageButton ID="ImgDelCT" runat="server" Height="25px" ImageUrl="~/Botones/eliminar.png" Visible="False" TabIndex="34" OnClick="ImgDelCT_Click" OnClientClick="return asegurar();" /></td>
                                                             <td></td>
                                                         </tr>
                                                         <tr>
@@ -794,13 +794,13 @@
                                                             <td></td>
                                                             <td></td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgAddVA" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddVA_Click" TabIndex="39" />
+                                                                <asp:ImageButton ID="ImgAddVA" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddVA_Click" TabIndex="39" />
                                                             </td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgModVA" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModVA_Click" TabIndex="40" Visible="False" />
+                                                                <asp:ImageButton ID="ImgModVA" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModVA_Click" TabIndex="40" Visible="False" />
                                                             </td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgDelVA" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelVA_Click" TabIndex="41" Visible="False" />
+                                                                <asp:ImageButton ID="ImgDelVA" runat="server" Height="25px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelVA_Click" TabIndex="41" Visible="False" />
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -888,13 +888,13 @@
                                                             <td></td>
                                                             <td></td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgAddNV" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" TabIndex="45" OnClick="ImgAddNV_Click" />
+                                                                <asp:ImageButton ID="ImgAddNV" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="45" OnClick="ImgAddNV_Click" />
                                                             </td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgModNV" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" TabIndex="46" Visible="False" OnClick="ImgModNV_Click" />
+                                                                <asp:ImageButton ID="ImgModNV" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" TabIndex="46" Visible="False" OnClick="ImgModNV_Click" />
                                                             </td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgDelNV" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" TabIndex="47" Visible="False" OnClick="ImgDelNV_Click" OnClientClick="return asegurar();" />
+                                                                <asp:ImageButton ID="ImgDelNV" runat="server" Height="25px" ImageUrl="~/Botones/eliminar.png" TabIndex="47" Visible="False" OnClick="ImgDelNV_Click" OnClientClick="return asegurar();" />
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -979,13 +979,13 @@
                                                             <td></td>
                                                             <td></td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgAddRE" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddRE_Click" TabIndex="51" />
+                                                                <asp:ImageButton ID="ImgAddRE" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddRE_Click" TabIndex="51" />
                                                             </td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgModRE" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModRE_Click" TabIndex="52" Visible="False" />
+                                                                <asp:ImageButton ID="ImgModRE" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModRE_Click" TabIndex="52" Visible="False" />
                                                             </td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgDelRE" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelRE_Click" TabIndex="53" Visible="False" OnClientClick="return asegurar();" />
+                                                                <asp:ImageButton ID="ImgDelRE" runat="server" Height="25px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelRE_Click" TabIndex="53" Visible="False" OnClientClick="return asegurar();" />
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -1075,13 +1075,13 @@
                                                             <td></td>
                                                             <td></td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgAddGT" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddGT_Click" TabIndex="57" />
+                                                                <asp:ImageButton ID="ImgAddGT" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddGT_Click" TabIndex="57" />
                                                             </td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgModGT" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModGT_Click" TabIndex="58" Visible="False" />
+                                                                <asp:ImageButton ID="ImgModGT" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModGT_Click" TabIndex="58" Visible="False" />
                                                             </td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgDelGT" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelGT_Click" TabIndex="59" Visible="False" OnClientClick="return asegurar();" />
+                                                                <asp:ImageButton ID="ImgDelGT" runat="server" Height="25px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelGT_Click" TabIndex="59" Visible="False" OnClientClick="return asegurar();" />
                                                             </td>
                                                             <td></td>
                                                         </tr>
