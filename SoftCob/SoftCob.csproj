@@ -271,6 +271,7 @@
     <Content Include="Views\Breanch\WFrm_CompararBrench.aspx" />
     <Content Include="Views\Breanch\WFrm_NuevoBrench.aspx" />
     <Content Include="Views\Breanch\WFrm_NuevoBrenchMes.aspx" />
+    <Content Include="Views\Breanch\wFrm_ProcesarPagosBrench.aspx" />
     <Content Include="Views\CarteraPropia\WFrm_PagoCartera.aspx" />
     <Content Include="Views\Cedente\WFrm_AsignarCartera.aspx" />
     <Content Include="Views\Cedente\WFrm_CedenteAdmin.aspx" />
@@ -523,6 +524,13 @@
     </Compile>
     <Compile Include="Views\Breanch\WFrm_NuevoBrenchMes.aspx.designer.cs">
       <DependentUpon>WFrm_NuevoBrenchMes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Breanch\wFrm_ProcesarPagosBrench.aspx.cs">
+      <DependentUpon>wFrm_ProcesarPagosBrench.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Breanch\wFrm_ProcesarPagosBrench.aspx.designer.cs">
+      <DependentUpon>wFrm_ProcesarPagosBrench.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\CarteraPropia\WFrm_PagoCartera.aspx.cs">
       <DependentUpon>WFrm_PagoCartera.aspx</DependentUpon>
