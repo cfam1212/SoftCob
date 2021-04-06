@@ -104,6 +104,29 @@
                 throw ex;
             }
         }
+        public DataSet FunGetConsultasCatalogo(int _tipo, string _descripcion, int _int1, int _int2, int _int3, string _str1, 
+            string _str2, string _str3, string _conexion)
+        {
+            _dts = new ConsultaDatosDAO().FunConsultaDatos(_tipo, _int1, _int2, _int3, _str1, _str2, _str3, _conexion);
+
+            _catalogo.Add(new CatalogosDTO()
+            {
+                Descripcion = _descripcion,
+                Codigo = "0"
+            });
+
+            foreach (DataRow _dr in _dts.Tables[0].Rows)
+            {
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = _dr[0].ToString(),
+                    Codigo = _dr[1].ToString()
+                });
+            }
+
+            _dts = new FuncionesDAO().FunCambiarDataSet(_catalogo);
+            return _dts;
+        }
         #endregion
     }
 }

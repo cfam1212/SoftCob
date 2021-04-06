@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.Breanch
+﻿namespace SoftCob.Views.Breanch
 {
     using ControllerSoftCob;
     using System;
@@ -8,7 +6,7 @@ namespace SoftCob.Views.Breanch
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    public partial class WFrm_BrenchPorGestor : System.Web.UI.Page
+    public partial class WFrm_BrenchPorGestor : Page
     {
         #region Variables
         DataSet _dts = new DataSet();

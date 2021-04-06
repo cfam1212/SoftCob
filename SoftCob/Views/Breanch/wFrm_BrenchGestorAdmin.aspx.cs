@@ -1,9 +1,7 @@
 ﻿
-
 namespace SoftCob.Views.Breanch
 {
     using ControllerSoftCob;
-    using Negocio_GSBPO;
     using System;
     using System.Configuration;
     using System.Data;
@@ -69,7 +67,7 @@ namespace SoftCob.Views.Breanch
                 ImgExportar.Visible = false;
                 LblExportar.Visible = false;
 
-                dts = new ConsultaDatosDTO().FunConsultaDatos(115, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue),
+                dts = new ConsultaDatosDAO().FunConsultaDatos(115, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue),
                     0, "", "", "", ViewState["Conectar"].ToString());
                 ViewState["BrenchGestor"] = dts.Tables[0];
 
@@ -98,7 +96,7 @@ namespace SoftCob.Views.Breanch
             switch (opcion)
             {
                 case 0:
-                    DdlCedente.DataSource = new CatalogosDTO().FunGetCedentes();
+                    DdlCedente.DataSource = new CedenteDAO().FunGetCedentes();
                     DdlCedente.DataTextField = "Descripcion";
                     DdlCedente.DataValueField = "Codigo";
                     DdlCedente.DataBind();
@@ -107,7 +105,7 @@ namespace SoftCob.Views.Breanch
                     DdlCatalogo.Items.Add(itemC);
                     break;
                 case 1:
-                    DdlCatalogo.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                     DdlCatalogo.DataTextField = "CatalogoProducto";
                     DdlCatalogo.DataValueField = "CodigoCatalogo";
                     DdlCatalogo.DataBind();
@@ -122,11 +120,11 @@ namespace SoftCob.Views.Breanch
             try
             {
                 FunCargarCombos(1);
-                dts = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                 if (dts.Tables[0].Rows.Count > 0)
                 {
                     ViewState["codigoCEDE"] = DdlCedente.SelectedValue;
-                    DdlCatalogo.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                     DdlCatalogo.DataTextField = "CatalogoProducto";
                     DdlCatalogo.DataValueField = "CodigoCatalogo";
                     DdlCatalogo.DataBind();
@@ -308,7 +306,7 @@ namespace SoftCob.Views.Breanch
                 GrdvBrenchGestor.Rows[gvRow.RowIndex].Cells[0].BackColor = System.Drawing.Color.Turquoise;
                 codigoGestor = int.Parse(GrdvBrenchGestor.DataKeys[gvRow.RowIndex].Values["CodigoGestor"].ToString());
                 codigoBRMC = int.Parse(GrdvBrenchGestor.DataKeys[gvRow.RowIndex].Values["CodigoBRMC"].ToString());
-                dtsX = new ConsultaDatosDTO().FunConsultaDatos(118, codigoBRMC, int.Parse(DdlCatalogo.SelectedValue), 0,
+                dtsX = new ConsultaDatosDAO().FunConsultaDatos(118, codigoBRMC, int.Parse(DdlCatalogo.SelectedValue), 0,
                     "", "", "", ViewState["Conectar"].ToString());
                 pnlDetalleBrench.Visible = true;
                 GrdvBrenchRango.DataSource = dtsX;
@@ -352,7 +350,7 @@ namespace SoftCob.Views.Breanch
 
                 if (resul.Count() == 0)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione al Menos un Gestor para el Proceso..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione al Menos un Gestor para el Proceso..!", this);
                     return;
                 }
 
