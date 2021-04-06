@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArbolDecisionDAO.cs" />
+    <Compile Include="BitacoraDAO.cs" />
     <Compile Include="CatalogoDTO.cs" />
     <Compile Include="CatalogosDAO.cs" />
     <Compile Include="CedenteDAO.cs" />

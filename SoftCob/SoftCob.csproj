@@ -262,14 +262,17 @@
     <Content Include="Views\Bitacora\WFrm_ConsultaBitacora.aspx" />
     <Content Include="Views\Bitacora\WFrm_ConsultaBitacoraAdmin.aspx" />
     <Content Include="Views\Bitacora\WFrm_DatosBitacora.aspx" />
+    <Content Include="Views\Bitacora\WFrm_NuevaBitacora.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchAdmin.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchEfectivoOn.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchGestiones.aspx" />
     <Content Include="Views\Breanch\wFrm_BrenchGestorAdmin.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchPorGestor.aspx" />
     <Content Include="Views\Breanch\WFrm_CompararBrench.aspx" />
+    <Content Include="Views\Breanch\WFrm_NuevoBrench.aspx" />
     <Content Include="Views\CarteraPropia\WFrm_PagoCartera.aspx" />
     <Content Include="Views\Cedente\WFrm_AsignarCartera.aspx" />
+    <Content Include="Views\Cedente\WFrm_CedenteAdmin.aspx" />
     <Content Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx" />
     <Content Include="Views\Configuracion\WFrm_DepartamentoNuevo.aspx" />
     <Content Include="Views\Configuracion\WFrm_DesloguearAdmin.aspx" />
@@ -457,6 +460,13 @@
     <Compile Include="Views\Bitacora\WFrm_DatosBitacora.aspx.designer.cs">
       <DependentUpon>WFrm_DatosBitacora.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Bitacora\WFrm_NuevaBitacora.aspx.cs">
+      <DependentUpon>WFrm_NuevaBitacora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Bitacora\WFrm_NuevaBitacora.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevaBitacora.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Breanch\WFrm_BrenchAdmin.aspx.cs">
       <DependentUpon>WFrm_BrenchAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -499,6 +509,13 @@
     <Compile Include="Views\Breanch\WFrm_CompararBrench.aspx.designer.cs">
       <DependentUpon>WFrm_CompararBrench.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Breanch\WFrm_NuevoBrench.aspx.cs">
+      <DependentUpon>WFrm_NuevoBrench.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Breanch\WFrm_NuevoBrench.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevoBrench.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\CarteraPropia\WFrm_PagoCartera.aspx.cs">
       <DependentUpon>WFrm_PagoCartera.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -512,6 +529,13 @@
     </Compile>
     <Compile Include="Views\Cedente\WFrm_AsignarCartera.aspx.designer.cs">
       <DependentUpon>WFrm_AsignarCartera.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_CedenteAdmin.aspx.cs">
+      <DependentUpon>WFrm_CedenteAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_CedenteAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_CedenteAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx.cs">
       <DependentUpon>WFrm_DepartamentoAdmin.aspx</DependentUpon>

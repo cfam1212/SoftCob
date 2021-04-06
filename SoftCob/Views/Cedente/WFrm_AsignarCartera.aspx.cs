@@ -11,7 +11,6 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
-        Object[] _objparam = new Object[1];
         DataTable _dtbasignar = new DataTable();
         DataTable _dtbgestores = new DataTable();
         DataTable _dtbagregar = new DataTable();

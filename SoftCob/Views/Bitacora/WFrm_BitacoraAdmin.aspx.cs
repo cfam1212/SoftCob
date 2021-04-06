@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -28,11 +27,11 @@
                     return;
                 }
 
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Administrar Bitacora";
                 FunCargarMantenimiento();
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                    Request["MensajeRetornado"].ToString());
             }
         }
         #endregion
@@ -42,8 +41,8 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(173, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(171, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(173, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(171, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
