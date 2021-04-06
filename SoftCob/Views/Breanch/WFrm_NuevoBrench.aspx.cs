@@ -12,7 +12,7 @@ namespace SoftCob.Views.Breanch
     using System.Web.UI.WebControls;
     public partial class WFrm_NuevoBrench : Page
     {
-        #region Variables
+        #region Variables local
         DataSet dts = new DataSet();
         DataSet dtsX = new DataSet();
         DataTable dtb = new DataTable();

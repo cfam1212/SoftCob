@@ -210,6 +210,7 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
+            
             <div class="panel panel-default">
                 <asp:UpdatePanel ID="updBotones" runat="server">
                     <ContentTemplate>
