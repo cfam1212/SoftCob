@@ -287,6 +287,9 @@
     <Content Include="Views\Configuracion\WFrm_ParametroAdmin.aspx" />
     <Content Include="Views\Configuracion\WFrm_ParametroNuevo.aspx" />
     <Content Include="Views\ConsultasManager\WFrm_AccionConsulta.aspx" />
+    <Content Include="Views\Employee\WFrm_EmployeeAdmin.aspx" />
+    <Content Include="Views\Employee\WFrm_NuevoEmployee.aspx" />
+    <Content Include="Views\Employee\WFrm_NuevoUsuarioEmployee.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Detalle.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Menu.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Principal.aspx" />
@@ -643,6 +646,27 @@
     </Compile>
     <Compile Include="Views\ConsultasManager\WFrm_AccionConsulta.aspx.designer.cs">
       <DependentUpon>WFrm_AccionConsulta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\WFrm_EmployeeAdmin.aspx.cs">
+      <DependentUpon>WFrm_EmployeeAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employee\WFrm_EmployeeAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_EmployeeAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\WFrm_NuevoEmployee.aspx.cs">
+      <DependentUpon>WFrm_NuevoEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employee\WFrm_NuevoEmployee.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevoEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\WFrm_NuevoUsuarioEmployee.aspx.cs">
+      <DependentUpon>WFrm_NuevoUsuarioEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employee\WFrm_NuevoUsuarioEmployee.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevoUsuarioEmployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Mantenedor\WFrm_Detalle.aspx.cs">
       <DependentUpon>WFrm_Detalle.aspx</DependentUpon>
