@@ -1,11 +1,7 @@
-﻿
-
-namespace SoftCob.Views.Configuraciones
+﻿namespace SoftCob.Views.Configuraciones
 {
-    
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     public partial class WFrm_NuevoHorario : Page
@@ -29,7 +25,6 @@ namespace SoftCob.Views.Configuraciones
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     ViewState["Codigo"] = Request["Codigo"];
                     ViewState["Intervalo"] = "";
                     ViewState["Horario"] = "";
@@ -54,7 +49,7 @@ namespace SoftCob.Views.Configuraciones
             {
                 _dts = new ConsultaDatosDAO().FunHorariobpm(1, int.Parse(ViewState["Codigo"].ToString()), "", "", "",
                     "", "", "", 0, "", "", "", 0, 0, 0, int.Parse((Session["usuCodigo"].ToString())), Session["MachineName"].ToString(),
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -90,16 +85,16 @@ namespace SoftCob.Views.Configuraciones
                 switch (opcion)
                 {
                     case 0:
-                        DdlIntervalo.DataSource = new CatalogosDTO().FunGetParametroDetalle("INTERVALO",
-                            "--Seleccione Intervalor--");
+                        DdlIntervalo.DataSource = new ControllerDAO().FunGetParametroDetalle("INTERVALO",
+                            "--Seleccione Intervalor--","S");
                         DdlIntervalo.DataTextField = "Descripcion";
                         DdlIntervalo.DataValueField = "Codigo";
                         DdlIntervalo.DataBind();
 
-                        new FuncionesBAS().FunCargarComboHoraMinutos(DdlHoraIni, "HORAS");
-                        new FuncionesBAS().FunCargarComboHoraMinutos(DdlMinutoIni, "MINUTOS");
-                        new FuncionesBAS().FunCargarComboHoraMinutos(DdlHoraFin, "HORAS");
-                        new FuncionesBAS().FunCargarComboHoraMinutos(DdlMinutoFin, "MINUTOS");
+                        new FuncionesDAO().FunCargarComboHoraMinutos(DdlHoraIni, "HORAS");
+                        new FuncionesDAO().FunCargarComboHoraMinutos(DdlMinutoIni, "MINUTOS");
+                        new FuncionesDAO().FunCargarComboHoraMinutos(DdlHoraFin, "HORAS");
+                        new FuncionesDAO().FunCargarComboHoraMinutos(DdlMinutoFin, "MINUTOS");
                         break;
                 }
             }
@@ -146,7 +141,7 @@ namespace SoftCob.Views.Configuraciones
             {
                 if (DdlIntervalo.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Intervalo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Intervalo..!", this);
                     return;
                 }
 
@@ -155,13 +150,13 @@ namespace SoftCob.Views.Configuraciones
 
                 if (_horainicio > _horafin)
                 {
-                    new FuncionesBAS().FunShowJSMessage("La Hora inicio no puede ser menor a la Hora fin..!", this);
+                    new FuncionesDAO().FunShowJSMessage("La Hora inicio no puede ser menor a la Hora fin..!", this);
                     return;
                 }
 
                 if (_horainicio == _horafin)
                 {
-                    new FuncionesBAS().FunShowJSMessage("La Hora inicio y la Hora fin son iguales..!", this);
+                    new FuncionesDAO().FunShowJSMessage("La Hora inicio y la Hora fin son iguales..!", this);
                     return;
                 }
 
@@ -170,7 +165,7 @@ namespace SoftCob.Views.Configuraciones
 
                 if (int.Parse(DdlIntervalo.SelectedValue) > _inter)
                 {
-                    new FuncionesBAS().FunShowJSMessage("El intervalo entre las horas es menor al valor del Intervalo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("El intervalo entre las horas es menor al valor del Intervalo..!", this);
                     return;
                 }
 
@@ -221,7 +216,7 @@ namespace SoftCob.Views.Configuraciones
             {
                 if (string.IsNullOrEmpty(TxtHorario.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Nombre del Horario..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Horario..!", this);
                     return;
                 }
 
@@ -229,7 +224,7 @@ namespace SoftCob.Views.Configuraciones
 
                 if (_dtbhoras.Rows.Count == 0)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Procese horarios..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Procese horarios..!", this);
                     return;
                 }
 
@@ -237,11 +232,11 @@ namespace SoftCob.Views.Configuraciones
                 {
 
                     _dts = new ConsultaDatosDAO().FunHorariobpm(2, int.Parse(ViewState["Codigo"].ToString()), "", "",
-                        DdlIntervalo.SelectedValue, "", "", "", 0, "", "", "", 0, 0, 0, int.Parse((Session["usuCodigo"].ToString())), Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        DdlIntervalo.SelectedValue, "", "", "", 0, "", "", "", 0, 0, 0, int.Parse((Session["usuCodigo"].ToString())), Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 1)
                     {
-                        new FuncionesBAS().FunShowJSMessage("Ya existe un horario con ese intervalo..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ya existe un horario con ese intervalo..!", this);
                         return;
                     }
                 }
@@ -252,11 +247,11 @@ namespace SoftCob.Views.Configuraciones
                     _dts = new ConsultaDatosDAO().FunHorariobpm(1, int.Parse(ViewState["Codigo"].ToString()),
                         TxtHorario.Text.Trim().ToUpper(), "", "", "", "", "", 0, "", "", "", 1, 0, 0,
                         int.Parse((Session["usuCodigo"].ToString())), Session["MachineName"].ToString(),
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 1)
                     {
-                        new FuncionesBAS().FunShowJSMessage("Ya existe nombre del horario..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ya existe nombre del horario..!", this);
                         return;
                     }
                 }
@@ -266,13 +261,13 @@ namespace SoftCob.Views.Configuraciones
                     DdlHoraIni.SelectedItem.ToString() + ":" + DdlMinutoIni.SelectedItem.ToString(),
                     DdlHoraFin.SelectedItem.ToString() + ":" + DdlMinutoFin.SelectedItem.ToString(),
                     ChkEstado.Text, 0, "", "", "", 0, 0, 0, int.Parse((Session["usuCodigo"].ToString())),
-                    Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                    Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                 _codigo = int.Parse(_dts.Tables[0].Rows[0]["Codigo"].ToString());
 
                 foreach (DataRow _drfila in _dtbhoras.Rows)
                 {
-                    _dts = new ConsultaDatosDAO().FunHorariobpm(4, _codigo, "", "", "", _drfila["HoraInicio"].ToString(), _drfila["HoraFin"].ToString(), "", int.Parse(_drfila["Orden"].ToString()), "", "", "", 0, 0, 0, int.Parse((Session["usuCodigo"].ToString())), Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunHorariobpm(4, _codigo, "", "", "", _drfila["HoraInicio"].ToString(), _drfila["HoraFin"].ToString(), "", int.Parse(_drfila["Orden"].ToString()), "", "", "", 0, 0, 0, int.Parse((Session["usuCodigo"].ToString())), Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 Response.Redirect("WFrm_HorariosAdmin.aspx?MensajeRetornado=Guardado con Éxito", true);

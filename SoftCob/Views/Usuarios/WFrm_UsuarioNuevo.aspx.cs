@@ -22,7 +22,7 @@
                     Response.Redirect("~/Reload.html");
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                    Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     FunCargarCombos();
                     TxtFechaCaduca.Text = DateTime.Now.ToString("MM/dd/yyyy");
                     ViewState["Login"] = "";
@@ -215,7 +215,7 @@
                         new ControllerDAO().FunEditarUsuario(_user);
 
                         _dts = new ConsultaDatosDAO().FunConsultaDatos(211, ChkEstado.Checked ? 1 : 0,
-                            int.Parse(ViewState["CodigoUsuario"].ToString()), 0, "", "", "", ViewState["Conectar"].ToString());
+                            int.Parse(ViewState["CodigoUsuario"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
                     }
 
                     Response.Redirect("WFrm_UsuarioAdmin.aspx?MensajeRetornado=Guardado con Éxito");

@@ -21,7 +21,7 @@
 
             if (!IsPostBack)
             {
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["FechaDesde"] = Request["FechaDesde"];
                 ViewState["FechaHasta"] = Request["FechaHasta"];
                 Lbltitulo.Text = "Administrar Bitacora";
@@ -38,7 +38,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(171, 1, 0, 0, "", ViewState["FechaDesde"].ToString(),
-                    ViewState["FechaHasta"].ToString(), ViewState["Conectar"].ToString());
+                    ViewState["FechaHasta"].ToString(), Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {

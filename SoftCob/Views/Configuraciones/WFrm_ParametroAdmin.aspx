@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_DepartamentoAdmin.aspx.cs" Inherits="SoftCob.Views.Configuracion.WFrm_DepartamentoAdmin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_ParametroAdmin.aspx.cs" Inherits="SoftCob.Views.Configuraciones.WFrm_ParametroAdmin" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -50,7 +50,10 @@
                                     <asp:GridView ID="GrdvDatos" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo" EmptyDataText="No existen datos para mostrar" ShowHeaderWhenEmpty="True" Width="100%">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Departamento" HeaderText="Departamento">
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Parametro" HeaderText="Parámetro">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Descripcion" HeaderText="Descripción">
                                             <ControlStyle ForeColor="Black" />
                                             </asp:HyperLinkField>
                                             <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Estado" HeaderText="Estado">
@@ -67,6 +70,7 @@
                                             $('#GrdvDatos').dataTable();
                                         });
                                     </script>
+
                                 </td>
                             </tr>
                         </table>

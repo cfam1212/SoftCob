@@ -46,7 +46,7 @@ namespace SoftCob.Views.Breanch
             {
                 TxtFechaPago.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 ViewState["Procesado"] = "NO";
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 FunCargarCombos(0);
                 ViewState["Anio"] = DateTime.Now.Year.ToString();
                 ViewState["MesName"] = DateTime.Now.ToString("MMMM", CultureInfo.InvariantCulture).ToUpper();
@@ -68,7 +68,7 @@ namespace SoftCob.Views.Breanch
                 LblExportar.Visible = false;
 
                 dts = new ConsultaDatosDAO().FunConsultaDatos(115, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue),
-                    0, "", "", "", ViewState["Conectar"].ToString());
+                    0, "", "", "", Session["Conectar"].ToString());
                 ViewState["BrenchGestor"] = dts.Tables[0];
 
                 GrdvBrenchGestor.DataSource = dts;
@@ -307,7 +307,7 @@ namespace SoftCob.Views.Breanch
                 codigoGestor = int.Parse(GrdvBrenchGestor.DataKeys[gvRow.RowIndex].Values["CodigoGestor"].ToString());
                 codigoBRMC = int.Parse(GrdvBrenchGestor.DataKeys[gvRow.RowIndex].Values["CodigoBRMC"].ToString());
                 dtsX = new ConsultaDatosDAO().FunConsultaDatos(118, codigoBRMC, int.Parse(DdlCatalogo.SelectedValue), 0,
-                    "", "", "", ViewState["Conectar"].ToString());
+                    "", "", "", Session["Conectar"].ToString());
                 pnlDetalleBrench.Visible = true;
                 GrdvBrenchRango.DataSource = dtsX;
                 GrdvBrenchRango.DataBind();
@@ -361,7 +361,7 @@ namespace SoftCob.Views.Breanch
                         decimal.Parse(_drfila["Pagos"].ToString()), TxtFechaPago.Text.Trim(), int.Parse(Session["usuCodigo"].ToString()),
                         Session["MachineName"].ToString(), "", "", "", "", "", int.Parse(DdlCatalogo.SelectedValue),
                         int.Parse(_drfila["Anio"].ToString()), int.Parse(_drfila["Mes"].ToString()),
-                        int.Parse(_drfila["CodigoGestor"].ToString()), 0, ViewState["Conectar"].ToString());
+                        int.Parse(_drfila["CodigoGestor"].ToString()), 0, Session["Conectar"].ToString());
                 }
 
                 redirect = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Procesado Con Exito..!");

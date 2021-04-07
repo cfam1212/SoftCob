@@ -1,10 +1,7 @@
-﻿
-
-namespace SoftCob.Views.Configuraciones
+﻿namespace SoftCob.Views.Configuraciones
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Linq;
     using System.Web.UI;
@@ -33,7 +30,6 @@ namespace SoftCob.Views.Configuraciones
 
             if (!IsPostBack)
             {
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 _dtbperfil.Columns.Add("CodigoPer");
                 _dtbperfil.Columns.Add("Descripcion");
                 _dtbperfil.Columns.Add("Estado");
@@ -47,7 +43,8 @@ namespace SoftCob.Views.Configuraciones
                 Lbltitulo.Text = "Administrar Perfiles de Calificación";
                 FunCargarCombos(0);
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::",
+                    Request["MensajeRetornado"].ToString());
             }
         }
         #endregion
@@ -57,7 +54,8 @@ namespace SoftCob.Views.Configuraciones
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(103, _codigoperfil, 0, 0, DdlPerfiles.SelectedValue, "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(103, _codigoperfil, 0, 0, DdlPerfiles.SelectedValue, "", "", 
+                    Session["Conectar"].ToString());
                 ViewState["Perfil"] = _dts.Tables[0];
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();
@@ -75,7 +73,7 @@ namespace SoftCob.Views.Configuraciones
                 switch (tipo)
                 {
                     case 0:
-                        _dts = new CatalogosDTO().FunGetParametroDetalleValor("TIPO PERFIL", "--Seleccione Perfil--");
+                        _dts = new ControllerDAO().FunGetParametroDetalle("TIPO PERFIL", "--Seleccione Perfil--", "S");
                         DdlPerfiles.DataSource = _dts;
                         DdlPerfiles.DataTextField = "Descripcion";
                         DdlPerfiles.DataValueField = "Codigo";
@@ -97,13 +95,13 @@ namespace SoftCob.Views.Configuraciones
             {
                 if (DdlPerfiles.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Tipo Perfil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Perfil..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Tipo Perfil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Perfil..!", this);
                     return;
                 }
 
@@ -123,7 +121,7 @@ namespace SoftCob.Views.Configuraciones
 
                 if (_existe)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Descripción ya existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Descripción ya existe..!", this);
                     return;
                 }
 
@@ -157,13 +155,13 @@ namespace SoftCob.Views.Configuraciones
             {
                 if (DdlPerfiles.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Tipo Perfil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Perfil..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Tipo Perfil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Perfil..!", this);
                     return;
                 }
 
@@ -177,7 +175,7 @@ namespace SoftCob.Views.Configuraciones
 
                 if (_existe)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Descripción ya existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Descripción ya existe..!", this);
                     return;
                 }
 
@@ -243,16 +241,19 @@ namespace SoftCob.Views.Configuraciones
 
                 if (_dtbperfil.Rows.Count > 0)
                 {
-                    _mensaje = new GestionTelefonicaDAO().FunRegistrarPerfilCalifica(0, DdlPerfiles.SelectedValue, "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbperfil, ViewState["Conectar"].ToString());
+                    _mensaje = new GestionTelefonicaDAO().FunRegistrarPerfilCalifica(0, DdlPerfiles.SelectedValue, "", "", 0, 0, 0, 
+                        int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbperfil, 
+                        Session["Conectar"].ToString());
 
                     if (_mensaje == "")
                     {
-                        _redirect = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Perfil de Calificación Guardado con Éxito..!");
+                        _redirect = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, 
+                            "Perfil de Calificación Guardado con Éxito..!");
                         Response.Redirect(_redirect, true);
                     }
-                    else new FuncionesBAS().FunShowJSMessage(_mensaje, this);
+                    else new FuncionesDAO().FunShowJSMessage(_mensaje, this);
                 }
-                else new FuncionesBAS().FunShowJSMessage("No existen datos ingresados..!", this);
+                else new FuncionesDAO().FunShowJSMessage("No existen datos ingresados..!", this);
             }
             catch (Exception ex)
             {
@@ -283,7 +284,8 @@ namespace SoftCob.Views.Configuraciones
                     _imgeliminar = (ImageButton)(e.Row.Cells[3].FindControl("imgDel"));
                     _codigoperfil = int.Parse(GrdvDatos.DataKeys[e.Row.RowIndex].Values["CodigoPer"].ToString());
 
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(104, _codigoperfil, 0, 0, DdlPerfiles.SelectedValue, "", "", ViewState["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(104, _codigoperfil, 0, 0, DdlPerfiles.SelectedValue, "", "",
+                        Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {

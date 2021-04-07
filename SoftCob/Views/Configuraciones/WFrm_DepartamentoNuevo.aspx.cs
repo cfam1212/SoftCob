@@ -1,4 +1,4 @@
-﻿namespace SoftCob.Views.Configuracion
+﻿namespace SoftCob.Views.Configuraciones
 {
     using ControllerSoftCob;
     using ModeloSoftCob;
@@ -22,7 +22,7 @@
                     {
                         LblEstado.Visible = true;
                         ChkEstado.Visible = true;
-                        Lbltitulo.Text = "Editar Tarea";
+                        Lbltitulo.Text = "Editar Departamento";
                         FunCargarMantenimiento(int.Parse(ViewState["CodigoDEPA"].ToString()));
                     }
                 }

@@ -35,7 +35,7 @@
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                    Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     ViewState["CodigoCPCEaux"] = "";
                     Lbltitulo.Text = "Administrar Arbol Decision";
                     TrvCedenteArbol.Nodes.Clear();
@@ -106,7 +106,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(16, cpcecodigo, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(16, cpcecodigo, 0, 0, "", "", "", Session["Conectar"].ToString());
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -129,7 +129,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(17, araccodigo, cpcecodigo, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(17, araccodigo, cpcecodigo, 0, "", "", "", Session["Conectar"].ToString());
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -152,7 +152,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(18, arefcodigo, cpcecodigo, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(18, arefcodigo, cpcecodigo, 0, "", "", "", Session["Conectar"].ToString());
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -178,7 +178,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(19, arrecodigo, cpcecodigo, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(19, arrecodigo, cpcecodigo, 0, "", "", "", Session["Conectar"].ToString());
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -201,7 +201,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(182, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                    0, 0, "", "", "", ViewState["Conectar"].ToString());
+                    0, 0, "", "", "", Session["Conectar"].ToString());
 
                 if (ViewState["CodigoCPCEaux"].ToString() != ViewState["CodigoCPCE"].ToString())
                 {
@@ -226,7 +226,7 @@
                 ViewState["CodigoCPCEaux"] = ViewState["CodigoCPCE"];
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(180, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                    0, 0, "", "", "", ViewState["Conectar"].ToString());
+                    0, 0, "", "", "", Session["Conectar"].ToString());
                 ViewState["Nivel"] = _dts.Tables[0].Rows[0]["Nivel"].ToString();
             }
             catch (Exception ex)
@@ -447,7 +447,7 @@
                         if (_dtbaccion.Rows.Count == 0)
                         {
                             _dts = new ConsultaDatosDAO().FunConsultaDatos(182, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                                0, 0, "", "", "", ViewState["Conectar"].ToString());
+                                0, 0, "", "", "", Session["Conectar"].ToString());
                             _dtbaccion = _dts.Tables[0];
                             ViewState["ArbolAccion"] = _dts.Tables[0];
                         }
@@ -484,7 +484,7 @@
                         if (_dtbefecto.Rows.Count == 0)
                         {
                             _dts = new ConsultaDatosDAO().FunConsultaDatos(182, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                                0, 0, "", "", "", ViewState["Conectar"].ToString());
+                                0, 0, "", "", "", Session["Conectar"].ToString());
                             _dtbefecto = _dts.Tables[1];
                             ViewState["ArbolEfecto"] = _dts.Tables[1];
                         }
@@ -523,7 +523,7 @@
                         if (_dtbrespuesta.Rows.Count == 0)
                         {
                             _dts = new ConsultaDatosDAO().FunConsultaDatos(182, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                                0, 0, "", "", "", ViewState["Conectar"].ToString());
+                                0, 0, "", "", "", Session["Conectar"].ToString());
                             _dtbrespuesta = _dts.Tables[2];
                             ViewState["ArbolRespuesta"] = _dts.Tables[2];
                         }
@@ -565,7 +565,7 @@
                         if (_dtbcontacto.Rows.Count == 0)
                         {
                             _dts = new ConsultaDatosDAO().FunConsultaDatos(182, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                                0, 0, "", "", "", ViewState["Conectar"].ToString());
+                                0, 0, "", "", "", Session["Conectar"].ToString());
                             _dtbcontacto = _dts.Tables[3];
                             ViewState["ArbolContacto"] = _dts.Tables[3];
                         }
@@ -620,26 +620,26 @@
                             int.Parse(ViewState["CodigoARAC"].ToString()), 0, 0, 0, TxtArbol.Text.Trim().ToUpper(),
                             ChkEstado.Checked ? "Activo" : "Inactivo", "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0,
                             int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                            ViewState["Conectar"].ToString());
+                            Session["Conectar"].ToString());
                         break;
                     case "EFECTO":
                         _dts = new ConsultaDatosDAO().FunNewArbolDecision(1, int.Parse(ViewState["CodigoCPCE"].ToString()),
                             int.Parse(ViewState["CodigoARAC"].ToString()), int.Parse(ViewState["CodigoAREF"].ToString()),
-                            0, 0, TxtArbol.Text.Trim().ToUpper(), ChkEstado.Checked ? "Activo" : "Inactivo", "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                            0, 0, TxtArbol.Text.Trim().ToUpper(), ChkEstado.Checked ? "Activo" : "Inactivo", "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
                         break;
                     case "RESPUESTA":
                         _dts = new ConsultaDatosDAO().FunNewArbolDecision(2, int.Parse(ViewState["CodigoCPCE"].ToString()),
                             int.Parse(ViewState["CodigoARAC"].ToString()), int.Parse(ViewState["CodigoAREF"].ToString()),
                             int.Parse(ViewState["CodigoARRE"].ToString()), 0, TxtArbol.Text.Trim().ToUpper(),
                             ChkEstado.Checked ? "Activo" : "Inactivo", ChkContacto.Checked ? "1" : "0",
-                            ChkPago.Checked ? 1 : ChkLlamar.Checked ? 2 : 0, ChkComisiona.Checked ? "SI" : "NO", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                            ChkPago.Checked ? 1 : ChkLlamar.Checked ? 2 : 0, ChkComisiona.Checked ? "SI" : "NO", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
                         break;
                     case "CONTACTO":
                         _dts = new ConsultaDatosDAO().FunNewArbolDecision(3, int.Parse(ViewState["CodigoCPCE"].ToString()),
                             int.Parse(ViewState["CodigoARAC"].ToString()), int.Parse(ViewState["CodigoAREF"].ToString()),
                             int.Parse(ViewState["CodigoARRE"].ToString()), int.Parse(ViewState["CodigoARRE"].ToString()),
                             TxtArbol.Text.Trim().ToUpper(), ChkEstado.Checked ? "Activo" : "Inactivo",
-                            "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                            "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
                         break;
                 }
                 response = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Guardado con Éxito");
@@ -832,7 +832,7 @@
                     _dts = new ConsultaDatosDAO().FunNewArbolDecision(0, int.Parse(_codigocpce), int.Parse(_codigoarac),
                         0, 0, 0, _descripcion, _estado, "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0,
                         int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
 
                     _codigoaracnew = _dts.Tables[0].Rows[0]["CodigoARAC"].ToString();
                     _efecto = _dtbefecto.Select("CodigoARAC='" + _codigoarac + "'");
@@ -846,7 +846,7 @@
                         _dts = new ConsultaDatosDAO().FunNewArbolDecision(1, int.Parse(_codigocpce), int.Parse(_codigoaracnew),
                             int.Parse(_codigoaref), 0, 0, _descripcion, _estado, "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0,
                             int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                            ViewState["Conectar"].ToString());
+                            Session["Conectar"].ToString());
 
                         _codigoarefnew = _dts.Tables[0].Rows[0]["CodigoAREF"].ToString();
                         _respuesta = _dtbrespuesta.Select("CodigoAREF='" + _codigoaref + "'");
@@ -864,7 +864,7 @@
                                 int.Parse(_codigoarefnew), int.Parse(_codigoarre), 0, _descripcion, _estado, _efectivo,
                                 int.Parse(_tiporespuesta), _comisiona, "", "", "", "", "", 0, 0, 0, 0, 0,
                                 int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                                ViewState["Conectar"].ToString());
+                                Session["Conectar"].ToString());
 
                             _codigoarrenew = _dts.Tables[0].Rows[0]["CodigoARRE"].ToString();
                             _contacto = _dtbcontacto.Select("CodigoARRE='" + _codigoarre + "'");
@@ -875,7 +875,7 @@
                                 _descripcion = drcontacto["Descripcion"].ToString();
                                 _estado = drcontacto["Estado"].ToString();
 
-                                _dts = new ConsultaDatosDAO().FunNewArbolDecision(3, int.Parse(_codigocpce), int.Parse(_codigoaracnew), int.Parse(_codigoarefnew), int.Parse(_codigoarrenew), int.Parse(_codigoarco), _descripcion, _estado, "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                                _dts = new ConsultaDatosDAO().FunNewArbolDecision(3, int.Parse(_codigocpce), int.Parse(_codigoaracnew), int.Parse(_codigoarefnew), int.Parse(_codigoarrenew), int.Parse(_codigoarco), _descripcion, _estado, "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
                             }
                         }
                     }

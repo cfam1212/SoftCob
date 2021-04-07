@@ -23,7 +23,7 @@
             {
                 Lbltitulo.Text = "Comparar Presupuestos << COMPROMISOS DE PAGO --- PAGOS REALIZADOS >> ";
 
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
 
                 PnlDatosCompromiso_CollapsiblePanelExtender.Collapsed = false;
@@ -37,12 +37,12 @@
         private void FunCargaMantenimiento()
         {
             _dts = new ConsultaDatosDAO().FunConsultaDatos(218, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                0, 0, "", "", "", ViewState["Conectar"].ToString());
+                0, 0, "", "", "", Session["Conectar"].ToString());
             GrdvCompromisos.DataSource = _dts;
             GrdvCompromisos.DataBind();
 
             _dts = new ConsultaDatosDAO().FunConsultaDatos(219, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                0, 0, "", "", "", ViewState["Conectar"].ToString());
+                0, 0, "", "", "", Session["Conectar"].ToString());
             GrdvPagos.DataSource = _dts;
             GrdvPagos.DataBind();
         }
@@ -58,7 +58,7 @@
                     _porcumplido = decimal.Parse(GrdvCompromisos.DataKeys[e.Row.RowIndex].Values["PorCumplido"].ToString());
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(216, int.Parse(ViewState["CodigoCPCE"].ToString()), 1,
-                        0, "", _porcumplido.ToString(), "", ViewState["Conectar"].ToString());
+                        0, "", _porcumplido.ToString(), "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -82,7 +82,7 @@
                     _porcumplido = decimal.Parse(GrdvPagos.DataKeys[e.Row.RowIndex].Values["PorCumplido"].ToString());
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(216, int.Parse(ViewState["CodigoCPCE"].ToString()), 1,
-                        0, "", _porcumplido.ToString(), "", ViewState["Conectar"].ToString());
+                        0, "", _porcumplido.ToString(), "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {

@@ -1,11 +1,7 @@
-﻿
-
-namespace SoftCob.Views.Configuraciones
+﻿namespace SoftCob.Views.Configuraciones
 {
-    
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Linq;
     using System.Web.UI;
@@ -32,14 +28,15 @@ namespace SoftCob.Views.Configuraciones
             {
                 if (Session["IN-CALL"].ToString() == "SI")
                 {
-                    Response.Redirect("../Gestion/WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                    Response.Redirect("../Gestion/WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + 
+                        Session["IdListaCabecera"].ToString(), true);
                     return;
                 }
                 ViewState["GestoresAcceso"] = null;
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Administrar Permisos Acceso Lista Clientes";
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                    Request["MensajeRetornado"].ToString());
                 FunCargarCombos(0);
             }
         }
@@ -51,14 +48,14 @@ namespace SoftCob.Views.Configuraciones
             switch (opcion)
             {
                 case 0:
-                    DdlCedente.DataSource = new CatalogosDTO().FunGetCedentes();
+                    DdlCedente.DataSource = new CedenteDAO().FunGetCedentes();
                     DdlCedente.DataTextField = "Descripcion";
                     DdlCedente.DataValueField = "Codigo";
                     DdlCedente.DataBind();
                     break;
                 case 1:
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(153, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
                     ViewState["GestoresAcceso"] = _dts.Tables[0];
                     GrdvGestores.DataSource = _dts;
                     GrdvGestores.DataBind();
@@ -94,7 +91,7 @@ namespace SoftCob.Views.Configuraciones
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
                     return;
                 }
 
@@ -181,7 +178,7 @@ namespace SoftCob.Views.Configuraciones
                     {
                         _dts = new ConsultaDatosDAO().FunConsultaDatos(154, int.Parse(DdlCedente.SelectedValue),
                             int.Parse(_drfila["Codigo"].ToString()), int.Parse(Session["usuCodigo"].ToString()), "",
-                            _drfila["VerLista"].ToString(), Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                            _drfila["VerLista"].ToString(), Session["MachineName"].ToString(), Session["Conectar"].ToString());
                     }
 
                     _response = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Guardado con Éxito");

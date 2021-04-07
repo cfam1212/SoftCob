@@ -25,7 +25,7 @@
                 ViewState["FechaDesde"] = Request["FechaDesde"];
                 ViewState["FechaHasta"] = Request["FechaHasta"];
                 Lbltitulo.Text = "Consulta Bitacora << " + ViewState["Bitacora"].ToString() + " >>";
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["FechaActual"] = DateTime.Now.ToString("MM/dd/yyyy");
                 LblFecha.InnerText = "FECHA BITACORA: " + ViewState["Fecha"].ToString();
                 FunCargarMantenimiento();
@@ -41,7 +41,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(170, 0, 0, 0, "", ViewState["Bitacora"].ToString(), "",
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 GrdvSupervisores.DataSource = _dts.Tables[0];
                 GrdvSupervisores.DataBind();

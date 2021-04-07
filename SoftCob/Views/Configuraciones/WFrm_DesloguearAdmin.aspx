@@ -1,6 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_ParametroAdmin.aspx.cs" Inherits="SoftCob.Views.Configuracion.WFrm_ParametroAdmin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_DesloguearAdmin.aspx.cs" Inherits="SoftCob.Views.Configuraciones.WFrm_DesloguearAdmin" %>
 
- <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <!DOCTYPE html>
 
@@ -22,7 +22,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="background-color: #79BBB8;">
                 <asp:Label ID="Lbltitulo" runat="server"></asp:Label>
-            </div>
+            </div>            
             <asp:UpdatePanel ID="updError" runat="server">
                 <ContentTemplate>
                     <div style="background-color: beige; text-align: left; width: 100%; font-size: 25px">
@@ -30,35 +30,34 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-body">
+            <div class="panel-body">                
                 <asp:UpdatePanel ID="updPrincipal" runat="server">
                     <ContentTemplate>
                         <table class="table table-bordered table-condensed table-hover table-responsive">
                             <tr>
                                 <td>
-                                    <button id="BtnNuevo" runat="server" type="submit" class="btn btn-primary"
-                                        onserverclick="BtnNuevo_Click">
-                                        <span aria-hidden="true"
-                                            class="glyphicon glyphicon-plus"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
-                        <table class="table table-bordered table-condensed table-hover table-responsive">
-                            <tr>
-                                <td>
-                                    <asp:GridView ID="GrdvDatos" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo" EmptyDataText="No existen datos para mostrar" ShowHeaderWhenEmpty="True" Width="100%">
+                                    <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
+                                        CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                        ShowHeaderWhenEmpty="True" DataKeyNames="Codigo">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Parametro" HeaderText="Parámetro">
-                                            <ControlStyle ForeColor="Black" />
-                                            </asp:HyperLinkField>
-                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Descripcion" HeaderText="Descripción">
-                                            <ControlStyle ForeColor="Black" />
-                                            </asp:HyperLinkField>
-                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Estado" HeaderText="Estado">
-                                            <ControlStyle ForeColor="Black" />
-                                            </asp:HyperLinkField>
+                                            <asp:BoundField DataField="Usuario" HeaderText="Usuario" />
+                                            <asp:BoundField DataField="Perfil" HeaderText="Perfil" />
+                                            <asp:BoundField DataField="Departamento" HeaderText="Departamento" />
+                                            <asp:BoundField DataField="Estado" HeaderText="Ult.Estado" />
+                                            <asp:BoundField DataField="FechaLogueo" HeaderText="Fecha Logueo" />
+                                            <asp:TemplateField HeaderText="Desloguear">
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="BtnSelecc" runat="server" Height="20px" ImageUrl="~/Botones/btnllaves.png" OnClick="BtnSelecc_Click" />
+                                                </ItemTemplate>
+                                                <ItemStyle HorizontalAlign="Center" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Reset Password">
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="ImgReset" runat="server" Height="20px" ImageUrl="~/Botones/resetpassword.png" OnClick="ImgReset_Click" />
+                                                </ItemTemplate>
+                                                <ItemStyle HorizontalAlign="Center" />
+                                            </asp:TemplateField>
                                         </Columns>
                                         <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                         <RowStyle Font-Size="X-Small" />
@@ -70,7 +69,6 @@
                                             $('#GrdvDatos').dataTable();
                                         });
                                     </script>
-
                                 </td>
                             </tr>
                         </table>

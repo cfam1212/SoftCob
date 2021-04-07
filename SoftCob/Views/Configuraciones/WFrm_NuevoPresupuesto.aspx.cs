@@ -1,8 +1,7 @@
-﻿
-
-namespace SoftCob.Views.Configuraciones
+﻿namespace SoftCob.Views.Configuraciones
 {
     using ControllerSoftCob;
+    using ModeloSoftCob;
     using System;
     using System.Configuration;
     using System.Data;
@@ -30,7 +29,7 @@ namespace SoftCob.Views.Configuraciones
                 ViewState["CodigoCEDE"] = "0";
                 ViewState["CodigoCPCE"] = "0";
 
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Definir Porcentaje Presupuesto de Carteras";
 
                 if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
@@ -53,7 +52,7 @@ namespace SoftCob.Views.Configuraciones
         {
             try
             {
-                _dts = new CedenteDTO().FunGetCiuadesCedentes();
+                _dts = new CedenteDAO().FunGetCiuadesCedentes();
 
                 if (_dts != null && treenode != null)
                 {
@@ -77,7 +76,7 @@ namespace SoftCob.Views.Configuraciones
         {
             try
             {
-                _dts = new CedenteDTO().FunGetCedentesporIDCiudad(idCiudad);
+                _dts = new CedenteDAO().FunGetCedentesporIDCiudad(idCiudad);
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -100,7 +99,7 @@ namespace SoftCob.Views.Configuraciones
         {
             try
             {
-                _dts = new CedenteDTO().FunGetProductosporIDCedente(idCedente);
+                _dts = new CedenteDAO().FunGetProductosporIDCedente(idCedente);
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -123,7 +122,7 @@ namespace SoftCob.Views.Configuraciones
         {
             try
             {
-                _dts = new CedenteDTO().FunGetCatalogoProductosporIDProducto(idProducto);
+                _dts = new CedenteDAO().FunGetCatalogoProductosporIDProducto(idProducto);
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -145,7 +144,7 @@ namespace SoftCob.Views.Configuraciones
         {
             try
             {
-                _dts = new CedenteDTO().FunGetSegmentoCabecera(int.Parse(ViewState["CodigoCEDE"].ToString()),
+                _dts = new CedenteDAO().FunGetSegmentoCabecera(int.Parse(ViewState["CodigoCEDE"].ToString()),
                     int.Parse(ViewState["CodigoCPCE"].ToString()), 1);
                 GrdvSegmento.DataSource = _dts;
                 GrdvSegmento.DataBind();
@@ -188,7 +187,8 @@ namespace SoftCob.Views.Configuraciones
                         string[] pathRoot = node.ValuePath.Split(new char[] { '/' });
                         ViewState["CodigoCEDE"] = pathRoot[3].ToString();
                         ViewState["CodigoCPCE"] = pathRoot[5].ToString();
-                        lblCatalogo.InnerText = "Definir Presupuesto Pocentaje >>" + new CedenteDTO().FunGetNameCatalogoporID(int.Parse(ViewState["CodigoCPCE"].ToString()));
+                        lblCatalogo.InnerText = "Definir Presupuesto Pocentaje >>" + 
+                            new CedenteDAO().FunGetNameCatalogoporID(int.Parse(ViewState["CodigoCPCE"].ToString()));
                         FunCargarMantenimiento();
                         break;
                 }
@@ -205,31 +205,31 @@ namespace SoftCob.Views.Configuraciones
             {
                 if (string.IsNullOrEmpty(TxtEtiqueta.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Etiqueta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Etiqueta..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Porcentaje Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Inicial..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorFinal.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Porcentaje Final..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Final..!", this);
                     return;
                 }
 
                 if (int.Parse(TxtValorFinal.Text.Trim()) <= int.Parse(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(Request.Form[TxtColor.UniqueID]))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Color de Etiqueta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Color de Etiqueta..!", this);
                     return;
                 }
 
@@ -248,7 +248,7 @@ namespace SoftCob.Views.Configuraciones
                     {
                         foreach (DataRow _dr in _dtbsegmento.Rows)
                         {
-                            _between = new FuncionesBAS().FunBetween(int.Parse(_dr[3].ToString()), int.Parse(_dr[4].ToString()),
+                            _between = new FuncionesDAO().FunBetween(int.Parse(_dr[3].ToString()), int.Parse(_dr[4].ToString()),
                                 int.Parse(TxtValorInicial.Text), int.Parse(TxtValorFinal.Text));
 
                             if (_between > 0)
@@ -262,7 +262,7 @@ namespace SoftCob.Views.Configuraciones
 
                 if (_lexiste)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Segmento ya Existe Creado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Segmento ya Existe Creado..!", this);
                     return;
                 }
 
@@ -302,31 +302,31 @@ namespace SoftCob.Views.Configuraciones
             {
                 if (string.IsNullOrEmpty(TxtEtiqueta.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Descripción Etiqueta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción Etiqueta..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Porcentaje Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Inicial..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorFinal.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Porcentaje Final..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Final..!", this);
                     return;
                 }
 
                 if (int.Parse(TxtValorFinal.Text.Trim()) <= int.Parse(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(Request.Form[TxtColor.UniqueID]))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Color de Etiqueta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Color de Etiqueta..!", this);
                     return;
                 }
 
@@ -337,7 +337,7 @@ namespace SoftCob.Views.Configuraciones
 
                     foreach (DataRow _dr in _resultado)
                     {
-                        _between = new FuncionesBAS().FunBetween(int.Parse(_dr[3].ToString()), int.Parse(_dr[4].ToString()),
+                        _between = new FuncionesDAO().FunBetween(int.Parse(_dr[3].ToString()), int.Parse(_dr[4].ToString()),
                             int.Parse(TxtValorInicial.Text), int.Parse(TxtValorFinal.Text));
 
                         if (_between > 0)
@@ -350,7 +350,7 @@ namespace SoftCob.Views.Configuraciones
 
                 if (_lexiste)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Segmento ya Existe Creado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Segmento ya Existe Creado..!", this);
                     return;
                 }
 
@@ -384,7 +384,6 @@ namespace SoftCob.Views.Configuraciones
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void GrdvSegmento_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -457,13 +456,13 @@ namespace SoftCob.Views.Configuraciones
             {
                 if (ViewState["CodigoCEDE"].ToString() == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
                     return;
                 }
 
                 if (ViewState["CodigoCPCE"].ToString() == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Producto/Catálogo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto/Catálogo..!", this);
                     return;
                 }
 
@@ -471,13 +470,13 @@ namespace SoftCob.Views.Configuraciones
 
                 if (_dtbsegmento.Rows.Count == 0)
                 {
-                    new FuncionesBAS().FunShowJSMessage("No Existen Registros Ingresados..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No Existen Registros Ingresados..!", this);
                     return;
                 }
 
                 _dtbsegmento = (DataTable)ViewState["SegmentoCabecera"];
 
-                GSBPO_SEGMENTO_CABECERA _datos = new GSBPO_SEGMENTO_CABECERA();
+                SoftCob_SEGMENTO_CABECERA _datos = new SoftCob_SEGMENTO_CABECERA();
 
                 foreach (DataRow _dr in _dtbsegmento.Rows)
                 {

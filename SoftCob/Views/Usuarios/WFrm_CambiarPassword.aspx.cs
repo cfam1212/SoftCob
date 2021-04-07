@@ -17,7 +17,7 @@
             if (!IsPostBack)
             {
                 Lbltitulo.Text = "Administrar Contraseñas";
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
 
                 if (bool.Parse(Session["cambiarpass"].ToString()) == false)
                 {

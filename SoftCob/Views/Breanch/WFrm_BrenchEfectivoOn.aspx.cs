@@ -22,7 +22,7 @@
         {
             if (!IsPostBack)
             {
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Modificar Efectividad de Pago << ON DEMAND >> ";
                 FunCargarCombos(0);
             }
@@ -100,7 +100,7 @@
                 if (DdlGestores.SelectedValue == "0" && DdlTipoDocumento.SelectedValue == "2") _tipo = 5;
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(221, int.Parse(DdlCatalogo.SelectedValue), _tipo,
-                    int.Parse(DdlGestores.SelectedValue), "", TxtDocumento.Text.Trim(), "", ViewState["Conectar"].ToString());
+                    int.Parse(DdlGestores.SelectedValue), "", TxtDocumento.Text.Trim(), "", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0) DivPagos.Visible = true;
                 else DivPagos.Visible = false;
@@ -124,7 +124,7 @@
             _gestor = int.Parse(GrdvPagos.DataKeys[_gvrow.RowIndex].Values["CodigoGEST"].ToString());
 
             _dts = new ConsultaDatosDAO().FunConsultaDatos(222, _codigo, _chkefec.Checked ? 1 : 0, _gestor,
-                "", TxtDocumento.Text.Trim(), "", ViewState["Conectar"].ToString());
+                "", TxtDocumento.Text.Trim(), "", Session["Conectar"].ToString());
         }
 
         protected void ImgGestiones_Click(object sender, ImageClickEventArgs e)

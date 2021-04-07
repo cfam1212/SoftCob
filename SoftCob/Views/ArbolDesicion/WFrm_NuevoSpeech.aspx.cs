@@ -42,7 +42,7 @@
                     return;
                 }
 
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
 
                 _dtbspeech.Columns.Add("Codigo");
                 _dtbspeech.Columns.Add("codigoARAC");
@@ -172,7 +172,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(180, int.Parse(ViewState["codigoCEDE"].ToString()), 0, 0,
-                    "", "", "", ViewState["Conectar"].ToString());
+                    "", "", "", Session["Conectar"].ToString());
 
                 ViewState["NivelArbol"] = _dts.Tables[0].Rows[0]["Nivel"].ToString();
 

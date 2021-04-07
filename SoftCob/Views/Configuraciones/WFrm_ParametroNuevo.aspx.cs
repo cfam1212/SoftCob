@@ -1,4 +1,4 @@
-﻿namespace SoftCob.Views.Configuracion
+﻿namespace SoftCob.Views.Configuraciones
 {
     using ControllerSoftCob;
     using ModeloSoftCob;
@@ -8,7 +8,6 @@
     using System.Linq;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-
     public partial class WFrm_ParametroNuevo : Page
     {
         #region Variables

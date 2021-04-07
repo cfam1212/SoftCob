@@ -52,18 +52,24 @@
                                         ShowHeaderWhenEmpty="True" DataKeyNames="Codigo">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:BoundField DataField="Horario" HeaderText="Horario" />
-                                            <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
-                                            <asp:BoundField DataField="Intervalo" HeaderText="Intervalo" />
-                                            <asp:BoundField DataField="HoraIni" HeaderText="HoraInicio" />
-                                            <asp:BoundField DataField="HoraFin" HeaderText="HoraFin" />
-                                            <asp:BoundField DataField="Estado" HeaderText="Estado" />
-                                            <asp:TemplateField HeaderText="Editar">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="Btnselecc" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="Btnselecc_Click" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" />
-                                            </asp:TemplateField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Horario" HeaderText="Horario">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Descripcion" HeaderText="Descripción">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Intervalo" HeaderText="Intervalo">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="HoraIni" HeaderText="HoraInicio">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="HoraFin" HeaderText="HoraFin">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Estado" HeaderText="Estado">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
                                         </Columns>
                                         <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                         <RowStyle Font-Size="X-Small" />

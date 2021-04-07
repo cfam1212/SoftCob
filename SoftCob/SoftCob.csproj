@@ -281,12 +281,29 @@
     <Content Include="Views\Cedente\WFrm_SupervisorCedente.aspx" />
     <Content Include="Views\Cedente\WFrm_UpdateDeudor.aspx" />
     <Content Include="Views\Cedente\WFrm_UpdateGarante.aspx" />
-    <Content Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx" />
-    <Content Include="Views\Configuracion\WFrm_DepartamentoNuevo.aspx" />
-    <Content Include="Views\Configuracion\WFrm_DesloguearAdmin.aspx" />
-    <Content Include="Views\Configuracion\WFrm_ParametroAdmin.aspx" />
-    <Content Include="Views\Configuracion\WFrm_ParametroNuevo.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_AccesoArbolGAdmin.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_AccesoListasAdmin.aspx" />
+    <Content Include="Views\Configuraciones\wFrm_CopiarArbolDecision.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_DepartamentoAdmin.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_DepartamentoNuevo.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_DesloguearAdmin.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_EstrategiaAdmin.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_HorariosAdmin.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_NuevaEstrategia.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_NuevoHorario.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_NuevoPresupuesto.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_NuevosCamposEst.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_NuevoSegmento.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_ParametroAdmin.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_ParametroNuevo.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_PerfilesCalificacion.aspx" />
     <Content Include="Views\ConsultasManager\WFrm_AccionConsulta.aspx" />
+    <Content Include="Views\ConsultasManager\WFrm_ConsultaAccion.aspx" />
+    <Content Include="Views\ConsultasManager\WFrm_ConsultasAdmin.aspx" />
+    <Content Include="Views\Gestion\WFrm_ArbolGenealogicoRecursivo.aspx" />
+    <Content Include="Views\Gestion\WFrm_ArbolRecursivo.aspx" />
+    <Content Include="Views\Gestion\WFrm_BuscarTelefonos.aspx" />
+    <Content Include="Views\Gestion\WFrm_DatosEquifax.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Detalle.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Menu.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Principal.aspx" />
@@ -602,40 +619,117 @@
     <Compile Include="Views\Cedente\WFrm_UpdateGarante.aspx.designer.cs">
       <DependentUpon>WFrm_UpdateGarante.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx.cs">
+    <Compile Include="Views\Configuraciones\WFrm_AccesoArbolGAdmin.aspx.cs">
+      <DependentUpon>WFrm_AccesoArbolGAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_AccesoArbolGAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_AccesoArbolGAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_AccesoListasAdmin.aspx.cs">
+      <DependentUpon>WFrm_AccesoListasAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_AccesoListasAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_AccesoListasAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\wFrm_CopiarArbolDecision.aspx.cs">
+      <DependentUpon>wFrm_CopiarArbolDecision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\wFrm_CopiarArbolDecision.aspx.designer.cs">
+      <DependentUpon>wFrm_CopiarArbolDecision.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_DepartamentoAdmin.aspx.cs">
       <DependentUpon>WFrm_DepartamentoAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Configuracion\WFrm_DepartamentoAdmin.aspx.designer.cs">
+    <Compile Include="Views\Configuraciones\WFrm_DepartamentoAdmin.aspx.designer.cs">
       <DependentUpon>WFrm_DepartamentoAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Configuracion\WFrm_DepartamentoNuevo.aspx.cs">
+    <Compile Include="Views\Configuraciones\WFrm_DepartamentoNuevo.aspx.cs">
       <DependentUpon>WFrm_DepartamentoNuevo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Configuracion\WFrm_DepartamentoNuevo.aspx.designer.cs">
+    <Compile Include="Views\Configuraciones\WFrm_DepartamentoNuevo.aspx.designer.cs">
       <DependentUpon>WFrm_DepartamentoNuevo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Configuracion\WFrm_DesloguearAdmin.aspx.cs">
+    <Compile Include="Views\Configuraciones\WFrm_DesloguearAdmin.aspx.cs">
       <DependentUpon>WFrm_DesloguearAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Configuracion\WFrm_DesloguearAdmin.aspx.designer.cs">
+    <Compile Include="Views\Configuraciones\WFrm_DesloguearAdmin.aspx.designer.cs">
       <DependentUpon>WFrm_DesloguearAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Configuracion\WFrm_ParametroAdmin.aspx.cs">
+    <Compile Include="Views\Configuraciones\WFrm_EstrategiaAdmin.aspx.cs">
+      <DependentUpon>WFrm_EstrategiaAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_EstrategiaAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_EstrategiaAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_HorariosAdmin.aspx.cs">
+      <DependentUpon>WFrm_HorariosAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_HorariosAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_HorariosAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_NuevaEstrategia.aspx.cs">
+      <DependentUpon>WFrm_NuevaEstrategia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_NuevaEstrategia.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevaEstrategia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_NuevoHorario.aspx.cs">
+      <DependentUpon>WFrm_NuevoHorario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_NuevoHorario.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevoHorario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_NuevoPresupuesto.aspx.cs">
+      <DependentUpon>WFrm_NuevoPresupuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_NuevoPresupuesto.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevoPresupuesto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_NuevosCamposEst.aspx.cs">
+      <DependentUpon>WFrm_NuevosCamposEst.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_NuevosCamposEst.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevosCamposEst.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_NuevoSegmento.aspx.cs">
+      <DependentUpon>WFrm_NuevoSegmento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_NuevoSegmento.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevoSegmento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_ParametroAdmin.aspx.cs">
       <DependentUpon>WFrm_ParametroAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Configuracion\WFrm_ParametroAdmin.aspx.designer.cs">
+    <Compile Include="Views\Configuraciones\WFrm_ParametroAdmin.aspx.designer.cs">
       <DependentUpon>WFrm_ParametroAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Configuracion\WFrm_ParametroNuevo.aspx.cs">
+    <Compile Include="Views\Configuraciones\WFrm_ParametroNuevo.aspx.cs">
       <DependentUpon>WFrm_ParametroNuevo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Configuracion\WFrm_ParametroNuevo.aspx.designer.cs">
+    <Compile Include="Views\Configuraciones\WFrm_ParametroNuevo.aspx.designer.cs">
       <DependentUpon>WFrm_ParametroNuevo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_PerfilesCalificacion.aspx.cs">
+      <DependentUpon>WFrm_PerfilesCalificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_PerfilesCalificacion.aspx.designer.cs">
+      <DependentUpon>WFrm_PerfilesCalificacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\ConsultasManager\WFrm_AccionConsulta.aspx.cs">
       <DependentUpon>WFrm_AccionConsulta.aspx</DependentUpon>
@@ -643,6 +737,48 @@
     </Compile>
     <Compile Include="Views\ConsultasManager\WFrm_AccionConsulta.aspx.designer.cs">
       <DependentUpon>WFrm_AccionConsulta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConsultasManager\WFrm_ConsultaAccion.aspx.cs">
+      <DependentUpon>WFrm_ConsultaAccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ConsultasManager\WFrm_ConsultaAccion.aspx.designer.cs">
+      <DependentUpon>WFrm_ConsultaAccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConsultasManager\WFrm_ConsultasAdmin.aspx.cs">
+      <DependentUpon>WFrm_ConsultasAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ConsultasManager\WFrm_ConsultasAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_ConsultasAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ArbolGenealogicoRecursivo.aspx.cs">
+      <DependentUpon>WFrm_ArbolGenealogicoRecursivo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ArbolGenealogicoRecursivo.aspx.designer.cs">
+      <DependentUpon>WFrm_ArbolGenealogicoRecursivo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ArbolRecursivo.aspx.cs">
+      <DependentUpon>WFrm_ArbolRecursivo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ArbolRecursivo.aspx.designer.cs">
+      <DependentUpon>WFrm_ArbolRecursivo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_BuscarTelefonos.aspx.cs">
+      <DependentUpon>WFrm_BuscarTelefonos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_BuscarTelefonos.aspx.designer.cs">
+      <DependentUpon>WFrm_BuscarTelefonos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_DatosEquifax.aspx.cs">
+      <DependentUpon>WFrm_DatosEquifax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_DatosEquifax.aspx.designer.cs">
+      <DependentUpon>WFrm_DatosEquifax.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Mantenedor\WFrm_Detalle.aspx.cs">
       <DependentUpon>WFrm_Detalle.aspx</DependentUpon>

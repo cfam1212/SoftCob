@@ -47,7 +47,7 @@
                     return;
                 }
 
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 _dtbaccion.Columns.Add("Codigo");
                 _dtbaccion.Columns.Add("CodigoCatagolo");
                 _dtbaccion.Columns.Add("Descripcion");
@@ -246,7 +246,7 @@
             try
             {
                 _dsaccion = new ConsultaDatosDAO().FunConsultaDatos(16, int.Parse(ViewState["codigoCatalogo"].ToString()), 0, 0,
-                    "", "", "", ViewState["Conectar"].ToString());
+                    "", "", "", Session["Conectar"].ToString());
 
                 ViewState["ArbolAccion"] = _dsaccion.Tables[0];
                 GrdvAccion.DataSource = _dsaccion;
@@ -261,7 +261,7 @@
                     {
                         _codigoarbolaccion = int.Parse(_draccion[0].ToString());
                         _dsefecto = new ConsultaDatosDAO().FunConsultaDatos(17, _codigoarbolaccion, int.Parse(ViewState["codigoCatalogo"].ToString()),
-                            0, "", "", "", ViewState["Conectar"].ToString());
+                            0, "", "", "", Session["Conectar"].ToString());
 
                         foreach (DataRow _fila in _dsefecto.Tables[0].Rows)
                         {
@@ -292,7 +292,7 @@
                             _codigoarbolefecto = int.Parse(_drefecto[0].ToString());
                             _dsrespuesta = new ConsultaDatosDAO().FunConsultaDatos(18, _codigoarbolefecto,
                                 int.Parse(ViewState["codigoCatalogo"].ToString()), 0, "", "", "",
-                                ViewState["Conectar"].ToString());
+                                Session["Conectar"].ToString());
 
                             foreach (DataRow _fila in _dsrespuesta.Tables[0].Rows)
                             {
@@ -325,7 +325,7 @@
                                 _codigoarbolrespuesta = int.Parse(_drrespuesta[0].ToString());
                                 _dscontacto = new ConsultaDatosDAO().FunConsultaDatos(19, _codigoarbolrespuesta,
                                     int.Parse(ViewState["codigoCatalogo"].ToString()), 0, "", "", "",
-                                    ViewState["Conectar"].ToString());
+                                    Session["Conectar"].ToString());
 
                                 foreach (DataRow _fila in _dscontacto.Tables[0].Rows)
                                 {
@@ -629,7 +629,7 @@
                     _sql = "Select Estado=case arac_estado when 1 then 'Activo' else 'Inactivo' end,";
                     _sql += "Contacto = case arac_contacto when 1 then 'SI' else 'NO' end from GSBPO_ACCION where ";
                     _sql += "CPCE_CODIGO=" + ViewState["codigoCatalogo"].ToString() + " and ARAC_CODIGO=" + _codigo;
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", ViewState["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -906,7 +906,7 @@
                     _sql = "Select Comisiona=aref_auxv1,Estado=case aref_estado when 1 then 'Activo' else 'Inactivo' end from GSBPO_EFECTO where ";
                     _sql += "aref_auxi1=" + ViewState["codigoCatalogo"].ToString() + " and AREF_CODIGO=" + _codigo + " and ";
                     _sql += "ARAC_CODIGO=" + ViewState["CodigoAccion"].ToString();
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", ViewState["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -1525,7 +1525,7 @@
                     _sql += "Efectivo = case arre_auxi2 when 1 then 'SI' else 'NO' end ";
                     _sql += "from GSBPO_RESPUESTA where arre_auxi1=" + ViewState["codigoCatalogo"].ToString() + " and ARRE_CODIGO=" + _codigo + " and ";
                     _sql += "AREF_CODIGO=" + ViewState["CodigoEfecto"].ToString();
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", ViewState["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -1795,7 +1795,7 @@
                     _sql = "Select Estado=case arco_estado when 1 then 'Activo' else 'Inactivo' end from GSBPO_CONTACTO where ";
                     _sql += "arco_auxi1=" + ViewState["codigoCatalogo"].ToString() + " and ARCO_CODIGO=" + _codigo + " and ";
                     _sql += "ARRE_CODIGO=" + ViewState["CodigoRespuesta"].ToString();
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", ViewState["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -1900,7 +1900,7 @@
                         }
 
                         _mensaje = new ConsultaDatosDAO().FunCrearArbolDecision(int.Parse(ViewState["codigoCatalogo"].ToString()),
-                            _codigoarbolaccion, _descripcion, _estadoact, _contactoact, _draccion[5].ToString(), _draccion[6].ToString(), int.Parse(_draccion[7].ToString()), int.Parse(_draccion[8].ToString()), int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbefectotemp, _dtbrespuestatemp, _dtbcontactotemp, "sp_NewAccionEfectoResp", ViewState["Conectar"].ToString());
+                            _codigoarbolaccion, _descripcion, _estadoact, _contactoact, _draccion[5].ToString(), _draccion[6].ToString(), int.Parse(_draccion[7].ToString()), int.Parse(_draccion[8].ToString()), int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbefectotemp, _dtbrespuestatemp, _dtbcontactotemp, "sp_NewAccionEfectoResp", Session["Conectar"].ToString());
 
                         _response = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Guardado con Éxito");
 

@@ -1,4 +1,4 @@
-﻿namespace SoftCob.Views.Configuracion
+﻿namespace SoftCob.Views.Configuraciones
 {
     using ControllerSoftCob;
     using ModeloSoftCob;

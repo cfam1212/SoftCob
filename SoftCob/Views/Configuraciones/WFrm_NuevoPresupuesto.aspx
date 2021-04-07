@@ -183,7 +183,7 @@
                                             <td colspan="4">
                                                 <asp:UpdatePanel ID="updAccion" runat="server">
                                                     <ContentTemplate>
-                                                        <asp:Panel ID="pnlAccion" runat="server" Height="150px" ScrollBars="Vertical">
+                                                        <asp:Panel ID="pnlAccion" runat="server" Height="180px" ScrollBars="Vertical">
                                                             <asp:GridView ID="GrdvSegmento" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,auxv1" ForeColor="#333333" PageSize="5" TabIndex="7" Width="100%" OnRowDataBound="GrdvSegmento_RowDataBound">
                                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                 <Columns>

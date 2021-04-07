@@ -44,7 +44,7 @@
 
                 ViewState["codigoCatalogo"] = "0";
                 ViewState["codigoCedente"] = "0";
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Administrar Árbol Score Telefónico";
                 _accion.Text = "--Seleccione Acción--";
                 _accion.Value = "0";
@@ -155,7 +155,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(50, codigocedente, codigocatalogo, 0, "", "", "",
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
                 ViewState["ArbolScore"] = _dts.Tables[0];
                 GrdvArbolScore.DataSource = _dts;
                 GrdvArbolScore.DataBind();
@@ -422,7 +422,7 @@
                     _sql += "arst_cedecodigo=" + int.Parse(ViewState["codigoCedente"].ToString()) + " and arst_cpcecodigo=" + int.Parse(ViewState["codigoCatalogo"].ToString());
                     _sql += "and ARST_CODIGO=" + _codigo;
 
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", ViewState["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count == 0)
                     {
@@ -584,7 +584,7 @@
                     return;
                 }
 
-                _mensaje = new ConsultaDatosDAO().FunCrearArbolScore(int.Parse(ViewState["codigoCedente"].ToString()), int.Parse(ViewState["codigoCatalogo"].ToString()), "", "", 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbscore, "sp_NewArbolScore", ViewState["Conectar"].ToString());
+                _mensaje = new ConsultaDatosDAO().FunCrearArbolScore(int.Parse(ViewState["codigoCedente"].ToString()), int.Parse(ViewState["codigoCatalogo"].ToString()), "", "", 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbscore, "sp_NewArbolScore", Session["Conectar"].ToString());
 
                 _response = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Guardado con Éxito");
 
