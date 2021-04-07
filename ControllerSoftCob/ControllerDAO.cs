@@ -12,11 +12,10 @@
         #region Variables
         bool? _usuarioLogueado = false;
         string _terminal = "", _mensaje = "", _strmenp = "", _strnombre = "", _strnomobj = "", _strres = "", _strfullPath = "", _strconect = "",
-             _nomtarea = "";
+             _nomtarea = "", _milogin = "";
         SoftCob_USUARIO _user = new SoftCob_USUARIO();
         DataSet _dts = new DataSet();        
         SqlDataAdapter _dta = new SqlDataAdapter();
-        //List<SoftCob_TAREA> _listareas = new List<SoftCob_TAREA>();
         List<CatalogosDTO> _catalogo = new List<CatalogosDTO>();
         SoftCobEntities _db = new SoftCobEntities();
         public string gstrusuario = "";
@@ -253,7 +252,6 @@
                 throw ex;
             }
         }
-
         public DataSet FunConsultarMenuPorUsuario(int tipo, int usuacodigo, int emprcodigo, string auxv1, string auxv2,
             int auxi1, int auxi2,
             string conexion)
@@ -286,7 +284,6 @@
             }
             return _dts;
         }
-
         public int FunGetContador(string _login, int _emprcodigo)
         {
             try
@@ -303,7 +300,6 @@
                 throw;
             }
         }
-
         public void FunChangePassword(SoftCob_USUARIO user)
         {
             try
@@ -324,7 +320,6 @@
                 throw ex;
             }
         }
-
         public int FunGetGestor(int _usucodigo)
         {
             List<SoftCob_GESTOR_SUPERVISOR> _usua = new List<SoftCob_GESTOR_SUPERVISOR>();
@@ -340,7 +335,6 @@
 
             return _codigo ?? 0;
         }
-
         public void FunCrearLogueoTiempos(SoftCob_LOGUEO_TIEMPOS _logueo)
         {
             try
@@ -356,7 +350,77 @@
                 throw ex;
             }
         }
+        public DataSet FunGetUsuarioSinAsignar()
+        {
+            List<SoftCob_USUARIO> _usuar = null;
 
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                _usuar = _db.SoftCob_USUARIO.Where(u => u.usua_estado && u.empl_codigo == 0 && u.USUA_CODIGO != 1).OrderBy(x => 
+                x.usua_nombres).ToList();
+            }
+
+            _catalogo.Add(new CatalogosDTO()
+            {
+                Descripcion = "",
+                Codigo = "-1"
+            });
+
+            _catalogo.Add(new CatalogosDTO()
+            {
+                Descripcion = "--Crear Nuevo Usuario--",
+                Codigo = "0"
+            });
+
+            foreach (SoftCob_USUARIO _usu in _usuar)
+            {
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = _usu.usua_nombres + ' ' + _usu.usua_apellidos,
+                    Codigo = _usu.USUA_CODIGO.ToString()
+                });
+            }
+
+            return new FuncionesDAO().FunCambiarDataSet(_catalogo);
+        }
+        public string FunConsultaLogin(string _login)
+        {
+            List<SoftCob_USUARIO> _users = new List<SoftCob_USUARIO>();
+            try
+            {
+                using (SoftCobEntities _db = new SoftCobEntities())
+                {
+                    _users = _db.SoftCob_USUARIO.Where(u => u.usua_login == _login).ToList();
+
+                    if (_users == null || _users.Count == 0) _milogin = "";
+                    else
+                        _milogin = _db.SoftCob_USUARIO.Where(u => u.usua_login == _login).FirstOrDefault().usua_login;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return _milogin;
+        }
+        public string FunEditarUsuarioEmployee(SoftCob_USUARIO _usuario)
+        {
+            try
+            {
+                using (SoftCobEntities _db = new SoftCobEntities())
+                {
+                    SoftCob_USUARIO _original = _db.SoftCob_USUARIO.Where(u => u.USUA_CODIGO == _usuario.USUA_CODIGO).FirstOrDefault();
+                    _db.SoftCob_USUARIO.Attach(_original);
+                    _original.empl_codigo = _usuario.empl_codigo;
+                    _db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                _mensaje = ex.ToString();
+            }
+            return _mensaje;
+        }
         #endregion
 
         #region Procedimientos y Funciones MENU_PRINCIPAL

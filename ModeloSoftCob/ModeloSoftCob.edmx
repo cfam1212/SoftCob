@@ -987,6 +987,23 @@
           <Property Name="expe_descripcion" Type="varchar" MaxLength="150" />
           <Property Name="expe_motivo" Type="varchar" MaxLength="2" />
         </EntityType>
+        <EntityType Name="SoftCob_GARANTES">
+          <Key>
+            <PropertyRef Name="GART_CODIGO" />
+          </Key>
+          <Property Name="GART_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CEDULA_TITULAR" Type="varchar" MaxLength="10" />
+          <Property Name="CEDULA" Type="varchar" MaxLength="10" />
+          <Property Name="GARANTE" Type="varchar" MaxLength="150" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" />
+          <Property Name="NUM_OPERACION" Type="varchar" MaxLength="50" />
+          <Property Name="DIRECCION_DOMICILIO" Type="varchar" MaxLength="150" />
+          <Property Name="REFERENCIA_DOMICILIO" Type="varchar" MaxLength="150" />
+          <Property Name="DIRECCION_TRABAJO" Type="varchar" MaxLength="150" />
+          <Property Name="REFERENCIA_TRABAJO" Type="varchar" MaxLength="150" />
+          <Property Name="EMAIL_PERSONAL" Type="varchar" MaxLength="100" />
+          <Property Name="EMAIL_TRABAJO" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="SoftCob_GESTION_TELEFONICA">
           <Key>
             <PropertyRef Name="GETE_CODIGO" />
@@ -1371,6 +1388,20 @@
           <Property Name="nota_fechacreacion" Type="datetime" Nullable="false" />
           <Property Name="nota_usuariocreacion" Type="int" Nullable="false" />
           <Property Name="nota_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_OPCIONESMULTIPLES_LISTA">
+          <Key>
+            <PropertyRef Name="REOM_CODIGO" />
+          </Key>
+          <Property Name="REOM_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LTCA_CODIGO" Type="int" Nullable="false" />
+          <Property Name="reom_codigos" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="reom_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="reom_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="reom_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="reom_auxi1" Type="int" />
+          <Property Name="reom_auxi2" Type="int" />
+          <Property Name="reom_auxi3" Type="int" />
         </EntityType>
         <EntityType Name="SoftCob_OTROSESTUDIOS">
           <Key>
@@ -2490,6 +2521,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SoftCob_OPCIONESMULTIPLES_LISTA_SoftCob_LISTATRABAJO_CABECERA">
+          <End Role="SoftCob_LISTATRABAJO_CABECERA" Type="Self.SoftCob_LISTATRABAJO_CABECERA" Multiplicity="1" />
+          <End Role="SoftCob_OPCIONESMULTIPLES_LISTA" Type="Self.SoftCob_OPCIONESMULTIPLES_LISTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_LISTATRABAJO_CABECERA">
+              <PropertyRef Name="LTCA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_OPCIONESMULTIPLES_LISTA">
+              <PropertyRef Name="LTCA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SoftCob_OTROSESTUDIOS_SoftCob_EMPLOYEE">
           <End Role="SoftCob_EMPLOYEE" Type="Self.SoftCob_EMPLOYEE" Multiplicity="1" />
           <End Role="SoftCob_OTROSESTUDIOS" Type="Self.SoftCob_OTROSESTUDIOS" Multiplicity="*" />
@@ -2772,6 +2815,7 @@
           <EntitySet Name="SoftCob_EVALUACION_DET" EntityType="Self.SoftCob_EVALUACION_DET" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_EVALUACION_USU" EntityType="Self.SoftCob_EVALUACION_USU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_EXPERIENCIA" EntityType="Self.SoftCob_EXPERIENCIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_GARANTES" EntityType="Self.SoftCob_GARANTES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_GESTION_TELEFONICA" EntityType="Self.SoftCob_GESTION_TELEFONICA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_GESTOR_SUPERVISOR" EntityType="Self.SoftCob_GESTOR_SUPERVISOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_GESTORES_LISTASFDA" EntityType="Self.SoftCob_GESTORES_LISTASFDA" Schema="dbo" store:Type="Tables" />
@@ -2790,6 +2834,7 @@
           <EntitySet Name="SoftCob_METAPROGRAMAS" EntityType="Self.SoftCob_METAPROGRAMAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_MODALIDADES" EntityType="Self.SoftCob_MODALIDADES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_NOTAS_GESTION" EntityType="Self.SoftCob_NOTAS_GESTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftCob_OPCIONESMULTIPLES_LISTA" EntityType="Self.SoftCob_OPCIONESMULTIPLES_LISTA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_OTROSESTUDIOS" EntityType="Self.SoftCob_OTROSESTUDIOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_PAGOSBRENCH_CAB" EntityType="Self.SoftCob_PAGOSBRENCH_CAB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_PAGOSBRENCH_DET" EntityType="Self.SoftCob_PAGOSBRENCH_DET" Schema="dbo" store:Type="Tables" />
@@ -2960,6 +3005,10 @@
           <AssociationSet Name="FK_SoftCob_MENU_TAREA_SoftCob_TAREA" Association="Self.FK_SoftCob_MENU_TAREA_SoftCob_TAREA">
             <End Role="SoftCob_TAREA" EntitySet="SoftCob_TAREA" />
             <End Role="SoftCob_MENU_TAREA" EntitySet="SoftCob_MENU_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoftCob_OPCIONESMULTIPLES_LISTA_SoftCob_LISTATRABAJO_CABECERA" Association="Self.FK_SoftCob_OPCIONESMULTIPLES_LISTA_SoftCob_LISTATRABAJO_CABECERA">
+            <End Role="SoftCob_LISTATRABAJO_CABECERA" EntitySet="SoftCob_LISTATRABAJO_CABECERA" />
+            <End Role="SoftCob_OPCIONESMULTIPLES_LISTA" EntitySet="SoftCob_OPCIONESMULTIPLES_LISTA" />
           </AssociationSet>
           <AssociationSet Name="FK_SoftCob_OTROSESTUDIOS_SoftCob_EMPLOYEE" Association="Self.FK_SoftCob_OTROSESTUDIOS_SoftCob_EMPLOYEE">
             <End Role="SoftCob_EMPLOYEE" EntitySet="SoftCob_EMPLOYEE" />
@@ -3563,6 +3612,12 @@
           <AssociationSet Name="FK_SoftCob_EVALUACION_USU_SoftCob_EVALUACION_CAB" Association="SoftCobModel.FK_SoftCob_EVALUACION_USU_SoftCob_EVALUACION_CAB">
             <End Role="SoftCob_EVALUACION_CAB" EntitySet="SoftCob_EVALUACION_CAB" />
             <End Role="SoftCob_EVALUACION_USU" EntitySet="SoftCob_EVALUACION_USU" />
+          </AssociationSet>
+          <EntitySet Name="SoftCob_GARANTES" EntityType="SoftCobModel.SoftCob_GARANTES" />
+          <EntitySet Name="SoftCob_OPCIONESMULTIPLES_LISTA" EntityType="SoftCobModel.SoftCob_OPCIONESMULTIPLES_LISTA" />
+          <AssociationSet Name="FK_SoftCob_OPCIONESMULTIPLES_LISTA_SoftCob_LISTATRABAJO_CABECERA" Association="SoftCobModel.FK_SoftCob_OPCIONESMULTIPLES_LISTA_SoftCob_LISTATRABAJO_CABECERA">
+            <End Role="SoftCob_LISTATRABAJO_CABECERA" EntitySet="SoftCob_LISTATRABAJO_CABECERA" />
+            <End Role="SoftCob_OPCIONESMULTIPLES_LISTA" EntitySet="SoftCob_OPCIONESMULTIPLES_LISTA" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="SoftCob_USUARIO">
@@ -4233,6 +4288,7 @@
           <Property Name="ltca_tum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SoftCob_LISTATRABAJO_DETALLE" Relationship="SoftCobModel.FK_SoftCob_LISTATRABAJO_DETALLE_SoftCob_LISTATRABAJO_CABECERA" FromRole="SoftCob_LISTATRABAJO_CABECERA" ToRole="SoftCob_LISTATRABAJO_DETALLE" />
           <NavigationProperty Name="SoftCob_ESTRACAB_HISTO" Relationship="SoftCobModel.FK_SoftCob_ESTRACAB_HISTO_SoftCob_LISTATRABAJO_CABECERA" FromRole="SoftCob_LISTATRABAJO_CABECERA" ToRole="SoftCob_ESTRACAB_HISTO" />
+          <NavigationProperty Name="SoftCob_OPCIONESMULTIPLES_LISTA" Relationship="SoftCobModel.FK_SoftCob_OPCIONESMULTIPLES_LISTA_SoftCob_LISTATRABAJO_CABECERA" FromRole="SoftCob_LISTATRABAJO_CABECERA" ToRole="SoftCob_OPCIONESMULTIPLES_LISTA" />
         </EntityType>
         <EntityType Name="SoftCob_LISTATRABAJO_DETALLE">
           <Key>
@@ -6168,6 +6224,50 @@
             </Principal>
             <Dependent Role="SoftCob_EVALUACION_USU">
               <PropertyRef Name="EVCA_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SoftCob_GARANTES">
+          <Key>
+            <PropertyRef Name="GART_CODIGO" />
+          </Key>
+          <Property Name="GART_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CEDULA_TITULAR" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CEDULA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="GARANTE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NUM_OPERACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION_DOMICILIO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="REFERENCIA_DOMICILIO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION_TRABAJO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="REFERENCIA_TRABAJO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL_PERSONAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL_TRABAJO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_OPCIONESMULTIPLES_LISTA">
+          <Key>
+            <PropertyRef Name="REOM_CODIGO" />
+          </Key>
+          <Property Name="REOM_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LTCA_CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="reom_codigos" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="reom_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reom_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reom_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reom_auxi1" Type="Int32" />
+          <Property Name="reom_auxi2" Type="Int32" />
+          <Property Name="reom_auxi3" Type="Int32" />
+          <NavigationProperty Name="SoftCob_LISTATRABAJO_CABECERA" Relationship="SoftCobModel.FK_SoftCob_OPCIONESMULTIPLES_LISTA_SoftCob_LISTATRABAJO_CABECERA" FromRole="SoftCob_OPCIONESMULTIPLES_LISTA" ToRole="SoftCob_LISTATRABAJO_CABECERA" />
+        </EntityType>
+        <Association Name="FK_SoftCob_OPCIONESMULTIPLES_LISTA_SoftCob_LISTATRABAJO_CABECERA">
+          <End Type="SoftCobModel.SoftCob_LISTATRABAJO_CABECERA" Role="SoftCob_LISTATRABAJO_CABECERA" Multiplicity="1" />
+          <End Type="SoftCobModel.SoftCob_OPCIONESMULTIPLES_LISTA" Role="SoftCob_OPCIONESMULTIPLES_LISTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftCob_LISTATRABAJO_CABECERA">
+              <PropertyRef Name="LTCA_CODIGO" />
+            </Principal>
+            <Dependent Role="SoftCob_OPCIONESMULTIPLES_LISTA">
+              <PropertyRef Name="LTCA_CODIGO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8348,6 +8448,39 @@
                 <ScalarProperty Name="scte_telefono" ColumnName="scte_telefono" />
                 <ScalarProperty Name="scte_perscodigo" ColumnName="scte_perscodigo" />
                 <ScalarProperty Name="SCTE_CODIGO" ColumnName="SCTE_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_GARANTES">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_GARANTES">
+              <MappingFragment StoreEntitySet="SoftCob_GARANTES">
+                <ScalarProperty Name="EMAIL_TRABAJO" ColumnName="EMAIL_TRABAJO" />
+                <ScalarProperty Name="EMAIL_PERSONAL" ColumnName="EMAIL_PERSONAL" />
+                <ScalarProperty Name="REFERENCIA_TRABAJO" ColumnName="REFERENCIA_TRABAJO" />
+                <ScalarProperty Name="DIRECCION_TRABAJO" ColumnName="DIRECCION_TRABAJO" />
+                <ScalarProperty Name="REFERENCIA_DOMICILIO" ColumnName="REFERENCIA_DOMICILIO" />
+                <ScalarProperty Name="DIRECCION_DOMICILIO" ColumnName="DIRECCION_DOMICILIO" />
+                <ScalarProperty Name="NUM_OPERACION" ColumnName="NUM_OPERACION" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="GARANTE" ColumnName="GARANTE" />
+                <ScalarProperty Name="CEDULA" ColumnName="CEDULA" />
+                <ScalarProperty Name="CEDULA_TITULAR" ColumnName="CEDULA_TITULAR" />
+                <ScalarProperty Name="GART_CODIGO" ColumnName="GART_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_OPCIONESMULTIPLES_LISTA">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_OPCIONESMULTIPLES_LISTA">
+              <MappingFragment StoreEntitySet="SoftCob_OPCIONESMULTIPLES_LISTA">
+                <ScalarProperty Name="reom_auxi3" ColumnName="reom_auxi3" />
+                <ScalarProperty Name="reom_auxi2" ColumnName="reom_auxi2" />
+                <ScalarProperty Name="reom_auxi1" ColumnName="reom_auxi1" />
+                <ScalarProperty Name="reom_auxv3" ColumnName="reom_auxv3" />
+                <ScalarProperty Name="reom_auxv2" ColumnName="reom_auxv2" />
+                <ScalarProperty Name="reom_auxv1" ColumnName="reom_auxv1" />
+                <ScalarProperty Name="reom_codigos" ColumnName="reom_codigos" />
+                <ScalarProperty Name="LTCA_CODIGO" ColumnName="LTCA_CODIGO" />
+                <ScalarProperty Name="REOM_CODIGO" ColumnName="REOM_CODIGO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

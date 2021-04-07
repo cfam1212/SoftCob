@@ -61,6 +61,7 @@
     <Compile Include="ConsultaDatosDAO.cs" />
     <Compile Include="ControllerDAO.cs" />
     <Compile Include="ElastixDAO.cs" />
+    <Compile Include="EmployeeDAO.cs" />
     <Compile Include="EstrategiaDAO.cs" />
     <Compile Include="FuncionesDAO.cs" />
     <Compile Include="GestionTelefonicaDAO.cs" />

@@ -1,8 +1,7 @@
-﻿
-
-namespace SoftCob.Views.Employee
+﻿namespace SoftCob.Views.Employee
 {
     using ControllerSoftCob;
+    using ModeloSoftCob;
     using System;
     using System.Collections.Generic;
     using System.Data;
@@ -113,7 +112,7 @@ namespace SoftCob.Views.Employee
         {
             try
             {
-                GSBPO_EMPLOYEE _employee = new EmployeeDAO().FunGetEmployeePorCodigo(int.Parse(ViewState["Codigo"].ToString()));
+                SoftCob_EMPLOYEE _employee = new EmployeeDAO().FunGetEmployeePorCodigo(int.Parse(ViewState["Codigo"].ToString()));
                 DdlTipoDocumento.SelectedValue = _employee.empl_tipodocumento;
 
                 if (DdlTipoDocumento.SelectedValue == "C")
@@ -150,7 +149,7 @@ namespace SoftCob.Views.Employee
                 ViewState["usucreacion"] = _employee.empl_usuariocreacion;
                 ViewState["fechacreacion"] = _employee.empl_fechacreacion;
                 ViewState["terminalcreacion"] = _employee.empl_terminalcreacion;
-                _dts = new EmployeeDTO().FunGetEstudios(int.Parse(ViewState["Codigo"].ToString()));
+                _dts = new EmployeeDAO().FunGetEstudios(int.Parse(ViewState["Codigo"].ToString()));
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -168,7 +167,7 @@ namespace SoftCob.Views.Employee
                     TxtTituloR.Text = _dts.Tables[0].Rows[0][11].ToString();
                 }
 
-                _dts = new EmployeeDTO().FunGetOtrosEstudios(int.Parse(ViewState["Codigo"].ToString()));
+                _dts = new EmployeeDAO().FunGetOtrosEstudios(int.Parse(ViewState["Codigo"].ToString()));
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -177,7 +176,7 @@ namespace SoftCob.Views.Employee
                     ViewState["OtrosEstudios"] = _dts.Tables[0];
                 }
 
-                _dts = new EmployeeDTO().FunGetIdiomas(int.Parse(ViewState["Codigo"].ToString()));
+                _dts = new EmployeeDAO().FunGetIdiomas(int.Parse(ViewState["Codigo"].ToString()));
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -186,7 +185,7 @@ namespace SoftCob.Views.Employee
                     ViewState["Idiomas"] = _dts.Tables[0];
                 }
 
-                _dts = new EmployeeDTO().FunGetExperiencia(int.Parse(ViewState["Codigo"].ToString()));
+                _dts = new EmployeeDAO().FunGetExperiencia(int.Parse(ViewState["Codigo"].ToString()));
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -197,7 +196,7 @@ namespace SoftCob.Views.Employee
 
                 FunCargarComboEmpresa();
 
-                _dts = new EmployeeDTO().FunGetRefLaboral(int.Parse(ViewState["Codigo"].ToString()));
+                _dts = new EmployeeDAO().FunGetRefLaboral(int.Parse(ViewState["Codigo"].ToString()));
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -206,7 +205,7 @@ namespace SoftCob.Views.Employee
                     ViewState["RefLaboral"] = _dts.Tables[0];
                 }
 
-                _dts = new EmployeeDTO().FunGetRefPersonal(int.Parse(ViewState["Codigo"].ToString()));
+                _dts = new EmployeeDAO().FunGetRefPersonal(int.Parse(ViewState["Codigo"].ToString()));
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
@@ -223,47 +222,47 @@ namespace SoftCob.Views.Employee
 
         protected void FunCargarCombos()
         {
-            DdlTipoDocumento.DataSource = new CatalogosDTO().FunGetParametroDetalleValor("TIPO DOCUMENTO", "--Seleccione Tipo--");
+            DdlTipoDocumento.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO DOCUMENTO", "--Seleccione Tipo--", "S");
             DdlTipoDocumento.DataTextField = "Descripcion";
             DdlTipoDocumento.DataValueField = "Codigo";
             DdlTipoDocumento.DataBind();
 
-            DdlGenero.DataSource = new CatalogosDTO().FunGetParametroDetalleValor("GENERO", "--Seleccione Género--");
+            DdlGenero.DataSource = new ControllerDAO().FunGetParametroDetalle("GENERO", "--Seleccione Género--", "S");
             DdlGenero.DataTextField = "Descripcion";
             DdlGenero.DataValueField = "Codigo";
             DdlGenero.DataBind();
 
-            DdlEstadoCivil.DataSource = new CatalogosDTO().FunGetParametroDetalleValor("ESTADO CIVIL", "--Seleccione Estado Civil--");
+            DdlEstadoCivil.DataSource = new ControllerDAO().FunGetParametroDetalle("ESTADO CIVIL", "--Seleccione Estado Civil--", "S");
             DdlEstadoCivil.DataTextField = "Descripcion";
             DdlEstadoCivil.DataValueField = "Codigo";
             DdlEstadoCivil.DataBind();
 
-            DdlNacionalidad.DataSource = new CatalogosDTO().FunGetParametroDetalleValor("NACIONALIDAD", "--Seleccione Nacionalidad--");
+            DdlNacionalidad.DataSource = new ControllerDAO().FunGetParametroDetalle("NACIONALIDAD", "--Seleccione Nacionalidad--", "S");
             DdlNacionalidad.DataTextField = "Descripcion";
             DdlNacionalidad.DataValueField = "Codigo";
             DdlNacionalidad.DataBind();
 
-            DdlTipoSangre.DataSource = new CatalogosDTO().FunGetParametroDetalleValor("TIPO SANGRE", "--Seleccione Tipo Sangre--");
+            DdlTipoSangre.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO SANGRE", "--Seleccione Tipo Sangre--", "S");
             DdlTipoSangre.DataTextField = "Descripcion";
             DdlTipoSangre.DataValueField = "Codigo";
             DdlTipoSangre.DataBind();
 
-            DdlDepartamento.DataSource = new CatalogosDTO().FunGetDepartamento();
+            DdlDepartamento.DataSource = new ControllerDAO().FunGetDepartamento();
             DdlDepartamento.DataTextField = "Descripcion";
             DdlDepartamento.DataValueField = "Codigo";
             DdlDepartamento.DataBind();
 
-            DdlIdiomas.DataSource = new CatalogosDTO().FunGetParametroDetalleValor("IDIOMAS", "--Seleccione Idioma--");
+            DdlIdiomas.DataSource = new ControllerDAO().FunGetParametroDetalle("IDIOMAS", "--Seleccione Idioma--", "S");
             DdlIdiomas.DataTextField = "Descripcion";
             DdlIdiomas.DataValueField = "Codigo";
             DdlIdiomas.DataBind();
 
-            DdlMotivo.DataSource = new CatalogosDTO().FunGetParametroDetalleValor("MOTIVOS SALIDA", "--Seleccione Motivo--");
+            DdlMotivo.DataSource = new ControllerDAO().FunGetParametroDetalle("MOTIVOS SALIDA", "--Seleccione Motivo--", "S");
             DdlMotivo.DataTextField = "Descripcion";
             DdlMotivo.DataValueField = "Codigo";
             DdlMotivo.DataBind();
 
-            DdlParentesco.DataSource = new CatalogosDTO().FunGetParametroDetalleValor("PARENTESCO", "--Seleccione Parentesco--");
+            DdlParentesco.DataSource = new ControllerDAO().FunGetParametroDetalle("PARENTESCO", "--Seleccione Parentesco--", "S");
             DdlParentesco.DataTextField = "Descripcion";
             DdlParentesco.DataValueField = "Codigo";
             DdlParentesco.DataBind();
@@ -275,12 +274,12 @@ namespace SoftCob.Views.Employee
                 DdlEmpresa.Items.Add(empresa);
             }
 
-            new CatalogosDTO().FunLlenarDropValores(DdlFecIniPrimaria, 1970, DateTime.Now.Year);
-            new CatalogosDTO().FunLlenarDropValores(DdlFecFinPrimaria, 1970, DateTime.Now.Year);
-            new CatalogosDTO().FunLlenarDropValores(DdlFecIniSecundaria, 1970, DateTime.Now.Year);
-            new CatalogosDTO().FunLlenarDropValores(DdlFecFinSecundaria, 1970, DateTime.Now.Year);
-            new CatalogosDTO().FunLlenarDropValores(DdlFecIniSuperior, 1970, DateTime.Now.Year);
-            new CatalogosDTO().FunLlenarDropValores(DdlFecFinSuperior, 1970, DateTime.Now.Year);
+            new ConsultaDatosDAO().FunLlenarDropValores(DdlFecIniPrimaria, 1970, DateTime.Now.Year);
+            new ConsultaDatosDAO().FunLlenarDropValores(DdlFecFinPrimaria, 1970, DateTime.Now.Year);
+            new ConsultaDatosDAO().FunLlenarDropValores(DdlFecIniSecundaria, 1970, DateTime.Now.Year);
+            new ConsultaDatosDAO().FunLlenarDropValores(DdlFecFinSecundaria, 1970, DateTime.Now.Year);
+            new ConsultaDatosDAO().FunLlenarDropValores(DdlFecIniSuperior, 1970, DateTime.Now.Year);
+            new ConsultaDatosDAO().FunLlenarDropValores(DdlFecFinSuperior, 1970, DateTime.Now.Year);
         }
 
         protected void FunCargarComboEmpresa()
@@ -340,52 +339,52 @@ namespace SoftCob.Views.Employee
             {
                 if (string.IsNullOrEmpty(TxtIdentificacion.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese No. de Documento..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese No. de Documento..!", this);
                     return;
                 }
 
                 if (DdlTipoDocumento.SelectedItem.ToString() == "CEDULA")
                 {
-                    if (!new FuncionesDTO().CedulaBienEscrita(TxtIdentificacion.Text.Trim()))
+                    if (!new FuncionesDAO().CedulaBienEscrita(TxtIdentificacion.Text.Trim()))
                     {
-                        new FuncionesBAS().FunShowJSMessage("No. de Cédula es incorrecto..!", this);
+                        new FuncionesDAO().FunShowJSMessage("No. de Cédula es incorrecto..!", this);
                         return;
                     }
                 }
 
                 if (string.IsNullOrEmpty(TxtNombres.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Nombre..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtApellidos.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Apellido..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Apellido..!", this);
                     return;
                 }
 
                 if (DdlGenero.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Selecciones Género..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Selecciones Género..!", this);
                     return;
                 }
 
                 if (DdlEstadoCivil.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Estado Civil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Estado Civil..!", this);
                     return;
                 }
 
                 if (DdlNacionalidad.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Nacionalidad..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Nacionalidad..!", this);
                     return;
                 }
 
                 if (DdlDepartamento.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Departamento..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Departamento..!", this);
                     return;
                 }
 
@@ -393,7 +392,7 @@ namespace SoftCob.Views.Employee
                 {
                     if (TxtTelefono1.Text.Trim().Length < 7 || TxtTelefono1.Text.Substring(0, 2) == "09")
                     {
-                        new FuncionesBAS().FunShowJSMessage("Teléfono_1 ingresado es incorrecto..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Teléfono_1 ingresado es incorrecto..!", this);
                         return;
                     }
                 }
@@ -402,7 +401,7 @@ namespace SoftCob.Views.Employee
                 {
                     if (TxtTelefono2.Text.Trim().Length < 7 || TxtTelefono2.Text.Substring(0, 2) == "09")
                     {
-                        new FuncionesBAS().FunShowJSMessage("Teléfono_2 ingresado es incorrecto..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Teléfono_2 ingresado es incorrecto..!", this);
                         return;
                     }
                 }
@@ -411,7 +410,7 @@ namespace SoftCob.Views.Employee
                 {
                     if (TxtCelular1.Text.Trim().Length < 10 || TxtCelular1.Text.Trim().Substring(0, 2) != "09")
                     {
-                        new FuncionesBAS().FunShowJSMessage("Celular_1 ingresado es incorrecto..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Celular_1 ingresado es incorrecto..!", this);
                         return;
                     }
                 }
@@ -420,14 +419,14 @@ namespace SoftCob.Views.Employee
                 {
                     if (TxtCelular2.Text.Trim().Length < 10 || TxtCelular2.Text.Trim().Substring(0, 2) != "09")
                     {
-                        new FuncionesBAS().FunShowJSMessage("Celular_2 ingresado es incorrecto..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Celular_2 ingresado es incorrecto..!", this);
                         return;
                     }
                 }
 
-                if (!new FuncionesDTO().IsDate(TxtFechaNacimiento.Text))
+                if (!new FuncionesDAO().IsDate(TxtFechaNacimiento.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Fecha de Nacimiento Incorrecta..! Formato(MM/dd/yyyy)", this);
+                    new FuncionesDAO().FunShowJSMessage("Fecha de Nacimiento Incorrecta..! Formato(MM/dd/yyyy)", this);
                     return;
                 }
 
@@ -435,15 +434,15 @@ namespace SoftCob.Views.Employee
                 {
                     if (ViewState["identificacion"].ToString() != TxtIdentificacion.Text)
                     {
-                        if (new EmployeeDTO().FunConsultarEmpleadoPorIdentificacion(TxtIdentificacion.Text.Trim()))
+                        if (new EmployeeDAO().FunConsultarEmpleadoPorIdentificacion(TxtIdentificacion.Text.Trim()))
                         {
-                            new FuncionesBAS().FunShowJSMessage("Empleado con Identificación ya existe..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Empleado con Identificación ya existe..!", this);
                             return;
                         }
                     }
                 }
 
-                GSBPO_EMPLOYEE _employee = new GSBPO_EMPLOYEE();
+                SoftCob_EMPLOYEE _employee = new SoftCob_EMPLOYEE();
                 {
                     _employee.EMPL_CODIGO = int.Parse(ViewState["Codigo"].ToString());
                     _employee.DEPA_CODIGO = int.Parse(DdlDepartamento.SelectedValue);
@@ -487,19 +486,19 @@ namespace SoftCob.Views.Employee
                 {
                     if (DdlFecFinPrimaria.SelectedItem.ToString() == "--Seleccione--")
                     {
-                        new FuncionesBAS().FunShowJSMessage("Ingrese Fecha Inicio..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingrese Fecha Inicio..!", this);
                         return;
                     }
 
                     if (DdlFecIniPrimaria.SelectedItem.ToString() == "--Seleccione--")
                     {
-                        new FuncionesBAS().FunShowJSMessage("Ingresa Fecha Fin..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingresa Fecha Fin..!", this);
                         return;
                     }
 
                     if (int.Parse(DdlFecIniPrimaria.SelectedValue) > int.Parse(DdlFecFinPrimaria.SelectedValue))
                     {
-                        new FuncionesBAS().FunShowJSMessage("La Fecha Incio no puede ser menor a la Fecha Fin..!", this);
+                        new FuncionesDAO().FunShowJSMessage("La Fecha Incio no puede ser menor a la Fecha Fin..!", this);
                         return;
                     }
 
@@ -510,25 +509,25 @@ namespace SoftCob.Views.Employee
                 {
                     if (DdlFecIniSecundaria.SelectedItem.ToString() == "--Seleccione--")
                     {
-                        new FuncionesBAS().FunShowJSMessage("Ingrese Fecha Inicio..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingrese Fecha Inicio..!", this);
                         return;
                     }
 
                     if (DdlFecFinSecundaria.SelectedItem.ToString() == "--Seleccione--")
                     {
-                        new FuncionesBAS().FunShowJSMessage("Ingresa Fecha Fin..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingresa Fecha Fin..!", this);
                         return;
                     }
 
                     if (int.Parse(DdlFecIniSecundaria.SelectedValue) > int.Parse(DdlFecFinSecundaria.SelectedValue))
                     {
-                        new FuncionesBAS().FunShowJSMessage("La Fecha Incio no puede ser menor a la Fecha Fin..!", this);
+                        new FuncionesDAO().FunShowJSMessage("La Fecha Incio no puede ser menor a la Fecha Fin..!", this);
                         return;
                     }
 
                     if (string.IsNullOrEmpty(TxtTituloS.Text))
                     {
-                        new FuncionesBAS().FunShowJSMessage("Ingrese Título Obtenido..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingrese Título Obtenido..!", this);
                         return;
                     }
 
@@ -539,25 +538,25 @@ namespace SoftCob.Views.Employee
                 {
                     if (DdlFecIniSuperior.SelectedItem.ToString() == "--Seleccione--")
                     {
-                        new FuncionesBAS().FunShowJSMessage("Ingrese Fecha Inicio..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingrese Fecha Inicio..!", this);
                         return;
                     }
 
                     if (DdlFecFinSuperior.SelectedItem.ToString() == "--Seleccione--")
                     {
-                        new FuncionesBAS().FunShowJSMessage("Ingresa Fecha Fin..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingresa Fecha Fin..!", this);
                         return;
                     }
 
                     if (int.Parse(DdlFecIniSuperior.SelectedValue) > int.Parse(DdlFecFinSuperior.SelectedValue))
                     {
-                        new FuncionesBAS().FunShowJSMessage("La Fecha Incio no puede ser menor a la Fecha Fin..!", this);
+                        new FuncionesDAO().FunShowJSMessage("La Fecha Incio no puede ser menor a la Fecha Fin..!", this);
                         return;
                     }
 
                     if (string.IsNullOrEmpty(TxtTituloR.Text))
                     {
-                        new FuncionesBAS().FunShowJSMessage("Ingrese Título Obtenido..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingrese Título Obtenido..!", this);
                         return;
                     }
 
@@ -567,7 +566,7 @@ namespace SoftCob.Views.Employee
 
                 if (_grabestudio)
                 {
-                    GSBPO_ESTUDIOS _estudio = new GSBPO_ESTUDIOS();
+                    SoftCob_ESTUDIOS _estudio = new SoftCob_ESTUDIOS();
                     {
                         _estudio.EMPL_CODIGO = int.Parse(ViewState["Codigo"].ToString());
                         _estudio.ESTU_CODIGO = int.Parse(ViewState["CodigoEstu"].ToString());
@@ -584,21 +583,21 @@ namespace SoftCob.Views.Employee
                         _estudio.estu_titulosuperior = TxtTituloR.Text.Trim().ToUpper();
                     }
 
-                    _employee.GSBPO_ESTUDIOS.Add(_estudio);
+                    _employee.SoftCob_ESTUDIOS.Add(_estudio);
                 }
 
-                _employee.GSBPO_OTROSESTUDIOS = new List<GSBPO_OTROSESTUDIOS>();
+                _employee.SoftCob_OTROSESTUDIOS = new List<SoftCob_OTROSESTUDIOS>();
                 _dtb = (DataTable)ViewState["OtrosEstudios"];
 
                 if (_dtb.Rows.Count > 0)
                 {
-                    List<GSBPO_OTROSESTUDIOS> _otrosestudios = new List<GSBPO_OTROSESTUDIOS>();
+                    List<SoftCob_OTROSESTUDIOS> _otrosestudios = new List<SoftCob_OTROSESTUDIOS>();
 
                     foreach (DataRow _dr in _dtb.Rows)
                     {
-                        if (!new EmployeeDTO().FunConsultarOtrosEstudios(_employee.EMPL_CODIGO, int.Parse(_dr[0].ToString())))
+                        if (!new EmployeeDAO().FunConsultarOtrosEstudios(_employee.EMPL_CODIGO, int.Parse(_dr[0].ToString())))
                         {
-                            _otrosestudios.Add(new GSBPO_OTROSESTUDIOS()
+                            _otrosestudios.Add(new SoftCob_OTROSESTUDIOS()
                             {
                                 EMPL_CODIGO = int.Parse(ViewState["Codigo"].ToString()),
                                 otes_institucion = _dr[1].ToString(),
@@ -609,26 +608,26 @@ namespace SoftCob.Views.Employee
                         }
                     }
 
-                    _employee.GSBPO_OTROSESTUDIOS = new List<GSBPO_OTROSESTUDIOS>();
+                    _employee.SoftCob_OTROSESTUDIOS = new List<SoftCob_OTROSESTUDIOS>();
 
-                    foreach (GSBPO_OTROSESTUDIOS _otros in _otrosestudios)
+                    foreach (SoftCob_OTROSESTUDIOS _otros in _otrosestudios)
                     {
-                        _employee.GSBPO_OTROSESTUDIOS.Add(_otros);
+                        _employee.SoftCob_OTROSESTUDIOS.Add(_otros);
                     }
                 }
 
                 _dtb = (DataTable)ViewState["Idiomas"];
-                _employee.GSBPO_IDIOMAS = new List<GSBPO_IDIOMAS>();
+                _employee.SoftCob_IDIOMAS = new List<SoftCob_IDIOMAS>();
 
                 if (_dtb.Rows.Count > 0)
                 {
-                    List<GSBPO_IDIOMAS> _idiomas = new List<GSBPO_IDIOMAS>();
+                    List<SoftCob_IDIOMAS> _idiomas = new List<SoftCob_IDIOMAS>();
 
                     foreach (DataRow _dr in _dtb.Rows)
                     {
-                        if (!new EmployeeDTO().FunConsultarIdiomas(_employee.EMPL_CODIGO, int.Parse(_dr[0].ToString())))
+                        if (!new EmployeeDAO().FunConsultarIdiomas(_employee.EMPL_CODIGO, int.Parse(_dr[0].ToString())))
                         {
-                            _idiomas.Add(new GSBPO_IDIOMAS()
+                            _idiomas.Add(new SoftCob_IDIOMAS()
                             {
                                 EMPL_CODIGO = int.Parse(ViewState["Codigo"].ToString()),
                                 idio_idioma = _dr[4].ToString(),
@@ -638,26 +637,26 @@ namespace SoftCob.Views.Employee
                         }
                     }
 
-                    _employee.GSBPO_IDIOMAS = new List<GSBPO_IDIOMAS>();
+                    _employee.SoftCob_IDIOMAS = new List<SoftCob_IDIOMAS>();
 
-                    foreach (GSBPO_IDIOMAS _idio in _idiomas)
+                    foreach (SoftCob_IDIOMAS _idio in _idiomas)
                     {
-                        _employee.GSBPO_IDIOMAS.Add(_idio);
+                        _employee.SoftCob_IDIOMAS.Add(_idio);
                     }
                 }
 
                 _dtb = (DataTable)ViewState["Experiencia"];
-                _employee.GSBPO_EXPERIENCIA = new List<GSBPO_EXPERIENCIA>();
+                _employee.SoftCob_EXPERIENCIA = new List<SoftCob_EXPERIENCIA>();
 
                 if (_dtb.Rows.Count > 0)
                 {
-                    List<GSBPO_EXPERIENCIA> _experiencia = new List<GSBPO_EXPERIENCIA>();
+                    List<SoftCob_EXPERIENCIA> _experiencia = new List<SoftCob_EXPERIENCIA>();
 
                     foreach (DataRow _dr in _dtb.Rows)
                     {
-                        if (!new EmployeeDTO().FunConsultarExperiencia(_employee.EMPL_CODIGO, int.Parse(_dr[0].ToString())))
+                        if (!new EmployeeDAO().FunConsultarExperiencia(_employee.EMPL_CODIGO, int.Parse(_dr[0].ToString())))
                         {
-                            _experiencia.Add(new GSBPO_EXPERIENCIA()
+                            _experiencia.Add(new SoftCob_EXPERIENCIA()
                             {
                                 EMPL_CODIGO = int.Parse(ViewState["Codigo"].ToString()),
                                 expe_empresa = _dr[1].ToString(),
@@ -670,26 +669,26 @@ namespace SoftCob.Views.Employee
                         }
                     }
 
-                    _employee.GSBPO_EXPERIENCIA = new List<GSBPO_EXPERIENCIA>();
+                    _employee.SoftCob_EXPERIENCIA = new List<SoftCob_EXPERIENCIA>();
 
-                    foreach (GSBPO_EXPERIENCIA _expe in _experiencia)
+                    foreach (SoftCob_EXPERIENCIA _expe in _experiencia)
                     {
-                        _employee.GSBPO_EXPERIENCIA.Add(_expe);
+                        _employee.SoftCob_EXPERIENCIA.Add(_expe);
                     }
                 }
 
                 _dtb = (DataTable)ViewState["RefLaboral"];
-                _employee.GSBPO_REFERENCIASLABORALES = new List<GSBPO_REFERENCIASLABORALES>();
+                _employee.SoftCob_REFERENCIASLABORALES = new List<SoftCob_REFERENCIASLABORALES>();
 
                 if (_dtb.Rows.Count > 0)
                 {
-                    List<GSBPO_REFERENCIASLABORALES> _reflaboral = new List<GSBPO_REFERENCIASLABORALES>();
+                    List<SoftCob_REFERENCIASLABORALES> _reflaboral = new List<SoftCob_REFERENCIASLABORALES>();
 
                     foreach (DataRow _dr in _dtb.Rows)
                     {
-                        if (!new EmployeeDTO().FunConsultarRefLaboral(_employee.EMPL_CODIGO, int.Parse(_dr[0].ToString())))
+                        if (!new EmployeeDAO().FunConsultarRefLaboral(_employee.EMPL_CODIGO, int.Parse(_dr[0].ToString())))
                         {
-                            _reflaboral.Add(new GSBPO_REFERENCIASLABORALES()
+                            _reflaboral.Add(new SoftCob_REFERENCIASLABORALES()
                             {
                                 EMPL_CODIGO = int.Parse(ViewState["Codigo"].ToString()),
                                 rela_empresa = _dr[1].ToString(),
@@ -702,27 +701,27 @@ namespace SoftCob.Views.Employee
                         }
                     }
 
-                    _employee.GSBPO_REFERENCIASLABORALES = new List<GSBPO_REFERENCIASLABORALES>();
+                    _employee.SoftCob_REFERENCIASLABORALES = new List<SoftCob_REFERENCIASLABORALES>();
 
-                    foreach (GSBPO_REFERENCIASLABORALES _refla in _reflaboral)
+                    foreach (SoftCob_REFERENCIASLABORALES _refla in _reflaboral)
                     {
-                        _employee.GSBPO_REFERENCIASLABORALES.Add(_refla);
+                        _employee.SoftCob_REFERENCIASLABORALES.Add(_refla);
                     }
                 }
 
                 _dtb = (DataTable)ViewState["RefPersonal"];
 
-                _employee.GSBPO_REFERENCIASPERSONALES = new List<GSBPO_REFERENCIASPERSONALES>();
+                _employee.SoftCob_REFERENCIASPERSONALES = new List<SoftCob_REFERENCIASPERSONALES>();
 
                 if (_dtb.Rows.Count > 0)
                 {
-                    List<GSBPO_REFERENCIASPERSONALES> _refpersonal = new List<GSBPO_REFERENCIASPERSONALES>();
+                    List<SoftCob_REFERENCIASPERSONALES> _refpersonal = new List<SoftCob_REFERENCIASPERSONALES>();
 
                     foreach (DataRow _dr in _dtb.Rows)
                     {
                         if (!new EmployeeDAO().FunConsultarRefPersonal(_employee.EMPL_CODIGO, int.Parse(_dr[0].ToString())))
                         {
-                            _refpersonal.Add(new GSBPO_REFERENCIASPERSONALES()
+                            _refpersonal.Add(new SoftCob_REFERENCIASPERSONALES()
                             {
                                 EMPL_CODIGO = int.Parse(ViewState["Codigo"].ToString()),
                                 repe_nomrefe = _dr[1].ToString(),
@@ -733,11 +732,11 @@ namespace SoftCob.Views.Employee
                         }
                     }
 
-                    _employee.GSBPO_REFERENCIASPERSONALES = new List<GSBPO_REFERENCIASPERSONALES>();
+                    _employee.SoftCob_REFERENCIASPERSONALES = new List<SoftCob_REFERENCIASPERSONALES>();
 
-                    foreach (GSBPO_REFERENCIASPERSONALES _refpe in _refpersonal)
+                    foreach (SoftCob_REFERENCIASPERSONALES _refpe in _refpersonal)
                     {
-                        _employee.GSBPO_REFERENCIASPERSONALES.Add(_refpe);
+                        _employee.SoftCob_REFERENCIASPERSONALES.Add(_refpe);
                     }
                 }
 
@@ -804,7 +803,7 @@ namespace SoftCob.Views.Employee
 
                 if (_existe)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ya existe Idioma ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya existe Idioma ingresado..!", this);
                     return;
                 }
 
@@ -859,43 +858,43 @@ namespace SoftCob.Views.Employee
             {
                 if (string.IsNullOrEmpty(TxtInstitucion.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Institución Estudios..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Institución Estudios..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtFecIniOtrosE.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Fecha de Inicio..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Fecha de Inicio..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtFecFinOtrosE.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Fecha Fin..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Fecha Fin..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtTituloOtrosEstudios.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Título Obtenido..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Título Obtenido..!", this);
                     return;
                 }
 
-                if (!new FuncionesDTO().IsDate(TxtFecIniOtrosE.Text))
+                if (!new FuncionesDAO().IsDate(TxtFecIniOtrosE.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("No es una fecha válida..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this);
                     return;
                 }
 
-                if (!new FuncionesDTO().IsDate(TxtFecFinOtrosE.Text))
+                if (!new FuncionesDAO().IsDate(TxtFecFinOtrosE.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("No es una fecha válida..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this);
                     return;
                 }
 
                 if (DateTime.ParseExact(TxtFecIniOtrosE.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture) > DateTime.ParseExact(TxtFecFinOtrosE.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture))
                 {
-                    new FuncionesBAS().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha Fin..!", this);
+                    new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha Fin..!", this);
                     return;
                 }
 
@@ -916,7 +915,7 @@ namespace SoftCob.Views.Employee
 
                 if (_existe)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ya existe estudio ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya existe estudio ingresado..!", this);
                     return;
                 }
 
@@ -948,37 +947,37 @@ namespace SoftCob.Views.Employee
             {
                 if (string.IsNullOrEmpty(TxtEmpresa.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Nombre de la Empresa..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Empresa..!", this);
                     return;
                 }
 
-                if (!new FuncionesDTO().IsDate(TxtFecIniEmpre.Text))
+                if (!new FuncionesDAO().IsDate(TxtFecIniEmpre.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("No es una fecha válida..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this);
                     return;
                 }
 
-                if (!new FuncionesDTO().IsDate(TxtFecFinEmpre.Text))
+                if (!new FuncionesDAO().IsDate(TxtFecFinEmpre.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("No es una fecha válida..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this);
                     return;
                 }
 
                 if (DateTime.ParseExact(TxtFecIniEmpre.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture) > DateTime.ParseExact(TxtFecFinEmpre.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture))
                 {
-                    new FuncionesBAS().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha Fin..!", this);
+                    new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha Fin..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCargo.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Cargo que ocupó..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Cargo que ocupó..!", this);
                     return;
                 }
 
                 if (DdlMotivo.SelectedValue == "")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Motivo de Salina..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo de Salina..!", this);
                     return;
                 }
 
@@ -999,7 +998,7 @@ namespace SoftCob.Views.Employee
 
                 if (_existe)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ya existe Empresa ingresada en el mismo rango de fecha..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya existe Empresa ingresada en el mismo rango de fecha..!", this);
                     return;
                 }
 
@@ -1062,25 +1061,25 @@ namespace SoftCob.Views.Employee
             {
                 if (DdlEmpresa.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Empresa..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Empresa..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtNombreRefe.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Nombre de Referencia..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de Referencia..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCargoRefe.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Cargo que ocupa..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Cargo que ocupa..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtTelefonoRefe.Text.Trim() + TxtCelularRefe.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese al menos un número de teléfono..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese al menos un número de teléfono..!", this);
                     return;
                 }
                 else
@@ -1089,7 +1088,7 @@ namespace SoftCob.Views.Employee
                     {
                         if (TxtCelularRefe.Text.Trim().Length < 10 || TxtCelularRefe.Text.Trim().Substring(0, 2) != "09")
                         {
-                            new FuncionesBAS().FunShowJSMessage("Número de celular incorrecto..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Número de celular incorrecto..!", this);
                             return;
                         }
                     }
@@ -1098,7 +1097,7 @@ namespace SoftCob.Views.Employee
                     {
                         if (TxtTelefonoRefe.Text.Trim().Length < 7 || TxtTelefonoRefe.Text.Trim().Substring(0, 2) == "09")
                         {
-                            new FuncionesBAS().FunShowJSMessage("Número de teléfono incorrecto..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Número de teléfono incorrecto..!", this);
                             return;
                         }
                     }
@@ -1106,9 +1105,9 @@ namespace SoftCob.Views.Employee
 
                 if (!string.IsNullOrEmpty(TxtEmailRefe.Text.Trim()))
                 {
-                    if (!new FuncionesDTO().Email_bien_escrito(TxtEmailRefe.Text.Trim()))
+                    if (!new FuncionesDAO().Email_bien_escrito(TxtEmailRefe.Text.Trim()))
                     {
-                        new FuncionesBAS().FunShowJSMessage("Dirección email incorrecto..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Dirección email incorrecto..!", this);
                         return;
                     }
                 }
@@ -1130,7 +1129,7 @@ namespace SoftCob.Views.Employee
 
                 if (_existe)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ya existe Referencia ingresada..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya existe Referencia ingresada..!", this);
                     return;
                 }
 
@@ -1191,19 +1190,19 @@ namespace SoftCob.Views.Employee
             {
                 if (DdlParentesco.SelectedValue == "")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Parentesco..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Parentesco..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtRefePersonal.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Nombre de Referencia..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de Referencia..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtTelefonoRefPersonal.Text.Trim() + TxtCelularRefPersonal.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese al menos un número de teléfono..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese al menos un número de teléfono..!", this);
                     return;
                 }
                 else
@@ -1212,7 +1211,7 @@ namespace SoftCob.Views.Employee
                     {
                         if (TxtCelularRefPersonal.Text.Trim().Length < 10 || TxtCelularRefPersonal.Text.Trim().Substring(0, 2) != "09")
                         {
-                            new FuncionesBAS().FunShowJSMessage("Número de celular incorrecto..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Número de celular incorrecto..!", this);
                             return;
                         }
                     }
@@ -1221,7 +1220,7 @@ namespace SoftCob.Views.Employee
                     {
                         if (TxtTelefonoRefPersonal.Text.Trim().Length < 7 || TxtTelefonoRefPersonal.Text.Trim().Substring(0, 2) == "09")
                         {
-                            new FuncionesBAS().FunShowJSMessage("Número de teléfono incorrecto..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Número de teléfono incorrecto..!", this);
                             return;
                         }
                     }
@@ -1244,7 +1243,7 @@ namespace SoftCob.Views.Employee
 
                 if (_existe)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ya existe Referencia ingresada..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya existe Referencia ingresada..!", this);
                     return;
                 }
 

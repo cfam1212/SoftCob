@@ -3,6 +3,7 @@
     using System;
     using System.Data;
     using System.Data.SqlClient;
+    using System.Web.UI.WebControls;
     public class ConsultaDatosDAO
     {
         #region Variables
@@ -896,6 +897,27 @@
                 _mensaje = ex.ToString();
             }
             return _mensaje;
+        }
+        public void FunLlenarDropValores(DropDownList _drop, int _valordesde, int _valorhasta)
+        {
+            try
+            {
+                ListItem _nuevalista = new ListItem();
+                _nuevalista.Text = "--Seleccione--";
+                _drop.Items.Add(_nuevalista);
+
+                while (_valordesde < _valorhasta)
+                {
+                    ListItem _listadatos = new ListItem();
+                    _listadatos.Text = _valordesde.ToString();
+                    _valordesde++;
+                    _drop.Items.Add(_listadatos);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         #endregion
     }

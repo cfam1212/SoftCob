@@ -289,4 +289,88 @@
         public string Estado { get; set; }
     }
     #endregion
+
+    #region Catalogo EMPLOYEE
+    public class EmployeeAdminDTO
+    {
+        public int CodigoUsu { get; set; }
+        public int Codigo { get; set; }
+        public string Identificacion { get; set; }
+        public string Apellidos { get; set; }
+        public string Nombres { get; set; }
+        public string Departamento { get; set; }
+        public string Estado { get; set; }
+        public int Asignado { get; set; }
+        public string Urllink { get; set; }
+    }
+
+    public class EmployeeOtrosEstudios
+    {
+        public string Codigo { get; set; }
+        public string Institucion { get; set; }
+        public string FechaDesde { get; set; }
+        public string FechaHasta { get; set; }
+        public string Titulo { get; set; }
+
+    }
+
+    public class EmployeeIdiomas
+    {
+        public string Codigo { get; set; }
+        public string Idioma { get; set; }
+        public string NivelH { get; set; }
+        public string NivelE { get; set; }
+        public string CodigoIdioma { get; set; }
+    }
+
+    public class EmployeeExperiencia
+    {
+        public string Codigo { get; set; }
+        public string Empresa { get; set; }
+        public string FecInicio { get; set; }
+        public string FecFin { get; set; }
+        public string Cargo { get; set; }
+        public string Descripcion { get; set; }
+        public string Motivo { get; set; }
+        public string CodigoMotivo { get; set; }
+    }
+
+    public class EmployeeEstudios
+    {
+        public int Codigo { get; set; }
+        public string primaria { get; set; }
+        public string apdesde { get; set; }
+        public string aphasta { get; set; }
+        public string secundaria { get; set; }
+        public string asdesde { get; set; }
+        public string ashasta { get; set; }
+        public string titulos { get; set; }
+        public string superior { get; set; }
+        public string sudesde { get; set; }
+        public string suhasta { get; set; }
+        public string titulop { get; set; }
+    }
+
+    public class EmployeeRefLaboral
+    {
+        public string Codigo { get; set; }
+        public string Nombre { get; set; }
+        public string Empresa { get; set; }
+        public string Cargo { get; set; }
+        public string Telefono { get; set; }
+        public string Celular { get; set; }
+        public string Email { get; set; }
+    }
+
+    public class EmpoyeeRefPersonal
+    {
+        public string Codigo { get; set; }
+        public string Nombre { get; set; }
+        public string Parentesco { get; set; }
+        public string Telefono { get; set; }
+        public string Celular { get; set; }
+        public string CodigoParen { get; set; }
+
+    }
+    #endregion
 }

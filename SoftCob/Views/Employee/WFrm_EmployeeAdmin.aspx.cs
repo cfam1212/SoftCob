@@ -1,8 +1,7 @@
-﻿
-
-namespace SoftCob.Views.Employee
+﻿namespace SoftCob.Views.Employee
 {
     using ControllerSoftCob;
+    using ModeloSoftCob;
     using System;
     using System.Data;
     using System.Web.UI;
@@ -34,7 +33,8 @@ namespace SoftCob.Views.Employee
                 Lbltitulo.Text = "Administrar Empleados";
                 FunCargarMantenimiento();
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                    Request["MensajeRetornado"].ToString());
             }
         }
         #endregion
@@ -44,7 +44,7 @@ namespace SoftCob.Views.Employee
         {
             try
             {
-                _dts = new EmployeeDTO().FunGetEmployeeAdmin();
+                _dts = new EmployeeDAO().FunGetEmployeeAdmin();
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -66,14 +66,6 @@ namespace SoftCob.Views.Employee
         {
             Response.Redirect("WFrm_NuevoEmployee.aspx?Tipo=" + "N" + "&Codigo=0");
         }
-
-        protected void Btnselecc_Click(object sender, ImageClickEventArgs e)
-        {
-            GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-            _codigo = GrdvDatos.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString();
-            Response.Redirect("WFrm_NuevoEmployee.aspx?Codigo=" + _codigo + "&Tipo='E'");
-        }
-
         protected void GrdvDatos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -121,13 +113,13 @@ namespace SoftCob.Views.Employee
             _codigoeployee = GrdvDatos.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString();
             _codigousu = GrdvDatos.DataKeys[_gvrow.RowIndex].Values["CodigoUsu"].ToString();
 
-            USUARIO _user = new USUARIO();
+            SoftCob_USUARIO _user = new SoftCob_USUARIO();
             {
-                _user.USU_CODIGO = int.Parse(_codigousu);
+                _user.USUA_CODIGO = int.Parse(_codigousu);
                 _user.empl_codigo = 0;
             }
 
-            _mensaje = new UsuariosDAO().FunEditarUsuarioEmployee(_user);
+            _mensaje = new EmployeeDAO().FunEditarUsuarioEmployee(_user);
             _redirect = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Guardado con Exito..");
             Response.Redirect(_redirect);
         }
