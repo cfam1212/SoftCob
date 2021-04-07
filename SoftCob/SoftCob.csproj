@@ -293,7 +293,7 @@
     <Content Include="Views\Configuraciones\WFrm_NuevoHorario.aspx" />
     <Content Include="Views\Configuraciones\WFrm_NuevoPresupuesto.aspx" />
     <Content Include="Views\Configuraciones\WFrm_NuevosCamposEst.aspx" />
-    <Content Include="Views\Configuraciones\WFrm_NuevoSegmento.aspx" />
+    <Content Include="Views\Configuraciones\wFrm_NuevoSegmento.aspx" />
     <Content Include="Views\Configuraciones\WFrm_ParametroAdmin.aspx" />
     <Content Include="Views\Configuraciones\WFrm_ParametroNuevo.aspx" />
     <Content Include="Views\Configuraciones\WFrm_PerfilesCalificacion.aspx" />
@@ -303,6 +303,10 @@
     <Content Include="Views\Employee\WFrm_EmployeeAdmin.aspx" />
     <Content Include="Views\Employee\WFrm_NuevoEmployee.aspx" />
     <Content Include="Views\Employee\WFrm_NuevoUsuarioEmployee.aspx" />
+    <Content Include="Views\Evaluacion\WFrm_EvaluacionAdmin.aspx" />
+    <Content Include="Views\Evaluacion\WFrm_FormularioEvaluacion.aspx" />
+    <Content Include="Views\Evaluacion\WFrm_ListaEvaluacionAdmin.aspx" />
+    <Content Include="Views\Evaluacion\WFrm_NewEvaluacion.aspx" />
     <Content Include="Views\Gestion\WFrm_ArbolGenealogicoRecursivo.aspx" />
     <Content Include="Views\Gestion\WFrm_ArbolRecursivo.aspx" />
     <Content Include="Views\Gestion\WFrm_BuscarTelefonos.aspx" />
@@ -706,12 +710,12 @@
     <Compile Include="Views\Configuraciones\WFrm_NuevosCamposEst.aspx.designer.cs">
       <DependentUpon>WFrm_NuevosCamposEst.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Configuraciones\WFrm_NuevoSegmento.aspx.cs">
-      <DependentUpon>WFrm_NuevoSegmento.aspx</DependentUpon>
+    <Compile Include="Views\Configuraciones\wFrm_NuevoSegmento.aspx.cs">
+      <DependentUpon>wFrm_NuevoSegmento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Configuraciones\WFrm_NuevoSegmento.aspx.designer.cs">
-      <DependentUpon>WFrm_NuevoSegmento.aspx</DependentUpon>
+    <Compile Include="Views\Configuraciones\wFrm_NuevoSegmento.aspx.designer.cs">
+      <DependentUpon>wFrm_NuevoSegmento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Configuraciones\WFrm_ParametroAdmin.aspx.cs">
       <DependentUpon>WFrm_ParametroAdmin.aspx</DependentUpon>
@@ -775,6 +779,34 @@
     </Compile>
     <Compile Include="Views\Employee\WFrm_NuevoUsuarioEmployee.aspx.designer.cs">
       <DependentUpon>WFrm_NuevoUsuarioEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Evaluacion\WFrm_EvaluacionAdmin.aspx.cs">
+      <DependentUpon>WFrm_EvaluacionAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Evaluacion\WFrm_EvaluacionAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_EvaluacionAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Evaluacion\WFrm_FormularioEvaluacion.aspx.cs">
+      <DependentUpon>WFrm_FormularioEvaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Evaluacion\WFrm_FormularioEvaluacion.aspx.designer.cs">
+      <DependentUpon>WFrm_FormularioEvaluacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Evaluacion\WFrm_ListaEvaluacionAdmin.aspx.cs">
+      <DependentUpon>WFrm_ListaEvaluacionAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Evaluacion\WFrm_ListaEvaluacionAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaEvaluacionAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Evaluacion\WFrm_NewEvaluacion.aspx.cs">
+      <DependentUpon>WFrm_NewEvaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Evaluacion\WFrm_NewEvaluacion.aspx.designer.cs">
+      <DependentUpon>WFrm_NewEvaluacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Gestion\WFrm_ArbolGenealogicoRecursivo.aspx.cs">
       <DependentUpon>WFrm_ArbolGenealogicoRecursivo.aspx</DependentUpon>
