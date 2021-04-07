@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SoftCob.Views.Configuraciones
+namespace SoftCob.Views.Gestion
 {
 
 
-    public partial class WFrm_NuevoSegmento
+    public partial class WFrm_ArbolRecursivo
     {
 
         /// <summary>
@@ -60,94 +60,94 @@ namespace SoftCob.Views.Configuraciones
         protected global::System.Web.UI.WebControls.Label Lblerror;
 
         /// <summary>
-        /// Control updProgress.
+        /// Control UpdProgress.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdateProgress updProgress;
+        protected global::System.Web.UI.UpdateProgress UpdProgress;
 
         /// <summary>
-        /// Control updCabecera.
+        /// Control UpdCabecera.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updCabecera;
+        protected global::System.Web.UI.UpdatePanel UpdCabecera;
 
         /// <summary>
-        /// Control TrvCedentes.
+        /// Control BtnRegresar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TreeView TrvCedentes;
+        protected global::System.Web.UI.WebControls.ImageButton BtnRegresar;
 
         /// <summary>
-        /// Control lblCatalogo.
+        /// Control LblNombres.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCatalogo;
+        protected global::System.Web.UI.WebControls.Label LblNombres;
 
         /// <summary>
-        /// Control TxtSegmento.
+        /// Control LblCedula.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtSegmento;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblCedula;
 
         /// <summary>
-        /// Control TxtDescripcion.
+        /// Control LblDireccion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblDireccion;
 
         /// <summary>
-        /// Control TxtValorInicial.
+        /// Control Panel5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtValorInicial;
+        protected global::System.Web.UI.WebControls.Panel Panel5;
 
         /// <summary>
-        /// Control txtValorInicial_FilteredTextBoxExtender.
+        /// Control Pnldatosdeudor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender txtValorInicial_FilteredTextBoxExtender;
+        protected global::System.Web.UI.WebControls.Panel Pnldatosdeudor;
 
         /// <summary>
-        /// Control TxtValorFinal.
+        /// Control Grdvdatosper1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtValorFinal;
+        protected global::System.Web.UI.WebControls.GridView Grdvdatosper1;
 
         /// <summary>
-        /// Control txtValorFinal_FilteredTextBoxExtender.
+        /// Control Grdvdatosper2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender txtValorFinal_FilteredTextBoxExtender;
+        protected global::System.Web.UI.WebControls.GridView Grdvdatosper2;
 
         /// <summary>
         /// Control Panel1.
@@ -159,22 +159,13 @@ namespace SoftCob.Views.Configuraciones
         protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
-        /// Control ImgAddSegmento.
+        /// Control Tbldatosiess.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgAddSegmento;
-
-        /// <summary>
-        /// Control ImgModiSegmento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgModiSegmento;
+        protected global::System.Web.UI.HtmlControls.HtmlTable Tbldatosiess;
 
         /// <summary>
         /// Control Panel2.
@@ -186,66 +177,102 @@ namespace SoftCob.Views.Configuraciones
         protected global::System.Web.UI.WebControls.Panel Panel2;
 
         /// <summary>
-        /// Control updAccion.
+        /// Control Grdvdatosiess1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updAccion;
+        protected global::System.Web.UI.WebControls.GridView Grdvdatosiess1;
 
         /// <summary>
-        /// Control pnlAccion.
+        /// Control Grdvdatosiess2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlAccion;
+        protected global::System.Web.UI.WebControls.GridView Grdvdatosiess2;
 
         /// <summary>
-        /// Control GrdvSegmento.
+        /// Control Panel3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GrdvSegmento;
+        protected global::System.Web.UI.WebControls.Panel Panel3;
 
         /// <summary>
-        /// Control pnlSepara1.
+        /// Control TblFonos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSepara1;
+        protected global::System.Web.UI.HtmlControls.HtmlTable TblFonos;
 
         /// <summary>
-        /// Control updOpciones.
+        /// Control Panel6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updOpciones;
+        protected global::System.Web.UI.WebControls.Panel Panel6;
 
         /// <summary>
-        /// Control BtnGrabar.
+        /// Control GrdvTelefonos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnGrabar;
+        protected global::System.Web.UI.WebControls.GridView GrdvTelefonos;
 
         /// <summary>
-        /// Control BtnSalir.
+        /// Control Panel7.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSalir;
+        protected global::System.Web.UI.WebControls.Panel Panel7;
+
+        /// <summary>
+        /// Control Tblarbol.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable Tblarbol;
+
+        /// <summary>
+        /// Control Panel4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel4;
+
+        /// <summary>
+        /// Control GrdvDatos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrdvDatos;
+
+        /// <summary>
+        /// Control updBotones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updBotones;
     }
 }

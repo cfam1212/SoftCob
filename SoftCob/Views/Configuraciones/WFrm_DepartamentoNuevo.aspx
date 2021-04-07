@@ -1,6 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_DepartamentoNuevo.aspx.cs" Inherits="SoftCob.Views.Configuracion.WFrm_DepartamentoNuevo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_DepartamentoNuevo.aspx.cs" Inherits="SoftCob.Views.Configuraciones.WFrm_DepartamentoNuevo" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">

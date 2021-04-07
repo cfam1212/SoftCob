@@ -1,8 +1,5 @@
-﻿
-
-namespace SoftCob.Views.Configuraciones
-{
-    
+﻿namespace SoftCob.Views.Configuraciones
+{    
     using ControllerSoftCob;
     using System;
     using System.Data;
@@ -33,7 +30,8 @@ namespace SoftCob.Views.Configuraciones
                 Lbltitulo.Text = "Administrar Estrategias";
                 FunCargarMantenimiento();
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                    Request["MensajeRetornado"].ToString());
             }
         }
         #endregion
@@ -43,7 +41,7 @@ namespace SoftCob.Views.Configuraciones
         {
             try
             {
-                _dts = new EstrategiaDTO().FunGetEstrategiaCabecera();
+                _dts = new EstrategiaDAO().FunGetEstrategiaCabecera();
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -64,13 +62,6 @@ namespace SoftCob.Views.Configuraciones
         protected void BtnNuevo_Click(object sender, EventArgs e)
         {
             Response.Redirect("WFrm_NuevaEstrategia.aspx?CodigoEstrategia=0", true);
-        }
-
-        protected void Btnselecc_Click(object sender, ImageClickEventArgs e)
-        {
-            GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-            _codigo = GrdvDatos.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString();
-            Response.Redirect("WFrm_NuevaEstrategia.aspx?CodigoEstrategia=" + _codigo, true);
         }
         #endregion
     }

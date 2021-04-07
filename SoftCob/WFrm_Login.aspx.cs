@@ -97,14 +97,17 @@
                         _loguintime.loti_auxv2 = "";
                         _loguintime.loti_auxv3 = "";
                         _loguintime.loti_auxv4 = "";
+                        _loguintime.loti_auxv5 = "";
                         _loguintime.loti_auxi1 = 0;
                         _loguintime.loti_auxi2 = 0;
                         _loguintime.loti_auxi3 = 0;
                         _loguintime.loti_auxi4 = 0;
+                        _loguintime.loti_auxi5 = 0;
                         _loguintime.loti_auxd1 = DateTime.Now;
                         _loguintime.loti_auxd2 = DateTime.Now;
                         _loguintime.loti_auxd3 = DateTime.Now;
                         _loguintime.loti_auxd4 = DateTime.Now;
+                        _loguintime.loti_auxd5 = DateTime.Now;
                         _loguintime.loti_fechacreacion = DateTime.Now;
                         _loguintime.loti_usuariocreacion = _usucodigo;
                         _loguintime.loti_terminalcreacion = Session["MachineName"].ToString();

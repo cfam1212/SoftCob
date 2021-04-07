@@ -33,7 +33,7 @@
             if (!IsPostBack)
             {
                 Lbltitulo.Text = "Administrar BRENCH";
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
 
                 ViewState["CodigoBrench"] = Request["CodigoBrench"];
                 FunCargarCombos(0);

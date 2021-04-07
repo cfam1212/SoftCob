@@ -172,7 +172,7 @@
                                 <h5>Valor</h5>
                             </td>
                             <td style="width: 15%; text-align: center;">
-                                <asp:CheckBox ID="ChkOrdenar" runat="server" Text="Ordenar" OnCheckedChanged="ChkOrdenar_CheckedChanged" AutoPostBack="True" TabIndex="7" />
+                                <asp:CheckBox ID="ChkOrdenar" runat="server" CssClass="form-control" Text="Ordenar" OnCheckedChanged="ChkOrdenar_CheckedChanged" AutoPostBack="True" TabIndex="7" />
                             </td>
                             <td style="width: 5%"></td>
                         </tr>
@@ -187,7 +187,7 @@
                                 </asp:DropDownList>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtValor" runat="server" CssClass="form-control" TabIndex="6" Width="100%"></asp:TextBox>
+                                <asp:TextBox ID="txtValor" runat="server" TabIndex="6" Width="100%"></asp:TextBox>
                                 <asp:PlaceHolder ID="PlaceTxt" runat="server"></asp:PlaceHolder>
                             </td>
                             <td>
@@ -210,7 +210,7 @@
                                 <asp:ImageButton ID="ImgAddCampo" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddCampo_Click" TabIndex="9" />
                             </td>
                             <td>
-                                <asp:ImageButton ID="ImgModCampo" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModCampo_Click" TabIndex="10" />
+                                <asp:ImageButton ID="ImgModCampo" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModCampo_Click" TabIndex="10" />
                             </td>
                             <td></td>
                             <td></td>

@@ -1,14 +1,11 @@
-﻿
-
-namespace SoftCob.Views.Configuraciones
+﻿namespace SoftCob.Views.Configuraciones
 {
     using ControllerSoftCob;
     using System;
-    using System.Web.UI;
-    using System.Configuration;
     using System.Data;
+    using System.Web.UI;
     using System.Web.UI.WebControls;
-    
+
     public partial class wFrm_CopiarArbolDecision : Page
     {
         #region Varibales
@@ -23,10 +20,10 @@ namespace SoftCob.Views.Configuraciones
             if (!IsPostBack)
             {
                 Lbltitulo.Text = "Copiar Árbol de Decisión";
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 FunCargarCombos(0);
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::",
+                    Request["MensajeRetornado"].ToString());
             }
         }
         #endregion
@@ -37,7 +34,7 @@ namespace SoftCob.Views.Configuraciones
             switch (opcion)
             {
                 case 0:
-                    DdlCedenteO.DataSource = new CatalogosDTO().FunGetCedentes();
+                    DdlCedenteO.DataSource = new CedenteDAO().FunGetCedentes();
                     DdlCedenteO.DataTextField = "Descripcion";
                     DdlCedenteO.DataValueField = "Codigo";
                     DdlCedenteO.DataBind();
@@ -47,19 +44,19 @@ namespace SoftCob.Views.Configuraciones
                     DdlCatalogoO.Items.Add(_itemc);
                     DdlCatalogoD.Items.Add(_itemc);
 
-                    DdlCedenteD.DataSource = new CatalogosDTO().FunGetCedentes();
+                    DdlCedenteD.DataSource = new CedenteDAO().FunGetCedentes();
                     DdlCedenteD.DataTextField = "Descripcion";
                     DdlCedenteD.DataValueField = "Codigo";
                     DdlCedenteD.DataBind();
                     break;
                 case 1:
-                    DdlCatalogoO.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedenteO.SelectedValue));
+                    DdlCatalogoO.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedenteO.SelectedValue));
                     DdlCatalogoO.DataTextField = "CatalogoProducto";
                     DdlCatalogoO.DataValueField = "CodigoCatalogo";
                     DdlCatalogoO.DataBind();
                     break;
                 case 2:
-                    DdlCatalogoD.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedenteD.SelectedValue));
+                    DdlCatalogoD.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedenteD.SelectedValue));
                     DdlCatalogoD.DataTextField = "CatalogoProducto";
                     DdlCatalogoD.DataValueField = "CodigoCatalogo";
                     DdlCatalogoD.DataBind();
@@ -85,25 +82,25 @@ namespace SoftCob.Views.Configuraciones
             {
                 if (DdlCedenteD.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Cedente Origen..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Origen..!", this);
                     return;
                 }
 
                 if (DdlCedenteO.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Cedente Destino..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Destino..!", this);
                     return;
                 }
 
                 if (DdlCatalogoO.SelectedValue == DdlCatalogoD.SelectedValue)
                 {
-                    new FuncionesBAS().FunShowJSMessage("No se puede Copiar Al mismo Catálogo/Producto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No se puede Copiar Al mismo Catálogo/Producto..!", this);
                     return;
                 }
 
                 new ConsultaDatosDAO().FunConsultaDatos(69, int.Parse(DdlCatalogoO.SelectedValue),
                     int.Parse(DdlCatalogoD.SelectedValue), int.Parse(Session["usuCodigo"].ToString()), "",
-                    Session["MachineName"].ToString(), "", ViewState["Conectar"].ToString());
+                    Session["MachineName"].ToString(), "", Session["Conectar"].ToString());
 
                 _redirect = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Copiado con Éxito..!");
                 Response.Redirect(_redirect, true);

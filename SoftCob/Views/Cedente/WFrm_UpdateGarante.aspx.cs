@@ -19,7 +19,7 @@
 
             if (!IsPostBack)
             {
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CedulaTitular"] = Request["CedulaTitular"];
                 ViewState["CedulaGarante"] = Request["CedulaGarante"];
                 ViewState["CodigoGARA"] = Request["CodigoGARA"];
@@ -35,7 +35,7 @@
         private void FunCargarMantenimiento()
         {
             _dts = new ConsultaDatosDAO().FunConsultaDatos(209, int.Parse(ViewState["CodigoGARA"].ToString()), 0, 0, "",
-                ViewState["CedulaTitular"].ToString(), ViewState["CedulaGarante"].ToString(), ViewState["Conectar"].ToString());
+                ViewState["CedulaTitular"].ToString(), ViewState["CedulaGarante"].ToString(), Session["Conectar"].ToString());
 
             TxtNumeroDocumento.Text = _dts.Tables[0].Rows[0]["Documento"].ToString();
             TxtNombres.Text = _dts.Tables[0].Rows[0]["Nombres"].ToString();
@@ -88,7 +88,7 @@
                 if (ViewState["CedulaGarante"].ToString() != TxtNumeroDocumento.Text.Trim())
                 {
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(209, 0, 0, 0, "", ViewState["CedulaTitular"].ToString(),
-                        TxtNumeroDocumento.Text.Trim(), ViewState["Conectar"].ToString());
+                        TxtNumeroDocumento.Text.Trim(), Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -103,7 +103,7 @@
                     TxtRefDomicilio.Text.Trim().ToUpper(), TxtDirTrabajo.Text.Trim().ToUpper(),
                     TxtRefTrabajo.Text.Trim().ToUpper(), TxtMailEmpresa.Text.Trim().ToLower(),
                     TxtOperacion.Text.Trim(), TxtNombres.Text.Trim().ToUpper(), "", int.Parse(ViewState["CodigoGARA"].ToString()), 0, 0,
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:window.close();", true);
             }

@@ -19,6 +19,7 @@
     <script src="../../Scripts/Tables/dataTable.bootstrap.min.js"></script>
     <script src="../../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../../Scripts/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../../Style/chosen.css" />
 
     <script type="text/javascript">
         function pageLoad(sender, arg) {
@@ -253,14 +254,14 @@
                                     <h5>Provincia:</h5>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DdlProvincia" runat="server" Width="100%" CssClass="form-control" TabIndex="7" OnSelectedIndexChanged="DdlProvincia_SelectedIndexChanged" AutoPostBack="True">
+                                    <asp:DropDownList ID="DdlProvincia" runat="server" Width="100%" CssClass="chzn-select" TabIndex="7" OnSelectedIndexChanged="DdlProvincia_SelectedIndexChanged" AutoPostBack="True">
                                     </asp:DropDownList>
                                 </td>
                                 <td>
                                     <h5>Ciudad:</h5>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DdlCiudad" runat="server" Width="100%" CssClass="form-control" TabIndex="8">
+                                    <asp:DropDownList ID="DdlCiudad" runat="server" Width="100%" CssClass="chzn-select" TabIndex="8">
                                     </asp:DropDownList>
                                 </td>
                                 <td></td>
@@ -682,7 +683,7 @@
                                         <h5>Propietario</h5>
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="DdlPropietario" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="40" Width="100%" OnSelectedIndexChanged="DdlPropietario_SelectedIndexChanged">
+                                        <asp:DropDownList ID="DdlPropietario" runat="server" AutoPostBack="True" CssClass="chzn-select" TabIndex="40" Width="100%" OnSelectedIndexChanged="DdlPropietario_SelectedIndexChanged">
                                         </asp:DropDownList>
                                     </td>
                                     <td></td>
@@ -803,6 +804,16 @@
                 </asp:UpdatePanel>
             </div>
         </div>
+        <script src="../../Scripts/chosen.jquery.js" type="text/javascript"></script>
+        <script type="text/javascript"> $(".chzn-select").chosen(); $(".chzn-select-deselect").chosen({ allow_single_deselect: true }); </script>
+        <script>
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequestHandler);
+            function endRequestHandler() {
+                $(".chzn-select").chosen({ width: "100%" });
+                $(".chzn-container").css({ "width": "100%" });
+                $(".chzn-drop").css({ "width": "95%" });
+            }
+        </script>
     </form>
 </body>
 </html>

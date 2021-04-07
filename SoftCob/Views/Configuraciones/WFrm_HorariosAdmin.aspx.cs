@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.Configuraciones
+﻿namespace SoftCob.Views.Configuraciones
 {
     using ControllerSoftCob;
     using System;
@@ -22,7 +20,7 @@ namespace SoftCob.Views.Configuraciones
                 Response.Redirect("~/Reload.html");
             if (!IsPostBack)
             {
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Administrar Horarios";
                 FunCargarMantenimiento();
                 if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
@@ -37,7 +35,7 @@ namespace SoftCob.Views.Configuraciones
             {
                 _dts = new ConsultaDatosDAO().FunHorariobpm(0, 0, "", "", "", "", "", "", 0, "", "", "", 0, 0, 0,
                     int.Parse((Session["usuCodigo"].ToString())), Session["MachineName"].ToString(),
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();

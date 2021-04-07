@@ -43,7 +43,7 @@
         #endregion
 
         #region Botones y Eventos
-        protected void trvmenu_SelectedNodeChanged(object sender, EventArgs e)
+        protected void Trvmenu_SelectedNodeChanged(object sender, EventArgs e)
         {
             try
             {
@@ -89,14 +89,17 @@
             _loguintime.loti_auxv2 = "";
             _loguintime.loti_auxv3 = "";
             _loguintime.loti_auxv4 = "";
+            _loguintime.loti_auxv5 = "";
             _loguintime.loti_auxi1 = 0;
             _loguintime.loti_auxi2 = 0;
             _loguintime.loti_auxi3 = 0;
             _loguintime.loti_auxi4 = 0;
+            _loguintime.loti_auxi5 = 0;
             _loguintime.loti_auxd1 = DateTime.Now;
             _loguintime.loti_auxd2 = DateTime.Now;
             _loguintime.loti_auxd3 = DateTime.Now;
             _loguintime.loti_auxd4 = DateTime.Now;
+            _loguintime.loti_auxd5 = DateTime.Now;
             _loguintime.loti_fechacreacion = DateTime.Now;
             _loguintime.loti_usuariocreacion = int.Parse(Session["usuCodigo"].ToString());
             _loguintime.loti_terminalcreacion = Session["MachineName"].ToString();

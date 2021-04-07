@@ -74,7 +74,7 @@
                     <td></td>
                     <td style="vertical-align: top; height: 100%; text-align: left;">
                         <asp:TreeView ID="Trvmenu" runat="server" NodeIndent="0" NodeWrap="True"
-                            ShowExpandCollapse="False" ForeColor="Black" OnSelectedNodeChanged="trvmenu_SelectedNodeChanged">
+                            ShowExpandCollapse="False" ForeColor="Black" OnSelectedNodeChanged="Trvmenu_SelectedNodeChanged">
                             <SelectedNodeStyle BackColor="#D2CFD8" BorderStyle="Inset" BorderWidth="1px" Height="20px"
                                 Width="200px" Font-Size="Small" ForeColor="Black" />
                             <NodeStyle ForeColor="Black" Font-Size="Small" />

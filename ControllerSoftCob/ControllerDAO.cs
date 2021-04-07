@@ -1414,9 +1414,34 @@
                 });
             }
 
-            _dts = new FuncionesDAO().FunCambiarDataSet(_catalogo);
-            return _dts;
-        } 
+            return new FuncionesDAO().FunCambiarDataSet(_catalogo);
+        }
+        public DataSet FunGetTablasBDD()
+        {
+            List<SoftCob_TABLAS_BDD> _tablas = null;
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                _tablas = _db.SoftCob_TABLAS_BDD.Where(t => t.tadb_estado == true).ToList();
+            }
+
+            _catalogo.Add(new CatalogosDTO()
+            {
+                Descripcion = "--Seleccione Tabla--",
+                Codigo = ""
+            });
+
+            foreach (SoftCob_TABLAS_BDD _tab in _tablas)
+            {
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = _tab.tadb_nombre,
+                    Codigo = _tab.TABD_CODIGO.ToString()
+                });
+            }
+
+            return new FuncionesDAO().FunCambiarDataSet(_catalogo);
+        }
         #endregion
     }
 }

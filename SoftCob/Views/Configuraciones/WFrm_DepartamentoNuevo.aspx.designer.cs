@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SoftCob.Views.Configuracion
+namespace SoftCob.Views.Configuraciones
 {
 
 

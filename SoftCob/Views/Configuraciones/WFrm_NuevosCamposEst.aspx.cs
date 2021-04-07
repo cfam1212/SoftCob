@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.Configuraciones
+﻿namespace SoftCob.Views.Configuraciones
 {
     using ControllerSoftCob;
     using System;
@@ -40,7 +38,7 @@ namespace SoftCob.Views.Configuraciones
                     return;
                 }
 
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Agregar Campos Estrategias";
                 FunCargarCombos();
 
@@ -54,7 +52,7 @@ namespace SoftCob.Views.Configuraciones
         {
             try
             {
-                DdlTablas.DataSource = new CatalogosDTO().FunGetTablasBDD();
+                DdlTablas.DataSource = new ControllerDAO().FunGetTablasBDD();
                 DdlTablas.DataTextField = "Descripcion";
                 DdlTablas.DataValueField = "Codigo";
                 DdlTablas.DataBind();
@@ -71,19 +69,19 @@ namespace SoftCob.Views.Configuraciones
         {
             try
             {
-                _dts = new EstrategiaDTO().FunGetCamposEstrategia(int.Parse(DdlTablas.SelectedValue));
+                _dts = new EstrategiaDAO().FunGetCamposEstrategia(int.Parse(DdlTablas.SelectedValue));
                 ViewState["CamposEstrategia"] = _dts.Tables[0];
                 GrdvCampos.DataSource = _dts;
                 GrdvCampos.DataBind();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(20, int.Parse(DdlTablas.SelectedValue), 0, 0, DdlTablas.SelectedItem.ToString(), "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(20, int.Parse(DdlTablas.SelectedValue), 0, 0, DdlTablas.SelectedItem.ToString(), "", "", Session["Conectar"].ToString());
 
                 ViewState["dtsCampos"] = _dts.Tables[0];
                 LstOrigen.DataSource = _dts;
                 LstOrigen.DataTextField = _dts.Tables[0].Columns[0].ColumnName;
                 LstOrigen.DataValueField = _dts.Tables[0].Columns[0].ColumnName;
                 LstOrigen.DataBind();
-                new FuncionesDTO().FunOrdenar(LstOrigen);
+                new FuncionesDAO().FunOrdenar(LstOrigen);
             }
             catch (Exception ex)
             {
@@ -135,8 +133,8 @@ namespace SoftCob.Views.Configuraciones
                     }
                 }
 
-                new FuncionesDTO().FunRemoverElement(LstOrigen, _elementoseliminar);
-                new FuncionesDTO().FunOrdenar(LstOrigen);
+                new FuncionesDAO().FunRemoverElement(LstOrigen, _elementoseliminar);
+                new FuncionesDAO().FunOrdenar(LstOrigen);
             }
             catch (Exception ex)
             {
@@ -156,7 +154,7 @@ namespace SoftCob.Views.Configuraciones
                     _codigocampo = int.Parse(GrdvCampos.DataKeys[e.Row.RowIndex].Values["Codigo"].ToString());
                     _codigotabla = int.Parse(GrdvCampos.DataKeys[e.Row.RowIndex].Values["CodigoTabla"].ToString());
 
-                    _dts = new EstrategiaDTO().FunGetDatosCampos(_codigotabla, _codigocampo);
+                    _dts = new EstrategiaDAO().FunGetDatosCampos(_codigotabla, _codigocampo);
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -210,7 +208,7 @@ namespace SoftCob.Views.Configuraciones
                 ViewState["CamposEstrategia"] = _dtbcampos;
                 GrdvCampos.DataSource = _dtbcampos;
                 GrdvCampos.DataBind();
-                new FuncionesDTO().FunOrdenar(LstOrigen);
+                new FuncionesDAO().FunOrdenar(LstOrigen);
             }
             catch (Exception ex)
             {
@@ -228,18 +226,18 @@ namespace SoftCob.Views.Configuraciones
 
                     if (_dtbcampos.Rows.Count == 0)
                     {
-                        new FuncionesBAS().FunShowJSMessage("Ingrese un campo para la estrategía..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingrese un campo para la estrategía..!", this);
                         return;
                     }
 
-                    _mensaje = new EstrategiaDAO().FunCrearCamposEstrategia(0, "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbcampos, "sp_NewCamposEstrategia", ViewState["Conectar"].ToString());
+                    _mensaje = new EstrategiaDAO().FunCrearCamposEstrategia(0, "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbcampos, "sp_NewCamposEstrategia", Session["Conectar"].ToString());
 
                     _response = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Guardado con Éxito");
 
                     if (_mensaje == "") Response.Redirect(_response, false);
-                    else new FuncionesBAS().FunShowJSMessage(_mensaje, this);
+                    else new FuncionesDAO().FunShowJSMessage(_mensaje, this);
                 }
-                else new FuncionesBAS().FunShowJSMessage("No existen Datos en las tablas..!", this);
+                else new FuncionesDAO().FunShowJSMessage("No existen Datos en las tablas..!", this);
             }
             catch (Exception ex)
             {

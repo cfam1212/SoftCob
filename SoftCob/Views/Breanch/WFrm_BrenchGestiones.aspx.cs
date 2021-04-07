@@ -20,7 +20,7 @@
                 ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
                 ViewState["CodigoGEST"] = Request["CodigoGEST"];
                 ViewState["Operacion"] = Request["Operacion"];
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Gestiones Realizadas";
                 FunCargarDatos();
             }
@@ -32,7 +32,7 @@
         {
             _dts = new ConsultaDatosDAO().FunConsultaDatos(223, int.Parse(ViewState["CodigoCPCE"].ToString()),
                 int.Parse(ViewState["CodigoGEST"].ToString()), 0, "", ViewState["Operacion"].ToString(), "",
-                ViewState["Conectar"].ToString());
+                Session["Conectar"].ToString());
 
             GrdvGestiones.DataSource = _dts;
             GrdvGestiones.DataBind();

@@ -1,5 +1,4 @@
-﻿
-namespace ControllerSoftCob
+﻿namespace ControllerSoftCob
 {
     using System;
     using System.Collections;
@@ -12,7 +11,6 @@ namespace ControllerSoftCob
     using System.Text.RegularExpressions;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-
     public class FuncionesDAO
     {
         #region Variables
@@ -245,6 +243,15 @@ namespace ControllerSoftCob
                 }
             }
         }
+        public void SetearGrid(GridView grvGrid, ImageButton imgSubir, int cells, DataTable dtTable)
+        {
+            if (dtTable.Rows.Count > 0)
+            {
+                imgSubir = (ImageButton)grvGrid.Rows[0].Cells[cells].FindControl("imgSubir");
+                imgSubir.ImageUrl = "~/Botones/desactivada_up.png";
+                imgSubir.Enabled = false;
+            }
+        }
 
         public void FunLlenarCombosValues(DropDownList dropList, int valorI, int valorF)
         {
@@ -294,7 +301,31 @@ namespace ControllerSoftCob
                 throw ex;
             }
         }
+        public void FunCargarComboHoraMinutos(DropDownList ddlCombo, string tipo)
+        {
+            switch (tipo)
+            {
+                case "HORAS":
+                    for (int x = 7; x <= 18; x++)
+                    {
+                        ListItem itemDatos = new ListItem();
+                        itemDatos.Text = x < 10 ? "0" + x.ToString() : x.ToString();
+                        itemDatos.Value = x < 10 ? "0" + x.ToString() : x.ToString();
+                        ddlCombo.Items.Add(itemDatos);
+                    }
+                    break;
+                case "MINUTOS":
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        ListItem itemDatos = new ListItem();
+                        itemDatos.Text = x < 10 ? "0" + x.ToString() : x.ToString();
+                        itemDatos.Value = x < 10 ? "0" + x.ToString() : x.ToString();
+                        ddlCombo.Items.Add(itemDatos);
+                    }
+                    break;
+            }
+        }
         #endregion
-        
+
     }
 }

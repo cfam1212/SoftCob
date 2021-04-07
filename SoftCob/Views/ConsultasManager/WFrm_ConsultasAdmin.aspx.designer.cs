@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SoftCob.Views.Configuracion
+namespace SoftCob.Views.ConsultasManager
 {
 
 
-    public partial class WFrm_ParametroNuevo
+    public partial class WFrm_ConsultasAdmin
     {
 
         /// <summary>
@@ -78,139 +78,58 @@ namespace SoftCob.Views.Configuracion
         protected global::System.Web.UI.UpdatePanel updCabecera;
 
         /// <summary>
-        /// Control TxtParametro.
+        /// Control DdlBuscarPor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtParametro;
+        protected global::System.Web.UI.WebControls.DropDownList DdlBuscarPor;
 
         /// <summary>
-        /// Control TxtDescripcion.
+        /// Control TxtCriterio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
+        protected global::System.Web.UI.WebControls.TextBox TxtCriterio;
 
         /// <summary>
-        /// Control LblEstadoPar.
+        /// Control BtnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblEstadoPar;
+        protected global::System.Web.UI.WebControls.Button BtnBuscar;
 
         /// <summary>
-        /// Control ChkEstadoPar.
+        /// Control ChkArbol.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkEstadoPar;
+        protected global::System.Web.UI.WebControls.CheckBox ChkArbol;
 
         /// <summary>
-        /// Control updDetalle.
+        /// Control DivDatos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updDetalle;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivDatos;
 
         /// <summary>
-        /// Control TxtDetalle.
+        /// Control pnlDatos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDetalle;
-
-        /// <summary>
-        /// Control ImgAgregar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgAgregar;
-
-        /// <summary>
-        /// Control TxtValorV.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtValorV;
-
-        /// <summary>
-        /// Control ImgModificar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgModificar;
-
-        /// <summary>
-        /// Control TxtValorI.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtValorI;
-
-        /// <summary>
-        /// Control txtValorI_FilteredTextBoxExtender.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender txtValorI_FilteredTextBoxExtender;
-
-        /// <summary>
-        /// Control ImgCancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgCancelar;
-
-        /// <summary>
-        /// Control LblEstadoDet.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblEstadoDet;
-
-        /// <summary>
-        /// Control ChkEstadoDet.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkEstadoDet;
-
-        /// <summary>
-        /// Control Panel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel pnlDatos;
 
         /// <summary>
         /// Control GrdvDatos.
@@ -229,15 +148,6 @@ namespace SoftCob.Views.Configuracion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updBotones;
-
-        /// <summary>
-        /// Control BtnGrabar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnGrabar;
 
         /// <summary>
         /// Control BtnSalir.

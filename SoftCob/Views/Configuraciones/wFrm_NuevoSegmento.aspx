@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="wFrm_NuevoSegmento.aspx.cs" Inherits="SoftCob.Views.Configuraciones.wFrm_NuevoSegmento" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_NuevoSegmento.aspx.cs" Inherits="SoftCob.Views.Configuraciones.WFrm_NuevoSegmento" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -67,7 +67,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <%--    <div class="panel-info">
+                    <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updOpciones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -78,7 +78,7 @@
                         </ProgressTemplate>
                     </asp:UpdateProgress>
                 </div>
-                <div class="panel-body">--%>
+                <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server">
                     <ContentTemplate>
                         <table style="width: 100%" class="table table-bordered table-responsive">
@@ -167,7 +167,7 @@
                                             <td colspan="4">
                                                 <asp:UpdatePanel ID="updAccion" runat="server">
                                                     <ContentTemplate>
-                                                        <asp:Panel ID="pnlAccion" runat="server" Height="150px" ScrollBars="Vertical">
+                                                        <asp:Panel ID="pnlAccion" runat="server" Height="180px" ScrollBars="Vertical">
                                                             <asp:GridView ID="GrdvSegmento" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo" ForeColor="#333333" PageSize="5" TabIndex="8" Width="100%">
                                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                 <Columns>

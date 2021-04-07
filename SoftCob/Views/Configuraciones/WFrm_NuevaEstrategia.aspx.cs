@@ -1,11 +1,10 @@
-﻿
-
-namespace SoftCob.Views.Configuraciones
+﻿namespace SoftCob.Views.Configuraciones
 {
+    using AjaxControlToolkit;
     using ControllerSoftCob;
+    using ModeloSoftCob;
     using System;
     using System.Collections.Generic;
-    using System.Configuration;
     using System.Data;
     using System.Drawing;
     using System.Globalization;
@@ -46,7 +45,6 @@ namespace SoftCob.Views.Configuraciones
                     return;
                 }
 
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoEstrategia"] = Request["CodigoEstrategia"];
                 ViewState["Codigo"] = "";
                 FunCargarCombos(0);
@@ -64,13 +62,15 @@ namespace SoftCob.Views.Configuraciones
         {
             try
             {
-                _dts = new EstrategiaDTO().FunGetEstrategiaDetallae(int.Parse(ViewState["CodigoEstrategia"].ToString()));
+                _dts = new EstrategiaDAO().FunGetEstrategiaDetalle(int.Parse(ViewState["CodigoEstrategia"].ToString()));
                 ViewState["EstrategiaDetalle"] = _dts.Tables[0];
                 GrdvCampos.DataSource = _dts;
                 GrdvCampos.DataBind();
-                new FuncionesDTO().SetearGrid(GrdvCampos, _imgsubir, 3, _dts.Tables[0]);
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(21, int.Parse(ViewState["CodigoEstrategia"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                new FuncionesDAO().SetearGrid(GrdvCampos, _imgsubir, 4, _dts.Tables[0]);
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(21, int.Parse(ViewState["CodigoEstrategia"].ToString()), 0, 0, "", "", 
+                    "", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -96,7 +96,7 @@ namespace SoftCob.Views.Configuraciones
             switch (opcion)
             {
                 case 0:
-                    DdlCampos.DataSource = new EstrategiaDTO().FunGetCamposComboEstrategia();
+                    DdlCampos.DataSource = new EstrategiaDAO().FunGetCamposComboEstrategia();
                     DdlCampos.DataTextField = "Descripcion";
                     DdlCampos.DataValueField = "Codigo";
                     DdlCampos.DataBind();
@@ -134,7 +134,7 @@ namespace SoftCob.Views.Configuraciones
             try
             {
                 txtValor.Text = "";
-                _dts = new EstrategiaDTO().FunGetDatosCampos(codigocampo);
+                _dts = new EstrategiaDAO().FunGetDatosCampos(codigocampo);
                 ViewState["CodigoTabla"] = _dts.Tables[0].Rows[0]["CodigoTabla"].ToString();
                 ViewState["Tipo"] = _dts.Tables[0].Rows[0]["Tipo"].ToString();
                 txtValor.Attributes.Clear();
@@ -176,19 +176,19 @@ namespace SoftCob.Views.Configuraciones
         {
             if (DdlCampos.SelectedValue.ToString() == "" || DdlCampos.SelectedValue.ToString() == "0")
             {
-                new FuncionesBAS().FunShowJSMessage("Debe seleccionar un Campo para la condición", this);
+                new FuncionesDAO().FunShowJSMessage("Debe seleccionar un Campo para la condición", this);
                 return false;
             }
 
             if (DdlOperacion.SelectedValue.ToString() == "")
             {
-                new FuncionesBAS().FunShowJSMessage("Debe seleccionar tipo de operación", this);
+                new FuncionesDAO().FunShowJSMessage("Debe seleccionar tipo de operación", this);
                 return false;
             }
 
             if (txtValor.Text == "")
             {
-                new FuncionesBAS().FunShowJSMessage("Debe ingresar un valor de comparación para la condición", this);
+                new FuncionesDAO().FunShowJSMessage("Debe ingresar un valor de comparación para la condición", this);
                 return false;
             }
 
@@ -198,7 +198,7 @@ namespace SoftCob.Views.Configuraciones
 
             if (_lexiste)
             {
-                new FuncionesBAS().FunShowJSMessage("Ya existe un registro con esta condición", this);
+                new FuncionesDAO().FunShowJSMessage("Ya existe un registro con esta condición", this);
                 return false;
             }
 
@@ -210,7 +210,7 @@ namespace SoftCob.Views.Configuraciones
                 case "int":
                     if (DdlOperacion.SelectedValue.ToString() == "like")
                     {
-                        new FuncionesBAS().FunShowJSMessage("No puede utilizar la operacion like para datos numéricos", this);
+                        new FuncionesDAO().FunShowJSMessage("No puede utilizar la operacion like para datos numéricos", this);
                         return false;
                     }
                     break;
@@ -219,7 +219,7 @@ namespace SoftCob.Views.Configuraciones
                 case "datetime":
                     if (DdlOperacion.SelectedValue.ToString() == "like")
                     {
-                        new FuncionesBAS().FunShowJSMessage("No puede utilizar la operacion like para datos tipo fecha", this);
+                        new FuncionesDAO().FunShowJSMessage("No puede utilizar la operacion like para datos tipo fecha", this);
                         return false;
                     }
                     break;
@@ -301,7 +301,7 @@ namespace SoftCob.Views.Configuraciones
                     ViewState["EstrategiaDetalle"] = _tblagre;
                     GrdvCampos.DataSource = _tblagre;
                     GrdvCampos.DataBind();
-                    new FuncionesDTO().SetearGrid(GrdvCampos, _imgsubir, 3, _tblagre);
+                    new FuncionesDAO().SetearGrid(GrdvCampos, _imgsubir, 4, _tblagre);
                     FunLimpiarCampos();
                 }
             }
@@ -341,7 +341,7 @@ namespace SoftCob.Views.Configuraciones
                 _dtbcampos = _dtbcampos.DefaultView.ToTable();
                 GrdvCampos.DataSource = _dtbcampos;
                 GrdvCampos.DataBind();
-                new FuncionesDTO().SetearGrid(GrdvCampos, _imgsubir, 3, _dtbcampos);
+                new FuncionesDAO().SetearGrid(GrdvCampos, _imgsubir, 4, _dtbcampos);
             }
             catch (Exception ex)
             {
@@ -412,7 +412,7 @@ namespace SoftCob.Views.Configuraciones
                     ViewState["EstrategiaDetalle"] = _tblbuscar;
                     GrdvCampos.DataSource = _tblbuscar;
                     GrdvCampos.DataBind();
-                    new FuncionesDTO().SetearGrid(GrdvCampos, _imgsubir, 3, _tblbuscar);
+                    new FuncionesDAO().SetearGrid(GrdvCampos, _imgsubir, 4, _tblbuscar);
                     FunLimpiarCampos();
                 }
             }
@@ -474,7 +474,7 @@ namespace SoftCob.Views.Configuraciones
                 _dtbcampos.DefaultView.Sort = "Prioridad ASC";
                 GrdvCampos.DataSource = _dtbcampos;
                 GrdvCampos.DataBind();
-                new FuncionesDTO().SetearGrid(GrdvCampos, _imgsubir, 3, _dtbcampos);
+                new FuncionesDAO().SetearGrid(GrdvCampos, _imgsubir, 4, _dtbcampos);
             }
             catch (Exception ex)
             {
@@ -488,13 +488,13 @@ namespace SoftCob.Views.Configuraciones
             {
                 if (string.IsNullOrEmpty(TxtEstrategia.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese nombre de la Estrategia...!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre de la Estrategia...!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese descripción de la Estrategia...!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese descripción de la Estrategia...!", this);
                     return;
                 }
 
@@ -502,20 +502,22 @@ namespace SoftCob.Views.Configuraciones
 
                 if (_dtbcampos.Rows.Count > 0)
                 {
-                    GSBPO_ESTRATEGIA_CABECERA _estcab = new GSBPO_ESTRATEGIA_CABECERA();
-                    _estcab.ESCA_CODIGO = int.Parse(ViewState["CodigoEstrategia"].ToString());
-                    _estcab.esca_estrategia = TxtEstrategia.Text.Trim().ToUpper();
-                    _estcab.esca_descripcion = TxtDescripcion.Text.Trim().ToUpper();
-                    _estcab.esca_estado = ChkEstadoCab.Checked ? true : false;
-                    _estcab.esca_auxv1 = "";
-                    _estcab.esca_auxv2 = "";
-                    _estcab.esca_auxv3 = "";
-                    _estcab.esca_auxi1 = 0;
-                    _estcab.esca_auxi2 = 0;
-                    _estcab.esca_auxi3 = 0;
-                    _estcab.esca_fum = DateTime.Now;
-                    _estcab.esca_uum = int.Parse(Session["usuCodigo"].ToString());
-                    _estcab.esca_tum = Session["MachineName"].ToString();
+                    SoftCob_ESTRATEGIA_CABECERA _estcab = new SoftCob_ESTRATEGIA_CABECERA();
+                    {
+                        _estcab.ESCA_CODIGO = int.Parse(ViewState["CodigoEstrategia"].ToString());
+                        _estcab.esca_estrategia = TxtEstrategia.Text.Trim().ToUpper();
+                        _estcab.esca_descripcion = TxtDescripcion.Text.Trim().ToUpper();
+                        _estcab.esca_estado = ChkEstadoCab.Checked ? true : false;
+                        _estcab.esca_auxv1 = "";
+                        _estcab.esca_auxv2 = "";
+                        _estcab.esca_auxv3 = "";
+                        _estcab.esca_auxi1 = 0;
+                        _estcab.esca_auxi2 = 0;
+                        _estcab.esca_auxi3 = 0;
+                        _estcab.esca_fum = DateTime.Now;
+                        _estcab.esca_uum = int.Parse(Session["usuCodigo"].ToString());
+                        _estcab.esca_tum = Session["MachineName"].ToString();
+                    }
 
                     if (int.Parse(ViewState["CodigoEstrategia"].ToString()) == 0)
                     {
@@ -530,12 +532,13 @@ namespace SoftCob.Views.Configuraciones
                         _estcab.esca_terminalcreacion = ViewState["terminalcreacion"].ToString();
                     }
 
-                    _estcab.GSBPO_ESTRATEGIA_DETALLE = new List<GSBPO_ESTRATEGIA_DETALLE>();
-                    List<GSBPO_ESTRATEGIA_DETALLE> _estdetalle = new List<GSBPO_ESTRATEGIA_DETALLE>();
+                    _estcab.SoftCob_ESTRATEGIA_DETALLE = new List<SoftCob_ESTRATEGIA_DETALLE>();
+
+                    List<SoftCob_ESTRATEGIA_DETALLE> _estdetalle = new List<SoftCob_ESTRATEGIA_DETALLE>();
 
                     foreach (DataRow _dr in _dtbcampos.Rows)
                     {
-                        _estdetalle.Add(new GSBPO_ESTRATEGIA_DETALLE()
+                        _estdetalle.Add(new SoftCob_ESTRATEGIA_DETALLE()
                         {
                             ESDE_CODIGO = new EstrategiaDAO().FunGetCodigoCabEstrategia(int.Parse(ViewState["CodigoEstrategia"].ToString()), int.Parse(_dr[0].ToString())),
                             ESCA_CODIGO = int.Parse(ViewState["CodigoEstrategia"].ToString()),
@@ -554,11 +557,11 @@ namespace SoftCob.Views.Configuraciones
                         });
                     }
 
-                    _estcab.GSBPO_ESTRATEGIA_DETALLE = new List<GSBPO_ESTRATEGIA_DETALLE>();
+                    _estcab.SoftCob_ESTRATEGIA_DETALLE = new List<SoftCob_ESTRATEGIA_DETALLE>();
 
-                    foreach (GSBPO_ESTRATEGIA_DETALLE _detalle in _estdetalle)
+                    foreach (SoftCob_ESTRATEGIA_DETALLE _detalle in _estdetalle)
                     {
-                        _estcab.GSBPO_ESTRATEGIA_DETALLE.Add(_detalle);
+                        _estcab.SoftCob_ESTRATEGIA_DETALLE.Add(_detalle);
                     }
 
                     if (_estcab.ESCA_CODIGO == 0) _mensaje = new EstrategiaDAO().FunCrearEstrategia(_estcab);
@@ -567,7 +570,7 @@ namespace SoftCob.Views.Configuraciones
                     if (_mensaje == "") Response.Redirect("WFrm_EstrategiaAdmin.aspx?MensajeRetornado='Guardado con Éxito'");
                     else Lblerror.Text = _mensaje;
                 }
-                else new FuncionesBAS().FunShowJSMessage("Ingrese al menos un registro para la Estrategia..!", this);
+                else new FuncionesDAO().FunShowJSMessage("Ingrese al menos un registro para la Estrategia..!", this);
             }
             catch (Exception ex)
             {

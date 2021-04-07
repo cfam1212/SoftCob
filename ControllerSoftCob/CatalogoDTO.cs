@@ -237,7 +237,56 @@
         public int Auxi1 { get; set; }
         public int Auxi2 { get; set; }
         public int Auxi3 { get; set; }
-    }  
+    }
     #endregion
 
+    #region Catalogo ESTRATEGIAS
+    public class EstrategiaAdminDTO
+    {
+        public int Codigo { get; set; }
+        public int CodigoTabla { get; set; }
+        public string Campo { get; set; }
+        public string Tipo { get; set; }
+        public string Estado { get; set; }
+        public string Auxv1 { get; set; }
+        public string Auxv2 { get; set; }
+        public string Auxv3 { get; set; }
+        public int Auxi1 { get; set; }
+        public int Auxi2 { get; set; }
+        public int Auxi3 { get; set; }
+    }
+    public class EstrategiaDetalle
+    {
+        public string Codigo { get; set; }
+        public int CodigoCampo { get; set; }
+        public string Campo { get; set; }
+        public string Operacion { get; set; }
+        public string Valor { get; set; }
+        public string Orden { get; set; }
+        public string Prioridad { get; set; }
+        public string Estado { get; set; }
+        public string Auxv1 { get; set; }
+        public string Auxv2 { get; set; }
+        public string Auxv3 { get; set; }
+        public int Auxi1 { get; set; }
+        public int Auxi2 { get; set; }
+        public int Auxi3 { get; set; }
+    }
+    public class EstrategiaCabecera
+    {
+        public int Codigo { get; set; }
+        public string Estrategia { get; set; }
+        public string Descripcion { get; set; }
+        public string Estado { get; set; }
+        public string Urllink { get; set; }
+    }
+    public class ListaTrabajoCabecera
+    {
+        public int Codigo { get; set; }
+        public string Lista { get; set; }
+        public string FechaInicio { get; set; }
+        public string FechaFin { get; set; }
+        public string Estado { get; set; }
+    }
+    #endregion
 }

@@ -23,7 +23,7 @@
             if (!IsPostBack)
             {
                 Lbltitulo.Text = "Administrar BRENCH";
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Agregar Nuevo Brench";
                 PnlBrenchGlobal.Height = 100;
                 PnlBrenchPagos.Height = 100;
@@ -36,14 +36,14 @@
         private void FunCargaMantenimiento()
         {
             _dts = new ConsultaDatosDAO().FunConsultaDatos(213, int.Parse(Session["usuCodigo"].ToString()),
-                int.Parse(Session["CedeCodigo"].ToString()), 0, "", "", "", ViewState["Conectar"].ToString());
+                int.Parse(Session["CedeCodigo"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
             PnlBrenchGlobal.GroupingText = "Presupuesto ( " + _dts.Tables[0].Rows[0]["Anio"].ToString() + " )" + " - ( " +
                 _dts.Tables[0].Rows[0]["Mes"].ToString() + " ) Por Compromiso de Pago";
             GrdvBrenchGestor.DataSource = _dts;
             GrdvBrenchGestor.DataBind();
 
             _dts = new ConsultaDatosDAO().FunConsultaDatos(214, int.Parse(Session["usuCodigo"].ToString()),
-                int.Parse(Session["CedeCodigo"].ToString()), 0, "", "", "", ViewState["Conectar"].ToString());
+                int.Parse(Session["CedeCodigo"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
             PnlBrenchPagos.GroupingText = "Presupuesto ( " + _dts.Tables[0].Rows[0]["Anio"].ToString() + " )" + " - ( " +
                 _dts.Tables[0].Rows[0]["Mes"].ToString() + " ) Pagos Reigistrados";
             GrdvBrenchPago.DataSource = _dts;
@@ -62,7 +62,7 @@
                     _porcumplido = Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "PorCumplido"));
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(216, int.Parse(Session["codigoCPCE"].ToString()), 1,
-                        0, "", _porcumplido.ToString(), "", ViewState["Conectar"].ToString());
+                        0, "", _porcumplido.ToString(), "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {

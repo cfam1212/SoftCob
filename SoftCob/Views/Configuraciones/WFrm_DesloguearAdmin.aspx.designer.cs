@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SoftCob.Views.Configuracion
+namespace SoftCob.Views.Configuraciones
 {
 
 
-    public partial class WFrm_ParametroAdmin
+    public partial class WFrm_DesloguearAdmin
     {
 
         /// <summary>
@@ -67,15 +67,6 @@ namespace SoftCob.Views.Configuracion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPrincipal;
-
-        /// <summary>
-        /// Control BtnNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton BtnNuevo;
 
         /// <summary>
         /// Control GrdvDatos.

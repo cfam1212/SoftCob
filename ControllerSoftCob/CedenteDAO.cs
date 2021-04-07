@@ -1045,6 +1045,118 @@
                 throw ex;
             }
         }
+        public DataSet FunGetSegmentoCabecera(int _codigocede, int _codigocpce, int _tipo)
+        {
+            try
+            {
+                var query = from SCA in _dtb.SoftCob_SEGMENTO_CABECERA
+                            join CDE in _dtb.SoftCob_CEDENTE on SCA.sgca_cedecodigo equals CDE.CEDE_CODIGO
+                            join CTP in _dtb.SoftCob_CATALOGO_PRODUCTOS_CEDENTE on SCA.sgca_cpcecodigo equals CTP.CPCE_CODIGO
+                            where SCA.sgca_cedecodigo == _codigocede && SCA.sgca_cpcecodigo == _codigocpce
+                            && SCA.sgca_auxi1 == _tipo
+                            orderby SCA.sgca_valorinicial
+                            select new SegmentoAdmin
+                            {
+                                Codigo = SCA.SGCA_CODIGO.ToString(),
+                                Segmento = SCA.sgca_segmento,
+                                Descripcion = SCA.sgca_descripcion,
+                                ValorI = SCA.sgca_valorinicial,
+                                ValorF = SCA.sgca_valorfinal,
+                                Estado = SCA.sgca_estado ? "Activo" : "Inactivo",
+                                Auxv1 = SCA.sgca_auxv1,
+                                Auxv2 = SCA.sgca_auxv2,
+                                Auxv3 = SCA.sgca_auxv3,
+                                Auxi1 = (int)SCA.sgca_auxi1,
+                                Auxi2 = (int)SCA.sgca_auxi2,
+                                Auxi3 = (int)SCA.sgca_auxi3
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public string FunDelSegmento(int _codigocede, int _codigocpce, int _codigosgca, int _tipo)
+        {
+            try
+            {
+                using (SoftCobEntities _db = new SoftCobEntities())
+                {
+                    SoftCob_SEGMENTO_CABECERA _datos = _db.SoftCob_SEGMENTO_CABECERA.SingleOrDefault(x => x.sgca_cedecodigo == _codigocede
+                    && x.sgca_cpcecodigo == _codigocpce && x.SGCA_CODIGO == _codigosgca && x.sgca_auxi1 == _tipo);
+
+                    if (_datos != null)
+                    {
+                        _db.Entry(_datos).State = System.Data.Entity.EntityState.Deleted;
+                        _db.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _mensaje = ex.ToString();
+            }
+            return _mensaje;
+        }
+        public int FunGetCodigoSegmento(int _codigocede, int _codigocpce, int _codigosgca, int _tipo)
+        {
+            try
+            {
+                using (SoftCobEntities _db = new SoftCobEntities())
+                {
+                    List<SoftCob_SEGMENTO_CABECERA> _dato = _db.SoftCob_SEGMENTO_CABECERA.Where(x => x.sgca_cedecodigo == _codigocede
+                    && x.sgca_cpcecodigo == _codigocpce && x.SGCA_CODIGO == _codigosgca && x.sgca_auxi1 == _tipo).ToList();
+
+                    if (_dato.Count > 0) _codigo = _dato.FirstOrDefault().SGCA_CODIGO;
+                    else _codigo = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return _codigo;
+        }
+        public void FunCrearSegmento(SoftCob_SEGMENTO_CABECERA _datos)
+        {
+            try
+            {
+                using (SoftCobEntities _db = new SoftCobEntities())
+                {
+                    _db.SoftCob_SEGMENTO_CABECERA.Add(_datos);
+                    _db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void FunEditSegmento(SoftCob_SEGMENTO_CABECERA _datos)
+        {
+            try
+            {
+                using (SoftCobEntities _db = new SoftCobEntities())
+                {
+                    _db.SoftCob_SEGMENTO_CABECERA.Add(_datos);
+                    _db.Entry(_datos).State = System.Data.Entity.EntityState.Modified;
+                    _db.SaveChanges();
+                }
+            }
+            catch (Exception ex/*DbEntityValidationException ex*/)
+            {
+                //foreach (var validationErrors in ex.EntityValidationErrors)
+                //{
+                //    foreach (var validationError in validationErrors.ValidationErrors)
+                //    {
+                //        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                //    }
+                //}
+                throw ex;
+            }
+        }
         #endregion
     }
 }

@@ -23,7 +23,7 @@
             if (!IsPostBack)
             {
                 TxtFechaNacimiento.Text = DateTime.Now.ToString("MM/dd/yyyy");
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoPERS"] = Request["CodigoPERS"];
                 TxtFechaNacimiento.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 Lbltitulo.Text = "Actualizar Cliente-Deudor";
@@ -55,7 +55,7 @@
                         DdlGenero.DataBind();
 
                         DdlProvincia.DataSource = new ConsultaDatosDAO().FunConsultaDatos(186,
-                            0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                            0, 0, 0, "", "", "", Session["Conectar"].ToString());
                         DdlProvincia.DataTextField = "Descripcion";
                         DdlProvincia.DataValueField = "Codigo";
                         DdlProvincia.DataBind();
@@ -72,14 +72,14 @@
                         break;
                     case 1:
                         DdlCiudad.DataSource = new ConsultaDatosDAO().FunConsultaDatos(186,
-                            1, int.Parse(DdlProvincia.SelectedValue), 0, "", "", "", ViewState["Conectar"].ToString());
+                            1, int.Parse(DdlProvincia.SelectedValue), 0, "", "", "", Session["Conectar"].ToString());
                         DdlCiudad.DataTextField = "Descripcion";
                         DdlCiudad.DataValueField = "Codigo";
                         DdlCiudad.DataBind();
                         break;
                     case 2:
                         _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(ViewState["CodigoPERS"].ToString()), 0,
-                            0, "", "", "", ViewState["Conectar"].ToString());
+                            0, "", "", "", Session["Conectar"].ToString());
 
                         if (_dts.Tables[0].Rows.Count > 0)
                         {
@@ -106,7 +106,7 @@
                         if (ViewState["Numdocumento"].ToString() != TxtNumeroDocumento.Text.Trim())
                         {
                             _dts = new ConsultaDatosDAO().FunConsultaDatos(175, 0, 0, 0, "", TxtNumeroDocumento.Text.Trim(),
-                                "", ViewState["Conectar"].ToString());
+                                "", Session["Conectar"].ToString());
 
                             if (_dts.Tables[0].Rows.Count > 0)
                             {
@@ -259,7 +259,7 @@
                     int.Parse(DdlCiudad.SelectedValue), Txtdirdomicilio.Text.Trim().ToUpper(),
                     Txtrefdomicilio.Text.Trim().ToUpper(), Txtdirtrabajo.Text.Trim().ToUpper(),
                     TxtReftrabajo.Text.Trim().ToUpper(), TxtCorreo.Text.Trim(), TxtMailEmpresa.Text.Trim(), "", "", 0, 0, 0,
-                    int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                    int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                 ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:window.close();", true);
             }
