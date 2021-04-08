@@ -311,6 +311,16 @@
     <Content Include="Views\Gestion\WFrm_ArbolRecursivo.aspx" />
     <Content Include="Views\Gestion\WFrm_BuscarTelefonos.aspx" />
     <Content Include="Views\Gestion\WFrm_DatosEquifax.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdmin.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminADE.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminAP.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminEFE.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminFDA.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajo.aspx" />
+    <Content Include="Views\ListaTrabajo\wFrm_NuevaListaTrabajoADE.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoAPO.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoEFE.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoFDA.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Detalle.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Menu.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Principal.aspx" />
@@ -835,6 +845,76 @@
     </Compile>
     <Compile Include="Views\Gestion\WFrm_DatosEquifax.aspx.designer.cs">
       <DependentUpon>WFrm_DatosEquifax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdmin.aspx.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminADE.aspx.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminADE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminADE.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminADE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminAP.aspx.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminAP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminAP.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminAP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminEFE.aspx.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminEFE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminEFE.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminEFE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminFDA.aspx.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminFDA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminFDA.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminFDA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajo.aspx.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajo.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\wFrm_NuevaListaTrabajoADE.aspx.cs">
+      <DependentUpon>wFrm_NuevaListaTrabajoADE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\wFrm_NuevaListaTrabajoADE.aspx.designer.cs">
+      <DependentUpon>wFrm_NuevaListaTrabajoADE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoAPO.aspx.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajoAPO.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoAPO.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajoAPO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoEFE.aspx.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajoEFE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoEFE.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajoEFE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoFDA.aspx.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajoFDA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoFDA.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajoFDA.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Mantenedor\WFrm_Detalle.aspx.cs">
       <DependentUpon>WFrm_Detalle.aspx</DependentUpon>
