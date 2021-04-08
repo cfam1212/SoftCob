@@ -10,6 +10,7 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
+        SoftCobEntities _dtb = new SoftCobEntities();
         SqlDataAdapter _dap = new SqlDataAdapter();
         string _mensaje = "";
         #endregion
@@ -152,6 +153,50 @@
                 }
 
                 return "Borrado";
+            }
+        }
+        public DataSet FunGetSpeechDetaArbol(int codigocede, int codigocpce, int codigoarac, int codigoaref, int codigoarre,
+            int codigoarco)
+        {
+            try
+            {
+                var query = from SPD in _dtb.SoftCob_SPEECH_DETALLE
+                            join SPC in _dtb.SoftCob_SPEECH_CABECERA on SPD.SPCA_CODIGO equals SPC.SPCA_CODIGO
+                            where SPC.spca_cedecodigo == codigocede && SPC.spca_cpcecodigo == codigocpce &&
+                            SPD.spde_araccodigo == codigoarac && SPD.spde_arefcodigo == codigoaref && SPD.spde_arrecodigo == codigoarre &&
+                            SPD.spde_arcocodigo == codigoarco
+                            select new SpeechCabeceraDTO
+                            {
+                                CodigoSpeech = SPD.SPDE_CODIGO,
+                                Speechbv = SPD.spde_speechad,
+                                Estado = SPD.spde_estado == true ? "Activo" : "Inactivo"
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataSet FunGetSpeechCabecera(int codigocede, int codigocpce)
+        {
+            try
+            {
+                var query = from Speech in _dtb.SoftCob_SPEECH_CABECERA
+                            where Speech.spca_cedecodigo == codigocede && Speech.spca_cedecodigo == codigocpce
+                            select new SpeechCabeceraDTO
+                            {
+                                CodigoSpeech = Speech.SPCA_CODIGO,
+                                Speechbv = Speech.spca_speechbv,
+                                Estado = Speech.spca_estado == true ? "Activo" : "Inactivo"
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
         #endregion

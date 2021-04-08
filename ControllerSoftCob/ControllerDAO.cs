@@ -18,6 +18,7 @@
         SqlDataAdapter _dta = new SqlDataAdapter();
         List<CatalogosDTO> _catalogo = new List<CatalogosDTO>();
         SoftCobEntities _db = new SoftCobEntities();
+        List<ParametroDetalle> _detalle = new List<ParametroDetalle>();
         public string gstrusuario = "";
         public string gstrterminal = "";
         public Form objform = new Form();
@@ -420,6 +421,32 @@
                 _mensaje = ex.ToString();
             }
             return _mensaje;
+        }
+        public DataSet FunGetPerfilUsuarios(int percodigo)
+        {
+            try
+            {
+                var query = from Perfiles in _db.SoftCob_PERFIL
+                            where Perfiles.PERF_CODIGO == percodigo
+                            select new PerfilUsuarios
+                            {
+                                CrearParametro = (bool)Perfiles.perf_crearparametro,
+                                ModifParametro = (bool)Perfiles.perf_modiparametro,
+                                ElimiParametro = (bool)Perfiles.perf_eliminaparametro,
+                                PerfActitudinal = (bool)Perfiles.perf_perfilactitudinal,
+                                EstilosNegocia = (bool)Perfiles.perf_estilosnegociacion,
+                                Metaprogramas = (bool)Perfiles.perf_metaprogramas,
+                                Modalidades = (bool)Perfiles.perf_modalidades,
+                                EstadosYo = (bool)Perfiles.perf_estadosdelyo,
+                                Impulsores = (bool)Perfiles.perf_impulsores
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         #endregion
 
@@ -1454,6 +1481,29 @@
             }
 
             return new FuncionesDAO().FunCambiarDataSet(_catalogo);
+        }
+        public DataSet FunGetDatosParametroDet(string _paranombre)
+        {
+            List<SoftCob_PARAMETRO_DETALLE> _tablas = null;
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                _tablas = _db.SoftCob_PARAMETRO_DETALLE.Where(x => x.pade_estado == true && x.PARA_CODIGO == 
+                x.SoftCob_PARAMETRO_CABECERA.PARA_CODIGO && x.SoftCob_PARAMETRO_CABECERA.para_nombre == _paranombre && 
+                x.SoftCob_PARAMETRO_CABECERA.para_estado == true).ToList();
+            }
+
+            foreach (SoftCob_PARAMETRO_DETALLE _tab in _tablas)
+            {
+                _detalle.Add(new ParametroDetalle()
+                {
+                    Prametro = _tab.pade_nombre,
+                    ValorV = _tab.pade_valorV,
+                    ValorI = _tab.pade_valorI
+                });
+            }
+
+            return new FuncionesDAO().FunCambiarDataSet(_detalle);
         }
         #endregion
 

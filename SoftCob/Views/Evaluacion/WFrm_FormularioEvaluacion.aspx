@@ -78,16 +78,16 @@
             height: 80px;
         }
 
-        .overlayContent h2 {
-            font-size: 18px;
-            font-weight: bold;
-            color: #000;
-        }
+            .overlayContent h2 {
+                font-size: 18px;
+                font-weight: bold;
+                color: #000;
+            }
 
-        .overlayContent img {
-            width: 80px;
-            height: 80px;
-        }
+            .overlayContent img {
+                width: 80px;
+                height: 80px;
+            }
     </style>
 </head>
 <body>
@@ -96,7 +96,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="background-color: #79BBB8;">
                 <asp:Label ID="Lbltitulo" runat="server"></asp:Label>
-            </div>            
+            </div>
             <asp:UpdatePanel ID="updError" runat="server">
                 <ContentTemplate>
                     <div style="background-color: beige; text-align: left; width: 100%; font-size: 25px">
@@ -165,8 +165,10 @@
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                                 <asp:BoundField DataField="Evaluar" HeaderText="Evaluación" />
                                             </Columns>
-                                            <HeaderStyle Font-Size="Small" />
-                                            <RowStyle Font-Size="Small" Font-Bold="true" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -187,8 +189,10 @@
                                                 <asp:BoundField DataField="Departamento" HeaderText="Departamento" />
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -234,8 +238,10 @@
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                                 <asp:BoundField DataField="Evaluar" HeaderText="Evaluación" />
                                             </Columns>
-                                            <HeaderStyle Font-Size="Small" />
-                                            <RowStyle Font-Size="Small" Font-Bold="true" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -256,8 +262,10 @@
                                                 <asp:BoundField DataField="Departamento" HeaderText="Departamento" />
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -305,8 +313,10 @@
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                                 <asp:BoundField DataField="Evaluar" HeaderText="Evaluación" />
                                             </Columns>
-                                            <HeaderStyle Font-Size="Small" />
-                                            <RowStyle Font-Size="Small" Font-Bold="true" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -327,8 +337,10 @@
                                                 <asp:BoundField DataField="Departamento" HeaderText="Departamento" />
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -376,8 +388,10 @@
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                                 <asp:BoundField DataField="Evaluar" HeaderText="Evaluación" />
                                             </Columns>
-                                            <HeaderStyle Font-Size="Small" />
-                                            <RowStyle Font-Size="Small" Font-Bold="true" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -398,8 +412,10 @@
                                                 <asp:BoundField DataField="Departamento" HeaderText="Departamento" />
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -447,8 +463,10 @@
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                                 <asp:BoundField DataField="Evaluar" HeaderText="Evaluación" />
                                             </Columns>
-                                            <HeaderStyle Font-Size="Small" />
-                                            <RowStyle Font-Size="Small" Font-Bold="true" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -469,8 +487,10 @@
                                                 <asp:BoundField DataField="Departamento" HeaderText="Departamento" />
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -518,8 +538,10 @@
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                                 <asp:BoundField DataField="Evaluar" HeaderText="Evaluación" />
                                             </Columns>
-                                            <HeaderStyle Font-Size="Small" />
-                                            <RowStyle Font-Size="Small" Font-Bold="true" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -540,8 +562,10 @@
                                                 <asp:BoundField DataField="Departamento" HeaderText="Departamento" />
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -589,8 +613,10 @@
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                                 <asp:BoundField DataField="Evaluar" HeaderText="Evaluación" />
                                             </Columns>
-                                            <HeaderStyle Font-Size="Small" />
-                                            <RowStyle Font-Size="Small" Font-Bold="true" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -611,8 +637,10 @@
                                                 <asp:BoundField DataField="Departamento" HeaderText="Departamento" />
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -660,8 +688,10 @@
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                                 <asp:BoundField DataField="Evaluar" HeaderText="Evaluación" />
                                             </Columns>
-                                            <HeaderStyle Font-Size="Small" />
-                                            <RowStyle Font-Size="Small" Font-Bold="true" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -682,8 +712,10 @@
                                                 <asp:BoundField DataField="Departamento" HeaderText="Departamento" />
                                                 <asp:BoundField DataField="Calificacion" HeaderText="Clf." />
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>

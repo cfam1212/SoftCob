@@ -1,5 +1,4 @@
-﻿
-namespace SoftCob.Views.Evaluacion
+﻿namespace SoftCob.Views.Evaluacion
 {
     using ControllerSoftCob;
     using System;
@@ -36,7 +35,7 @@ namespace SoftCob.Views.Evaluacion
             {
                 if (Session["IN-CALL"].ToString() == "SI")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Se encuentra en Llamada, en cuanto termine la gestión podrá salir de la Lista de Trabajo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Se encuentra en Llamada, en cuanto termine la gestión podrá salir de la Lista de Trabajo..!", this);
                     Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
                 }
 
@@ -171,7 +170,7 @@ namespace SoftCob.Views.Evaluacion
                 _dtbdepco = (DataTable)ViewState["DepartamentoCO"];
                 _resultado = _dtbdepco.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesBAS().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
                 else
                 {
                     GrdvEvaluacionCO.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -245,7 +244,7 @@ namespace SoftCob.Views.Evaluacion
                 _dtbdepli = (DataTable)ViewState["DepartamentoLI"];
                 _resultado = _dtbdepli.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesBAS().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
                 else
                 {
                     GrdvEvaluacionLI.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -319,7 +318,7 @@ namespace SoftCob.Views.Evaluacion
                 _dtbdepmo = (DataTable)ViewState["DepartamentoMO"];
                 _resultado = _dtbdepmo.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesBAS().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
                 else
                 {
                     GrdvEvaluacionMO.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -392,7 +391,7 @@ namespace SoftCob.Views.Evaluacion
                 _dtbdepac = (DataTable)ViewState["DepartamentoAC"];
                 _resultado = _dtbdepac.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesBAS().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
                 else
                 {
                     GrdvEvaluacionAC.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -465,7 +464,7 @@ namespace SoftCob.Views.Evaluacion
                 _dtbdepsp = (DataTable)ViewState["DepartamentoSP"];
                 _resultado = _dtbdepsp.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesBAS().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
                 else
                 {
                     GrdvEvaluacionSP.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -538,7 +537,7 @@ namespace SoftCob.Views.Evaluacion
                 _dtbdepat = (DataTable)ViewState["DepartamentoAT"];
                 _resultado = _dtbdepat.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesBAS().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
                 else
                 {
                     GrdvEvaluacionAT.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -611,7 +610,7 @@ namespace SoftCob.Views.Evaluacion
                 _dtbdepcp = (DataTable)ViewState["DepartamentoCP"];
                 _resultado = _dtbdepcp.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesBAS().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
                 else
                 {
                     GrdvCapacidadP.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -684,7 +683,7 @@ namespace SoftCob.Views.Evaluacion
                 _dtbdeptp = (DataTable)ViewState["DepartamentoTP"];
                 _resultado = _dtbdeptp.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesBAS().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
                 else
                 {
                     GrdvCostoP.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -866,7 +865,7 @@ namespace SoftCob.Views.Evaluacion
             {
                 if (DddlEvaluacion.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Evaluación Desempeño..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Evaluación Desempeño..!", this);
                     return;
                 }
 
@@ -875,7 +874,7 @@ namespace SoftCob.Views.Evaluacion
 
                 if (_resultado != null)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Termine Calificación Protocolo COMUNICACION..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo COMUNICACION..!", this);
                     return;
                 }
 
@@ -884,7 +883,7 @@ namespace SoftCob.Views.Evaluacion
 
                 if (_resultado != null)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Termine Calificación Protocolo LIDERAZGO..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo LIDERAZGO..!", this);
                     return;
                 }
 
@@ -893,7 +892,7 @@ namespace SoftCob.Views.Evaluacion
 
                 if (_resultado != null)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Termine Calificación Protocolo MOTIVACION..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo MOTIVACION..!", this);
                     return;
                 }
 
@@ -902,7 +901,7 @@ namespace SoftCob.Views.Evaluacion
 
                 if (_resultado != null)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Termine Calificación Protocolo ACTITUD Y COLABORACION..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo ACTITUD Y COLABORACION..!", this);
                     return;
                 }
 
@@ -911,7 +910,7 @@ namespace SoftCob.Views.Evaluacion
 
                 if (_resultado != null)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Termine Calificación Protocolo SOLUCION DE PROBLEMAS..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo SOLUCION DE PROBLEMAS..!", this);
                     return;
                 }
 
@@ -920,7 +919,7 @@ namespace SoftCob.Views.Evaluacion
 
                 if (_resultado != null)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Termine Calificación Protocolo AMBIENTE DE TRABAJO..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo AMBIENTE DE TRABAJO..!", this);
                     return;
                 }
 
@@ -929,7 +928,7 @@ namespace SoftCob.Views.Evaluacion
 
                 if (_resultado != null)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Termine Calificación Protocolo CAPACIDAD PERSONAL..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo CAPACIDAD PERSONAL..!", this);
                     return;
                 }
 
@@ -938,7 +937,7 @@ namespace SoftCob.Views.Evaluacion
 
                 if (_resultado != null)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Termine Calificación Protocolo COSTOS Y PRODUCTIVIDAD..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo COSTOS Y PRODUCTIVIDAD..!", this);
                     return;
                 }
 

@@ -11,7 +11,7 @@
         #region Variables
         DataSet _dts = new DataSet();
         SqlDataAdapter _dap = new SqlDataAdapter();
-        SoftCobEntities _db = new SoftCobEntities();
+        SoftCobEntities _dtb = new SoftCobEntities();
         bool _respuesta = false;
         int _codigo = 0;
         #endregion
@@ -252,9 +252,9 @@
         {
             try
             {
-                var query = from datos in _db.SoftCob_BRENCH
-                            join Cedente in _db.SoftCob_CEDENTE on datos.brch_cedecodigo equals Cedente.CEDE_CODIGO
-                            join Catalogo in _db.SoftCob_CATALOGO_PRODUCTOS_CEDENTE on datos.brch_cpcecodigo equals Catalogo.CPCE_CODIGO
+                var query = from datos in _dtb.SoftCob_BRENCH
+                            join Cedente in _dtb.SoftCob_CEDENTE on datos.brch_cedecodigo equals Cedente.CEDE_CODIGO
+                            join Catalogo in _dtb.SoftCob_CATALOGO_PRODUCTOS_CEDENTE on datos.brch_cpcecodigo equals Catalogo.CPCE_CODIGO
                             select new BrenchAdminDTO
                             {
                                 Codigo = datos.BRCH_CODIGO,
@@ -281,7 +281,7 @@
         {
             try
             {
-                var query = from datos in _db.SoftCob_BRENCHDET
+                var query = from datos in _dtb.SoftCob_BRENCHDET
                             where datos.BRCH_CODIGO == codigo
                             orderby datos.brde_orden
                             select new NuevoBrenchDTO
@@ -311,7 +311,7 @@
         {
             try
             {
-                var query = from datos in _db.SoftCob_BRENCHDET
+                var query = from datos in _dtb.SoftCob_BRENCHDET
                             where datos.BRCH_CODIGO == codigoBRCH && datos.BRDE_CODIGO == codigoBRDE
                             select new NuevoBrenchDTO
                             {
@@ -319,6 +319,306 @@
                             };
 
                 return _dts = new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataSet FunGetArbolRespuesta(int cpcecodigo)
+        {
+            try
+            {
+                var query = from Respuesta in _dtb.SoftCob_RESPUESTA
+                            where Respuesta.arre_estado == true &&
+                            Respuesta.arre_auxi1 == cpcecodigo
+                            select new ArbolContactoEfectivo
+                            {
+                                Codigo = Respuesta.ARRE_CODIGO,
+                                Descripcion = Respuesta.arre_descripcion,
+                                Contacto = Respuesta.arre_auxi2 == 1 ? true : false
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataSet FunGetListaTrabajo(int idListaTrabajo)
+        {
+            try
+            {
+                var query = from Lista in _dtb.SoftCob_LISTATRABAJO_CABECERA
+                            join Cedente in _dtb.SoftCob_CEDENTE on Lista.ltca_cedecodigo equals Cedente.CEDE_CODIGO
+                            join Catalogo in _dtb.SoftCob_CATALOGO_PRODUCTOS_CEDENTE on Lista.ltca_cpcecodigo equals Catalogo.CPCE_CODIGO
+                            join Producto in _dtb.SoftCob_PRODUCTOS_CEDENTE on Catalogo.PRCE_CODIGO equals Producto.PRCE_CODIGO
+                            where Lista.LTCA_CODIGO == idListaTrabajo && Lista.ltca_estado == true
+                            select new ListaTrabajoAdminDTO
+                            {
+                                Codigo = Lista.LTCA_CODIGO,
+                                Lista = Lista.ltca_lista,
+                                FechaInicio = Lista.ltca_fechainicio.ToString(),
+                                FechaFin = Lista.ltca_fechafin.ToString(),
+                                CedeCodigo = Lista.ltca_cedecodigo,
+                                Cedente = Cedente.cede_nombre,
+                                PrceCodigo = Producto.PRCE_CODIGO,
+                                Producto = Producto.prce_producto,
+                                CpceCodigo = Lista.ltca_cpcecodigo,
+                                Catalogo = Catalogo.cpce_producto,
+                                TipoMarcado = Lista.ltca_tipomarcado,
+                                Operaciones = (int)Lista.ltca_auxi1,
+                                GestorApoyo = Lista.ltca_auxv3
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataSet FunGetTelefonoPredicitivoPorId(int cedecodigo, int perscodigo)
+        {
+            try
+            {
+                var query = from Telefono in _dtb.SoftCob_TELEFONOS_CEDENTE
+                            where Telefono.tece_cedecodigo == cedecodigo && Telefono.tece_perscodigo == perscodigo && Telefono.tece_estado
+                            orderby Telefono.tece_score descending, Telefono.tece_numero ascending
+                            select new TelefonoPredictivo
+                            {
+                                Telefono = Telefono.tece_numero,
+                                Tipo = Telefono.tece_tipo,
+                                Propietario = Telefono.tece_propietario,
+                                Score = Telefono.tece_score,
+                                Prefijo = Telefono.tece_auxv1
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataSet FunGetSpeech(int tipo, int cedecodigo, int cpcecodigo, int araccodigo, int arefcodigo,
+            int arrecodigo, int arcocodigo, int spcacodigo)
+        {
+            try
+            {
+                switch (tipo)
+                {
+                    case 0:
+                        var query = from Speech in _dtb.SoftCob_SPEECH_CABECERA
+                                    where Speech.spca_cedecodigo == cedecodigo && Speech.spca_cpcecodigo == cpcecodigo
+                                    select new SpeechGenerado
+                                    {
+                                        Texto = Speech.spca_speechbv,
+                                        Observa = "",
+                                        CodigoSpeech = Speech.SPCA_CODIGO
+                                    };
+
+                        _dts = new FuncionesDAO().FunCambiarDataSet(query.ToList());
+                        break;
+                    case 1:
+                        var query1 = from SpeechDeta in _dtb.SoftCob_SPEECH_DETALLE
+                                     where SpeechDeta.SPCA_CODIGO == spcacodigo && SpeechDeta.spde_araccodigo == araccodigo
+                                     && SpeechDeta.spde_arefcodigo == arefcodigo && SpeechDeta.spde_arrecodigo == arrecodigo
+                                     && SpeechDeta.spde_arcocodigo == arcocodigo
+                                     select new SpeechGenerado
+                                     {
+                                         Texto = SpeechDeta.spde_speechad,
+                                         Observa = SpeechDeta.spde_observacion,
+                                         CodigoSpeech = SpeechDeta.SPDE_CODIGO
+                                     };
+                        _dts = new FuncionesDAO().FunCambiarDataSet(query1.ToList());
+                        break;
+                }
+
+                return _dts;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataSet FunGetArbolContacto(int cpcecodigo)
+        {
+            try
+            {
+                var query = from Accion in _dtb.SoftCob_ACCION
+                            where Accion.arac_estado == true
+                            select new ArbolContactoEfectivo
+                            {
+                                Codigo = Accion.ARAC_CODIGO,
+                                Descripcion = Accion.arac_descripcion,
+                                Contacto = Accion.arac_contacto
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataSet FunGetPerfilActitudinal()
+        {
+            try
+            {
+                var query = from Actitudinal in _dtb.SoftCob_PERFIL_ACTITUDINAL
+                            where Actitudinal.peac_estado == true
+                            select new VariablesBlandas
+                            {
+                                Codigo = Actitudinal.PEAC_CODIGO,
+                                Descripcion = Actitudinal.peac_descripcion
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataSet FunGetEstilosNegociacion()
+        {
+            try
+            {
+                var query = from Estilos in _dtb.SoftCob_ESTILOS_NEGOCIACION
+                            where Estilos.peen_estado == true
+                            select new VariablesBlandas
+                            {
+                                Codigo = Estilos.PEEN_CODIGO,
+                                Descripcion = Estilos.peen_descripcion
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataSet FunGetMetaprogramas()
+        {
+            try
+            {
+                var query = from Metap in _dtb.SoftCob_METAPROGRAMAS
+                            where Metap.pemp_estado == true
+                            select new VariablesBlandas
+                            {
+                                Codigo = Metap.PEMP_CODIGO,
+                                Descripcion = Metap.pemp_descripcion
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataSet FunGetModalidades()
+        {
+            try
+            {
+                var query = from Modali in _dtb.SoftCob_MODALIDADES
+                            where Modali.pemo_estado == true
+                            select new VariablesBlandas
+                            {
+                                Codigo = Modali.PEMO_CODIGO,
+                                Descripcion = Modali.pemo_descripcion
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataSet FunGetEstadosYo()
+        {
+            try
+            {
+                var query = from Estados in _dtb.SoftCob_ESTADOS_DELYO
+                            where Estados.peey_estado == true
+                            select new VariablesBlandas
+                            {
+                                Codigo = Estados.PEEY_CODIGO,
+                                Descripcion = Estados.peey_descripcion
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataSet FunGetImpulsores()
+        {
+            try
+            {
+                var query = from Impulsores in _dtb.SoftCob_IMPULSORES
+                            where Impulsores.peip_estado == true
+                            select new VariablesBlandas
+                            {
+                                Codigo = Impulsores.PEIP_CODIGO,
+                                Descripcion = Impulsores.peip_descripcion
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataSet FunGetPerfilDeudor(int perscodigo)
+        {
+            try
+            {
+                var query = from Deudor in _dtb.SoftCob_PERFIL_DEUDOR
+                            where Deudor.pede_perscodigo == perscodigo
+                            select new PerfilDeudor
+                            {
+                                Codigo = Deudor.PEDE_CODIGO,
+                                PerfActitudinal = Deudor.pede_peaccodigo,
+                                EstilosNegocia = Deudor.pede_peencodigo,
+                                Metaprogramas = Deudor.pede_pempcodigo,
+                                Modalidades = Deudor.pede_pemocodigo,
+                                EstadosYo = Deudor.pede_peeycodigo,
+                                Impulsores = Deudor.pede_peipcodigo
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void FunInsertarAccionGestion(SoftCob_ACCIONGESTION _accionges)
+        {
+            try
+            {
+                using (SoftCobEntities _db = new SoftCobEntities())
+                {
+                    _db.SoftCob_ACCIONGESTION.Add(_accionges);
+                    _db.SaveChanges();
+                }
             }
             catch (Exception ex)
             {

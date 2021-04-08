@@ -10,6 +10,7 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
+        SoftCobEntities _dtb = new SoftCobEntities();
         SqlDataAdapter _dap = new SqlDataAdapter();
         string _mensaje = "";
         #endregion
@@ -322,7 +323,6 @@
                 throw ex;
             }
         }
-
         public void FunEditarNotasGestion(SoftCob_NOTAS_GESTION _datos)
         {
             try
@@ -350,7 +350,6 @@
                 throw ex;
             }
         }
-
         public void FunDelNotasGestion(int _codigo)
         {
             try
@@ -369,6 +368,31 @@
             catch (Exception ex)
             {
                 _mensaje = ex.ToString();
+            }
+        }
+        public DataSet FunGetNotasGestion(int codigoCEDE, int codigoCPCE, int codigoPERS, int codigoUSU)
+        {
+            try
+            {
+                var query = from NTG in _dtb.SoftCob_NOTAS_GESTION
+                            where NTG.nota_cedecodigo == codigoCEDE && NTG.nota_cpcecodigo == codigoCPCE && 
+                            NTG.nota_perscodigo == codigoPERS && NTG.nota_gestor == codigoUSU
+                            select new NotasGestion
+                            {
+                                Codigo = NTG.NOTA_CODIGO,
+                                Descripcion = NTG.nota_descripcion,
+                                Fecha = NTG.nota_revisarfecha.Month.ToString().Length == 1 ? "0" + NTG.nota_revisarfecha.Month.ToString()
+                                + "/" + NTG.nota_revisarfecha.Day.ToString() + "/" + NTG.nota_revisarfecha.Year.ToString() :
+                                NTG.nota_revisarfecha.Month.ToString() + "/" + NTG.nota_revisarfecha.Day.ToString() + "/" + 
+                                NTG.nota_revisarfecha.Year.ToString(),
+                                Mantener = NTG.nota_mantener
+                            };
+
+                return new FuncionesDAO().FunCambiarDataSet(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
         #endregion

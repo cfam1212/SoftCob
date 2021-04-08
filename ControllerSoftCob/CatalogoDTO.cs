@@ -11,6 +11,17 @@
     }
     #endregion
 
+    #region Catalogos USUARIO
+    public class UsuariosAdminDTO
+    {
+        public int Codigo { get; set; }
+        public string Usuario { get; set; }
+        public string Login { get; set; }
+        public string Departamento { get; set; }
+        public string Estado { get; set; }
+    }
+    #endregion
+
     #region Catalagos MENU
     public class MenuNew
     {
@@ -59,6 +70,25 @@
         public int CodigoPerf { get; set; }
         public int CodigoMeta { get; set; }
         public bool Estado { get; set; }
+    }
+    public class PerfilAdminDTO
+    {
+        public int Codigo { get; set; }
+        public string Perfil { get; set; }
+        public string Descripcion { get; set; }
+        public string Estado { get; set; }
+    }
+    public class PerfilUsuarios
+    {
+        public bool CrearParametro { get; set; }
+        public bool ModifParametro { get; set; }
+        public bool ElimiParametro { get; set; }
+        public bool PerfActitudinal { get; set; }
+        public bool EstilosNegocia { get; set; }
+        public bool Metaprogramas { get; set; }
+        public bool Modalidades { get; set; }
+        public bool EstadosYo { get; set; }
+        public bool Impulsores { get; set; }
     }
     #endregion
 
@@ -371,6 +401,88 @@
         public string Celular { get; set; }
         public string CodigoParen { get; set; }
 
+    }
+    #endregion
+
+    #region Catalogo LISTA DE TRABAJO
+    public class ListaTrabajoAdminDTO
+    {
+        public int Codigo { get; set; }
+        public string Lista { get; set; }
+        public string FechaInicio { get; set; }
+        public string FechaFin { get; set; }
+        public int CedeCodigo { get; set; }
+        public string Cedente { get; set; }
+        public int PrceCodigo { get; set; }
+        public string Producto { get; set; }
+        public int CpceCodigo { get; set; }
+        public string Catalogo { get; set; }
+        public string TipoMarcado { get; set; }
+        public int Operaciones { get; set; }
+        public string GestorApoyo { get; set; }
+    }
+
+    public class TelefonoPredictivo
+    {
+        public string Telefono { get; set; }
+        public string Tipo { get; set; }
+        public string Propietario { get; set; }
+        public int Score { get; set; }
+        public string Prefijo { get; set; }
+    }
+
+    public class SpeechGenerado
+    {
+        public string Texto { get; set; }
+        public string Observa { get; set; }
+        public int CodigoSpeech { get; set; }
+    }
+
+    public class ArbolContactoEfectivo
+    {
+        public int Codigo { get; set; }
+        public string Descripcion { get; set; }
+        public bool Contacto { get; set; }
+    }
+
+    public class VariablesBlandas
+    {
+        public int Codigo { get; set; }
+        public string Descripcion { get; set; }
+    }
+
+    public class PerfilDeudor
+    {
+        public int Codigo { get; set; }
+        public int PerfActitudinal { get; set; }
+        public int EstilosNegocia { get; set; }
+        public int Metaprogramas { get; set; }
+        public int Modalidades { get; set; }
+        public int EstadosYo { get; set; }
+        public int Impulsores { get; set; }
+    }
+
+    public class NotasGestion
+    {
+        public int Codigo { get; set; }
+        public string Descripcion { get; set; }
+        public string Fecha { get; set; }
+        public string Mantener { get; set; }
+        public string Auxv1 { get; set; }
+        public string Auxv2 { get; set; }
+        public string Auxv3 { get; set; }
+        public int Auxi1 { get; set; }
+        public int Auxi2 { get; set; }
+        public int Auxi3 { get; set; }
+    }
+    public class TelefonoPredictivoDTO
+    {
+        public string Telefono { get; set; }
+        public string Tipo { get; set; }
+        public string Propietario { get; set; }
+        public int Score { get; set; }
+        public bool Marcado { get; set; }
+        public string Prefijo { get; set; }
     }
     #endregion
 }

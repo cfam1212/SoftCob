@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.Evaluacion
+﻿namespace SoftCob.Views.Evaluacion
 {
     using ControllerSoftCob;
     using System;
@@ -182,13 +180,13 @@ namespace SoftCob.Views.Evaluacion
                 //Obtener el siguiente Codigod de Protocolo
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCalificacion.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Calificacion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Calificacion..!", this);
                     return;
                 }
 
@@ -200,7 +198,7 @@ namespace SoftCob.Views.Evaluacion
 
                 if (_existe)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Descripción ya Existe definida..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Descripción ya Existe definida..!", this);
                     return;
                 }
 
@@ -247,13 +245,13 @@ namespace SoftCob.Views.Evaluacion
             {
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCalificacion.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Calificacion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Calificacion..!", this);
                     return;
                 }
 
@@ -272,7 +270,7 @@ namespace SoftCob.Views.Evaluacion
 
                     if (_existe)
                     {
-                        new FuncionesBAS().FunShowJSMessage("Descripción ya Existe definida..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Descripción ya Existe definida..!", this);
                         return;
                     }
                 }

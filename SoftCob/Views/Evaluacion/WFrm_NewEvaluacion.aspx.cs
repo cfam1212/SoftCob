@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.Evaluacion
+﻿namespace SoftCob.Views.Evaluacion
 {
     using ControllerSoftCob;
     using System;
@@ -136,7 +134,7 @@ namespace SoftCob.Views.Evaluacion
             {
                 if (string.IsNullOrEmpty(TxtEvaluacion.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Nombre de la Evaluación..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Evaluación..!", this);
                     return;
                 }
 
@@ -147,20 +145,20 @@ namespace SoftCob.Views.Evaluacion
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesBAS().FunShowJSMessage("Nombre de la Evaluacion ya Existe..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Nombre de la Evaluacion ya Existe..!", this);
                         return;
                     }
                 }
 
-                if (!new FuncionesBAS().IsDate(TxtFechaInicio.Text))
+                if (!new FuncionesDAO().IsDate(TxtFechaInicio.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
                     return;
                 }
 
-                if (!new FuncionesBAS().IsDate(TxtFechaFin.Text))
+                if (!new FuncionesDAO().IsDate(TxtFechaFin.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
                     return;
                 }
 
@@ -171,7 +169,7 @@ namespace SoftCob.Views.Evaluacion
 
                 if (_dtmfechafin < _dtmfechainicio)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this);
                     return;
                 }
 
@@ -179,7 +177,7 @@ namespace SoftCob.Views.Evaluacion
                 {
                     if (_dtmfechainicio < _dtmfechaactual)
                     {
-                        new FuncionesBAS().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this);
                         return;
                     }
                 }
@@ -189,7 +187,7 @@ namespace SoftCob.Views.Evaluacion
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Nombre de Evaluación ya Existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Nombre de Evaluación ya Existe..!", this);
                     return;
                 }
 

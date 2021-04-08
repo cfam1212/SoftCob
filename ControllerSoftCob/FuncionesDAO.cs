@@ -325,6 +325,19 @@
                     break;
             }
         }
+        public bool IsNumber(string number)
+        {
+            try
+            {
+                int myNB = int.Parse(number);
+                bValid = true;
+            }
+            catch (Exception)
+            {
+                bValid = false;
+            }
+            return bValid;
+        }
         #endregion
 
     }

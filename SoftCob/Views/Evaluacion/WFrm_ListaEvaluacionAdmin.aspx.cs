@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.Evaluacion
+﻿namespace SoftCob.Views.Evaluacion
 {
     using ControllerSoftCob;
     using System;
@@ -12,7 +10,6 @@ namespace SoftCob.Views.Evaluacion
     {
         #region Variables
         DataSet _dts = new DataSet();
-        string _codigo = "";
         #endregion
 
         #region Load
@@ -27,7 +24,8 @@ namespace SoftCob.Views.Evaluacion
                 Lbltitulo.Text = "Administrar Evaluación Desempeño";
                 FunCargarMantenimiento();
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                    Request["MensajeRetornado"].ToString());
             }
         }
         #endregion
@@ -46,7 +44,6 @@ namespace SoftCob.Views.Evaluacion
                     GrdvDatos.UseAccessibleHeader = true;
                     GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
-                ViewState["GrdvDatos"] = GrdvDatos.DataSource;
             }
             catch (Exception ex)
             {
@@ -59,13 +56,6 @@ namespace SoftCob.Views.Evaluacion
         protected void BtnNuevo_Click(object sender, EventArgs e)
         {
             Response.Redirect("WFrm_NewEvaluacion.aspx?CodigoEVCA=0", true);
-        }
-
-        protected void BtnSelecc_Click(object sender, ImageClickEventArgs e)
-        {
-            GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-            _codigo = GrdvDatos.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString();
-            Response.Redirect("WFrm_NewEvaluacion.aspx?CodigoEVCA=" + _codigo, true);
         }
         #endregion
     }

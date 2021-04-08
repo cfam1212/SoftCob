@@ -919,6 +919,113 @@
                 throw ex;
             }
         }
+        public DataSet FunGetMonitoreoAdmin(int tipo, int cedecodigo, int cpcecodigo, int ltcacodigo, int ltdecodigo, int cldecodigo, 
+            int perscodigo, string fechadesde, string fechahasta, int usucodigo, string auxv1, string auxv2, string auxv3, int auxi1, 
+            int auxi2, int auxi3, string conexion)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(conexion))
+                {
+                    using (SqlCommand comm = new SqlCommand())
+                    {
+                        comm.Connection = con;
+                        comm.CommandTimeout = 9000;
+                        comm.CommandType = CommandType.StoredProcedure;
+                        comm.CommandText = "sp_TablerosControl";
+                        comm.Parameters.AddWithValue("@in_tipo", tipo);
+                        comm.Parameters.AddWithValue("@in_cedecodigo", cedecodigo);
+                        comm.Parameters.AddWithValue("@in_cpcecodigo", cpcecodigo);
+                        comm.Parameters.AddWithValue("@in_ltcacodigo", ltcacodigo);
+                        comm.Parameters.AddWithValue("@in_ltdecodigo", ltdecodigo);
+                        comm.Parameters.AddWithValue("@in_cldecodigo", cldecodigo);
+                        comm.Parameters.AddWithValue("@in_perscodigo", perscodigo);
+                        comm.Parameters.AddWithValue("@in_fechadesde", fechadesde);
+                        comm.Parameters.AddWithValue("@in_fechahasta", fechahasta);
+                        comm.Parameters.AddWithValue("@in_usucodigo", usucodigo);
+                        comm.Parameters.AddWithValue("@in_auxv1", auxv1);
+                        comm.Parameters.AddWithValue("@in_auxv2", auxv2);
+                        comm.Parameters.AddWithValue("@in_auxv3", auxv3);
+                        comm.Parameters.AddWithValue("@in_auxi1", auxi1);
+                        comm.Parameters.AddWithValue("@in_auxi2", auxi2);
+                        comm.Parameters.AddWithValue("@in_auxi3", auxi3);
+                        _dap.SelectCommand = comm;
+                        _dap.Fill(_dts);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return _dts;
+        }
+        public DataSet FunGerReporteConsolidado(int tipo, int cedecodigo, int cpcecodigo, int usucodigo, string auxv1, string auxv2, 
+            int auxi1, int auxi2, string conexion)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(conexion))
+                {
+                    using (SqlCommand comm = new SqlCommand())
+                    {
+                        comm.Connection = con;
+                        comm.CommandType = CommandType.StoredProcedure;
+                        comm.CommandText = "sp_ReporteConsolidado";
+                        comm.Parameters.AddWithValue("@in_tipo", tipo);
+                        comm.Parameters.AddWithValue("@in_cedecodigo", cedecodigo);
+                        comm.Parameters.AddWithValue("@in_cpcecodigo", cpcecodigo);
+                        comm.Parameters.AddWithValue("@in_usucodigo", usucodigo);
+                        comm.Parameters.AddWithValue("@in_auxv1", auxv1);
+                        comm.Parameters.AddWithValue("@in_auxv2", auxv2);
+                        comm.Parameters.AddWithValue("@in_auxi1", auxi1);
+                        comm.Parameters.AddWithValue("@in_auxi2", auxi2);
+                        _dap.SelectCommand = comm;
+                        _dap.Fill(_dts);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return _dts;
+        }
+        public DataSet FunGetRerporteGestiones(int tipo, int codigocede, int codigocpce, string fechaini, string fechafin, 
+            string buscapor, string valor, string auxv1, string auxv2, int auxi1, int auxi2, string conexion)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(conexion))
+                {
+                    using (SqlCommand comm = new SqlCommand())
+                    {
+                        comm.Connection = con;
+                        comm.CommandTimeout = 9000;
+                        comm.CommandType = CommandType.StoredProcedure;
+                        comm.CommandText = "sp_ReporteClienteManager";
+                        comm.Parameters.AddWithValue("@in_tipo", tipo);
+                        comm.Parameters.AddWithValue("@in_cedecodigo", codigocede);
+                        comm.Parameters.AddWithValue("@in_cpcecodigo", codigocpce);
+                        comm.Parameters.AddWithValue("@in_fechadesde", fechaini);
+                        comm.Parameters.AddWithValue("@in_fechahasta", fechafin);
+                        comm.Parameters.AddWithValue("@in_buscarpor", buscapor);
+                        comm.Parameters.AddWithValue("@in_valor", valor);
+                        comm.Parameters.AddWithValue("@in_auxv1", auxv1);
+                        comm.Parameters.AddWithValue("@in_auxv2", auxv2);
+                        comm.Parameters.AddWithValue("@in_auxi1", auxi1);
+                        comm.Parameters.AddWithValue("@in_auxi2", auxi2);
+                        _dap.SelectCommand = comm;
+                        _dap.Fill(_dts);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return _dts;
+        }
         #endregion
     }
 }

@@ -52,16 +52,18 @@
                                         ShowHeaderWhenEmpty="True" DataKeyNames="Codigo">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:BoundField DataField="Evaluacion" HeaderText="Evaluación" />
-                                            <asp:BoundField DataField="FechaInicio" HeaderText="Fecha Inicio" />
-                                            <asp:BoundField DataField="FechaFin" HeaderText="Fecha Fin" />
-                                            <asp:BoundField DataField="Estado" HeaderText="Estado" />
-                                            <asp:TemplateField HeaderText="Editar">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="BtnSelecc" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="BtnSelecc_Click" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" />
-                                            </asp:TemplateField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Evaluacion" HeaderText="Evaluación">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="FechaInicio" HeaderText="Fecha Inicio">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="FechaFin" HeaderText="Fecha Fin">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Estado" HeaderText="Estado">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
                                         </Columns>
                                         <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                         <RowStyle Font-Size="X-Small" />
