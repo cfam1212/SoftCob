@@ -192,6 +192,9 @@
     <Compile Include="SoftCob_EXPERIENCIA.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
+    <Compile Include="SoftCob_GARANTES.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_GESTION_TELEFONICA.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
@@ -244,6 +247,9 @@
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_NOTAS_GESTION.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_OPCIONESMULTIPLES_LISTA.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_OTROSESTUDIOS.cs">

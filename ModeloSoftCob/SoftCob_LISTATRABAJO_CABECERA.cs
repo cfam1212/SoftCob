@@ -19,6 +19,7 @@ namespace ModeloSoftCob
         {
             this.SoftCob_LISTATRABAJO_DETALLE = new HashSet<SoftCob_LISTATRABAJO_DETALLE>();
             this.SoftCob_ESTRACAB_HISTO = new HashSet<SoftCob_ESTRACAB_HISTO>();
+            this.SoftCob_OPCIONESMULTIPLES_LISTA = new HashSet<SoftCob_OPCIONESMULTIPLES_LISTA>();
         }
     
         public int LTCA_CODIGO { get; set; }
@@ -56,5 +57,7 @@ namespace ModeloSoftCob
         public virtual ICollection<SoftCob_LISTATRABAJO_DETALLE> SoftCob_LISTATRABAJO_DETALLE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoftCob_ESTRACAB_HISTO> SoftCob_ESTRACAB_HISTO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SoftCob_OPCIONESMULTIPLES_LISTA> SoftCob_OPCIONESMULTIPLES_LISTA { get; set; }
     }
 }

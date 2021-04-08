@@ -53,11 +53,21 @@
                                         ShowHeaderWhenEmpty="True" EmptyDataText="No existen usuario creados" OnRowDataBound="GrdvDatos_RowDataBound">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
-                                            <asp:BoundField DataField="Nombres" HeaderText="Nombres" />
-                                            <asp:BoundField DataField="Apellidos" HeaderText="Apellidos" />
-                                            <asp:BoundField DataField="Departamento" HeaderText="Departamento" />
-                                            <asp:BoundField DataField="Estado" HeaderText="Estado" />
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Identificacion" HeaderText="Identificación">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Nombres" HeaderText="Nombres">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Apellidos" HeaderText="Apellidos">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Departamento" HeaderText="Departamento">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
+                                            <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Estado" HeaderText="Estado">
+                                            <ControlStyle ForeColor="Black" />
+                                            </asp:HyperLinkField>
                                             <asp:TemplateField HeaderText="Asignar Usuario">
                                                 <ItemTemplate>
                                                     <asp:ImageButton ID="ImgAsignarUsu" runat="server" Height="20px" ImageUrl="~/Botones/agregar_usuario.jpg" OnClick="ImgAsignarUsu_Click" />
@@ -67,12 +77,6 @@
                                             <asp:TemplateField HeaderText="Desasignar Usuario">
                                                 <ItemTemplate>
                                                     <asp:ImageButton ID="ImgQuitarUsu" runat="server" Height="20px" ImageUrl="~/Botones/quitar_usuario.jpg" OnClick="ImgQuitarUsu_Click" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" />
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Editar">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="Btnselecc" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="Btnselecc_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

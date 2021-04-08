@@ -1,8 +1,7 @@
-﻿
-
-namespace SoftCob.Views.Employee
+﻿namespace SoftCob.Views.Employee
 {
     using ControllerSoftCob;
+    using ModeloSoftCob;
     using System;
     using System.Web.UI;
     public partial class WFrm_NuevoUsuarioEmployee : Page
@@ -34,22 +33,22 @@ namespace SoftCob.Views.Employee
         private void FunCargarCombos()
         {
 
-            DdlAsignarUsuario.DataSource = new CatalogosDTO().FunGetUsuarioSinAsignar();
+            DdlAsignarUsuario.DataSource = new ControllerDAO().FunGetUsuarioSinAsignar();
             DdlAsignarUsuario.DataTextField = "Descripcion";
             DdlAsignarUsuario.DataValueField = "Codigo";
             DdlAsignarUsuario.DataBind();
 
-            DdlDepartamento.DataSource = new CatalogosDTO().FunGetDepartamento();
+            DdlDepartamento.DataSource = new ControllerDAO().FunGetDepartamento();
             DdlDepartamento.DataTextField = "Descripcion";
             DdlDepartamento.DataValueField = "Codigo";
             DdlDepartamento.DataBind();
 
-            DdlPerfil.DataSource = new CatalogosDTO().FunGetPerfil();
+            DdlPerfil.DataSource = new ControllerDAO().FunGetPerfil();
             DdlPerfil.DataTextField = "Descripcion";
             DdlPerfil.DataValueField = "Codigo";
             DdlPerfil.DataBind();
 
-            DdlTipoUsuario.DataSource = new CatalogosDTO().FunGetParametroDetalle("TIPO USUARIOS", "--Seleccione Tipo--");
+            DdlTipoUsuario.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO USUARIOS", "--Seleccione Tipo--", "S");
             DdlTipoUsuario.DataTextField = "Descripcion";
             DdlTipoUsuario.DataValueField = "Codigo";
             DdlTipoUsuario.DataBind();
@@ -59,7 +58,7 @@ namespace SoftCob.Views.Employee
         {
             try
             {
-                GSBPO_EMPLOYEE _employee = new GSBPO_EMPLOYEE();
+                SoftCob_EMPLOYEE _employee = new SoftCob_EMPLOYEE();
                 _employee = new EmployeeDAO().FunGetEmployeePorCodigo(int.Parse(ViewState["CodigoEmployee"].ToString()));
                 Lbltitulo.Text = "Asignar Usuario a: " + _employee.empl_nombres + " " + _employee.empl_apellidos;
                 TxtLogin.Text = _employee.empl_identificacion;
@@ -79,7 +78,6 @@ namespace SoftCob.Views.Employee
         {
             Response.Redirect("WFrm_EmployeeAdmin.aspx", true);
         }
-
         protected void DdlAsignarUsuario_SelectedIndexChanged(object sender, EventArgs e)
         {
             Lblerror.Text = "";
@@ -116,7 +114,7 @@ namespace SoftCob.Views.Employee
         {
             if (DdlAsignarUsuario.SelectedValue == "-1")
             {
-                new FuncionesBAS().FunShowJSMessage("Seleccione Usuario o Cree uno nuevo..!", this);
+                new FuncionesDAO().FunShowJSMessage("Seleccione Usuario o Cree uno nuevo..!", this);
                 return;
             }
 
@@ -124,74 +122,76 @@ namespace SoftCob.Views.Employee
             {
                 if (string.IsNullOrEmpty(TxtLogin.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Login para el Usuario..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Login para el Usuario..!", this);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtPassword.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Password..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Password..!", this);
                     return;
                 }
 
                 if (DdlDepartamento.SelectedValue == "")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Departamento..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Departamento..!", this);
                     return;
                 }
 
                 if (DdlPerfil.SelectedValue == "")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Perfil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Perfil..!", this);
                     return;
                 }
 
                 if (DdlTipoUsuario.SelectedValue == "")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Tipo Usuario..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Usuario..!", this);
                     return;
                 }
 
-                if (new UsuariosDTO().FunConsultaLogin(TxtLogin.Text.Trim()) != "")
+                if (new ControllerDAO().FunConsultaLogin(TxtLogin.Text.Trim()) != "")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Login ya existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Login ya existe..!", this);
                     return;
                 }
             }
 
-            USUARIO _user = new USUARIO();
-            _user.USU_CODIGO = int.Parse(DdlAsignarUsuario.SelectedValue);
-            _user.empl_codigo = int.Parse(ViewState["CodigoEmployee"].ToString());
-
-            if (_user.USU_CODIGO == 0)
+            SoftCob_USUARIO _user = new SoftCob_USUARIO();
             {
-                _user.PER_CODIGO = int.Parse(DdlPerfil.SelectedValue);
-                _user.usu_Nombres = ViewState["Nombre"].ToString();
-                _user.usu_Apellidos = ViewState["Apellido"].ToString();
-                _user.DEPA_CODIGO = int.Parse(DdlDepartamento.SelectedValue);
-                _user.usu_TipoUsuario = DdlTipoUsuario.SelectedValue;
-                _user.usu_Cedula = ViewState["Identificacion"].ToString();
-                _user.usu_Login = TxtLogin.Text.Trim();
-                _user.usu_Password = TxtPassword.Text.Trim();
-                _user.usu_Estatus = true;
-                _user.usu_Contador = 0;
-                _user.usu_caducapass = false;
-                _user.usu_fechacaduca = DateTime.Now;
-                _user.usu_cambiarpass = false;
-                _user.usu_statuslogin = false;
-                _user.usu_permisosespeciales = false;
-                _user.usu_terminallogin = "";
-                _user.usu_FechaCreacion = DateTime.Now;
-                _user.usu_UsuarioCreacion = int.Parse(Session["usuCodigo"].ToString());
-                _user.usu_TerminalCreacion = Session["MachineName"].ToString();
-                _user.usu_FUM = DateTime.Now;
-                _user.usu_UUM = int.Parse(Session["usuCodigo"].ToString());
-                _user.usu_TUM = Session["MachineName"].ToString();
-                new UsuariosDTO().FunCrearUsuario(_user);
-            }
-            else new UsuariosDAO().FunEditarUsuarioEmployee(_user);
+                _user.USUA_CODIGO = int.Parse(DdlAsignarUsuario.SelectedValue);
+                _user.empl_codigo = int.Parse(ViewState["CodigoEmployee"].ToString());
 
-            Response.Redirect("WFrm_EmployeeAdmin.aspx?MensajeRetornado='Guardado con Éxito'");
+                if (_user.USUA_CODIGO == 0)
+                {
+                    _user.PERF_CODIGO = int.Parse(DdlPerfil.SelectedValue);
+                    _user.usua_nombres = ViewState["Nombre"].ToString();
+                    _user.usua_apellidos = ViewState["Apellido"].ToString();
+                    _user.DEPA_CODIGO = int.Parse(DdlDepartamento.SelectedValue);
+                    _user.usua_tipousuario = DdlTipoUsuario.SelectedValue;
+                    _user.usua_cedula = ViewState["Identificacion"].ToString();
+                    _user.usua_login = TxtLogin.Text.Trim();
+                    _user.usua_password = TxtPassword.Text.Trim();
+                    _user.usua_estado = true;
+                    _user.usua_contador = 0;
+                    _user.usua_caducapass = false;
+                    _user.usua_fechacaduca = DateTime.Now;
+                    _user.usua_cambiarpass = false;
+                    _user.usua_statuslogin = false;
+                    _user.usua_permisosespeciales = false;
+                    _user.usua_terminallogin = "";
+                    _user.usua_fechacreacion = DateTime.Now;
+                    _user.usua_usuariocreacion = int.Parse(Session["usuCodigo"].ToString());
+                    _user.usua_terminalcreacion = Session["MachineName"].ToString();
+                    _user.usua_fum = DateTime.Now;
+                    _user.usua_uum = int.Parse(Session["usuCodigo"].ToString());
+                    _user.usua_tum = Session["MachineName"].ToString();
+                    new ControllerDAO().FunCrearUsuario(_user);
+                }
+                else new ControllerDAO().FunEditarUsuarioEmployee(_user);
+            }
+
+            Response.Redirect("WFrm_EmployeeAdmin.aspx?MensajeRetornado=Guardado con Éxito");
         }
         #endregion
     }

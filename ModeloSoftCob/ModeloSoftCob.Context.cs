@@ -122,6 +122,8 @@ namespace ModeloSoftCob
         public virtual DbSet<SoftCob_REFERENCIASPERSONALES> SoftCob_REFERENCIASPERSONALES { get; set; }
         public virtual DbSet<SoftCob_SCORETELEFONO> SoftCob_SCORETELEFONO { get; set; }
         public virtual DbSet<SoftCob_SCORING_TELEFONICO> SoftCob_SCORING_TELEFONICO { get; set; }
+        public virtual DbSet<SoftCob_GARANTES> SoftCob_GARANTES { get; set; }
+        public virtual DbSet<SoftCob_OPCIONESMULTIPLES_LISTA> SoftCob_OPCIONESMULTIPLES_LISTA { get; set; }
     
         public virtual ObjectResult<string> FunMenuEditUpdate(string in_check, Nullable<int> in_codigomenu, Nullable<int> in_codigotarea, Nullable<int> in_emprcodigo, string in_auxv1, string in_auxv2, string in_auxv3, Nullable<int> in_auxi1, Nullable<int> in_auxi2, Nullable<int> in_auxi3, Nullable<int> in_usucodigo, string in_terminal)
         {
