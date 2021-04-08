@@ -311,20 +311,16 @@
     <Content Include="Views\Gestion\WFrm_ArbolRecursivo.aspx" />
     <Content Include="Views\Gestion\WFrm_BuscarTelefonos.aspx" />
     <Content Include="Views\Gestion\WFrm_DatosEquifax.aspx" />
-    <Content Include="Views\Gestion\WFrm_GestionListaTrabajo.aspx" />
-    <Content Include="Views\Gestion\WFrm_InfAdicional.aspx" />
-    <Content Include="Views\Gestion\WFrm_ListaClientesAdmin.aspx" />
-    <Content Include="Views\Gestion\WFrm_ListaNotasAdmin.aspx" />
-    <Content Include="Views\Gestion\WFrm_ListaPagoAbonos.aspx" />
-    <Content Include="Views\Gestion\WFrm_ListaVolveraLlamar.aspx" />
-    <Content Include="Views\Gestion\WFrm_MonitorTimeGestor.aspx" />
-    <Content Include="Views\Gestion\WFrm_NotasGestion.aspx" />
-    <Content Include="Views\Gestion\WFrm_OtrosTelefonos.aspx" />
-    <Content Include="Views\Gestion\WFrm_ProyeccionCartera.aspx" />
-    <Content Include="Views\Gestion\WFrm_RegLlamadaEntrante.aspx" />
-    <Content Include="Views\Gestion\WFrm_SeleccionListaTrabajo.aspx" />
-    <Content Include="Views\Gestion\WFrm_SpeechAD.aspx" />
-    <Content Include="Views\Gestion\WFrm_SpeechBV.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdmin.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminADE.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminAP.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminEFE.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminFDA.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajo.aspx" />
+    <Content Include="Views\ListaTrabajo\wFrm_NuevaListaTrabajoADE.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoAPO.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoEFE.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoFDA.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Detalle.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Menu.aspx" />
     <Content Include="Views\Mantenedor\WFrm_Principal.aspx" />
@@ -334,28 +330,6 @@
     <Content Include="Views\Perfil\WFrm_PerfilAdmin.aspx" />
     <Content Include="Views\Perfil\WFrm_PerfilEdit.aspx" />
     <Content Include="Views\Perfil\WFrm_PerfilNuevo.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ListLLamarFixed.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_MonitorCheckProceso.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_MonitorConsTimer.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_MonitorControlTimes.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_MonitorDetalleLista.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_MonitoreoLstAdmFixed.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_MonitoreoLstAdmin.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReporteCarteraGestor.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReporteConsolidado.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReporteGestiones.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReporteGestionesCedente.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReporteGestionesFixed.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReporteGestorCedente.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReporteHistoricos.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReporteListVolveraLlamar.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReporteOperaHistorico.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReportePagosCartera.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReportePagosCarteraFixed.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReporteRegistroPagos.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReporteRegPagosFixed.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReportesVarios.aspx" />
-    <Content Include="Views\ReportesManager\WFrm_ReporteTelefonos.aspx" />
     <Content Include="Views\Tarea\WFrm_TareaAdmin.aspx" />
     <Content Include="Views\Tarea\WFrm_TareaNueva.aspx" />
     <Content Include="Views\Usuarios\WFrm_CambiarPassword.aspx" />
@@ -872,106 +846,75 @@
     <Compile Include="Views\Gestion\WFrm_DatosEquifax.aspx.designer.cs">
       <DependentUpon>WFrm_DatosEquifax.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_GestionListaTrabajo.aspx.cs">
-      <DependentUpon>WFrm_GestionListaTrabajo.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdmin.aspx.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_GestionListaTrabajo.aspx.designer.cs">
-      <DependentUpon>WFrm_GestionListaTrabajo.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_InfAdicional.aspx.cs">
-      <DependentUpon>WFrm_InfAdicional.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminADE.aspx.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminADE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_InfAdicional.aspx.designer.cs">
-      <DependentUpon>WFrm_InfAdicional.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminADE.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminADE.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_ListaClientesAdmin.aspx.cs">
-      <DependentUpon>WFrm_ListaClientesAdmin.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminAP.aspx.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminAP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_ListaClientesAdmin.aspx.designer.cs">
-      <DependentUpon>WFrm_ListaClientesAdmin.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminAP.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminAP.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_ListaNotasAdmin.aspx.cs">
-      <DependentUpon>WFrm_ListaNotasAdmin.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminEFE.aspx.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminEFE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_ListaNotasAdmin.aspx.designer.cs">
-      <DependentUpon>WFrm_ListaNotasAdmin.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminEFE.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminEFE.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_ListaPagoAbonos.aspx.cs">
-      <DependentUpon>WFrm_ListaPagoAbonos.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminFDA.aspx.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminFDA.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_ListaPagoAbonos.aspx.designer.cs">
-      <DependentUpon>WFrm_ListaPagoAbonos.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminFDA.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminFDA.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_ListaVolveraLlamar.aspx.cs">
-      <DependentUpon>WFrm_ListaVolveraLlamar.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajo.aspx.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_ListaVolveraLlamar.aspx.designer.cs">
-      <DependentUpon>WFrm_ListaVolveraLlamar.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajo.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_MonitorTimeGestor.aspx.cs">
-      <DependentUpon>WFrm_MonitorTimeGestor.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\wFrm_NuevaListaTrabajoADE.aspx.cs">
+      <DependentUpon>wFrm_NuevaListaTrabajoADE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_MonitorTimeGestor.aspx.designer.cs">
-      <DependentUpon>WFrm_MonitorTimeGestor.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\wFrm_NuevaListaTrabajoADE.aspx.designer.cs">
+      <DependentUpon>wFrm_NuevaListaTrabajoADE.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_NotasGestion.aspx.cs">
-      <DependentUpon>WFrm_NotasGestion.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoAPO.aspx.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajoAPO.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_NotasGestion.aspx.designer.cs">
-      <DependentUpon>WFrm_NotasGestion.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoAPO.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajoAPO.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_OtrosTelefonos.aspx.cs">
-      <DependentUpon>WFrm_OtrosTelefonos.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoEFE.aspx.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajoEFE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_OtrosTelefonos.aspx.designer.cs">
-      <DependentUpon>WFrm_OtrosTelefonos.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoEFE.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajoEFE.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_ProyeccionCartera.aspx.cs">
-      <DependentUpon>WFrm_ProyeccionCartera.aspx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoFDA.aspx.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajoFDA.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Gestion\WFrm_ProyeccionCartera.aspx.designer.cs">
-      <DependentUpon>WFrm_ProyeccionCartera.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Gestion\WFrm_RegLlamadaEntrante.aspx.cs">
-      <DependentUpon>WFrm_RegLlamadaEntrante.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Gestion\WFrm_RegLlamadaEntrante.aspx.designer.cs">
-      <DependentUpon>WFrm_RegLlamadaEntrante.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Gestion\WFrm_SeleccionListaTrabajo.aspx.cs">
-      <DependentUpon>WFrm_SeleccionListaTrabajo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Gestion\WFrm_SeleccionListaTrabajo.aspx.designer.cs">
-      <DependentUpon>WFrm_SeleccionListaTrabajo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Gestion\WFrm_SpeechAD.aspx.cs">
-      <DependentUpon>WFrm_SpeechAD.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Gestion\WFrm_SpeechAD.aspx.designer.cs">
-      <DependentUpon>WFrm_SpeechAD.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Gestion\WFrm_SpeechBV.aspx.cs">
-      <DependentUpon>WFrm_SpeechBV.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Gestion\WFrm_SpeechBV.aspx.designer.cs">
-      <DependentUpon>WFrm_SpeechBV.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Helpers\DownloadFile.ashx.cs">
-      <DependentUpon>DownloadFile.ashx</DependentUpon>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoFDA.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevaListaTrabajoFDA.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Mantenedor\WFrm_Detalle.aspx.cs">
       <DependentUpon>WFrm_Detalle.aspx</DependentUpon>
@@ -1036,160 +979,6 @@
     <Compile Include="Views\Perfil\WFrm_PerfilNuevo.aspx.designer.cs">
       <DependentUpon>WFrm_PerfilNuevo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ListLLamarFixed.aspx.cs">
-      <DependentUpon>WFrm_ListLLamarFixed.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ListLLamarFixed.aspx.designer.cs">
-      <DependentUpon>WFrm_ListLLamarFixed.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_MonitorCheckProceso.aspx.cs">
-      <DependentUpon>WFrm_MonitorCheckProceso.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_MonitorCheckProceso.aspx.designer.cs">
-      <DependentUpon>WFrm_MonitorCheckProceso.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_MonitorConsTimer.aspx.cs">
-      <DependentUpon>WFrm_MonitorConsTimer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_MonitorConsTimer.aspx.designer.cs">
-      <DependentUpon>WFrm_MonitorConsTimer.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_MonitorControlTimes.aspx.cs">
-      <DependentUpon>WFrm_MonitorControlTimes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_MonitorControlTimes.aspx.designer.cs">
-      <DependentUpon>WFrm_MonitorControlTimes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_MonitorDetalleLista.aspx.cs">
-      <DependentUpon>WFrm_MonitorDetalleLista.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_MonitorDetalleLista.aspx.designer.cs">
-      <DependentUpon>WFrm_MonitorDetalleLista.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_MonitoreoLstAdmFixed.aspx.cs">
-      <DependentUpon>WFrm_MonitoreoLstAdmFixed.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_MonitoreoLstAdmFixed.aspx.designer.cs">
-      <DependentUpon>WFrm_MonitoreoLstAdmFixed.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_MonitoreoLstAdmin.aspx.cs">
-      <DependentUpon>WFrm_MonitoreoLstAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_MonitoreoLstAdmin.aspx.designer.cs">
-      <DependentUpon>WFrm_MonitoreoLstAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteCarteraGestor.aspx.cs">
-      <DependentUpon>WFrm_ReporteCarteraGestor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteCarteraGestor.aspx.designer.cs">
-      <DependentUpon>WFrm_ReporteCarteraGestor.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteConsolidado.aspx.cs">
-      <DependentUpon>WFrm_ReporteConsolidado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteConsolidado.aspx.designer.cs">
-      <DependentUpon>WFrm_ReporteConsolidado.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteGestiones.aspx.cs">
-      <DependentUpon>WFrm_ReporteGestiones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteGestiones.aspx.designer.cs">
-      <DependentUpon>WFrm_ReporteGestiones.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteGestionesCedente.aspx.cs">
-      <DependentUpon>WFrm_ReporteGestionesCedente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteGestionesCedente.aspx.designer.cs">
-      <DependentUpon>WFrm_ReporteGestionesCedente.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteGestionesFixed.aspx.cs">
-      <DependentUpon>WFrm_ReporteGestionesFixed.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteGestionesFixed.aspx.designer.cs">
-      <DependentUpon>WFrm_ReporteGestionesFixed.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteGestorCedente.aspx.cs">
-      <DependentUpon>WFrm_ReporteGestorCedente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteGestorCedente.aspx.designer.cs">
-      <DependentUpon>WFrm_ReporteGestorCedente.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteHistoricos.aspx.cs">
-      <DependentUpon>WFrm_ReporteHistoricos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteHistoricos.aspx.designer.cs">
-      <DependentUpon>WFrm_ReporteHistoricos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteListVolveraLlamar.aspx.cs">
-      <DependentUpon>WFrm_ReporteListVolveraLlamar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteListVolveraLlamar.aspx.designer.cs">
-      <DependentUpon>WFrm_ReporteListVolveraLlamar.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteOperaHistorico.aspx.cs">
-      <DependentUpon>WFrm_ReporteOperaHistorico.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteOperaHistorico.aspx.designer.cs">
-      <DependentUpon>WFrm_ReporteOperaHistorico.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReportePagosCartera.aspx.cs">
-      <DependentUpon>WFrm_ReportePagosCartera.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReportePagosCartera.aspx.designer.cs">
-      <DependentUpon>WFrm_ReportePagosCartera.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReportePagosCarteraFixed.aspx.cs">
-      <DependentUpon>WFrm_ReportePagosCarteraFixed.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReportePagosCarteraFixed.aspx.designer.cs">
-      <DependentUpon>WFrm_ReportePagosCarteraFixed.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteRegistroPagos.aspx.cs">
-      <DependentUpon>WFrm_ReporteRegistroPagos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteRegistroPagos.aspx.designer.cs">
-      <DependentUpon>WFrm_ReporteRegistroPagos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteRegPagosFixed.aspx.cs">
-      <DependentUpon>WFrm_ReporteRegPagosFixed.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteRegPagosFixed.aspx.designer.cs">
-      <DependentUpon>WFrm_ReporteRegPagosFixed.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReportesVarios.aspx.cs">
-      <DependentUpon>WFrm_ReportesVarios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReportesVarios.aspx.designer.cs">
-      <DependentUpon>WFrm_ReportesVarios.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteTelefonos.aspx.cs">
-      <DependentUpon>WFrm_ReporteTelefonos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ReportesManager\WFrm_ReporteTelefonos.aspx.designer.cs">
-      <DependentUpon>WFrm_ReporteTelefonos.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Tarea\WFrm_TareaAdmin.aspx.cs">
       <DependentUpon>WFrm_TareaAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1240,7 +1029,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-    <Content Include="Views\Helpers\DownloadFile.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
