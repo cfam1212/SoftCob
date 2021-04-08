@@ -14,7 +14,7 @@ namespace SoftCob.Views.ListaTrabajo
     using System.Web.UI;
     using System.Web.UI.WebControls;
 
-    public partial class WFrm_NuevaListaTrabajoFDA : System.Web.UI.Page
+    public partial class WFrm_NuevaListaTrabajoFDA : Page
     {
         #region Variables
         ListItem _itemc = new ListItem();
