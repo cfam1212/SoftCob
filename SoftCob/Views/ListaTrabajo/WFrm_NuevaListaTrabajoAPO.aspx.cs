@@ -1,9 +1,7 @@
-﻿
-
-namespace SoftCob.Views.ListaTrabajo
-{
-    
+﻿namespace SoftCob.Views.ListaTrabajo
+{   
     using ControllerSoftCob;
+    using ModeloSoftCob;
     using System;
     using System.Configuration;
     using System.Data;
@@ -109,13 +107,13 @@ namespace SoftCob.Views.ListaTrabajo
                     _codigosopm = _dts.Tables[0].Rows[0]["Codigos"].ToString().Split(',');
                     RdbOpcionesApoyo.SelectedValue = _dts.Tables[0].Rows[0]["Opcion"].ToString();
                     _dtbcodigos = (DataTable)ViewState["CodigosOPM"];
-                    USUARIO user = new USUARIO();
+                    SoftCob_USUARIO user = new SoftCob_USUARIO();
                     foreach (var datos in _codigosopm)
                     {
-                        user = new UsuariosDTO().FunGetUsuarioPorID(int.Parse(datos));
+                        user = new ControllerDAO().FunGetUsuarioPorID(int.Parse(datos));
                         _result = _dtbcodigos.NewRow();
                         _result["Codigo"] = datos;
-                        _result["Descripcion"] = user.usu_Nombres + " " + user.usu_Apellidos;
+                        _result["Descripcion"] = user.usua_nombres + " " + user.usua_apellidos;
                         _dtbcodigos.Rows.Add(_result);
                     }
                     GrdvOrigen.DataSource = _dtbcodigos;
@@ -146,7 +144,7 @@ namespace SoftCob.Views.ListaTrabajo
                 ViewState["CodigoCPCE"] = _dts.Tables[0].Rows[0]["Codigocatalogo"].ToString();
                 FunCargarCombos(2);
                 DdlGestor.SelectedValue = _dts.Tables[0].Rows[0]["Gestor"].ToString();
-                DdlCatalogo.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                 DdlCatalogo.DataTextField = "CatalogoProducto";
                 DdlCatalogo.DataValueField = "CodigoCatalogo";
                 DdlCatalogo.DataBind();
@@ -188,12 +186,12 @@ namespace SoftCob.Views.ListaTrabajo
             switch (opcion)
             {
                 case 0:
-                    DdlEstrategia.DataSource = new CatalogosDTO().FunGetEstrategiaCab();
+                    DdlEstrategia.DataSource = new CedenteDAO().FunGetEstrategiaCab();
                     DdlEstrategia.DataTextField = "Descripcion";
                     DdlEstrategia.DataValueField = "Codigo";
                     DdlEstrategia.DataBind();
 
-                    DdlCedente.DataSource = new CatalogosDTO().FunGetCedentes();
+                    DdlCedente.DataSource = new CedenteDAO().FunGetCedentes();
                     DdlCedente.DataTextField = "Descripcion";
                     DdlCedente.DataValueField = "Codigo";
                     DdlCedente.DataBind();
@@ -210,7 +208,7 @@ namespace SoftCob.Views.ListaTrabajo
                     _campania.Value = "0";
                     DdlCampania.Items.Add(_campania);
 
-                    DdlMarcado.DataSource = new CatalogosDTO().FunGetParametroDetalleValor("TIPO MARCADO", "--Seleccione Tipo Marcado--");
+                    DdlMarcado.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO MARCADO", "--Seleccione Tipo Marcado--", "S");
                     DdlMarcado.DataTextField = "Descripcion";
                     DdlMarcado.DataValueField = "Codigo";
                     DdlMarcado.DataBind();
@@ -223,7 +221,8 @@ namespace SoftCob.Views.ListaTrabajo
                     ImgExportar.Visible = false;
                     LblTotal.InnerText = "0";
 
-                    DdlGestor.DataSource = new CatalogosDTO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                    DdlGestor.DataSource = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", 
+                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
                     DdlGestor.DataTextField = "Descripcion";
                     DdlGestor.DataValueField = "Codigo";
                     DdlGestor.DataBind();
@@ -234,7 +233,7 @@ namespace SoftCob.Views.ListaTrabajo
                     GrdvOrigen.DataBind();
                     break;
                 case 2:
-                    DdlAccion.DataSource = new SpeechDTO().FunGetArbolAccion(int.Parse(DdlCatalogo.SelectedValue));
+                    DdlAccion.DataSource = new SpeechDAO().FunGetArbolAccion(int.Parse(DdlCatalogo.SelectedValue));
                     DdlAccion.DataTextField = "Descripcion";
                     DdlAccion.DataValueField = "Codigo";
                     DdlAccion.DataBind();
@@ -260,31 +259,31 @@ namespace SoftCob.Views.ListaTrabajo
 
             if (string.IsNullOrEmpty(TxtLista.Text.Trim()))
             {
-                new FuncionesBAS().FunShowJSMessage("Ingrese nombre de la Lista de Trabajo..!", this);
+                new FuncionesDAO().FunShowJSMessage("Ingrese nombre de la Lista de Trabajo..!", this);
                 _validar = false;
             }
 
             if (int.Parse(DdlCedente.SelectedValue) == 0)
             {
-                new FuncionesBAS().FunShowJSMessage("Seleccione Cedente..!", this);
+                new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
                 _validar = false;
             }
 
             if (int.Parse(DdlCatalogo.SelectedValue) == 0)
             {
-                new FuncionesBAS().FunShowJSMessage("Seleccione Catálogo/Producto..!", this);
+                new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this);
                 _validar = false;
             }
 
-            if (!new FuncionesBAS().IsDate(TxtFechaInicio.Text))
+            if (!new FuncionesDAO().IsDate(TxtFechaInicio.Text))
             {
-                new FuncionesBAS().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
+                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
                 _validar = false;
             }
 
-            if (!new FuncionesBAS().IsDate(TxtFechaFin.Text))
+            if (!new FuncionesDAO().IsDate(TxtFechaFin.Text))
             {
-                new FuncionesBAS().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
+                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
                 _validar = false;
             }
 
@@ -295,7 +294,7 @@ namespace SoftCob.Views.ListaTrabajo
 
             if (_dtmfechafin < _dtmfechainicio)
             {
-                new FuncionesBAS().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this);
+                new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this);
                 _validar = false;
             }
 
@@ -303,7 +302,7 @@ namespace SoftCob.Views.ListaTrabajo
             {
                 if (_dtmfechainicio < _dtmfechaactual)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this);
                     _validar = false;
                 }
 
@@ -312,14 +311,14 @@ namespace SoftCob.Views.ListaTrabajo
 
                 if (_result == null)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione al menos un Gestor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione al menos un Gestor..!", this);
                     _validar = false;
                 }
             }
 
             if (RdbOpcionesApoyo.SelectedValue == "")
             {
-                new FuncionesBAS().FunShowJSMessage("Seleccione Opción Gestor Apoyo", this);
+                new FuncionesDAO().FunShowJSMessage("Seleccione Opción Gestor Apoyo", this);
                 _validar = false;
             }
             return _validar;
@@ -504,7 +503,8 @@ namespace SoftCob.Views.ListaTrabajo
 
                 if (int.Parse(DdlEstrategia.SelectedValue) > 0)
                 {
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(22, int.Parse(DdlEstrategia.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(22, int.Parse(DdlEstrategia.SelectedValue), 0, 0, "", "", "", 
+                        ViewState["Conectar"].ToString());
                     GrdvEstrategia.DataSource = _dts;
                     GrdvEstrategia.DataBind();
                     ViewState["Estrategia"] = _dts.Tables[0];
@@ -521,12 +521,12 @@ namespace SoftCob.Views.ListaTrabajo
             try
             {
                 FunCargarCombos(1);
-                _dts = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
                     ViewState["CodigoCEDE"] = DdlCedente.SelectedValue;
-                    DdlCatalogo.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                     DdlCatalogo.DataTextField = "CatalogoProducto";
                     DdlCatalogo.DataValueField = "CodigoCatalogo";
                     DdlCatalogo.DataBind();
@@ -685,7 +685,6 @@ namespace SoftCob.Views.ListaTrabajo
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ChkGestion_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -705,7 +704,6 @@ namespace SoftCob.Views.ListaTrabajo
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ChkArbol_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -726,7 +724,6 @@ namespace SoftCob.Views.ListaTrabajo
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ChkFecha_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -748,7 +745,6 @@ namespace SoftCob.Views.ListaTrabajo
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ImgPreview_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -758,7 +754,7 @@ namespace SoftCob.Views.ListaTrabajo
 
                 if (DdlEstrategia.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("No existe Estrategia Seleccionada..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No existe Estrategia Seleccionada..!", this);
                     return;
                 }
 
@@ -815,7 +811,7 @@ namespace SoftCob.Views.ListaTrabajo
                         GrdvPreview.DataBind();
                         LblTotal.InnerText = _dts.Tables[1].Rows[0]["Total"].ToString();
                     }
-                    else new FuncionesBAS().FunShowJSMessage("No se puede formar la consulta..!", this);
+                    else new FuncionesDAO().FunShowJSMessage("No se puede formar la consulta..!", this);
                 }
             }
             catch (Exception ex)
@@ -823,12 +819,10 @@ namespace SoftCob.Views.ListaTrabajo
                 Lblerror.Text = ex.ToString();
             }
         }
-
         public override void VerifyRenderingInServerForm(Control control)
         {
             /* Verifies that the control is rendered */
         }
-
         protected void ImgExportar_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -865,7 +859,6 @@ namespace SoftCob.Views.ListaTrabajo
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void BtnGrabar_Click(object sender, EventArgs e)
         {
             try
@@ -874,13 +867,13 @@ namespace SoftCob.Views.ListaTrabajo
 
                 if (string.IsNullOrEmpty(TxtLista.Text.Trim()))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Ingrese Nombre de la Lista de Trabajo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Lista de Trabajo..!", this);
                     return;
                 }
 
                 if (DdlMarcado.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Tipo de Marcado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Marcado..!", this);
                     return;
                 }
 
@@ -890,14 +883,14 @@ namespace SoftCob.Views.ListaTrabajo
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
-                    new FuncionesBAS().FunShowJSMessage("Nombre de la Lista de Trabajo ya Existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Nombre de la Lista de Trabajo ya Existe..!", this);
                     _continuar = false;
                     return;
                 }
 
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Gestor Apoyo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor Apoyo..!", this);
                     return;
                 }
 
@@ -995,7 +988,7 @@ namespace SoftCob.Views.ListaTrabajo
                     }
                     else
                     {
-                        new FuncionesBAS().FunShowJSMessage("No existen datos para registrar..!", this);
+                        new FuncionesDAO().FunShowJSMessage("No existen datos para registrar..!", this);
                         return;
                     }
 
@@ -1008,7 +1001,6 @@ namespace SoftCob.Views.ListaTrabajo
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void BtnSalir_Click(object sender, EventArgs e)
         {
             Response.Redirect("WFrm_ListaTrabajoAdminAP.aspx", true);

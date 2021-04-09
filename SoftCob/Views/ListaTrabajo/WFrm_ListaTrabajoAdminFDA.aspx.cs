@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.ListaTrabajo
+﻿namespace SoftCob.Views.ListaTrabajo
 {
     using ControllerSoftCob;
     using System;

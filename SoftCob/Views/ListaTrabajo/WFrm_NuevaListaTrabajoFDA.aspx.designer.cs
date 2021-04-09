@@ -330,24 +330,6 @@ namespace SoftCob.Views.ListaTrabajo
         protected global::System.Web.UI.UpdatePanel updBotones;
 
         /// <summary>
-        /// Control ImgExportar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgExportar;
-
-        /// <summary>
-        /// Control LblExportar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblExportar;
-
-        /// <summary>
         /// Control ImgPreview.
         /// </summary>
         /// <remarks>
@@ -364,24 +346,6 @@ namespace SoftCob.Views.ListaTrabajo
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblPreview;
-
-        /// <summary>
-        /// Control pnlPreview.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlPreview;
-
-        /// <summary>
-        /// Control GrdvPreview.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GrdvPreview;
 
         /// <summary>
         /// Control LblTotal.
@@ -402,24 +366,6 @@ namespace SoftCob.Views.ListaTrabajo
         protected global::System.Web.UI.HtmlControls.HtmlTable TblLista;
 
         /// <summary>
-        /// Control BtnGrabar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnGrabar;
-
-        /// <summary>
-        /// Control BtnSalir.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSalir;
-
-        /// <summary>
         /// Control ImgExportar.
         /// </summary>
         /// <remarks>
@@ -472,32 +418,5 @@ namespace SoftCob.Views.ListaTrabajo
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnSalir;
-
-        /// <summary>
-        /// Control ImgPreview.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgPreview;
-
-        /// <summary>
-        /// Control LblPreview.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblPreview;
-
-        /// <summary>
-        /// Control LblTotal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblTotal;
     }
 }

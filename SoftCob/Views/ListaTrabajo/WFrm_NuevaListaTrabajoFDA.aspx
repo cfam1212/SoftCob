@@ -133,7 +133,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-             <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -211,13 +211,13 @@
                                                     <h5>Lista Trabajo:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtLista" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="4" Width="100%">LST_FDA.</asp:TextBox>
+                                                    <asp:TextBox ID="TxtLista" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="4" Width="100%">LST_FDA.</asp:TextBox>
                                                 </td>
                                                 <td>
                                                     <h5>Descripción:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" Height="50px" MaxLength="250" TextMode="MultiLine" Width="100%" TabIndex="5"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Height="50px" MaxLength="250" TextMode="MultiLine" Width="100%" TabIndex="5"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -225,13 +225,13 @@
                                                     <h5>Fecha Inicio:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtFechaInicio" runat="server" Width="100%" TabIndex="6"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtFechaInicio" runat="server" CssClass="form-control" Width="100%" TabIndex="6"></asp:TextBox>
                                                 </td>
                                                 <td>
                                                     <h5>Fecha Fin:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtFechaFin" runat="server" Width="100%" TabIndex="7"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtFechaFin" runat="server" CssClass="form-control" Width="100%" TabIndex="7"></asp:TextBox>
                                                 </td>
                                             </tr>
 
@@ -263,7 +263,7 @@
                                                     <h5 runat="server" id="lblEstado" visible="false">Estado:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:CheckBox ID="ChkEstado" runat="server" AutoPostBack="True" Checked="True" TabIndex="11" Visible="False" OnCheckedChanged="ChkEstado_CheckedChanged" />
+                                                    <asp:CheckBox ID="ChkEstado" runat="server" AutoPostBack="True" Checked="True" CssClass="form-control" TabIndex="11" Visible="False" OnCheckedChanged="ChkEstado_CheckedChanged" />
                                                 </td>
                                             </tr>
 
@@ -293,12 +293,12 @@
                                                     <h5>Grupo:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtGrupo" runat="server" CssClass="alinearDerecha" TabIndex="12" Width="100%"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtGrupo" runat="server" CssClass="form-control alinearDerecha" TabIndex="12" Width="100%"></asp:TextBox>
                                                     <asp:FilteredTextBoxExtender ID="TxtGrupo_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="TxtGrupo">
                                                     </asp:FilteredTextBoxExtender>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgAddGrupo" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="13" OnClick="ImgAddGrupo_Click" />
+                                                    <asp:ImageButton ID="ImgAddGrupo" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" TabIndex="13" OnClick="ImgAddGrupo_Click" />
                                                 </td>
                                                 <td></td>
                                             </tr>
@@ -327,7 +327,7 @@
                                                                 <asp:BoundField DataField="Grupo" HeaderText="Grupo" />
                                                                 <asp:TemplateField HeaderText="Eliminar">
                                                                     <ItemTemplate>
-                                                                        <asp:ImageButton ID="ImgDelGrupo" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelGrupo_Click" />
+                                                                        <asp:ImageButton ID="ImgDelGrupo" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelGrupo_Click" />
                                                                     </ItemTemplate>
                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                 </asp:TemplateField>
@@ -353,10 +353,8 @@
                                                                     <ItemStyle HorizontalAlign="Right" />
                                                                 </asp:BoundField>
                                                             </Columns>
-                                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                                            <HeaderStyle Font-Size="Small" />
                                                             <RowStyle Font-Size="X-Small" />
-                                                            <EditRowStyle BackColor="#2461BF" />
-                                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                                         </asp:GridView>
                                                     </asp:Panel>
                                                 </td>
@@ -387,7 +385,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:CheckBox ID="ChkGestor" runat="server" AutoPostBack="True" TabIndex="16" Text="Gestor" OnCheckedChanged="ChkGestor_CheckedChanged" />
+                                                    <asp:CheckBox ID="ChkGestor" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="16" Text="Gestor" OnCheckedChanged="ChkGestor_CheckedChanged" />
                                                 </td>
                                                 <td>
                                                     <asp:DropDownList ID="DdlGestor" runat="server" AutoPostBack="True" CssClass="form-control" Enabled="False" TabIndex="17" Width="100%">
@@ -438,117 +436,6 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>
-                                    <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excel.png" TabIndex="20" Visible="false" Width="40px" OnClick="ImgExportar_Click" />
-                                    <asp:Label ID="LblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
-                                </td>
-                                <td></td>
-                                <td style="text-align: center;">
-                                    <asp:ImageButton ID="ImgPreview" runat="server" Height="20px" ImageUrl="~/Botones/Buscar.png" TabIndex="19" OnClick="ImgPreview_Click" />
-                                </td>
-                                <td>
-                                    <h5 runat="server" id="LblPreview">Preview</h5>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <h5><span style="color: red">Total Registros:</span></h5>
-                                    <asp:Panel ID="pnlPreview" runat="server" Height="300px" ScrollBars="Vertical">
-                                        <asp:GridView ID="GrdvPreview" runat="server" AutoGenerateColumns="False"
-                                            CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                            ForeColor="#333333" TabIndex="21" Width="100%" AllowPaging="True">
-                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                            <Columns>
-                                                <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
-                                                <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
-                                                <asp:BoundField DataField="Operacion" HeaderText="Operación" />
-                                                <asp:BoundField DataField="DiasMora" HeaderText="DiasMora">
-                                                    <ItemStyle HorizontalAlign="Right" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="Exigible" HeaderText="Exigible">
-                                                    <ItemStyle HorizontalAlign="Right" />
-                                                </asp:BoundField>
-                                            </Columns>
-                                            <HeaderStyle Font-Size="Small" />
-                                            <RowStyle Font-Size="X-Small" />
-                                        </asp:GridView>
-                                    </asp:Panel>
-                                </td>
-                                <td style="text-align: left">
-                                    <h4 runat="server" id="LblTotal"><span style="color: red">0</span></h4>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </table>
-                        <table style="width: 100%" runat="server" id="TblLista" visible="false">
-                            <tr>
-                                <td style="width: 5%">
-                                    <asp:Button ID="BtnGrabar" runat="server" Text="Grabar" Width="120px" CssClass="button" TabIndex="22" OnClick="BtnGrabar_Click" />
-                                </td>
-                                <td style="width: 15%"></td>
-                                <td style="width: 30%">
-                                    <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" TabIndex="23" OnClick="BtnSalir_Click" />
-                                </td>
-                                <td style="width: 10%;"></td>
-                                <td style="width: 35%"></td>
-                                <td style="width: 5%"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excel.png" TabIndex="20" Visible="false" Width="40px" OnClick="ImgExportar_Click" />
-                                    <asp:Label ID="LblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td colspan="4">
-                                    <asp:Panel ID="pnlPreview" runat="server" Height="300px" ScrollBars="Vertical">
-                                        <asp:GridView ID="GrdvPreview" runat="server" AutoGenerateColumns="False"
-                                            CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                            ForeColor="#333333" TabIndex="21" Width="100%" AllowPaging="True">
-                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                            <Columns>
-                                                <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
-                                                <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
-                                                <asp:BoundField DataField="Operacion" HeaderText="Operación" />
-                                                <asp:BoundField DataField="DiasMora" HeaderText="DiasMora">
-                                                    <ItemStyle HorizontalAlign="Right" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="Exigible" HeaderText="Exigible">
-                                                    <ItemStyle HorizontalAlign="Right" />
-                                                </asp:BoundField>
-                                            </Columns>
-                                            <HeaderStyle Font-Size="Small" />
-                                            <RowStyle Font-Size="X-Small" />
-                                        </asp:GridView>
-                                    </asp:Panel>
-                                </td>
-                                <td></td>
-                            </tr>
-                        </table>
-                        <table style="width: 100%">
-                            <tr>
-                                <td style="text-align: right; width: 45%">
-                                    <asp:Button ID="BtnGrabar" runat="server" Text="Grabar" Width="120px" CssClass="button" TabIndex="22" OnClick="BtnGrabar_Click" />
-                                </td>
-                                <td style="width: 10%"></td>
-                                <td style="text-align: left; width: 45%">
-                                    <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" TabIndex="23" OnClick="BtnSalir_Click" />
-                                </td>
-                                <td style="width: 10%;"></td>
-                                <td style="width: 35%"></td>
-                                <td style="width: 5%"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td style="text-align: center;">
@@ -570,6 +457,65 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%" runat="server" id="TblLista" visible="false">
+                            <tr>
+                                <td style="width: 5%"></td>
+                                <td style="width: 15%"></td>
+                                <td style="width: 30%"></td>
+                                <td style="width: 10%;"></td>
+                                <td style="width: 35%"></td>
+                                <td style="width: 5%"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excel.png" TabIndex="20" Visible="false" Width="40px" OnClick="ImgExportar_Click" />
+                                    <asp:Label ID="LblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="4">
+                                    <asp:Panel ID="pnlPreview" runat="server" Height="350px" ScrollBars="Vertical">
+                                        <asp:GridView ID="GrdvPreview" runat="server" AutoGenerateColumns="False"
+                                            CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                            ForeColor="#333333" TabIndex="21" Width="100%" AllowPaging="True">
+                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                            <Columns>
+                                                <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
+                                                <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
+                                                <asp:BoundField DataField="Operacion" HeaderText="Operación" />
+                                                <asp:BoundField DataField="DiasMora" HeaderText="DiasMora">
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Exigible" HeaderText="Exigible">
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                </asp:BoundField>
+                                            </Columns>
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                        </asp:GridView>
+                                    </asp:Panel>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="text-align: right; width: 45%">
+                                    <asp:Button ID="BtnGrabar" runat="server" Text="Grabar" Width="120px" CssClass="button" TabIndex="22" OnClick="BtnGrabar_Click" />
+                                </td>
+                                <td style="width: 10%"></td>
+                                <td style="text-align: left; width: 45%">
+                                    <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" TabIndex="23" OnClick="BtnSalir_Click" />
+                                </td>
                             </tr>
                         </table>
                     </ContentTemplate>

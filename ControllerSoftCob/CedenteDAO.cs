@@ -1157,6 +1157,32 @@
                 throw ex;
             }
         }
+        public DataSet FunGetEstrategiaCab()
+        {
+            List<SoftCob_ESTRATEGIA_CABECERA> _tablas = null;
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                _tablas = _db.SoftCob_ESTRATEGIA_CABECERA.Where(pd => pd.esca_estado).ToList();
+            }
+
+            _catalogo.Add(new CatalogosDTO()
+            {
+                Descripcion = "--Seleccione Estrategia--",
+                Codigo = "0"
+            });
+
+            foreach (SoftCob_ESTRATEGIA_CABECERA _tab in _tablas)
+            {
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = _tab.esca_estrategia,
+                    Codigo = _tab.ESCA_CODIGO.ToString()
+                });
+            }
+
+            return new FuncionesDAO().FunCambiarDataSet(_catalogo);
+        }
         #endregion
     }
 }

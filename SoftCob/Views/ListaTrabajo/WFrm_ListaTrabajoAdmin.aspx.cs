@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.ListaTrabajo
+﻿namespace SoftCob.Views.ListaTrabajo
 {
     using ControllerSoftCob;
     using System;
@@ -63,16 +61,15 @@ namespace SoftCob.Views.ListaTrabajo
         #endregion
 
         #region Botones y Eventos
-        protected void BtnNuevo_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("WFrm_NuevaListaTrabajo.aspx?CodigoLista=0" + "&Regresar=L", true);
-        }
-
-        protected void Btnselecc_Click(object sender, ImageClickEventArgs e)
+        protected void ImgEdit_Click(object sender, ImageClickEventArgs e)
         {
             GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
             _codigo = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Codigo"].ToString();
             Response.Redirect("WFrm_NuevaListaTrabajo.aspx?CodigoLista=" + _codigo + "&Regresar=L", true);
+        }
+        protected void BtnNuevo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("WFrm_NuevaListaTrabajo.aspx?CodigoLista=0" + "&Regresar=L", true);
         }
         #endregion
     }

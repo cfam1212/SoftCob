@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DtsRepGerencialG" targetNamespace="http://tempuri.org/DtsRepGerencialG.xsd" xmlns:mstns="http://tempuri.org/DtsRepGerencialG.xsd" xmlns="http://tempuri.org/DtsRepGerencialG.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DtsRepGerencialG" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DtsRepGerencialG" msprop:Generator_UserDSName="DtsRepGerencialG">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtbGerencialV1" msprop:Generator_TableClassName="DtbGerencialV1DataTable" msprop:Generator_TableVarName="tableDtbGerencialV1" msprop:Generator_RowChangedName="DtbGerencialV1RowChanged" msprop:Generator_TablePropName="DtbGerencialV1" msprop:Generator_RowDeletingName="DtbGerencialV1RowDeleting" msprop:Generator_RowChangingName="DtbGerencialV1RowChanging" msprop:Generator_RowEvHandlerName="DtbGerencialV1RowChangeEventHandler" msprop:Generator_RowDeletedName="DtbGerencialV1RowDeleted" msprop:Generator_RowClassName="DtbGerencialV1Row" msprop:Generator_UserTableName="DtbGerencialV1" msprop:Generator_RowEvArgName="DtbGerencialV1RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodigoID" msprop:Generator_ColumnVarNameInTable="columnCodigoID" msprop:Generator_ColumnPropNameInRow="CodigoID" msprop:Generator_ColumnPropNameInTable="CodigoIDColumn" msprop:Generator_UserColumnName="CodigoID" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="Contar" msprop:Generator_ColumnVarNameInTable="columnContar" msprop:Generator_ColumnPropNameInRow="Contar" msprop:Generator_ColumnPropNameInTable="ContarColumn" msprop:Generator_UserColumnName="Contar" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtbCompPago" msprop:Generator_TableClassName="DtbCompPagoDataTable" msprop:Generator_TableVarName="tableDtbCompPago" msprop:Generator_TablePropName="DtbCompPago" msprop:Generator_RowDeletingName="DtbCompPagoRowDeleting" msprop:Generator_RowChangingName="DtbCompPagoRowChanging" msprop:Generator_RowEvHandlerName="DtbCompPagoRowChangeEventHandler" msprop:Generator_RowDeletedName="DtbCompPagoRowDeleted" msprop:Generator_UserTableName="DtbCompPago" msprop:Generator_RowChangedName="DtbCompPagoRowChanged" msprop:Generator_RowEvArgName="DtbCompPagoRowChangeEvent" msprop:Generator_RowClassName="DtbCompPagoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodigoID" msprop:Generator_ColumnVarNameInTable="columnCodigoID" msprop:Generator_ColumnPropNameInRow="CodigoID" msprop:Generator_ColumnPropNameInTable="CodigoIDColumn" msprop:Generator_UserColumnName="CodigoID" type="xs:int" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="Valor" msprop:Generator_ColumnVarNameInTable="columnValor" msprop:Generator_ColumnPropNameInRow="Valor" msprop:Generator_ColumnPropNameInTable="ValorColumn" msprop:Generator_UserColumnName="Valor" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Contar" msprop:Generator_ColumnVarNameInTable="columnContar" msprop:Generator_ColumnPropNameInRow="Contar" msprop:Generator_ColumnPropNameInTable="ContarColumn" msprop:Generator_UserColumnName="Contar" type="xs:int" minOccurs="0" />
+              <xs:element name="Exigible" msprop:Generator_ColumnVarNameInTable="columnExigible" msprop:Generator_ColumnPropNameInRow="Exigible" msprop:Generator_ColumnPropNameInTable="ExigibleColumn" msprop:Generator_UserColumnName="Exigible" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtbAbonoComp" msprop:Generator_TableClassName="DtbAbonoCompDataTable" msprop:Generator_TableVarName="tableDtbAbonoComp" msprop:Generator_TablePropName="DtbAbonoComp" msprop:Generator_RowDeletingName="DtbAbonoCompRowDeleting" msprop:Generator_RowChangingName="DtbAbonoCompRowChanging" msprop:Generator_RowEvHandlerName="DtbAbonoCompRowChangeEventHandler" msprop:Generator_RowDeletedName="DtbAbonoCompRowDeleted" msprop:Generator_UserTableName="DtbAbonoComp" msprop:Generator_RowChangedName="DtbAbonoCompRowChanged" msprop:Generator_RowEvArgName="DtbAbonoCompRowChangeEvent" msprop:Generator_RowClassName="DtbAbonoCompRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FechaPago" msprop:Generator_ColumnVarNameInTable="columnFechaPago" msprop:Generator_ColumnPropNameInRow="FechaPago" msprop:Generator_ColumnPropNameInTable="FechaPagoColumn" msprop:Generator_UserColumnName="FechaPago" type="xs:string" minOccurs="0" />
+              <xs:element name="ValorPago" msprop:Generator_ColumnVarNameInTable="columnValorPago" msprop:Generator_ColumnPropNameInRow="ValorPago" msprop:Generator_ColumnPropNameInTable="ValorPagoColumn" msprop:Generator_UserColumnName="ValorPago" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Exigible" msprop:Generator_ColumnVarNameInTable="columnExigible" msprop:Generator_ColumnPropNameInRow="Exigible" msprop:Generator_ColumnPropNameInTable="ExigibleColumn" msprop:Generator_UserColumnName="Exigible" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtbPagosReal" msprop:Generator_TableClassName="DtbPagosRealDataTable" msprop:Generator_TableVarName="tableDtbPagosReal" msprop:Generator_TablePropName="DtbPagosReal" msprop:Generator_RowDeletingName="DtbPagosRealRowDeleting" msprop:Generator_RowChangingName="DtbPagosRealRowChanging" msprop:Generator_RowEvHandlerName="DtbPagosRealRowChangeEventHandler" msprop:Generator_RowDeletedName="DtbPagosRealRowDeleted" msprop:Generator_UserTableName="DtbPagosReal" msprop:Generator_RowChangedName="DtbPagosRealRowChanged" msprop:Generator_RowEvArgName="DtbPagosRealRowChangeEvent" msprop:Generator_RowClassName="DtbPagosRealRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="Pago" msprop:Generator_ColumnVarNameInTable="columnPago" msprop:Generator_ColumnPropNameInRow="Pago" msprop:Generator_ColumnPropNameInTable="PagoColumn" msprop:Generator_UserColumnName="Pago" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Compromiso" msprop:Generator_ColumnVarNameInTable="columnCompromiso" msprop:Generator_ColumnPropNameInRow="Compromiso" msprop:Generator_ColumnPropNameInTable="CompromisoColumn" msprop:Generator_UserColumnName="Compromiso" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Exigible" msprop:Generator_ColumnVarNameInTable="columnExigible" msprop:Generator_ColumnPropNameInRow="Exigible" msprop:Generator_ColumnPropNameInTable="ExigibleColumn" msprop:Generator_UserColumnName="Exigible" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
