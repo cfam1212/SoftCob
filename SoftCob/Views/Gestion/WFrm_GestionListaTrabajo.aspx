@@ -65,7 +65,7 @@
     <style type="text/css">
         legend {
             color: darkblue;
-            font-size: 10px;
+            font-size: 12px;
             font-weight: bold;
         }
 

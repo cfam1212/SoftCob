@@ -108,13 +108,13 @@
                                     <h5>Nombres:</h5>
                                 </td>
                                 <td style="width: 30%">
-                                    <asp:TextBox ID="TxtNombres" runat="server" Width="100%" CssClass="upperCase" MaxLength="80" TabIndex="1"></asp:TextBox>
+                                    <asp:TextBox ID="TxtNombres" runat="server" Width="100%" CssClass="form-control upperCase" MaxLength="80" TabIndex="1"></asp:TextBox>
                                 </td>
                                 <td style="width: 15%">
                                     <h5>Apellidos:</h5>
                                 </td>
                                 <td style="width: 30%">
-                                    <asp:TextBox ID="TxtApellidos" runat="server" Width="100%" CssClass="upperCase" MaxLength="80" TabIndex="2"></asp:TextBox>
+                                    <asp:TextBox ID="TxtApellidos" runat="server" Width="100%" CssClass="form-control upperCase" MaxLength="80" TabIndex="2"></asp:TextBox>
                                 </td>
                                 <td style="width: 5%"></td>
                             </tr>
@@ -124,13 +124,13 @@
                                     <h5>Login:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtUser" runat="server" Width="100%" MaxLength="16" TabIndex="3"></asp:TextBox>
+                                    <asp:TextBox ID="TxtUser" runat="server" CssClass="form-control" Width="100%" MaxLength="16" TabIndex="3"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5>Password:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtPassword" runat="server" Width="100%" MaxLength="16" TextMode="Password" TabIndex="4"></asp:TextBox>
+                                    <asp:TextBox ID="TxtPassword" runat="server" Width="100%" MaxLength="16" CssClass="form-control" TextMode="Password" TabIndex="4"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>

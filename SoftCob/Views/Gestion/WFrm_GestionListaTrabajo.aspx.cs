@@ -1982,7 +1982,7 @@
 
         protected void DdlEfecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            try                
             {
                 TxtObservacion.Text = "";
                 updObservacion.Update();

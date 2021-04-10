@@ -67,12 +67,6 @@
                                             <asp:HyperLinkField DataNavigateUrlFields="Urllink" DataTextField="Estado" HeaderText="Estado">
                                             <ControlStyle ForeColor="Black" />
                                             </asp:HyperLinkField>
-                                            <asp:TemplateField HeaderText="Editar">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="Btnselecc" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="Btnselecc_Click" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" />
-                                            </asp:TemplateField>
                                         </Columns>
                                         <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                         <RowStyle Font-Size="X-Small" />

@@ -305,6 +305,7 @@
     <Content Include="Views\Breanch\WFrm_CompararBrench.aspx" />
     <Content Include="Views\Breanch\WFrm_NuevoBrench.aspx" />
     <Content Include="Views\Breanch\WFrm_NuevoBrenchMes.aspx" />
+    <Content Include="Views\Breanch\wFrm_ProcesarPagosBrench.aspx" />
     <Content Include="Views\CarteraPropia\WFrm_PagoCartera.aspx" />
     <Content Include="Views\Cedente\WFrm_AsignarCartera.aspx" />
     <Content Include="Views\Cedente\WFrm_CedenteAdmin.aspx" />
@@ -345,6 +346,20 @@
     <Content Include="Views\Gestion\WFrm_ArbolRecursivo.aspx" />
     <Content Include="Views\Gestion\WFrm_BuscarTelefonos.aspx" />
     <Content Include="Views\Gestion\WFrm_DatosEquifax.aspx" />
+    <Content Include="Views\Gestion\WFrm_GestionListaTrabajo.aspx" />
+    <Content Include="Views\Gestion\WFrm_InfAdicional.aspx" />
+    <Content Include="Views\Gestion\WFrm_ListaClientesAdmin.aspx" />
+    <Content Include="Views\Gestion\WFrm_ListaNotasAdmin.aspx" />
+    <Content Include="Views\Gestion\WFrm_ListaPagoAbonos.aspx" />
+    <Content Include="Views\Gestion\WFrm_ListaVolveraLlamar.aspx" />
+    <Content Include="Views\Gestion\WFrm_MonitorTimeGestor.aspx" />
+    <Content Include="Views\Gestion\WFrm_NotasGestion.aspx" />
+    <Content Include="Views\Gestion\WFrm_OtrosTelefonos.aspx" />
+    <Content Include="Views\Gestion\WFrm_ProyeccionCartera.aspx" />
+    <Content Include="Views\Gestion\WFrm_RegLlamadaEntrante.aspx" />
+    <Content Include="Views\Gestion\WFrm_SeleccionListaTrabajo.aspx" />
+    <Content Include="Views\Gestion\WFrm_SpeechAD.aspx" />
+    <Content Include="Views\Gestion\WFrm_SpeechBV.aspx" />
     <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdmin.aspx" />
     <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminADE.aspx" />
     <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminAP.aspx" />
@@ -625,6 +640,13 @@
     <Compile Include="Views\Breanch\WFrm_NuevoBrenchMes.aspx.designer.cs">
       <DependentUpon>WFrm_NuevoBrenchMes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Breanch\wFrm_ProcesarPagosBrench.aspx.cs">
+      <DependentUpon>wFrm_ProcesarPagosBrench.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Breanch\wFrm_ProcesarPagosBrench.aspx.designer.cs">
+      <DependentUpon>wFrm_ProcesarPagosBrench.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\CarteraPropia\WFrm_PagoCartera.aspx.cs">
       <DependentUpon>WFrm_PagoCartera.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -904,6 +926,104 @@
     </Compile>
     <Compile Include="Views\Gestion\WFrm_DatosEquifax.aspx.designer.cs">
       <DependentUpon>WFrm_DatosEquifax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_GestionListaTrabajo.aspx.cs">
+      <DependentUpon>WFrm_GestionListaTrabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_GestionListaTrabajo.aspx.designer.cs">
+      <DependentUpon>WFrm_GestionListaTrabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_InfAdicional.aspx.cs">
+      <DependentUpon>WFrm_InfAdicional.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_InfAdicional.aspx.designer.cs">
+      <DependentUpon>WFrm_InfAdicional.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ListaClientesAdmin.aspx.cs">
+      <DependentUpon>WFrm_ListaClientesAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ListaClientesAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaClientesAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ListaNotasAdmin.aspx.cs">
+      <DependentUpon>WFrm_ListaNotasAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ListaNotasAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaNotasAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ListaPagoAbonos.aspx.cs">
+      <DependentUpon>WFrm_ListaPagoAbonos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ListaPagoAbonos.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaPagoAbonos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ListaVolveraLlamar.aspx.cs">
+      <DependentUpon>WFrm_ListaVolveraLlamar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ListaVolveraLlamar.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaVolveraLlamar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_MonitorTimeGestor.aspx.cs">
+      <DependentUpon>WFrm_MonitorTimeGestor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_MonitorTimeGestor.aspx.designer.cs">
+      <DependentUpon>WFrm_MonitorTimeGestor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_NotasGestion.aspx.cs">
+      <DependentUpon>WFrm_NotasGestion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_NotasGestion.aspx.designer.cs">
+      <DependentUpon>WFrm_NotasGestion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_OtrosTelefonos.aspx.cs">
+      <DependentUpon>WFrm_OtrosTelefonos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_OtrosTelefonos.aspx.designer.cs">
+      <DependentUpon>WFrm_OtrosTelefonos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ProyeccionCartera.aspx.cs">
+      <DependentUpon>WFrm_ProyeccionCartera.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ProyeccionCartera.aspx.designer.cs">
+      <DependentUpon>WFrm_ProyeccionCartera.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_RegLlamadaEntrante.aspx.cs">
+      <DependentUpon>WFrm_RegLlamadaEntrante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_RegLlamadaEntrante.aspx.designer.cs">
+      <DependentUpon>WFrm_RegLlamadaEntrante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_SeleccionListaTrabajo.aspx.cs">
+      <DependentUpon>WFrm_SeleccionListaTrabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_SeleccionListaTrabajo.aspx.designer.cs">
+      <DependentUpon>WFrm_SeleccionListaTrabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_SpeechAD.aspx.cs">
+      <DependentUpon>WFrm_SpeechAD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_SpeechAD.aspx.designer.cs">
+      <DependentUpon>WFrm_SpeechAD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_SpeechBV.aspx.cs">
+      <DependentUpon>WFrm_SpeechBV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_SpeechBV.aspx.designer.cs">
+      <DependentUpon>WFrm_SpeechBV.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Helpers\DownloadFile.ashx.cs">
       <DependentUpon>DownloadFile.ashx</DependentUpon>

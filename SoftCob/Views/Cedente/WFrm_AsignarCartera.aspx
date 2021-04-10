@@ -208,7 +208,7 @@
                                                     <h5>Exigible:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtExigible" runat="server" CssClass="alinearDerecha" TabIndex="10">1</asp:TextBox>
+                                                    <asp:TextBox ID="TxtExigible" runat="server" CssClass="form-control alinearDerecha" TabIndex="10">1</asp:TextBox>
                                                     <asp:FilteredTextBoxExtender ID="txtExigible_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtExigible">
                                                     </asp:FilteredTextBoxExtender>
                                                 </td>
@@ -243,7 +243,7 @@
                                                     <h5>Exigible:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtExigible0" runat="server" CssClass="alinearDerecha" TabIndex="14">1</asp:TextBox>
+                                                    <asp:TextBox ID="txtExigible0" runat="server" CssClass="form-control alinearDerecha" TabIndex="14">1</asp:TextBox>
                                                     <asp:FilteredTextBoxExtender ID="txtExigible0_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtExigible0">
                                                     </asp:FilteredTextBoxExtender>
                                                 </td>
@@ -427,7 +427,7 @@
                                                     <h5>Buscar:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtBuscar" runat="server" CssClass="upperCase" MaxLength="80" TabIndex="27" Width="100%" Enabled="False"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtBuscar" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="27" Width="100%" Enabled="False"></asp:TextBox>
                                                 </td>
                                                 <td style="text-align: center">
                                                     <asp:ImageButton ID="ImgBuscar" runat="server" Height="25px" ImageUrl="~/Botones/Buscar.png" TabIndex="28" OnClick="ImgBuscar_Click" Enabled="False" />

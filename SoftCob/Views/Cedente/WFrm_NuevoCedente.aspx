@@ -18,8 +18,8 @@
     <script src="../../Scripts/Tables/dataTable.bootstrap.min.js"></script>
     <script src="../../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../../Scripts/jquery-ui.min.js"></script>
-
     <script type="text/javascript" src="../../JS/DatePicker/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../../Style/chosen.css" />
 
     <style type="text/css">
         legend {
@@ -101,14 +101,14 @@
                                     <h5>Provincia:</h5>
                                 </td>
                                 <td style="width: 30%">
-                                    <asp:DropDownList ID="DdlProvincia" runat="server" CssClass="form-control" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="DdlProvincia_SelectedIndexChanged" TabIndex="1">
+                                    <asp:DropDownList ID="DdlProvincia" runat="server" CssClass="form-control chzn-select" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="DdlProvincia_SelectedIndexChanged" TabIndex="1">
                                     </asp:DropDownList>
                                 </td>
                                 <td style="width: 15%">
                                     <h5>Ciudad:</h5>
                                 </td>
                                 <td style="width: 30%">
-                                    <asp:DropDownList ID="DdlCiudad" runat="server" CssClass="form-control" Width="100%" TabIndex="2">
+                                    <asp:DropDownList ID="DdlCiudad" runat="server" CssClass="form-control chzn-select" Width="100%" TabIndex="2">
                                     </asp:DropDownList>
                                 </td>
                                 <td style="width: 5%"></td>
@@ -287,7 +287,7 @@
                                     <tr>
                                         <td></td>
                                         <td></td>
-                                        <td style="text-align: center">&nbsp;</td>
+                                        <td style="text-align: center"></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -682,6 +682,16 @@
                 </asp:UpdatePanel>
             </div>
         </div>
+        <script src="../../Scripts/chosen.jquery.js" type="text/javascript"></script>
+        <script type="text/javascript"> $(".chzn-select").chosen(); $(".chzn-select-deselect").chosen({ allow_single_deselect: true }); </script>
+        <script>
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequestHandler);
+            function endRequestHandler() {
+                $(".chzn-select").chosen({ width: "100%" });
+                $(".chzn-container").css({ "width": "100%" });
+                $(".chzn-drop").css({ "width": "95%" });
+            }
+        </script>
     </form>
 </body>
 </html>

@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.Breanch
+﻿namespace SoftCob.Views.Breanch
 {
     using ControllerSoftCob;
     using System;
@@ -62,7 +60,7 @@ namespace SoftCob.Views.Breanch
             //    {
             //        alert = "Gestor Tiene Abierto Presupuesto Año: " + dts.Tables[0].Rows[0]["Anio"].ToString() + " Mes: " +
             //            dts.Tables[0].Rows[0]["Mes"].ToString() + " Por $" + dts.Tables[0].Rows[0]["Exigible"].ToString();
-            //        new FuncionesBAS().funShowJSMessage(alert, this);
+            //        new FuncionesDAO().funShowJSMessage(alert, this);
             //        return;
             //    }
             //    if (dtbBrench.Rows.Count > 0)
@@ -109,7 +107,7 @@ namespace SoftCob.Views.Breanch
             //            grdvBrenchDet.DataBind();
             //        }
             //    }
-            //    else new FuncionesBAS().funShowJSMessage("No existe Brench Creado para el Cedente..!", this);
+            //    else new FuncionesDAO().funShowJSMessage("No existe Brench Creado para el Cedente..!", this);
             //}
             //catch (Exception ex)
             //{
@@ -121,7 +119,7 @@ namespace SoftCob.Views.Breanch
             switch (opcion)
             {
                 case 0:
-                    DdlCedente.DataSource = new CatalogosDTO().FunGetCedentes();
+                    DdlCedente.DataSource = new CedenteDAO().FunGetCedentes();
                     DdlCedente.DataTextField = "Descripcion";
                     DdlCedente.DataValueField = "Codigo";
                     DdlCedente.DataBind();
@@ -133,12 +131,13 @@ namespace SoftCob.Views.Breanch
                     DdlGestores.Items.Add(itemG);
                     break;
                 case 1:
-                    DdlCatalogo.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                     DdlCatalogo.DataTextField = "CatalogoProducto";
                     DdlCatalogo.DataValueField = "CodigoCatalogo";
                     DdlCatalogo.DataBind();
 
-                    dts = new CatalogosDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                    dts = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", 
+                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
                     DdlGestores.DataSource = dts;
                     DdlGestores.DataTextField = "Descripcion";
                     DdlGestores.DataValueField = "Codigo";
@@ -154,12 +153,12 @@ namespace SoftCob.Views.Breanch
             try
             {
                 FunCargarCombos(1);
-                dts = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
 
                 if (dts.Tables[0].Rows.Count > 0)
                 {
                     ViewState["CodigoCEDE"] = DdlCedente.SelectedValue;
-                    DdlCatalogo.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                     DdlCatalogo.DataTextField = "CatalogoProducto";
                     DdlCatalogo.DataValueField = "CodigoCatalogo";
                     DdlCatalogo.DataBind();
@@ -193,28 +192,28 @@ namespace SoftCob.Views.Breanch
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
                     return;
                 }
 
                 if (DdlCatalogo.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Catálogo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this);
                     return;
                 }
 
-                if (!new FuncionesBAS().IsDate(TxtFechaProceso.Text))
+                if (!new FuncionesDAO().IsDate(TxtFechaProceso.Text))
                 {
-                    new FuncionesBAS().FunShowJSMessage("Fecha Incorrecta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Fecha Incorrecta..!", this);
                     return;
                 }
 
-                dts = new ConsultaDatosDTO().FunConsultaDatos(133, 0, int.Parse(ViewState["CodigoCEDE"].ToString()),
+                dts = new ConsultaDatosDAO().FunConsultaDatos(133, 0, int.Parse(ViewState["CodigoCEDE"].ToString()),
                     int.Parse(ViewState["CodigoCPCE"].ToString()), "", "", "", ViewState["Conectar"].ToString());
 
                 if (dts.Tables[0].Rows.Count == 0)
                 {
-                    new FuncionesBAS().FunShowJSMessage("No existen pagos registrados en la fecha..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No existen pagos registrados en la fecha..!", this);
                     return;
                 }
 
