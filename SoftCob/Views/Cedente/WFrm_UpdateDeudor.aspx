@@ -184,7 +184,7 @@
                                     <h5>No. Documento:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtNumeroDocumento" runat="server" CssClass="upperCase" MaxLength="20" TabIndex="2" Width="100%" OnTextChanged="TxtNumeroDocumento_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                    <asp:TextBox ID="TxtNumeroDocumento" runat="server" CssClass="form-control upperCase" MaxLength="20" TabIndex="2" Width="100%" OnTextChanged="TxtNumeroDocumento_TextChanged" AutoPostBack="True"></asp:TextBox>
                                     <asp:FilteredTextBoxExtender ID="TxtNumeroDocumento_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="TxtNumeroDocumento">
                                     </asp:FilteredTextBoxExtender>
                                 </td>
@@ -196,13 +196,13 @@
                                     <h5>Nombres:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtNombres" runat="server" Width="100%" CssClass="upperCase" MaxLength="80" TabIndex="3"></asp:TextBox>
+                                    <asp:TextBox ID="TxtNombres" runat="server" Width="100%" CssClass="form-control upperCase" MaxLength="80" TabIndex="3"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5>Apellidos:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtApellidos" runat="server" Width="100%" CssClass="upperCase" MaxLength="80" TabIndex="4"></asp:TextBox>
+                                    <asp:TextBox ID="TxtApellidos" runat="server" Width="100%" CssClass="form-control upperCase" MaxLength="80" TabIndex="4"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>
@@ -212,7 +212,7 @@
                                     <h5>Fec. Nacimiento:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtFechaNacimiento" runat="server" Width="100%" CssClass="form-control" TabIndex="5"></asp:TextBox>
+                                    <asp:TextBox ID="TxtFechaNacimiento" runat="server" Width="100%" CssClass="form-control form-control" TabIndex="5"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5>Género:</h5>
@@ -242,13 +242,13 @@
                                     <h5>email Personal:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtCorreo" runat="server" CssClass="lowCase" MaxLength="100" TabIndex="8" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="TxtCorreo" runat="server" CssClass="form-control lowCase" MaxLength="100" TabIndex="8" Width="100%"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5>e-Empresa:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtMailEmpresa" runat="server" CssClass="lowCase" MaxLength="100" TabIndex="9" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="TxtMailEmpresa" runat="server" CssClass="form-control lowCase" MaxLength="100" TabIndex="9" Width="100%"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>
@@ -276,13 +276,13 @@
                                     <h5>Dir.Domicilio:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="Txtdirdomicilio" runat="server" CssClass="fupperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="12" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="Txtdirdomicilio" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="12" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5>Ref.Domicilio:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="Txtrefdomicilio" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" Height="50px" MaxLength="150" TabIndex="13" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="Txtrefdomicilio" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Height="50px" MaxLength="150" TabIndex="13" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>
@@ -292,13 +292,13 @@
                                     <h5>Dir.Trabajo:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="Txtdirtrabajo" runat="server" CssClass="upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="14" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="Txtdirtrabajo" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="14" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5>Ref.Trabajo:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtReftrabajo" runat="server" CssClass="upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="15" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="TxtReftrabajo" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="15" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>

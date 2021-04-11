@@ -87,7 +87,7 @@
                                 <h5>Nombre Horario:</h5>
                             </td>
                             <td style="width: 60%" colspan="2">
-                                <asp:TextBox ID="TxtHorario" runat="server" CssClass="upperCase" MaxLength="50" Width="100%" TabIndex="1"></asp:TextBox>
+                                <asp:TextBox ID="TxtHorario" runat="server" CssClass="form-control upperCase" MaxLength="50" Width="100%" TabIndex="1"></asp:TextBox>
                             </td>
                             <td style="width: 15%"></td>
                         </tr>
@@ -97,7 +97,7 @@
                                 <h5>Descripción:</span></h5>
                             </td>
                             <td colspan="2">
-                                <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" Width="100%" CssClass="upperCase" MaxLength="150" Height="50px" TextMode="MultiLine" TabIndex="2"></asp:TextBox>
+                                <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" Width="100%" CssClass="form-control upperCase" MaxLength="150" Height="50px" TextMode="MultiLine" TabIndex="2"></asp:TextBox>
                             </td>
                             <td></td>
                         </tr>
@@ -151,7 +151,7 @@
                                 <h5 runat="server" id="Label7" visible="false">Estado:</h5>
                             </td>
                             <td colspan="2">
-                                <asp:CheckBox ID="ChkEstado" runat="server" AutoPostBack="True" Checked="True" OnCheckedChanged="ChkEstado_CheckedChanged" Text="Activo" Visible="False" TabIndex="9" />
+                                <asp:CheckBox ID="ChkEstado" runat="server" CssClass="form-control" AutoPostBack="True" Checked="True" OnCheckedChanged="ChkEstado_CheckedChanged" Text="Activo" Visible="False" TabIndex="9" />
                             </td>
                             <td></td>
                         </tr>

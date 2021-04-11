@@ -2,13 +2,12 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Drawing;
     using System.Globalization;
     using System.IO;
     using System.Web.UI;
-    using System.Web.UI.WebControls;    
+    using System.Web.UI.WebControls;
     public partial class WFrm_NuevaListaTrabajo : Page
     {
         #region Variables
@@ -47,7 +46,6 @@
                     return;
                 }
 
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoLista"] = Request["CodigoLista"];
                 ViewState["Regresar"] = Request["Regresar"];
                 ViewState["Preview"] = false;
@@ -93,7 +91,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(23, int.Parse(ViewState["CodigoLista"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(23, int.Parse(ViewState["CodigoLista"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
                 TxtLista.Text = _dts.Tables[0].Rows[0]["ListaTrabajo"].ToString();
                 TxtDescripcion.Text = _dts.Tables[0].Rows[0]["Descripcion"].ToString();
                 TxtFechaInicio.Text = _dts.Tables[0].Rows[0]["FechaInicio"].ToString();
@@ -118,7 +116,7 @@
                 _asignacion.Value = _dts.Tables[0].Rows[0]["Asignacion"].ToString();
                 DdlAsignacion.Items.Add(_asignacion);
                 DdlGestorApoyo.SelectedValue = _dts.Tables[0].Rows[0]["GestorApoyo"].ToString();
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(26, int.Parse(ViewState["CodigoLista"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(26, int.Parse(ViewState["CodigoLista"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
                 GrdvEstrategia.DataSource = _dts;
                 GrdvEstrategia.DataBind();
                 ViewState["Estrategia"] = _dts.Tables[0];
@@ -127,7 +125,7 @@
                 ImgPreview.Enabled = false;
                 LblPreview.Visible = false;
                 pnlPreview.Visible = false;
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(25, int.Parse(ViewState["CodigoLista"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(25, int.Parse(ViewState["CodigoLista"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
                 LblTotal.InnerText = _dts.Tables[0].Rows[0][0].ToString();
             }
             catch (Exception ex)
@@ -178,13 +176,13 @@
                     LblTotal.InnerText = "0";
 
                     DdlGestores.DataSource = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", 
-                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlGestores.DataTextField = "Descripcion";
                     DdlGestores.DataValueField = "Codigo";
                     DdlGestores.DataBind();
 
                     DdlGestorApoyo.DataSource = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", 
-                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlGestorApoyo.DataTextField = "Descripcion";
                     DdlGestorApoyo.DataValueField = "Codigo";
                     DdlGestorApoyo.DataBind();
@@ -192,13 +190,13 @@
                     break;
                 case 2:
                     DdlAsignacion.DataSource = new ConsultaDatosDAO().FunConsultaDatos(91, int.Parse(ViewState["CodCatalogo"].ToString()), 0, 0, "",
-                        "", "", ViewState["Conectar"].ToString());
+                        "", "", Session["Conectar"].ToString());
                     DdlAsignacion.DataTextField = "Descripcion";
                     DdlAsignacion.DataValueField = "Codigo";
                     DdlAsignacion.DataBind();
 
                     DdlCampania.DataSource = new ConsultaDatosDAO().FunConsultaDatos(119, int.Parse(ViewState["CodCatalogo"].ToString()),
-                        0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlCampania.DataTextField = "Descripcion";
                     DdlCampania.DataValueField = "Codigo";
                     DdlCampania.DataBind();
@@ -286,10 +284,10 @@
                 _ordenar = "";
                 _pasadas = 0;
                 _sql = nuevoSQL;
-                _sql += "From GSBPO_CLIENTE_DEUDOR CL (nolock) INNER JOIN GSBPO_CUENTA_DEUDOR CD (nolock) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO ";
-                _sql += "INNER JOIN GSBPO_PERSONA PE (nolock) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
-                _sql += "INNER JOIN GSBPO_Provincia PR (nolock) ON PE.pers_provincia=PR.PROV_COD ";
-                _sql += "INNER JOIN GSBPO_Ciudad CI (nolock) ON PE.pers_ciudad=CI.CIUD_COD where ";
+                _sql += "From SoftCob_CLIENTE_DEUDOR CL (nolock) INNER JOIN SoftCob_CUENTA_DEUDOR CD (nolock) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO ";
+                _sql += "INNER JOIN SoftCob_PERSONA PE (nolock) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
+                _sql += "INNER JOIN SoftCob_PROVINCIA PR (nolock) ON PE.pers_provincia=PR.PROV_CODIGO ";
+                _sql += "INNER JOIN SoftCob_CIUDAD CI (nolock) ON PE.pers_ciudad=CI.CIUD_CODIGO where ";
                 _sql += "CL.CPCE_CODIGO=" + DdlCatalogo.SelectedValue + " and CL.clde_estado=1 and CD.ctde_estado=1 and ";
 
                 if (ChkGestor.Checked)
@@ -361,7 +359,7 @@
                 LblTotal.InnerText = "0";
                 ViewState["CodigoEstrategia"] = DdlEstrategia.SelectedValue;
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(22, int.Parse(DdlEstrategia.SelectedValue), 0, 0, "", "", "", 
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
                 ViewState["Estrategia"] = _dts.Tables[0];
                 GrdvEstrategia.DataSource = _dts;
                 GrdvEstrategia.DataBind();
@@ -421,7 +419,7 @@
 
                     if (!string.IsNullOrEmpty(_sql))
                     {
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
                         GrdvPreview.DataSource = _dts;
                         GrdvPreview.DataBind();
                         Session["Preview"] = _dts;
@@ -434,7 +432,7 @@
                         _sql = "";
                         _sql = "select count(1) ";
                         _sql = FunFormarSQL(_sql, 0);
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
                         LblTotal.InnerText = _dts.Tables[0].Rows[0][0].ToString();
                     }
                     else new FuncionesDAO().FunShowJSMessage("No se puede formar la consulta..!", this);
@@ -466,7 +464,7 @@
                 if (ViewState["Nuevo"].ToString() == "0")
                 {
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(ViewState["CodigoCedente"].ToString()), int.Parse(ViewState["CodCatalogo"].ToString()), 0, "",
-                        TxtLista.Text.Trim().ToUpper(), TxtFechaInicio.Text.Trim(), ViewState["Conectar"].ToString());
+                        TxtLista.Text.Trim().ToUpper(), TxtFechaInicio.Text.Trim(), Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -519,7 +517,7 @@
                         }
 
                         _sql = FunFormarSQL(_sql, 1);
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
                         string[] columnas = new[] { "codigoCLDE", "codigoPERS","codigoGEST", "Estado", "Operacion", "auxv2", "auxv3",
                             "auxi1","auxi2","auxi3"};
                         _dtblistatrabajo = _dts.Tables[0];
@@ -531,7 +529,7 @@
                             0, "", 0, 0, 0, "", "", DdlGestores.SelectedValue, DdlAsignacion.SelectedValue, DdlGestorApoyo.SelectedValue,
                             int.Parse(LblTotal.InnerText),
                             0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtblistatrabajo,
-                            (DataTable)ViewState["Estrategia"], "sp_NewListaTrabajo", ViewState["Conectar"].ToString());
+                            (DataTable)ViewState["Estrategia"], "sp_NewListaTrabajo", Session["Conectar"].ToString());
 
                         if (int.Parse(ViewState["CodigoLista"].ToString()) == 0) _mensaje = "OK";
                     }

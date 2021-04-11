@@ -209,13 +209,13 @@
                                                 <h5>Lista Trabajo:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtLista" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="4" Width="100%">LST_APY.</asp:TextBox>
+                                                <asp:TextBox ID="TxtLista" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="4" Width="100%">LST_APY.</asp:TextBox>
                                             </td>
                                             <td>
                                                 <h5>Descripción:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" Height="50px" MaxLength="250" TextMode="MultiLine" Width="100%" TabIndex="5"></asp:TextBox>
+                                                <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Height="50px" MaxLength="250" TextMode="MultiLine" Width="100%" TabIndex="5"></asp:TextBox>
                                             </td>
                                         </tr>
                                         <tr>
@@ -223,13 +223,13 @@
                                                 <h5>Fecha Inicio:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtFechaInicio" runat="server" Width="100%" TabIndex="6"></asp:TextBox>
+                                                <asp:TextBox ID="TxtFechaInicio" runat="server" CssClass="form-control" Width="100%" TabIndex="6"></asp:TextBox>
                                             </td>
                                             <td>
                                                 <h5>Fecha Fin:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtFechaFin" runat="server" Width="100%" TabIndex="7"></asp:TextBox>
+                                                <asp:TextBox ID="TxtFechaFin" runat="server" CssClass="form-control" Width="100%" TabIndex="7"></asp:TextBox>
                                             </td>
                                         </tr>
 
@@ -261,7 +261,7 @@
                                                 <h5 runat="server" id="lblEstado" visible="false">Estado:</h5>
                                             </td>
                                             <td>
-                                                <asp:CheckBox ID="ChkEstado" runat="server" AutoPostBack="True" Checked="True" TabIndex="11" Visible="False" OnCheckedChanged="ChkEstado_CheckedChanged" />
+                                                <asp:CheckBox ID="ChkEstado" runat="server" CssClass="form-control" AutoPostBack="True" Checked="True" TabIndex="11" Visible="False" OnCheckedChanged="ChkEstado_CheckedChanged" />
                                             </td>
                                         </tr>
                                     </table>
@@ -411,7 +411,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:CheckBox ID="ChkGestion" runat="server" AutoPostBack="True" OnCheckedChanged="ChkGestion_CheckedChanged" TabIndex="20" Text="Gestión" />
+                                                <asp:CheckBox ID="ChkGestion" runat="server" CssClass="form-control" AutoPostBack="True" OnCheckedChanged="ChkGestion_CheckedChanged" TabIndex="20" Text="Gestión" />
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="DdlTipoGestion" runat="server" AutoPostBack="True" CssClass="form-control" Enabled="False" OnSelectedIndexChanged="DdlTipoGestion_SelectedIndexChanged" TabIndex="21" Width="100%">
@@ -421,7 +421,7 @@
                                                 </asp:DropDownList>
                                             </td>
                                             <td>
-                                                <asp:CheckBox ID="ChkArbol" runat="server" AutoPostBack="True" OnCheckedChanged="ChkArbol_CheckedChanged" TabIndex="22" Text="Por Árbol" />
+                                                <asp:CheckBox ID="ChkArbol" runat="server" CssClass="form-control" AutoPostBack="True" OnCheckedChanged="ChkArbol_CheckedChanged" TabIndex="22" Text="Por Árbol" />
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="DdlAccion" runat="server" AutoPostBack="True" CssClass="form-control" Enabled="False" OnSelectedIndexChanged="DdlAccion_SelectedIndexChanged" TabIndex="23" Width="100%">
@@ -430,7 +430,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:CheckBox ID="ChkFecha" runat="server" AutoPostBack="True" OnCheckedChanged="ChkFecha_CheckedChanged" TabIndex="24" Text="Por Fecha" />
+                                                <asp:CheckBox ID="ChkFecha" runat="server" CssClass="form-control" AutoPostBack="True" OnCheckedChanged="ChkFecha_CheckedChanged" TabIndex="24" Text="Por Fecha" />
                                             </td>
                                             <td>
                                                 <asp:TextBox ID="TxtFechaDesde" runat="server" CssClass="form-control" TabIndex="25" Width="100%" Enabled="False"></asp:TextBox>

@@ -178,7 +178,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <asp:TextBox ID="TxtBuscarPor" runat="server" Enabled="False" MaxLength="20" Width="100%" TabIndex="5"></asp:TextBox>
+                                    <asp:TextBox ID="TxtBuscarPor" CssClass="form-control" runat="server" Enabled="False" MaxLength="20" Width="100%" TabIndex="5"></asp:TextBox>
                                 </td>
                                 <td></td>
                                 <td></td>

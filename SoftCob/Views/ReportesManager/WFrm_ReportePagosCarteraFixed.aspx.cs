@@ -3,7 +3,6 @@
     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.IO;
     using System.Web.UI;
@@ -34,7 +33,6 @@
                     ViewState["Efecto"] = Request["Efecto"];
                     ViewState["Respuesta"] = Request["Respuesta"];
                     ViewState["Contacto"] = Request["Contacto"];
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Lbltitulo.Text = "Reporte Gestiones << " + ViewState["Catalogo"].ToString() + " >>";
                     FunCargarMantenimiento();
                 }
@@ -54,12 +52,12 @@
                 _sql = "select Cliente = PE.pers_nombrescompletos,Identificacion = PE.pers_numerodocumento,Operacion = CD.ctde_operacion,";
                 _sql += "Documento = AP.rpab_auxv2,FechaPago = convert(date,AP.rpab_fechapago,103),ValorPago = AP.rpab_valorpago,";
                 _sql += "Gestor = (select US.usu_Nombres+' '+US.usu_Apellidos from USUARIO US where US.USU_CODIGO=AP.rpab_gestorasignado),";
-                _sql += "Accion = (select AC.arac_descripcion from GSBPO_ACCION AC where AC.ARAC_CODIGO=AP.rpab_araccodigo),";
-                _sql += "Efecto = (select EF.aref_descripcion from GSBPO_EFECTO EF where EF.AREF_CODIGO=AP.rpab_arefcodigo),";
-                _sql += "Respuesta = (select RE.arre_descripcion from GSBPO_RESPUESTA RE where RE.ARRE_CODIGO=AP.rpab_arrecodigo),";
-                _sql += "Contacto = (select CO.arco_descripcion from GSBPO_CONTACTO CO where CO.ARCO_CODIGO=AP.rpab_arcocodigo) ";
-                _sql += "from GSBPO_REGISTRO_ABONOSPAGO AP (nolock) INNER JOIN GSBPO_CLIENTE_DEUDOR CL (nolock) ON AP.rpab_cldecodigo=CL.CLDE_CODIGO ";
-                _sql += "INNER JOIN GSBPO_CUENTA_DEUDOR CD (nolock) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO INNER JOIN GSBPO_PERSONA PE (nolock) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
+                _sql += "Accion = (select AC.arac_descripcion from SoftCob_ACCION AC where AC.ARAC_CODIGO=AP.rpab_araccodigo),";
+                _sql += "Efecto = (select EF.aref_descripcion from SoftCob_EFECTO EF where EF.AREF_CODIGO=AP.rpab_arefcodigo),";
+                _sql += "Respuesta = (select RE.arre_descripcion from SoftCob_RESPUESTA RE where RE.ARRE_CODIGO=AP.rpab_arrecodigo),";
+                _sql += "Contacto = (select CO.arco_descripcion from SoftCob_CONTACTO CO where CO.ARCO_CODIGO=AP.rpab_arcocodigo) ";
+                _sql += "from SoftCob_REGISTRO_ABONOSPAGO AP (nolock) INNER JOIN SoftCob_CLIENTE_DEUDOR CL (nolock) ON AP.rpab_cldecodigo=CL.CLDE_CODIGO ";
+                _sql += "INNER JOIN SoftCob_CUENTA_DEUDOR CD (nolock) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO INNER JOIN SoftCob_PERSONA PE (nolock) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
                 _sql += "where CL.CPCE_CODIGO=" + ViewState["CodigoCPCE"].ToString() + " and AP.rpab_fechapago between CONVERT(date,'" + ViewState["FechaDesde"].ToString() + "',101) and CONVERT(date,'";
                 _sql += ViewState["FechaHasta"].ToString() + "',101) and ";
 
@@ -75,7 +73,7 @@
                 _sql += " order by AP.rpab_fechapago";
                 _dts = new ConsultaDatosDAO().FunGetRerporteGestiones(1, int.Parse(ViewState["CodigoCEDE"].ToString()),
                     int.Parse(ViewState["CodigoCPCE"].ToString()), ViewState["FechaDesde"].ToString(),
-                    ViewState["FechaHasta"].ToString(), "", "", _sql, "", 0, 0, ViewState["Conectar"].ToString());
+                    ViewState["FechaHasta"].ToString(), "", "", _sql, "", 0, 0, Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {

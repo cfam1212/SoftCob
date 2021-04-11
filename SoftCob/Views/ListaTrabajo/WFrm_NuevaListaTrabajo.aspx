@@ -181,13 +181,13 @@
                                                 <h5>Lista Trabajo:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtLista" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="3" Width="100%">LST.</asp:TextBox>
+                                                <asp:TextBox ID="TxtLista" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="3" Width="100%">LST.</asp:TextBox>
                                             </td>
                                             <td>
                                                 <h5>Descripción:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" Height="50px" MaxLength="250" TextMode="MultiLine" Width="100%" TabIndex="4"></asp:TextBox>
+                                                <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Height="50px" MaxLength="250" TextMode="MultiLine" Width="100%" TabIndex="4"></asp:TextBox>
                                             </td>
                                         </tr>
                                         <tr>
@@ -195,13 +195,13 @@
                                                 <h5>Fecha Inicio:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtFechaInicio" runat="server" Width="100%" TabIndex="5"></asp:TextBox>
+                                                <asp:TextBox ID="TxtFechaInicio" runat="server" CssClass="form-control" Width="100%" TabIndex="5"></asp:TextBox>
                                             </td>
                                             <td>
                                                 <h5>Fecha Fin:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtFechaFin" runat="server" Width="100%" TabIndex="6"></asp:TextBox>
+                                                <asp:TextBox ID="TxtFechaFin" runat="server" CssClass="form-control" Width="100%" TabIndex="6"></asp:TextBox>
                                             </td>
                                         </tr>
 
@@ -233,7 +233,7 @@
                                                 <h5 runat="server" id="lblEstado" visible="false">Estado:</h5>
                                             </td>
                                             <td>
-                                                <asp:CheckBox ID="ChkEstado" runat="server" AutoPostBack="True" Checked="True" TabIndex="10" Visible="False" OnCheckedChanged="ChkEstado_CheckedChanged" />
+                                                <asp:CheckBox ID="ChkEstado" runat="server" CssClass="form-control" AutoPostBack="True" Checked="True" TabIndex="10" Visible="False" OnCheckedChanged="ChkEstado_CheckedChanged" />
                                             </td>
                                         </tr>
                                     </table>
@@ -384,11 +384,11 @@
                     <table style="width: 100%">
                         <tr>
                             <td style="text-align: right; width: 45%">
-                                <asp:Button ID="btnGrabar" runat="server" Text="Grabar" Width="120px" CssClass="button" TabIndex="18" OnClick="BtnGrabar_Click" />
+                                <asp:Button ID="BtnGrabar" runat="server" Text="Grabar" Width="120px" CssClass="button" TabIndex="18" OnClick="BtnGrabar_Click" />
                             </td>
                             <td style="width: 10%"></td>
                             <td style="text-align: left; width: 45%">
-                                <asp:Button ID="btnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" TabIndex="19" OnClick="BtnSalir_Click" />
+                                <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" TabIndex="19" OnClick="BtnSalir_Click" />
                             </td>
                         </tr>
                     </table>

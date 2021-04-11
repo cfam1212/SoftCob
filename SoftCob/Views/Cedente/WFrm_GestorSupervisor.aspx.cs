@@ -102,9 +102,8 @@
                         break;
                     case 2:
                         DdlGestor.Items.Clear();
-                        DdlGestor.DataSource = new ConsultaDatosDAO().FunConsultaDatos(9,
-                            int.Parse(DdlSupervisor.SelectedValue), 0, 0, "", "", "",
-                            Session["Conectar"].ToString());
+                        DdlGestor.DataSource = new ConsultaDatosDAO().FunConsultaDatos(9, int.Parse(DdlSupervisor.SelectedValue), 0, 0,
+                            "", "", "", Session["Conectar"].ToString()); 
                         DdlGestor.DataTextField = "Descripcion";
                         DdlGestor.DataValueField = "Codigo";
                         DdlGestor.DataBind();
@@ -231,7 +230,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void GrdvGestores_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try

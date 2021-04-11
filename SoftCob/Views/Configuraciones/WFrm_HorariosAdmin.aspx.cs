@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -20,7 +19,6 @@
                 Response.Redirect("~/Reload.html");
             if (!IsPostBack)
             {
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Administrar Horarios";
                 FunCargarMantenimiento();
                 if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());

@@ -3,7 +3,6 @@
     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.IO;
     using System.Web.UI;
@@ -30,7 +29,6 @@
 
                     TxtFechaIni.Text = DateTime.Now.ToString("MM/dd/yyyy");
                     TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Lbltitulo.Text = "Reporte Acción Teléfonos";
                     FunCargarCombos(0);
                 }
@@ -48,7 +46,7 @@
             switch (opcion)
             {
                 case 0:
-                    DdlGestor.DataSource = new ConsultaDatosDAO().FunConsultaDatos(136, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                    DdlGestor.DataSource = new ConsultaDatosDAO().FunConsultaDatos(136, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlGestor.DataTextField = "Descripcion";
                     DdlGestor.DataValueField = "Codigo";
                     DdlGestor.DataBind();
@@ -108,7 +106,7 @@
 
                 _dts = new ConsultaDatosDAO().FunReporteAccionTelefono(_tiporep, int.Parse(DdlGestor.SelectedValue),
                     DdlBuscar.SelectedValue, TxtCriterio.Text.Trim(), ChkPorFecha.Checked ? 1 : 0, TxtFechaIni.Text.Trim(),
-                    TxtFechaFin.Text.Trim(), _tipomotivo, "", "", "", 0, 0, 0, ViewState["Conectar"].ToString());
+                    TxtFechaFin.Text.Trim(), _tipomotivo, "", "", "", 0, 0, 0, Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0) ImgExportar.Visible = true;
 

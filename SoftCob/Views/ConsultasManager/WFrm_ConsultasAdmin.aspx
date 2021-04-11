@@ -110,7 +110,7 @@
                                     <asp:Button ID="BtnBuscar" runat="server" CausesValidation="False" CssClass="button" OnClick="BtnBuscar_Click" Text="Buscar" Width="120px" />
                                 </td>
                                 <td>
-                                    <asp:CheckBox ID="ChkArbol" runat="server" Text="En el Árbol" />
+                                    <asp:CheckBox ID="ChkArbol" runat="server" CssClass="form-control" Text="En el Árbol" />
                                 </td>
                                 <td></td>
                                 <td></td>

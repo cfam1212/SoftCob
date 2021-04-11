@@ -131,13 +131,13 @@
                                 <h5>Estrategia:</h5>
                             </td>
                             <td style="width: 35%">
-                                <asp:TextBox ID="TxtEstrategia" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="1" Width="100%">Est.</asp:TextBox>
+                                <asp:TextBox ID="TxtEstrategia" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="1" Width="100%">Est.</asp:TextBox>
                             </td>
                             <td style="width: 10%">
                                 <h5>Descripción:</h5>
                             </td>
                             <td style="width: 35%">
-                                <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" Height="50px" MaxLength="250" TextMode="MultiLine" Width="100%" TabIndex="2"></asp:TextBox>
+                                <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Height="50px" MaxLength="250" TextMode="MultiLine" Width="100%" TabIndex="2"></asp:TextBox>
                             </td>
                             <td style="width: 5%"></td>
                         </tr>
@@ -147,7 +147,7 @@
                                 <h5 runat="server" id="lblEstado" visible="false">Estado:</h5>
                             </td>
                             <td>
-                                <asp:CheckBox ID="ChkEstadoCab" runat="server" AutoPostBack="True" Checked="True" OnCheckedChanged="ChkEstadoCab_CheckedChanged" TabIndex="3" Visible="False" />
+                                <asp:CheckBox ID="ChkEstadoCab" runat="server" CssClass="form-control" AutoPostBack="True" Checked="True" OnCheckedChanged="ChkEstadoCab_CheckedChanged" TabIndex="3" Visible="False" />
                             </td>
                             <td></td>
                             <td></td>
@@ -187,11 +187,11 @@
                                 </asp:DropDownList>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtValor" runat="server" TabIndex="6" Width="100%"></asp:TextBox>
+                                <asp:TextBox ID="txtValor" runat="server" CssClass="form-control" TabIndex="6" Width="100%"></asp:TextBox>
                                 <asp:PlaceHolder ID="PlaceTxt" runat="server"></asp:PlaceHolder>
                             </td>
                             <td>
-                                <asp:RadioButtonList ID="RdbOrdenar" runat="server" Font-Size="10pt" Height="40px" Enabled="False" TabIndex="8">
+                                <asp:RadioButtonList ID="RdbOrdenar" runat="server" CssClass="form-control" Font-Size="10pt" Height="40px" Enabled="False" TabIndex="8">
                                     <asp:ListItem Value="asc" Selected="True">Ascendente</asp:ListItem>
                                     <asp:ListItem Value="desc">Descendente</asp:ListItem>
                                 </asp:RadioButtonList>

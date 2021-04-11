@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -20,7 +19,6 @@
 
             if (!IsPostBack)
             {
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Administrar Evaluación Desempeño";
                 FunCargarMantenimiento();
 
@@ -35,7 +33,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(161, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(161, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {

@@ -2,11 +2,10 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
+    using System.Threading;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using System.Threading;
     public partial class WFrm_ArbolRecursivo : Page
     {
         #region Variables
@@ -23,7 +22,6 @@
             {
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Lbltitulo.Text = "CONSULTA RECURSIVA << ARBOL GENEALOGICO >>";
                     ViewState["Cedula"] = Request["Cedula"];
                     ViewState["PhoneLocalize"] = Request["PhoneLocalize"];
@@ -49,7 +47,7 @@
         #region Procedimientos y Funciones
         private void FunPhoneLocalize(string numerodocumento)
         {
-            _dts = new ConsultaDatosDAO().FunConsultaDatos(203, 0, 0, 0, "", numerodocumento, "", ViewState["Conectar"].ToString());
+            _dts = new ConsultaDatosDAO().FunConsultaDatos(203, 0, 0, 0, "", numerodocumento, "", Session["Conectar"].ToString());
 
             if (_dts.Tables[0].Rows.Count > 0)
             {
@@ -65,7 +63,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(184, 0, 0, 0, "", numerodocumento.Substring(0, 4),
-                    ViewState["Cedula"].ToString(), ViewState["Conectar"].ToString());
+                    ViewState["Cedula"].ToString(), Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -107,7 +105,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(196, int.Parse(Session["usuCodigo"].ToString()), 0, 0,
-                    "", cedula, "", ViewState["Conectar"].ToString());
+                    "", cedula, "", Session["Conectar"].ToString());
             }
             catch (Exception ex)
             {

@@ -1,11 +1,10 @@
 ﻿namespace SoftCob.Views.Gestion
 {
     using ControllerSoftCob;
-    using System.Configuration;
     using System;
     using System.Data;
     using System.Web.UI;
-    
+
     public partial class WFrm_InfAdicional : Page
     {
         #region Variables
@@ -20,7 +19,6 @@
 
             if (!IsPostBack)
             {
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoCEDE"] = Request["CodigoCEDE"];
                 ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
                 ViewState["CodigoPERS"] = Request["CodigoPERS"];
@@ -38,7 +36,7 @@
         {
             _dts = new ConsultaDatosDAO().FunDatosAdicionales(int.Parse(ViewState["CodigoCEDE"].ToString()),
                 int.Parse(ViewState["CodigoCPCE"].ToString()), int.Parse(ViewState["CodigoPERS"].ToString()),
-                ViewState["Operacion"].ToString(), "", "", "", 0, 0, 0, ViewState["Conectar"].ToString());
+                ViewState["Operacion"].ToString(), "", "", "", 0, 0, 0, Session["Conectar"].ToString());
 
             GrdvDatos.DataSource = _dts;
             GrdvDatos.DataBind();

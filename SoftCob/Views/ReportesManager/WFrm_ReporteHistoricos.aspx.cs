@@ -3,7 +3,6 @@
     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
     using System.IO;
@@ -29,7 +28,6 @@
 
                 TxtFechaIni.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Reporte Historico";
                 FunCargarCombos(0);
             }
@@ -146,8 +144,8 @@
                         _intgridview = 2;
                         break;
                     case "G":
-                        _sql = "select distinct Accion_Respuesta = (select XC.arac_descripcion from GSBPO_ACCION XC (nolock) where XC.ARAC_CODIGO=GT.gete_araccodigo), ";
-                        _sql += "Total = count(*) from GSBPO_GESTION_TELEFONICA GT (nolock) where GT.gete_cpcecodigo=" + DdlCatalogo.SelectedValue + " and ";
+                        _sql = "select distinct Accion_Respuesta = (select XC.arac_descripcion from SoftCob_ACCION XC (nolock) where XC.ARAC_CODIGO=GT.gete_araccodigo), ";
+                        _sql += "Total = count(*) from SoftCob_GESTION_TELEFONICA GT (nolock) where GT.gete_cpcecodigo=" + DdlCatalogo.SelectedValue + " and ";
                         _sql += "GT.gete_fechagestion between CONVERT(date,'" + TxtFechaIni.Text + "',101) and CONVERT(date,'" + TxtFechaFin.Text + "',101) ";
 
                         if (DdlBuscar.SelectedValue == "I") _sql += "GT.gete_numerodocumento='" + TxtBuscarPor.Text + "' ";
@@ -160,14 +158,14 @@
                         break;
                     case "R":
                         _sql = "select Cedula = PC.pacp_numerodocumento,Operacion = PC.pacp_operacion,Nombre = PE.pers_nombrescompletos,";
-                        _sql += "Documento = PC.pacp_documento,TipoPago = (select PD.pade_nombre from GSBPO_PARAMETRO_DETALLE PD (nolock) where PD.pade_valorI=PC.pade_codigo and ";
-                        _sql += "PD.PARA_CODIGO in(select PARA_CODIGO from GSBPO_PARAMETRO_CABECERA (nolock) where para_nombre='TIPO PAGO')),";
+                        _sql += "Documento = PC.pacp_documento,TipoPago = (select PD.pade_nombre from SoftCob_PARAMETRO_DETALLE PD (nolock) where PD.pade_valorI=PC.pade_codigo and ";
+                        _sql += "PD.PARA_CODIGO in(select PARA_CODIGO from SoftCob_PARAMETRO_CABECERA (nolock) where para_nombre='TIPO PAGO')),";
                         _sql += "Valor = cast(round(PC.pacp_valorpago,2) as decimal(12,2)),FechaPago = CONVERT(varchar(10),PC.pacp_fechapago,121),";
                         _sql += "Gestor= (select usu_Nombres+' '+usu_Apellidos from USUARIO (nolock) where USU_CODIGO in";
-                        _sql += "(select ctde_gestorasignado from GSBPO_CUENTA_DEUDOR (nolock) where ctde_operacion=PC.pacp_operacion)),";
+                        _sql += "(select ctde_gestorasignado from SoftCob_CUENTA_DEUDOR (nolock) where ctde_operacion=PC.pacp_operacion)),";
                         _sql += "FechaRegistro = CONVERT(varchar(10),PC.pacp_fechacreacion,121),";
                         _sql += "Usuario = (select US.usu_Nombres+' '+US.usu_Apellidos from USUARIO US (nolock) where US.USU_CODIGO=PC.pacp_usuariocreacion) ";
-                        _sql += "from GSBPO_PAGOSCARTERA PC INNER JOIN GSBPO_PERSONA PE (nolock) ON PC.pacp_numerodocumento=PE.pers_numerodocumento ";
+                        _sql += "from SoftCob_PAGOSCARTERA PC INNER JOIN SoftCob_PERSONA PE (nolock) ON PC.pacp_numerodocumento=PE.pers_numerodocumento ";
                         _sql += "where PC.pacp_cpcecodigo=" + DdlCatalogo.SelectedValue + " and PC.pacp_fechapago between CONVERT(date,'" + TxtFechaIni.Text + "',101) and ";
                         _sql += "CONVERT(date,'" + TxtFechaFin.Text + "',101) ";
 
@@ -181,7 +179,7 @@
                         break;
                     case "E":
                         _sql = "select * from (select day(gete_fechagestion) as DedID,count(1) as total ";
-                        _sql += "from GSBPO_GESTION_TELEFONICA (nolock) where gete_cpcecodigo=" + DdlCatalogo.SelectedValue + "and  gete_fechagestion between CONVERT(date,'" + TxtFechaIni.Text + "',101) ";
+                        _sql += "from SoftCob_GESTION_TELEFONICA (nolock) where gete_cpcecodigo=" + DdlCatalogo.SelectedValue + "and  gete_fechagestion between CONVERT(date,'" + TxtFechaIni.Text + "',101) ";
 
                         if (DdlBuscar.SelectedValue == "I") _sql += "and CONVERT(date,'" + TxtFechaFin.Text + "',101) and gete_numerodocumento='" + TxtBuscarPor.Text + "' group by gete_fechagestion) deds ";
 
@@ -199,7 +197,7 @@
                         _tipo = 1;
                         _intgridview = 1;
                         _dts = new ConsultaDatosDAO().FunConsultaDatos(226, int.Parse(DdlCatalogo.SelectedValue), 0, 0,
-                            "", "", "", ViewState["Conectar"].ToString());
+                            "", "", "", Session["Conectar"].ToString());
                         break;
                 }
 
@@ -208,7 +206,7 @@
                     _dts = new ConsultaDatosDAO().FunGetRerporteGestiones(_tipo, int.Parse(DdlCedente.SelectedValue),
                         int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text, TxtFechaFin.Text,
                         DdlBuscar.SelectedItem.ToString(), TxtBuscarPor.Text.Trim(), _sql, "", 0, 0,
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
                 }
 
                 if (_dts != null)

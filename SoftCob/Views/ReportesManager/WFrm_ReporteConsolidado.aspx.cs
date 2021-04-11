@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -21,7 +20,6 @@
         {
             if (!IsPostBack)
             {
-                ViewState["Conexion"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Reporte Consolidado CEDENTES";
                 FunCargarMantenimiento();
             }
@@ -33,7 +31,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunGerReporteConsolidado(1, 0, 0, 0, "", "", 0, 0, ViewState["Conexion"].ToString());
+                _dts = new ConsultaDatosDAO().FunGerReporteConsolidado(1, 0, 0, 0, "", "", 0, 0, Session["Conectar"].ToString());
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
                     _dtb = _dts.Tables[0];

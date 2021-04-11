@@ -60,7 +60,7 @@
         #region Botones y Eventos
         protected void BtnNuevo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("WFrm_ParanetroNuevo.aspx?Codigo=0", true);
+            Response.Redirect("WFrm_ParametroNuevo.aspx?Codigo=0", true);
         }
         #endregion
     }

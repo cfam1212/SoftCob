@@ -116,13 +116,13 @@
                                                 <h5>Segmento:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtSegmento" runat="server" CssClass="upperCase" MaxLength="150" Width="100%" TabIndex="2"></asp:TextBox>
+                                                <asp:TextBox ID="TxtSegmento" runat="server" CssClass="form-control upperCase" MaxLength="150" Width="100%" TabIndex="2"></asp:TextBox>
                                             </td>
                                             <td>
                                                 <h5>Descripción:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" Height="50px" MaxLength="150" TabIndex="3" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                                <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Height="50px" MaxLength="150" TabIndex="3" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                             </td>
                                         </tr>
                                         <tr>
@@ -130,7 +130,7 @@
                                                 <h5>Valor Inicial:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtValorInicial" runat="server" CssClass="alinearDerecha" MaxLength="4" TabIndex="4" Width="100%"></asp:TextBox>
+                                                <asp:TextBox ID="TxtValorInicial" runat="server" CssClass="form-control alinearDerecha" MaxLength="4" TabIndex="4" Width="100%"></asp:TextBox>
                                                 <asp:FilteredTextBoxExtender ID="txtValorInicial_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtValorInicial">
                                                 </asp:FilteredTextBoxExtender>
                                             </td>
@@ -138,7 +138,7 @@
                                                 <h5>Valor Final:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtValorFinal" runat="server" CssClass="alinearDerecha" MaxLength="4" TabIndex="5" Width="100%"></asp:TextBox>
+                                                <asp:TextBox ID="TxtValorFinal" runat="server" CssClass="form-control alinearDerecha" MaxLength="4" TabIndex="5" Width="100%"></asp:TextBox>
                                                 <asp:FilteredTextBoxExtender ID="txtValorFinal_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtValorFinal">
                                                 </asp:FilteredTextBoxExtender>
                                             </td>

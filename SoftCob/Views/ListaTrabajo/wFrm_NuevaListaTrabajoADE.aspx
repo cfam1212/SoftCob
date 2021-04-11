@@ -430,11 +430,11 @@
                                                     <asp:CheckBox ID="ChkFecha" runat="server" AutoPostBack="True" CssClass="form-control" OnCheckedChanged="ChkFecha_CheckedChanged" TabIndex="22" Text="Por Fecha" />
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtFechaDesde" runat="server" CssClass="form-control" TabIndex="23" Width="100%" Enabled="False"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtFechaDesde" runat="server" CssClass="form-control" TabIndex="23" Width="100%" Enabled="False"></asp:TextBox>
                                                 </td>
                                                 <td></td>
                                                 <td>
-                                                    <asp:TextBox ID="txtFechaHasta" runat="server" CssClass="form-control" TabIndex="24" Width="100%" Enabled="False"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtFechaHasta" runat="server" CssClass="form-control" TabIndex="24" Width="100%" Enabled="False"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr>

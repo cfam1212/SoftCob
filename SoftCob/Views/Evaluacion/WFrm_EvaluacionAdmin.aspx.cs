@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Linq;
     using System.Web.UI;
@@ -30,7 +29,6 @@
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Lbltitulo.Text = "Administrar Protocolos << EVALUACIÓN - DESEMPEÑO >>";
                     FunProtocolos();
 
@@ -49,7 +47,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(156, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(156, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
                 ViewState["Protocolos"] = _dts.Tables[0];
                 TrvProtocolos.Nodes.Clear();
                 TreeNode node = new TreeNode("Protocolo-Evaluación", "0");
@@ -324,7 +322,7 @@
                 _dtbprotocolos.AcceptChanges();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(157, int.Parse(ViewState["CodigoPadre"].ToString()),
-                    int.Parse(ViewState["CodigoProtocolo"].ToString()), 0, "", "", "", ViewState["Conectar"].ToString());
+                    int.Parse(ViewState["CodigoProtocolo"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
                 //TrvProtocolos.Nodes[0].ChildNodes[2].ChildNodes.Remove(TrvProtocolos.SelectedNode);
                 TxtDescripcion.Text = "";
                 TxtCalificacion.Text = "0";
@@ -348,7 +346,7 @@
                 foreach (DataRow _drfila in _dtbprotocolos.Rows)
                 {
                     _dts = new ConsultaDatosDAO().FunNewProtocolo(0, int.Parse(_drfila["CodigoPREV"].ToString()),
-                        int.Parse(_drfila["CodigoPROTOCOLO"].ToString()), int.Parse(_drfila["CodigoPADRE"].ToString()), _drfila["Descripcion"].ToString(), _drfila["Estado"].ToString(), int.Parse(_drfila["Calificacion"].ToString()), _drfila["Nivel"].ToString(), "", "", "", "", 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        int.Parse(_drfila["CodigoPROTOCOLO"].ToString()), int.Parse(_drfila["CodigoPADRE"].ToString()), _drfila["Descripcion"].ToString(), _drfila["Estado"].ToString(), int.Parse(_drfila["Calificacion"].ToString()), _drfila["Nivel"].ToString(), "", "", "", "", 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _response = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Guardado con Éxito");

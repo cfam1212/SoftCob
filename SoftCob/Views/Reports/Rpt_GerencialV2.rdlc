@@ -32,7 +32,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DtsRepGerencialG</rd:DataSetName>
-        <rd:SchemaPath>D:\Desarrollos\GSBPO\WEB\Pry_wGSBPO\Pry_wGSBPO\GSBPO\Reports\DtsRepGerencialG.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\Desarrollos\SoftCob\WEB\Pry_wSoftCob\Pry_wSoftCob\SoftCob\Reports\DtsRepGerencialG.xsd</rd:SchemaPath>
         <rd:TableName>DtbGerencialV1</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
@@ -60,7 +60,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DtsRepGerencialG</rd:DataSetName>
-        <rd:SchemaPath>D:\Desarrollos\GSBPO\WEB\Pry_wGSBPO\Pry_wGSBPO\GSBPO\Reports\DtsRepGerencialG.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\Desarrollos\SoftCob\WEB\Pry_wSoftCob\Pry_wSoftCob\SoftCob\Reports\DtsRepGerencialG.xsd</rd:SchemaPath>
         <rd:TableName>DtbGerencialV1</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
@@ -88,7 +88,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DtsRepGerencialG</rd:DataSetName>
-        <rd:SchemaPath>D:\Desarrollos\GSBPO\WEB\Pry_wGSBPO\Pry_wGSBPO\GSBPO\Reports\DtsRepGerencialG.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\Desarrollos\SoftCob\WEB\Pry_wSoftCob\Pry_wSoftCob\SoftCob\Reports\DtsRepGerencialG.xsd</rd:SchemaPath>
         <rd:TableName>DtbGerencialV1</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

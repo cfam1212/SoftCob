@@ -2,10 +2,9 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
-    using System.Web.UI.WebControls;
     using System.Web.UI;
+    using System.Web.UI.WebControls;
     public partial class wFrm_ProcesarPagosBrench : Page
     {
         #region Variables
@@ -34,7 +33,6 @@
                 ViewState["Anio"] = DateTime.Now.Year.ToString();
                 ViewState["Mes"] = DateTime.Now.ToString("MM");
                 ViewState["MesName"] = DateTime.Now.ToString("MMMM").ToUpper();
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 TxtFechaProceso.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 FunCargarCombos(0);
                 Lbltitulo.Text = "Generar Pagos para BRENCH";
@@ -55,7 +53,7 @@
             //    grdvBrenchDet.DataBind();
             //    dtbBrench = (DataTable)ViewState["BrenchCab"];
             //    dts = new ConsultaDatosDTO().funConsultaDatos(116, int.Parse(ddlCedente.SelectedValue), int.Parse(ddlCatalogo.SelectedValue),
-            //        int.Parse(ddlGestores.SelectedValue), "", "", "", ViewState["Conectar"].ToString());
+            //        int.Parse(ddlGestores.SelectedValue), "", "", "", Session["Conectar"].ToString());
             //    if (dts.Tables[0].Rows.Count > 0)
             //    {
             //        alert = "Gestor Tiene Abierto Presupuesto Año: " + dts.Tables[0].Rows[0]["Anio"].ToString() + " Mes: " +
@@ -66,7 +64,7 @@
             //    if (dtbBrench.Rows.Count > 0)
             //    {
             //        dts = new ConsultaDatosDTO().funConsultaDatos(111, int.Parse(ddlCedente.SelectedValue), int.Parse(ddlCatalogo.SelectedValue),
-            //            int.Parse(ddlGestores.SelectedValue), "", ViewState["Anio"].ToString(), ViewState["Mes"].ToString(), ViewState["Conectar"].ToString());
+            //            int.Parse(ddlGestores.SelectedValue), "", ViewState["Anio"].ToString(), ViewState["Mes"].ToString(), Session["Conectar"].ToString());
             //        if (dts.Tables[0].Rows.Count > 0)
             //        {
             //            ViewState["Procesado"] = "SI";
@@ -95,13 +93,13 @@
             //            }
             //            casos += " end as rango_dias,ctde_valorexigible,ctde_totaldeuda from (";
             //            casos += "select CD.ctde_totaldeuda, CD.ctde_valorexigible,CD.ctde_diasmora as dias_mora ";
-            //            casos += "from GSBPO_CUENTA_DEUDOR CD INNER JOIN GSBPO_CLIENTE_DEUDOR CL ON CD.CLDE_CODIGO=CL.CLDE_CODIGO ";
+            //            casos += "from SoftCob_CUENTA_DEUDOR CD INNER JOIN SoftCob_CLIENTE_DEUDOR CL ON CD.CLDE_CODIGO=CL.CLDE_CODIGO ";
             //            casos += "where CL.CPCE_CODIGO=" + ViewState["CodigoCPCE"].ToString() + " and CD.ctde_gestorasignado=";
             //            casos += ddlGestores.SelectedValue + " and CD.ctde_estado=1 and CL.clde_estado=1) res) tabla ";
             //            casos += "where isnull(rango_dias,'')!='' ";
             //            casos += "group by rango_dias order by rango_dias";
             //            sql = sql + casos;
-            //            dts = new ConsultaDatosDTO().funConsultaDatos(15, 0, 0, 0, sql, "", "", ViewState["Conectar"].ToString());
+            //            dts = new ConsultaDatosDTO().funConsultaDatos(15, 0, 0, 0, sql, "", "", Session["Conectar"].ToString());
             //            ViewState["BrenchDet"] = dts.Tables[0];
             //            grdvBrenchDet.DataSource = dts;
             //            grdvBrenchDet.DataBind();
@@ -137,7 +135,7 @@
                     DdlCatalogo.DataBind();
 
                     dts = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", 
-                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlGestores.DataSource = dts;
                     DdlGestores.DataTextField = "Descripcion";
                     DdlGestores.DataValueField = "Codigo";
@@ -209,7 +207,7 @@
                 }
 
                 dts = new ConsultaDatosDAO().FunConsultaDatos(133, 0, int.Parse(ViewState["CodigoCEDE"].ToString()),
-                    int.Parse(ViewState["CodigoCPCE"].ToString()), "", "", "", ViewState["Conectar"].ToString());
+                    int.Parse(ViewState["CodigoCPCE"].ToString()), "", "", "", Session["Conectar"].ToString());
 
                 if (dts.Tables[0].Rows.Count == 0)
                 {
@@ -223,7 +221,7 @@
                         "", dr["Operacion"].ToString(), "", dr["FechaPago"].ToString(), dr["ValorPago"].ToString().Replace(".", ","),
                         TxtFechaProceso.Text.Trim(), ViewState["MesName"].ToString(), "", "",
                         int.Parse(ViewState["Anio"].ToString()), int.Parse(ViewState["Mes"].ToString()), 0,
-                        int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
                     contador++;
                 }
 

@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -21,7 +20,6 @@
 
             if (!IsPostBack)
             {
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["FechaDesde"] = Request["FechaDesde"];
                 ViewState["FechaHasta"] = Request["FechaHasta"];
                 Lbltitulo.Text = "Administrar Bitacora";

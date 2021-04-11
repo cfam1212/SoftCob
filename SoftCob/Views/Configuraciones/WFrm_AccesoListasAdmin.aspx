@@ -146,7 +146,7 @@
                                 <h5>Todos:</h5>
                             </td>
                             <td>
-                                <asp:CheckBox ID="ChkTodos" runat="server" AutoPostBack="True" Checked="True" OnCheckedChanged="ChkTodos_CheckedChanged" TabIndex="2" />
+                                <asp:CheckBox ID="ChkTodos" runat="server" CssClass="form-control" AutoPostBack="True" Checked="True" OnCheckedChanged="ChkTodos_CheckedChanged" TabIndex="2" />
                             </td>
                             <td></td>
                         </tr>

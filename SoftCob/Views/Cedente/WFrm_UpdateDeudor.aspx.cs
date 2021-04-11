@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
     using System.Web.UI;
@@ -23,7 +22,6 @@
             if (!IsPostBack)
             {
                 TxtFechaNacimiento.Text = DateTime.Now.ToString("MM/dd/yyyy");
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoPERS"] = Request["CodigoPERS"];
                 TxtFechaNacimiento.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 Lbltitulo.Text = "Actualizar Cliente-Deudor";

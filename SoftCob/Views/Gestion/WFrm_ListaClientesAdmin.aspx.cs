@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
     using System.Web.UI;
@@ -30,7 +29,6 @@
                     Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
                 }
 
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["MesActual"] = DateTime.Today.Month;
                 ViewState["AnioActual"] = DateTime.Today.Year;
                 Lbltitulo.Text = "Lista de Clientes";
@@ -47,13 +45,13 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(155, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(155, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
                 _listaactiva = _dts.Tables[0].Rows[0][0].ToString();
 
                 if (_listaactiva == "SI")
                 {
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(82, int.Parse(Session["usuCodigo"].ToString()), 0, 0,
-                        "", "", "", ViewState["Conectar"].ToString());
+                        "", "", "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows[0]["codigoCPCE"].ToString() == "2") GrdvDatos.Columns[11].Visible = false;
 
@@ -78,7 +76,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(39, 0, int.Parse(Session["usuCodigo"].ToString()), 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(39, 0, int.Parse(Session["usuCodigo"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -87,7 +85,7 @@
 
                     if (int.Parse(_dts.Tables[0].Rows[0]["Codigo"].ToString()) > 0)
                     {
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(_dts.Tables[0].Rows[0]["Perscodigo"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString().ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(_dts.Tables[0].Rows[0]["Perscodigo"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString().ToString());
 
                         if (_dts.Tables[0].Rows.Count > 0)
                         {

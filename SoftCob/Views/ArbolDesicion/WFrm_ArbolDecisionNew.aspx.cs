@@ -35,7 +35,6 @@
 
                 if (!IsPostBack)
                 {
-                    Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     ViewState["CodigoCPCEaux"] = "";
                     Lbltitulo.Text = "Administrar Arbol Decision";
                     TrvCedenteArbol.Nodes.Clear();
@@ -875,7 +874,10 @@
                                 _descripcion = drcontacto["Descripcion"].ToString();
                                 _estado = drcontacto["Estado"].ToString();
 
-                                _dts = new ConsultaDatosDAO().FunNewArbolDecision(3, int.Parse(_codigocpce), int.Parse(_codigoaracnew), int.Parse(_codigoarefnew), int.Parse(_codigoarrenew), int.Parse(_codigoarco), _descripcion, _estado, "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
+                                _dts = new ConsultaDatosDAO().FunNewArbolDecision(3, int.Parse(_codigocpce), int.Parse(_codigoaracnew), 
+                                    int.Parse(_codigoarefnew), int.Parse(_codigoarrenew), int.Parse(_codigoarco), _descripcion, _estado,
+                                    "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), 
+                                    Session["MachineName"].ToString(), Session["Conectar"].ToString());
                             }
                         }
                     }

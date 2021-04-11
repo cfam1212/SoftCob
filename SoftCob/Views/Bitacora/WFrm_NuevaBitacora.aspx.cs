@@ -40,7 +40,6 @@
 
             if (!IsPostBack)
             {
-
                 ViewState["Bitacora"] = Request["Bitacora"];
                 ViewState["Estado"] = Request["Estado"];
                 ViewState["Fecha"] = Request["Fecha"];

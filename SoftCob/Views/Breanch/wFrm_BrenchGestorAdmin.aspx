@@ -140,7 +140,7 @@
                                 </td>
                                 <td colspan="2">
 
-                                    <asp:TextBox ID="TxtFechaPago" runat="server" TabIndex="10" Width="100%" Enabled="False"></asp:TextBox>
+                                    <asp:TextBox ID="TxtFechaPago" runat="server" CssClass="form-control" TabIndex="10" Width="100%" Enabled="False"></asp:TextBox>
 
                                 </td>
                                 <td colspan="3"></td>

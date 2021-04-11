@@ -154,7 +154,7 @@
                     <ContentTemplate>
                         <table style="width: 100%">
                             <tr>
-                                <td style="text-align: right; width: 45%">&nbsp;</td>
+                                <td style="text-align: right; width: 45%"></td>
                                 <td style="width: 10%"></td>
                                 <td style="text-align: left; width: 45%">
                                     <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" TabIndex="5" OnClick="BtnSalir_Click" />

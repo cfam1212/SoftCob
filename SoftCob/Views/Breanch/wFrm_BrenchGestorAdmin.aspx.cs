@@ -1,17 +1,16 @@
 ﻿
 namespace SoftCob.Views.Breanch
 {
+    using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
+    using System.IO;
     using System.Linq;
     using System.Threading;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using System.IO;
-    using ClosedXML.Excel;
 
     public partial class wFrm_BrenchGestorAdmin : Page
     {
@@ -46,7 +45,6 @@ namespace SoftCob.Views.Breanch
             {
                 TxtFechaPago.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 ViewState["Procesado"] = "NO";
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 FunCargarCombos(0);
                 ViewState["Anio"] = DateTime.Now.Year.ToString();
                 ViewState["MesName"] = DateTime.Now.ToString("MMMM", CultureInfo.InvariantCulture).ToUpper();

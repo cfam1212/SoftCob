@@ -113,6 +113,11 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td colspan="6">
+                                    <asp:Panel ID="Panel1" runat="server" Height="10px"></asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td></td>
                                 <td>
                                     <h5>Gestor:</h5>

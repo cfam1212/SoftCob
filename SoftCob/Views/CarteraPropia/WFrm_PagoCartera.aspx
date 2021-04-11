@@ -149,7 +149,7 @@
                                         <h5>No. Documento:</h5>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TxtBuscarPor" runat="server" MaxLength="20" TabIndex="5" Width="100%"></asp:TextBox>
+                                        <asp:TextBox ID="TxtBuscarPor" runat="server" CssClass="form-control" MaxLength="20" TabIndex="5" Width="100%"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -275,7 +275,7 @@
                                             <h5>Fecha Pago:</h5>
                                         </td>
                                         <td style="width: 30%">
-                                            <asp:TextBox ID="TxtFechaPago" runat="server" Width="100%" TabIndex="8"></asp:TextBox>
+                                            <asp:TextBox ID="TxtFechaPago" CssClass="form-control" runat="server" Width="100%" TabIndex="8"></asp:TextBox>
                                         </td>
                                         <td style="width: 15%"></td>
                                         <td style="width: 30%"></td>
@@ -287,13 +287,13 @@
                                             <h5>Valor:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtValor" runat="server" CssClass="alinearDerecha" MaxLength="10" Width="100%" TabIndex="9"></asp:TextBox>
+                                            <asp:TextBox ID="TxtValor" runat="server" CssClass="form-control alinearDerecha" MaxLength="10" Width="100%" TabIndex="9"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
                                             <h5>No. Documento:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtDocumento" runat="server" MaxLength="50" Width="100%" TabIndex="10"></asp:TextBox>
+                                            <asp:TextBox ID="TxtDocumento" runat="server" CssClass="form-control" MaxLength="50" Width="100%" TabIndex="10"></asp:TextBox>
                                         </td>
                                         <td></td>
                                     </tr>

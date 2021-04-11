@@ -3,7 +3,6 @@
     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Drawing;
     using System.IO;
@@ -41,7 +40,6 @@
                     ViewState["Gestor"] = Request["Gestor"];
                     ViewState["Consultar"] = "0";
                     ViewState["Estado"] = Request["Estado"];
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Lbltitulo.Text = "Tablero de Control Monitoreo Listas << " + ViewState["Catalogo"].ToString() + " >>";
                     FunCargarMantenimiento();
                 }
@@ -62,7 +60,7 @@
                     int.Parse(ViewState["CodigoCEDE"].ToString()), int.Parse(ViewState["CodigoCPCE"].ToString()),
                     0, 0, 0, 0, ViewState["FechaDesde"].ToString(), ViewState["FechaHasta"].ToString(),
                     int.Parse(ViewState["Gestor"].ToString()), "", "", "", int.Parse(ViewState["Estado"].ToString()), 0, 0,
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 _dtb = _dts.Tables[0];
 
@@ -72,7 +70,7 @@
                         int.Parse(ViewState["CodigoCPCE"].ToString()), int.Parse(drfila["CodigoLista"].ToString()),
                         0, 0, 0, ViewState["FechaDesde"].ToString(), ViewState["FechaHasta"].ToString(),
                         int.Parse(drfila["CodigoGestor"].ToString()), "", "", "", 0, 0, 0,
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
 
                     _resultado = _dtb.Select("CodigoLista='" + drfila["CodigoLista"].ToString() + "' and CodigoGestor='" +
                         drfila["CodigoGestor"].ToString() + "'").FirstOrDefault();

@@ -119,13 +119,13 @@
                                     <h5>Cedente:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtCedente" runat="server" Width="100%" MaxLength="150" CssClass="upperCase" TabIndex="3"></asp:TextBox>
+                                    <asp:TextBox ID="TxtCedente" runat="server" Width="100%" MaxLength="150" CssClass="form-control upperCase" TabIndex="3"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5>RUC:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtRuc" runat="server" Width="100%" MaxLength="13" TabIndex="4"></asp:TextBox>
+                                    <asp:TextBox ID="TxtRuc" runat="server" CssClass="form-control" Width="100%" MaxLength="13" TabIndex="4"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>
@@ -135,7 +135,7 @@
                                     <h5>Dirección:</h5>
                                 </td>
                                 <td colspan="3">
-                                    <asp:TextBox ID="TxtDireccion" runat="server" onkeydown="return (event.keyCode!=13);" Width="100%" MaxLength="80" CssClass="upperCase" TextMode="MultiLine" Height="40px" TabIndex="5"></asp:TextBox>
+                                    <asp:TextBox ID="TxtDireccion" runat="server" onkeydown="return (event.keyCode!=13);" Width="100%" MaxLength="80" CssClass="form-control upperCase" TextMode="MultiLine" Height="40px" TabIndex="5"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>
@@ -145,7 +145,7 @@
                                     <h5>Telefono_1:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtTelefono1" runat="server" Width="100%" MaxLength="10" TabIndex="6"></asp:TextBox>
+                                    <asp:TextBox ID="TxtTelefono1" runat="server" CssClass="form-control" Width="100%" MaxLength="10" TabIndex="6"></asp:TextBox>
                                     <asp:FilteredTextBoxExtender ID="txtTelefono1_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtTelefono1">
                                     </asp:FilteredTextBoxExtender>
                                 </td>
@@ -153,7 +153,7 @@
                                     <h5>Teléfono_2:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtTelefono2" runat="server" Width="100%" MaxLength="10" TabIndex="7"></asp:TextBox>
+                                    <asp:TextBox ID="TxtTelefono2" runat="server" CssClass="form-control" Width="100%" MaxLength="10" TabIndex="7"></asp:TextBox>
                                     <asp:FilteredTextBoxExtender ID="txtTelefono2_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtTelefono2">
                                     </asp:FilteredTextBoxExtender>
                                 </td>
@@ -165,7 +165,7 @@
                                     <h5>Fax:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtFax" runat="server" Width="100%" MaxLength="10" TabIndex="8"></asp:TextBox>
+                                    <asp:TextBox ID="TxtFax" runat="server" CssClass="form-control" Width="100%" MaxLength="10" TabIndex="8"></asp:TextBox>
                                     <asp:FilteredTextBoxExtender ID="txtFax_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtFax">
                                     </asp:FilteredTextBoxExtender>
                                 </td>
@@ -173,7 +173,7 @@
                                     <h5>URL:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtUrl" runat="server" Width="100%" MaxLength="80" TabIndex="9"></asp:TextBox>
+                                    <asp:TextBox ID="TxtUrl" runat="server" CssClass="form-control" Width="100%" MaxLength="80" TabIndex="9"></asp:TextBox>
                                     <asp:FilteredTextBoxExtender ID="txtUrl_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtUrl">
                                     </asp:FilteredTextBoxExtender>
                                 </td>
@@ -232,13 +232,13 @@
                                             <h5>Contacto:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtContacto" runat="server" CssClass="upperCase" MaxLength="150" Width="100%" TabIndex="11"></asp:TextBox>
+                                            <asp:TextBox ID="TxtContacto" runat="server" CssClass="form-control upperCase" MaxLength="150" Width="100%" TabIndex="11"></asp:TextBox>
                                         </td>
                                         <td>
                                             <h5>Cargo:</h5>
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="DdlCargo" runat="server" CssClass="form-control" Width="100%" TabIndex="12">
+                                            <asp:DropDownList ID="DdlCargo" runat="server" CssClass="form-control form-control" Width="100%" TabIndex="12">
                                             </asp:DropDownList>
                                         </td>
                                         <td></td>
@@ -249,14 +249,13 @@
                                             <h5>Ext:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtExt" runat="server" MaxLength="10" Width="100%" TabIndex="13"></asp:TextBox>
+                                            <asp:TextBox ID="TxtExt" runat="server" CssClass="form-control" MaxLength="10" Width="100%" TabIndex="13"></asp:TextBox>
                                         </td>
                                         <td>
                                             <h5>Celular:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtCelular" runat="server" MaxLength="10" Width="100%" TabIndex="14"></asp:TextBox>
-
+                                            <asp:TextBox ID="TxtCelular" runat="server" CssClass="form-control" MaxLength="10" Width="100%" TabIndex="14"></asp:TextBox>
                                             <asp:FilteredTextBoxExtender ID="txtCelular_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtCelular">
                                             </asp:FilteredTextBoxExtender>
 
@@ -271,13 +270,13 @@
                                             <h5>Email_1:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtEmail1" runat="server" CssClass="lowCase" MaxLength="80" Width="100%" TabIndex="15"></asp:TextBox>
+                                            <asp:TextBox ID="TxtEmail1" runat="server" CssClass="form-control lowCase" MaxLength="80" Width="100%" TabIndex="15"></asp:TextBox>
                                         </td>
                                         <td>
                                             <h5>Email_2:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtEmail2" runat="server" CssClass="lowCase" MaxLength="80" Width="100%" TabIndex="16"></asp:TextBox>
+                                            <asp:TextBox ID="TxtEmail2" runat="server" CssClass="form-control lowCase" MaxLength="80" Width="100%" TabIndex="16"></asp:TextBox>
 
                                         </td>
                                         <td style="text-align: center">
@@ -350,7 +349,7 @@
                                             <h5>Producto:</h5>
                                         </td>
                                         <td colspan="3">
-                                            <asp:TextBox ID="TxtProducto" runat="server" CssClass="upperCase" MaxLength="150" Width="100%" TabIndex="20"></asp:TextBox>
+                                            <asp:TextBox ID="TxtProducto" runat="server" CssClass="form-control upperCase" MaxLength="150" Width="100%" TabIndex="20"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
                                             <asp:ImageButton ID="ImgNewProducto" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="22" OnClick="ImgNewProducto_Click" />
@@ -362,7 +361,7 @@
                                             <h5>Descripción:</h5>
                                         </td>
                                         <td colspan="3">
-                                            <asp:TextBox ID="TxtDescripcion" runat="server" CssClass="upperCase" MaxLength="250" Width="100%" Height="50px" TextMode="MultiLine" TabIndex="21"></asp:TextBox>
+                                            <asp:TextBox ID="TxtDescripcion" runat="server" CssClass="form-control upperCase" MaxLength="250" Width="100%" Height="50px" TextMode="MultiLine" TabIndex="21"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
                                             <asp:ImageButton ID="ImgEditarProducto" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" TabIndex="23" OnClick="ImgEditarProducto_Click" />
@@ -442,7 +441,7 @@
                                             <h5>Producto:</h5>
                                         </td>
                                         <td colspan="3">
-                                            <asp:DropDownList ID="DdlProducto" runat="server" CssClass="form-control" Width="100%" TabIndex="25">
+                                            <asp:DropDownList ID="DdlProducto" runat="server" CssClass="form-control form-control" Width="100%" TabIndex="25">
                                             </asp:DropDownList>
                                         </td>
                                         <td></td>
@@ -453,13 +452,13 @@
                                             <h5>Código Catálogo:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtCodigoProd" runat="server" CssClass="upperCase" MaxLength="10" Width="100%" TabIndex="26"></asp:TextBox>
+                                            <asp:TextBox ID="TxtCodigoProd" runat="server" CssClass="form-control upperCase" MaxLength="10" Width="100%" TabIndex="26"></asp:TextBox>
                                         </td>
                                         <td>
                                             <h5>Catálogo Producto:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtCatalgoProducto" runat="server" CssClass="upperCase" MaxLength="250" Width="100%" TabIndex="27"></asp:TextBox>
+                                            <asp:TextBox ID="TxtCatalgoProducto" runat="server" CssClass="form-control upperCase" MaxLength="250" Width="100%" TabIndex="27"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
                                             <asp:ImageButton ID="ImgNewCatalogo" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="30" OnClick="ImgNewCatalogo_Click" />
@@ -471,13 +470,13 @@
                                             <h5>Código Familia:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtCodigoFamilia" runat="server" CssClass="upperCase" MaxLength="10" Width="100%" TabIndex="28"></asp:TextBox>
+                                            <asp:TextBox ID="TxtCodigoFamilia" runat="server" CssClass="form-control upperCase" MaxLength="10" Width="100%" TabIndex="28"></asp:TextBox>
                                         </td>
                                         <td>
                                             <h5>Familia:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtFamilia" runat="server" CssClass="upperCase" MaxLength="250" Width="100%" TabIndex="29"></asp:TextBox>
+                                            <asp:TextBox ID="TxtFamilia" runat="server" CssClass="form-control upperCase" MaxLength="250" Width="100%" TabIndex="29"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
                                             <asp:ImageButton ID="ImgEditarCatalogo" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" TabIndex="31" OnClick="ImgEditarCatalogo_Click" />
@@ -565,13 +564,13 @@
                                             <h5>Código:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtCodigoAgencia" runat="server" CssClass="upperCase" MaxLength="10" Width="100%" TabIndex="33"></asp:TextBox>
+                                            <asp:TextBox ID="TxtCodigoAgencia" runat="server" CssClass="form-control upperCase" MaxLength="10" Width="100%" TabIndex="33"></asp:TextBox>
                                         </td>
                                         <td>
                                             <h5>Agencia:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtAgencia" runat="server" CssClass="upperCase" MaxLength="250" Width="100%" TabIndex="34"></asp:TextBox>
+                                            <asp:TextBox ID="TxtAgencia" runat="server" CssClass="form-control upperCase" MaxLength="250" Width="100%" TabIndex="34"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
                                             <asp:ImageButton ID="ImgNewAgencia" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="37" OnClick="ImgNewAgencia_Click" />

@@ -2,11 +2,10 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
-    using System.Web.UI.WebControls;
     using System.Web.UI;
+    using System.Web.UI.WebControls;
     public partial class WFrm_MonitoreoLstAdmin : Page
     {
         #region Variables
@@ -26,7 +25,6 @@
                 ViewState["FechaDesde"] = Request["FechaDesde"];
                 ViewState["FechaHasta"] = Request["FechaHasta"];
                 ViewState["Gestor"] = Request["Gestor"];
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 TxtFechaIni.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 Lbltitulo.Text = "Tablero de Control - Monitoreo de Listas de Trabajo";
@@ -58,7 +56,7 @@
 
                     break;
                 case 1:
-                    _dts = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                    _dts = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlGestores.DataSource = _dts;
                     DdlGestores.DataTextField = "Descripcion";
                     DdlGestores.DataValueField = "Codigo";
@@ -137,7 +135,7 @@
                 _dts = new ConsultaDatosDAO().FunGetMonitoreoAdmin(_tipoc, int.Parse(DdlCedente.SelectedValue),
                     int.Parse(DdlCatalogo.SelectedValue), 0, 0, 0, 0, TxtFechaIni.Text, TxtFechaFin.Text,
                     int.Parse(DdlGestores.SelectedValue), "", "", "", int.Parse(DdlEstado.SelectedValue), 0, 0,
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 if (DdlGestores.SelectedValue != "0") _tipo = 1;
 

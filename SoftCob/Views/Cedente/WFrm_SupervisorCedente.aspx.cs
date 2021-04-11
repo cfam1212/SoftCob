@@ -231,7 +231,8 @@
                             .Max(row => int.Parse((string)row["CodigoSupervisor"]));
                     else _maxcodigo = 0;
 
-                    _result = _dtbbuscar.Select("CedenteCodigo='" + DdlCedente.SelectedValue + "' and UsuarioCodigo='" + DdlSupervisor.SelectedValue + "'").FirstOrDefault();
+                    _result = _dtbbuscar.Select("CedenteCodigo='" + DdlCedente.SelectedValue + "' and UsuarioCodigo='" + 
+                        DdlSupervisor.SelectedValue + "'").FirstOrDefault();
 
                     if (_result != null) _existe = true;
                 }

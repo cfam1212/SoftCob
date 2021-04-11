@@ -3,7 +3,6 @@
     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
     using System.IO;
@@ -31,7 +30,6 @@
             scriptManager.RegisterPostBackControl(this.ImgExportar2);
             if (!IsPostBack)
             {
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 TxtFechaInicio.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 Lbltitulo.Text = "Monitoreo - Tiempos - Gestión - Llamada";
@@ -62,7 +60,7 @@
                     DdlCatalogo.Items.Add(_itemc);
 
                     _dts = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", int.Parse(DdlCedente.SelectedValue),
-                        0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlGestores.DataSource = _dts;
                     DdlGestores.DataTextField = "Descripcion";
                     DdlGestores.DataValueField = "Codigo";
@@ -75,7 +73,7 @@
                     GrdvMaxLlamada.DataBind();
                     GrdvLogueos.DataSource = null;
                     GrdvLogueos.DataBind();
-                    _dts = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                    _dts = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlGestores.DataSource = _dts;
                     DdlGestores.DataTextField = "Descripcion";
                     DdlGestores.DataValueField = "Codigo";
@@ -254,14 +252,14 @@
                     return;
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(99, int.Parse(DdlGestores.SelectedValue), 0, 0, "", TxtFechaInicio.Text, TxtFechaFin.Text, ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(99, int.Parse(DdlGestores.SelectedValue), 0, 0, "", TxtFechaInicio.Text, TxtFechaFin.Text, Session["Conectar"].ToString());
                 GrdvLogueos.DataSource = _dts;
                 GrdvLogueos.DataBind();
                 ViewState["GrdvLogueo"] = _dts.Tables[0];
 
                 if (_dts.Tables[0].Rows.Count > 0) ImgExportar.Visible = true;
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(100, int.Parse(DdlGestores.SelectedValue), 0, 0, "", TxtFechaInicio.Text, TxtFechaFin.Text, ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(100, int.Parse(DdlGestores.SelectedValue), 0, 0, "", TxtFechaInicio.Text, TxtFechaFin.Text, Session["Conectar"].ToString());
 
                 GrdvEfectivas.DataSource = _dts.Tables[0];
                 GrdvEfectivas.DataBind();

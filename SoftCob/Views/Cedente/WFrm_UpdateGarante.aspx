@@ -174,7 +174,7 @@
                                     <h5>No. Documento:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtNumeroDocumento" runat="server" AutoPostBack="True" CssClass="upperCase" MaxLength="10" TabIndex="1" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="TxtNumeroDocumento" runat="server" AutoPostBack="True" CssClass="form-control upperCase" MaxLength="10" TabIndex="1" Width="100%"></asp:TextBox>
                                     <asp:FilteredTextBoxExtender ID="TxtNumeroDocumento_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="TxtNumeroDocumento">
                                     </asp:FilteredTextBoxExtender>
                                 </td>
@@ -182,7 +182,7 @@
                                     <h5>Nombres:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtNombres" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="2" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="TxtNombres" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="2" Width="100%"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>
@@ -201,7 +201,7 @@
                                     <h5>Operación:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtOperacion" runat="server" Width="100%" CssClass="upperCase" MaxLength="50" TabIndex="4"></asp:TextBox>
+                                    <asp:TextBox ID="TxtOperacion" runat="server" Width="100%" CssClass="form-control" MaxLength="50" TabIndex="4"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>
@@ -211,13 +211,13 @@
                                     <h5>Email Personal:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtMailPersonal" runat="server" CssClass="lowCase" MaxLength="100" TabIndex="5" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="TxtMailPersonal" runat="server" CssClass="form-control lowCase" MaxLength="100" TabIndex="5" Width="100%"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5>Email Empresa:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtMailEmpresa" runat="server" CssClass="lowCase" MaxLength="100" TabIndex="6" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="TxtMailEmpresa" runat="server" CssClass="form-control lowCase" MaxLength="100" TabIndex="6" Width="100%"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>
@@ -227,13 +227,13 @@
                                     <h5>Dir.Domicilio:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtDirDomicilio" runat="server" CssClass="upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="7" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="TxtDirDomicilio" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="7" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5>Ref.Domicilio:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtRefDomicilio" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" Height="50px" MaxLength="150" TabIndex="8" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="TxtRefDomicilio" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Height="50px" MaxLength="150" TabIndex="8" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>
@@ -243,13 +243,13 @@
                                     <h5>Dir.Trabajo:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtDirTrabajo" runat="server" CssClass="upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="9" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="TxtDirTrabajo" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="9" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5>Ref.Trabajo:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtRefTrabajo" runat="server" CssClass="upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="10" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="TxtRefTrabajo" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="10" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>

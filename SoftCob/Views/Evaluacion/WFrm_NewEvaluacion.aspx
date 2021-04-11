@@ -148,13 +148,13 @@
                                                     <h5>Evaluación:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtEvaluacion" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="1" Width="100%"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtEvaluacion" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="1" Width="100%"></asp:TextBox>
                                                 </td>
                                                 <td>
                                                     <h5>Descripción:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" Height="50px" MaxLength="250" TextMode="MultiLine" Width="100%" TabIndex="2"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Height="50px" MaxLength="250" TextMode="MultiLine" Width="100%" TabIndex="2"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -162,13 +162,13 @@
                                                     <h5>Fecha Inicio:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtFechaInicio" runat="server" Width="100%" TabIndex="3"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtFechaInicio" runat="server" CssClass="form-control" Width="100%" TabIndex="3"></asp:TextBox>
                                                 </td>
                                                 <td>
                                                     <h5>Fecha Fin:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtFechaFin" runat="server" Width="100%" TabIndex="4"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtFechaFin" runat="server" CssClass="form-control" Width="100%" TabIndex="4"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -176,7 +176,7 @@
                                                     <h5 runat="server" id="LblEstado" visible="false">Estado:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:CheckBox ID="ChkEstado" runat="server" AutoPostBack="True" Checked="True" OnCheckedChanged="ChkEstado_CheckedChanged" TabIndex="5" Visible="False" Text="Activo" />
+                                                    <asp:CheckBox ID="ChkEstado" runat="server" CssClass="form-control" AutoPostBack="True" Checked="True" OnCheckedChanged="ChkEstado_CheckedChanged" TabIndex="5" Visible="False" Text="Activo" />
                                                 </td>
                                                 <td></td>
                                                 <td></td>

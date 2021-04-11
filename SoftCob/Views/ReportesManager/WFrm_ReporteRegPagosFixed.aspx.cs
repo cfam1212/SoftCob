@@ -3,7 +3,6 @@
     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.IO;
     using System.Web.UI;
@@ -30,7 +29,6 @@
                     ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
                     ViewState["FechaDesde"] = Request["FechaDesde"];
                     ViewState["FechaHasta"] = Request["FechaHasta"];
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Lbltitulo.Text = "Reporte Pagos Cartera << " + ViewState["FechaDesde"].ToString() + " - " + ViewState["FechaHasta"].ToString();
                     FunCargarMantenimiento();
                 }
@@ -48,7 +46,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(139, int.Parse(ViewState["CodigoCPCE"].ToString()), int.Parse(Session["usuCodigo"].ToString()),
-                    0, "", ViewState["FechaDesde"].ToString(), ViewState["FechaHasta"].ToString(), ViewState["Conectar"].ToString());
+                    0, "", ViewState["FechaDesde"].ToString(), ViewState["FechaHasta"].ToString(), Session["Conectar"].ToString());
                 ViewState["GrdvDatos"] = _dts.Tables[1];
                 GrdvDatos.DataSource = _dts.Tables[1];
                 GrdvDatos.DataBind();

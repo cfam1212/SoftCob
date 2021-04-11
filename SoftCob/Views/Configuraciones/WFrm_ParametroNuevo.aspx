@@ -99,7 +99,7 @@
                                             <h5>Parámetro:</h5>
                                         </td>
                                         <td style="width: 45%">
-                                            <asp:TextBox ID="TxtParametro" runat="server" Width="100%" CssClass="upperCase" MaxLength="80" TabIndex="1"></asp:TextBox>
+                                            <asp:TextBox ID="TxtParametro" runat="server" Width="100%" CssClass="form-control upperCase" MaxLength="80" TabIndex="1"></asp:TextBox>
                                         </td>
                                         <td style="width: 15%"></td>
                                         <td style="width: 10%"></td>
@@ -110,7 +110,7 @@
                                             <h5>Descripción:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" Width="100%" CssClass="upperCase" MaxLength="80" Height="50px" TextMode="MultiLine" TabIndex="2"></asp:TextBox>
+                                            <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" Width="100%" CssClass="form-control upperCase" MaxLength="80" Height="50px" TextMode="MultiLine" TabIndex="2"></asp:TextBox>
                                         </td>
                                         <td></td>
                                         <td></td>
@@ -141,7 +141,7 @@
                                             <h5>Detalle:</h5>
                                         </td>
                                         <td style="width: 55%">
-                                            <asp:TextBox ID="TxtDetalle" runat="server" Width="100%" CssClass="upperCase" MaxLength="80" TabIndex="4"></asp:TextBox>
+                                            <asp:TextBox ID="TxtDetalle" runat="server" Width="100%" CssClass="form-control upperCase" MaxLength="80" TabIndex="4"></asp:TextBox>
                                         </td>
                                         <td style="width: 15%; text-align: center;">
                                             <asp:ImageButton ID="ImgAgregar" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAgregar_Click" TabIndex="8" />
@@ -154,7 +154,7 @@
                                             <h5>Valor Varchar:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtValorV" runat="server" Width="100%" MaxLength="80" TabIndex="5"></asp:TextBox>
+                                            <asp:TextBox ID="TxtValorV" runat="server" CssClass="form-control" Width="100%" MaxLength="80" TabIndex="5"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
                                             <asp:ImageButton ID="ImgModificar" runat="server" Enabled="False" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModificar_Click" TabIndex="9" />
@@ -167,7 +167,7 @@
                                             <h5>Valor Entero:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtValorI" runat="server" CssClass="upperCase" MaxLength="8" Width="100%" TabIndex="6"></asp:TextBox>
+                                            <asp:TextBox ID="TxtValorI" runat="server" CssClass="form-control upperCase" MaxLength="8" Width="100%" TabIndex="6"></asp:TextBox>
                                             <asp:FilteredTextBoxExtender ID="txtValorI_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtValorI">
                                             </asp:FilteredTextBoxExtender>
                                         </td>

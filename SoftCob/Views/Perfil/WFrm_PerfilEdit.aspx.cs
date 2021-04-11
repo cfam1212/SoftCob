@@ -81,8 +81,8 @@
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();
 
-                GrdvDatos.UseAccessibleHeader = true;
-                GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                //GrdvDatos.UseAccessibleHeader = true;
+                //GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
 
             }
             catch (Exception ex)
@@ -177,8 +177,8 @@
                 _codigometa = int.Parse(GrdvDatos.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatosNew(14, int.Parse(Session["CodigoEMPR"].ToString()),
-                    "", _chkagre.Checked ? "SI" : "NO", "", "", "", "", int.Parse(ViewState["CodigoPERF"].ToString()), _codigometa, 0, 0, 0, 0,
-                    Session["Conectar"].ToString());
+                    "", _chkagre.Checked ? "SI" : "NO", "", "", "", "", int.Parse(ViewState["CodigoPERF"].ToString()), _codigometa, 0,
+                    0, 0, 0, Session["Conectar"].ToString());
 
                 FunCargaMantenimiento();
             }

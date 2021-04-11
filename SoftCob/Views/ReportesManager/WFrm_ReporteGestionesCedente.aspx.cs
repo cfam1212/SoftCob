@@ -28,8 +28,7 @@
                 scriptManager.RegisterPostBackControl(this.ImgExportar);
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(52, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(52, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
                     ViewState["CodigoCEDE"] = _dts.Tables[0].Rows[0]["Codigo"].ToString();
                     ViewState["CodigoCPCE"] = _dts.Tables[0].Rows[0]["CodigoCPCE"].ToString();
                     TxtFechaIni.Text = DateTime.Now.ToString("MM/dd/yyyy");
@@ -53,7 +52,7 @@
             {
                 case 0:
                     DdlGestor.DataSource = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", 
-                        int.Parse(ViewState["CodigoCEDE"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        int.Parse(ViewState["CodigoCEDE"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlGestor.DataTextField = "Descripcion";
                     DdlGestor.DataValueField = "Codigo";
                     DdlGestor.DataBind();
@@ -106,7 +105,7 @@
                 _dts = new ConsultaDatosDAO().FunGetRerporteGestiones(0, int.Parse(ViewState["CodigoCEDE"].ToString()),
                     int.Parse(ViewState["CodigoCPCE"].ToString()), ViewState["FechaDesde"].ToString(),
                     ViewState["FechaHasta"].ToString(), ViewState["BuscarPor"].ToString(), ViewState["Criterio"].ToString(),
-                    "", "", int.Parse(ViewState["Gestor"].ToString()), 0, ViewState["Conectar"].ToString());
+                    "", "", int.Parse(ViewState["Gestor"].ToString()), 0, Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {

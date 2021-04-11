@@ -139,7 +139,7 @@
                                                                     <h5 runat="server" id="LblArbol" visible="false">Arbol:</h5>
                                                                 </td>
                                                                 <td colspan="2">
-                                                                    <asp:TextBox ID="TxtArbol" runat="server" CssClass="upperCase" MaxLength="250" TabIndex="3" Width="100%" Visible="False"></asp:TextBox>
+                                                                    <asp:TextBox ID="TxtArbol" runat="server" CssClass="form-control upperCase" MaxLength="250" TabIndex="3" Width="100%" Visible="False"></asp:TextBox>
                                                                 </td>
                                                                 <td style="text-align: center">
                                                                     <asp:ImageButton ID="ImgModificar" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModificar_Click" TabIndex="4" Visible="False" />
@@ -177,7 +177,7 @@
                                                                     <h5 runat="server" id="LblDescripcion">Descripción</h5>
                                                                 </td>
                                                                 <td colspan="2">
-                                                                    <asp:TextBox ID="TxtDescripcion" runat="server" MaxLength="250" CssClass="upperCase" TabIndex="6" Width="100%"></asp:TextBox>
+                                                                    <asp:TextBox ID="TxtDescripcion" runat="server" MaxLength="250" CssClass="form-control upperCase" TabIndex="6" Width="100%"></asp:TextBox>
                                                                 </td>
                                                                 <td></td>
                                                             </tr>

@@ -3,7 +3,6 @@
     using ControllerSoftCob;
     using ModeloSoftCob;
     using System;
-    using System.Collections.Generic;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -38,19 +37,16 @@
         {
             SoftCob_MENU _menu = new ControllerDAO().FunGetMenuPorID(int.Parse(ViewState["CodigoMENU"].ToString()),
                 int.Parse(Session["CodigoEMPR"].ToString()));
+
             TxtNombreMenu.Text = _menu.menu_descripcion;
             ChkEstado.Checked = _menu.menu_estado;
             ChkEstado.Text = _menu.menu_estado ? "Activo" : "Inactivo";
             ViewState["NombreMenu"] = TxtNombreMenu.Text;
 
-            List<MenuNewDTO> _listamenuNew = new ControllerDAO().FunGetMenuNewEdit(int.Parse(ViewState["CodigoMENU"].ToString()),
+            _dts = new ControllerDAO().FunGetMenuNewEdit(int.Parse(ViewState["CodigoMENU"].ToString()),
                 int.Parse(Session["CodigoEMPR"].ToString()));
-
-            _dts = new FuncionesDAO().FunCambiarDataSet(_listamenuNew);
             
-            DataView _dvw = _dts.Tables[0].DefaultView;
-            _dvw.Sort = "Orden Asc";
-            GrdvDatos.DataSource = _dvw;
+            GrdvDatos.DataSource = _dts;
             GrdvDatos.DataBind();
 
             GrdvDatos.UseAccessibleHeader = true;

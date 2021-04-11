@@ -192,7 +192,7 @@
                                         <h5>Colaborador:</h5>
                                     </td>
                                     <td colspan="2">
-                                        <asp:DropDownList ID="DdlGestor" runat="server" class="chzn-select" TabIndex="2" Width="100%">
+                                        <asp:DropDownList ID="DdlGestor" runat="server" class="form-control chzn-select" TabIndex="2" Width="100%">
                                         </asp:DropDownList>
                                     </td>
                                     <td></td>
@@ -241,7 +241,7 @@
                                                                 <h5>Descripción:</h5>
                                                             </td>
                                                             <td colspan="4">
-                                                                <asp:TextBox ID="TxtDescripAT" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="3" Width="100%"></asp:TextBox>
+                                                                <asp:TextBox ID="TxtDescripAT" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="3" Width="100%"></asp:TextBox>
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -251,7 +251,7 @@
                                                                 <h5>Hora:</h5>
                                                             </td>
                                                             <td>
-                                                                <asp:TextBox ID="TxtHoraAT" runat="server" MaxLength="9" TabIndex="4"></asp:TextBox><asp:MaskedEditExtender ID="TxtHoraAT_MaskedEditExtender" runat="server" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" Mask="99:99" MaskType="Time" TargetControlID="TxtHoraAT"></asp:MaskedEditExtender>
+                                                                <asp:TextBox ID="TxtHoraAT" runat="server" CssClass="form-control" MaxLength="9" TabIndex="4"></asp:TextBox><asp:MaskedEditExtender ID="TxtHoraAT_MaskedEditExtender" runat="server" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" Mask="99:99" MaskType="Time" TargetControlID="TxtHoraAT"></asp:MaskedEditExtender>
                                                             </td>
                                                             <td style="text-align: right">
                                                                 <asp:ImageButton ID="ImgAddAT" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddAT_Click" TabIndex="5" />
@@ -270,7 +270,7 @@
                                                                 <h5>Observación:</h5>
                                                             </td>
                                                             <td colspan="4">
-                                                                <asp:TextBox ID="TxtObservaAT" runat="server" CssClass="upperCase" MaxLength="250" TabIndex="8" Width="100%" Height="50px" onkeydown="return (event.keyCode!=13);" TextMode="MultiLine"></asp:TextBox></td>
+                                                                <asp:TextBox ID="TxtObservaAT" runat="server" CssClass="form-control upperCase" MaxLength="250" TabIndex="8" Width="100%" Height="50px" onkeydown="return (event.keyCode!=13);" TextMode="MultiLine"></asp:TextBox></td>
                                                             <td></td>
                                                         </tr>
                                                         <tr>
@@ -345,7 +345,7 @@
                                                             <td></td>
                                                             <td><h5>Descripción:</h5></td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtDescripFJ" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="10" Width="100%"></asp:TextBox>
+                                                                <asp:TextBox ID="TxtDescripFJ" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="10" Width="100%"></asp:TextBox>
                                                             </td>
                                                             <td></td>
                                                             <td></td>
@@ -356,7 +356,7 @@
                                                                 <h5>Observación:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtObservaFJ" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" MaxLength="250" TabIndex="11" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
+                                                                <asp:TextBox ID="TxtObservaFJ" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" MaxLength="250" TabIndex="11" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -448,7 +448,7 @@
                                                             <td></td>
                                                             <td><h5>Descripción:</h5></td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtDescripFI" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="16" Width="100%"></asp:TextBox>
+                                                                <asp:TextBox ID="TxtDescripFI" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="16" Width="100%"></asp:TextBox>
                                                             </td>
                                                             <td></td>
                                                             <td></td>
@@ -459,7 +459,7 @@
                                                                 <h5>Observación:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtObservaFI" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" MaxLength="250" TabIndex="17" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
+                                                                <asp:TextBox ID="TxtObservaFI" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" MaxLength="250" TabIndex="17" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -553,7 +553,7 @@
                                                                 <h5>Descripción:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtDescripPE" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="22" Width="100%"></asp:TextBox>
+                                                                <asp:TextBox ID="TxtDescripPE" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="22" Width="100%"></asp:TextBox>
                                                             </td>
                                                             <td></td>
                                                             <td></td>
@@ -564,7 +564,7 @@
                                                                 <h5>Fecha:</h5>
                                                             </td>
                                                             <td>
-                                                                <asp:TextBox ID="TxtFechaPE" runat="server" TabIndex="23" Width="100%"></asp:TextBox>
+                                                                <asp:TextBox ID="TxtFechaPE" runat="server" CssClass="form-control" TabIndex="23" Width="100%"></asp:TextBox>
                                                                 <asp:CalendarExtender ID="TxtFechaPE_CalendarExtender" runat="server" Enabled="True" Format="MM/dd/yyyy" TargetControlID="TxtFechaPE">
                                                                 </asp:CalendarExtender>
                                                             </td>
@@ -585,7 +585,7 @@
                                                                 <h5>Observación:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtObservaPE" runat="server" CssClass="upperCase" MaxLength="250" TabIndex="27" Width="100%" Height="50px" onkeydown="return (event.keyCode!=13);" TextMode="MultiLine"></asp:TextBox></td>
+                                                                <asp:TextBox ID="TxtObservaPE" runat="server" CssClass="form-control upperCase" MaxLength="250" TabIndex="27" Width="100%" Height="50px" onkeydown="return (event.keyCode!=13);" TextMode="MultiLine"></asp:TextBox></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -658,7 +658,7 @@
                                                                 <h5>Descripción:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtDescripCT" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="29" Width="100%"></asp:TextBox>
+                                                                <asp:TextBox ID="TxtDescripCT" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="29" Width="100%"></asp:TextBox>
                                                             </td>
                                                             <td></td>
                                                             <td></td>
@@ -696,7 +696,7 @@
                                                                 <h5>Observación:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtObservaCT" runat="server" CssClass="upperCase" TabIndex="35" Width="100%" MaxLength="250" Height="50px" onkeydown="return (event.keyCode!=13);" TextMode="MultiLine"></asp:TextBox></td>
+                                                                <asp:TextBox ID="TxtObservaCT" runat="server" CssClass="form-control upperCase" TabIndex="35" Width="100%" MaxLength="250" Height="50px" onkeydown="return (event.keyCode!=13);" TextMode="MultiLine"></asp:TextBox></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -774,7 +774,7 @@
                                                             <td></td>
                                                             <td><h5>Descripción:</h5></td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtDescripVA" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="37" Width="100%"></asp:TextBox>
+                                                                <asp:TextBox ID="TxtDescripVA" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="37" Width="100%"></asp:TextBox>
                                                             </td>
                                                             <td></td>
                                                             <td></td>
@@ -785,7 +785,7 @@
                                                                 <h5>Observación:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtObservaVA" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" MaxLength="250" TabIndex="38" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
+                                                                <asp:TextBox ID="TxtObservaVA" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" MaxLength="250" TabIndex="38" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -879,7 +879,7 @@
                                                                 <h5>Observación:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtObservaNV" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" MaxLength="250" TabIndex="44" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
+                                                                <asp:TextBox ID="TxtObservaNV" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" MaxLength="250" TabIndex="44" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -959,7 +959,7 @@
                                                             <td></td>
                                                             <td><h5>Descripción:</h5></td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtDescripRE" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="49" Width="100%"></asp:TextBox>
+                                                                <asp:TextBox ID="TxtDescripRE" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="49" Width="100%"></asp:TextBox>
                                                             </td>
                                                             <td></td>
                                                             <td></td>
@@ -970,7 +970,7 @@
                                                                 <h5>Observación:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtObservaRE" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" MaxLength="250" TabIndex="50" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
+                                                                <asp:TextBox ID="TxtObservaRE" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" MaxLength="250" TabIndex="50" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -1055,7 +1055,7 @@
                                                             <td></td>
                                                             <td><h5>Descripción:</h5></td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtDescripGT" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="55" Width="100%"></asp:TextBox>
+                                                                <asp:TextBox ID="TxtDescripGT" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="55" Width="100%"></asp:TextBox>
                                                             </td>
                                                             <td></td>
                                                             <td></td>
@@ -1066,7 +1066,7 @@
                                                                 <h5>Observación:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtObservaGT" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" MaxLength="250" TabIndex="56" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
+                                                                <asp:TextBox ID="TxtObservaGT" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" MaxLength="250" TabIndex="56" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -1146,7 +1146,7 @@
                                                             <td></td>
                                                             <td><h5>Descripción:</h5></td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtDescripNS" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="61" Width="100%"></asp:TextBox>
+                                                                <asp:TextBox ID="TxtDescripNS" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="61" Width="100%"></asp:TextBox>
                                                             </td>
                                                             <td></td>
                                                             <td></td>
@@ -1157,7 +1157,7 @@
                                                                 <h5>Observación:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtObservaNS" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" MaxLength="250" TabIndex="62" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
+                                                                <asp:TextBox ID="TxtObservaNS" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" MaxLength="250" TabIndex="62" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -1239,7 +1239,7 @@
                                                             <td></td>
                                                             <td><h5>Descripción:</h5></td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtDescripCP" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="67" Width="100%"></asp:TextBox>
+                                                                <asp:TextBox ID="TxtDescripCP" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="67" Width="100%"></asp:TextBox>
                                                             </td>
                                                             <td></td>
                                                             <td></td>
@@ -1250,7 +1250,7 @@
                                                                 <h5>Observación:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtObservaCP" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" MaxLength="250" TabIndex="68" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
+                                                                <asp:TextBox ID="TxtObservaCP" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" MaxLength="250" TabIndex="68" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -1330,7 +1330,7 @@
                                                             <td></td>
                                                             <td><h5>Descripción:</h5></td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtDescripAD" runat="server" CssClass="upperCase" MaxLength="150" TabIndex="73" Width="100%"></asp:TextBox>
+                                                                <asp:TextBox ID="TxtDescripAD" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="73" Width="100%"></asp:TextBox>
                                                             </td>
                                                             <td></td>
                                                             <td></td>
@@ -1341,7 +1341,7 @@
                                                                 <h5>Observación:</h5>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="TxtObservaAD" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" MaxLength="250" TabIndex="74" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
+                                                                <asp:TextBox ID="TxtObservaAD" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" MaxLength="250" TabIndex="74" Width="100%" TextMode="MultiLine" Height="50px"></asp:TextBox></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>

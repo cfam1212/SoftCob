@@ -86,7 +86,7 @@
                 ViewState["VerGestiones"] = "1";
                 ViewState["TiempoMarcado"] = ConfigurationManager.AppSettings["TiempoMarcado"];
                 ViewState["MinutosLlamar"] = ConfigurationManager.AppSettings["MinutosLlamar"];
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoCEDE"] = Request["CodigoCEDE"];
                 ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
                 ViewState["CodigoCLDE"] = Request["CodigoCLDE"];
@@ -104,10 +104,10 @@
                 _day = (int)DateTime.Now.DayOfWeek;
 
                 _dtsx = new ConsultaDatosDAO().FunConsultaDatos(220, 0, 0, 0, "", "ACCESO ARBOL", "",
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(232, int.Parse(ViewState["CodigoCEDE"].ToString()),
-                    int.Parse(Session["usuCodigo"].ToString()), 0, "", "", "", ViewState["Conectar"].ToString());
+                    int.Parse(Session["usuCodigo"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows[0][0].ToString() == "SI")
                 {
@@ -147,12 +147,12 @@
                     ImgComparar.Visible = true;
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(220, 0, 0, 0, "", "DIAS COMPARATIVO", "",
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
                         _dtsx = new ConsultaDatosDAO().FunConsultaDatos(224, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                            _day, int.Parse(Session["usuCodigo"].ToString()), "", "", "", ViewState["Conectar"].ToString());
+                            _day, int.Parse(Session["usuCodigo"].ToString()), "", "", "", Session["Conectar"].ToString());
 
                         if (_dtsx.Tables[0].Rows.Count == 0)
                         {
@@ -161,7 +161,7 @@
                                 if (_day == int.Parse(_drfila["ValirI"].ToString()))
                                 {
                                     _dts = new ConsultaDatosDAO().FunConsultaDatos(225, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                                        _day, int.Parse(Session["usuCodigo"].ToString()), "", "", "", ViewState["Conectar"].ToString());
+                                        _day, int.Parse(Session["usuCodigo"].ToString()), "", "", "", Session["Conectar"].ToString());
                                     _mostrarpopup = true;
                                     break;
                                 }
@@ -239,23 +239,23 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(213, int.Parse(Session["usuCodigo"].ToString()),
-                    int.Parse(ViewState["CodigoCPCE"].ToString()), 0, "", "", "", ViewState["Conectar"].ToString());
+                    int.Parse(ViewState["CodigoCPCE"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
                 GrdvBrenchGestor.DataSource = _dts;
                 GrdvBrenchGestor.DataBind();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(214, int.Parse(Session["usuCodigo"].ToString()),
-                    int.Parse(ViewState["CodigoCPCE"].ToString()), 0, "", "", "", ViewState["Conectar"].ToString());
+                    int.Parse(ViewState["CodigoCPCE"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
                 GrdvBrenchPago.DataSource = _dts;
                 GrdvBrenchPago.DataBind();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString().ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString().ToString());
                 GrdvDatosDeudor.DataSource = _dts;
                 GrdvDatosDeudor.DataBind();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(58, int.Parse(ViewState["CodigoCPCE"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString().ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(58, int.Parse(ViewState["CodigoCPCE"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString().ToString());
                 ViewState["Catalogo"] = _dts.Tables[0].Rows[0]["Descripcion"].ToString();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(33, int.Parse(ViewState["CodigoCEDE"].ToString()), int.Parse(ViewState["CodigoCPCE"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()), ViewState["Catalogo"].ToString(), "", "", ViewState["Conectar"].ToString().ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(33, int.Parse(ViewState["CodigoCEDE"].ToString()), int.Parse(ViewState["CodigoCPCE"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()), ViewState["Catalogo"].ToString(), "", "", Session["Conectar"].ToString().ToString());
 
                 ViewState["DatosObligacion"] = _dts.Tables[0];
                 GrdvDatos.DataSource = _dts;
@@ -263,7 +263,7 @@
 
                 //Datos Garante
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(45, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(), "",
-                    ViewState["Conectar"].ToString().ToString());
+                    Session["Conectar"].ToString().ToString());
                 GrdvDatosGarante.DataSource = _dts;
                 GrdvDatosGarante.DataBind();
 
@@ -271,10 +271,10 @@
                 else PnlDatosGarante.Visible = false;
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(141, int.Parse(ViewState["CodigoCEDE"].ToString()), int.Parse(Session["usuCodigo"].ToString()),
-                    int.Parse(ViewState["CodigoPERS"].ToString()), "", ViewState["NumeroDocumento"].ToString(), Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                    int.Parse(ViewState["CodigoPERS"].ToString()), "", ViewState["NumeroDocumento"].ToString(), Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(35, int.Parse(ViewState["CodigoCEDE"].ToString()), int.Parse(ViewState["CodigoPERS"].ToString()),
-                    int.Parse(ViewState["CodigoCLDE"].ToString()), "", "", "", ViewState["Conectar"].ToString());
+                    int.Parse(ViewState["CodigoCLDE"].ToString()), "", "", "", Session["Conectar"].ToString());
                 ViewState["TelefonosRegistrados"] = _dts.Tables[0];
                 GrdvTelefonos.DataSource = _dts;
                 GrdvTelefonos.DataBind();
@@ -584,9 +584,9 @@
         {
             try
             {
-                if (opcion == 0) _dts = new ConsultaDatosDAO().FunConsultaDatos(40, int.Parse(ViewState["CodigoCLDE"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                if (opcion == 0) _dts = new ConsultaDatosDAO().FunConsultaDatos(40, int.Parse(ViewState["CodigoCLDE"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
 
-                if (opcion == 1) _dts = new ConsultaDatosDAO().FunConsultaDatos(41, int.Parse(ViewState["CodigoCLDE"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                if (opcion == 1) _dts = new ConsultaDatosDAO().FunConsultaDatos(41, int.Parse(ViewState["CodigoCLDE"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
                 GrdvGestiones.DataSource = _dts;
                 GrdvGestiones.DataBind();
             }
@@ -635,7 +635,7 @@
                     _porcumplido = decimal.Parse(GrdvBrenchGestor.DataKeys[e.Row.RowIndex].Values["PorCumplido"].ToString());
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(216, int.Parse(ViewState["CodigoCPCE"].ToString()), 1,
-                        0, "", _porcumplido.ToString(), "", ViewState["Conectar"].ToString());
+                        0, "", _porcumplido.ToString(), "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -660,7 +660,7 @@
                     _porcumplido = decimal.Parse(GrdvBrenchPago.DataKeys[e.Row.RowIndex].Values["PorCumplido"].ToString());
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(216, int.Parse(ViewState["CodigoCPCE"].ToString()), 1,
-                        0, "", _porcumplido.ToString(), "", ViewState["Conectar"].ToString());
+                        0, "", _porcumplido.ToString(), "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -1216,7 +1216,7 @@
                         0, "0", int.Parse(Session["usuCodigo"].ToString()), DdlCitacion.SelectedItem.ToString(), "", "",
                         "", "", "", "", "", "", "", new byte[0], "", "", "", "", "", "0", 0, "", 0, DdlCitacion.SelectedValue,
                         "", "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                        Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
 
                 _dtbarbolrespuesta = (DataTable)ViewState["ArbolContactoEfectivo"];
@@ -1301,7 +1301,7 @@
                     _lintperfilactitudinal, _lintestilonegociacion, _lintmetaprograma, _lintmodalidad, _lintestadoyo,
                     _lintimpulsor, ViewState["Prefijo"].ToString(), _tipopago, TxtNumDocumento.Text.Trim(), "", 0, 0, 0,
                     0, _dtbgestion, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                    "sp_NewGestionEntrante", ViewState["Conectar"].ToString());
+                    "sp_NewGestionEntrante", Session["Conectar"].ToString());
 
                 if (_mensaje == "")
                 {
@@ -1472,7 +1472,7 @@
                 }
                 //validar si el telefono fue eliminado mas de dos veces
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(135, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "",
-                    DdlPrefijo.SelectedValue == "0" ? TxtTelefono.Text.Trim() : DdlPrefijo.SelectedValue + TxtTelefono.Text.Trim(), "", ViewState["Conectar"].ToString());
+                    DdlPrefijo.SelectedValue == "0" ? TxtTelefono.Text.Trim() : DdlPrefijo.SelectedValue + TxtTelefono.Text.Trim(), "", Session["Conectar"].ToString());
 
                 if (int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString()) >= 2)
                 {
@@ -1678,8 +1678,8 @@
                 ViewState["Propietario"] = "";
                 ViewState["TipoTelefono"] = "";
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(142, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
-                    _sufijo + _telefonoctc, ViewState["Conectar"].ToString());
-                new ConsultaDatosDAO().FunConsultaDatos(88, int.Parse(ViewState["CodigoCEDE"].ToString()), int.Parse(ViewState["CodigoPERS"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()), DdlAccionDel.SelectedItem.ToString() + " - " + DdlRespuestaDel.SelectedItem.ToString(), _sufijo + _telefonoctc, Session["usuCodigo"].ToString(), ViewState["Conectar"].ToString());
+                    _sufijo + _telefonoctc, Session["Conectar"].ToString());
+                new ConsultaDatosDAO().FunConsultaDatos(88, int.Parse(ViewState["CodigoCEDE"].ToString()), int.Parse(ViewState["CodigoPERS"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()), DdlAccionDel.SelectedItem.ToString() + " - " + DdlRespuestaDel.SelectedItem.ToString(), _sufijo + _telefonoctc, Session["usuCodigo"].ToString(), Session["Conectar"].ToString());
                 GrdvTelefonos.DataSource = _dtbtelefonos;
                 GrdvTelefonos.DataBind();
                 FunCargarCombos(9);
@@ -1716,7 +1716,7 @@
                 }
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(135, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "",
-                    DdlPrefijo.SelectedValue == "0" ? TxtTelefono.Text.Trim() : DdlPrefijo.SelectedValue + TxtTelefono.Text.Trim(), "", ViewState["Conectar"].ToString());
+                    DdlPrefijo.SelectedValue == "0" ? TxtTelefono.Text.Trim() : DdlPrefijo.SelectedValue + TxtTelefono.Text.Trim(), "", Session["Conectar"].ToString());
 
                 if (int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString()) >= 2)
                 {
@@ -1761,7 +1761,7 @@
                     //EDITAR TELEFONO CEDENTE Y REFERENCIAS
                     _mensaje = new ConsultaDatosDAO().FunEditarTelefonos(0, int.Parse(ViewState["CodigoPERS"].ToString()),
                         int.Parse(ViewState["CodigoCLDE"].ToString()), DdlTipTelefono.SelectedValue, DdlPropietario2.SelectedValue, TxtNombres.Text.Trim().ToUpper(), TxtApellidos.Text.Trim().ToUpper(), TxtTelefono.Text.Trim(), DdlPrefijo.SelectedValue == "0" ? "" : DdlPrefijo.SelectedValue,
-                        ViewState["Telefonoanterior"].ToString(), "", "", "SI", int.Parse(ViewState["CodigoCEDE"].ToString()), 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        ViewState["Telefonoanterior"].ToString(), "", "", "SI", int.Parse(ViewState["CodigoCEDE"].ToString()), 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                     if (ViewState["Origen"].ToString() != "NUEVO")
                     {
@@ -1947,7 +1947,7 @@
                 _telefonoctc = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Telefono"].ToString();
                 new ConsultaDatosDAO().FunConsultaDatos(124, int.Parse(ViewState["CodigoCEDE"].ToString()),
                     int.Parse(ViewState["CodigoPERS"].ToString()), 0, "", _chktelefec.Checked.ToString(), _telefonoctc,
-                    ViewState["Conectar"].ToString().ToString());
+                    Session["Conectar"].ToString().ToString());
                 _dtbtelefonos = (DataTable)ViewState["TelefonosRegistrados"];
                 _cambiar = _dtbtelefonos.Select("Telefono='" + _telefonoctc + "'").FirstOrDefault();
                 _cambiar["Score"] = _chktelefec.Checked ? 9 : 0;

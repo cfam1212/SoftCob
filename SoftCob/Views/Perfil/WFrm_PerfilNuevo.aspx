@@ -88,13 +88,13 @@
                                     <h5>Perfil:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtPerfil" runat="server" Width="100%" MaxLength="80" CssClass="upperCase" TabIndex="1"></asp:TextBox>
+                                    <asp:TextBox ID="TxtPerfil" runat="server" Width="100%" MaxLength="80" CssClass="form-control upperCase" TabIndex="1"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5>Descripción:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" Width="100%" Height="60px" CssClass="upperCase" MaxLength="80" TextMode="MultiLine" TabIndex="2"></asp:TextBox>
+                                    <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" Width="100%" Height="60px" CssClass="form-control upperCase" MaxLength="80" TextMode="MultiLine" TabIndex="2"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>

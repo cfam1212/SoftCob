@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Linq;
     using System.Web.UI;
@@ -44,7 +43,6 @@
 
                 ViewState["codigoCatalogo"] = "0";
                 ViewState["codigoCedente"] = "0";
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Administrar Árbol Score Telefónico";
                 _accion.Text = "--Seleccione Acción--";
                 _accion.Value = "0";
@@ -418,7 +416,7 @@
                 {
                     _chkestado = (CheckBox)(e.Row.Cells[4].FindControl("chkEstado"));
                     _codigo = int.Parse(GrdvArbolScore.DataKeys[e.Row.RowIndex].Values["Codigo"].ToString());
-                    _sql = "Select Estado=case arst_estado when 1 then 'Activo' else 'Inactivo' end from GSBPO_ARBOL_SCORETELEFONO where ";
+                    _sql = "Select Estado=case arst_estado when 1 then 'Activo' else 'Inactivo' end from SoftCob_ARBOL_SCORETELEFONO where ";
                     _sql += "arst_cedecodigo=" + int.Parse(ViewState["codigoCedente"].ToString()) + " and arst_cpcecodigo=" + int.Parse(ViewState["codigoCatalogo"].ToString());
                     _sql += "and ARST_CODIGO=" + _codigo;
 

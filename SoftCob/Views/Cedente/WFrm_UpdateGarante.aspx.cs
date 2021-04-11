@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     public partial class WFrm_UpdateGarante : Page
@@ -19,7 +18,6 @@
 
             if (!IsPostBack)
             {
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CedulaTitular"] = Request["CedulaTitular"];
                 ViewState["CedulaGarante"] = Request["CedulaGarante"];
                 ViewState["CodigoGARA"] = Request["CodigoGARA"];

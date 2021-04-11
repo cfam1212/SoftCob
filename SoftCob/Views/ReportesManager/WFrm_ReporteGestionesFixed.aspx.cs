@@ -3,7 +3,6 @@
     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.IO;
     using System.Web.UI;
@@ -32,7 +31,6 @@
                     ViewState["BuscarPor"] = Request["BuscarPor"];
                     ViewState["Criterio"] = Request["Criterio"];
                     ViewState["Gestor"] = Request["Gestor"];
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Lbltitulo.Text = "Reporte Gestiones << " + ViewState["Catalogo"].ToString() + " >>";
                     FunCargarMantenimiento();
                 }
@@ -53,7 +51,7 @@
                 _dts = new ConsultaDatosDAO().FunGetRerporteGestiones(0, int.Parse(ViewState["CodigoCEDE"].ToString()),
                     int.Parse(ViewState["CodigoCPCE"].ToString()), ViewState["FechaDesde"].ToString(),
                     ViewState["FechaHasta"].ToString(), ViewState["BuscarPor"].ToString(), ViewState["Criterio"].ToString(),
-                    "", "", int.Parse(ViewState["Gestor"].ToString()), 0, ViewState["Conectar"].ToString());
+                    "", "", int.Parse(ViewState["Gestor"].ToString()), 0, Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {

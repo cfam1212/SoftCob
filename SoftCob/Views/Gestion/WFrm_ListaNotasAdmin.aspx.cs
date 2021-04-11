@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -26,7 +25,7 @@
                     new FuncionesDAO().FunShowJSMessage("Se encuentra en Llamada, en cuanto termine la gestión podrá salir de la Lista de Trabajo..!", this);
                     Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
                 }
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+
                 Lbltitulo.Text = "Lista de Notas <<-- NOTAS GESTION -->>";
                 FunCargarMantenimiento();
 
@@ -40,7 +39,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(125, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(125, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {

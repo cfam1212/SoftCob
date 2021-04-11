@@ -3,7 +3,6 @@
     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.IO;
     using System.Web.UI;
@@ -25,7 +24,6 @@
 
             if (!IsPostBack)
             {
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Consulta de Accion-Gestión";
                 FunCargarCombos(0);
             }
@@ -117,7 +115,7 @@
 
                 if (DdlAccion.SelectedValue != "0" && DdlBuscarPor.SelectedValue != "0") _opcion = 131;
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(_opcion, int.Parse(DdlCatalogo.SelectedValue), 0, 0, "", DdlAccion.SelectedItem.ToString(), TxtBuscarPor.Text.Trim(), ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(_opcion, int.Parse(DdlCatalogo.SelectedValue), 0, 0, "", DdlAccion.SelectedItem.ToString(), TxtBuscarPor.Text.Trim(), Session["Conectar"].ToString());
 
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();

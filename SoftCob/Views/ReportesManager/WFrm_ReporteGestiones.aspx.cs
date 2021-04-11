@@ -2,10 +2,9 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Web.UI;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
+    using System.Web.UI;
     using System.Web.UI.WebControls;
     public partial class WFrm_ReporteGestiones : Page
     {
@@ -29,7 +28,6 @@
                     ViewState["BuscarPor"] = Request["BuscarPor"];
                     ViewState["Criterio"] = Request["Criterio"];
                     ViewState["Gestor"] = Request["Gestor"];
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     TxtFechaIni.Text = DateTime.Now.ToString("MM/dd/yyyy");
                     TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
                     Lbltitulo.Text = "Reporte Gestiones";
@@ -80,7 +78,7 @@
 
                 _dts = new ConsultaDatosDAO().FunGetRerporteGestiones(3, int.Parse(DdlCedente.SelectedValue),
                     int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text, TxtFechaFin.Text, DdlBuscar.SelectedValue, TxtBuscarPor.Text.Trim(), "", "", int.Parse(DdlGestor.SelectedValue),
-                    0, ViewState["Conectar"].ToString());
+                    0, Session["Conectar"].ToString());
 
                 if (int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString()) > 0)
                 {
@@ -164,7 +162,7 @@
                     _itemg.Value = "0";
                     DdlGestor.Items.Add(_itemg);
                     DdlGestor.DataSource = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", 
-                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlGestor.DataTextField = "Descripcion";
                     DdlGestor.DataValueField = "Codigo";
                     DdlGestor.DataBind();

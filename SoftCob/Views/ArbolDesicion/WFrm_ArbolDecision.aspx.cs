@@ -3,7 +3,6 @@
     using ControllerSoftCob;
     using ModeloSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Linq;
     using System.Web.UI;
@@ -47,7 +46,6 @@
                     return;
                 }
 
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 _dtbaccion.Columns.Add("Codigo");
                 _dtbaccion.Columns.Add("CodigoCatagolo");
                 _dtbaccion.Columns.Add("Descripcion");
@@ -627,7 +625,7 @@
                     _contacto = GrdvAccion.DataKeys[e.Row.RowIndex].Values["Contacto"].ToString();
                     _codigo = int.Parse(GrdvAccion.DataKeys[e.Row.RowIndex].Values["Codigo"].ToString());
                     _sql = "Select Estado=case arac_estado when 1 then 'Activo' else 'Inactivo' end,";
-                    _sql += "Contacto = case arac_contacto when 1 then 'SI' else 'NO' end from GSBPO_ACCION where ";
+                    _sql += "Contacto = case arac_contacto when 1 then 'SI' else 'NO' end from SoftCob_ACCION where ";
                     _sql += "CPCE_CODIGO=" + ViewState["codigoCatalogo"].ToString() + " and ARAC_CODIGO=" + _codigo;
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
@@ -903,7 +901,7 @@
                     _chkcomisiona = (CheckBox)(e.Row.Cells[2].FindControl("ChkComisiona"));
                     _imgborrar = (ImageButton)(e.Row.Cells[4].FindControl("ImgDelEfecto"));
                     _codigo = int.Parse(GrdvEfecto.DataKeys[e.Row.RowIndex].Values["Codigo"].ToString());
-                    _sql = "Select Comisiona=aref_auxv1,Estado=case aref_estado when 1 then 'Activo' else 'Inactivo' end from GSBPO_EFECTO where ";
+                    _sql = "Select Comisiona=aref_auxv1,Estado=case aref_estado when 1 then 'Activo' else 'Inactivo' end from SoftCob_EFECTO where ";
                     _sql += "aref_auxi1=" + ViewState["codigoCatalogo"].ToString() + " and AREF_CODIGO=" + _codigo + " and ";
                     _sql += "ARAC_CODIGO=" + ViewState["CodigoAccion"].ToString();
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
@@ -1523,7 +1521,7 @@
                     _sql = "Select Estado=case arre_estado when 1 then 'Activo' else 'Inactivo' end,";
                     _sql += "Pago = case arre_pago when 1 then 'SI' else 'NO' end,Llamar = case arre_llamar when 1 then 'SI' else 'NO' end,";
                     _sql += "Efectivo = case arre_auxi2 when 1 then 'SI' else 'NO' end ";
-                    _sql += "from GSBPO_RESPUESTA where arre_auxi1=" + ViewState["codigoCatalogo"].ToString() + " and ARRE_CODIGO=" + _codigo + " and ";
+                    _sql += "from SoftCob_RESPUESTA where arre_auxi1=" + ViewState["codigoCatalogo"].ToString() + " and ARRE_CODIGO=" + _codigo + " and ";
                     _sql += "AREF_CODIGO=" + ViewState["CodigoEfecto"].ToString();
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
@@ -1792,7 +1790,7 @@
                     _chkestado = (CheckBox)(e.Row.Cells[1].FindControl("ChkEstContacto"));
                     _imgborrar = (ImageButton)(e.Row.Cells[3].FindControl("ImgDelContacto"));
                     _codigo = int.Parse(GrdvContacto.DataKeys[e.Row.RowIndex].Values["Codigo"].ToString());
-                    _sql = "Select Estado=case arco_estado when 1 then 'Activo' else 'Inactivo' end from GSBPO_CONTACTO where ";
+                    _sql = "Select Estado=case arco_estado when 1 then 'Activo' else 'Inactivo' end from SoftCob_CONTACTO where ";
                     _sql += "arco_auxi1=" + ViewState["codigoCatalogo"].ToString() + " and ARCO_CODIGO=" + _codigo + " and ";
                     _sql += "ARRE_CODIGO=" + ViewState["CodigoRespuesta"].ToString();
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());

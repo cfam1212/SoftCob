@@ -251,7 +251,7 @@
                                                 </td>
                                                 <td></td>
                                                 <td colspan="2">
-                                                    <asp:TextBox ID="txtObservacion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" Width="100%" TabIndex="13" MaxLength="50"></asp:TextBox>
+                                                    <asp:TextBox ID="txtObservacion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Width="100%" TabIndex="13" MaxLength="50"></asp:TextBox>
                                                 </td>
                                             </tr>
                                         </table>

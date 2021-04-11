@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.IO;
     using System.Web.UI;
@@ -23,7 +22,6 @@
             {
                 ViewState["Fecha"] = Request["Fecha"];
                 ViewState["Cedente"] = Request["Cedente"];
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 FunCargarMantenimiento();
             }
             else GrdvDatos.DataSource = Session["GrdvDatos"];
@@ -36,7 +34,7 @@
             _sql = "select Identificacion = hiop_identificacion,Operacion = hiop_operacion,Dias_Mora = hiop_diasmora,Exigible = ROUND(hiop_valorexigible,2),";
             _sql += "Total_Deuda = ROUND(hiop_totaldeuda,2) from ENTERPRISE_Cedentes..HISTORICO_" + ViewState["Cedente"].ToString();
             _sql += " where hiop_fechaproceso=convert(date,'" + ViewState["Fecha"].ToString() + "',103)";
-            _dts = new ConsultaDatosDAO().FunGetRerporteGestiones(1, 0, 0, "", "", "", "", _sql, "", 0, 0, ViewState["Conectar"].ToString());
+            _dts = new ConsultaDatosDAO().FunGetRerporteGestiones(1, 0, 0, "", "", "", "", _sql, "", 0, 0, Session["Conectar"].ToString());
             Lbltitulo.Text = "Reporte Operaciones Historico ";
             GrdvDatos.DataSource = _dts;
             GrdvDatos.DataBind();

@@ -6,7 +6,6 @@
     using System.Data;
     using System.Globalization;
     using System.Web.UI;
-    using System.Configuration;
     public partial class WFrm_UsuarioNuevo : Page
     {
         #region Variables
@@ -22,7 +21,6 @@
                     Response.Redirect("~/Reload.html");
                 if (!IsPostBack)
                 {
-                    Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     FunCargarCombos();
                     TxtFechaCaduca.Text = DateTime.Now.ToString("MM/dd/yyyy");
                     ViewState["Login"] = "";

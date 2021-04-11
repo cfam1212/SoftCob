@@ -3,7 +3,6 @@
     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.IO;
     using System.Web.UI;
@@ -27,8 +26,7 @@
             {
                 ViewState["codigoCEDE"] = Request["codigoCEDE"];
                 ViewState["codigoCPCE"] = Request["codigoCPCE"];
-                ViewState["Conexion"] = ConfigurationManager.AppSettings["SqlConn"];
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(58, int.Parse(ViewState["codigoCPCE"].ToString()), 0, 0, "", "", "", ViewState["Conexion"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(58, int.Parse(ViewState["codigoCPCE"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
                 Lbltitulo.Text = "Reporte Catálogo/Producto: " + _dts.Tables[0].Rows[0]["Descripcion"].ToString();
                 ViewState["Cedente"] = _dts.Tables[0].Rows[0]["Descripcion"].ToString();
                 FunCargarMantenimiento();
@@ -41,7 +39,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunGerReporteConsolidado(2, int.Parse(ViewState["codigoCEDE"].ToString()), int.Parse(ViewState["codigoCPCE"].ToString()), 0, "", "", 0, 0, ViewState["Conexion"].ToString());
+                _dts = new ConsultaDatosDAO().FunGerReporteConsolidado(2, int.Parse(ViewState["codigoCEDE"].ToString()), int.Parse(ViewState["codigoCPCE"].ToString()), 0, "", "", 0, 0, Session["Conectar"].ToString());
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
                     _dtb = _dts.Tables[0];
@@ -89,7 +87,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunGerReporteConsolidado(3, int.Parse(ViewState["codigoCEDE"].ToString()), 
-                    int.Parse(ViewState["codigoCPCE"].ToString()), 0, "", "", 0, 0, ViewState["Conexion"].ToString());
+                    int.Parse(ViewState["codigoCPCE"].ToString()), 0, "", "", 0, 0, Session["Conectar"].ToString());
                 using (XLWorkbook wb = new XLWorkbook())
                 {
                     wb.Worksheets.Add(_dts.Tables[0], "Datos");

@@ -19,18 +19,18 @@
             $(document).ready(function () {
                 $.datepicker.setDefaults($.datepicker.regional['es']);
                 $('#txtFechaProceso').datepicker(
-                  {
-                      inline: true,
-                      dateFormat: "mm/dd/yy",
-                      monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-                      monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
-                      dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-                      numberOfMonths: 1,
-                      showButtonPanel: true,
-                      changeMonth: true,
-                      changeYear: true,
-                      yearRange: "-100:+5"
-                  });
+                    {
+                        inline: true,
+                        dateFormat: "mm/dd/yy",
+                        monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                        monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                        dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+                        numberOfMonths: 1,
+                        showButtonPanel: true,
+                        changeMonth: true,
+                        changeYear: true,
+                        yearRange: "-100:+5"
+                    });
             });
         }
     </script>
@@ -72,7 +72,7 @@
                 height: 80px;
             }
     </style>
-<%--    <script type="text/javascript">
+    <%--    <script type="text/javascript">
         function ValidarDecimales() {
             var numero = document.getElementById("<%=txtPorcentaje.ClientID%>").value;
             if (!/^([0-9])*[.]?[0-9]*$/.test(numero)) {
@@ -95,7 +95,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="background-color: #79BBB8;">
                 <asp:Label ID="Lbltitulo" runat="server"></asp:Label>
-            </div>            
+            </div>
             <asp:UpdatePanel ID="updError" runat="server">
                 <ContentTemplate>
                     <div style="background-color: beige; text-align: left; width: 100%; font-size: 25px">
@@ -103,7 +103,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <%--            <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -113,7 +113,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>--%>
+            </div>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
@@ -153,16 +153,20 @@
                                     <asp:DropDownList ID="DdlGestores" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="3" Width="100%">
                                     </asp:DropDownList>
                                 </td>
-                                <td><h5>Fecha:</h5></td>
+                                <td>
+                                    <h5>Fecha:</h5>
+                                </td>
                                 <td colspan="2">
-                                    <asp:TextBox ID="TxtFechaProceso" runat="server" TabIndex="4" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="TxtFechaProceso" runat="server" CssClass="form-control" TabIndex="4" Width="100%"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><h5>Cierre:</h5></td>
                                 <td>
-                                    <asp:CheckBox ID="ChkCierre" runat="server" AutoPostBack="True" TabIndex="5" Text="NO" />
+                                    <h5>Cierre:</h5>
+                                </td>
+                                <td>
+                                    <asp:CheckBox ID="ChkCierre" runat="server" CssClass="form-control" AutoPostBack="True" TabIndex="5" Text="NO" />
                                 </td>
                                 <td></td>
                                 <td></td>

@@ -13,6 +13,7 @@
         SoftCobEntities _dtb = new SoftCobEntities();
         DataSet _dts = new DataSet();
         SqlDataAdapter _dap = new SqlDataAdapter();
+        List<CatalogosDTO> _catalogo = new List<CatalogosDTO>();
         int _codigo = 0;
         #endregion
 
@@ -54,7 +55,7 @@
             return _mensaje;
         }
 
-        public List<SoftCob_CAMPOS_ESTRATEGIA> FunGetCamposComboEstrategia()
+        public DataSet FunGetCamposComboEstrategia()
         {
             List<SoftCob_CAMPOS_ESTRATEGIA> _campos = new List<SoftCob_CAMPOS_ESTRATEGIA>();
             try
@@ -63,12 +64,28 @@
                 {
                     _campos = _db.SoftCob_CAMPOS_ESTRATEGIA.Where(t => t.caes_estado == true).ToList();
                 }
+
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = "--Seleccione Cedente--",
+                    Codigo = "0"
+                });
+
+                foreach (SoftCob_CAMPOS_ESTRATEGIA _tab in _campos)
+                {
+                    _catalogo.Add(new CatalogosDTO()
+                    {
+                        Descripcion = _tab.caes_nombre,
+                        Codigo = _tab.CAES_CODIGO.ToString()
+                    });
+                }
+
+                return new FuncionesDAO().FunCambiarDataSet(_catalogo);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return _campos;
         }
 
         public int FunGetCodigoCabEstrategia(int _codigocabecera, int _codigodetalle)

@@ -469,14 +469,14 @@
                         if (_contar == _gestores) _totalasignar = _totalasignar + _diferencia;
 
                         _sql = "";
-                        _sql += "Update GSBPO_CUENTA_DEUDOR set ctde_gestorasignado=" + _dr[1].ToString();
+                        _sql += "Update SoftCob_CUENTA_DEUDOR set ctde_gestorasignado=" + _dr[1].ToString();
                         _sql += " from (select top " + _totalasignar.ToString() + " CD.ctde_gestorasignado, CL.CLDE_CODIGO,CD.ctde_operacion ";
-                        _sql += "from GSBPO_CUENTA_DEUDOR CD (nolock) ";
-                        _sql += "INNER JOIN GSBPO_CLIENTE_DEUDOR CL (nolock) ON CD.CLDE_CODIGO=CL.CLDE_CODIGO ";
+                        _sql += "from SoftCob_CUENTA_DEUDOR CD (nolock) ";
+                        _sql += "INNER JOIN SoftCob_CLIENTE_DEUDOR CL (nolock) ON CD.CLDE_CODIGO=CL.CLDE_CODIGO ";
                         _sql += "where CD.ctde_diasmora=" + LblDias.InnerText + " and CD.ctde_gestorasignado=" + ViewState["CodigoGestor"].ToString() + " and ";
                         _sql += "CL.CPCE_CODIGO=" + ViewState["CodigoCatalago"].ToString() + " and Cl.clde_estado=1 and ";
                         _sql += "CD.ctde_estado=1" + ") as d ";
-                        _sql += "where d.CLDE_CODIGO = GSBPO_CUENTA_DEUDOR.CLDE_CODIGO and d.ctde_operacion=GSBPO_CUENTA_DEUDOR.ctde_operacion";
+                        _sql += "where d.CLDE_CODIGO = SoftCob_CUENTA_DEUDOR.CLDE_CODIGO and d.ctde_operacion=SoftCob_CUENTA_DEUDOR.ctde_operacion";
                         FunInsertarGestor(int.Parse(_dr[1].ToString()), _dr[0].ToString(), _totalasignar, _sql);
                     }
 
@@ -538,14 +538,14 @@
                 }
 
                 _sql = "";
-                _sql += "Update GSBPO_CUENTA_DEUDOR set ctde_gestorasignado=" + DdlGestores.SelectedValue;
+                _sql += "Update SoftCob_CUENTA_DEUDOR set ctde_gestorasignado=" + DdlGestores.SelectedValue;
                 _sql += " from (select top " + TxtOperaciones.Text.Trim() + " CD.ctde_gestorasignado, CL.CLDE_CODIGO,CD.ctde_operacion ";
-                _sql += "from GSBPO_CUENTA_DEUDOR CD (nolock) ";
-                _sql += "INNER JOIN GSBPO_CLIENTE_DEUDOR CL (nolock) ON CD.CLDE_CODIGO=CL.CLDE_CODIGO ";
+                _sql += "from SoftCob_CUENTA_DEUDOR CD (nolock) ";
+                _sql += "INNER JOIN SoftCob_CLIENTE_DEUDOR CL (nolock) ON CD.CLDE_CODIGO=CL.CLDE_CODIGO ";
                 _sql += "where CL.CPCE_CODIGO=" + ViewState["CodigoCatalago"].ToString() + " and CD.ctde_diasmora=" + LblDias.InnerText;
                 _sql += " and CD.ctde_gestorasignado=" + ViewState["CodigoGestor"].ToString() + " and Cl.clde_estado=1 and ";
                 _sql += "CD.ctde_estado=1" + ") as d ";
-                _sql += "where d.CLDE_CODIGO = GSBPO_CUENTA_DEUDOR.CLDE_CODIGO and d.ctde_operacion=GSBPO_CUENTA_DEUDOR.ctde_operacion";
+                _sql += "where d.CLDE_CODIGO = SoftCob_CUENTA_DEUDOR.CLDE_CODIGO and d.ctde_operacion=SoftCob_CUENTA_DEUDOR.ctde_operacion";
 
                 FunInsertarGestor(int.Parse(DdlGestores.SelectedValue), DdlGestores.SelectedItem.ToString(), int.Parse(TxtOperaciones.Text.Trim()), _sql);
 
@@ -613,8 +613,8 @@
                 }
 
                 _sqlcli = "select Cliente = PE.pers_primerapellido+' '+PE.pers_segundoapellido+' '+PE.pers_primernombre+' '+PE.pers_segundonombre,";
-                _sqlcli += "CodigoCTDE = CD.CTDE_CODIGO from GSBPO_CUENTA_DEUDOR CD (nolock) INNER JOIN GSBPO_CLIENTE_DEUDOR CL (nolock) ON CD.CLDE_CODIGO=CL.CLDE_CODIGO ";
-                _sqlcli += "INNER JOIN GSBPO_PERSONA PE (nolock) ON CL.PERS_CODIGO=PE.PERS_CODIGO where CL.CPCE_CODIGO=" + ViewState["CodigoCatalago"].ToString();
+                _sqlcli += "CodigoCTDE = CD.CTDE_CODIGO from SoftCob_CUENTA_DEUDOR CD (nolock) INNER JOIN SoftCob_CLIENTE_DEUDOR CL (nolock) ON CD.CLDE_CODIGO=CL.CLDE_CODIGO ";
+                _sqlcli += "INNER JOIN SoftCob_PERSONA PE (nolock) ON CL.PERS_CODIGO=PE.PERS_CODIGO where CL.CPCE_CODIGO=" + ViewState["CodigoCatalago"].ToString();
                 _sqlcli += " and CD.ctde_gestorasignado=" + ViewState["CodigoGestor"].ToString() + " and CD.ctde_estado=1 and Cl.clde_estado=1 and ";
 
                 if (RdbDeudor.Checked) _sqlcli += "PE.pers_nombrescompletos like '" + TxtBuscar.Text.Trim().ToUpper() + "%'";
@@ -819,7 +819,7 @@
                     foreach (ListItem camposDestino in LstDestino.Items)
                     {
                         _sqlcli = "";
-                        _sqlcli = "update GSBPO_CUENTA_DEUDOR set ctde_gestorasignado=" + int.Parse(DdlGestorCli.SelectedValue) + 
+                        _sqlcli = "update SoftCob_CUENTA_DEUDOR set ctde_gestorasignado=" + int.Parse(DdlGestorCli.SelectedValue) + 
                             " where ";
                         _sqlcli += "CTDE_CODIGO=" + camposDestino.Value;
                         new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sqlcli, "", "", Session["Conectar"].ToString());

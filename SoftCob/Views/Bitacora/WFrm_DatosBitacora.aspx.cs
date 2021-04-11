@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     public partial class WFrm_DatosBitacora : Page
@@ -25,7 +24,6 @@
                 ViewState["FechaDesde"] = Request["FechaDesde"];
                 ViewState["FechaHasta"] = Request["FechaHasta"];
                 Lbltitulo.Text = "Consulta Bitacora << " + ViewState["Bitacora"].ToString() + " >>";
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["FechaActual"] = DateTime.Now.ToString("MM/dd/yyyy");
                 LblFecha.InnerText = "FECHA BITACORA: " + ViewState["Fecha"].ToString();
                 FunCargarMantenimiento();

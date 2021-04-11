@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Threading;
     using System.Web.UI;
@@ -26,7 +25,6 @@
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Lbltitulo.Text = "Buscar Telefonos";
 
                     if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
@@ -73,7 +71,7 @@
                 }
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(181, int.Parse(DdlBuscarPor.SelectedValue), 0, 0, "",
-                    TxtCriterio.Text.Trim(), "", ViewState["Conectar"].ToString());
+                    TxtCriterio.Text.Trim(), "", Session["Conectar"].ToString());
                 GrdvCelular.DataSource = _dts.Tables[0];
                 GrdvCelular.DataBind();
 

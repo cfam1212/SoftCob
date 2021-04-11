@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -16,8 +15,6 @@
         #region Load
         protected void Page_Load(object sender, EventArgs e)
         {
-            ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
-
             if (!IsPostBack)
             {
                 Lbltitulo.Text = "Consultas - Acciones Gestiones";
@@ -65,7 +62,7 @@
                 }
                 else
                 {
-                    dts = new ConsultaDatosDAO().FunConsultaDatos(95, 0, 0, 0, "", buscaIde, buscaPer, ViewState["Conectar"].ToString());
+                    dts = new ConsultaDatosDAO().FunConsultaDatos(95, 0, 0, 0, "", buscaIde, buscaPer, Session["Conectar"].ToString());
                     GrdvDatos.DataSource = dts;
                     GrdvDatos.DataBind();
                     ViewState["GrdvDatos"] = dts;

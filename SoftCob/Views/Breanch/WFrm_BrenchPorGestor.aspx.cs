@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -23,7 +22,6 @@
             if (!IsPostBack)
             {
                 Lbltitulo.Text = "Administrar BRENCH";
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Agregar Nuevo Brench";
                 PnlBrenchGlobal.Height = 100;
                 PnlBrenchPagos.Height = 100;

@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Linq;
     using System.Web.UI;
@@ -39,7 +38,6 @@
                     Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
                 }
 
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["MesActual"] = DateTime.Today.Month;
                 ViewState["AnioActual"] = DateTime.Today.Year;
                 Lbltitulo.Text = "Formulario EVALUACION - DESEMPEÑO << " + DateTime.Now.ToString("MM-dd-yyyy") + " >>";
@@ -58,8 +56,8 @@
                 switch (opcion)
                 {
                     case 0:
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(172, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(164, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(172, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(164, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
 
                         DddlEvaluacion.DataSource = _dts;
                         DddlEvaluacion.DataTextField = "Descripcion";
@@ -86,7 +84,7 @@
                         TblMotivacion.Visible = true;
                         TblSolucion.Visible = true;
 
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(165, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(165, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
 
                         GrdvEvaluacionCO.DataSource = _dts.Tables[0];
                         GrdvEvaluacionCO.DataBind();
@@ -947,7 +945,7 @@
                         int.Parse(_drfila["CodigoPadre"].ToString()), int.Parse(_drfila["CodigoProtocolo"].ToString()),
                         int.Parse(_drfila["CodigoDepartamento"].ToString()), int.Parse(_drfila["Calificacion"].ToString()),
                         "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
                 }
 
                 foreach (DataRow _drfila in _dtbdepli.Rows)
@@ -956,7 +954,7 @@
                         int.Parse(_drfila["CodigoPadre"].ToString()), int.Parse(_drfila["CodigoProtocolo"].ToString()),
                         int.Parse(_drfila["CodigoDepartamento"].ToString()), int.Parse(_drfila["Calificacion"].ToString()),
                         "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
                 }
 
                 foreach (DataRow _drfila in _dtbdepmo.Rows)
@@ -965,7 +963,7 @@
                         int.Parse(_drfila["CodigoPadre"].ToString()), int.Parse(_drfila["CodigoProtocolo"].ToString()),
                         int.Parse(_drfila["CodigoDepartamento"].ToString()), int.Parse(_drfila["Calificacion"].ToString()),
                         "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
                 }
 
                 foreach (DataRow _drfila in _dtbdepac.Rows)
@@ -974,7 +972,7 @@
                         int.Parse(_drfila["CodigoPadre"].ToString()), int.Parse(_drfila["CodigoProtocolo"].ToString()),
                         int.Parse(_drfila["CodigoDepartamento"].ToString()), int.Parse(_drfila["Calificacion"].ToString()),
                         "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
                 }
 
                 foreach (DataRow _drfila in _dtbdepsp.Rows)
@@ -983,7 +981,7 @@
                         int.Parse(_drfila["CodigoPadre"].ToString()), int.Parse(_drfila["CodigoProtocolo"].ToString()),
                         int.Parse(_drfila["CodigoDepartamento"].ToString()), int.Parse(_drfila["Calificacion"].ToString()),
                         "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
                 }
 
                 foreach (DataRow _drfila in _dtbdepat.Rows)
@@ -992,7 +990,7 @@
                         int.Parse(_drfila["CodigoPadre"].ToString()), int.Parse(_drfila["CodigoProtocolo"].ToString()),
                         int.Parse(_drfila["CodigoDepartamento"].ToString()), int.Parse(_drfila["Calificacion"].ToString()),
                         "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
                 }
 
                 foreach (DataRow _drfila in _dtbdepcp.Rows)
@@ -1001,7 +999,7 @@
                         int.Parse(_drfila["CodigoPadre"].ToString()), int.Parse(_drfila["CodigoProtocolo"].ToString()),
                         int.Parse(_drfila["CodigoDepartamento"].ToString()), int.Parse(_drfila["Calificacion"].ToString()),
                         "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
                 }
 
                 foreach (DataRow _drfila in _dtbdeptp.Rows)
@@ -1010,7 +1008,7 @@
                         int.Parse(_drfila["CodigoPadre"].ToString()), int.Parse(_drfila["CodigoProtocolo"].ToString()),
                         int.Parse(_drfila["CodigoDepartamento"].ToString()), int.Parse(_drfila["Calificacion"].ToString()),
                         "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
                 }
 
                 _response = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Guardado con Éxito");

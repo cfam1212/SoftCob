@@ -3,7 +3,6 @@
     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
     using System.IO;
@@ -29,7 +28,6 @@
             if (!IsPostBack)
             {
                 ViewState["Efectivas"] = "0";
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 TxtFechaInicio.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 Lbltitulo.Text = "Monitoreo Challenger - Tiempos - Gestión - Llamada";
@@ -141,7 +139,7 @@
                     return;
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(102, int.Parse(ViewState["codigoCPCE"].ToString()), 0, 0, "", TxtFechaInicio.Text, TxtFechaFin.Text, ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(102, int.Parse(ViewState["codigoCPCE"].ToString()), 0, 0, "", TxtFechaInicio.Text, TxtFechaFin.Text, Session["Conectar"].ToString());
                 ViewState["Efectivas"] = _dts.Tables[0].Rows.Count;
                 GrdvEfectivas.DataSource = _dts.Tables[0];
                 GrdvEfectivas.DataBind();

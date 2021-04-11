@@ -4,7 +4,6 @@
     using ModeloSoftCob;
     using System;
     using System.Collections.Generic;
-    using System.Configuration;
     using System.Data;
     using System.Linq;
     using System.Web.UI;
@@ -41,8 +40,6 @@
                     Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
                     return;
                 }
-
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
 
                 _dtbspeech.Columns.Add("Codigo");
                 _dtbspeech.Columns.Add("codigoARAC");

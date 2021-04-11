@@ -4,7 +4,6 @@
     using ControllerSoftCob;
     using ModeloSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.IO;
     using System.Web.UI;
@@ -32,11 +31,10 @@
                 ViewState["Tipo"] = Request["Tipo"];
                 ViewState["Gestor"] = Request["Gestor"];
                 ViewState["Estado"] = Request["Estado"];
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 SoftCob_USUARIO usuario = new ControllerDAO().FunGetUsuarioPorID(int.Parse(ViewState["codigoGestor"].ToString()));
                 ViewState["NameGestor"] = usuario.usua_nombres + "_" + usuario.usua_apellidos;
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(23, int.Parse(ViewState["codigoLTCA"].ToString()), 0, 0, "", "", "", 
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
                 Lbltitulo.Text = "Reporte Monitoreo Lista " + _dts.Tables[0].Rows[0]["ListaTrabajo"].ToString() + " - " + 
                     usuario.usua_nombres + " " + usuario.usua_apellidos;
                 FunCargarMantenimiento();
@@ -52,7 +50,7 @@
                 _dts = new ConsultaDatosDAO().FunGetMonitoreoAdmin(2, int.Parse(ViewState["codigoCEDE"].ToString()),
                     int.Parse(ViewState["codigoCPCE"].ToString()), int.Parse(ViewState["codigoLTCA"].ToString()),
                     0, 0, 0, "", "", int.Parse(ViewState["codigoGestor"].ToString()), "", "", "", 1, 0, 0,
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -83,7 +81,7 @@
                 _dts = new ConsultaDatosDAO().FunGetMonitoreoAdmin(2, int.Parse(ViewState["codigoCEDE"].ToString()),
                     int.Parse(ViewState["codigoCPCE"].ToString()), int.Parse(ViewState["codigoLTCA"].ToString()),
                     0, 0, 0, "", "", int.Parse(ViewState["codigoGestor"].ToString()), "", "", "", 1, 0, 0,
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 using (XLWorkbook wb = new XLWorkbook())
                 {

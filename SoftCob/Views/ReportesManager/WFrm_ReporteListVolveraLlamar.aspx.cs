@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -23,7 +22,6 @@
             {
                 TxtFechaIni.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 LblTitulo.Text = "Reporte Seguimiento << VOLVER A LLAMAR >> ";
                 FunCargarCombos(0);
             }
@@ -57,7 +55,7 @@
                     _itemg.Value = "0";
                     DdlGestor.Items.Add(_itemg);
                     DdlGestor.DataSource = new ControllerDAO().FunGetConsultasCatalogo(12, "--Todos--", 
-                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlGestor.DataTextField = "Descripcion";
                     DdlGestor.DataValueField = "Codigo";
                     DdlGestor.DataBind();

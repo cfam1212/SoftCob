@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -22,7 +21,6 @@
         {
             if (!IsPostBack)
             {
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Modificar Efectividad de Pago << ON DEMAND >> ";
                 FunCargarCombos(0);
             }

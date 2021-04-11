@@ -12,6 +12,7 @@
         DataSet _dts = new DataSet();
         SoftCobEntities _dtb = new SoftCobEntities();
         SqlDataAdapter _dap = new SqlDataAdapter();
+        List<CatalogosDTO> _catalogo = new List<CatalogosDTO>();
         string _mensaje = "";
         #endregion
 
@@ -33,24 +34,41 @@
             return _campos;
         }
 
-        public List<SoftCob_ACCION> FunGetArbolAccion(int _codigocpce)
+        public DataSet FunGetArbolAccion(int _codigocpce)
         {
             List<SoftCob_ACCION> _campos = new List<SoftCob_ACCION>();
             try
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    _campos = _db.SoftCob_ACCION.Where(t => t.CPCE_CODIGO == _codigocpce && t.arac_estado).OrderBy(t => t.arac_descripcion).ToList();
+                    _campos = _db.SoftCob_ACCION.Where(t => t.CPCE_CODIGO == _codigocpce && t.arac_estado).OrderBy(t => 
+                    t.arac_descripcion).ToList();
+                }
+
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = "--Seleccione Accion--",
+                    Codigo = "0"
+                });
+
+                foreach (SoftCob_ACCION _xdat in _campos)
+                {
+                    _catalogo.Add(new CatalogosDTO()
+                    {
+                        Descripcion = _xdat.arac_descripcion,
+                        Codigo = _xdat.ARAC_CODIGO.ToString()
+                    });
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return _campos;
+
+            return new FuncionesDAO().FunCambiarDataSet(_catalogo);
         }
 
-        public List<SoftCob_EFECTO> FunGetArbolEfecto(int _codigoarac)
+        public DataSet FunGetArbolEfecto(int _codigoarac)
         {
             List<SoftCob_EFECTO> _campos = new List<SoftCob_EFECTO>();
             try
@@ -59,15 +77,30 @@
                 {
                     _campos = _db.SoftCob_EFECTO.Where(t => t.ARAC_CODIGO == _codigoarac && t.aref_estado).OrderBy(t => t.aref_descripcion).ToList();
                 }
+
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = "--Seleccione Efecto--",
+                    Codigo = "0"
+                });
+
+                foreach (SoftCob_EFECTO _xdat in _campos)
+                {
+                    _catalogo.Add(new CatalogosDTO()
+                    {
+                        Descripcion = _xdat.aref_descripcion,
+                        Codigo = _xdat.AREF_CODIGO.ToString()
+                    });
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return _campos;
+            return new FuncionesDAO().FunCambiarDataSet(_catalogo);
         }
 
-        public List<SoftCob_RESPUESTA> FunGetArbolRespuesta(int _codigoaref)
+        public DataSet FunGetArbolRespuesta(int _codigoaref)
         {
             List<SoftCob_RESPUESTA> _campos = new List<SoftCob_RESPUESTA>();
             try
@@ -76,15 +109,30 @@
                 {
                     _campos = _db.SoftCob_RESPUESTA.Where(t => t.AREF_CODIGO == _codigoaref && t.arre_estado).OrderBy(t => t.arre_descripcion).ToList();
                 }
+
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = "--Seleccione Respuesta--",
+                    Codigo = "0"
+                });
+
+                foreach (SoftCob_RESPUESTA _xdat in _campos)
+                {
+                    _catalogo.Add(new CatalogosDTO()
+                    {
+                        Descripcion = _xdat.arre_descripcion,
+                        Codigo = _xdat.ARRE_CODIGO.ToString()
+                    });
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return _campos;
+            return new FuncionesDAO().FunCambiarDataSet(_catalogo);
         }
 
-        public List<SoftCob_CONTACTO> FunGetArbolContacto(int _codigoarre)
+        public DataSet FunGetArbolContacto(int _codigoarre)
         {
             List<SoftCob_CONTACTO> _campos = new List<SoftCob_CONTACTO>();
             try
@@ -93,12 +141,27 @@
                 {
                     _campos = _db.SoftCob_CONTACTO.Where(t => t.ARRE_CODIGO == _codigoarre && t.arco_estado).OrderBy(t => t.arco_descripcion).ToList();
                 }
+
+                _catalogo.Add(new CatalogosDTO()
+                {
+                    Descripcion = "--Seleccione Contacto--",
+                    Codigo = "0"
+                });
+
+                foreach (SoftCob_CONTACTO _xdat in _campos)
+                {
+                    _catalogo.Add(new CatalogosDTO()
+                    {
+                        Descripcion = _xdat.arco_descripcion,
+                        Codigo = _xdat.ARCO_CODIGO.ToString()
+                    });
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return _campos;
+            return new FuncionesDAO().FunCambiarDataSet(_catalogo);
         }
 
         public string FunCrearSpeech(int codigospeech, int cedecodigo, int cpcecodigo, string speechbv, bool estado, string auxv1, string auxv2, int auxi1, int auxi2, int usucodigo, string terminal, DataTable dtbSpeech, string sp, string conexion)

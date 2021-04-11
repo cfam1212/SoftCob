@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -22,8 +21,6 @@
             if (!IsPostBack)
             {
                 Lbltitulo.Text = "Comparar Presupuestos << COMPROMISOS DE PAGO --- PAGOS REALIZADOS >> ";
-
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
 
                 PnlDatosCompromiso_CollapsiblePanelExtender.Collapsed = false;

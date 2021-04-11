@@ -3,7 +3,6 @@
     using ControllerSoftCob;
     using ModeloSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Linq;
     using System.Web.UI;
@@ -29,7 +28,6 @@
                 ViewState["CodigoCEDE"] = "0";
                 ViewState["CodigoCPCE"] = "0";
 
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Definir Porcentaje Presupuesto de Carteras";
 
                 if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());

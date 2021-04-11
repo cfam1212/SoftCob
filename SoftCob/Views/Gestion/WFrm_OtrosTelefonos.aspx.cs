@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Threading;
     using System.Web.UI;
@@ -25,9 +24,7 @@
                     Response.Redirect("~/Reload.html");
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Lbltitulo.Text = "Telefonos Encontrados";
-
                     ViewState["Cedula"] = Request["Cedula"];
 
                     PnlDatos.Height = 120;
@@ -50,7 +47,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(203, 0, 0, 0, "", ViewState["Cedula"].ToString(), "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(203, 0, 0, 0, "", ViewState["Cedula"].ToString(), "", Session["Conectar"].ToString());
                 GrdvDatos.DataSource = _dts.Tables[0];
                 GrdvDatos.DataBind();
 

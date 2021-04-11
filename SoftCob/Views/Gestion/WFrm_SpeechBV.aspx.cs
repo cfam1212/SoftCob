@@ -2,9 +2,8 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Web.UI;
-    using System.Configuration;
     using System.Data;
+    using System.Web.UI;
     public partial class WFrm_SpeechBV : Page
     {
         #region Variables
@@ -17,7 +16,6 @@
         {
             if (!IsPostBack)
             {
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoCEDE"] = Request["CodigoCEDE"];
                 ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
                 Lbltitulo.Text = "<<< SPEECH DE BIENVENIDA >>>";
@@ -37,7 +35,7 @@
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
                     _dtsx = new ListaTrabajoDAO().FunSpeechConvert(_dts.Tables[0].Rows[0]["Speechbv"].ToString(), 0
-                        , int.Parse(Session["usuCodigo"].ToString()), ViewState["Conectar"].ToString());
+                        , int.Parse(Session["usuCodigo"].ToString()), Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {

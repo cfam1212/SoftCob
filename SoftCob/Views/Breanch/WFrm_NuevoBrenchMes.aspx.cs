@@ -33,6 +33,7 @@
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-EC");
             System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator = ".";
             TxtPresupuesto.Attributes.Add("onchange", "ValidarDecimales();");
+
             if (!IsPostBack)
             {
                 ViewState["Procesado"] = "NO";                
@@ -67,33 +68,33 @@
 
                 if (dtbBrench.Rows.Count > 0)
                 {
-                    sql += "SELECT CodigoAlter = ROW_NUMBER() OVER(ORDER BY rango_dias), Codigo = ISNULL((SELECT BMD.BRMD_CODIGO FROM GSBPO_BRENCHMESDET BMD ";
-                    sql += "INNER JOIN GSBPO_BRENCHMESCAB BMC ON BMD.BRMC_CODIGO=BMC.BRMC_CODIGO ";
+                    sql += "SELECT CodigoAlter = ROW_NUMBER() OVER(ORDER BY rango_dias), Codigo = ISNULL((SELECT BMD.BRMD_CODIGO FROM SoftCob_BRENCHMESDET BMD ";
+                    sql += "INNER JOIN SoftCob_BRENCHMESCAB BMC ON BMD.BRMC_CODIGO=BMC.BRMC_CODIGO ";
                     sql += "WHERE BMC.brmc_cedecodigo=" + DdlCedente.SelectedValue + " AND BMC.brmc_cpcecodigo=" + DdlCatalogo.SelectedValue + " AND BMC.brmc_presupuestoanio=" + ViewState["Anio"].ToString() + " AND ";
                     sql += "BMC.brmc_presupuestomes=" + ViewState["Mes"].ToString() + " and BMC.brmc_gestorasignado=" + DdlGestores.SelectedValue + " and BMD.brmd_brench=rango_dias),0),";
                     //sql += "ROW_NUMBER() OVER(ORDER BY rango_dias)),";
                     sql += "Operaciones = COUNT(*),Rango = rango_dias,";
                     sql += "Monto = CONVERT(VARCHAR(20),CAST(SUM(ctde_totaldeuda) AS money),1),";
                     sql += "Exigible = CONVERT(varchar(20),CAST(SUM(ctde_valorexigible) AS money),1),";
-                    sql += "Porcentaje = ISNULL((SELECT BMD.brmd_porcentaje FROM GSBPO_BRENCHMESDET BMD ";
-                    sql += "INNER JOIN GSBPO_BRENCHMESCAB BMC ON BMD.BRMC_CODIGO=BMC.BRMC_CODIGO ";
+                    sql += "Porcentaje = ISNULL((SELECT BMD.brmd_porcentaje FROM SoftCob_BRENCHMESDET BMD ";
+                    sql += "INNER JOIN SoftCob_BRENCHMESCAB BMC ON BMD.BRMC_CODIGO=BMC.BRMC_CODIGO ";
                     sql += "WHERE BMC.brmc_cedecodigo=" + DdlCedente.SelectedValue + " AND BMC.brmc_cpcecodigo=" + DdlCatalogo.SelectedValue + " AND BMC.brmc_presupuestoanio=" + ViewState["Anio"].ToString() + " AND ";
                     sql += "BMC.brmc_presupuestomes=" + ViewState["Mes"].ToString() + " AND BMC.brmc_gestorasignado=" + DdlGestores.SelectedValue + " AND BMD.brmd_brench=rango_dias),'0.00'),";
-                    sql += "Presupuesto = ISNULL((SELECT CONVERT(VARCHAR(20),CAST(BMD.brmd_presupuesto AS money),1) FROM GSBPO_BRENCHMESDET BMD INNER JOIN GSBPO_BRENCHMESCAB BMC ON BMD.BRMC_CODIGO=BMC.BRMC_CODIGO ";
+                    sql += "Presupuesto = ISNULL((SELECT CONVERT(VARCHAR(20),CAST(BMD.brmd_presupuesto AS money),1) FROM SoftCob_BRENCHMESDET BMD INNER JOIN SoftCob_BRENCHMESCAB BMC ON BMD.BRMC_CODIGO=BMC.BRMC_CODIGO ";
                     sql += "WHERE BMC.brmc_cedecodigo=" + DdlCedente.SelectedValue + " AND BMC.brmc_cpcecodigo=" + DdlCatalogo.SelectedValue + " AND ";
                     sql += "BMC.brmc_presupuestoanio=" + ViewState["Anio"].ToString() + " AND BMC.brmc_presupuestomes=" + ViewState["Mes"].ToString() + " AND ";
                     sql += "BMC.brmc_gestorasignado=" + DdlGestores.SelectedValue + " AND BMD.brmd_brench=rango_dias),'0.00'),";
                     sql += "PorcentajeValor=0.00,";
-                    sql += "PresupuestoValor = ISNULL((SELECT BMD.brmd_presupuesto FROM GSBPO_BRENCHMESDET BMD INNER JOIN GSBPO_BRENCHMESCAB BMC ON BMD.BRMC_CODIGO=BMC.BRMC_CODIGO ";
+                    sql += "PresupuestoValor = ISNULL((SELECT BMD.brmd_presupuesto FROM SoftCob_BRENCHMESDET BMD INNER JOIN SoftCob_BRENCHMESCAB BMC ON BMD.BRMC_CODIGO=BMC.BRMC_CODIGO ";
                     sql += "WHERE BMC.brmc_cedecodigo=" + DdlCedente.SelectedValue + " AND BMC.brmc_cpcecodigo=" + DdlCatalogo.SelectedValue + " AND ";
                     sql += "BMC.brmc_presupuestoanio=" + ViewState["Anio"].ToString() + " AND BMC.brmc_presupuestomes=" + ViewState["Mes"].ToString() + " AND ";
                     sql += "BMC.brmc_gestorasignado=" + DdlGestores.SelectedValue + " AND BMD.brmd_brench=rango_dias),'0.00'),";
                     sql += "ExigibleValor = SUM(ctde_valorexigible),MontoValor = SUM(ctde_totaldeuda),";
-                    sql += "RangoInicial = ISNULL((SELECT brde_rangoinicial FROM GSBPO_BRENCHDET WHERE brde_etiqueta=rango_dias " +
+                    sql += "RangoInicial = ISNULL((SELECT brde_rangoinicial FROM SoftCob_BRENCHDET WHERE brde_etiqueta=rango_dias " +
                         "AND brde_auxi1=" + ViewState["codigoCPCE"].ToString() + "),0),";
-                    sql += "RangoFinal = ISNULL((SELECT brde_rangofinal FROM GSBPO_BRENCHDET WHERE brde_etiqueta=rango_dias " +
+                    sql += "RangoFinal = ISNULL((SELECT brde_rangofinal FROM SoftCob_BRENCHDET WHERE brde_etiqueta=rango_dias " +
                         "AND brde_auxi1=" + ViewState["codigoCPCE"].ToString() + "),0),";
-                    sql += "Orden = ISNULL((SELECT brde_orden FROM GSBPO_BRENCHDET WHERE brde_etiqueta=rango_dias " +
+                    sql += "Orden = ISNULL((SELECT brde_orden FROM SoftCob_BRENCHDET WHERE brde_etiqueta=rango_dias " +
                         "AND brde_auxi1=" + ViewState["codigoCPCE"].ToString() + "),0) ";
                     sql += "FROM (SELECT CASE";
                     dtbBrench = (DataTable)ViewState["BrenchCab"];
@@ -104,7 +105,7 @@
                     }
                     casos += " END AS rango_dias,ctde_valorexigible,ctde_totaldeuda FROM (";
                     casos += "SELECT CDE.ctde_totaldeuda, CDE.ctde_valorexigible,CDE.ctde_diasmora AS dias_mora ";
-                    casos += "FROM GSBPO_CUENTA_DEUDOR CDE INNER JOIN GSBPO_CLIENTE_DEUDOR CLI ON CDE.CLDE_CODIGO=CLI.CLDE_CODIGO ";
+                    casos += "FROM SoftCob_CUENTA_DEUDOR CDE INNER JOIN SoftCob_CLIENTE_DEUDOR CLI ON CDE.CLDE_CODIGO=CLI.CLDE_CODIGO ";
                     casos += "WHERE CLI.CPCE_CODIGO=" + ViewState["codigoCPCE"].ToString() + " AND CDE.ctde_gestorasignado=";
                     casos += DdlGestores.SelectedValue + " AND CDE.ctde_estado=1 AND CLI.clde_estado=1) res) tabla ";
                     casos += "WHERE ISNULL(rango_dias,'')!='' ";
@@ -145,7 +146,7 @@
                     //    }
                     //    casos += " end as rango_dias,ctde_valorexigible,ctde_totaldeuda from (";
                     //    casos += "select CD.ctde_totaldeuda, CD.ctde_valorexigible,CD.ctde_diasmora as dias_mora ";
-                    //    casos += "from GSBPO_CUENTA_DEUDOR CD INNER JOIN GSBPO_CLIENTE_DEUDOR CL ON CD.CLDE_CODIGO=CL.CLDE_CODIGO ";
+                    //    casos += "from SoftCob_CUENTA_DEUDOR CD INNER JOIN SoftCob_CLIENTE_DEUDOR CL ON CD.CLDE_CODIGO=CL.CLDE_CODIGO ";
                     //    casos += "where CL.CPCE_CODIGO=" + ViewState["codigoCPCE"].ToString() + " and CD.ctde_gestorasignado=";
                     //    casos += ddlGestores.SelectedValue + " and CD.ctde_estado=1 and CL.clde_estado=1) res) tabla ";
                     //    casos += "where isnull(rango_dias,'')!='' ";

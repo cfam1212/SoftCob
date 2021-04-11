@@ -617,7 +617,7 @@
                                                                                     <h5>Número:</h5>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <asp:TextBox ID="TxtTelefono" runat="server" MaxLength="10" TabIndex="7" Width="100%"></asp:TextBox>
+                                                                                    <asp:TextBox ID="TxtTelefono" runat="server" CssClass="form-control" MaxLength="10" TabIndex="7" Width="100%"></asp:TextBox>
                                                                                     <asp:FilteredTextBoxExtender ID="txtTelefono_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtTelefono">
                                                                                     </asp:FilteredTextBoxExtender>
                                                                                 </td>
@@ -868,7 +868,7 @@
                                                             <tr>
                                                                 <td></td>
                                                                 <td>
-                                                                    <asp:CheckBox ID="Chkcitacion" runat="server" Text="Cancelar Citación" Visible="False" />
+                                                                    <asp:CheckBox ID="Chkcitacion" runat="server" CssClass="form-control" Text="Cancelar Citación" Visible="False" />
                                                                 </td>
                                                                 <td colspan="2">
                                                                     <asp:DropDownList ID="DdlCitacion" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="25" Width="100%" Visible="False">
@@ -918,7 +918,7 @@
                                                                     <h5>Observación:</h5>
                                                                 </td>
                                                                 <td colspan="4">
-                                                                    <asp:TextBox ID="TxtObservacion" runat="server" CssClass="upperCase" Height="80px" MaxLength="500" onkeydown="return (event.keyCode!=13);" TabIndex="27" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                                                    <asp:TextBox ID="TxtObservacion" runat="server" CssClass="form-control upperCase" Height="80px" MaxLength="500" onkeydown="return (event.keyCode!=13);" TabIndex="27" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1014,13 +1014,13 @@
                                                         <h5>Fecha Pago:</h5>
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="TxtFechaPago" runat="server" TabIndex="29" Width="100%"></asp:TextBox>
+                                                        <asp:TextBox ID="TxtFechaPago" runat="server" CssClass="form-control" TabIndex="29" Width="100%"></asp:TextBox>
                                                     </td>
                                                     <td>
                                                         <h5>Valor Pago:</h5>
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="TxtValorAbono" runat="server" CssClass="alinearDerecha" MaxLength="7" TabIndex="30"></asp:TextBox>
+                                                        <asp:TextBox ID="TxtValorAbono" runat="server" CssClass="form-control alinearDerecha" MaxLength="7" TabIndex="30"></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -1035,7 +1035,7 @@
                                                         <h5>No.Documento:</h5>
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="TxtNumDocumento" runat="server" MaxLength="20" TabIndex="32"></asp:TextBox>
+                                                        <asp:TextBox ID="TxtNumDocumento" runat="server" CssClass="form-control" MaxLength="20" TabIndex="32"></asp:TextBox>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -1062,7 +1062,7 @@
                                                         <h5>Hora Llamar:</h5>
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="TxtHoraLLamar" runat="server" MaxLength="9" TabIndex="35"></asp:TextBox>
+                                                        <asp:TextBox ID="TxtHoraLLamar" runat="server" CssClass="form-control" MaxLength="9" TabIndex="35"></asp:TextBox>
                                                         <asp:MaskedEditExtender ID="txtHoraLLamar_MaskedEditExtender" runat="server" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" Mask="99:99" MaskType="Time" TargetControlID="txtHoraLLamar">
                                                         </asp:MaskedEditExtender>
                                                     </td>

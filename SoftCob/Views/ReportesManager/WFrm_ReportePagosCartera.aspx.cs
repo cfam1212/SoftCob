@@ -2,10 +2,9 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
-    using System.Web.UI.WebControls;
     using System.Web.UI;
+    using System.Web.UI.WebControls;
     public partial class WFrm_ReportePagosCartera : Page
     {
         #region Variables
@@ -40,7 +39,6 @@
                 ViewState["Efecto"] = Request["Efecto"];
                 ViewState["Respuesta"] = Request["Respuesta"];
                 ViewState["Contacto"] = Request["Contacto"];
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 TxtFechaIni.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 Lbltitulo.Text = "Reportes Pagos de Cartera";
@@ -214,8 +212,8 @@
 
                 _sql = "";
                 _sql = "Select Contar = COUNT(1) ";
-                _sql += "from GSBPO_REGISTRO_ABONOSPAGO AP (nolock) INNER JOIN GSBPO_CLIENTE_DEUDOR CL (nolock) ON AP.rpab_cldecodigo=CL.CLDE_CODIGO ";
-                _sql += "INNER JOIN GSBPO_CUENTA_DEUDOR CD (nolock) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO INNER JOIN GSBPO_PERSONA PE (nolock) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
+                _sql += "from SoftCob_REGISTRO_ABONOSPAGO AP (nolock) INNER JOIN SoftCob_CLIENTE_DEUDOR CL (nolock) ON AP.rpab_cldecodigo=CL.CLDE_CODIGO ";
+                _sql += "INNER JOIN SoftCob_CUENTA_DEUDOR CD (nolock) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO INNER JOIN SoftCob_PERSONA PE (nolock) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
                 _sql += "where CL.CPCE_CODIGO=" + DdlCatalogo.SelectedValue + " and AP.rpab_fechapago between CONVERT(date,'" + TxtFechaIni.Text + "',101) and CONVERT(date,'";
                 _sql += TxtFechaFin.Text + "',101) and ";
 
@@ -228,7 +226,7 @@
                 if (DdlContacto.SelectedValue != "0") _sql += "AP.rpab_arcocodigo=" + DdlContacto.SelectedValue + " and ";
 
                 _sql = _sql.Remove(_sql.Length - 4);
-                _dts = new ConsultaDatosDAO().FunGetRerporteGestiones(1, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text, TxtFechaFin.Text, "", "", _sql, "", 0, 0, ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunGetRerporteGestiones(1, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text, TxtFechaFin.Text, "", "", _sql, "", 0, 0, Session["Conectar"].ToString());
 
                 if (int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString()) > 0)
                 {

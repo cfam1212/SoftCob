@@ -3,7 +3,6 @@
     using ControllerSoftCob;
     using ModeloSoftCob;
     using System;
-    using System.Configuration;
     using System.Web.UI;
     public partial class WFrm_CambiarPassword : Page
     {
@@ -17,7 +16,6 @@
             if (!IsPostBack)
             {
                 Lbltitulo.Text = "Administrar Contraseñas";
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
 
                 if (bool.Parse(Session["cambiarpass"].ToString()) == false)
                 {

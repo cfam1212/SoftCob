@@ -4,7 +4,6 @@
     using ControllerSoftCob;
     using ModeloSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.IO;
     using System.Web.UI;
@@ -27,7 +26,6 @@
                 ViewState["codigoCEDE"] = Request["codigoCEDE"];
                 ViewState["codigoCPCE"] = Request["codigoCPCE"];
                 ViewState["codigoUSU"] = Request["codigoUSU"];
-                ViewState["Conexion"] = ConfigurationManager.AppSettings["SqlConn"];
                 SoftCob_USUARIO usuario = new ControllerDAO().FunGetUsuarioPorID(int.Parse(ViewState["codigoUSU"].ToString()));
                 ViewState["Gestor"] = usuario.usua_nombres + "_" + usuario.usua_apellidos;
                 Lbltitulo.Text = "Reporte Cartera Gestor " + usuario.usua_nombres + " " + usuario.usua_apellidos;
@@ -43,7 +41,7 @@
             {
                 _dts = new ConsultaDatosDAO().FunGerReporteConsolidado(4, int.Parse(ViewState["codigoCEDE"].ToString()),
                     int.Parse(ViewState["codigoCPCE"].ToString()), int.Parse(ViewState["codigoUSU"].ToString()), "", "",
-                    0, 0, ViewState["Conexion"].ToString());
+                    0, 0, Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -71,7 +69,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunGerReporteConsolidado(4, int.Parse(ViewState["codigoCEDE"].ToString()), int.Parse(ViewState["codigoCPCE"].ToString()), int.Parse(ViewState["codigoUSU"].ToString()), "", "", 0, 0, ViewState["Conexion"].ToString());
+                _dts = new ConsultaDatosDAO().FunGerReporteConsolidado(4, int.Parse(ViewState["codigoCEDE"].ToString()), int.Parse(ViewState["codigoCPCE"].ToString()), int.Parse(ViewState["codigoUSU"].ToString()), "", "", 0, 0, Session["Conectar"].ToString());
                 _dtb = (DataTable)ViewState["GrdvDatos"];
                 using (XLWorkbook wb = new XLWorkbook())
                 {

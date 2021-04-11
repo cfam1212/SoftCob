@@ -3,7 +3,6 @@
     using ControllerSoftCob;
     using System;
     using System.Collections;
-    using System.Configuration;
     using System.Data;
     using System.Linq;
     using System.Web.UI;
@@ -38,7 +37,6 @@
                     return;
                 }
 
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Agregar Campos Estrategias";
                 FunCargarCombos();
 
@@ -74,7 +72,8 @@
                 GrdvCampos.DataSource = _dts;
                 GrdvCampos.DataBind();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(20, int.Parse(DdlTablas.SelectedValue), 0, 0, DdlTablas.SelectedItem.ToString(), "", "", Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(20, int.Parse(DdlTablas.SelectedValue), 0, 0, 
+                    DdlTablas.SelectedItem.ToString(), "", "", Session["Conectar"].ToString());
 
                 ViewState["dtsCampos"] = _dts.Tables[0];
                 LstOrigen.DataSource = _dts;

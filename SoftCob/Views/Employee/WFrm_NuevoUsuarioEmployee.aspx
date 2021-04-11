@@ -82,7 +82,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-           <%-- <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -93,7 +93,7 @@
                     </ProgressTemplate>
                 </asp:UpdateProgress>
             </div>
-            <div class="panel-body">--%>
+            <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server">
                     <ContentTemplate>
                         <table style="width: 100%">
@@ -123,13 +123,13 @@
                                     <h5 runat="server" id="lbllogin" visible="false">Login:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtLogin" runat="server" Width="100%" MaxLength="16" Visible="False" TabIndex="2"></asp:TextBox>
+                                    <asp:TextBox ID="TxtLogin" runat="server" CssClass="form-control" Width="100%" MaxLength="16" Visible="False" TabIndex="2"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5 runat="server" id="lblpassword" visible="false">Password:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtPassword" runat="server" Width="100%" MaxLength="16" TextMode="Password" Visible="False" TabIndex="3"></asp:TextBox>
+                                    <asp:TextBox ID="TxtPassword" runat="server" CssClass="form-control" Width="100%" MaxLength="16" TextMode="Password" Visible="False" TabIndex="3"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>

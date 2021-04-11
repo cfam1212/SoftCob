@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     public partial class WFrm_DatosEquifax : Page
@@ -22,7 +21,6 @@
                 if (!IsPostBack)
                 {
                     Lbltitulo.Text = "Consulta Datos << VARIOS >>";
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     ViewState["CodigoPERS"] = Request["CodigoPERS"];
                     ViewState["Operacion"] = Request["Operacion"];
                     FunCargarMantenimiento();
@@ -40,7 +38,7 @@
         {
             _dts = new ConsultaDatosDAO().FunConsultaDatos(210, int.Parse(ViewState["CodigoPERS"].ToString()),
                 int.Parse(Session["usuCodigo"].ToString()), 0, "", ViewState["Operacion"].ToString(), "",
-                ViewState["Conectar"].ToString());
+                Session["Conectar"].ToString());
 
             if (_dts.Tables[0].Rows.Count > 0)
             {

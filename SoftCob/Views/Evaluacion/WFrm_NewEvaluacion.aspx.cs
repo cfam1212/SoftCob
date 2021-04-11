@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
     using System.Web.UI;
@@ -23,7 +22,6 @@
             {
                 TxtFechaInicio.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 FunCargarCombos(0);
                 ViewState["CodigoEVCA"] = Request["CodigoEVCA"];
 
@@ -46,7 +44,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(159, int.Parse(ViewState["CodigoEVCA"].ToString()), 0, 0,
-                    "", "", "", ViewState["Conectar"].ToString());
+                    "", "", "", Session["Conectar"].ToString());
                 TxtEvaluacion.Text = _dts.Tables[0].Rows[0]["Evaluacion"].ToString();
                 TxtDescripcion.Text = _dts.Tables[0].Rows[0]["Descripcion"].ToString();
                 TxtFechaInicio.Text = _dts.Tables[0].Rows[0]["FechaInicio"].ToString();
@@ -67,7 +65,7 @@
                 switch (opcion)
                 {
                     case 0:
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(158, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(158, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
                         GrdvDepartamentos.DataSource = _dts;
                         GrdvDepartamentos.DataBind();
                         break;
@@ -98,7 +96,7 @@
                 else _gvrow.Cells[0].BackColor = System.Drawing.Color.Beige;
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(160, int.Parse(_codigo), _chkselecc.Checked ? 1 : 0, 0, "", ""
-                    , "", ViewState["Conectar"].ToString());
+                    , "", Session["Conectar"].ToString());
             }
             catch (Exception ex)
             {
@@ -141,7 +139,7 @@
                 if (ViewState["CodigoEVCA"].ToString() == "0")
                 {
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(162, 0, 0, 0, "",
-                        TxtEvaluacion.Text.Trim().ToUpper(), TxtFechaInicio.Text.Trim(), ViewState["Conectar"].ToString());
+                        TxtEvaluacion.Text.Trim().ToUpper(), TxtFechaInicio.Text.Trim(), Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -183,7 +181,7 @@
                 }
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(163, 0, 0, 0, TxtEvaluacion.Text.Trim().ToUpper(), "", "",
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -194,7 +192,7 @@
                 _dts = new ConsultaDatosDAO().FunNewEvaluacion(0, int.Parse(ViewState["CodigoEVCA"].ToString()),
                     TxtEvaluacion.Text.Trim().ToUpper(), TxtDescripcion.Text.Trim().ToUpper(), TxtFechaInicio.Text.Trim(),
                     TxtFechaFin.Text.Trim(), ChkEstado.Text, "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                    Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                    Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows[0][0].ToString() == "OK") Response.Redirect("WFrm_ListaEvaluacionAdmin.aspx?MensajeRetornado='Grabado con Exito'", true);
                 else Response.Redirect("WFrm_ListaEvaluacionAdmin.aspx?MensajeRetornado='No se pudo grabar correctamente'", true);

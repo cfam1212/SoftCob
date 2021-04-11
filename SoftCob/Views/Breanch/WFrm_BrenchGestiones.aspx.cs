@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     public partial class WFrm_BrenchGestiones : Page
@@ -20,7 +19,6 @@
                 ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
                 ViewState["CodigoGEST"] = Request["CodigoGEST"];
                 ViewState["Operacion"] = Request["Operacion"];
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 Lbltitulo.Text = "Gestiones Realizadas";
                 FunCargarDatos();
             }

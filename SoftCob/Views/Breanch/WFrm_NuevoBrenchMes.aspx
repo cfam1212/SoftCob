@@ -167,7 +167,7 @@
                                 <h5>Presupuesto:</h5>
                             </td>
                             <td>
-                                <asp:TextBox ID="TxtPresupuesto" runat="server" CssClass="alinearDerecha" MaxLength="10" TabIndex="6" Width="100%" Enabled="False"></asp:TextBox>
+                                <asp:TextBox ID="TxtPresupuesto" runat="server" CssClass="form-control alinearDerecha" MaxLength="10" TabIndex="6" Width="100%" Enabled="False"></asp:TextBox>
                             </td>
                             <td style="text-align: center">
                                 <asp:ImageButton ID="ImgModificar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModificar_Click" TabIndex="6" />

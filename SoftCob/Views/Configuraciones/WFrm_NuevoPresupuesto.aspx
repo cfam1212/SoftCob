@@ -121,7 +121,7 @@
                                                 <h5>Valor Inicial:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtValorInicial" runat="server" CssClass="alinearDerecha" MaxLength="3" TabIndex="2" Width="100%"></asp:TextBox>
+                                                <asp:TextBox ID="TxtValorInicial" runat="server" CssClass="form-control alinearDerecha" MaxLength="3" TabIndex="2" Width="100%"></asp:TextBox>
                                                 <asp:FilteredTextBoxExtender ID="txtValorInicial_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtValorInicial">
                                                 </asp:FilteredTextBoxExtender>
                                             </td>
@@ -129,7 +129,7 @@
                                                 <h5>Valor Final:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtValorFinal" runat="server" CssClass="alinearDerecha" MaxLength="3" TabIndex="3" Width="100%"></asp:TextBox>
+                                                <asp:TextBox ID="TxtValorFinal" runat="server" CssClass="form-control alinearDerecha" MaxLength="3" TabIndex="3" Width="100%"></asp:TextBox>
                                                 <asp:FilteredTextBoxExtender ID="txtValorFinal_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtValorFinal">
                                                 </asp:FilteredTextBoxExtender>
                                             </td>
@@ -147,7 +147,7 @@
                                                 <h5>Color:</h5>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtColor" runat="server" MaxLength="150" TabIndex="4" Width="100%" ReadOnly="True"></asp:TextBox>
+                                                <asp:TextBox ID="TxtColor" runat="server" CssClass="form-control" MaxLength="150" TabIndex="4" Width="100%" ReadOnly="True"></asp:TextBox>
                                                 <asp:ColorPickerExtender ID="TxtColor_ColorPickerExtender" runat="server" Enabled="True"
                                                     TargetControlID="TxtColor" SampleControlID="preview" PopupButtonID="Right"
                                                     OnClientColorSelectionChanged="Color_Changed">
@@ -256,9 +256,7 @@
 <script type="text/javascript">
 
     function Color_Changed(sender) {
-
         sender.get_element().value = "#" + sender.get_selectedColor();
-
     }
 
 </script>

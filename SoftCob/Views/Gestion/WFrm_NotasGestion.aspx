@@ -129,7 +129,7 @@
                                     <h5>Descripción:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" TabIndex="3" Width="100%" Height="150px" MaxLength="150" TextMode="MultiLine"></asp:TextBox>
+                                    <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" TabIndex="3" Width="100%" Height="150px" MaxLength="150" TextMode="MultiLine"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>

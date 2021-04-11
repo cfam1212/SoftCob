@@ -339,22 +339,22 @@ namespace SoftCob.Views.ListaTrabajo
         protected global::System.Web.UI.WebControls.CheckBox ChkFecha;
 
         /// <summary>
-        /// Control txtFechaDesde.
+        /// Control TxtFechaDesde.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaDesde;
+        protected global::System.Web.UI.WebControls.TextBox TxtFechaDesde;
 
         /// <summary>
-        /// Control txtFechaHasta.
+        /// Control TxtFechaHasta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaHasta;
+        protected global::System.Web.UI.WebControls.TextBox TxtFechaHasta;
 
         /// <summary>
         /// Control updBotones.

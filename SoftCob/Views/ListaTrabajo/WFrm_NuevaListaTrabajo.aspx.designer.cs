@@ -339,21 +339,21 @@ namespace SoftCob.Views.ListaTrabajo
         protected global::System.Web.UI.WebControls.GridView GrdvPreview;
 
         /// <summary>
-        /// Control btnGrabar.
+        /// Control BtnGrabar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGrabar;
+        protected global::System.Web.UI.WebControls.Button BtnGrabar;
 
         /// <summary>
-        /// Control btnSalir.
+        /// Control BtnSalir.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSalir;
+        protected global::System.Web.UI.WebControls.Button BtnSalir;
     }
 }

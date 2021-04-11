@@ -932,7 +932,7 @@
             }
         }
 
-        public List<MenuNewDTO> FunGetMenuNewEdit(int _codigomenu, int _emprcodigo)
+        public DataSet FunGetMenuNewEdit(int _codigomenu, int _emprcodigo)
         {
             try
             {
@@ -962,7 +962,8 @@
                                   Selecc = "NO",
                                   Orden = 50000
                               };
-                return query.Union(query_1).ToList();
+
+                return new FuncionesDAO().FunCambiarDataSet(query.Union(query_1).OrderBy(o=>o.Orden).ToList());
             }
             catch (Exception ex)
             {

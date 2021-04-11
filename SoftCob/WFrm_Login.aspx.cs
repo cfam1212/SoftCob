@@ -24,6 +24,7 @@
                 try
                 {
                     Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                    Session["Phone"] = ConfigurationManager.AppSettings["Phone"];
                     Session["usuLogin"] = "";
                     Session["usuCodigo"] = "";
                     Session["IN-CALL"] = "NO";
@@ -60,6 +61,7 @@
                     Session["usuCambiarPass"] = _user.usua_cambiarpass;
                     ViewState["usuFechaCaduca"] = _user.usua_fechacaduca.ToString("MM/dd/yyyy");
                     Session["IN-CALL"] = "NO";
+                    Session["PermisoEspecial"] = _user.usua_permisosespeciales ? "SI" : "NO";
                     Session["CedeCodigo"] = new ControllerDAO().FunGetGestor(_usucodigo);
 
                     //Verificar si el password no esta 

@@ -104,7 +104,7 @@
                                 <h5>Descripción:</h5>
                             </td>
                             <td colspan="2">
-                                <asp:TextBox ID="TxtDescripcion" runat="server" CssClass="upperCase" MaxLength="80" TabIndex="2" Width="100%"></asp:TextBox>
+                                <asp:TextBox ID="TxtDescripcion" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="2" Width="100%"></asp:TextBox>
                             </td>
                             <td></td>
                         </tr>

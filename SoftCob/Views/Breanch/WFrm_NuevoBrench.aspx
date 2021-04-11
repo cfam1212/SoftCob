@@ -117,7 +117,7 @@
                                     <h5>Inicial:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtRinicio" runat="server" CssClass="alinearDerecha" Width="100%" TabIndex="3" MaxLength="4"></asp:TextBox>
+                                    <asp:TextBox ID="TxtRinicio" runat="server" CssClass="form-control alinearDerecha" Width="100%" TabIndex="3" MaxLength="4"></asp:TextBox>
                                     <asp:FilteredTextBoxExtender ID="txtRinicio_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtRinicio">
                                     </asp:FilteredTextBoxExtender>
                                 </td>
@@ -125,7 +125,7 @@
                                     <h5>Final:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtRFin" runat="server" CssClass="alinearDerecha" Width="100%" TabIndex="4" MaxLength="4"></asp:TextBox>
+                                    <asp:TextBox ID="TxtRFin" runat="server" CssClass="form-control alinearDerecha" Width="100%" TabIndex="4" MaxLength="4"></asp:TextBox>
                                     <asp:FilteredTextBoxExtender ID="txtRFin_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtRFin">
                                     </asp:FilteredTextBoxExtender>
                                 </td>

@@ -67,7 +67,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-<%--                <div class="panel-info">
+                <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updOpciones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -77,7 +77,7 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>--%>
+                </div>
                 <div class="panel-body">
                     <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
@@ -112,7 +112,7 @@
                                                 <td>
                                                     <asp:UpdatePanel ID="updEtiquetaAccion" runat="server">
                                                         <ContentTemplate>
-                                                            <asp:TextBox ID="TxtAccion" runat="server" CssClass="upperCase" MaxLength="250" Width="100%" TabIndex="2"></asp:TextBox>
+                                                            <asp:TextBox ID="TxtAccion" runat="server" CssClass="form-control upperCase" MaxLength="250" Width="100%" TabIndex="2"></asp:TextBox>
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
                                                 </td>
@@ -186,7 +186,7 @@
                                                 <td>
                                                     <asp:UpdatePanel ID="updEtiquetaEfecto" runat="server">
                                                         <ContentTemplate>
-                                                            <asp:TextBox ID="TxtEfecto" runat="server" CssClass="upperCase" MaxLength="250" Width="100%" TabIndex="6"></asp:TextBox>
+                                                            <asp:TextBox ID="TxtEfecto" runat="server" CssClass="form-control upperCase" MaxLength="250" Width="100%" TabIndex="6"></asp:TextBox>
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
                                                 </td>
@@ -204,7 +204,7 @@
                                                 <td>
                                                     <asp:UpdatePanel ID="updEtiquetaDias" runat="server">
                                                         <ContentTemplate>
-                                                            <asp:TextBox ID="TxtDiaLatencia" runat="server" CssClass="alinearDerecha" MaxLength="2" TabIndex="9" Width="100%">0</asp:TextBox>
+                                                            <asp:TextBox ID="TxtDiaLatencia" runat="server" CssClass="form-control alinearDerecha" MaxLength="2" TabIndex="9" Width="100%">0</asp:TextBox>
                                                             <asp:FilteredTextBoxExtender ID="TxtDiaLatencia_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="TxtDiaLatencia">
                                                             </asp:FilteredTextBoxExtender>
                                                         </ContentTemplate>

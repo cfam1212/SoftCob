@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -51,7 +50,7 @@
 
                     if (_diferencia.Hours == 0 && _diferencia.Minutes > _minutoslatencia) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
                 }
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+
                 ViewState["FechaActual"] = DateTime.Now.ToString("MM/dd/yyyy");
                 Lbltitulo.Text = "Monitoreo Challenger - Tiempos - Gestión - Llamada";
                 FunCargarMantenimiento();
@@ -65,13 +64,13 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(100, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "",
-                    ViewState["FechaActual"].ToString(), ViewState["FechaActual"].ToString(), ViewState["Conectar"].ToString());
+                    ViewState["FechaActual"].ToString(), ViewState["FechaActual"].ToString(), Session["Conectar"].ToString());
                 GrdvEfectivas.DataSource = _dts.Tables[0];
                 GrdvEfectivas.DataBind();
                 GrdvMaxLlamada.DataSource = _dts.Tables[1];
                 GrdvMaxLlamada.DataBind();
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(102, int.Parse(Session["codigoCPCE"].ToString()), 0, 0, "",
-                    ViewState["FechaActual"].ToString(), ViewState["FechaActual"].ToString(), ViewState["Conectar"].ToString());
+                    ViewState["FechaActual"].ToString(), ViewState["FechaActual"].ToString(), Session["Conectar"].ToString());
                 ViewState["Efectivas"] = _dts.Tables[0].Rows.Count;
                 GrdvChallenger.DataSource = _dts.Tables[0];
                 GrdvChallenger.DataBind();

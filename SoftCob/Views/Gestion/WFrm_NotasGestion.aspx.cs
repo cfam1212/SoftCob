@@ -3,7 +3,6 @@
     using ControllerSoftCob;
     using ModeloSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
     using System.Web.UI;
@@ -26,7 +25,6 @@
                 if (!IsPostBack)
                 {
                     Lbltitulo.Text = "Ingreso << Notas -- Observaciones >>";
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     ViewState["codigoCEDE"] = Request["codigoCEDE"];
                     ViewState["codigoCPCE"] = Request["codigoCPCE"];
                     ViewState["codigoPERS"] = Request["codigoPERS"];

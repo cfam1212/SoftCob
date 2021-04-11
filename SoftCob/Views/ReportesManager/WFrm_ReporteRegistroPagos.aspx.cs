@@ -2,10 +2,9 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Web.UI;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
+    using System.Web.UI;
     using System.Web.UI.WebControls;
     public partial class WFrm_ReporteRegistroPagos : Page
     {
@@ -61,7 +60,6 @@
                         }
                     }
 
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     TxtFechaIni.Text = DateTime.Now.ToString("MM/dd/yyyy");
                     TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
                     FunCargarCombos(0);
@@ -82,7 +80,7 @@
                 switch (opcion)
                 {
                     case 0:
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(140, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(140, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
                         DdlCedente.DataSource = _dts;
                         DdlCedente.DataTextField = "Descripcion";
                         DdlCedente.DataValueField = "Codigo";
@@ -143,7 +141,7 @@
                     return;
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(139, int.Parse(DdlCatalogo.SelectedValue), int.Parse(Session["usuCodigo"].ToString()), 0, "", TxtFechaIni.Text, TxtFechaFin.Text, ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(139, int.Parse(DdlCatalogo.SelectedValue), int.Parse(Session["usuCodigo"].ToString()), 0, "", TxtFechaIni.Text, TxtFechaFin.Text, Session["Conectar"].ToString());
 
                 if (int.Parse(_dts.Tables[0].Rows[0]["Total"].ToString()) > 0)
                 {

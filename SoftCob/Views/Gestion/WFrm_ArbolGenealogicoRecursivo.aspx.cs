@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -20,7 +19,6 @@
             {
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     LblTitulo.Text = "CONSULTA RECURSIVA << ARBOL GENEALOGICO >>";
                     ViewState["Cedula"] = Request["Cedula"];
                     LblCedula.InnerText = ViewState["Cedula"].ToString();
@@ -40,7 +38,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(184, 0, 0, 0, "", numerodocumento.Substring(0, 4),
-                    ViewState["Cedula"].ToString(), ViewState["Conectar"].ToString());
+                    ViewState["Cedula"].ToString(), Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {

@@ -304,7 +304,7 @@
                                             <h5>Observación</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtObservacion2" runat="server" CssClass="upperCase" Height="50px" MaxLength="255" TextMode="MultiLine" Width="100%" TabIndex="9"></asp:TextBox>
+                                            <asp:TextBox ID="TxtObservacion2" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="255" TextMode="MultiLine" Width="100%" TabIndex="9"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center"></td>
                                         <td></td>
@@ -381,7 +381,7 @@
                                             <h5>Observación</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtObservacion3" runat="server" CssClass="upperCase" Height="50px" MaxLength="255" TextMode="MultiLine" Width="100%" TabIndex="12"></asp:TextBox>
+                                            <asp:TextBox ID="TxtObservacion3" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="255" TextMode="MultiLine" Width="100%" TabIndex="12"></asp:TextBox>
                                         </td>
                                         <td></td>
                                         <td></td>

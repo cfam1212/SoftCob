@@ -138,7 +138,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="3">
-                                                                    <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" TabIndex="1" Width="100%" TextMode="MultiLine" MaxLength="255" Height="80px"></asp:TextBox>
+                                                                    <asp:TextBox ID="TxtDescripcion" runat="server" CssClass="form-control upperCase" onkeydown="return (event.keyCode!=13);" TabIndex="1" Width="100%" TextMode="MultiLine" MaxLength="255" Height="80px"></asp:TextBox>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -152,13 +152,13 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:TextBox ID="TxtCalificacion" runat="server" CssClass="alinearDerecha" Width="100%" TabIndex="2" MaxLength="2">0</asp:TextBox>
+                                                                    <asp:TextBox ID="TxtCalificacion" runat="server" CssClass="form-control alinearDerecha" Width="100%" TabIndex="2" MaxLength="2">0</asp:TextBox>
                                                                     <asp:FilteredTextBoxExtender ID="TxtCalificacion_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="TxtCalificacion">
                                                                     </asp:FilteredTextBoxExtender>
                                                                 </td>
                                                                 <td></td>
                                                                 <td>
-                                                                    <asp:CheckBox ID="ChkEtado" runat="server" AutoPostBack="True" TabIndex="3" Text="Activo" Visible="False" OnCheckedChanged="ChkEtado_CheckedChanged" />
+                                                                    <asp:CheckBox ID="ChkEtado" runat="server" CssClass="form-control" AutoPostBack="True" TabIndex="3" Text="Activo" Visible="False" OnCheckedChanged="ChkEtado_CheckedChanged" />
                                                                 </td>
                                                             </tr>
                                                             <tr>

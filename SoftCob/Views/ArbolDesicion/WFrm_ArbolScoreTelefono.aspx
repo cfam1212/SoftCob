@@ -185,7 +185,7 @@
                                             <h5>Cantidad:</h5>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TxtCantidad" runat="server" CssClass="alinearDerecha" Width="100%" TabIndex="7" MaxLength="2">1</asp:TextBox>
+                                            <asp:TextBox ID="TxtCantidad" runat="server" CssClass="form-control alinearDerecha" Width="100%" TabIndex="7" MaxLength="2">1</asp:TextBox>
                                             <asp:FilteredTextBoxExtender ID="TxtCantidad_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="TxtCantidad"></asp:FilteredTextBoxExtender>
                                         </td>
                                     </tr>

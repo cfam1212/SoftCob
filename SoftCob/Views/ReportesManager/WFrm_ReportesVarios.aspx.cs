@@ -3,7 +3,6 @@
     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.IO;
     using System.Web.UI;
@@ -26,7 +25,6 @@
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     TxtFechaIni.Text = DateTime.Now.ToString("MM/dd/yyyy");
                     TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
                     Lbltitulo.Text = "Reportes Varios";
@@ -48,14 +46,14 @@
                 switch (opcion)
                 {
                     case 0:
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(136, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(136, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
                         DdlGestor.DataSource = _dts;
                         DdlGestor.DataTextField = "Descripcion";
                         DdlGestor.DataValueField = "Codigo";
                         DdlGestor.DataBind();
                         break;
                     case 1:
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(166, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(166, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
                         DdlGestor.DataSource = _dts;
                         DdlGestor.DataTextField = "Descripcion";
                         DdlGestor.DataValueField = "Codigo";
@@ -93,7 +91,7 @@
                 switch (DdlTipoReporte.SelectedValue)
                 {
                     case "1":
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlGestor.SelectedValue), 0, 0, "", TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlGestor.SelectedValue), 0, 0, "", TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), Session["Conectar"].ToString());
                         break;
                     case "2":
                         if (DdlGestor.SelectedValue == "0")
@@ -102,13 +100,13 @@
                             return;
                         }
 
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(167, int.Parse(DdlGestor.SelectedValue), 0, 0, "", TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(167, int.Parse(DdlGestor.SelectedValue), 0, 0, "", TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), Session["Conectar"].ToString());
                         break;
                     case "3":
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(197, int.Parse(DdlGestor.SelectedValue), 0, 0, "", TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(197, int.Parse(DdlGestor.SelectedValue), 0, 0, "", TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), Session["Conectar"].ToString());
                         break;
                     case "4":
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(204, 0, 0, 0, "", TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), ViewState["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(204, 0, 0, 0, "", TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), Session["Conectar"].ToString());
                         break;
                 }
 

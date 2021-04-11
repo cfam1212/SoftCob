@@ -3,7 +3,6 @@
     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
     using System.IO;
@@ -34,7 +33,6 @@
                     ViewState["FechaHasta"] = Request["FechaHasta"];
                     ViewState["Gestor"] = Request["Gestor"];
                     ViewState["Tipo"] = Request["Tipo"];
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     ViewState["FechaActual"] = DateTime.Now.ToString("yyyy-MM-dd");
                     ViewState["HoraActual"] = DateTime.Now.ToString("HH:mm");
                     LblTitulo.Text = "Lista de Seguimientos << VOLVER A LLAMAR >> ";
@@ -53,8 +51,8 @@
         {
             try
             {
-                _sql = "SELECT FechaRegistro = CONVERT(varchar(19),revl_fechacreacion,121),FechaLlama = CONVERT(varchar(10),revl_fechallamar,121)+ ' '+CONVERT(varchar(5),revl_horallamar,108), Producto = ISNULL((SELECT pade_nombre FROM GSBPO_PARAMETRO_DETALLE (NOLOCK) WHERE pade_valorV=ctde_auxv1 and PARA_CODIGO in(SELECT PARA_CODIGO FROM GSBPO_PARAMETRO_CABECERA (NOLOCK) WHERE para_nombre='TIPO PRODUCTO')),(SELECT CT.cpce_producto FROM GSBPO_CATALOGO_PRODUCTOS_CEDENTE CT (NOLOCK) WHERE CT.CPCE_CODIGO=3)),Identificacion = PER.pers_numerodocumento,Cliente = PER.pers_nombrescompletos,Operacion = CDE.ctde_operacion,Exigible = CDE.ctde_valorexigible,FechaUltGestion = CDE.ctde_auxv3,FechaLlamar = CONVERT(varchar(10),revl_fechallamar,121),HoraLlamar = CONVERT(varchar(5),revl_horallamar,108),Gestor = (SELECT USU.usu_Nombres+' '+USU.usu_Apellidos FROM USUARIO USU (NOLOCK) WHERE USU.USU_CODIGO=CDE.ctde_gestorasignado) ";
-                _sql += "FROM GSBPO_REGISTRO_VOLVERALLAMAR VLL (NOLOCK) INNER JOIN GSBPO_CUENTA_DEUDOR CDE (NOLOCK) ON VLL.revl_cldecodigo=CDE.CLDE_CODIGO INNER JOIN GSBPO_CLIENTE_DEUDOR CLI (nolock) ON CDE.CLDE_CODIGO = CLI.CLDE_CODIGO INNER JOIN GSBPO_PERSONA PER (NOLOCK) ON PER.PERS_CODIGO=VLL.revl_perscodigo WHERE ";
+                _sql = "SELECT FechaRegistro = CONVERT(varchar(19),revl_fechacreacion,121),FechaLlama = CONVERT(varchar(10),revl_fechallamar,121)+ ' '+CONVERT(varchar(5),revl_horallamar,108), Producto = ISNULL((SELECT pade_nombre FROM SoftCob_PARAMETRO_DETALLE (NOLOCK) WHERE pade_valorV=ctde_auxv1 and PARA_CODIGO in(SELECT PARA_CODIGO FROM SoftCob_PARAMETRO_CABECERA (NOLOCK) WHERE para_nombre='TIPO PRODUCTO')),(SELECT CT.cpce_producto FROM SoftCob_CATALOGO_PRODUCTOS_CEDENTE CT (NOLOCK) WHERE CT.CPCE_CODIGO=3)),Identificacion = PER.pers_numerodocumento,Cliente = PER.pers_nombrescompletos,Operacion = CDE.ctde_operacion,Exigible = CDE.ctde_valorexigible,FechaUltGestion = CDE.ctde_auxv3,FechaLlamar = CONVERT(varchar(10),revl_fechallamar,121),HoraLlamar = CONVERT(varchar(5),revl_horallamar,108),Gestor = (SELECT USU.usu_Nombres+' '+USU.usu_Apellidos FROM USUARIO USU (NOLOCK) WHERE USU.USU_CODIGO=CDE.ctde_gestorasignado) ";
+                _sql += "FROM SoftCob_REGISTRO_VOLVERALLAMAR VLL (NOLOCK) INNER JOIN SoftCob_CUENTA_DEUDOR CDE (NOLOCK) ON VLL.revl_cldecodigo=CDE.CLDE_CODIGO INNER JOIN SoftCob_CLIENTE_DEUDOR CLI (nolock) ON CDE.CLDE_CODIGO = CLI.CLDE_CODIGO INNER JOIN SoftCob_PERSONA PER (NOLOCK) ON PER.PERS_CODIGO=VLL.revl_perscodigo WHERE ";
 
                 switch (ViewState["Tipo"].ToString())
                 {
@@ -76,7 +74,7 @@
                 }
 
                 //_sql += "ORDER BY VLL.revl_fechallamar,VLL.revl_horallamar";
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
                 ViewState["GrdvDatos"] = _dts.Tables[0];
 

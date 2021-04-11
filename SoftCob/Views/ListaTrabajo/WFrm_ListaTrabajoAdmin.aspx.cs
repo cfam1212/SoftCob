@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -27,7 +26,7 @@
                     Response.Redirect("../Gestion/WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
                     return;
                 }
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+
                 Lbltitulo.Text = "Administrar Listas de Trabajo";
                 FunCargarMantenimiento();
 
@@ -41,7 +40,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(24, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(24, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {

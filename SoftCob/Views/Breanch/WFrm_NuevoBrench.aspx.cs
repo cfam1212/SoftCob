@@ -4,7 +4,6 @@
     using ModeloSoftCob;
     using System;
     using System.Collections.Generic;
-    using System.Configuration;
     using System.Data;
     using System.Linq;
     using System.Web.UI;
@@ -33,8 +32,6 @@
             if (!IsPostBack)
             {
                 Lbltitulo.Text = "Administrar BRENCH";
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
-
                 ViewState["CodigoBrench"] = Request["CodigoBrench"];
                 FunCargarCombos(0);
 

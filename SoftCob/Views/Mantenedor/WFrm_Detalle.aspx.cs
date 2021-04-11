@@ -2,7 +2,6 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Web.UI;
     public partial class WFrm_Detalle : Page
@@ -16,8 +15,6 @@
         {
             if (!IsPostBack)
             {
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
-
                 try
                 {
                     LblUsuario.Text = Session["usuNombres"].ToString();

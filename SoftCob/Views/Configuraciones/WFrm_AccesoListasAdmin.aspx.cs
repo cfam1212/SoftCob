@@ -37,6 +37,7 @@
 
                 if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
                     Request["MensajeRetornado"].ToString());
+
                 FunCargarCombos(0);
             }
         }

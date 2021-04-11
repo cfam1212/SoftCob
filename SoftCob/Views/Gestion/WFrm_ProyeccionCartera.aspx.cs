@@ -3,7 +3,6 @@
     using ControllerSoftCob;
     using ModeloSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
     using System.Linq;
@@ -28,7 +27,7 @@
             _porcenpagos;
         bool _lexiste;
         decimal _valorpago;
-        DateTime _dtmfechaactual, _dtmFecha;
+        DateTime _dtmFecha;
         #endregion
 
         #region Load
@@ -41,7 +40,6 @@
 
             if (!IsPostBack)
             {
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoBRMC"] = Request["CodigoBRMC"];
                 Lbltitulo.Text = "Proyecciones";
 
@@ -89,12 +87,12 @@
         private void FunCargarMantenimiento(int opcion)
         {
             _dts = new ConsultaDatosDAO().FunConsultaDatos(227, int.Parse(Session["usuCodigo"].ToString()),
-                0, 0, "", "", "", ViewState["Conectar"].ToString());
+                0, 0, "", "", "", Session["Conectar"].ToString());
 
             _codigobrmc = int.Parse(_dts.Tables[0].Rows[0]["CodigoBRMC"].ToString());
 
             _dts = new ConsultaDatosDAO().FunConsultaDatos(228, _codigobrmc, 0, 0, "", "", "",
-                ViewState["Conectar"].ToString());
+                Session["Conectar"].ToString());
 
             _meslabel = _dts.Tables[0].Rows[0]["MesLabel"].ToString();
             _preslabel = _dts.Tables[0].Rows[0]["PresuLabel"].ToString();
@@ -113,16 +111,16 @@
             Lbltitulo.Text = "PROYECCION " + _meslabel + " " + _year.ToString();
 
             _dts = new PagoCarteraDAO().FunGetPagoCartera(15, _codigocede, _codigocpce, "", "", "", "", "", "", "",
-                "", "", _codigogest, _year, _mes, 0, "", ViewState["Conectar"].ToString());
+                "", "", _codigogest, _year, _mes, 0, "", Session["Conectar"].ToString());
 
             _dtsx = new PagoCarteraDAO().FunGetPagoCartera(16, _codigocede, _codigocpce, "", "", "", "", "", "", "", "", "",
-                _codigogest, _year, _mes, 0, "", ViewState["Conectar"].ToString());
+                _codigogest, _year, _mes, 0, "", Session["Conectar"].ToString());
 
             if (_dtsx.Tables[0].Rows.Count == 0)
             {
                 _dtsx = new PagoCarteraDAO().FunGetPagoCartera(17, _codigocede, _codigocpce, "", "", "", "", "", "",
                     _meslabel, _presupuesto.ToString().Replace(",", "."), "", _codigogest, _year, _mes, 0, "",
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 _resultado = _dtsx.Tables[0].Select("Eliminado='NO'");
                 _dtbproyecc = _resultado.CopyToDataTable();
@@ -171,7 +169,7 @@
                                 _drfila["FechaPago"].ToString(), _drfila["Valor"].ToString().Replace(",", "."), "",
                                 _drfila["Cliente"].ToString(), _drfila["EstadoPago"].ToString(),
                                 _drfila["Respuesta"].ToString(), _codigoprcb, int.Parse(_drfila["CodigoRESP"].ToString()),
-                                int.Parse(_drfila["CodigoARRE"].ToString()), 0, "", ViewState["Conectar"].ToString());
+                                int.Parse(_drfila["CodigoARRE"].ToString()), 0, "", Session["Conectar"].ToString());
                         }
                     }
                     else
@@ -297,7 +295,7 @@
 
                 new PagoCarteraDAO().FunGetPagoCartera(19, 0, 0, "", "", "",
                     TxtFecha.Text.Trim(), _valorpago.ToString().Replace(",", "."), "", _observacion, _estado, "",
-                    int.Parse(ViewState["CodigoRESP"].ToString()), 0, 0, 0, "", ViewState["Conectar"].ToString());
+                    int.Parse(ViewState["CodigoRESP"].ToString()), 0, 0, 0, "", Session["Conectar"].ToString());
 
                 _tblbuscar.DefaultView.Sort = "Cedula,FechaPago";
                 _tblbuscar = _tblbuscar.DefaultView.ToTable();
@@ -426,7 +424,7 @@
 
                 new PagoCarteraDAO().FunGetPagoCartera(18, 0, 0, LblIdentificacion.InnerText, "", "",
                     TxtFecha.Text.Trim(), TxtValor.Text.Trim(), _respuesta, LblCliente.InnerText, _estado,
-                    _observacion, _codigoprcb, _maxcodigo + 1, 0, 0, "", ViewState["Conectar"].ToString());
+                    _observacion, _codigoprcb, _maxcodigo + 1, 0, 0, "", Session["Conectar"].ToString());
 
                 _tblagre.DefaultView.Sort = "Cedula,FechaPago";
                 _tblagre = _tblagre.DefaultView.ToTable();
@@ -481,7 +479,7 @@
                 _totalvalores = 0;
 
                 new PagoCarteraDAO().FunGetPagoCartera(20, 0, 0, LblIdentificacion.InnerText, "", "", "", "", "", "", "SI", "",
-                    int.Parse(ViewState["CodigoRESP"].ToString()), 0, 0, 0, "", ViewState["Conectar"].ToString());
+                    int.Parse(ViewState["CodigoRESP"].ToString()), 0, 0, 0, "", Session["Conectar"].ToString());
 
                 _tblbuscar.DefaultView.Sort = "Cedula,FechaPago";
                 _tblbuscar = _tblbuscar.DefaultView.ToTable();

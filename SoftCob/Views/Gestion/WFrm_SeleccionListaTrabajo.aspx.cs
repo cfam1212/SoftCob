@@ -24,14 +24,19 @@
             if (!IsPostBack)
             {
                 ViewState["Automatico"] = ConfigurationManager.AppSettings["AutomatiCALL"].ToString();
+
                 if (Session["IN-CALL"].ToString() == "SI")
                 {
-                    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                    if (new FuncionesDAO().FunDesencripta(Session["Phone"].ToString()) == "SiActivado")
+                    {
+                        new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                    }
+
                     Response.Redirect("wFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
                     return;
                 }
+
                 Lbltitulo.Text = "Lista de Trabajos Activas";
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 FunCargarMantenimiento();
             }
         }
@@ -42,9 +47,9 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(44, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(137, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
-                _dts = new ControllerDAO().FunGetConsultasCatalogo(28, "--Seleccione Lista--", int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(44, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(137, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
+                _dts = new ControllerDAO().FunGetConsultasCatalogo(28, "--Seleccione Lista--", int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
                 DdlListaTrabajo.DataSource = _dts;
                 DdlListaTrabajo.DataTextField = "Descripcion";
                 DdlListaTrabajo.DataValueField = "Codigo";
@@ -63,7 +68,7 @@
                 _idlista = int.Parse(this.DdlListaTrabajo.SelectedValue.ToString());
                 ViewState["idListaActiva"] = _idlista;
                 _idgestor = int.Parse(Session["usuCodigo"].ToString());
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(23, _idlista, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(23, _idlista, 0, 0, "", "", "", Session["Conectar"].ToString());
                 ViewState["CodigoCedente"] = _dts.Tables[0].Rows[0]["Codigocedente"].ToString();
                 ViewState["CodigoCatalago"] = _dts.Tables[0].Rows[0]["Codigocatalogo"].ToString();
                 FunGrabarListaActiva(_idlista, _idgestor);
@@ -102,7 +107,7 @@
         {
             try
             {
-                new ConsultaDatosDAO().FunConsultaDatos(27, idLista, idGestor, 0, "", "", "", ViewState["Conectar"].ToString());
+                new ConsultaDatosDAO().FunConsultaDatos(27, idLista, idGestor, 0, "", "", "", Session["Conectar"].ToString());
             }
             catch (Exception ex)
             {
@@ -143,7 +148,7 @@
         {
             Thread.Sleep(100);
             WaitToPhoneClient();
-            Response.Redirect("wFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + ViewState["idListaActiva"].ToString(), true);
+            Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + ViewState["idListaActiva"].ToString(), true);
         }
 
         protected void DdlListaTrabajo_SelectedIndexChanged(object sender, EventArgs e)
@@ -155,7 +160,7 @@
                     _idlista = int.Parse(this.DdlListaTrabajo.SelectedValue.ToString());
                     ViewState["idListaActiva"] = _idlista;
                     _idgestor = int.Parse(Session["usuCodigo"].ToString());
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(23, _idlista, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(23, _idlista, 0, 0, "", "", "", Session["Conectar"].ToString());
                     ViewState["CodigoCedente"] = _dts.Tables[0].Rows[0]["Codigocedente"].ToString();
                     ViewState["CodigoCatalago"] = _dts.Tables[0].Rows[0]["Codigocatalogo"].ToString();
                     FunGrabarListaActiva(_idlista, _idgestor);
@@ -192,7 +197,7 @@
 
                     if (ViewState["Automatico"].ToString() == "SI") FunStartPhone();
                     else
-                        Response.Redirect("wFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + ViewState["idListaActiva"].ToString(), true);
+                        Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + ViewState["idListaActiva"].ToString(), true);
                 }
             }
             catch (Exception ex)

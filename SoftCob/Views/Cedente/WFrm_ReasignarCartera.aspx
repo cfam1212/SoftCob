@@ -213,10 +213,10 @@
                                                     <h5>Asignar:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:RadioButton ID="RdbOpera" runat="server" AutoPostBack="True" Enabled="False" Font-Size="10pt" TabIndex="4" Text="por Operaciones" OnCheckedChanged="RdbOpera_CheckedChanged" />
+                                                    <asp:RadioButton ID="RdbOpera" runat="server" CssClass="form-control" AutoPostBack="True" Enabled="False" Font-Size="10pt" TabIndex="4" Text="por Operaciones" OnCheckedChanged="RdbOpera_CheckedChanged" />
                                                 </td>
                                                 <td>
-                                                    <asp:RadioButton ID="RdbClientes" runat="server" AutoPostBack="True" Enabled="False" Font-Size="10pt" TabIndex="5" Text="por Clientes" OnCheckedChanged="RdbClientes_CheckedChanged" />
+                                                    <asp:RadioButton ID="RdbClientes" runat="server" CssClass="form-control" AutoPostBack="True" Enabled="False" Font-Size="10pt" TabIndex="5" Text="por Clientes" OnCheckedChanged="RdbClientes_CheckedChanged" />
                                                 </td>
                                                 <td></td>
                                             </tr>
@@ -251,7 +251,7 @@
                                                                     <h5>Operaciones:</h5>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:TextBox ID="TxtOperaciones" runat="server" Enabled="False" CssClass="alinearDerecha" TabIndex="9"></asp:TextBox>
+                                                                    <asp:TextBox ID="TxtOperaciones" runat="server" Enabled="False" CssClass="form-control alinearDerecha" TabIndex="9"></asp:TextBox>
                                                                 </td>
                                                                 <td style="text-align: center">
                                                                     <asp:ImageButton ID="ImgPasar" runat="server" Height="25px" ImageUrl="~/Botones/btnpasaruno.jpg" TabIndex="10" Enabled="False" OnClick="ImgPasar_Click" />
@@ -303,7 +303,7 @@
                                                 </td>
                                                 <td style="width: 5%"></td>
                                                 <td style="width: 45%">
-                                                    <asp:RadioButton ID="RdbDeudor" runat="server" AutoPostBack="True" Font-Size="10pt" TabIndex="14" Text="Buscar Por Cliente" Checked="True" Enabled="False" OnCheckedChanged="RdbDeudor_CheckedChanged" />
+                                                    <asp:RadioButton ID="RdbDeudor" runat="server" CssClass="form-control" AutoPostBack="True" Font-Size="10pt" TabIndex="14" Text="Buscar Por Cliente" Checked="True" Enabled="False" OnCheckedChanged="RdbDeudor_CheckedChanged" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -311,13 +311,13 @@
                                                     <h5>Buscar:</h5>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtBuscar" runat="server" CssClass="upperCase" MaxLength="80" TabIndex="13" Width="100%" Enabled="False"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtBuscar" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="13" Width="100%" Enabled="False"></asp:TextBox>
                                                 </td>
                                                 <td style="text-align: center">
                                                     <asp:ImageButton ID="ImgBuscar" runat="server" Height="25px" ImageUrl="~/Botones/Buscar.png" TabIndex="16" Enabled="False" OnClick="ImgBuscar_Click" />
                                                 </td>
                                                 <td>
-                                                    <asp:RadioButton ID="RdbIdentificacion" runat="server" AutoPostBack="True" Font-Size="10pt" TabIndex="15" Text="Buscar por Identificación" Enabled="False" OnCheckedChanged="RdbIdentificacion_CheckedChanged" />
+                                                    <asp:RadioButton ID="RdbIdentificacion" runat="server" CssClass="form-control" AutoPostBack="True" Font-Size="10pt" TabIndex="15" Text="Buscar por Identificación" Enabled="False" OnCheckedChanged="RdbIdentificacion_CheckedChanged" />
                                                 </td>
                                             </tr>
                                             <tr>

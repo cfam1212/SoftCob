@@ -1248,13 +1248,13 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.Panel PnlResultadoGestiones;
 
         /// <summary>
-        /// Control lnkGestiones.
+        /// Control LnkGestiones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkGestiones;
+        protected global::System.Web.UI.WebControls.LinkButton LnkGestiones;
 
         /// <summary>
         /// Control PnlDatosGestiones.

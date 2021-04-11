@@ -497,7 +497,7 @@
                                                                                         <h5>Número:</h5>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <asp:TextBox ID="TxtTelefono" runat="server" Width="100%" TabIndex="3" MaxLength="10"></asp:TextBox>
+                                                                                        <asp:TextBox ID="TxtTelefono" runat="server" CssClass="form-control" Width="100%" TabIndex="3" MaxLength="10"></asp:TextBox>
                                                                                         <asp:FilteredTextBoxExtender ID="txtTelefono_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtTelefono">
                                                                                         </asp:FilteredTextBoxExtender>
                                                                                     </td>
@@ -547,10 +547,10 @@
                                                                                 <tr>
                                                                                     <td></td>
                                                                                     <td style="text-align: center">
-                                                                                        <asp:ImageButton ID="ImgAddTelefono" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddTelefono_Click" TabIndex="11" Enabled="False" ToolTip="Agregar Nuevo Teléfono" />
+                                                                                        <asp:ImageButton ID="ImgAddTelefono" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddTelefono_Click" TabIndex="11" Enabled="False" ToolTip="Agregar Nuevo Teléfono" />
                                                                                     </td>
                                                                                     <td>
-                                                                                        <asp:ImageButton ID="ImgEditelefono" runat="server" Enabled="False" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="ImgEditelefono_Click" TabIndex="12" ToolTip="Modificar Teléfono" />
+                                                                                        <asp:ImageButton ID="ImgEditelefono" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgEditelefono_Click" TabIndex="12" ToolTip="Modificar Teléfono" />
                                                                                     </td>
                                                                                     <td></td>
                                                                                 </tr>
@@ -576,7 +576,7 @@
                                                                                 <tr>
                                                                                     <td></td>
                                                                                     <td>
-                                                                                        <asp:CheckBox ID="ChkAgregar" runat="server" AutoPostBack="True" OnCheckedChanged="ChkAgregar_CheckedChanged" Text="Agregar Teléfono" Visible="False" TabIndex="13" />
+                                                                                        <asp:CheckBox ID="ChkAgregar" runat="server" CssClass="form-control" AutoPostBack="True" OnCheckedChanged="ChkAgregar_CheckedChanged" Text="Agregar Teléfono" Visible="False" TabIndex="13" />
                                                                                     </td>
                                                                                     <td>
                                                                                         <asp:ImageButton ID="ImgBuscarFono" runat="server" Height="25px" ImageUrl="~/Botones/bntbuscarfono.png" OnClick="ImgBuscarFono_Click" ToolTip="Buscar Teléfonos" />
@@ -973,7 +973,7 @@
                                                                 <tr>
                                                                     <td></td>
                                                                     <td>
-                                                                        <asp:CheckBox ID="Chkcitacion" runat="server" Text="Cancelar Citación" Visible="False" />
+                                                                        <asp:CheckBox ID="Chkcitacion" runat="server" CssClass="form-control" Text="Cancelar Citación" Visible="False" />
                                                                     </td>
                                                                     <td colspan="2">
                                                                         <asp:DropDownList ID="DdlCitacion" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="25" Width="100%" Visible="False">
@@ -1103,7 +1103,7 @@
                                                             <h5>Hora LLamada:</h5>
                                                         </td>
                                                         <td style="width: 30%">
-                                                            <asp:TextBox ID="TxtHoraLLamar" runat="server" MaxLength="9" TabIndex="35"></asp:TextBox>
+                                                            <asp:TextBox ID="TxtHoraLLamar" runat="server" CssClass="form-control" MaxLength="9" TabIndex="35"></asp:TextBox>
                                                             <asp:MaskedEditExtender ID="txtHoraLLamar_MaskedEditExtender" runat="server" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" Mask="99:99" MaskType="Time" TargetControlID="txtHoraLLamar">
                                                             </asp:MaskedEditExtender>
                                                         </td>
@@ -1114,10 +1114,10 @@
                                                             <h5>Mismo Número:</h5>
                                                         </td>
                                                         <td style="text-align: center">
-                                                            <asp:RadioButton ID="RdbSi" runat="server" Text="Si" TabIndex="36" OnCheckedChanged="RdbSi_CheckedChanged" AutoPostBack="True" />
+                                                            <asp:RadioButton ID="RdbSi" runat="server" CssClass="form-control" Text="Si" TabIndex="36" OnCheckedChanged="RdbSi_CheckedChanged" AutoPostBack="True" />
                                                         </td>
                                                         <td>
-                                                            <asp:RadioButton ID="RdbNo" runat="server" Text="No" TabIndex="37" OnCheckedChanged="RdbNo_CheckedChanged" AutoPostBack="True" />
+                                                            <asp:RadioButton ID="RdbNo" runat="server" CssClass="form-control" Text="No" TabIndex="37" OnCheckedChanged="RdbNo_CheckedChanged" AutoPostBack="True" />
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1132,13 +1132,13 @@
                                                             <h5>Fecha Citación:</h5>
                                                         </td>
                                                         <td style="width: 35%">
-                                                            <asp:TextBox ID="TxtFechaCitacion" runat="server" Width="100%" TabIndex="34"></asp:TextBox>
+                                                            <asp:TextBox ID="TxtFechaCitacion" runat="server" CssClass="form-control" Width="100%" TabIndex="34"></asp:TextBox>
                                                         </td>
                                                         <td style="width: 15%">
                                                             <h5>Hora Citación:</h5>
                                                         </td>
                                                         <td style="width: 30%">
-                                                            <asp:TextBox ID="TxtHoraCitacion" runat="server" MaxLength="9" TabIndex="35"></asp:TextBox>
+                                                            <asp:TextBox ID="TxtHoraCitacion" runat="server" CssClass="form-control" MaxLength="9" TabIndex="35"></asp:TextBox>
                                                             <asp:MaskedEditExtender ID="MaskedEditExtender1" runat="server" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" Mask="99:99" MaskType="Time" TargetControlID="txtHoraLLamar">
                                                             </asp:MaskedEditExtender>
                                                         </td>
@@ -1223,7 +1223,7 @@
                                                             <table style="width: 100%">
                                                                 <tr>
                                                                     <td>
-                                                                        <asp:LinkButton ID="lnkGestiones" runat="server" TabIndex="38" OnClick="LnkGestiones_Click" Enabled="False">Todas las Gestiones</asp:LinkButton>
+                                                                        <asp:LinkButton ID="LnkGestiones" runat="server" TabIndex="38" OnClick="LnkGestiones_Click" Enabled="False">Todas las Gestiones</asp:LinkButton>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
