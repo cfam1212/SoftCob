@@ -67,9 +67,9 @@
             {
                 if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
 
-                pnlDatosDeudor.Height = 120;
-                pnlDatosObligacion.Height = 120;
-                PnlDatosGarante.Height = 120;
+                pnlDatosDeudor.Height = 150;
+                pnlDatosObligacion.Height = 150;
+                PnlDatosGarante.Height = 150;
                 PnlPresuCompromiso.Height = 150;
                 PnlBrenchPagos.Height = 150;
 
@@ -1279,7 +1279,10 @@
                     new ControllerDAO().FunCrearLogueoTiempos(loguintime);
                 }
 
-                new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                if (new FuncionesDAO().FunDesencripta(Session["Phone"].ToString()) == "SiActivado")
+                {
+                    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                }
 
                 string[] columnas = new[] { "Operacion", "DiasMora" };
                 _dtbgestion = (DataTable)ViewState["DatosObligacion"];
@@ -1357,7 +1360,11 @@
         {
             try
             {
-                new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                if (new FuncionesDAO().FunDesencripta(Session["Phone"].ToString()) == "SiActivado")
+                {
+                    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                }
+
                 GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
                 foreach (GridViewRow fr in GrdvTelefonos.Rows)
                 {

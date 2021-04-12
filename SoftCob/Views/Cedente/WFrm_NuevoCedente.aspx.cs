@@ -462,7 +462,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ImgDelContacto_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -493,7 +492,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ImgNewProducto_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -545,7 +543,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void GrdvProductos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -572,7 +569,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ImgEdiProducto_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -593,7 +589,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ImgEditarProducto_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -642,7 +637,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ImgDelProducto_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -675,7 +669,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ChkEstProducto_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -693,7 +686,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ImgNewCatalogo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -804,7 +796,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ImgEdiCatalogo_Click(object sender, ImageClickEventArgs e)
         {
             GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
@@ -822,7 +813,6 @@
             ImgNewCatalogo.Enabled = false;
             ImgEditarCatalogo.Enabled = true;
         }
-
         protected void ImgDelCatalogo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -851,7 +841,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ImgEditarCatalogo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -951,12 +940,10 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ChkEstado_CheckedChanged(object sender, EventArgs e)
         {
             ChkEstado.Text = ChkEstado.Checked ? "Activo" : "Inactivo";
         }
-
         protected void ChkEstCatalogo_CheckedChanged(object sender, EventArgs e)
         {
             GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
@@ -967,7 +954,6 @@
             _resultado["Estado"] = _chkest.Checked ? "Activo" : "Inactivo";
             _dtbcatalogoproducto.AcceptChanges();
         }
-
         protected void ImgNewAgencia_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -1029,7 +1015,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ImgEditarAgencia_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -1111,7 +1096,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ChkEstAgencias_CheckedChanged(object sender, EventArgs e)
         {
             GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
@@ -1122,7 +1106,6 @@
             _resultado["Estado"] = _chkest.Checked ? "Activo" : "Inactivo";
             _dtbagencias.AcceptChanges();
         }
-
         protected void ImgEdiAgencias_Click(object sender, ImageClickEventArgs e)
         {
             GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
@@ -1138,7 +1121,6 @@
             ImgNewAgencia.Enabled = false;
             ImgEditarAgencia.Enabled = true;
         }
-
         protected void ImgDelAgencias_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -1170,7 +1152,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void GrdvAgencias_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -1197,7 +1178,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void BtnGrabar_Click(object sender, EventArgs e)
         {
             try
