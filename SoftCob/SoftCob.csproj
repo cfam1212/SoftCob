@@ -406,6 +406,7 @@
     <Content Include="Views\Usuarios\WFrm_UsuarioAdmin.aspx" />
     <Content Include="Views\Usuarios\WFrm_UsuarioNuevo.aspx" />
     <Content Include="WFrm_Login.aspx" />
+    <None Include="Properties\PublishProfiles\Sistema SoftCob.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Images\load.gif" />
     <Content Include="Images\Logo.png" />

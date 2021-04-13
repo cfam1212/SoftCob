@@ -87,7 +87,7 @@
                                     <h5>Nombre de la Tarea:</h5>
                                 </td>
                                 <td style="width: 60%">
-                                    <asp:TextBox ID="TxtTarea" runat="server" Width="100%" MaxLength="80" TabIndex="1"></asp:TextBox>
+                                    <asp:TextBox ID="TxtTarea" CssClass="form-control" runat="server" Width="100%" MaxLength="80" TabIndex="1"></asp:TextBox>
                                 </td>
                                 <td style="width: 10%"></td>
                             </tr>
@@ -97,7 +97,7 @@
                                     <h5>Ruta/Página aspx:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtRuta" runat="server" Width="100%" MaxLength="80" TabIndex="2"></asp:TextBox>
+                                    <asp:TextBox ID="TxtRuta" CssClass="form-control" runat="server" Width="100%" MaxLength="80" TabIndex="2"></asp:TextBox>
 
                                 </td>
                                 <td></td>

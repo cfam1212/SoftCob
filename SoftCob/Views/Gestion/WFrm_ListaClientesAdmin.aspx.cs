@@ -45,15 +45,14 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(155, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(155, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", 
+                    Session["Conectar"].ToString());
                 _listaactiva = _dts.Tables[0].Rows[0][0].ToString();
 
                 if (_listaactiva == "SI")
                 {
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(82, int.Parse(Session["usuCodigo"].ToString()), 0, 0,
                         "", "", "", Session["Conectar"].ToString());
-
-                    if (_dts.Tables[0].Rows[0]["codigoCPCE"].ToString() == "2") GrdvDatos.Columns[11].Visible = false;
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -76,7 +75,8 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(39, 0, int.Parse(Session["usuCodigo"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(39, 0, int.Parse(Session["usuCodigo"].ToString()), 0, "", "", "", 
+                    Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -85,11 +85,13 @@
 
                     if (int.Parse(_dts.Tables[0].Rows[0]["Codigo"].ToString()) > 0)
                     {
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(_dts.Tables[0].Rows[0]["Perscodigo"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString().ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(_dts.Tables[0].Rows[0]["Perscodigo"].ToString()), 
+                            0, 0, "", "", "", Session["Conectar"].ToString().ToString());
 
                         if (_dts.Tables[0].Rows.Count > 0)
                         {
-                            Lblerror.Text = String.Format(@"Estimado Gestor, por favor realice la gestión al cliente:  Sr./Sra: {0} Agendado el: {1}", _dts.Tables[0].Rows[0]["Cliente"].ToString(),
+                            Lblerror.Text = String.Format(@"Estimado Gestor, por favor realice la gestión al cliente:  Sr./Sra: {0} Agendado el: {1}", 
+                                _dts.Tables[0].Rows[0]["Cliente"].ToString(),
                               ViewState["FechaLlamar"].ToString() + " " + ViewState["HoraLlamar"].ToString());
                         }
                     }

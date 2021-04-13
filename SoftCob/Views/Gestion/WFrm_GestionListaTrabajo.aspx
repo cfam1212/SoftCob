@@ -862,7 +862,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td colspan="5">
-                                                        <asp:Panel ID="PnlBotones" runat="server" Height="120px" GroupingText="Grupo de Botones">
+                                                        <asp:Panel ID="PnlBotones" runat="server" Height="140px" GroupingText="Grupo de Botones">
                                                             <table style="width: 100%">
                                                                 <tr>
                                                                     <td style="width: 15%"></td>
@@ -910,7 +910,7 @@
                                                                         <h5>Cédula:</h5>
                                                                     </td>
                                                                     <td colspan="2">
-                                                                        <asp:TextBox ID="TxtCedula" runat="server" MaxLength="20" TabIndex="33"></asp:TextBox>
+                                                                        <asp:TextBox ID="TxtCedula" runat="server" CssClass="form-control" MaxLength="20" TabIndex="33"></asp:TextBox>
                                                                     </td>
                                                                     <td>
                                                                         <asp:ImageButton ID="ImgArbol" runat="server" Height="35px" ImageUrl="~/Botones/arbol.png" OnClick="ImgArbol_Click" TabIndex="23" ToolTip="Árbol Genealógico" />
@@ -918,7 +918,6 @@
                                                                     <td></td>
                                                                     <td></td>
                                                                     <td></td>
-
                                                                 </tr>
                                                             </table>
                                                         </asp:Panel>
@@ -1097,7 +1096,7 @@
                                                             <h5>Fecha LLamada:</h5>
                                                         </td>
                                                         <td style="width: 35%">
-                                                            <asp:TextBox ID="TxtFechaLLamar" runat="server" Width="100%" TabIndex="34"></asp:TextBox>
+                                                            <asp:TextBox ID="TxtFechaLLamar" runat="server" CssClass="form-control" Width="100%" TabIndex="34"></asp:TextBox>
                                                         </td>
                                                         <td style="width: 15%">
                                                             <h5>Hora LLamada:</h5>
