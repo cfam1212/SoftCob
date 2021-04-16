@@ -17,7 +17,7 @@
             {
                 Lbltitulo.Text = "Administrar Contraseñas";
 
-                if (bool.Parse(Session["cambiarpass"].ToString()) == false)
+                if (bool.Parse(Session["usuCambiarPass"].ToString()) == false)
                 {
                     TxtPassAnterior.Enabled = false;
                     TxtNuevoPass.Enabled = false;
@@ -26,7 +26,8 @@
                     Lblerror.Text = "Usuario no tiene permisos suficientes..!";
                 }
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                    Request["MensajeRetornado"].ToString());
             }
         }
         #endregion
