@@ -689,7 +689,7 @@
                                                                                     <asp:ImageButton ID="ImgEditelefono" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgEditelefono_Click" TabIndex="16" ToolTip="Editar Teléfono" />
                                                                                 </td>
                                                                                 <td>
-                                                                                    <asp:ImageButton ID="ImgBuscarFono" runat="server" Height="25px" ImageUrl="~/Botones/bntbuscarfono.png" OnClick="ImgBuscarFono_Click" ToolTip="Buscar Teléfonos" />
+                                                                                    <asp:ImageButton ID="ImgBuscarFono" runat="server" Height="25px" ImageUrl="~/Botones/bntbuscarfono.png" OnClick="ImgBuscarFono_Click" ToolTip="Buscar Teléfonos" Visible="False" />
                                                                                 </td>
                                                                             </tr>
                                                                         </table>

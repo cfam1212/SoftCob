@@ -294,19 +294,22 @@
                         GrdvDatosObligacion.DataBind();
                         ViewState["DatosObligacion"] = _dts.Tables[0];
                         //Datos Garante
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(45, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(), "", Session["Conectar"].ToString().ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(45, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(), "", 
+                            Session["Conectar"].ToString().ToString());
                         GrdvDatosGarante.DataSource = _dts;
                         GrdvDatosGarante.DataBind();
 
                         if (_dts.Tables[0].Rows.Count > 0) PnlDatosGarante.Visible = true;
                         else PnlDatosGarante.Visible = false;
 
-                        FunCargarTelefonoRegistrados(int.Parse(ViewState["CodigoCedente"].ToString()), int.Parse(ViewState["PersCodigo"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()));
+                        FunCargarTelefonoRegistrados(int.Parse(ViewState["CodigoCedente"].ToString()), 
+                            int.Parse(ViewState["PersCodigo"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()));
                         FunConsultarTelefonosDeudor(ViewState["TipoMarcado"].ToString());
 
                         if (ViewState["TipoTelefono"].ToString() == "CN")
                             lblNumMarcado.Text = ViewState["DialerNumber"] == null ? "" : "Marcando..." +
-                                ViewState["PrefijoMarcacion"].ToString() + ViewState["DialerNumber"].ToString() + " - " + ViewState["Cliente"].ToString();
+                                ViewState["PrefijoMarcacion"].ToString() + ViewState["DialerNumber"].ToString() + " - " + 
+                                ViewState["Cliente"].ToString();
                         else lblNumMarcado.Text = ViewState["DialerNumber"] == null ? "" : "Marcando..." +
                             ViewState["DialerNumber"].ToString() + " - " + ViewState["Cliente"].ToString();
 
@@ -587,9 +590,11 @@
             {
                 //Llenar Telefonos de la primera tabla INCALL
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(141, cedecodigo, int.Parse(Session["usuCodigo"].ToString()),
-                    perscodigo, "", ViewState["NumeroDocumento"].ToString(), Session["MachineName"].ToString(), Session["Conectar"].ToString());
+                    perscodigo, "", ViewState["NumeroDocumento"].ToString(), Session["MachineName"].ToString(), 
+                    Session["Conectar"].ToString());
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(35, cedecodigo, perscodigo, cldecodigo, "", "", "", Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(35, cedecodigo, perscodigo, cldecodigo, "", "", "", 
+                    Session["Conectar"].ToString());
                 GrdvTelefonos.DataSource = _dts;
                 GrdvTelefonos.DataBind();
                 ViewState["TelefonosRegistrados"] = _dts.Tables[0];

@@ -24,22 +24,26 @@
                 ViewState["CodigoPERS"] = Request["CodigoPERS"];
                 ViewState["Operacion"] = Request["Operacion"];
                 Lbltitulo.Text = "Datos Adicionales";
-                FunCargarMantenimiento(0);
+                FunCargarMantenimiento();
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                    Request["MensajeRetornado"].ToString());
             }
         }
         #endregion
 
         #region Procedimientos y Funciones
-        private void FunCargarMantenimiento(int v)
+        private void FunCargarMantenimiento()
         {
             _dts = new ConsultaDatosDAO().FunDatosAdicionales(int.Parse(ViewState["CodigoCEDE"].ToString()),
                 int.Parse(ViewState["CodigoCPCE"].ToString()), int.Parse(ViewState["CodigoPERS"].ToString()),
                 ViewState["Operacion"].ToString(), "", "", "", 0, 0, 0, Session["Conectar"].ToString());
 
-            GrdvDatos.DataSource = _dts;
-            GrdvDatos.DataBind();
+            if (_dts.Tables[0].Rows.Count > 0)
+            {
+                GrdvDatos.DataSource = _dts;
+                GrdvDatos.DataBind();
+            }
         }
         #endregion
 

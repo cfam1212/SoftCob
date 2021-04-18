@@ -69,15 +69,6 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.Label Lblerror;
 
         /// <summary>
-        /// Control updProgress.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress updProgress;
-
-        /// <summary>
         /// Control updTimer.
         /// </summary>
         /// <remarks>
@@ -420,13 +411,13 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.CheckBox ChkAgregar;
 
         /// <summary>
-        /// Control ImgBuscarFono.
+        /// Control ImgBuscarFono0.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgBuscarFono;
+        protected global::System.Web.UI.WebControls.ImageButton ImgBuscarFono0;
 
         /// <summary>
         /// Control DdlAccionDel.
@@ -474,6 +465,15 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.GridView GrdvTelefonos;
 
         /// <summary>
+        /// Control Panel5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel5;
+
+        /// <summary>
         /// Control PnlDatosTelefonos_CollapsiblePanelExtender.
         /// </summary>
         /// <remarks>
@@ -481,6 +481,15 @@ namespace SoftCob.Views.Gestion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender PnlDatosTelefonos_CollapsiblePanelExtender;
+
+        /// <summary>
+        /// Control Panel6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel6;
 
         /// <summary>
         /// Control PnlHeaderDeudor.
