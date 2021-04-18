@@ -161,10 +161,10 @@
                         _sql += "Documento = PC.pacp_documento,TipoPago = (select PD.pade_nombre from SoftCob_PARAMETRO_DETALLE PD (nolock) where PD.pade_valorI=PC.pade_codigo and ";
                         _sql += "PD.PARA_CODIGO in(select PARA_CODIGO from SoftCob_PARAMETRO_CABECERA (nolock) where para_nombre='TIPO PAGO')),";
                         _sql += "Valor = cast(round(PC.pacp_valorpago,2) as decimal(12,2)),FechaPago = CONVERT(varchar(10),PC.pacp_fechapago,121),";
-                        _sql += "Gestor= (select usu_Nombres+' '+usu_Apellidos from USUARIO (nolock) where USU_CODIGO in";
+                        _sql += "Gestor= (select usua_nombres+' '+usua_apellidos from SoftCob_USUARIO (nolock) where USUA_CODIGO in";
                         _sql += "(select ctde_gestorasignado from SoftCob_CUENTA_DEUDOR (nolock) where ctde_operacion=PC.pacp_operacion)),";
                         _sql += "FechaRegistro = CONVERT(varchar(10),PC.pacp_fechacreacion,121),";
-                        _sql += "Usuario = (select US.usu_Nombres+' '+US.usu_Apellidos from USUARIO US (nolock) where US.USU_CODIGO=PC.pacp_usuariocreacion) ";
+                        _sql += "Usuario = (select US.usua_nombres+' '+US.usua_apellidos from SoftCob_USUARIO US (nolock) where US.USUA_CODIGO=PC.pacp_usuariocreacion) ";
                         _sql += "from SoftCob_PAGOSCARTERA PC INNER JOIN SoftCob_PERSONA PE (nolock) ON PC.pacp_numerodocumento=PE.pers_numerodocumento ";
                         _sql += "where PC.pacp_cpcecodigo=" + DdlCatalogo.SelectedValue + " and PC.pacp_fechapago between CONVERT(date,'" + TxtFechaIni.Text + "',101) and ";
                         _sql += "CONVERT(date,'" + TxtFechaFin.Text + "',101) ";

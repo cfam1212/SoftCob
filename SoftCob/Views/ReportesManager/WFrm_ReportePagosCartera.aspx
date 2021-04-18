@@ -22,7 +22,7 @@
         function pageLoad(sender, arg) {
             $(document).ready(function () {
                 $.datepicker.setDefaults($.datepicker.regional['es']);
-                $('#txtFechaIni').datepicker(
+                $('#TxtFechaIni').datepicker(
                     {
                         inline: true,
                         dateFormat: "mm/dd/yy",
@@ -39,7 +39,7 @@
 
             $(document).ready(function () {
                 $.datepicker.setDefaults($.datepicker.regional['es']);
-                $('#txtFechaFin').datepicker(
+                $('#TxtFechaFin').datepicker(
                     {
                         inline: true,
                         dateFormat: "mm/dd/yy",

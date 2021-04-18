@@ -159,13 +159,13 @@
                                     <h5>Desde:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtFechaInicio" runat="server" Width="100%" TabIndex="3"></asp:TextBox>
+                                    <asp:TextBox ID="TxtFechaInicio" runat="server" CssClass="form-control" Width="100%" TabIndex="3"></asp:TextBox>
                                 </td>
                                 <td>
                                     <h5>Hasta:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtFechaFin" runat="server" Width="100%" TabIndex="4"></asp:TextBox>
+                                    <asp:TextBox ID="TxtFechaFin" runat="server" CssClass="form-control" Width="100%" TabIndex="4"></asp:TextBox>
                                 </td>
                                 <td></td>
                             </tr>

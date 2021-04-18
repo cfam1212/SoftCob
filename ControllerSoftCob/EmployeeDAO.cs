@@ -388,7 +388,7 @@
                                 Departamento = Departamento.depa_descripcion,
                                 Estado = Employee.empl_estado ? "Activo" : "Inactivo",
                                 Asignado = 1,
-                                Urllink= "WFrm_NuevoEmployee.aspx?Codigo="+ Employee.EMPL_CODIGO.ToString()
+                                Urllink= "WFrm_NuevoEmployee.aspx?Tipo=E&Codigo="+ Employee.EMPL_CODIGO.ToString()
                             };
 
                 var query_1 = from Employee in _dtb.SoftCob_EMPLOYEE
@@ -406,7 +406,7 @@
                                   Departamento = Departamento.depa_descripcion,
                                   Estado = Employee.empl_estado ? "Activo" : "Inactivo",
                                   Asignado = 0,
-                                  Urllink = "WFrm_NuevoEmployee.aspx?Codigo=" + Employee.EMPL_CODIGO.ToString()
+                                  Urllink = "WFrm_NuevoEmployee.aspx?Tipo=E&Codigo=" + Employee.EMPL_CODIGO.ToString()
                               };
 
                 return new FuncionesDAO().FunCambiarDataSet(query.Union(query_1).ToList());

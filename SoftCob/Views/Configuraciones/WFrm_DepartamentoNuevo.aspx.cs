@@ -44,7 +44,9 @@
                 TxtDepartamento.Text = _depar.depa_descripcion;
                 ChkEstado.Text = _depar.depa_estado ? "Activo" : "Inactivo";
                 ChkEstado.Checked = _depar.depa_estado;
-                ViewState["NomDepa"] = TxtDepartamento.Text;
+                ChkEvalua.Checked = _depar.depa_auxi1 == 1 ? true : false;
+                ChkEvalua.Text = _depar.depa_auxi1 == 1 ? "SI" : "NO";
+                ViewState["NomDepa"] = TxtDepartamento.Text.ToUpper();
             }
             catch (Exception ex)
             {
@@ -57,6 +59,11 @@
         protected void ChkEstado_CheckedChanged(object sender, EventArgs e)
         {
             ChkEstado.Text = ChkEstado.Checked ? "Activo" : "Inactivo";
+        }
+
+        protected void ChkEvalua_CheckedChanged(object sender, EventArgs e)
+        {
+            ChkEvalua.Text = ChkEvalua.Checked ? "SI" : "NO";
         }
 
         protected void BtnGrabar_Click(object sender, EventArgs e)
@@ -85,7 +92,7 @@
                     _depar.empr_codigo = int.Parse(Session["CodigoEMPR"].ToString());
                     _depar.depa_descripcion = TxtDepartamento.Text.Trim().ToUpper();
                     _depar.depa_estado = ChkEstado.Checked;
-                    _depar.depa_auxi1 = 0;
+                    _depar.depa_auxi1 = ChkEvalua.Checked ? 1 : 0;
                     _depar.depa_auxi2 = 0;
                     _depar.depa_auxi3 = 0;
                     _depar.depa_auxv1 = "";

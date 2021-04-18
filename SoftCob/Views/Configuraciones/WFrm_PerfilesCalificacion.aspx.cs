@@ -187,6 +187,7 @@
                 ViewState["Perfil"] = _tblagre;
                 GrdvDatos.DataSource = _tblagre;
                 GrdvDatos.DataBind();
+                TxtDescripcion.Text = "";
                 ImgAdd.Enabled = true;
                 ImgEdit.Enabled = false;
             }

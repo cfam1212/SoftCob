@@ -51,8 +51,19 @@
         {
             try
             {
-                _sql = "SELECT FechaRegistro = CONVERT(varchar(19),revl_fechacreacion,121),FechaLlama = CONVERT(varchar(10),revl_fechallamar,121)+ ' '+CONVERT(varchar(5),revl_horallamar,108), Producto = ISNULL((SELECT pade_nombre FROM SoftCob_PARAMETRO_DETALLE (NOLOCK) WHERE pade_valorV=ctde_auxv1 and PARA_CODIGO in(SELECT PARA_CODIGO FROM SoftCob_PARAMETRO_CABECERA (NOLOCK) WHERE para_nombre='TIPO PRODUCTO')),(SELECT CT.cpce_producto FROM SoftCob_CATALOGO_PRODUCTOS_CEDENTE CT (NOLOCK) WHERE CT.CPCE_CODIGO=3)),Identificacion = PER.pers_numerodocumento,Cliente = PER.pers_nombrescompletos,Operacion = CDE.ctde_operacion,Exigible = CDE.ctde_valorexigible,FechaUltGestion = CDE.ctde_auxv3,FechaLlamar = CONVERT(varchar(10),revl_fechallamar,121),HoraLlamar = CONVERT(varchar(5),revl_horallamar,108),Gestor = (SELECT USU.usu_Nombres+' '+USU.usu_Apellidos FROM USUARIO USU (NOLOCK) WHERE USU.USU_CODIGO=CDE.ctde_gestorasignado) ";
-                _sql += "FROM SoftCob_REGISTRO_VOLVERALLAMAR VLL (NOLOCK) INNER JOIN SoftCob_CUENTA_DEUDOR CDE (NOLOCK) ON VLL.revl_cldecodigo=CDE.CLDE_CODIGO INNER JOIN SoftCob_CLIENTE_DEUDOR CLI (nolock) ON CDE.CLDE_CODIGO = CLI.CLDE_CODIGO INNER JOIN SoftCob_PERSONA PER (NOLOCK) ON PER.PERS_CODIGO=VLL.revl_perscodigo WHERE ";
+                _sql = "SELECT FechaRegistro = CONVERT(varchar(19),revl_fechacreacion,121),FechaLlama = CONVERT(varchar(10)," +
+                        "revl_fechallamar,121)+ ' '+CONVERT(varchar(5),revl_horallamar,108), Producto = " +
+                        "ISNULL((SELECT pade_nombre FROM SoftCob_PARAMETRO_DETALLE (NOLOCK) WHERE pade_valorV=ctde_auxv1 and " +
+                        "PARA_CODIGO in(SELECT PARA_CODIGO FROM SoftCob_PARAMETRO_CABECERA (NOLOCK) WHERE para_nombre='TIPO PRODUCTO'))," +
+                        "(SELECT CT.cpce_producto FROM SoftCob_CATALOGO_PRODUCTOS_CEDENTE CT (NOLOCK) WHERE CT.CPCE_CODIGO=3))," +
+                        "Identificacion = PER.pers_numerodocumento,Cliente = PER.pers_nombrescompletos,Operacion = CDE.ctde_operacion," +
+                        "Exigible = CDE.ctde_valorexigible,FechaUltGestion = CDE.ctde_auxv3,FechaLlamar = CONVERT(varchar(10)," +
+                        "revl_fechallamar,121),HoraLlamar = CONVERT(varchar(5),revl_horallamar,108),Gestor = " +
+                        "(SELECT USU.usua_nombres+' '+USU.usua_apellidos FROM SoftCob_USUARIO USU (NOLOCK) WHERE USU.USUA_CODIGO=" +
+                        "CDE.ctde_gestorasignado) ";
+                _sql += "FROM SoftCob_REGISTRO_VOLVERALLAMAR VLL (NOLOCK) INNER JOIN SoftCob_CUENTA_DEUDOR CDE (NOLOCK) ON " +
+                        "VLL.revl_cldecodigo=CDE.CLDE_CODIGO INNER JOIN SoftCob_CLIENTE_DEUDOR CLI (nolock) ON CDE.CLDE_CODIGO = " +
+                        "CLI.CLDE_CODIGO INNER JOIN SoftCob_PERSONA PER (NOLOCK) ON PER.PERS_CODIGO=VLL.revl_perscodigo WHERE ";
 
                 switch (ViewState["Tipo"].ToString())
                 {
@@ -66,7 +77,9 @@
                         break;
                 }
 
-                _sql += "BETWEEN CONVERT(DATE,'" + ViewState["FechaDesde"].ToString() + "',101) AND CONVERT(DATE,'" + ViewState["FechaHasta"].ToString() + "',101) AND CLI.CPCE_CODIGO=" + ViewState["CodigoCPCE"].ToString() + " AND VLL.revl_gestionado='NO' AND CDE.ctde_estado=1 ";
+                _sql += "BETWEEN CONVERT(DATE,'" + ViewState["FechaDesde"].ToString() + "',101) AND CONVERT(DATE,'" + 
+                    ViewState["FechaHasta"].ToString() + "',101) AND CLI.CPCE_CODIGO=" + ViewState["CodigoCPCE"].ToString() + 
+                    " AND VLL.revl_gestionado='NO' AND CDE.ctde_estado=1 ";
 
                 if (ViewState["Tipo"].ToString() == "1" || ViewState["Tipo"].ToString() == "3")
                 {

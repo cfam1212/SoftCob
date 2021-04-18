@@ -134,7 +134,6 @@
                                 <td colspan="2">
                                     <asp:DropDownList ID="DdlTipoReporte" runat="server" CssClass="form-control" Width="100%" TabIndex="1" AutoPostBack="True" OnSelectedIndexChanged="DdlTipoReporte_SelectedIndexChanged">
                                         <asp:ListItem Value="0">--Seleccione Reporte--</asp:ListItem>
-                                        <asp:ListItem Value="1">Consulta IESS</asp:ListItem>
                                         <asp:ListItem Value="2">Evaluación Desempeño</asp:ListItem>
                                         <asp:ListItem Value="3">Actualización de Datos</asp:ListItem>
                                         <asp:ListItem Value="4">Registros BroadCast</asp:ListItem>

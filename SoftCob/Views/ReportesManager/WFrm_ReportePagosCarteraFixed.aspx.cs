@@ -51,7 +51,7 @@
             {
                 _sql = "select Cliente = PE.pers_nombrescompletos,Identificacion = PE.pers_numerodocumento,Operacion = CD.ctde_operacion,";
                 _sql += "Documento = AP.rpab_auxv2,FechaPago = convert(date,AP.rpab_fechapago,103),ValorPago = AP.rpab_valorpago,";
-                _sql += "Gestor = (select US.usu_Nombres+' '+US.usu_Apellidos from USUARIO US where US.USU_CODIGO=AP.rpab_gestorasignado),";
+                _sql += "Gestor = (select US.usua_nombres+' '+US.usua_apellidos from SoftCob_USUARIO US where US.USUA_CODIGO=AP.rpab_gestorasignado),";
                 _sql += "Accion = (select AC.arac_descripcion from SoftCob_ACCION AC where AC.ARAC_CODIGO=AP.rpab_araccodigo),";
                 _sql += "Efecto = (select EF.aref_descripcion from SoftCob_EFECTO EF where EF.AREF_CODIGO=AP.rpab_arefcodigo),";
                 _sql += "Respuesta = (select RE.arre_descripcion from SoftCob_RESPUESTA RE where RE.ARRE_CODIGO=AP.rpab_arrecodigo),";

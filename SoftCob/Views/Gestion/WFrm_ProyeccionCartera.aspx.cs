@@ -71,7 +71,7 @@
                 FunCargarMantenimiento(0);
 
                 if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                    "::GS-BPO GLOBAL SERVICES::", Request["MensajeRetornado"].ToString());
+                    ":: SoftCob ::", Request["MensajeRetornado"].ToString());
             }
             else
             {
@@ -89,134 +89,137 @@
             _dts = new ConsultaDatosDAO().FunConsultaDatos(227, int.Parse(Session["usuCodigo"].ToString()),
                 0, 0, "", "", "", Session["Conectar"].ToString());
 
-            _codigobrmc = int.Parse(_dts.Tables[0].Rows[0]["CodigoBRMC"].ToString());
-
-            _dts = new ConsultaDatosDAO().FunConsultaDatos(228, _codigobrmc, 0, 0, "", "", "",
-                Session["Conectar"].ToString());
-
-            _meslabel = _dts.Tables[0].Rows[0]["MesLabel"].ToString();
-            _preslabel = _dts.Tables[0].Rows[0]["PresuLabel"].ToString();
-            _mes = int.Parse(_dts.Tables[0].Rows[0]["Mes"].ToString());
-            _year = int.Parse(_dts.Tables[0].Rows[0]["Anio"].ToString());
-            ViewState["Year"] = _year;
-            ViewState["Mes"] = _mes;
-            _codigocede = int.Parse(_dts.Tables[0].Rows[0]["CodigoCPCE"].ToString());
-            _codigocpce = int.Parse(_dts.Tables[0].Rows[0]["CodigoCPCE"].ToString());
-            ViewState["CodigoCPCE"] = _codigocpce;
-            _codigogest = int.Parse(_dts.Tables[0].Rows[0]["CodigoGEST"].ToString());
-            ViewState["CodigoGEST"] = _codigogest;
-            _presupuesto = decimal.Parse(_dts.Tables[0].Rows[0]["Presupuesto"].ToString());
-
-            ViewState["Presupuesto"] = _presupuesto;
-            Lbltitulo.Text = "PROYECCION " + _meslabel + " " + _year.ToString();
-
-            _dts = new PagoCarteraDAO().FunGetPagoCartera(15, _codigocede, _codigocpce, "", "", "", "", "", "", "",
-                "", "", _codigogest, _year, _mes, 0, "", Session["Conectar"].ToString());
-
-            _dtsx = new PagoCarteraDAO().FunGetPagoCartera(16, _codigocede, _codigocpce, "", "", "", "", "", "", "", "", "",
-                _codigogest, _year, _mes, 0, "", Session["Conectar"].ToString());
-
-            if (_dtsx.Tables[0].Rows.Count == 0)
+            if (_dts.Tables[0].Rows.Count > 0)
             {
-                _dtsx = new PagoCarteraDAO().FunGetPagoCartera(17, _codigocede, _codigocpce, "", "", "", "", "", "",
-                    _meslabel, _presupuesto.ToString().Replace(",", "."), "", _codigogest, _year, _mes, 0, "",
+                _codigobrmc = int.Parse(_dts.Tables[0].Rows[0]["CodigoBRMC"].ToString());
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(228, _codigobrmc, 0, 0, "", "", "",
                     Session["Conectar"].ToString());
 
-                _resultado = _dtsx.Tables[0].Select("Eliminado='NO'");
-                _dtbproyecc = _resultado.CopyToDataTable();
+                _meslabel = _dts.Tables[0].Rows[0]["MesLabel"].ToString();
+                _preslabel = _dts.Tables[0].Rows[0]["PresuLabel"].ToString();
+                _mes = int.Parse(_dts.Tables[0].Rows[0]["Mes"].ToString());
+                _year = int.Parse(_dts.Tables[0].Rows[0]["Anio"].ToString());
+                ViewState["Year"] = _year;
+                ViewState["Mes"] = _mes;
+                _codigocede = int.Parse(_dts.Tables[0].Rows[0]["CodigoCPCE"].ToString());
+                _codigocpce = int.Parse(_dts.Tables[0].Rows[0]["CodigoCPCE"].ToString());
+                ViewState["CodigoCPCE"] = _codigocpce;
+                _codigogest = int.Parse(_dts.Tables[0].Rows[0]["CodigoGEST"].ToString());
+                ViewState["CodigoGEST"] = _codigogest;
+                _presupuesto = decimal.Parse(_dts.Tables[0].Rows[0]["Presupuesto"].ToString());
 
-                ViewState["Proyeccion"] = _dtbproyecc;
-                GrdvDatos.DataSource = _dtbproyecc;
-                GrdvDatos.DataBind();
-                GrdvDatos.UseAccessibleHeader = true;
-                GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
-            }
-            else
-            {
-                _codigoprcb = int.Parse(_dtsx.Tables[0].Rows[0]["CodigoPRCB"].ToString());
+                ViewState["Presupuesto"] = _presupuesto;
+                Lbltitulo.Text = "PROYECCION " + _meslabel + " " + _year.ToString();
 
-                ViewState["Proyeccion"] = _dtsx.Tables[0];
+                _dts = new PagoCarteraDAO().FunGetPagoCartera(15, _codigocede, _codigocpce, "", "", "", "", "", "", "",
+                    "", "", _codigogest, _year, _mes, 0, "", Session["Conectar"].ToString());
 
-                _tblagre = (DataTable)ViewState["Proyeccion"];
+                _dtsx = new PagoCarteraDAO().FunGetPagoCartera(16, _codigocede, _codigocpce, "", "", "", "", "", "", "", "", "",
+                    _codigogest, _year, _mes, 0, "", Session["Conectar"].ToString());
 
-                foreach (DataRow _drfila in _dts.Tables[0].Rows)
+                if (_dtsx.Tables[0].Rows.Count == 0)
                 {
-                    _result = _tblagre.Select("Cedula='" + _drfila["Cedula"].ToString() + "' and FechaPago='" +
-                        _drfila["FechaPago"].ToString() + "'").FirstOrDefault();
+                    _dtsx = new PagoCarteraDAO().FunGetPagoCartera(17, _codigocede, _codigocpce, "", "", "", "", "", "",
+                        _meslabel, _presupuesto.ToString().Replace(",", "."), "", _codigogest, _year, _mes, 0, "",
+                        Session["Conectar"].ToString());
 
-                    if (_result == null)
+                    _resultado = _dtsx.Tables[0].Select("Eliminado='NO'");
+                    _dtbproyecc = _resultado.CopyToDataTable();
+
+                    ViewState["Proyeccion"] = _dtbproyecc;
+                    GrdvDatos.DataSource = _dtbproyecc;
+                    GrdvDatos.DataBind();
+                    GrdvDatos.UseAccessibleHeader = true;
+                    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+                else
+                {
+                    _codigoprcb = int.Parse(_dtsx.Tables[0].Rows[0]["CodigoPRCB"].ToString());
+
+                    ViewState["Proyeccion"] = _dtsx.Tables[0];
+
+                    _tblagre = (DataTable)ViewState["Proyeccion"];
+
+                    foreach (DataRow _drfila in _dts.Tables[0].Rows)
                     {
-                        _result = _tblagre.Select("CodigoRESP='" + _drfila["CodigoRESP"].ToString() + "'").FirstOrDefault();
+                        _result = _tblagre.Select("Cedula='" + _drfila["Cedula"].ToString() + "' and FechaPago='" +
+                            _drfila["FechaPago"].ToString() + "'").FirstOrDefault();
 
                         if (_result == null)
                         {
-                            _filagre = _tblagre.NewRow();
-                            _filagre["CodigoRESP"] = _drfila["CodigoRESP"].ToString();
-                            _filagre["Cedula"] = _drfila["Cedula"].ToString();
-                            _filagre["Cliente"] = _drfila["Cliente"].ToString();
-                            _filagre["FechaPago"] = _drfila["FechaPago"].ToString();
-                            _filagre["Anio"] = _year.ToString();
-                            _filagre["Mes"] = _mes.ToString();
-                            _filagre["Valor"] = _drfila["Valor"].ToString();
-                            _filagre["EstadoPago"] = _drfila["EstadoPago"].ToString();
-                            _filagre["Observacion"] = _drfila["Observacion"].ToString();
-                            _filagre["Eliminado"] = _drfila["Eliminado"].ToString();
-                            _filagre["Respuesta"] = _drfila["Respuesta"].ToString();
-                            _filagre["CodigoPRCB"] = _codigoprcb.ToString();
-                            _tblagre.Rows.Add(_filagre);
+                            _result = _tblagre.Select("CodigoRESP='" + _drfila["CodigoRESP"].ToString() + "'").FirstOrDefault();
 
-                            new PagoCarteraDAO().FunGetPagoCartera(18, 0, 0, _drfila["Cedula"].ToString(), "", "",
-                                _drfila["FechaPago"].ToString(), _drfila["Valor"].ToString().Replace(",", "."), "",
-                                _drfila["Cliente"].ToString(), _drfila["EstadoPago"].ToString(),
-                                _drfila["Respuesta"].ToString(), _codigoprcb, int.Parse(_drfila["CodigoRESP"].ToString()),
-                                int.Parse(_drfila["CodigoARRE"].ToString()), 0, "", Session["Conectar"].ToString());
+                            if (_result == null)
+                            {
+                                _filagre = _tblagre.NewRow();
+                                _filagre["CodigoRESP"] = _drfila["CodigoRESP"].ToString();
+                                _filagre["Cedula"] = _drfila["Cedula"].ToString();
+                                _filagre["Cliente"] = _drfila["Cliente"].ToString();
+                                _filagre["FechaPago"] = _drfila["FechaPago"].ToString();
+                                _filagre["Anio"] = _year.ToString();
+                                _filagre["Mes"] = _mes.ToString();
+                                _filagre["Valor"] = _drfila["Valor"].ToString();
+                                _filagre["EstadoPago"] = _drfila["EstadoPago"].ToString();
+                                _filagre["Observacion"] = _drfila["Observacion"].ToString();
+                                _filagre["Eliminado"] = _drfila["Eliminado"].ToString();
+                                _filagre["Respuesta"] = _drfila["Respuesta"].ToString();
+                                _filagre["CodigoPRCB"] = _codigoprcb.ToString();
+                                _tblagre.Rows.Add(_filagre);
+
+                                new PagoCarteraDAO().FunGetPagoCartera(18, 0, 0, _drfila["Cedula"].ToString(), "", "",
+                                    _drfila["FechaPago"].ToString(), _drfila["Valor"].ToString().Replace(",", "."), "",
+                                    _drfila["Cliente"].ToString(), _drfila["EstadoPago"].ToString(),
+                                    _drfila["Respuesta"].ToString(), _codigoprcb, int.Parse(_drfila["CodigoRESP"].ToString()),
+                                    int.Parse(_drfila["CodigoARRE"].ToString()), 0, "", Session["Conectar"].ToString());
+                            }
+                        }
+                        else
+                        {
+                            _result["Valor"] = _drfila["Valor"].ToString();
+                            _result["EstadoPago"] = _drfila["EstadoPago"].ToString();
+                            _result["Respuesta"] = _drfila["Respuesta"].ToString();
+                            _result["Observacion"] = "";
+                            _result["CodigoARRE"] = _drfila["CodigoARRE"].ToString();
+                            _tblagre.AcceptChanges();
                         }
                     }
-                    else
-                    {
-                        _result["Valor"] = _drfila["Valor"].ToString();
-                        _result["EstadoPago"] = _drfila["EstadoPago"].ToString();
-                        _result["Respuesta"] = _drfila["Respuesta"].ToString();
-                        _result["Observacion"] = "";
-                        _result["CodigoARRE"] = _drfila["CodigoARRE"].ToString();
-                        _tblagre.AcceptChanges();
-                    }
+
+                    _tblagre.DefaultView.Sort = "Cedula,FechaPago";
+                    _tblagre = _tblagre.DefaultView.ToTable();
+
+                    _resultado = _tblagre.Select("Eliminado='NO'");
+                    _dtbproyecc = _resultado.CopyToDataTable();
+                    ViewState["Proyeccion"] = _dtbproyecc;
+
+                    GrdvDatos.DataSource = _dtbproyecc;
+                    GrdvDatos.DataBind();
+                    GrdvDatos.UseAccessibleHeader = true;
+                    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
 
-                _tblagre.DefaultView.Sort = "Cedula,FechaPago";
-                _tblagre = _tblagre.DefaultView.ToTable();
+                _totalsumavalores = decimal.Parse(ViewState["TotalValores"].ToString());
+                _totalsumapagos = decimal.Parse(ViewState["TotalPagos"].ToString());
 
-                _resultado = _tblagre.Select("Eliminado='NO'");
-                _dtbproyecc = _resultado.CopyToDataTable();
-                ViewState["Proyeccion"] = _dtbproyecc;
+                if (_totalsumavalores > 0) _porcenvalores = Math.Round((_totalsumavalores / _presupuesto) * 100, 2);
+                else _porcenvalores = 0;
 
-                GrdvDatos.DataSource = _dtbproyecc;
-                GrdvDatos.DataBind();
-                GrdvDatos.UseAccessibleHeader = true;
-                GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                if (_totalsumapagos > 0) _porcenpagos = Math.Round((_totalsumapagos / _presupuesto) * 100, 2);
+                else _porcenpagos = 0;
+
+                _dtbPresupuesto = (DataTable)ViewState["DatosPresupuesto"];
+                _addfil = _dtbPresupuesto.NewRow();
+                _addfil["Codigo"] = 1;
+                _addfil["VPresupuesto"] = "$" + string.Format("{0:n}", _presupuesto);
+                _addfil["VProyeccion"] = "$" + string.Format("{0:n}", _totalsumavalores);
+                _addfil["VPorcenProyecc"] = _porcenvalores.ToString() + "%";
+                _addfil["VPagos"] = "$" + string.Format("{0:n}", _totalsumapagos);
+                _addfil["VPorcenCumplimiento"] = _porcenpagos.ToString() + "%";
+                _dtbPresupuesto.Rows.Add(_addfil);
+                ViewState["DatosPresupuesto"] = _dtbPresupuesto;
+                GrdvProyeccion.DataSource = _dtbPresupuesto;
+                GrdvProyeccion.DataBind();
             }
-
-            _totalsumavalores = decimal.Parse(ViewState["TotalValores"].ToString());
-            _totalsumapagos = decimal.Parse(ViewState["TotalPagos"].ToString());
-
-            if (_totalsumavalores > 0) _porcenvalores = Math.Round((_totalsumavalores / _presupuesto) * 100, 2);
-            else _porcenvalores = 0;
-
-            if (_totalsumapagos > 0) _porcenpagos = Math.Round((_totalsumapagos / _presupuesto) * 100, 2);
-            else _porcenpagos = 0;
-
-            _dtbPresupuesto = (DataTable)ViewState["DatosPresupuesto"];
-            _addfil = _dtbPresupuesto.NewRow();
-            _addfil["Codigo"] = 1;
-            _addfil["VPresupuesto"] = "$" + string.Format("{0:n}", _presupuesto);
-            _addfil["VProyeccion"] = "$" + string.Format("{0:n}", _totalsumavalores);
-            _addfil["VPorcenProyecc"] = _porcenvalores.ToString() + "%";
-            _addfil["VPagos"] = "$" + string.Format("{0:n}", _totalsumapagos);
-            _addfil["VPorcenCumplimiento"] = _porcenpagos.ToString() + "%";
-            _dtbPresupuesto.Rows.Add(_addfil);
-            ViewState["DatosPresupuesto"] = _dtbPresupuesto;
-            GrdvProyeccion.DataSource = _dtbPresupuesto;
-            GrdvProyeccion.DataBind();
         }
 
         private void FunLimpiar()

@@ -91,7 +91,8 @@
                 switch (DdlTipoReporte.SelectedValue)
                 {
                     case "1":
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlGestor.SelectedValue), 0, 0, "", TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlGestor.SelectedValue), 0, 0, "", TxtFechaIni.Text.Trim(), 
+                            TxtFechaFin.Text.Trim(), Session["Conectar"].ToString());
                         break;
                     case "2":
                         if (DdlGestor.SelectedValue == "0")
@@ -100,13 +101,16 @@
                             return;
                         }
 
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(167, int.Parse(DdlGestor.SelectedValue), 0, 0, "", TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(167, int.Parse(DdlGestor.SelectedValue), 0, 0, "", 
+                            TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), Session["Conectar"].ToString());
                         break;
                     case "3":
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(197, int.Parse(DdlGestor.SelectedValue), 0, 0, "", TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(197, int.Parse(DdlGestor.SelectedValue), 0, 0, "", 
+                            TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), Session["Conectar"].ToString());
                         break;
                     case "4":
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(204, 0, 0, 0, "", TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(204, 0, 0, 0, "", TxtFechaIni.Text.Trim(), 
+                            TxtFechaFin.Text.Trim(), Session["Conectar"].ToString());
                         break;
                 }
 

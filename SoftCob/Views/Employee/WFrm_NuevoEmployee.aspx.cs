@@ -40,58 +40,58 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                //    return;
+                //}
 
                 TxtFechaNacimiento.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 ViewState["Codigo"] = Request["Codigo"];
                 ViewState["Tipo"] = Request["Tipo"];
                 ViewState["CodigoEstu"] = "0";
 
-                _dtbotrosestudios.Columns.Add("Codigo");
-                _dtbotrosestudios.Columns.Add("Institucion");
-                _dtbotrosestudios.Columns.Add("FechaDesde");
-                _dtbotrosestudios.Columns.Add("FechaHasta");
-                _dtbotrosestudios.Columns.Add("Titulo");
-                ViewState["OtrosEstudios"] = _dtbotrosestudios;
+                //_dtbotrosestudios.Columns.Add("Codigo");
+                //_dtbotrosestudios.Columns.Add("Institucion");
+                //_dtbotrosestudios.Columns.Add("FechaDesde");
+                //_dtbotrosestudios.Columns.Add("FechaHasta");
+                //_dtbotrosestudios.Columns.Add("Titulo");
+                //ViewState["OtrosEstudios"] = _dtbotrosestudios;
 
-                _dtbidiomas.Columns.Add("Codigo");
-                _dtbidiomas.Columns.Add("Idioma");
-                _dtbidiomas.Columns.Add("NivelH");
-                _dtbidiomas.Columns.Add("NivelE");
-                _dtbidiomas.Columns.Add("CodigoIdioma");
-                ViewState["Idiomas"] = _dtbidiomas;
+                //_dtbidiomas.Columns.Add("Codigo");
+                //_dtbidiomas.Columns.Add("Idioma");
+                //_dtbidiomas.Columns.Add("NivelH");
+                //_dtbidiomas.Columns.Add("NivelE");
+                //_dtbidiomas.Columns.Add("CodigoIdioma");
+                //ViewState["Idiomas"] = _dtbidiomas;
 
-                _dtbexperiencia.Columns.Add("Codigo");
-                _dtbexperiencia.Columns.Add("Empresa");
-                _dtbexperiencia.Columns.Add("FecInicio");
-                _dtbexperiencia.Columns.Add("FecFin");
-                _dtbexperiencia.Columns.Add("Cargo");
-                _dtbexperiencia.Columns.Add("Descripcion");
-                _dtbexperiencia.Columns.Add("Motivo");
-                _dtbexperiencia.Columns.Add("CodigoMotivo");
-                ViewState["Experiencia"] = _dtbexperiencia;
+                //_dtbexperiencia.Columns.Add("Codigo");
+                //_dtbexperiencia.Columns.Add("Empresa");
+                //_dtbexperiencia.Columns.Add("FecInicio");
+                //_dtbexperiencia.Columns.Add("FecFin");
+                //_dtbexperiencia.Columns.Add("Cargo");
+                //_dtbexperiencia.Columns.Add("Descripcion");
+                //_dtbexperiencia.Columns.Add("Motivo");
+                //_dtbexperiencia.Columns.Add("CodigoMotivo");
+                //ViewState["Experiencia"] = _dtbexperiencia;
 
-                _dtbreflaborales.Columns.Add("Codigo");
-                _dtbreflaborales.Columns.Add("Empresa");
-                _dtbreflaborales.Columns.Add("Nombre");
-                _dtbreflaborales.Columns.Add("Cargo");
-                _dtbreflaborales.Columns.Add("Telefono");
-                _dtbreflaborales.Columns.Add("Celular");
-                _dtbreflaborales.Columns.Add("Email");
-                ViewState["RefLaboral"] = _dtbreflaborales;
+                //_dtbreflaborales.Columns.Add("Codigo");
+                //_dtbreflaborales.Columns.Add("Empresa");
+                //_dtbreflaborales.Columns.Add("Nombre");
+                //_dtbreflaborales.Columns.Add("Cargo");
+                //_dtbreflaborales.Columns.Add("Telefono");
+                //_dtbreflaborales.Columns.Add("Celular");
+                //_dtbreflaborales.Columns.Add("Email");
+                //ViewState["RefLaboral"] = _dtbreflaborales;
 
-                _dtbrefpersonales.Columns.Add("Codigo");
-                _dtbrefpersonales.Columns.Add("Nombre");
-                _dtbrefpersonales.Columns.Add("Parentesco");
-                _dtbrefpersonales.Columns.Add("Telefono");
-                _dtbrefpersonales.Columns.Add("Celular");
-                _dtbrefpersonales.Columns.Add("CodigoParen");
-                ViewState["RefPersonal"] = _dtbrefpersonales;
+                //_dtbrefpersonales.Columns.Add("Codigo");
+                //_dtbrefpersonales.Columns.Add("Nombre");
+                //_dtbrefpersonales.Columns.Add("Parentesco");
+                //_dtbrefpersonales.Columns.Add("Telefono");
+                //_dtbrefpersonales.Columns.Add("Celular");
+                //_dtbrefpersonales.Columns.Add("CodigoParen");
+                //ViewState["RefPersonal"] = _dtbrefpersonales;
                 ViewState["identificacion"] = null;
                 FunCargarCombos();
 
@@ -101,8 +101,8 @@
                     Lbltitulo.Text = "Editar Empleado";
                     lblEstado.Visible = true;
                     ChkEstado.Visible = true;
-                    FunCargarMantenimiento();
                 }
+                FunCargarMantenimiento();
             }
         }
         #endregion
@@ -113,42 +113,46 @@
             try
             {
                 SoftCob_EMPLOYEE _employee = new EmployeeDAO().FunGetEmployeePorCodigo(int.Parse(ViewState["Codigo"].ToString()));
-                DdlTipoDocumento.SelectedValue = _employee.empl_tipodocumento;
-
-                if (DdlTipoDocumento.SelectedValue == "C")
+                if (_employee != null)
                 {
-                    txtIdentificacion_FilteredTextBoxExtender.FilterMode = AjaxControlToolkit.FilterModes.ValidChars;
-                    txtIdentificacion_FilteredTextBoxExtender.InvalidChars = ".-";
-                    txtIdentificacion_FilteredTextBoxExtender.FilterType = AjaxControlToolkit.FilterTypes.Numbers;
-                }
-                else
-                {
-                    txtIdentificacion_FilteredTextBoxExtender.FilterMode = AjaxControlToolkit.FilterModes.InvalidChars;
-                    txtIdentificacion_FilteredTextBoxExtender.InvalidChars = ".-*/{{}}[[]]\\";
-                    txtIdentificacion_FilteredTextBoxExtender.FilterType = AjaxControlToolkit.FilterTypes.Custom;
+                    DdlTipoDocumento.SelectedValue = _employee.empl_tipodocumento;
+
+                    if (DdlTipoDocumento.SelectedValue == "C")
+                    {
+                        txtIdentificacion_FilteredTextBoxExtender.FilterMode = AjaxControlToolkit.FilterModes.ValidChars;
+                        txtIdentificacion_FilteredTextBoxExtender.InvalidChars = ".-";
+                        txtIdentificacion_FilteredTextBoxExtender.FilterType = AjaxControlToolkit.FilterTypes.Numbers;
+                    }
+                    else
+                    {
+                        txtIdentificacion_FilteredTextBoxExtender.FilterMode = AjaxControlToolkit.FilterModes.InvalidChars;
+                        txtIdentificacion_FilteredTextBoxExtender.InvalidChars = ".-*/{{}}[[]]\\";
+                        txtIdentificacion_FilteredTextBoxExtender.FilterType = AjaxControlToolkit.FilterTypes.Custom;
+                    }
+
+                    TxtIdentificacion.Text = _employee.empl_identificacion;
+                    TxtNombres.Text = _employee.empl_nombres;
+                    TxtApellidos.Text = _employee.empl_apellidos;
+                    DdlGenero.SelectedValue = _employee.empl_genero;
+                    DdlEstadoCivil.SelectedValue = _employee.empl_estadocivil;
+                    DdlNacionalidad.SelectedValue = _employee.empl_nacionalidad;
+                    TxtFechaNacimiento.Text = _employee.empl_fechanacimiento.ToString("MM/dd/yyyy");
+                    DdlDepartamento.SelectedValue = _employee.DEPA_CODIGO.ToString();
+                    DdlTipoSangre.SelectedValue = _employee.emple_tiposangre;
+                    TxtDireccion.Text = _employee.empl_direccion;
+                    TxtTelefono1.Text = _employee.empl_telefonocasa1;
+                    TxtTelefono2.Text = _employee.empl_telefonocasa2;
+                    TxtCelular1.Text = _employee.empl_celular1;
+                    TxtCelular2.Text = _employee.empl_celular2;
+                    TxtEmail1.Text = _employee.empl_email1;
+                    TxtEmail2.Text = _employee.empl_email2;
+                    ChkEstado.Checked = _employee.empl_estado;
+                    ViewState["identificacion"] = TxtIdentificacion.Text;
+                    ViewState["usucreacion"] = _employee.empl_usuariocreacion;
+                    ViewState["fechacreacion"] = _employee.empl_fechacreacion;
+                    ViewState["terminalcreacion"] = _employee.empl_terminalcreacion;
                 }
 
-                TxtIdentificacion.Text = _employee.empl_identificacion;
-                TxtNombres.Text = _employee.empl_nombres;
-                TxtApellidos.Text = _employee.empl_apellidos;
-                DdlGenero.SelectedValue = _employee.empl_genero;
-                DdlEstadoCivil.SelectedValue = _employee.empl_estadocivil;
-                DdlNacionalidad.SelectedValue = _employee.empl_nacionalidad;
-                TxtFechaNacimiento.Text = _employee.empl_fechanacimiento.ToString("MM/dd/yyyy");
-                DdlDepartamento.SelectedValue = _employee.DEPA_CODIGO.ToString();
-                DdlTipoSangre.SelectedValue = _employee.emple_tiposangre;
-                TxtDireccion.Text = _employee.empl_direccion;
-                TxtTelefono1.Text = _employee.empl_telefonocasa1;
-                TxtTelefono2.Text = _employee.empl_telefonocasa2;
-                TxtCelular1.Text = _employee.empl_celular1;
-                TxtCelular2.Text = _employee.empl_celular2;
-                TxtEmail1.Text = _employee.empl_email1;
-                TxtEmail2.Text = _employee.empl_email2;
-                ChkEstado.Checked = _employee.empl_estado;
-                ViewState["identificacion"] = TxtIdentificacion.Text;
-                ViewState["usucreacion"] = _employee.empl_usuariocreacion;
-                ViewState["fechacreacion"] = _employee.empl_fechacreacion;
-                ViewState["terminalcreacion"] = _employee.empl_terminalcreacion;
                 _dts = new EmployeeDAO().FunGetEstudios(int.Parse(ViewState["Codigo"].ToString()));
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
@@ -168,50 +172,50 @@
                 }
 
                 _dts = new EmployeeDAO().FunGetOtrosEstudios(int.Parse(ViewState["Codigo"].ToString()));
+                ViewState["OtrosEstudios"] = _dts.Tables[0];
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
                     GrdvOtrosEstudios.DataSource = _dts;
-                    GrdvOtrosEstudios.DataBind();
-                    ViewState["OtrosEstudios"] = _dts.Tables[0];
+                    GrdvOtrosEstudios.DataBind();                    
                 }
 
                 _dts = new EmployeeDAO().FunGetIdiomas(int.Parse(ViewState["Codigo"].ToString()));
+                ViewState["Idiomas"] = _dts.Tables[0];
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
                     GrdvIdiomas.DataSource = _dts;
-                    GrdvIdiomas.DataBind();
-                    ViewState["Idiomas"] = _dts.Tables[0];
+                    GrdvIdiomas.DataBind();                    
                 }
 
                 _dts = new EmployeeDAO().FunGetExperiencia(int.Parse(ViewState["Codigo"].ToString()));
+                ViewState["Experiencia"] = _dts.Tables[0];
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
                     GrdvExperiencia.DataSource = _dts;
                     GrdvExperiencia.DataBind();
-                    ViewState["Experiencia"] = _dts.Tables[0];
                 }
 
                 FunCargarComboEmpresa();
 
                 _dts = new EmployeeDAO().FunGetRefLaboral(int.Parse(ViewState["Codigo"].ToString()));
+                ViewState["RefLaboral"] = _dts.Tables[0];
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
                     GrdvRefLaboral.DataSource = _dts;
                     GrdvRefLaboral.DataBind();
-                    ViewState["RefLaboral"] = _dts.Tables[0];
                 }
 
                 _dts = new EmployeeDAO().FunGetRefPersonal(int.Parse(ViewState["Codigo"].ToString()));
+                ViewState["RefPersonal"] = _dts.Tables[0];
 
                 if (_dts != null && _dts.Tables[0].Rows.Count > 0)
                 {
                     GrdvRefPersonal.DataSource = _dts;
                     GrdvRefPersonal.DataBind();
-                    ViewState["RefPersonal"] = _dts.Tables[0];
                 }
             }
             catch (Exception ex)

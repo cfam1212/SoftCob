@@ -246,20 +246,23 @@
                     return;
                 }
 
-                if (DateTime.ParseExact(TxtFechaInicio.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture) > DateTime.ParseExact(TxtFechaFin.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture))
+                if (DateTime.ParseExact(TxtFechaInicio.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture) > 
+                    DateTime.ParseExact(TxtFechaFin.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture))
                 {
                     new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha de Fin..!", this);
                     return;
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(99, int.Parse(DdlGestores.SelectedValue), 0, 0, "", TxtFechaInicio.Text, TxtFechaFin.Text, Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(99, int.Parse(DdlGestores.SelectedValue), 0, 0, "", 
+                    TxtFechaInicio.Text, TxtFechaFin.Text, Session["Conectar"].ToString());
                 GrdvLogueos.DataSource = _dts;
                 GrdvLogueos.DataBind();
                 ViewState["GrdvLogueo"] = _dts.Tables[0];
 
                 if (_dts.Tables[0].Rows.Count > 0) ImgExportar.Visible = true;
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(100, int.Parse(DdlGestores.SelectedValue), 0, 0, "", TxtFechaInicio.Text, TxtFechaFin.Text, Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(100, int.Parse(DdlGestores.SelectedValue), 0, 0, "", 
+                    TxtFechaInicio.Text, TxtFechaFin.Text, Session["Conectar"].ToString());
 
                 GrdvEfectivas.DataSource = _dts.Tables[0];
                 GrdvEfectivas.DataBind();

@@ -100,6 +100,17 @@
                                 <td></td>
                                 <td></td>
                             </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <h5>Evaluación:</h5>
+                                </td>
+                                <td>
+                                    <asp:CheckBox ID="ChkEvalua" runat="server" AutoPostBack="True" CssClass="form-control" OnCheckedChanged="ChkEvalua_CheckedChanged" TabIndex="2" />
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         </table>
                     </ContentTemplate>
                 </asp:UpdatePanel>

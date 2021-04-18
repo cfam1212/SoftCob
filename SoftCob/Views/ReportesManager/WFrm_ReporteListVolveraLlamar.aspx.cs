@@ -107,7 +107,9 @@
                 if (ChkFecha.Checked && DdlGestor.SelectedValue == "0") _tipo = "2";
                 if (ChkFecha.Checked && DdlGestor.SelectedValue != "0") _tipo = "3";
 
-                Response.Redirect("WFrm_ListLlamarFixed.aspx?CodigoCEDE=" + DdlCedente.SelectedValue + "&CodigoCEDE=" + DdlCedente.SelectedValue + "&CodigoCPCE=" + DdlCatalogo.SelectedValue + "&FechaDesde=" + TxtFechaIni.Text.Trim() + "&FechaHasta=" + TxtFechaFin.Text + "&Gestor=" + DdlGestor.SelectedValue + "&Tipo=" + _tipo, true);
+                Response.Redirect("WFrm_ListLlamarFixed.aspx?CodigoCEDE=" + DdlCedente.SelectedValue + "&CodigoCEDE=" + 
+                    DdlCedente.SelectedValue + "&CodigoCPCE=" + DdlCatalogo.SelectedValue + "&FechaDesde=" + TxtFechaIni.Text.Trim() + 
+                    "&FechaHasta=" + TxtFechaFin.Text + "&Gestor=" + DdlGestor.SelectedValue + "&Tipo=" + _tipo, true);
             }
             catch (Exception ex)
             {

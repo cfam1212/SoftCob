@@ -64,7 +64,7 @@
         #region Botones y Eventos
         protected void BtnNuevo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("WFrm_NuevoEmployee.aspx?Tipo=" + "N" + "&Codigo=0");
+            Response.Redirect("WFrm_NuevoEmployee.aspx?Tipo=N" + "&Codigo=0");
         }
         protected void GrdvDatos_RowDataBound(object sender, GridViewRowEventArgs e)
         {

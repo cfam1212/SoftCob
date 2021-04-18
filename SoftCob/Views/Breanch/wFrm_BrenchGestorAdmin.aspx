@@ -122,14 +122,14 @@
                                     <h5>Cedente:</h5>
                                 </td>
                                 <td colspan="2">
-                                    <asp:DropDownList ID="DdlCedente" runat="server" Width="100%" TabIndex="1" AutoPostBack="True" OnSelectedIndexChanged="DdlCedente_SelectedIndexChanged">
+                                    <asp:DropDownList ID="DdlCedente" runat="server" CssClass="form-control" Width="100%" TabIndex="1" AutoPostBack="True" OnSelectedIndexChanged="DdlCedente_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </td>
                                 <td>
                                     <h5>Catálogo:</h5>
                                 </td>
                                 <td colspan="2">
-                                    <asp:DropDownList ID="DdlCatalogo" runat="server" AutoPostBack="True" TabIndex="2" Width="100%" OnSelectedIndexChanged="DdlCatalogo_SelectedIndexChanged">
+                                    <asp:DropDownList ID="DdlCatalogo" runat="server" CssClass="form-control" AutoPostBack="True" TabIndex="2" Width="100%" OnSelectedIndexChanged="DdlCatalogo_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </td>
                             </tr>

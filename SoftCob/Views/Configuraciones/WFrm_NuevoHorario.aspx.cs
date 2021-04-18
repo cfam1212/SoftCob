@@ -86,7 +86,7 @@
                 {
                     case 0:
                         DdlIntervalo.DataSource = new ControllerDAO().FunGetParametroDetalle("INTERVALO",
-                            "--Seleccione Intervalor--","S");
+                            "--Seleccione Intervalor--", "I");
                         DdlIntervalo.DataTextField = "Descripcion";
                         DdlIntervalo.DataValueField = "Codigo";
                         DdlIntervalo.DataBind();
