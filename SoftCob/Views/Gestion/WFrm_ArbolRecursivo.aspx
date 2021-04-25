@@ -50,6 +50,14 @@
                 width: 80px;
                 height: 80px;
             }
+
+        .auto-style1 {
+            height: 20px;
+        }
+
+        .auto-style2 {
+            height: 350px;
+        }
     </style>
 </head>
 <body>
@@ -88,7 +96,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:ImageButton ID="BtnRegresar" runat="server" ImageUrl="~/Botones/cancelar.jpg" OnClick="BtnRegresar_Click" Height="25px" />
+                                    <asp:ImageButton ID="BtnRegresar" runat="server" ImageUrl="~/Botones/cancelar.jpg" OnClick="BtnRegresar_Click" Width="16px" />
                                 </td>
                                 <td>
                                     <asp:Label ID="LblNombres" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#3366FF"></asp:Label>
@@ -98,77 +106,94 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td colspan="2">
-                                    <h4 runat="server" id="LblDireccion"></h4>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td colspan="3">
                                     <asp:Panel ID="Panel5" runat="server" Height="20px"></asp:Panel>
                                 </td>
                             </tr>
+                        </table>
+
+                        <table style="width: 100%">
                             <tr>
-                                <td colspan="3">
-                                    <asp:Panel ID="Pnldatosdeudor" runat="server" CssClass="panel panel-primary" Height="420px"
-                                        GroupingText="Datos Deudor - REGISTRO CIVIL" TabIndex="15">
-                                        <asp:GridView ID="Grdvdatosper1" runat="server" AutoGenerateColumns="False"
-                                            CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
-                                            PageSize="3" TabIndex="1" Width="100%">
-                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                            <Columns>
-                                                <asp:BoundField DataField="FechaNac" HeaderText="Fec.Nacimiento">
-                                                    <ItemStyle Wrap="False" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="Edad" HeaderText="Edad" />
-                                                <asp:BoundField DataField="EstCivil" HeaderText="Est.Civil" />
-                                                <asp:BoundField DataField="TipoCedula" HeaderText="Tipo_Cedula" />
-                                                <asp:BoundField DataField="Nivel" HeaderText="Nivel_Estudios" />
-                                                <asp:BoundField DataField="Profesion" HeaderText="Profesion" />
-                                            </Columns>
-                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
-                                            <RowStyle Font-Size="X-Small" />
-                                            <EditRowStyle BackColor="#2461BF" />
-                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
-                                        </asp:GridView>
-                                        <asp:GridView ID="Grdvdatosper2" runat="server" AutoGenerateColumns="False"
-                                            CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
-                                            PageSize="3" TabIndex="1" Width="100%">
-                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                            <Columns>
-                                                <asp:BoundField DataField="Conyuge" HeaderText="Conyuge">
-                                                    <ItemStyle Wrap="False" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="Cedulacy" HeaderText="Cédula" />
-                                                <asp:BoundField DataField="Padre" HeaderText="Padre" />
-                                                <asp:BoundField DataField="Cedulapa" HeaderText="Cédula" />
-                                                <asp:BoundField DataField="Madre" HeaderText="Madre" />
-                                                <asp:BoundField DataField="Cedulama" HeaderText="Cédula" />
-                                            </Columns>
-                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
-                                            <RowStyle Font-Size="X-Small" />
-                                            <EditRowStyle BackColor="#2461BF" />
-                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
-                                        </asp:GridView>
+                                <td>
+                                    <asp:Panel ID="PnlHeaderRegCivil" runat="server">
+                                        Registro-Civil
+                                        <asp:Image ID="ImgRegCivil" runat="server" Height="20px" ImageUrl="~/Botones/collapseopen.png" />
+                                    </asp:Panel>
+                                </td>
+                                <tr>
+                                    <td>
+                                        <asp:Panel ID="PnlRegCivil" runat="server" CssClass="panel panel-primary"
+                                            GroupingText="Datos  REGISTRO CIVIL" Height="410px" TabIndex="15">
+                                            <asp:GridView ID="Grdvdatosper1" runat="server" AutoGenerateColumns="False"
+                                                CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                                ForeColor="#333333" PageSize="3" TabIndex="1" Width="100%">
+                                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                                <Columns>
+                                                    <asp:BoundField DataField="FechaNac" HeaderText="Fec.Nacimiento">
+                                                        <ItemStyle Wrap="False" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="Edad" HeaderText="Edad" />
+                                                    <asp:BoundField DataField="EstCivil" HeaderText="Est.Civil" />
+                                                    <asp:BoundField DataField="TipoCedula" HeaderText="Tipo_Cedula" />
+                                                    <asp:BoundField DataField="Nivel" HeaderText="Nivel_Estudios" />
+                                                    <asp:BoundField DataField="Profesion" HeaderText="Profesion" />
+                                                </Columns>
+                                                <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                                <RowStyle Font-Size="X-Small" />
+                                                <EditRowStyle BackColor="#2461BF" />
+                                                <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                            </asp:GridView>
+                                            <asp:GridView ID="Grdvdatosper2" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333" PageSize="3" TabIndex="1" Width="100%">
+                                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                                <Columns>
+                                                    <asp:BoundField DataField="Conyuge" HeaderText="Conyuge">
+                                                        <ItemStyle Wrap="False" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="Cedulacy" HeaderText="Cédula" />
+                                                    <asp:BoundField DataField="Padre" HeaderText="Padre" />
+                                                    <asp:BoundField DataField="Cedulapa" HeaderText="Cédula" />
+                                                    <asp:BoundField DataField="Madre" HeaderText="Madre" />
+                                                    <asp:BoundField DataField="Cedulama" HeaderText="Cédula" />
+                                                </Columns>
+                                                <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                                <RowStyle Font-Size="X-Small" />
+                                                <EditRowStyle BackColor="#2461BF" />
+                                                <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                            </asp:GridView>
+                                        </asp:Panel>
+                                        <asp:CollapsiblePanelExtender ID="PnlRegCivil_CollapsiblePanelExtender" runat="server"
+                                            CollapseControlID="PnlHeaderRegCivil" Collapsed="False"
+                                            CollapsedImage="~/Botones/collapseopen.png" CollapsedText="Mostrando Datos..."
+                                            Enabled="True" ExpandControlID="PnlHeaderRegCivil"
+                                            ExpandedImage="~/Botones/collapseclose.png" ExpandedText="Ocultar Datos"
+                                            ImageControlID="ImgRegCivil" SuppressPostBack="True" TargetControlID="PnlRegCivil">
+                                        </asp:CollapsiblePanelExtender>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Panel ID="Panel1" runat="server" Height="20px">
+                                        </asp:Panel>
+                                    </td>
+                                </tr>
+                        </table>
+
+                        <table style="width: 100%" runat="server" id="Tbldatosiess" visible="false">
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="PnlHeaderIess" runat="server">
+                                        Datos IESS
+                                        <asp:Image ID="ImgIess" runat="server" Height="20px" ImageUrl="~/Botones/collapseopen.png" />
                                     </asp:Panel>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3">
-                                    <asp:Panel ID="Panel1" runat="server" Height="20px"></asp:Panel>
-                                </td>
-                            </tr>
-                        </table>
-                        <table style="width: 100%" runat="server" id="Tbldatosiess" visible="false">
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    <asp:Panel ID="Panel2" runat="server" CssClass="panel panel-primary" Height="420px"
+                                    <asp:Panel ID="PnlIess" runat="server" CssClass="panel panel-primary" Height="410px"
                                         GroupingText="Datos IESS" TabIndex="15">
                                         <asp:GridView ID="Grdvdatosiess1" runat="server" AutoGenerateColumns="False"
-                                            CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
+                                            CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                            ForeColor="#333333"
                                             PageSize="3" TabIndex="1" Width="100%">
                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                             <Columns>
@@ -207,6 +232,13 @@
                                             <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
+                                    <asp:CollapsiblePanelExtender ID="PnlIess_CollapsiblePanelExtender" runat="server"
+                                        CollapseControlID="PnlHeaderIess" Collapsed="False"
+                                        CollapsedImage="~/Botones/collapseopen.png" CollapsedText="Mostrando Datos..."
+                                        Enabled="True" ExpandControlID="PnlHeaderIess"
+                                        ExpandedImage="~/Botones/collapseclose.png" ExpandedText="Ocultar Datos"
+                                        ImageControlID="ImgIess" SuppressPostBack="True" TargetControlID="PnlIess">
+                                    </asp:CollapsiblePanelExtender>
                                 </td>
                             </tr>
                             <tr>
@@ -215,28 +247,52 @@
                                 </td>
                             </tr>
                         </table>
-                        <table style="width: 100%" runat="server" id="TblFonos" visible="false">
+
+                        <table style="width: 100%" runat="server" id="TblSRI" visible="false">
                             <tr>
-                                <td></td>
+                                <td class="auto-style1">
+                                    <asp:Panel ID="PnlHeaderSri" runat="server">
+                                        Datos SRI
+                                        <asp:Image ID="ImgSri" runat="server" Height="20px" ImageUrl="~/Botones/collapseopen.png" />
+                                    </asp:Panel>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Panel ID="Panel6" runat="server" CssClass="panel panel-primary" Height="220px"
-                                        GroupingText="Teléfonos Encontrados" TabIndex="15" ScrollBars="Vertical">
-                                        <asp:GridView ID="GrdvTelefonos" runat="server" Width="100%" AutoGenerateColumns="False"
+                                    <asp:Panel ID="PnlSri" runat="server" CssClass="panel panel-primary" Height="410px"
+                                        GroupingText="Datos SRI" TabIndex="15" ScrollBars="Vertical">
+                                        <asp:GridView ID="GrdvSri1" runat="server" Width="100%" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive"
                                             ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar"
-                                            TabIndex="8" DataKeyNames="Cedula,Consultado">
+                                            TabIndex="8">
                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                             <Columns>
-                                                <asp:BoundField HeaderText="Tipo" DataField="Tipo" />
-                                                <asp:BoundField DataField="Telefono" HeaderText="Teléfono" />
-                                                <asp:TemplateField HeaderText="Marcar">
-                                                    <ItemTemplate>
-                                                        <asp:ImageButton ID="ImgPhone" runat="server" Height="20px" ImageUrl="~/Botones/call_small.png" OnClick="ImgPhone_Click" />
-                                                    </ItemTemplate>
-                                                    <ItemStyle HorizontalAlign="Center" />
-                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="RazonSocial" HeaderText="Razon_Social" />
+                                                <asp:BoundField HeaderText="Nombre_Comercial" DataField="Nombre" />
+                                                <asp:BoundField DataField="Contribuyente" HeaderText="Contribuyente" />
+                                                <asp:BoundField DataField="Clase" HeaderText="Clase" />
+                                                <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
+                                                <asp:BoundField DataField="Comercial" HeaderText="Comercial" />
+                                                <asp:BoundField DataField="Actividad" HeaderText="Actividad" />
+                                                <asp:BoundField DataField="Establecimiento" HeaderText="Establecimiento" />
+                                            </Columns>
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                        </asp:GridView>
+                                        <asp:GridView ID="GrdvSri2" runat="server" Width="100%" AutoGenerateColumns="False"
+                                            CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                            ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar"
+                                            TabIndex="8">
+                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                            <Columns>
+                                                <asp:BoundField HeaderText="Dirección" DataField="Direccion" />
+                                                <asp:BoundField DataField="Provincia" HeaderText="Provincia" />
+                                                <asp:BoundField DataField="Canton" HeaderText="Cantón" />
+                                                <asp:BoundField DataField="Parroquia" HeaderText="Parroquia" />
+                                                <asp:BoundField DataField="FechaInicio" HeaderText="Fecha_Inicio" />
+                                                <asp:BoundField DataField="FechaSuspension" HeaderText="Fecha_Suspension" />
                                             </Columns>
                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
@@ -244,6 +300,129 @@
                                             <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
+                                    <asp:CollapsiblePanelExtender ID="PnlSri_CollapsiblePanelExtender" runat="server"
+                                        CollapseControlID="PnlHeaderSri" Collapsed="False"
+                                        CollapsedImage="~/Botones/collapseopen.png" CollapsedText="Mostrando Datos..."
+                                        Enabled="True" ExpandControlID="PnlHeaderSri"
+                                        ExpandedImage="~/Botones/collapseclose.png" ExpandedText="Ocultar Datos"
+                                        ImageControlID="ImgSri" SuppressPostBack="True" TargetControlID="PnlSri">
+                                    </asp:CollapsiblePanelExtender>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="Panel9" runat="server" Height="20px"></asp:Panel>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table style="width: 100%" runat="server">
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="PnlHeaderOtros" runat="server">
+                                        Teléfonos - Direcciones
+                                        <asp:Image ID="ImgOtros" runat="server" Height="20px" ImageUrl="~/Botones/collapseopen.png" />
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="PnlOtros" runat="server" CssClass="panel panel-primary" Height="780px"
+                                        GroupingText="Dirección - Telefonos" TabIndex="15">
+                                        <table style="width: 100%">
+                                            <tr>
+                                                <td>
+                                                    <asp:Panel ID="Panel8" runat="server" Height="20px"></asp:Panel>
+                                                </td>
+                                            </tr>
+                                            <tr runat="server" id="TrDireccion" visible="false">
+                                                <td>
+                                                    <asp:Panel ID="Panel2" runat="server" Height="200px" ScrollBars="Vertical" GroupingText="Direcciones">
+                                                        <asp:GridView ID="GrdvDireccion" runat="server" Width="100%" AutoGenerateColumns="False"
+                                                            CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                                            ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar"
+                                                            TabIndex="8">
+                                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                                            <Columns>
+                                                                <asp:BoundField HeaderText="Dirección" DataField="Direccion" />
+                                                                <asp:BoundField DataField="TipoDirec" HeaderText="Tipo Dirección" />
+                                                            </Columns>
+                                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                                            <RowStyle Font-Size="X-Small" />
+                                                            <EditRowStyle BackColor="#2461BF" />
+                                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                                        </asp:GridView>
+                                                    </asp:Panel>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <asp:Panel ID="Panel4" runat="server" Height="20px"></asp:Panel>
+                                                </td>
+                                            </tr>
+                                            <tr runat="server" id="TrTelefonos" visible="false">
+                                                <td>
+                                                    <asp:Panel ID="Panel6" runat="server" Height="300px" ScrollBars="Vertical" GroupingText="Teléfonos">
+                                                        <asp:GridView ID="GrdvTelefonos" runat="server" Width="100%" AutoGenerateColumns="False"
+                                                            CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                                            ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar"
+                                                            TabIndex="8">
+                                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                                            <Columns>
+                                                                <asp:BoundField DataField="Telefono" HeaderText="Teléfono" />
+                                                                <asp:BoundField HeaderText="Tipo Teléfono" DataField="TipoTele" />
+                                                                <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+                                                                <asp:BoundField DataField="Direccion" HeaderText="Dirección" />
+                                                                <asp:BoundField DataField="Localidad" HeaderText="Localidad" />
+                                                                <asp:TemplateField HeaderText="Marcar">
+                                                                    <ItemTemplate>
+                                                                        <asp:ImageButton ID="ImgPhone" runat="server" Height="15px" ImageUrl="~/Botones/call_small.png" OnClick="ImgPhone_Click" />
+                                                                    </ItemTemplate>
+                                                                    <ItemStyle HorizontalAlign="Center" />
+                                                                </asp:TemplateField>
+                                                            </Columns>
+                                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                                            <RowStyle Font-Size="X-Small" />
+                                                            <EditRowStyle BackColor="#2461BF" />
+                                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                                        </asp:GridView>
+                                                    </asp:Panel>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <asp:Panel ID="Panel10" runat="server" Height="20px"></asp:Panel>
+                                                </td>
+                                            </tr>
+                                            <tr runat="server" id="TrEmpresa" visible="false">
+                                                <td>
+                                                    <asp:Panel ID="Panel11" runat="server" Height="250px" ScrollBars="Vertical" GroupingText="Empresa">
+                                                        <asp:GridView ID="GrdvEmpresa" runat="server" Width="100%" AutoGenerateColumns="False"
+                                                            CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                                            ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar"
+                                                            TabIndex="8">
+                                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                                            <Columns>
+                                                                <asp:BoundField HeaderText="RUC" DataField="Ruc" />
+                                                                <asp:BoundField DataField="Empresa" HeaderText="Empresa" />
+                                                            </Columns>
+                                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                                            <RowStyle Font-Size="X-Small" />
+                                                            <EditRowStyle BackColor="#2461BF" />
+                                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                                        </asp:GridView>
+                                                    </asp:Panel>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </asp:Panel>
+                                    <asp:CollapsiblePanelExtender ID="PnlOtros_CollapsiblePanelExtender" runat="server"
+                                        CollapseControlID="PnlHeaderOtros" Collapsed="False"
+                                        CollapsedImage="~/Botones/collapseopen.png" CollapsedText="Mostrando Datos..."
+                                        Enabled="True" ExpandControlID="PnlHeaderOtros"
+                                        ExpandedImage="~/Botones/collapseclose.png" ExpandedText="Ocultar Datos"
+                                        ImageControlID="ImgOtros" SuppressPostBack="True" TargetControlID="PnlOtros">
+                                    </asp:CollapsiblePanelExtender>
                                 </td>
                             </tr>
                             <tr>
@@ -259,7 +438,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Panel ID="Panel4" runat="server" CssClass="panel panel-primary" Height="320px"
+                                    <asp:Panel ID="PnlArbol" runat="server" CssClass="panel panel-primary" Height="420px"
                                         GroupingText="Arbol Genealógico" TabIndex="15" ScrollBars="Vertical">
                                         <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive"
@@ -273,7 +452,7 @@
                                                 <asp:BoundField HeaderText="Fecha_Fallece" DataField="FechaFallece" />
                                                 <asp:TemplateField HeaderText="Selecc">
                                                     <ItemTemplate>
-                                                        <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecc_Click" />
+                                                        <asp:ImageButton ID="ImgSelecc" runat="server" Height="15px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecc_Click" />
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>

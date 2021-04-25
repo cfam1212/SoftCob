@@ -600,7 +600,8 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Panel ID="PnlDatosTelefonos" runat="server" CssClass="panel panel-primary" Height="490px">
+                                                    <asp:Panel ID="PnlDatosTelefonos" runat="server" CssClass="panel panel-primary" 
+                                                        Height="650px">
                                                         <table style="width: 100%">
                                                             <tr>
                                                                 <td>
@@ -698,8 +699,8 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:Panel ID="pnlTelefonos" runat="server" Height="200px" ScrollBars="Vertical" GroupingText="Teléfonos" TabIndex="17">
-                                                                        <asp:GridView ID="GrdvTelefonos" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,Telefono,Prefijo,CodTipo,CodPro,Nuevo,Score,Origen,Modif" ForeColor="#333333" PageSize="5" TabIndex="18" Width="100%" OnRowDataBound="GrdvTelefonos_RowDataBound">
+                                                                    <asp:Panel ID="pnlTelefonos" runat="server" Height="380px" ScrollBars="Vertical" GroupingText="Teléfonos" TabIndex="17">
+                                                                        <asp:GridView ID="GrdvTelefonos" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,Telefono,Prefijo,CodTipo,CodPro,Nuevo,Score,Origen,Modif" ForeColor="#333333" TabIndex="18" Width="100%" OnRowDataBound="GrdvTelefonos_RowDataBound">
                                                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                             <Columns>
                                                                                 <asp:BoundField DataField="Prefijo" HeaderText="Prefijo">

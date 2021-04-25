@@ -105,15 +105,6 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblCedula;
 
         /// <summary>
-        /// Control LblDireccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblDireccion;
-
-        /// <summary>
         /// Control Panel5.
         /// </summary>
         /// <remarks>
@@ -123,13 +114,31 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.Panel Panel5;
 
         /// <summary>
-        /// Control Pnldatosdeudor.
+        /// Control PnlHeaderRegCivil.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Pnldatosdeudor;
+        protected global::System.Web.UI.WebControls.Panel PnlHeaderRegCivil;
+
+        /// <summary>
+        /// Control ImgRegCivil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImgRegCivil;
+
+        /// <summary>
+        /// Control PnlRegCivil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlRegCivil;
 
         /// <summary>
         /// Control Grdvdatosper1.
@@ -150,6 +159,15 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.GridView Grdvdatosper2;
 
         /// <summary>
+        /// Control PnlRegCivil_CollapsiblePanelExtender.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender PnlRegCivil_CollapsiblePanelExtender;
+
+        /// <summary>
         /// Control Panel1.
         /// </summary>
         /// <remarks>
@@ -168,13 +186,31 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.HtmlControls.HtmlTable Tbldatosiess;
 
         /// <summary>
-        /// Control Panel2.
+        /// Control PnlHeaderIess.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel2;
+        protected global::System.Web.UI.WebControls.Panel PnlHeaderIess;
+
+        /// <summary>
+        /// Control ImgIess.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImgIess;
+
+        /// <summary>
+        /// Control PnlIess.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlIess;
 
         /// <summary>
         /// Control Grdvdatosiess1.
@@ -195,6 +231,15 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.GridView Grdvdatosiess2;
 
         /// <summary>
+        /// Control PnlIess_CollapsiblePanelExtender.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender PnlIess_CollapsiblePanelExtender;
+
+        /// <summary>
         /// Control Panel3.
         /// </summary>
         /// <remarks>
@@ -204,13 +249,157 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.Panel Panel3;
 
         /// <summary>
-        /// Control TblFonos.
+        /// Control TblSRI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable TblFonos;
+        protected global::System.Web.UI.HtmlControls.HtmlTable TblSRI;
+
+        /// <summary>
+        /// Control PnlHeaderSri.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlHeaderSri;
+
+        /// <summary>
+        /// Control ImgSri.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImgSri;
+
+        /// <summary>
+        /// Control PnlSri.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlSri;
+
+        /// <summary>
+        /// Control GrdvSri1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrdvSri1;
+
+        /// <summary>
+        /// Control GrdvSri2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrdvSri2;
+
+        /// <summary>
+        /// Control PnlSri_CollapsiblePanelExtender.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender PnlSri_CollapsiblePanelExtender;
+
+        /// <summary>
+        /// Control Panel9.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel9;
+
+        /// <summary>
+        /// Control PnlHeaderOtros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlHeaderOtros;
+
+        /// <summary>
+        /// Control ImgOtros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImgOtros;
+
+        /// <summary>
+        /// Control PnlOtros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlOtros;
+
+        /// <summary>
+        /// Control Panel8.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel8;
+
+        /// <summary>
+        /// Control TrDireccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrDireccion;
+
+        /// <summary>
+        /// Control Panel2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel2;
+
+        /// <summary>
+        /// Control GrdvDireccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrdvDireccion;
+
+        /// <summary>
+        /// Control Panel4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel4;
+
+        /// <summary>
+        /// Control TrTelefonos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrTelefonos;
 
         /// <summary>
         /// Control Panel6.
@@ -231,6 +420,51 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.GridView GrdvTelefonos;
 
         /// <summary>
+        /// Control Panel10.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel10;
+
+        /// <summary>
+        /// Control TrEmpresa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrEmpresa;
+
+        /// <summary>
+        /// Control Panel11.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel11;
+
+        /// <summary>
+        /// Control GrdvEmpresa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrdvEmpresa;
+
+        /// <summary>
+        /// Control PnlOtros_CollapsiblePanelExtender.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender PnlOtros_CollapsiblePanelExtender;
+
+        /// <summary>
         /// Control Panel7.
         /// </summary>
         /// <remarks>
@@ -249,13 +483,13 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.HtmlControls.HtmlTable Tblarbol;
 
         /// <summary>
-        /// Control Panel4.
+        /// Control PnlArbol.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel4;
+        protected global::System.Web.UI.WebControls.Panel PnlArbol;
 
         /// <summary>
         /// Control GrdvDatos.

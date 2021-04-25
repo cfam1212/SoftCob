@@ -24,18 +24,22 @@
                 {
                     Lbltitulo.Text = "CONSULTA RECURSIVA << ARBOL GENEALOGICO >>";
                     ViewState["Cedula"] = Request["Cedula"];
-                    ViewState["PhoneLocalize"] = Request["PhoneLocalize"];
+                    //ViewState["PhoneLocalize"] = Request["PhoneLocalize"];
                     LblCedula.InnerText = ViewState["Cedula"].ToString();
-                    Pnldatosdeudor.Height = 180;
-                    Panel2.Height = 180;
-                    LblDireccion.InnerText = "";
+                    PnlRegCivil.Height = 180;
+                    PnlIess.Height = 180;
+                    PnlOtros.Height = 210;
+                    PnlSri.Height = 280;
                     FunGuardarconsulta(ViewState["Cedula"].ToString());
                     FunCargarDatos(ViewState["Cedula"].ToString());
-                    if (ViewState["PhoneLocalize"] != null)
-                    {
-                        FunPhoneLocalize(ViewState["Cedula"].ToString());
-                    }
                 }
+                //else
+                //{
+                //    GrdvDatos.DataSource = (DataTable)ViewState["Arbol"];
+                //    GrdvDatos.DataBind();
+                //    GrdvDatos.UseAccessibleHeader = true;
+                //    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                //}
             }
             catch (Exception ex)
             {
@@ -45,27 +49,14 @@
         #endregion
 
         #region Procedimientos y Funciones
-        private void FunPhoneLocalize(string numerodocumento)
-        {
-            _dts = new ConsultaDatosDAO().FunConsultaDatos(203, 0, 0, 0, "", numerodocumento, "", Session["Conectar"].ToString());
-
-            if (_dts.Tables[0].Rows.Count > 0)
-            {
-                LblDireccion.InnerText = _dts.Tables[0].Rows[0]["Direccion"].ToString();
-                TblFonos.Visible = true;
-                GrdvTelefonos.DataSource = _dts.Tables[1];
-                GrdvTelefonos.DataBind();
-            }
-        }
-
         private void FunCargarDatos(string numerodocumento)
         {
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(184, 0, 0, 0, "", numerodocumento.Substring(0, 4),
-                    ViewState["Cedula"].ToString(), Session["Conectar"].ToString());
+                     ViewState["Cedula"].ToString(), Session["Conectar"].ToString());
 
-                if (_dts.Tables[0].Rows.Count > 0)
+                if (_dts.Tables[0].Rows.Count > 0) //REGISTRO CIVIL
                 {
                     LblNombres.Text = _dts.Tables[0].Rows[0]["Nombres"].ToString();
                     Grdvdatosper1.DataSource = _dts.Tables[0];
@@ -73,26 +64,65 @@
 
                     Grdvdatosper2.DataSource = _dts.Tables[0];
                     Grdvdatosper2.DataBind();
-
-                    if (_dts.Tables[1].Rows.Count > 0)
-                    {
-                        Tbldatosiess.Visible = true;
-                        Grdvdatosiess1.DataSource = _dts.Tables[1];
-                        Grdvdatosiess1.DataBind();
-
-                        Grdvdatosiess2.DataSource = _dts.Tables[1];
-                        Grdvdatosiess2.DataBind();
-                    }
-                    else Tbldatosiess.Visible = false;
-
-                    if (_dts.Tables[2].Rows.Count > 0)
-                    {
-                        Tblarbol.Visible = true;
-                        GrdvDatos.DataSource = _dts.Tables[2];
-                        GrdvDatos.DataBind();
-                    }
-                    else Tblarbol.Visible = false;
                 }
+
+                if (_dts.Tables[1].Rows.Count > 0) //IESS
+                {
+                    Tbldatosiess.Visible = true;
+                    Grdvdatosiess1.DataSource = _dts.Tables[1];
+                    Grdvdatosiess1.DataBind();
+
+                    Grdvdatosiess2.DataSource = _dts.Tables[1];
+                    Grdvdatosiess2.DataBind();
+                }
+                else Tbldatosiess.Visible = false;
+
+                if (_dts.Tables[2].Rows.Count > 0) //SRI
+                {
+                    TblSRI.Visible = true;
+                    GrdvSri1.DataSource = _dts.Tables[2];
+                    GrdvSri1.DataBind();
+
+                    GrdvSri2.DataSource = _dts.Tables[2];
+                    GrdvSri2.DataBind();
+                }
+                else TblSRI.Visible = false;
+
+                if (_dts.Tables[3].Rows.Count > 0) //DIRECCION
+                {
+                    TrDireccion.Visible = true;
+                    GrdvDireccion.DataSource = _dts.Tables[3];
+                    GrdvDireccion.DataBind();
+                }
+                else TrDireccion.Visible = false;
+
+                if (_dts.Tables[4].Rows.Count > 0) //TELEFONOS
+                {
+                    TrTelefonos.Visible = true;
+                    GrdvTelefonos.DataSource = _dts.Tables[4];
+                    GrdvTelefonos.DataBind();
+                }
+                else TrTelefonos.Visible = false;
+
+                if (_dts.Tables[5].Rows.Count > 0) //EMPRESA
+                {
+                    TrEmpresa.Visible = true;
+                    GrdvEmpresa.DataSource = _dts.Tables[5];
+                    GrdvEmpresa.DataBind();
+                }
+                else TrEmpresa.Visible = false;
+
+                if (_dts.Tables[6].Rows.Count > 0) //ARBOL
+                {
+                    Tblarbol.Visible = true;
+                    ViewState["Arbol"] = _dts.Tables[6];
+                    GrdvDatos.DataSource = _dts.Tables[6];
+                    GrdvDatos.DataBind();
+                    GrdvDatos.UseAccessibleHeader = true;
+                    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+                else Tblarbol.Visible = false;
+            
             }
             catch (Exception ex)
             {
@@ -134,7 +164,7 @@
             {
                 GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
                 _cedula = GrdvDatos.DataKeys[_gvrow.RowIndex].Values["Cedula"].ToString();
-                _redirect = string.Format("{0}?Cedula={1}&PhoneLocalize={2}", Request.Url.AbsolutePath, _cedula, "SI");
+                _redirect = string.Format("{0}?Cedula={1}", Request.Url.AbsolutePath, _cedula);
                 Response.Redirect(_redirect);
             }
             catch (Exception ex)
@@ -156,8 +186,12 @@
                 ViewState["DialerNumber"] = GrdvTelefonos.DataKeys[_gvrow.RowIndex].Values["Telefono"].ToString();
                 _imgphone = (ImageButton)(_gvrow.Cells[2].FindControl("ImgTelefono"));
                 _imgphone.ImageUrl = "~/Botones/call_small_disabled.png";
-                _thrmarcar = new Thread(new ThreadStart(FunDial));
-                _thrmarcar.Start();
+
+                if (new FuncionesDAO().FunDesencripta(Session["Phone"].ToString()) == "SiActivado")
+                {
+                    _thrmarcar = new Thread(new ThreadStart(FunDial));
+                    _thrmarcar.Start();
+                }
             }
             catch (Exception ex)
             {

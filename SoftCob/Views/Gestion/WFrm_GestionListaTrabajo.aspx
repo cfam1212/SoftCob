@@ -271,7 +271,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <%--<div class="panel-info">
+                <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updOpciones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -281,7 +281,7 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>--%>
+                </div>
                 <asp:UpdatePanel ID="updTimer" runat="server">
                     <ContentTemplate>
                         <div>
@@ -481,7 +481,7 @@
                                                 <tr>
                                                     <td>
                                                         <asp:Panel ID="PnlDatosTelefonos" runat="server" CssClass="panel panel-primary" 
-                                                            Height="620px">
+                                                            Height="750px">
                                                             <table style="width: 100%">
                                                                 <tr>
                                                                     <td>
@@ -566,7 +566,8 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <asp:Panel ID="PnlTelefonosExistentes" runat="server" Height="380px" GroupingText="Teléfonos Existentes">
+                                                                        <asp:Panel ID="PnlTelefonosExistentes" runat="server" Height="510px" 
+                                                                            GroupingText="Teléfonos Existentes">
                                                                             <table style="width: 100%">
                                                                                 <tr>
                                                                                     <td style="width: 15%"></td>
@@ -610,7 +611,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td colspan="4">
-                                                                                        <asp:Panel ID="pnlTelefonos" runat="server" Height="250px" ScrollBars="Vertical">
+                                                                                        <asp:Panel ID="pnlTelefonos" runat="server" Height="390px" ScrollBars="Vertical">
                                                                                             <asp:GridView ID="GrdvTelefonos" runat="server" AutoGenerateColumns="False"
                                                                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
                                                                                                 DataKeyNames="Codigo,Telefono,Prefijo,CodTipo,CodPro,Nuevo,Score,Origen,Modif"
