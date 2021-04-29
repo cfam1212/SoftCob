@@ -80,7 +80,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <div class="panel-info">
+                <%--                <div class="panel-info">
                     <asp:UpdateProgress ID="UpdProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdOpciones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -90,7 +90,7 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>
+                </div>--%>
                 <div class="panel-body">
                     <asp:UpdatePanel ID="UpdCabecera" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
@@ -152,7 +152,7 @@
                                                                 <td>
                                                                     <asp:CheckBox ID="ChkEstado" runat="server" AutoPostBack="True" TabIndex="5" Text="Activo" Visible="False" OnCheckedChanged="ChkEstado_CheckedChanged" />
                                                                 </td>
-                                                                <td></td>
+                                                                <td>&nbsp;</td>
                                                                 <td></td>
                                                             </tr>
                                                             <tr>
@@ -163,7 +163,7 @@
                                                                     <asp:CheckBox ID="ChkLlamar" runat="server" AutoPostBack="True" OnCheckedChanged="ChkLlamar_CheckedChanged" TabIndex="8" Text="LLamar" Visible="False" />
                                                                 </td>
                                                                 <td style="text-align: center">
-                                                                    <asp:CheckBox ID="ChkContacto" runat="server" AutoPostBack="True" OnCheckedChanged="ChkContacto_CheckedChanged" TabIndex="9" Text="Efectivo" Visible="False" />
+                                                                    <asp:CheckBox ID="ChkEfectivo" runat="server" AutoPostBack="True" OnCheckedChanged="ChkEfectivo_CheckedChanged" TabIndex="9" Text="No Efectivo" Visible="False" />
                                                                 </td>
                                                                 <td style="text-align: center">
                                                                     <asp:CheckBox ID="ChkComisiona" runat="server" TabIndex="10" Text="Comisiona" Visible="False" />
@@ -173,13 +173,22 @@
                                                                 <td colspan="4">
                                                             </tr>
                                                             <tr>
+                                                                <td></td>
+                                                                <td>
+                                                                    &nbsp;</td>
+                                                                <td></td>
+                                                                <td>&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
                                                                 <td>
                                                                     <h5 runat="server" id="LblDescripcion">Descripción</h5>
                                                                 </td>
                                                                 <td colspan="2">
                                                                     <asp:TextBox ID="TxtDescripcion" runat="server" MaxLength="250" CssClass="form-control upperCase" TabIndex="6" Width="100%"></asp:TextBox>
                                                                 </td>
-                                                                <td></td>
+                                                                <td style="text-align: center">
+                                                                    <asp:CheckBox ID="ChkContacto" runat="server" AutoPostBack="True" Checked="True" OnCheckedChanged="ChkContacto_CheckedChanged" TabIndex="9" Text="Directo" Visible="False" />
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="4">

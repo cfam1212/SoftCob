@@ -25,6 +25,7 @@
         ListItem _prefijo = new ListItem();
         CheckBox _chkgestion = new CheckBox();
         CheckBox _chktelefec = new CheckBox();
+        CheckBox _chkbcast = new CheckBox();
         ImageButton _imgeliminar = new ImageButton();
         ImageButton _imgmarcar = new ImageButton();
         ImageButton _imgeditar = new ImageButton();
@@ -41,9 +42,9 @@
 
         string _operacion = "", _strrespuesta = "", _valor = "", _strtiempogestion = "", _strtiempollamada = "",
             _dtmfechaactual = "", _fechapago = "", _fechallamar = "", _valorpago = "", _horallamar = "", _mensaje = "",
-            _redirect = "", _telefonoselect = "", _cedulagarante = "", _telefonoctc = "", _proxtelefono = "",
-            _fechalogueo = "", _horalogueo = "", _txtspeech = "", _nuevo = "", _segmento = "", _existe = "", _origen = "",
-            _modificado = "", _sufijo = "", _tipo = "", _codigogarante = "";
+            _redirect = "", _cedulagarante = "", _telefonoctc = "", _proxtelefono = "",
+            _fechalogueo = "", _horalogueo = "", _txtspeech = "", _nuevo = "", _segmento = "", _existe = "", 
+             _sufijo = "", _tipo = "", _codigogarante = "", _bcast = "";
 
         bool _llamar = false, _pago = false, _lexiste = false, _validar = true, _efectivo = false, _nummarcado = false,
             _asignarsig = false, _citacion = false, _mostrarpopup = false, _mostrararbol = false;
@@ -963,6 +964,23 @@
                 "&Operacion=" + _operacion + "',null,'left=' + posicion_x + " +
                 "', top=' + posicion_y + ', width=850px, height=450px, status=no,resizable= yes, scrollbars=yes, " +
                 "toolbar=no, location=no, menubar=no,titlebar=0');", true);
+        }
+
+        protected void ChkBCast_CheckedChanged(object sender, EventArgs e)
+        {
+            GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
+
+            _chktelefec = (CheckBox)(_gvrow.Cells[8].FindControl("ChkBCast"));
+            _codigotece = int.Parse(GrdvTelefonos.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                SoftCob_TELEFONOS_CEDENTE _original = _db.SoftCob_TELEFONOS_CEDENTE.Where(t => t.TECE_CODIGO ==
+                _codigotece).FirstOrDefault();
+                _db.SoftCob_TELEFONOS_CEDENTE.Attach(_original);
+                _original.tece_auxi3 = _chktelefec.Checked ? 1 : 0;
+                _db.SaveChanges();
+            }
         }
 
         private void FunSpeechArbol(int araccodigo, int arefcodigo, int arrecodigo, int arcocodigo)
@@ -2090,31 +2108,18 @@
             {
                 if (e.Row.RowIndex >= 0)
                 {
-                    _imgeditar = (ImageButton)(e.Row.Cells[6].FindControl("imgEditar"));
-                    _imgeliminar = (ImageButton)(e.Row.Cells[7].FindControl("imgDelete"));
-                    _imgmarcar = (ImageButton)(e.Row.Cells[8].FindControl("imgCall"));
-                    _chktelefec = (CheckBox)(e.Row.Cells[9].FindControl("chkTelEfec"));
-                    _telefonoselect = GrdvTelefonos.DataKeys[e.Row.RowIndex].Values["Telefono"].ToString();
+                    _chktelefec = (CheckBox)(e.Row.Cells[7].FindControl("ChkTelEfec"));
+                    _chkbcast = (CheckBox)(e.Row.Cells[8].FindControl("ChkBCast"));
                     _nuevo = GrdvTelefonos.DataKeys[e.Row.RowIndex].Values["Nuevo"].ToString();
                     _score = int.Parse(GrdvTelefonos.DataKeys[e.Row.RowIndex].Values["Score"].ToString());
-                    _origen = GrdvTelefonos.DataKeys[e.Row.RowIndex].Values["Origen"].ToString();
-                    _modificado = GrdvTelefonos.DataKeys[e.Row.RowIndex].Values["Modif"].ToString();
+                    _bcast = GrdvTelefonos.DataKeys[e.Row.RowIndex].Values["BCast"].ToString();
 
                     if (_nuevo == "SI") e.Row.Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
 
                     if (_score == 9) _chktelefec.Checked = true;
                     else _chktelefec.Checked = false;
 
-                    //if (bool.Parse(Session["PermisoEspecial"].ToString()) == true)
-                    //{
-                    //    _imgmarcar.Enabled = false;
-                    //    _imgmarcar.ImageUrl = "~/Botones/call_small_gris.png";
-                    //    _imgmarcar.Height = 15;
-                    //}
-
-                    if (_origen == "NUEVO") e.Row.Cells[2].BackColor = System.Drawing.Color.OliveDrab;
-
-                    if (_origen == "CA-13") e.Row.Cells[2].BackColor = System.Drawing.Color.Crimson;
+                    if (_bcast == "SI") _chkbcast.Checked = true;
                 }
             }
             catch (Exception ex)
@@ -2298,29 +2303,27 @@
             {
                 GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
 
-                if (DdlAccionDel.SelectedValue == "0")
-                {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Acción Para Eliminar..!", this);
-                    return;
-                }
+                //if (DdlAccionDel.SelectedValue == "0")
+                //{
+                //    new FuncionesDAO().FunShowJSMessage("Seleccione Acción Para Eliminar..!", this);
+                //    return;
+                //}
 
-                if (DdlRespuestaDel.SelectedValue == "0")
-                {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Respuesta Para Eliminar..!", this);
-                    return;
-                }
+                //if (DdlRespuestaDel.SelectedValue == "0")
+                //{
+                //    new FuncionesDAO().FunShowJSMessage("Seleccione Respuesta Para Eliminar..!", this);
+                //    return;
+                //}
 
+                _codigotece = int.Parse(GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Codigo"].ToString());
                 _telefonoctc = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Telefono"].ToString();
                 _sufijo = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Prefijo"].ToString();
                 _dtbtelefonos = (DataTable)ViewState["TelefonosRegistrados"];
                 _dtbtelefonos.Rows.RemoveAt(gvRow.RowIndex);
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(142, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
-                    _sufijo + _telefonoctc, Session["Conectar"].ToString());
-
-                new ConsultaDatosDAO().FunConsultaDatos(88, int.Parse(ViewState["CodigoCedente"].ToString()), int.Parse(ViewState["PersCodigo"].ToString()),
-                    int.Parse(ViewState["CodigoCLDE"].ToString()), DdlAccionDel.SelectedItem.ToString() + " - " + DdlRespuestaDel.SelectedItem.ToString(),
-                    _sufijo + _telefonoctc, Session["usuCodigo"].ToString(), Session["Conectar"].ToString());
+                new ConsultaDatosDAO().FunConsultaDatos(88, _codigotece, int.Parse(ViewState["PersCodigo"].ToString()),
+                    int.Parse(ViewState["CodigoCLDE"].ToString()), "TELEFONO" + " - " + "INCORRECTO", _sufijo +
+                    _telefonoctc, Session["usuCodigo"].ToString(), ViewState["Conectar"].ToString());
 
                 if (ViewState["TipoMarcado"].ToString() == "DI")
                 {
@@ -2329,10 +2332,17 @@
                     Session["TelefonoPredictivo"] = Telefonos;
                 }
 
-                GrdvTelefonos.DataSource = _dtbtelefonos;
+                FunCargarCombos(8);
+                ChkAgregar.Checked = false;
+                PnlAgregarTelefono.Visible = false;
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(35, int.Parse(ViewState["CodigoCedente"].ToString()),
+                    int.Parse(ViewState["PersCodigo"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()), "", "",
+                    "", ViewState["Conectar"].ToString());
+
+                GrdvTelefonos.DataSource = _dts;
                 GrdvTelefonos.DataBind();
-                DdlAccionDel.SelectedValue = "0";
-                DdlRespuestaDel.SelectedValue = "0";
+                ViewState["TelefonosRegistrados"] = _dts.Tables[0];
             }
             catch (Exception ex)
             {
@@ -2936,7 +2946,7 @@
                 if (ViewState["VerGestiones"].ToString() == "1")
                 {
                     ViewState["VerGestiones"] = "0";
-                    LnkGestiones.Text = "Últimas Tres Gestiones";
+                    LnkGestiones.Text = "Últimas Diez Gestiones";
                     FunConsultarGestiones(1);
                 }
                 else
@@ -3157,6 +3167,17 @@
                     _fr.Cells[0].BackColor = System.Drawing.Color.White;
                 }
 
+                _codigotece = int.Parse(GrdvTelefonos.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
+
+                using (SoftCobEntities _db = new SoftCobEntities())
+                {
+                    SoftCob_TELEFONOS_CEDENTE _original = _db.SoftCob_TELEFONOS_CEDENTE.Where(t => t.TECE_CODIGO ==
+                    _codigotece).FirstOrDefault();
+                    _db.SoftCob_TELEFONOS_CEDENTE.Attach(_original);
+                    _original.tece_auxv2 = "";
+                    _db.SaveChanges();
+                }
+
                 GrdvTelefonos.Rows[_gvrow.RowIndex].Cells[0].BackColor = System.Drawing.Color.Coral;
                 ViewState["PrefijoMarcacion"] = GrdvTelefonos.DataKeys[_gvrow.RowIndex].Values["Prefijo"].ToString();
                 ViewState["DialerNumber"] = GrdvTelefonos.DataKeys[_gvrow.RowIndex].Values["Telefono"].ToString();
@@ -3305,21 +3326,17 @@
             {
                 GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
 
-                _chktelefec = (CheckBox)(_gvrow.Cells[9].FindControl("chkTelEfec"));
+                _chktelefec = (CheckBox)(_gvrow.Cells[7].FindControl("ChkTelEfec"));
                 _codigotece = int.Parse(GrdvTelefonos.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
-                _telefonoctc = GrdvTelefonos.DataKeys[_gvrow.RowIndex].Values["Telefono"].ToString();
 
-                new ConsultaDatosDAO().FunConsultaDatos(124, int.Parse(ViewState["CodigoCedente"].ToString()),
-                    int.Parse(ViewState["PersCodigo"].ToString()), 0, "", _chktelefec.Checked.ToString(), _telefonoctc,
-                    Session["Conectar"].ToString().ToString());
-                _dtbtelefonos = (DataTable)ViewState["TelefonosRegistrados"];
-                _cambiar = _dtbtelefonos.Select("Telefono='" + _telefonoctc + "'").FirstOrDefault();
-                _cambiar["Score"] = _chktelefec.Checked ? 9 : 0;
-                _dtbtelefonos.AcceptChanges();
-                _dtbtelefonos.DefaultView.Sort = "Score desc, Telefono asc";
-                _dtbtelefonos = _dtbtelefonos.DefaultView.ToTable();
-                GrdvTelefonos.DataSource = _dtbtelefonos;
-                GrdvTelefonos.DataBind();
+                using (SoftCobEntities _db = new SoftCobEntities())
+                {
+                    SoftCob_TELEFONOS_CEDENTE _original = _db.SoftCob_TELEFONOS_CEDENTE.Where(t => t.TECE_CODIGO ==
+                    _codigotece).FirstOrDefault();
+                    _db.SoftCob_TELEFONOS_CEDENTE.Attach(_original);
+                    _original.tece_score = _chktelefec.Checked ? 9 : 0;
+                    _db.SaveChanges();
+                }
             }
             catch (Exception ex)
             {

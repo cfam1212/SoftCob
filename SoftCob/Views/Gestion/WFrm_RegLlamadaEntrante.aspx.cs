@@ -28,11 +28,14 @@
         DataTable _tblagre = new DataTable();
         DataTable _dtbtelefonos = new DataTable();
         DataTable _dtbgestion = new DataTable();
+
         bool _pago = false, _efectivo = false, _llamar = false, _validar = true;
+
         string _mensaje = "", _fechapago = "", _valorpago = "", _fechallamar = "", _horallamar = "", _tipopago = "",
-            _valor = "", _strrespuesta = "", _telefonoselect = "", _telefonoctc = "", _horalogueo = "", _fechalogueo = "",
-            _redirect = "", _nuevo = "", _existe = "", _origen = "", _modificado = "", _sufijo = "", _cedulagarante = "",
-            _tipo = "", _codigogarante = "", _operacion = "", _txtspeech = "";
+            _valor = "", _strrespuesta = "", _telefonoctc = "", _horalogueo = "", _fechalogueo = "",
+            _redirect = "", _nuevo = "", _existe = "", _sufijo = "", _cedulagarante = "",
+            _tipo = "", _codigogarante = "", _operacion = "", _txtspeech = "", _bcast = "";
+
         int _codigoltca = 0, _maxcodigo = 0, _totalgestion = 0, _totallamada = 0, _id = 0,
             _lintperfilactitudinal = 0, _lintestilonegociacion = 0, _lintmetaprograma = 0, _lintmodalidad = 0,
             _lintestadoyo = 0, _lintimpulsor = 0, _codigotece = 0, _score = 0, _day = 0;
@@ -41,6 +44,7 @@
         ImageButton _imgeditar = new ImageButton();
         ImageButton _imgmarcar = new ImageButton();
         CheckBox _chktelefec = new CheckBox();
+        CheckBox _chkbcast = new CheckBox();
         Thread _thrmarcar;
         DataRow _filagre;
         DataRow _result;
@@ -624,6 +628,30 @@
                 Lblerror.Text = ex.ToString();
             }
             return _strrespuesta;
+        }
+
+        protected void ChkBCast_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
+
+                _chktelefec = (CheckBox)(_gvrow.Cells[8].FindControl("ChkBCast"));
+                _codigotece = int.Parse(GrdvTelefonos.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
+
+                using (SoftCobEntities _db = new SoftCobEntities())
+                {
+                    SoftCob_TELEFONOS_CEDENTE _original = _db.SoftCob_TELEFONOS_CEDENTE.Where(t => t.TECE_CODIGO ==
+                    _codigotece).FirstOrDefault();
+                    _db.SoftCob_TELEFONOS_CEDENTE.Attach(_original);
+                    _original.tece_auxi3 = _chktelefec.Checked ? 1 : 0;
+                    _db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
         }
 
         protected void GrdvBrenchGestor_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -1626,31 +1654,18 @@
             {
                 if (e.Row.RowIndex >= 0)
                 {
-                    _imgeditar = (ImageButton)(e.Row.Cells[6].FindControl("imgSelectT"));
-                    _imgeliminar = (ImageButton)(e.Row.Cells[7].FindControl("imgEliminar"));
-                    _imgmarcar = (ImageButton)(e.Row.Cells[8].FindControl("imgCall"));
-                    _chktelefec = (CheckBox)(e.Row.Cells[9].FindControl("chkTelEfec"));
-                    _telefonoselect = GrdvTelefonos.DataKeys[e.Row.RowIndex].Values["Telefono"].ToString();
+                    _chktelefec = (CheckBox)(e.Row.Cells[7].FindControl("ChkTelEfec"));
+                    _chkbcast = (CheckBox)(e.Row.Cells[8].FindControl("ChkBCast"));
                     _nuevo = GrdvTelefonos.DataKeys[e.Row.RowIndex].Values["Nuevo"].ToString();
                     _score = int.Parse(GrdvTelefonos.DataKeys[e.Row.RowIndex].Values["Score"].ToString());
-                    _origen = GrdvTelefonos.DataKeys[e.Row.RowIndex].Values["Origen"].ToString();
-                    _modificado = GrdvTelefonos.DataKeys[e.Row.RowIndex].Values["Modif"].ToString();
+                    _bcast = GrdvTelefonos.DataKeys[e.Row.RowIndex].Values["BCast"].ToString();
 
                     if (_nuevo == "SI") e.Row.Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
 
                     if (_score == 9) _chktelefec.Checked = true;
                     else _chktelefec.Checked = false;
 
-                    //if (bool.Parse(Session["PermisoEspecial"].ToString()) == true)
-                    //{
-                    //    _imgmarcar.Enabled = false;
-                    //    _imgmarcar.ImageUrl = "~/Botones/call_small_gris.png";
-                    //    _imgmarcar.Height = 15;
-                    //}
-
-                    if (_origen == "NUEVO") e.Row.Cells[2].BackColor = System.Drawing.Color.OliveDrab;
-
-                    if (_origen == "SoftCob-BE") e.Row.Cells[2].BackColor = System.Drawing.Color.Crimson;
+                    if (_bcast == "SI") _chkbcast.Checked = true;
                 }
             }
             catch (Exception ex)

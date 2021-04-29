@@ -60,15 +60,6 @@ namespace SoftCob.Views.ArbolDesicion
         protected global::System.Web.UI.WebControls.Label Lblerror;
 
         /// <summary>
-        /// Control UpdProgress.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress UpdProgress;
-
-        /// <summary>
         /// Control UpdCabecera.
         /// </summary>
         /// <remarks>
@@ -186,13 +177,13 @@ namespace SoftCob.Views.ArbolDesicion
         protected global::System.Web.UI.WebControls.CheckBox ChkLlamar;
 
         /// <summary>
-        /// Control ChkContacto.
+        /// Control ChkEfectivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkContacto;
+        protected global::System.Web.UI.WebControls.CheckBox ChkEfectivo;
 
         /// <summary>
         /// Control ChkComisiona.
@@ -220,6 +211,15 @@ namespace SoftCob.Views.ArbolDesicion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
+
+        /// <summary>
+        /// Control ChkContacto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ChkContacto;
 
         /// <summary>
         /// Control PnlDiv0.

@@ -614,7 +614,7 @@
                                                                                         <asp:Panel ID="pnlTelefonos" runat="server" Height="390px" ScrollBars="Vertical">
                                                                                             <asp:GridView ID="GrdvTelefonos" runat="server" AutoGenerateColumns="False"
                                                                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                                                                                DataKeyNames="Codigo,Telefono,Prefijo,CodTipo,CodPro,Nuevo,Score,Origen,Modif"
+                                                                                                DataKeyNames="Codigo,Telefono,Prefijo,CodTipo,CodPro,Nuevo,Score,BCast"
                                                                                                 ForeColor="#333333" TabIndex="14" Width="100%"
                                                                                                 OnRowDataBound="GrdvTelefonos_RowDataBound">
                                                                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
@@ -626,12 +626,6 @@
                                                                                                     <asp:BoundField DataField="Propietario" HeaderText="Propietario" />
                                                                                                     <asp:BoundField DataField="NomApe" HeaderText="Nombres">
                                                                                                         <ItemStyle Wrap="True" />
-                                                                                                    </asp:BoundField>
-                                                                                                    <asp:BoundField DataField="Origen" HeaderText="Origen">
-                                                                                                        <ItemStyle Wrap="False" />
-                                                                                                    </asp:BoundField>
-                                                                                                    <asp:BoundField DataField="Modif" HeaderText="Modificado">
-                                                                                                        <ItemStyle HorizontalAlign="Center" />
                                                                                                     </asp:BoundField>
                                                                                                     <asp:TemplateField HeaderText="Selecc">
                                                                                                         <ItemTemplate>
@@ -654,6 +648,12 @@
                                                                                                     <asp:TemplateField HeaderText="Efec">
                                                                                                         <ItemTemplate>
                                                                                                             <asp:CheckBox ID="ChkTelEfec" runat="server" AutoPostBack="True" OnCheckedChanged="ChkTelEfec_CheckedChanged" />
+                                                                                                        </ItemTemplate>
+                                                                                                        <ItemStyle HorizontalAlign="Center" />
+                                                                                                    </asp:TemplateField>
+                                                                                                    <asp:TemplateField HeaderText="Bcast">
+                                                                                                        <ItemTemplate>
+                                                                                                            <asp:CheckBox ID="ChkBCast" runat="server" OnCheckedChanged="ChkBCast_CheckedChanged" AutoPostBack="True" />
                                                                                                         </ItemTemplate>
                                                                                                         <ItemStyle HorizontalAlign="Center" />
                                                                                                     </asp:TemplateField>
@@ -1230,7 +1230,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <asp:Panel ID="PnlResultadoGestiones" runat="server" Height="200px">
+                                                        <asp:Panel ID="PnlResultadoGestiones" runat="server" Height="350px">
                                                             <table style="width: 100%">
                                                                 <tr>
                                                                     <td>
@@ -1239,7 +1239,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <asp:Panel ID="PnlDatosGestiones" runat="server" CssClass="panel panel-primary" Height="150px" ScrollBars="Vertical">
+                                                                        <asp:Panel ID="PnlDatosGestiones" runat="server" CssClass="panel panel-primary" Height="340px" ScrollBars="Vertical">
                                                                             <asp:GridView ID="GrdvGestiones" runat="server" AutoGenerateColumns="False"
                                                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
                                                                                 ForeColor="#333333" PageSize="15" TabIndex="39" Width="100%" DataKeyNames="Tipo" OnRowDataBound="GrdvGestiones_RowDataBound">

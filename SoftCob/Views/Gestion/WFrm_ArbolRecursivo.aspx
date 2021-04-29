@@ -8,12 +8,15 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../css/Estilos.css" rel="stylesheet" />
-    <link href="../../css/DatePicker/jquery-ui.css" rel="stylesheet" />
-    <script type="text/javascript" src="../../JS/DatePicker/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="../../JS/DatePicker/jquery-ui.js"></script>
+    <link href="../../Scripts/Tables/jquery.DataTable.min.css" rel="stylesheet" />
+    <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../Scripts/external/jquery/jquery.js"></script>
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../Scripts/Tables/DataTables.js"></script>
+    <script src="../../Scripts/Tables/dataTable.bootstrap.min.js"></script>
+    <link href="../../css/DatePicker/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../JS/DatePicker/jquery-ui.js"></script>
     <style type="text/css">
         legend {
             color: darkblue;
@@ -438,31 +441,41 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Panel ID="PnlArbol" runat="server" CssClass="panel panel-primary" Height="420px"
-                                        GroupingText="Arbol Genealógico" TabIndex="15" ScrollBars="Vertical">
-                                        <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
-                                            CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                            ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar"
-                                            TabIndex="8" DataKeyNames="Cedula,Consultado" OnRowDataBound="GrdvDatos_RowDataBound">
-                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                            <Columns>
-                                                <asp:BoundField HeaderText="Cédula" DataField="Cedula" />
-                                                <asp:BoundField DataField="Nombres" HeaderText="Nombres" />
-                                                <asp:BoundField HeaderText="Parentesco" DataField="Parentesco" />
-                                                <asp:BoundField HeaderText="Fecha_Fallece" DataField="FechaFallece" />
-                                                <asp:TemplateField HeaderText="Selecc">
-                                                    <ItemTemplate>
-                                                        <asp:ImageButton ID="ImgSelecc" runat="server" Height="15px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecc_Click" />
-                                                    </ItemTemplate>
-                                                    <ItemStyle HorizontalAlign="Center" />
-                                                </asp:TemplateField>
-                                            </Columns>
-                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
-                                            <RowStyle Font-Size="X-Small" />
-                                            <EditRowStyle BackColor="#2461BF" />
-                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
-                                        </asp:GridView>
-                                    </asp:Panel>
+                                    <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
+                                        CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                        ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar"
+                                        TabIndex="8" DataKeyNames="Cedula,Consultado" OnRowDataBound="GrdvDatos_RowDataBound">
+                                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                        <Columns>
+                                            <asp:BoundField HeaderText="Cédula" DataField="Cedula" />
+                                            <asp:BoundField DataField="Nombres" HeaderText="Nombres" />
+                                            <asp:BoundField HeaderText="Parentesco" DataField="Parentesco" />
+                                            <asp:BoundField HeaderText="Fecha_Fallece" DataField="FechaFallece" />
+                                            <asp:TemplateField HeaderText="Selecc">
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="ImgSelecc" runat="server" Height="15px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecc_Click" />
+                                                </ItemTemplate>
+                                                <ItemStyle HorizontalAlign="Center" />
+                                            </asp:TemplateField>
+                                        </Columns>
+                                        <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                        <RowStyle Font-Size="X-Small" />
+                                        <EditRowStyle BackColor="#2461BF" />
+                                        <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                    </asp:GridView>
+                                    <script>
+                                        var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+                                        prm.add_endRequest(function () {
+                                            createDataTable();
+                                        });
+
+                                        createDataTable();
+
+                                        function createDataTable() {
+                                            $('#<%= GrdvDatos.ClientID %>').DataTable();
+                                        }
+                                    </script>
                                 </td>
                             </tr>
                         </table>

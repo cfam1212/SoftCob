@@ -233,6 +233,7 @@
     <Content Include="Botones\sin_usuario.png" />
     <Content Include="Botones\speechAB.png" />
     <Content Include="Botones\speechBV.png" />
+    <Content Include="Botones\user_new.png" />
     <Content Include="Botones\vistodisable.png" />
     <Content Include="Botones\vistoenable.png" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -346,6 +347,7 @@
     <Content Include="Views\Gestion\WFrm_GestionListaTrabajo.aspx" />
     <Content Include="Views\Gestion\WFrm_InfAdicional.aspx" />
     <Content Include="Views\Gestion\WFrm_ListaClientesAdmin.aspx" />
+    <Content Include="Views\Gestion\WFrm_ListaDeudores.aspx" />
     <Content Include="Views\Gestion\WFrm_ListaNotasAdmin.aspx" />
     <Content Include="Views\Gestion\WFrm_ListaPagoAbonos.aspx" />
     <Content Include="Views\Gestion\WFrm_ListaVolveraLlamar.aspx" />
@@ -924,6 +926,13 @@
     </Compile>
     <Compile Include="Views\Gestion\WFrm_ListaClientesAdmin.aspx.designer.cs">
       <DependentUpon>WFrm_ListaClientesAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ListaDeudores.aspx.cs">
+      <DependentUpon>WFrm_ListaDeudores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_ListaDeudores.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaDeudores.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Gestion\WFrm_ListaNotasAdmin.aspx.cs">
       <DependentUpon>WFrm_ListaNotasAdmin.aspx</DependentUpon>

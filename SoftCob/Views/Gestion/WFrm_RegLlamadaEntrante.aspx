@@ -700,7 +700,7 @@
                                                             <tr>
                                                                 <td>
                                                                     <asp:Panel ID="pnlTelefonos" runat="server" Height="380px" ScrollBars="Vertical" GroupingText="Teléfonos" TabIndex="17">
-                                                                        <asp:GridView ID="GrdvTelefonos" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,Telefono,Prefijo,CodTipo,CodPro,Nuevo,Score,Origen,Modif" ForeColor="#333333" TabIndex="18" Width="100%" OnRowDataBound="GrdvTelefonos_RowDataBound">
+                                                                        <asp:GridView ID="GrdvTelefonos" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,Telefono,Prefijo,CodTipo,CodPro,Nuevo,Score,BCast" ForeColor="#333333" TabIndex="18" Width="100%" OnRowDataBound="GrdvTelefonos_RowDataBound">
                                                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                             <Columns>
                                                                                 <asp:BoundField DataField="Prefijo" HeaderText="Prefijo">
@@ -709,10 +709,6 @@
                                                                                 <asp:BoundField DataField="Telefono" HeaderText="Teléfono" />
                                                                                 <asp:BoundField DataField="Propietario" HeaderText="Propietario" />
                                                                                 <asp:BoundField DataField="NomApe" HeaderText="Nombres" />
-                                                                                <asp:BoundField DataField="Origen" HeaderText="Origen" />
-                                                                                <asp:BoundField DataField="Modif" HeaderText="Modificado">
-                                                                                    <ItemStyle HorizontalAlign="Center" />
-                                                                                </asp:BoundField>
                                                                                 <asp:TemplateField HeaderText="Selecc">
                                                                                     <ItemTemplate>
                                                                                         <asp:ImageButton ID="ImgSelectT" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelectT_Click" />
@@ -734,6 +730,12 @@
                                                                                 <asp:TemplateField HeaderText="Efec">
                                                                                     <ItemTemplate>
                                                                                         <asp:CheckBox ID="ChkTelEfec" runat="server" AutoPostBack="True" OnCheckedChanged="ChkTelEfec_CheckedChanged" />
+                                                                                    </ItemTemplate>
+                                                                                    <ItemStyle HorizontalAlign="Center" />
+                                                                                </asp:TemplateField>
+                                                                                <asp:TemplateField HeaderText="BCast">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:CheckBox ID="ChkBCast" runat="server" OnCheckedChanged="ChkBCast_CheckedChanged" AutoPostBack="True" />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                                 </asp:TemplateField>

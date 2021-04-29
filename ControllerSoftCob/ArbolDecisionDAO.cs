@@ -6,11 +6,14 @@
     using System.Collections.Generic;
     using System.Data.Entity.Validation;
     using System.Diagnostics;
+    using System.Data.SqlClient;
     using System.Linq;
     public class ArbolDecisionDAO
     {
         #region Variables
         SoftCobEntities _dtb = new SoftCobEntities();
+        DataSet _dts = new DataSet();
+        SqlDataAdapter _dta = new SqlDataAdapter();
         string _mensaje = "";
         int _codigo = 0;
         #endregion
@@ -377,6 +380,58 @@
             {
                 throw ex;
             }
+        }
+        public DataSet FunNewArbolDecision(int tipo, int cedecodigo, int cpcecodigo, int araccodigo, int arefcodigo, int arrecodigo,
+            int arcocodigo, string descripcion, string estado, string contacto, string pago, string llamar, string efectivo,
+            string comisiona, string auxv1, string auxv2, string auxv3, string auxv4, string auxv5, int auxi1, int auxi2, int auxi3,
+            int auxi4, int auxi5, int usuacodigo, string terminal, string conexion)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(conexion))
+                {
+                    using (SqlCommand comm = new SqlCommand())
+                    {
+                        comm.Connection = con;
+                        comm.CommandTimeout = 9000;
+                        comm.CommandType = CommandType.StoredProcedure;
+                        comm.CommandText = "sp_NewArbolDecision";
+                        comm.Parameters.AddWithValue("@in_tipo", tipo);
+                        comm.Parameters.AddWithValue("@in_cedecodigo", cedecodigo);
+                        comm.Parameters.AddWithValue("@in_cpcecodigo", cpcecodigo);
+                        comm.Parameters.AddWithValue("@in_araccodigo", araccodigo);
+                        comm.Parameters.AddWithValue("@in_arefcodigo", arefcodigo);
+                        comm.Parameters.AddWithValue("@in_arrecodigo", arrecodigo);
+                        comm.Parameters.AddWithValue("@in_arcocodigo", arcocodigo);
+                        comm.Parameters.AddWithValue("@in_descripcion", descripcion);
+                        comm.Parameters.AddWithValue("@in_estado", estado);
+                        comm.Parameters.AddWithValue("@in_contacto", contacto);
+                        comm.Parameters.AddWithValue("@in_pago", pago);
+                        comm.Parameters.AddWithValue("@in_llamar", llamar);
+                        comm.Parameters.AddWithValue("@in_efectivo", efectivo);
+                        comm.Parameters.AddWithValue("@in_comisiona", comisiona);
+                        comm.Parameters.AddWithValue("@in_auxv1", auxv1);
+                        comm.Parameters.AddWithValue("@in_auxv2", auxv2);
+                        comm.Parameters.AddWithValue("@in_auxv3", auxv3);
+                        comm.Parameters.AddWithValue("@in_auxv4", auxv4);
+                        comm.Parameters.AddWithValue("@in_auxv5", auxv5);
+                        comm.Parameters.AddWithValue("@in_auxi1", auxi1);
+                        comm.Parameters.AddWithValue("@in_auxi2", auxi2);
+                        comm.Parameters.AddWithValue("@in_auxi3", auxi3);
+                        comm.Parameters.AddWithValue("@in_auxi4", auxi4);
+                        comm.Parameters.AddWithValue("@in_auxi5", auxi5);
+                        comm.Parameters.AddWithValue("@in_usuacodigo", usuacodigo);
+                        comm.Parameters.AddWithValue("@in_terminal", terminal);
+                        _dta.SelectCommand = comm;
+                        _dta.Fill(_dts);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return _dts;
         }
         #endregion
     }
