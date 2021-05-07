@@ -186,7 +186,7 @@
                         DdlContacto.Items.Add(_contacto);
                         break;
                     case 2:
-                        DdlAccion.DataSource = new SpeechDAO().FunGetArbolAccion(int.Parse(ViewState["codigoCatalogo"].ToString()));
+                        DdlAccion.DataSource = new SpeechDAO().FunGetArbolNewAccion(int.Parse(ViewState["codigoCatalogo"].ToString()));
                         DdlAccion.DataTextField = "Descripcion";
                         DdlAccion.DataValueField = "Codigo";
                         DdlAccion.DataBind();
@@ -204,7 +204,7 @@
                         _contacto.Text = "--Seleccione Contacto--";
                         _contacto.Value = "0";
                         DdlContacto.Items.Add(_contacto);
-                        DdlEfecto.DataSource = new SpeechDAO().FunGetArbolEfecto(int.Parse(DdlAccion.SelectedValue));
+                        DdlEfecto.DataSource = new SpeechDAO().FunGetArbolNewEfecto(int.Parse(DdlAccion.SelectedValue));
                         DdlEfecto.DataTextField = "Descripcion";
                         DdlEfecto.DataValueField = "Codigo";
                         DdlEfecto.DataBind();
@@ -218,7 +218,7 @@
                         _contacto.Text = "--Seleccione Contacto--";
                         _contacto.Value = "0";
                         DdlContacto.Items.Add(_contacto);
-                        DdlRespuesta.DataSource = new SpeechDAO().FunGetArbolRespuesta(int.Parse(DdlEfecto.SelectedValue));
+                        DdlRespuesta.DataSource = new SpeechDAO().FunGetArbolNewRespuesta(int.Parse(DdlEfecto.SelectedValue));
                         DdlRespuesta.DataTextField = "Descripcion";
                         DdlRespuesta.DataValueField = "Codigo";
                         DdlRespuesta.DataBind();
@@ -228,7 +228,7 @@
                         _contacto.Text = "--Seleccione Contacto--";
                         _contacto.Value = "0";
                         DdlContacto.Items.Add(_contacto);
-                        DdlContacto.DataSource = new SpeechDAO().FunGetArbolContacto(int.Parse(DdlRespuesta.SelectedValue));
+                        DdlContacto.DataSource = new SpeechDAO().FunGetArbolNewContacto(int.Parse(DdlRespuesta.SelectedValue));
                         DdlContacto.DataTextField = "Descripcion";
                         DdlContacto.DataValueField = "Codigo";
                         DdlContacto.DataBind();

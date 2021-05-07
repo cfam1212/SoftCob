@@ -116,7 +116,6 @@ namespace ModeloSoftCob
         public virtual DbSet<SoftCob_METAPROGRAMAS> SoftCob_METAPROGRAMAS { get; set; }
         public virtual DbSet<SoftCob_MODALIDADES> SoftCob_MODALIDADES { get; set; }
         public virtual DbSet<SoftCob_NOTAS_GESTION> SoftCob_NOTAS_GESTION { get; set; }
-        public virtual DbSet<SoftCob_PERSONA> SoftCob_PERSONA { get; set; }
         public virtual DbSet<SoftCob_PROTOCOLO_EVALUACION> SoftCob_PROTOCOLO_EVALUACION { get; set; }
         public virtual DbSet<SoftCob_REFERENCIASLABORALES> SoftCob_REFERENCIASLABORALES { get; set; }
         public virtual DbSet<SoftCob_REFERENCIASPERSONALES> SoftCob_REFERENCIASPERSONALES { get; set; }
@@ -124,6 +123,11 @@ namespace ModeloSoftCob
         public virtual DbSet<SoftCob_SCORING_TELEFONICO> SoftCob_SCORING_TELEFONICO { get; set; }
         public virtual DbSet<SoftCob_GARANTES> SoftCob_GARANTES { get; set; }
         public virtual DbSet<SoftCob_OPCIONESMULTIPLES_LISTA> SoftCob_OPCIONESMULTIPLES_LISTA { get; set; }
+        public virtual DbSet<SoftCob_ARBOL_ACCION> SoftCob_ARBOL_ACCION { get; set; }
+        public virtual DbSet<SoftCob_ARBOL_CONTACTO> SoftCob_ARBOL_CONTACTO { get; set; }
+        public virtual DbSet<SoftCob_ARBOL_EFECTO> SoftCob_ARBOL_EFECTO { get; set; }
+        public virtual DbSet<SoftCob_ARBOL_RESPUESTA> SoftCob_ARBOL_RESPUESTA { get; set; }
+        public virtual DbSet<SoftCob_PERSONA> SoftCob_PERSONA { get; set; }
     
         public virtual ObjectResult<string> FunMenuEditUpdate(string in_check, Nullable<int> in_codigomenu, Nullable<int> in_codigotarea, Nullable<int> in_emprcodigo, string in_auxv1, string in_auxv2, string in_auxv3, Nullable<int> in_auxi1, Nullable<int> in_auxi2, Nullable<int> in_auxi3, Nullable<int> in_usucodigo, string in_terminal)
         {

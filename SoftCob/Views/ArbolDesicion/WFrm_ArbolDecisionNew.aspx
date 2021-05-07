@@ -57,6 +57,9 @@
                 width: 80px;
                 height: 80px;
             }
+        .auto-style1 {
+            height: 20px;
+        }
     </style>
     <script>
         function asegurar() {
@@ -156,18 +159,18 @@
                                                                 <td></td>
                                                             </tr>
                                                             <tr>
-                                                                <td style="text-align: center">
+                                                                <td style="text-align: center" class="auto-style1">
+                                                                    &nbsp;</td>
+                                                                <td style="text-align: center" class="auto-style1">
                                                                     <asp:CheckBox ID="ChkPago" runat="server" AutoPostBack="True" OnCheckedChanged="ChkPago_CheckedChanged" TabIndex="7" Text="Pago" Visible="False" />
-                                                                </td>
-                                                                <td style="text-align: center">
                                                                     <asp:CheckBox ID="ChkLlamar" runat="server" AutoPostBack="True" OnCheckedChanged="ChkLlamar_CheckedChanged" TabIndex="8" Text="LLamar" Visible="False" />
-                                                                </td>
-                                                                <td style="text-align: center">
                                                                     <asp:CheckBox ID="ChkEfectivo" runat="server" AutoPostBack="True" OnCheckedChanged="ChkEfectivo_CheckedChanged" TabIndex="9" Text="No Efectivo" Visible="False" />
-                                                                </td>
-                                                                <td style="text-align: center">
                                                                     <asp:CheckBox ID="ChkComisiona" runat="server" TabIndex="10" Text="Comisiona" Visible="False" />
                                                                 </td>
+                                                                <td style="text-align: center" class="auto-style1">
+                                                                    &nbsp;</td>
+                                                                <td style="text-align: center" class="auto-style1">
+                                                                    &nbsp;</td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="4">

@@ -137,7 +137,6 @@
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_METAPROGRAMAS" Width="1.5" PointX="24.375" PointY="33.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_MODALIDADES" Width="1.5" PointX="26.375" PointY="33.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_NOTAS_GESTION" Width="1.5" PointX="28.375" PointY="33.75" />
-        <EntityTypeShape EntityType="SoftCobModel.SoftCob_PERSONA" Width="1.5" PointX="5.25" PointY="32" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_PROTOCOLO_EVALUACION" Width="1.5" PointX="34.375" PointY="12.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_REFERENCIASLABORALES" Width="1.5" PointX="9.625" PointY="75.5" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_REFERENCIASPERSONALES" Width="1.5" PointX="9.625" PointY="79" />
@@ -145,7 +144,6 @@
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_SCORING_TELEFONICO" Width="1.5" PointX="34.375" PointY="18.75" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_CITACIONES_CAB_SoftCob_CLIENTE_DEUDOR" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_CITACIONES_DET_SoftCob_CITACIONES_CAB" />
-        <AssociationConnector Association="SoftCobModel.FK_SoftCob_CLIENTE_DEUDOR_SoftCob_PERSONA" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_CUENTA_DEUDOR_SoftCob_CLIENTE_DEUDOR" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_CONFIGURACION_PHONE_USUARIO" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_REFERENCIASLABORALES_SoftCob_EMPLOYEE" />
@@ -155,6 +153,16 @@
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_GARANTES" Width="1.5" PointX="30.375" PointY="34.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_OPCIONESMULTIPLES_LISTA" Width="1.5" PointX="21.625" PointY="38.375" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_OPCIONESMULTIPLES_LISTA_SoftCob_LISTATRABAJO_CABECERA" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_ARBOL_ACCION" Width="1.5" PointX="7.5" PointY="82.25" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_ARBOL_CONTACTO" Width="1.5" PointX="14.25" PointY="82.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_ARBOL_EFECTO" Width="1.5" PointX="9.75" PointY="82.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_ARBOL_RESPUESTA" Width="1.5" PointX="12" PointY="82.375" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_ARBOL_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_ARBOL_EFECTO_SoftCob_ARBOL_ACCION" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_ARBOL_CONTACTO_SoftCob_ARBOL_RESPUESTA" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_ARBOL_RESPUESTA_SoftCob_ARBOL_EFECTO" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_PERSONA" Width="1.5" PointX="35.375" PointY="1.125" />
+        <AssociationConnector Association="SoftCobModel.FK_SoftCob_CLIENTE_DEUDOR_SoftCob_PERSONA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -258,13 +258,13 @@ namespace SoftCob.Views.Gestion
         protected global::AjaxControlToolkit.CollapsiblePanelExtender PnlPresupuesto_CollapsiblePanelExtender;
 
         /// <summary>
-        /// Control divRegistrarTele.
+        /// Control DivRegistrarTele.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRegistrarTele;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivRegistrarTele;
 
         /// <summary>
         /// Control PnlHeaderTelefonos.
@@ -429,6 +429,15 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.ImageButton ImgBuscarFono0;
 
         /// <summary>
+        /// Control TrOpciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrOpciones;
+
+        /// <summary>
         /// Control DdlAccionDel.
         /// </summary>
         /// <remarks>
@@ -474,15 +483,6 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.GridView GrdvTelefonos;
 
         /// <summary>
-        /// Control Panel5.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel5;
-
-        /// <summary>
         /// Control PnlDatosTelefonos_CollapsiblePanelExtender.
         /// </summary>
         /// <remarks>
@@ -499,6 +499,15 @@ namespace SoftCob.Views.Gestion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel6;
+
+        /// <summary>
+        /// Control DivDeudor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivDeudor;
 
         /// <summary>
         /// Control PnlHeaderDeudor.
@@ -589,6 +598,15 @@ namespace SoftCob.Views.Gestion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender PnlDatosDeudorOperacion_CollapsiblePanelExtender;
+
+        /// <summary>
+        /// Control DivBotones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivBotones;
 
         /// <summary>
         /// Control PnlHeaderBotones.
@@ -715,6 +733,15 @@ namespace SoftCob.Views.Gestion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender PnlBotones_CollapsiblePanelExtender;
+
+        /// <summary>
+        /// Control DivGestion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivGestion;
 
         /// <summary>
         /// Control PnlHeaderRegGestion.
@@ -1230,13 +1257,13 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.PlaceHolder pchImpulsores;
 
         /// <summary>
-        /// Control divOpciones.
+        /// Control DivOpciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divOpciones;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivOpciones;
 
         /// <summary>
         /// Control PnlHeaderGestiones.

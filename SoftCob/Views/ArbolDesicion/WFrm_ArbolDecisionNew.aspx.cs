@@ -267,9 +267,10 @@
                     case "ACCION":
                         LblArbol.InnerText = "Accion:";
                         LblDescripcion.InnerText = "Efecto:";
+
                         _dtbaccion = (DataTable)ViewState["ArbolAccion"];
                         _resultado = _dtbaccion.Select("CodigoCPCE='" + ViewState["CodigoCPCE"].ToString() +
-                            "' and CodigoARAC ='" + codigo + "'").FirstOrDefault();                        
+                            "' and CodigoARAC ='" + codigo + "'").FirstOrDefault();  
                         break;
                     case "EFECTO":
                         ChkPago.Visible = true;
@@ -283,6 +284,7 @@
                             "' and CodigoAREF='" + codigo + "'").FirstOrDefault();
                         break;
                     case "RESPUESTA":
+                        ChkPago.Visible = true;
                         LblArbol.InnerText = "Respuesta:";
                         LblDescripcion.InnerText = "Contacto:";
                         _dtbrespuesta = (DataTable)ViewState["ArbolRespuesta"];
@@ -297,9 +299,10 @@
                                 ChkLlamar.Visible = true;
                                 ChkEfectivo.Visible = true;
                                 ChkComisiona.Visible = true;
-                                ChkPago.Checked = _resultado["Tipo"].ToString() == "1" ? true : false;
-                                ChkLlamar.Checked = _resultado["Tipo"].ToString() == "2" ? true : false;
-                                ChkEfectivo.Checked = _resultado["Efectivo"].ToString() == "1" ? true : false;
+                                ChkPago.Checked = _resultado["Pago"].ToString() == "SI" ? true : false;
+                                ChkLlamar.Checked = _resultado["Llamar"].ToString() == "SI" ? true : false;
+                                ChkEfectivo.Checked = _resultado["Efectivo"].ToString() == "SI" ? true : false;
+                                ChkEfectivo.Text = _resultado["Efectivo"].ToString() == "SI" ? "Efectivo" : "No Efectivo";
                                 ChkComisiona.Checked = _resultado["Comisiona"].ToString() == "SI" ? true : false;
                             }
                         }
@@ -445,40 +448,6 @@
                 switch (ViewState["CodigoArbol"].ToString())
                 {
                     case "CEDENTE":
-                        //_maxcodigo = 0;
-                        //_dtbaccion = (DataTable)ViewState["ArbolAccion"];
-
-                        //if (_dtbaccion.Rows.Count == 0)
-                        //{
-                        //    _dts = new ConsultaDatosDAO().FunConsultaDatos(182, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                        //        1, 0, "", "", "", Session["Conectar"].ToString());
-                        //    _dtbaccion = _dts.Tables[0];
-                        //    ViewState["ArbolAccion"] = _dts.Tables[0];
-                        //}
-
-                        //_resultado = _dtbaccion.Select("CodigoCPCE='" + ViewState["CodigoCPCE"].ToString()
-                        //    + "' and Descripcion='" + TxtDescripcion.Text.Trim().ToUpper() + "'").FirstOrDefault();
-
-                        //if (_resultado != null)
-                        //{
-                        //    new FuncionesDAO().FunShowJSMessage("Descripcion ACCION ya existe..!", this);
-                        //    return;
-                        //}
-
-                        //if (_dtbaccion.Rows.Count > 0)
-                        //    _maxcodigo = _dtbaccion.AsEnumerable()
-                        //        .Max(row => int.Parse((string)row["CodigoARAC"]));
-
-                        //_maxcodigo++;
-                        //_resultado = _dtbaccion.NewRow();
-                        //_resultado["CodigoCPCE"] = ViewState["CodigoCPCE"].ToString();
-                        //_resultado["CodigoARAC"] = _maxcodigo;
-                        //_resultado["Descripcion"] = TxtDescripcion.Text.Trim().ToUpper();
-                        //_resultado["Estado"] = "Activo";
-                        //_resultado["Nuevo"] = "SI";
-                        //_dtbaccion.Rows.Add(_resultado);
-                        //ViewState["ArbolAccion"] = _dtbaccion;
-
                         _dts = new ConsultaDatosDAO().FunConsultaDatos(181, 1, int.Parse(ViewState["CodigoCPCE"].ToString()), 0,
                             TxtDescripcion.Text.Trim().ToUpper(), "", "", Session["Conectar"].ToString());
 
@@ -498,44 +467,9 @@
                         TrvCedenteArbol.SelectedNode.ChildNodes.Add(unnodeaccion);
                         break;
                     case "ACCION":
-                        //_maxcodigo = 0;
-                        //_dtbefecto = (DataTable)ViewState["ArbolEfecto"];
-
-                        //if (_dtbefecto.Rows.Count == 0)
-                        //{
-                        //    _dts = new ConsultaDatosDAO().FunConsultaDatos(182, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                        //        1, 0, "", "", "", Session["Conectar"].ToString());
-                        //    _dtbefecto = _dts.Tables[1];
-                        //    ViewState["ArbolEfecto"] = _dts.Tables[1];
-                        //}
-
-                        //_resultado = _dtbefecto.Select("CodigoCPCE='" + ViewState["CodigoCPCE"].ToString() +
-                        //    "' and CodigoARAC='" + ViewState["CodigoARAC"].ToString() + "' and Descripcion ='" +
-                        //    TxtDescripcion.Text.Trim().ToUpper() + "'").FirstOrDefault();
-
-                        //if (_resultado != null)
-                        //{
-                        //    new FuncionesDAO().FunShowJSMessage("Descripcion EFECTO ya existe..!", this);
-                        //    return;
-                        //}
-
-                        //if (_dtbefecto.Rows.Count > 0)
-                        //    _maxcodigo = _dtbefecto.AsEnumerable()
-                        //        .Max(row => int.Parse((string)row["CodigoAREF"]));
-
-                        //_maxcodigo++;
-                        //_resultado = _dtbefecto.NewRow();
-                        //_resultado["CodigoCPCE"] = ViewState["CodigoCPCE"].ToString();
-                        //_resultado["CodigoARAC"] = ViewState["CodigoARAC"].ToString();
-                        //_resultado["CodigoAREF"] = _maxcodigo;
-                        //_resultado["Descripcion"] = TxtDescripcion.Text.Trim().ToUpper();
-                        //_resultado["Estado"] = "Activo";
-                        //_resultado["Nuevo"] = "SI";
-                        //_dtbefecto.Rows.Add(_resultado);
-                        //ViewState["ArbolEfecto"] = _dtbefecto;
-
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(181, 2, int.Parse(ViewState["CodigoCPCE"].ToString()), 0,
-                            TxtDescripcion.Text.Trim().ToUpper(), "", "", Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(181, 2, int.Parse(ViewState["CodigoCPCE"].ToString()),
+                            int.Parse(ViewState["CodigoARAC"].ToString()), TxtDescripcion.Text.Trim().ToUpper(), "", "",
+                            Session["Conectar"].ToString());
 
                         if (_dts.Tables[0].Rows.Count > 0)
                         {
@@ -552,93 +486,50 @@
                         TrvCedenteArbol.SelectedNode.ChildNodes.Add(unnodeafecto);
                         break;
                     case "EFECTO":
-                        _maxcodigo = 0;
-                        _dtbrespuesta = (DataTable)ViewState["ArbolRespuesta"];
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(181, 3, int.Parse(ViewState["CodigoCPCE"].ToString()),
+                            int.Parse(ViewState["CodigoAREF"].ToString()), TxtDescripcion.Text.Trim().ToUpper(), "", "",
+                            Session["Conectar"].ToString());
 
-                        if (_dtbrespuesta.Rows.Count == 0)
-                        {
-                            _dts = new ConsultaDatosDAO().FunConsultaDatos(182, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                                1, 0, "", "", "", Session["Conectar"].ToString());
-                            _dtbrespuesta = _dts.Tables[2];
-                            ViewState["ArbolRespuesta"] = _dts.Tables[2];
-                        }
-
-                        _resultado = _dtbrespuesta.Select("CodigoCPCE='" + ViewState["CodigoCPCE"].ToString() +
-                            "' and CodigoAREF='" + ViewState["CodigoAREF"].ToString() + "' and Descripcion='" +
-                            TxtDescripcion.Text.Trim().ToUpper() + "'").FirstOrDefault();
-
-                        if (_resultado != null)
+                        if (_dts.Tables[0].Rows.Count > 0)
                         {
                             new FuncionesDAO().FunShowJSMessage("Descripcion RESPUESTA ya existe..!", this);
                             return;
                         }
 
-                        if (_dtbrespuesta.Rows.Count > 0)
-                            _maxcodigo = _dtbrespuesta.AsEnumerable()
-                                .Max(row => int.Parse((string)row["CodigoARRE"]));
+                        _dts = new ArbolDecisionDAO().FunNewArbolDecision(2, 0, int.Parse(ViewState["CodigoCPCE"].ToString()),
+                            0, int.Parse(ViewState["CodigoAREF"].ToString()), 0, 0, TxtDescripcion.Text.Trim().ToUpper(), "Activo",
+                            "", ChkPago.Checked ? "SI" : "NO", ChkLlamar.Checked ? "SI" : "NO", ChkEfectivo.Checked ? "SI" : "NO",
+                            ChkComisiona.Checked ? "SI" : "NO", "", "", "", "", "", 0, 0, 0, 0, 0, 0, "", Session["Conectar"].ToString());
 
-                        _maxcodigo++;
-                        _resultado = _dtbrespuesta.NewRow();
-                        _resultado["CodigoCPCE"] = ViewState["CodigoCPCE"].ToString();
-                        _resultado["CodigoAREF"] = ViewState["CodigoAREF"].ToString();
-                        _resultado["CodigoARRE"] = _maxcodigo;
-                        _resultado["Descripcion"] = TxtDescripcion.Text.Trim().ToUpper();
-                        _resultado["Estado"] = "Activo";
-                        //_resultado["Pago"] = ChkOpciones.Items
-                        _resultado["Llamar"] = ChkPago.Checked ? "1" : ChkLlamar.Checked ? "2" : "0";
-                        _resultado["Efectivo"] = ChkEfectivo.Checked ? "1" : "0";
-                        _resultado["Tipo"] = ChkPago.Checked ? "1" : ChkLlamar.Checked ? "2" : "0";
-                        _resultado["Comisiona"] = ChkComisiona.Checked ? "SI" : "NO";
-                        _resultado["Nuevo"] = "SI";
-                        _dtbrespuesta.Rows.Add(_resultado);
-                        ViewState["ArbolRespuesta"] = _dtbrespuesta;
                         TreeNode unnoderespuesta = new TreeNode(TxtDescripcion.Text.Trim().ToUpper(), _maxcodigo.ToString());
                         TrvCedenteArbol.SelectedNode.ChildNodes.Add(unnoderespuesta);
                         break;
                     case "RESPUESTA":
-                        _maxcodigo = 0;
-                        _dtbcontacto = (DataTable)ViewState["ArbolContacto"];
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(181, 4, int.Parse(ViewState["CodigoCPCE"].ToString()),
+                            int.Parse(ViewState["CodigoARRE"].ToString()), TxtDescripcion.Text.Trim().ToUpper(), "", "",
+                            Session["Conectar"].ToString());
 
-                        if (_dtbcontacto.Rows.Count == 0)
-                        {
-                            _dts = new ConsultaDatosDAO().FunConsultaDatos(182, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                                0, 0, "", "", "", Session["Conectar"].ToString());
-                            _dtbcontacto = _dts.Tables[3];
-                            ViewState["ArbolContacto"] = _dts.Tables[3];
-                        }
-
-                        _resultado = _dtbcontacto.Select("CodigoCPCE='" + ViewState["CodigoCPCE"].ToString() +
-                            "' and CodigoARRE='" + ViewState["CodigoARRE"].ToString() + "' and Descripcion='" +
-                            TxtDescripcion.Text.Trim().ToUpper() + "'").FirstOrDefault();
-
-                        if (_resultado != null)
+                        if (_dts.Tables[0].Rows.Count > 0)
                         {
                             new FuncionesDAO().FunShowJSMessage("Descripcion CONTACTO ya existe..!", this);
                             return;
                         }
 
-                        if (_dtbcontacto.Rows.Count > 0)
-                            _maxcodigo = _dtbcontacto.AsEnumerable()
-                                .Max(row => int.Parse((string)row["CodigoARCO"]));
+                        _dts = new ArbolDecisionDAO().FunNewArbolDecision(3, 0, int.Parse(ViewState["CodigoCPCE"].ToString()),
+                            0, 0, int.Parse(ViewState["CodigoARRE"].ToString()), 0, TxtDescripcion.Text.Trim().ToUpper(), "Activo",
+                            "", ChkPago.Checked ? "SI" : "NO", "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, "",
+                            Session["Conectar"].ToString());
 
-                        _maxcodigo++;
-                        _resultado = _dtbcontacto.NewRow();
-                        _resultado["CodigoCPCE"] = ViewState["CodigoCPCE"].ToString();
-                        _resultado["CodigoARRE"] = ViewState["CodigoARRE"].ToString();
-                        _resultado["CodigoARCO"] = _maxcodigo;
-                        _resultado["Descripcion"] = TxtDescripcion.Text.Trim().ToUpper();
-                        _resultado["Estado"] = "Activo";
-                        _resultado["Nuevo"] = "SI";
-                        _dtbcontacto.Rows.Add(_resultado);
-                        ViewState["ArbolContacto"] = _dtbcontacto;
                         TreeNode unnodecontacto = new TreeNode(TxtDescripcion.Text.Trim().ToUpper(), _maxcodigo.ToString());
                         TrvCedenteArbol.SelectedNode.ChildNodes.Add(unnodecontacto);
                         break;
                 }
+
                 TxtDescripcion.Text = "";
                 ChkPago.Checked = false;
                 ChkLlamar.Checked = false;
                 ChkEfectivo.Checked = false;
+                ChkEfectivo.Text = "No Efectivo";
             }
             catch (Exception ex)
             {
@@ -662,21 +553,26 @@
                     case "EFECTO":
                         _dts = new ConsultaDatosDAO().FunNewArbolDecision(1, int.Parse(ViewState["CodigoCPCE"].ToString()),
                             int.Parse(ViewState["CodigoARAC"].ToString()), int.Parse(ViewState["CodigoAREF"].ToString()),
-                            0, 0, TxtArbol.Text.Trim().ToUpper(), ChkEstado.Checked ? "Activo" : "Inactivo", "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
+                            0, 0, TxtArbol.Text.Trim().ToUpper(), ChkEstado.Checked ? "Activo" : "Inactivo", "", 0, "", "", "", "", "", "", 
+                            0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), 
+                            Session["Conectar"].ToString());
                         break;
                     case "RESPUESTA":
                         _dts = new ConsultaDatosDAO().FunNewArbolDecision(2, int.Parse(ViewState["CodigoCPCE"].ToString()),
                             int.Parse(ViewState["CodigoARAC"].ToString()), int.Parse(ViewState["CodigoAREF"].ToString()),
                             int.Parse(ViewState["CodigoARRE"].ToString()), 0, TxtArbol.Text.Trim().ToUpper(),
                             ChkEstado.Checked ? "Activo" : "Inactivo", ChkEfectivo.Checked ? "1" : "0",
-                            ChkPago.Checked ? 1 : ChkLlamar.Checked ? 2 : 0, ChkComisiona.Checked ? "SI" : "NO", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
+                            ChkPago.Checked ? 1 : ChkLlamar.Checked ? 2 : 0, ChkComisiona.Checked ? "SI" : "NO", "", "", "", "", "", 
+                            0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), 
+                            Session["Conectar"].ToString());
                         break;
                     case "CONTACTO":
                         _dts = new ConsultaDatosDAO().FunNewArbolDecision(3, int.Parse(ViewState["CodigoCPCE"].ToString()),
                             int.Parse(ViewState["CodigoARAC"].ToString()), int.Parse(ViewState["CodigoAREF"].ToString()),
                             int.Parse(ViewState["CodigoARRE"].ToString()), int.Parse(ViewState["CodigoARRE"].ToString()),
                             TxtArbol.Text.Trim().ToUpper(), ChkEstado.Checked ? "Activo" : "Inactivo",
-                            "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
+                            "", 0, "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), 
+                            Session["MachineName"].ToString(), Session["Conectar"].ToString());
                         break;
                 }
                 response = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Guardado con Éxito");
@@ -757,9 +653,9 @@
                                     if (ViewState["CodigoArbol"].ToString() == "ACCION")
                                     {
                                         childcpce.ChildNodes.Remove(TrvCedenteArbol.SelectedNode);
-                                        _resultado = _dtbaccion.Select("CodigoARAC='" + _codigoarac + "'").FirstOrDefault();
-                                        _resultado.Delete();
-                                        ViewState["ArbolAccion"] = _dtbaccion;
+                                        //_resultado = _dtbaccion.Select("CodigoARAC='" + _codigoarac + "'").FirstOrDefault();
+                                        //_resultado.Delete();
+                                        //ViewState["ArbolAccion"] = _dtbaccion;
                                         break;
                                     }
 
@@ -771,9 +667,9 @@
                                         {
                                             if (ViewState["CodigoArbol"].ToString() == "EFECTO")
                                             {
-                                                _resultado = _dtbefecto.Select("CodigoAREF='" + _codigoaref + "'").FirstOrDefault();
-                                                _resultado.Delete();
-                                                ViewState["ArbolEfecto"] = _dtbefecto;
+                                                //_resultado = _dtbefecto.Select("CodigoAREF='" + _codigoaref + "'").FirstOrDefault();
+                                                //_resultado.Delete();
+                                                //ViewState["ArbolEfecto"] = _dtbefecto;
                                                 childaccion.ChildNodes.Remove(TrvCedenteArbol.SelectedNode);
                                                 break;
                                             }
@@ -787,9 +683,9 @@
                                                 {
                                                     if (ViewState["CodigoArbol"].ToString() == "RESPUESTA")
                                                     {
-                                                        _resultado = _dtbrespuesta.Select("CodigoARRE='" + _codigoarre + "'").FirstOrDefault();
-                                                        _resultado.Delete();
-                                                        ViewState["ArbolRespuesta"] = _dtbrespuesta;
+                                                        //_resultado = _dtbrespuesta.Select("CodigoARRE='" + _codigoarre + "'").FirstOrDefault();
+                                                        //_resultado.Delete();
+                                                        //ViewState["ArbolRespuesta"] = _dtbrespuesta;
                                                         childefecto.ChildNodes.Remove(TrvCedenteArbol.SelectedNode);
                                                         break;
                                                     }
@@ -804,9 +700,9 @@
                                                     {
                                                         if (ViewState["CodigoArbol"].ToString() == "CONTACTO")
                                                         {
-                                                            _resultado = _dtbcontacto.Select("CodigoARCO='" + _codigoarco + "'").FirstOrDefault();
-                                                            _resultado.Delete();
-                                                            ViewState["ArbolContacto"] = _dtbcontacto;
+                                                            //_resultado = _dtbcontacto.Select("CodigoARCO='" + _codigoarco + "'").FirstOrDefault();
+                                                            //_resultado.Delete();
+                                                            //ViewState["ArbolContacto"] = _dtbcontacto;
                                                             childrespuesta.ChildNodes.Remove(TrvCedenteArbol.SelectedNode);
                                                             break;
                                                         }
@@ -845,7 +741,7 @@
         }
         protected void ChkEfectivo_CheckedChanged(object sender, EventArgs e)
         {
-            ChkEfectivo.Text = ChkContacto.Checked ? "Efectivo" : "No Efectivo";
+            ChkEfectivo.Text = ChkEfectivo.Checked ? "Efectivo" : "No Efectivo";
         }
 
         protected void ChkEstado_CheckedChanged(object sender, EventArgs e)

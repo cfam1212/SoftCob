@@ -105,7 +105,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-<%--            <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -115,7 +115,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>--%>
+            </div>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
@@ -148,13 +148,17 @@
                                                 <HeaderStyle BackColor="#66CCFF" />
                                                 <ItemStyle HorizontalAlign="Right" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="VPagos" HeaderText="Pagos">
+                                            <asp:BoundField DataField="VPagos" HeaderText="Pagos_Efectivos">
                                                 <HeaderStyle BackColor="#66CCFF" />
                                                 <ItemStyle HorizontalAlign="Right" />
                                             </asp:BoundField>
                                             <asp:BoundField DataField="VPorcenCumplimiento" HeaderText="% Cumplimiento">
                                                 <HeaderStyle BackColor="#66CCFF" />
                                                 <ItemStyle HorizontalAlign="Right" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="NoEfectivos" HeaderText="No Efectivos">
+                                            <HeaderStyle BackColor="#993333" ForeColor="White" />
+                                            <ItemStyle HorizontalAlign="Right" />
                                             </asp:BoundField>
                                         </Columns>
                                         <HeaderStyle Font-Size="Small" />
@@ -323,6 +327,12 @@
                                     <asp:TemplateField HeaderText="Selecc">
                                         <ItemTemplate>
                                             <asp:ImageButton ID="ImgSeleccionar" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSeleccionar_Click" />
+                                        </ItemTemplate>
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Verificar">
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="ImgVerificar" runat="server" Enabled="False" Height="20px" ImageUrl="~/Botones/verificargris.png" OnClick="ImgVerificar_Click" />
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField>

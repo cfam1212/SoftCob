@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SoftCob.Views.Gestion
+namespace SoftCob.Views.Breanch
 {
 
 
-    public partial class WFrm_ProyeccionCartera
+    public partial class WFrm_ProyeccionAdmin
     {
 
         /// <summary>
@@ -60,15 +60,6 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.Label Lblerror;
 
         /// <summary>
-        /// Control updProgress.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress updProgress;
-
-        /// <summary>
         /// Control updCabecera.
         /// </summary>
         /// <remarks>
@@ -78,139 +69,67 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.UpdatePanel updCabecera;
 
         /// <summary>
-        /// Control GrdvProyeccion.
+        /// Control DdlCedente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GrdvProyeccion;
+        protected global::System.Web.UI.WebControls.DropDownList DdlCedente;
 
         /// <summary>
-        /// Control PnlHeaderProy.
+        /// Control DdlCatalogo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlHeaderProy;
+        protected global::System.Web.UI.WebControls.DropDownList DdlCatalogo;
 
         /// <summary>
-        /// Control ImgPresu.
+        /// Control DdlGestor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImgPresu;
+        protected global::System.Web.UI.WebControls.DropDownList DdlGestor;
 
         /// <summary>
-        /// Control PnlProyeccion.
+        /// Control DdlYear.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlProyeccion;
+        protected global::System.Web.UI.WebControls.DropDownList DdlYear;
 
         /// <summary>
-        /// Control ImgBuscar.
+        /// Control DdlTipoPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgBuscar;
+        protected global::System.Web.UI.WebControls.DropDownList DdlTipoPago;
 
         /// <summary>
-        /// Control LblIdentificacion.
+        /// Control DdlReporte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblIdentificacion;
+        protected global::System.Web.UI.WebControls.DropDownList DdlReporte;
 
         /// <summary>
-        /// Control LblCliente.
+        /// Control BtnProcesar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblCliente;
-
-        /// <summary>
-        /// Control TxtFecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtFecha;
-
-        /// <summary>
-        /// Control TxtValor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtValor;
-
-        /// <summary>
-        /// Control TxtObservacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtObservacion;
-
-        /// <summary>
-        /// Control ImgActualizar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgActualizar;
-
-        /// <summary>
-        /// Control ImgAgregar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgAgregar;
-
-        /// <summary>
-        /// Control ImgEliminar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgEliminar;
-
-        /// <summary>
-        /// Control PnlProyeccion_CollapsiblePanelExtender.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CollapsiblePanelExtender PnlProyeccion_CollapsiblePanelExtender;
-
-        /// <summary>
-        /// Control Panel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Button BtnProcesar;
 
         /// <summary>
         /// Control ImgExportar.

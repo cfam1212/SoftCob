@@ -227,7 +227,7 @@
                 FunCargarCombos(5);
                 FunCargarCombos(9);
                 pnlEstadisticas.Height = 120;
-                pnlTelefonos.Height = 150;
+                //pnlTelefonos.Height = 150;
                 pnlDatosDeudor.Height = 150;
                 PnlDatosGarante.Height = 150;
                 pnlDatosGetion.Height = 150;
@@ -794,7 +794,7 @@
 
                         break;
                     case 1:
-                        DdlAccion.DataSource = new SpeechDAO().FunGetArbolAccion(int.Parse(Session["codigoCPCE"].ToString()));
+                        DdlAccion.DataSource = new SpeechDAO().FunGetArbolNewAccion(int.Parse(Session["codigoCPCE"].ToString()));
                         DdlAccion.DataTextField = "Descripcion";
                         DdlAccion.DataValueField = "Codigo";
                         DdlAccion.DataBind();
@@ -815,7 +815,7 @@
                         _contacto.Value = "0";
                         DdlContacto.Items.Add(_contacto);
 
-                        DddlEfecto.DataSource = new SpeechDAO().FunGetArbolEfecto(int.Parse(DdlAccion.SelectedValue));
+                        DddlEfecto.DataSource = new SpeechDAO().FunGetArbolNewEfecto(int.Parse(DdlAccion.SelectedValue));
                         DddlEfecto.DataTextField = "Descripcion";
                         DddlEfecto.DataValueField = "Codigo";
                         DddlEfecto.DataBind();
@@ -831,7 +831,7 @@
                         _contacto.Value = "0";
                         DdlContacto.Items.Add(_contacto);
 
-                        DdlRespuesta.DataSource = new SpeechDAO().FunGetArbolRespuesta(int.Parse(DddlEfecto.SelectedValue));
+                        DdlRespuesta.DataSource = new SpeechDAO().FunGetArbolNewRespuesta(int.Parse(DddlEfecto.SelectedValue));
                         DdlRespuesta.DataTextField = "Descripcion";
                         DdlRespuesta.DataValueField = "Codigo";
                         DdlRespuesta.DataBind();
@@ -842,7 +842,7 @@
                         _contacto.Value = "0";
                         DdlContacto.Items.Add(_contacto);
 
-                        DdlContacto.DataSource = new SpeechDAO().FunGetArbolContacto(int.Parse(DdlRespuesta.SelectedValue));
+                        DdlContacto.DataSource = new SpeechDAO().FunGetArbolNewContacto(int.Parse(DdlRespuesta.SelectedValue));
                         DdlContacto.DataTextField = "Descripcion";
                         DdlContacto.DataValueField = "Codigo";
                         DdlContacto.DataBind();
@@ -1366,25 +1366,11 @@
 
                             if (_dts.Tables[0].Rows[0][0].ToString() == "OK")
                             {
-                                //if (Chkcitacion.Checked)
-                                //{
-                                //    Response.Redirect("../BPM/WFrm_NuevaCitacion.aspx?CodigoPERS=" + ViewState
-                                //        ["PersCodigo"].ToString() + "&CodigoCLDE=" + ViewState["CodigoCLDE"].ToString() + 
-                                //        "&Retornar=2", true);
-                                //}
-
                                 _dts = new ConsultaDatosDAO().FunConsultaDatos(36, int.Parse(Session["IdListaCabecera"].ToString()),
                                     int.Parse(Session["usuCodigo"].ToString()), int.Parse(ViewState["Operaciones"].ToString()),
                                     "", "", "", Session["Conectar"].ToString());
                                 GrdvEstadisticas.DataSource = _dts;
                                 GrdvEstadisticas.DataBind();
-                                //dtsContactos = (DataSet)ViewState["Contactos"];
-                                //change = dtsContactos.Tables["Contactos"].Select("IdSecuencial='" + ViewState["IdSecuencial"].ToString() + "'");
-                                //change[0]["Gestionado"] = "SI";
-                                //change[0].Delete();
-                                //dtsContactos.AcceptChanges();
-                                //ViewState["Contactos"] = dtsContactos;
-
                                 _dtbcontacto = (DataTable)ViewState["Contactos"];
                                 _result = _dtbcontacto.Select("IdSecuencial='" + ViewState["IdSecuencial"].ToString() + "'").FirstOrDefault();
                                 _result["Gestionado"] = "SI";
@@ -2420,7 +2406,9 @@
                         return;
                     }
 
-                    DateTime dtmFechaAbono = DateTime.ParseExact(String.Format("{0}", TxtFechaPago.Text.Trim()), "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    DateTime dtmFechaAbono = DateTime.ParseExact(String.Format("{0}", TxtFechaPago.Text.Trim()), "MM/dd/yyyy", 
+                        CultureInfo.InvariantCulture);
+
                     _dtmfechaactual = DateTime.Now.ToString("MM/dd/yyyy");
 
                     if (string.IsNullOrEmpty(TxtValorAbono.Text.Trim()) || TxtValorAbono.Text.Trim() == "0")
@@ -2968,7 +2956,12 @@
             {
                 TreeView arbol = ((TreeView)sender);
                 TreeNode Node = arbol.SelectedNode;
-                Lblerror.Text = "";
+
+                DivRegistrarTele.Visible = false;
+                DivDeudor.Visible = false;
+                DivBotones.Visible = false;
+                DivGestion.Visible = false;
+
                 switch (Node.Depth)
                 {
 
@@ -2997,6 +2990,10 @@
                         break;
                     case 3:
                         Session["CargarBaseCTC"] = "SI";
+                        DivRegistrarTele.Visible = true;
+                        DivDeudor.Visible = true;
+                        DivBotones.Visible = true;
+                        DivGestion.Visible = true;
                         ViewState["Estado"] = "I";
                         ViewState["InciarTimer"] = "SI";
                         ViewState["TimerCall"] = "NO";
@@ -3054,6 +3051,10 @@
             ViewState["CodigoCLDEaux"] = "0";
             ViewState["DialerNumberaux"] = "";
             ViewState["TelefonosMarcados"] = "NO";
+            DivRegistrarTele.Visible = false;
+            DivDeudor.Visible = false;
+            DivBotones.Visible = false;
+            DivGestion.Visible = false;
             FunArmarArbolDTS();
         }
 
@@ -3300,7 +3301,11 @@
         {
             try
             {
-                ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", "javascript: var posicion_x; var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); window.open('wFrm_SpeechBV.aspx?CodigoCEDE=" + Session["codigoCEDE"].ToString() + "&CodigoCPCE=" + Session["codigoCPCE"].ToString() + "',null,'left=' + posicion_x + ', top=' + posicion_y + ', width=750px, height=400px, status=no,resizable= yes, scrollbars=yes, toolbar=no, location=no, menubar=no,titlebar=0');", true);
+                ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", 
+                    "javascript: var posicion_x; var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); " +
+                    "window.open('WFrm_SpeechBV.aspx?CodigoCEDE=" + Session["codigoCEDE"].ToString() + "&CodigoCPCE=" + 
+                    Session["codigoCPCE"].ToString() + "',null,'left=' + posicion_x + ', top=' + posicion_y + ', width=750px, height=400px," +
+                    " status=no,resizable= yes, scrollbars=yes, toolbar=no, location=no, menubar=no,titlebar=0');", true);
             }
             catch (Exception ex)
             {
@@ -3337,6 +3342,14 @@
                     _original.tece_score = _chktelefec.Checked ? 9 : 0;
                     _db.SaveChanges();
                 }
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(35, int.Parse(ViewState["CodigoCedente"].ToString()), 
+                    int.Parse(ViewState["PersCodigo"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()), "", "", "",
+                    Session["Conectar"].ToString());
+
+                GrdvTelefonos.DataSource = _dts;
+                GrdvTelefonos.DataBind();
+                ViewState["TelefonosRegistrados"] = _dts.Tables[0];
             }
             catch (Exception ex)
             {

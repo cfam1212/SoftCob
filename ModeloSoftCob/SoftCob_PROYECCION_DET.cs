@@ -31,6 +31,7 @@ namespace ModeloSoftCob
         public Nullable<int> prde_auxi1 { get; set; }
         public Nullable<int> prde_auxi2 { get; set; }
         public Nullable<int> prde_auxi3 { get; set; }
+        public string prde_respuesta { get; set; }
     
         public virtual SoftCob_PROYECCION_CAB SoftCob_PROYECCION_CAB { get; set; }
     }

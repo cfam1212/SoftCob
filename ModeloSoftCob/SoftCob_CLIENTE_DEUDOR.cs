@@ -45,8 +45,8 @@ namespace ModeloSoftCob
         public virtual ICollection<SoftCob_DEUDOR_REFERENCIAS> SoftCob_DEUDOR_REFERENCIAS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoftCob_CITACIONES_CAB> SoftCob_CITACIONES_CAB { get; set; }
-        public virtual SoftCob_PERSONA SoftCob_PERSONA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoftCob_CUENTA_DEUDOR> SoftCob_CUENTA_DEUDOR { get; set; }
+        public virtual SoftCob_PERSONA SoftCob_PERSONA { get; set; }
     }
 }

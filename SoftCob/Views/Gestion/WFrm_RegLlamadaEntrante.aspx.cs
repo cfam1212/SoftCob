@@ -355,7 +355,7 @@
                     DdlTipoPago.DataBind();
                     break;
                 case 2:
-                    DdlAccion.DataSource = new SpeechDAO().FunGetArbolAccion(int.Parse(ViewState["CodigoCPCE"].ToString()));
+                    DdlAccion.DataSource = new SpeechDAO().FunGetArbolNewAccion(int.Parse(ViewState["CodigoCPCE"].ToString()));
                     DdlAccion.DataTextField = "Descripcion";
                     DdlAccion.DataValueField = "Codigo";
                     DdlAccion.DataBind();
@@ -376,7 +376,7 @@
                     _contacto.Value = "0";
                     DdlContacto.Items.Add(_contacto);
 
-                    DdlEfecto.DataSource = new SpeechDAO().FunGetArbolEfecto(int.Parse(DdlAccion.SelectedValue));
+                    DdlEfecto.DataSource = new SpeechDAO().FunGetArbolNewEfecto(int.Parse(DdlAccion.SelectedValue));
                     DdlEfecto.DataTextField = "Descripcion";
                     DdlEfecto.DataValueField = "Codigo";
                     DdlEfecto.DataBind();
@@ -392,7 +392,7 @@
                     _contacto.Value = "0";
                     DdlContacto.Items.Add(_contacto);
 
-                    DdlRespuesta.DataSource = new SpeechDAO().FunGetArbolRespuesta(int.Parse(DdlEfecto.SelectedValue));
+                    DdlRespuesta.DataSource = new SpeechDAO().FunGetArbolNewRespuesta(int.Parse(DdlEfecto.SelectedValue));
                     DdlRespuesta.DataTextField = "Descripcion";
                     DdlRespuesta.DataValueField = "Codigo";
                     DdlRespuesta.DataBind();
@@ -402,7 +402,7 @@
                     _contacto.Text = "--Seleccione Contacto--";
                     _contacto.Value = "0";
                     DdlContacto.Items.Add(_contacto);
-                    DdlContacto.DataSource = new SpeechDAO().FunGetArbolContacto(int.Parse(DdlRespuesta.SelectedValue));
+                    DdlContacto.DataSource = new SpeechDAO().FunGetArbolNewContacto(int.Parse(DdlRespuesta.SelectedValue));
                     DdlContacto.DataTextField = "Descripcion";
                     DdlContacto.DataValueField = "Codigo";
                     DdlContacto.DataBind();
@@ -1090,7 +1090,7 @@
                         int.Parse(DdlRespuesta.SelectedValue), 0, int.Parse(ViewState["CodigoSpeechCab"].ToString()));
                 }
 
-                _pago = new ArbolDecisionDAO().FunGetAbonoPago(int.Parse(DdlRespuesta.SelectedValue), int.Parse(ViewState["CodigoCPCE"].ToString()));
+                _pago = new ListaTrabajoDAO().FunGetValorRespuesta(int.Parse(DdlRespuesta.SelectedValue), 0);
                 _llamar = new ListaTrabajoDAO().FunGetValorRespuesta(int.Parse(DdlRespuesta.SelectedValue), 1);
 
                 if (_pago)

@@ -221,7 +221,7 @@
 
                     break;
                 case 2:
-                    DdlAccion.DataSource = new SpeechDAO().FunGetArbolAccion(int.Parse(ViewState["CodigoCPCE"].ToString()));
+                    DdlAccion.DataSource = new SpeechDAO().FunGetArbolNewAccion(int.Parse(ViewState["CodigoCPCE"].ToString()));
                     DdlAccion.DataTextField = "Descripcion";
                     DdlAccion.DataValueField = "Codigo";
                     DdlAccion.DataBind();

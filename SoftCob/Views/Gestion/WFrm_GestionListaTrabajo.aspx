@@ -468,7 +468,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="panel panel-primary" runat="server" id="divRegistrarTele">
+                                        <div class="panel panel-primary" runat="server" id="DivRegistrarTele" visible="false">
                                             <table style="width: 100%">
                                                 <tr>
                                                     <td style="width: 100%">
@@ -588,7 +588,7 @@
                                                                                 <tr>
                                                                                     <td colspan="4"></td>
                                                                                 </tr>
-                                                                                <tr>
+                                                                                <tr runat="server" id="TrOpciones" visible="false">
                                                                                     <td>
                                                                                         <h5>Acción:</h5>
                                                                                     </td>
@@ -665,12 +665,7 @@
                                                                                             </asp:GridView>
                                                                                         </asp:Panel>
                                                                                     </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td colspan="4">
-                                                                                        <asp:Panel ID="Panel5" runat="server" Height="30px"></asp:Panel>
-                                                                                    </td>
-                                                                                </tr>
+                                                                                </tr>               
                                                                             </table>
                                                                         </asp:Panel>
                                                                     </td>
@@ -693,7 +688,7 @@
                                             </table>
                                         </div>
 
-                                        <div class="panel panel-primary">
+                                        <div class="panel panel-primary" runat="server" id="DivDeudor" visible="false">
                                             <table style="width:100%">
                                                 <tr>
                                                     <td style="width: 100%">
@@ -855,7 +850,7 @@
                                             </table>
                                         </div>
 
-                                        <div class="panel panel-primary">
+                                        <div class="panel panel-primary" runat="server" id="DivBotones" visible="false">
                                             <table style="width: 100%">
                                                 <tr>
                                                     <td style="width: 15%"></td>
@@ -945,7 +940,7 @@
 
                                         </div>
 
-                                        <div class="panel panel-primary">
+                                        <div class="panel panel-primary" runat="server" id="DivGestion" visible="false">
                                             <table style="width: 100%">
                                                 <tr>
                                                     <td style="width: 100%">
@@ -977,6 +972,9 @@
                                                                     <td colspan="5">
                                                                         <div id="divException" class="alert-danger" style="visibility: hidden">
                                                                             <asp:Literal ID="litMensajeEx" runat="server">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                             </asp:Literal>
                                                                         </div>
                                                                     </td>
@@ -1218,7 +1216,7 @@
                                             </asp:Panel>
                                         </div>
 
-                                        <div class="panel panel-primary" runat="server" id="divOpciones">
+                                        <div class="panel panel-primary" runat="server" id="DivOpciones" visible="false">
                                             <table style="width: 100%">
                                                 <tr>
                                                     <td style="width: 100%">

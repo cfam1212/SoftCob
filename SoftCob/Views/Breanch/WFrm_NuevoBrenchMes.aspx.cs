@@ -17,7 +17,7 @@
         ListItem itemG = new ListItem();
         DataTable dtbBrench = new DataTable();
         DataTable dtbBrenchDet = new DataTable();
-        string sql = "", casos = "", redirect = "";
+        string sql = "", casos = "", redirect = "", _mensaje = "";
         DataRow resultado, result;
         decimal tExigible = 0, tMonto = 0, tPorcentaje = 0, tPresupuesto = 0, vExigible = 0, vPorcentaje = 0, vPresupuesto = 0;
         bool continuar = false;
@@ -350,6 +350,12 @@
                 }
                 if (continuar)
                 {
+                    _mensaje = new ConsultaDatosDAO().FunProcesoBrenchGestor(1, 0, 0, int.Parse(DdlGestores.SelectedValue),
+                        0, decimal.Parse(TxtPresupuesto.Text.Trim(), CultureInfo.InvariantCulture), "",
+                        int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
+                        "", "", "", "", "", int.Parse(DdlCatalogo.SelectedValue), int.Parse(ViewState["Anio"].ToString()),
+                        int.Parse(ViewState["Mes"].ToString()), 0, 0, ViewState["Conectar"].ToString());
+
                     SoftCob_BRENCHMESCAB dato1 = new SoftCob_BRENCHMESCAB();
                     {
                         dato1.BRMC_CODIGO = int.Parse(ViewState["CodigoBRMC"].ToString());

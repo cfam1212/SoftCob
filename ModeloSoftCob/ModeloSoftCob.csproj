@@ -81,6 +81,18 @@
     <Compile Include="SoftCob_AGENCIAS_CEDENTE.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
+    <Compile Include="SoftCob_ARBOL_ACCION.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_ARBOL_CONTACTO.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_ARBOL_EFECTO.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCob_ARBOL_RESPUESTA.cs">
+      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
+    </Compile>
     <Compile Include="SoftCob_ARBOL_SCORETELEFONO.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>

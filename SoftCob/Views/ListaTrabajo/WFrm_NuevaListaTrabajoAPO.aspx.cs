@@ -231,7 +231,7 @@
                     GrdvOrigen.DataBind();
                     break;
                 case 2:
-                    DdlAccion.DataSource = new SpeechDAO().FunGetArbolAccion(int.Parse(DdlCatalogo.SelectedValue));
+                    DdlAccion.DataSource = new SpeechDAO().FunGetArbolNewAccion(int.Parse(DdlCatalogo.SelectedValue));
                     DdlAccion.DataTextField = "Descripcion";
                     DdlAccion.DataValueField = "Codigo";
                     DdlAccion.DataBind();

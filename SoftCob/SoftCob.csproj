@@ -234,6 +234,8 @@
     <Content Include="Botones\speechAB.png" />
     <Content Include="Botones\speechBV.png" />
     <Content Include="Botones\user_new.png" />
+    <Content Include="Botones\verificar.png" />
+    <Content Include="Botones\verificargris.png" />
     <Content Include="Botones\vistodisable.png" />
     <Content Include="Botones\vistoenable.png" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -304,6 +306,7 @@
     <Content Include="Views\Breanch\WFrm_NuevoBrench.aspx" />
     <Content Include="Views\Breanch\WFrm_NuevoBrenchMes.aspx" />
     <Content Include="Views\Breanch\wFrm_ProcesarPagosBrench.aspx" />
+    <Content Include="Views\Breanch\WFrm_ProyeccionAdmin.aspx" />
     <Content Include="Views\CarteraPropia\WFrm_PagoCartera.aspx" />
     <Content Include="Views\Cedente\WFrm_AsignarCartera.aspx" />
     <Content Include="Views\Cedente\WFrm_CedenteAdmin.aspx" />
@@ -354,6 +357,7 @@
     <Content Include="Views\Gestion\WFrm_MonitorTimeGestor.aspx" />
     <Content Include="Views\Gestion\WFrm_NotasGestion.aspx" />
     <Content Include="Views\Gestion\WFrm_OtrosTelefonos.aspx" />
+    <Content Include="Views\Gestion\WFrm_PagosRegistrados.aspx" />
     <Content Include="Views\Gestion\WFrm_ProyeccionCartera.aspx" />
     <Content Include="Views\Gestion\WFrm_RegLlamadaEntrante.aspx" />
     <Content Include="Views\Gestion\WFrm_SeleccionListaTrabajo.aspx" />
@@ -625,6 +629,13 @@
     </Compile>
     <Compile Include="Views\Breanch\wFrm_ProcesarPagosBrench.aspx.designer.cs">
       <DependentUpon>wFrm_ProcesarPagosBrench.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Breanch\WFrm_ProyeccionAdmin.aspx.cs">
+      <DependentUpon>WFrm_ProyeccionAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Breanch\WFrm_ProyeccionAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_ProyeccionAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\CarteraPropia\WFrm_PagoCartera.aspx.cs">
       <DependentUpon>WFrm_PagoCartera.aspx</DependentUpon>
@@ -975,6 +986,13 @@
     </Compile>
     <Compile Include="Views\Gestion\WFrm_OtrosTelefonos.aspx.designer.cs">
       <DependentUpon>WFrm_OtrosTelefonos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_PagosRegistrados.aspx.cs">
+      <DependentUpon>WFrm_PagosRegistrados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Gestion\WFrm_PagosRegistrados.aspx.designer.cs">
+      <DependentUpon>WFrm_PagosRegistrados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Gestion\WFrm_ProyeccionCartera.aspx.cs">
       <DependentUpon>WFrm_ProyeccionCartera.aspx</DependentUpon>

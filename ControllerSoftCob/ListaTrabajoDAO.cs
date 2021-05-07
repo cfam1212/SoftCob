@@ -50,13 +50,13 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    if (_opcion == 0) _respuesta = _db.SoftCob_RESPUESTA.Where(r => r.ARRE_CODIGO == _arrecodigo 
+                    if (_opcion == 0) _respuesta = _db.SoftCob_ARBOL_RESPUESTA.Where(r => r.ARRE_CODIGO == _arrecodigo 
                     && r.arre_estado).FirstOrDefault().arre_pago;
 
-                    if (_opcion == 1) _respuesta = _db.SoftCob_RESPUESTA.Where(r => r.ARRE_CODIGO == _arrecodigo 
+                    if (_opcion == 1) _respuesta = _db.SoftCob_ARBOL_RESPUESTA.Where(r => r.ARRE_CODIGO == _arrecodigo 
                     && r.arre_estado).FirstOrDefault().arre_llamar;
 
-                    if (_opcion == 2) _respuesta = bool.Parse(_db.SoftCob_RESPUESTA.Where(r => r.ARRE_CODIGO == _arrecodigo 
+                    if (_opcion == 2) _respuesta = bool.Parse(_db.SoftCob_ARBOL_RESPUESTA.Where(r => r.ARRE_CODIGO == _arrecodigo 
                     && r.arre_estado == true).FirstOrDefault().arre_auxv2);
                 }
             }
@@ -329,14 +329,14 @@
         {
             try
             {
-                var query = from Respuesta in _dtb.SoftCob_RESPUESTA
+                var query = from Respuesta in _dtb.SoftCob_ARBOL_RESPUESTA
                             where Respuesta.arre_estado == true &&
-                            Respuesta.arre_auxi1 == cpcecodigo
+                            Respuesta.cpcecodigo == cpcecodigo
                             select new ArbolContactoEfectivo
                             {
                                 Codigo = Respuesta.ARRE_CODIGO,
                                 Descripcion = Respuesta.arre_descripcion,
-                                Contacto = Respuesta.arre_auxi2 == 1 ? true : false
+                                Contacto = Respuesta.arre_efectivo
                             };
 
                 return new FuncionesDAO().FunCambiarDataSet(query.ToList());

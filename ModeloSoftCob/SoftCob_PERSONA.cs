@@ -31,7 +31,7 @@ namespace ModeloSoftCob
         public Nullable<System.DateTime> pers_fechanacimiento { get; set; }
         public string pers_genero { get; set; }
         public Nullable<int> pers_provincia { get; set; }
-        public Nullable<int> pers_CIUDAD { get; set; }
+        public Nullable<int> pers_ciudad { get; set; }
         public string pers_estadocivil { get; set; }
         public string pers_direcciondomicilio { get; set; }
         public string pers_referenciadomicilio { get; set; }
