@@ -1051,7 +1051,7 @@
 
                 if (_result == null)
                 {
-                    _mensaje = new ArbolDecisionDAO().FunDelEfecto(_codigo, _codigoarbolaccion, int.Parse(ViewState["codigoCatalogo"].ToString()));
+                    _mensaje = new ArbolDecisionDAO().FunDelEfecto(_codigo, int.Parse(ViewState["codigoCatalogo"].ToString()));
 
                     _dtbefecto = (DataTable)ViewState["ArbolEfecto"];
 
@@ -1459,8 +1459,7 @@
 
                 if (_result == null)
                 {
-                    _mensaje = new ArbolDecisionDAO().FunDelRespuesta(_codigo, _codigoarbolefecto,
-                        int.Parse(ViewState["codigoCatalogo"].ToString()));
+                    _mensaje = new ArbolDecisionDAO().FunDelRespuesta(_codigo, int.Parse(ViewState["codigoCatalogo"].ToString()));
 
                     _dtbrespuesta = (DataTable)ViewState["ArbolRespuesta"];
                     _result = _dtbrespuesta.Select("CodigoEfecto='" + ViewState["CodigoEfecto"].ToString() + "' and Codigo='" +
@@ -1736,8 +1735,7 @@
                 _codigo = int.Parse(GrdvContacto.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
                 _codigoarbolrespuesta = int.Parse(GrdvContacto.DataKeys[_gvrow.RowIndex].Values["CodigoRespuesta"].ToString());
 
-                _mensaje = new ArbolDecisionDAO().FunDelContacto(_codigo, _codigoarbolrespuesta,
-                    int.Parse(ViewState["codigoCatalogo"].ToString()));
+                _mensaje = new ArbolDecisionDAO().FunDelContacto(_codigo, int.Parse(ViewState["codigoCatalogo"].ToString()));
 
                 _dtbcontacto = (DataTable)ViewState["ArbolContacto"];
                 _result = _dtbcontacto.Select("CodigoRespuesta='" + ViewState["CodigoRespuesta"].ToString() +

@@ -132,15 +132,14 @@
             }
         }
 
-        public SoftCob_PAGOSCARTERA FunGetPagados(string numdocumento, string fechapago)
+        public SoftCob_PAGOSCARTERA FunGetPagados(string numdocumento, string fechapago, string documento)
         {
             DateTime _fechapago = DateTime.ParseExact(fechapago, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-            //GSBPO_PAGOSCARTERA _pagos = new GSBPO_PAGOSCARTERA();
 
             using (SoftCobEntities _db = new SoftCobEntities())
             {
                 SoftCob_PAGOSCARTERA _pagos = _db.SoftCob_PAGOSCARTERA.Where(p => p.pacp_numerodocumento == numdocumento &&
-                     p.pacp_fechapago == _fechapago).FirstOrDefault();
+                     p.pacp_fechapago == _fechapago && p.pacp_documento == documento).FirstOrDefault();
 
                 return _pagos;
             }

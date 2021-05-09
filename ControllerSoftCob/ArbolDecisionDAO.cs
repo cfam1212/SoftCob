@@ -25,7 +25,8 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    SoftCob_ACCION _arbol = _db.SoftCob_ACCION.SingleOrDefault(x => x.CPCE_CODIGO == _codigocpce && x.ARAC_CODIGO == _codigo);
+                    SoftCob_ARBOL_ACCION _arbol = _db.SoftCob_ARBOL_ACCION.SingleOrDefault(x => x.CPCE_CODIGO == _codigocpce 
+                    && x.ARAC_CODIGO == _codigo);
 
                     if (_arbol != null)
                     {
@@ -41,13 +42,14 @@
             return _mensaje = "";
         }
 
-        public string FunDelEfecto(int _codigo, int _araccodigo, int _codigocpce)
+        public string FunDelEfecto(int _codigo, int _codigocpce)
         {
             try
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    SoftCob_EFECTO _arbol = _db.SoftCob_EFECTO.SingleOrDefault(x => x.AREF_CODIGO == _codigo && x.ARAC_CODIGO == _araccodigo && x.aref_auxi1 == _codigocpce);
+                    SoftCob_ARBOL_EFECTO _arbol = _db.SoftCob_ARBOL_EFECTO.SingleOrDefault(x => x.AREF_CODIGO == _codigo && 
+                    x.cpcecodigo == _codigocpce);
 
                     if (_arbol != null)
                     {
@@ -63,13 +65,14 @@
             return _mensaje = "";
         }
 
-        public string FunDelRespuesta(int _codigo, int _arefcodigo, int _codigocpce)
+        public string FunDelRespuesta(int _codigo, int _codigocpce)
         {
             try
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    SoftCob_RESPUESTA _arbol = _db.SoftCob_RESPUESTA.SingleOrDefault(x => x.ARRE_CODIGO == _codigo && x.AREF_CODIGO == _arefcodigo && x.arre_auxi1 == _codigocpce);
+                    SoftCob_ARBOL_RESPUESTA _arbol = _db.SoftCob_ARBOL_RESPUESTA.SingleOrDefault(x => x.ARRE_CODIGO == _codigo 
+                    && x.cpcecodigo == _codigocpce);
 
                     if (_arbol != null)
                     {
@@ -85,13 +88,14 @@
             return _mensaje = "";
         }
 
-        public string FunDelContacto(int _codigo, int _arrecodigo, int _codigocpce)
+        public string FunDelContacto(int _codigo, int _codigocpce)
         {
             try
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    SoftCob_CONTACTO _arbol = _db.SoftCob_CONTACTO.SingleOrDefault(x => x.ARCO_CODIGO == _codigo && x.ARRE_CODIGO == _arrecodigo && x.arco_auxi1 == _codigocpce);
+                    SoftCob_ARBOL_CONTACTO _arbol = _db.SoftCob_ARBOL_CONTACTO.SingleOrDefault(x => x.ARCO_CODIGO == _codigo 
+                    && x.cpcecodigo == _codigocpce);
 
                     if (_arbol != null)
                     {
@@ -113,7 +117,8 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    return _db.SoftCob_RESPUESTA.Where(x => x.ARRE_CODIGO == _arrecodigo && x.arre_auxi1 == _codigocpce).FirstOrDefault().arre_pago;
+                    return _db.SoftCob_ARBOL_RESPUESTA.Where(x => x.ARRE_CODIGO == _arrecodigo 
+                    && x.cpcecodigo == _codigocpce).FirstOrDefault().arre_pago;
                 }
             }
             catch (Exception ex)
@@ -128,7 +133,8 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    return _db.SoftCob_RESPUESTA.Where(x => x.ARRE_CODIGO == _arrecodigo && x.arre_auxi1 == _codigocpce).FirstOrDefault().arre_llamar;
+                    return _db.SoftCob_ARBOL_RESPUESTA.Where(x => x.ARRE_CODIGO == _arrecodigo 
+                    && x.cpcecodigo == _codigocpce).FirstOrDefault().arre_llamar;
                 }
 
             }
@@ -144,7 +150,7 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    return _db.SoftCob_ACCION.Where(x => x.ARAC_CODIGO == _araccodigo).FirstOrDefault().arac_contacto;
+                    return _db.SoftCob_ARBOL_ACCION.Where(x => x.ARAC_CODIGO == _araccodigo).FirstOrDefault().arac_contacto;
                 }
             }
             catch (Exception ex)
@@ -159,8 +165,9 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    SoftCob_ACCION _original = _db.SoftCob_ACCION.Where(x => x.CPCE_CODIGO == _datos.CPCE_CODIGO && x.ARAC_CODIGO == _datos.ARAC_CODIGO).FirstOrDefault();
-                    _db.SoftCob_ACCION.Attach(_original);
+                    SoftCob_ARBOL_ACCION _original = _db.SoftCob_ARBOL_ACCION.Where(x => x.CPCE_CODIGO == _datos.CPCE_CODIGO 
+                    && x.ARAC_CODIGO == _datos.ARAC_CODIGO).FirstOrDefault();
+                    _db.SoftCob_ARBOL_ACCION.Attach(_original);
                     _original.arac_descripcion = _datos.arac_descripcion;
                     _db.SaveChanges();
                 }
@@ -194,7 +201,8 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    List<SoftCob_SPEECH_DETALLE> datos = _db.SoftCob_SPEECH_DETALLE.Where(x => x.SPCA_CODIGO == _codigospca && x.SPDE_CODIGO == _codigospde).ToList();
+                    List<SoftCob_SPEECH_DETALLE> datos = _db.SoftCob_SPEECH_DETALLE.Where(x => x.SPCA_CODIGO == _codigospca 
+                    && x.SPDE_CODIGO == _codigospde).ToList();
 
                     if (datos.Count > 0)
                     {
@@ -267,7 +275,8 @@
             {
                 using (SoftCobEntities _db = new SoftCobEntities())
                 {
-                    List<SoftCob_ACCION> _accion = _db.SoftCob_ACCION.Where(a => a.CPCE_CODIGO == _codigocpce && a.arac_descripcion == _descripcion).ToList();
+                    List<SoftCob_ARBOL_ACCION> _accion = _db.SoftCob_ARBOL_ACCION.Where(a => a.CPCE_CODIGO == _codigocpce 
+                    && a.arac_descripcion == _descripcion).ToList();
 
                     if (_accion.Count > 0)
                     {
@@ -291,10 +300,10 @@
             {
 
                 var query = from SPD in _dtb.SoftCob_SPEECH_DETALLE
-                            join ACC in _dtb.SoftCob_ACCION on SPD.spde_araccodigo equals ACC.ARAC_CODIGO
-                            join EFE in _dtb.SoftCob_EFECTO on SPD.spde_arefcodigo equals EFE.AREF_CODIGO
-                            join ARE in _dtb.SoftCob_RESPUESTA on SPD.spde_arrecodigo equals ARE.ARRE_CODIGO
-                            join ACO in _dtb.SoftCob_CONTACTO on SPD.spde_arcocodigo equals ACO.ARCO_CODIGO
+                            join ACC in _dtb.SoftCob_ARBOL_ACCION on SPD.spde_araccodigo equals ACC.ARAC_CODIGO
+                            join EFE in _dtb.SoftCob_ARBOL_EFECTO on SPD.spde_arefcodigo equals EFE.AREF_CODIGO
+                            join ARE in _dtb.SoftCob_ARBOL_RESPUESTA on SPD.spde_arrecodigo equals ARE.ARRE_CODIGO
+                            join ACO in _dtb.SoftCob_ARBOL_CONTACTO on SPD.spde_arcocodigo equals ACO.ARCO_CODIGO
                             where SPD.SPCA_CODIGO == codigoSPCA
                             orderby ACC.arac_descripcion
                             select new ArbolSpeechDTO
@@ -329,7 +338,6 @@
         {
             try
             {
-
                 var query = from SPD in _dtb.SoftCob_SPEECH_DETALLE
                             join ACC in _dtb.SoftCob_ACCION on SPD.spde_araccodigo equals ACC.ARAC_CODIGO
                             join EFE in _dtb.SoftCob_EFECTO on SPD.spde_arefcodigo equals EFE.AREF_CODIGO

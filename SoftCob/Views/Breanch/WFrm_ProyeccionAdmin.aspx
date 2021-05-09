@@ -103,7 +103,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <%--            <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -113,7 +113,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>--%>
+            </div>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Always">
                     <ContentTemplate>
@@ -157,7 +157,7 @@
                                     <h5>Año:</h5>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DdlYear" runat="server" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="DdlBuscar_SelectedIndexChanged" TabIndex="5" Width="100%">
+                                    <asp:DropDownList ID="DdlYear" runat="server" CssClass="form-control" OnSelectedIndexChanged="DdlBuscar_SelectedIndexChanged" TabIndex="5" Width="100%">
                                         <asp:ListItem Value="0">Todo</asp:ListItem>
                                         <asp:ListItem Value="I">Identificacion</asp:ListItem>
                                         <asp:ListItem Value="O">Operacion</asp:ListItem>
@@ -179,7 +179,7 @@
                                     <h5>Reporte:</h5>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DdlReporte" runat="server" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="DdlBuscar_SelectedIndexChanged" TabIndex="5" Width="100%">
+                                    <asp:DropDownList ID="DdlReporte" runat="server" CssClass="form-control" OnSelectedIndexChanged="DdlBuscar_SelectedIndexChanged" TabIndex="5" Width="100%">
                                         <asp:ListItem Value="0">Todo</asp:ListItem>
                                         <asp:ListItem Value="I">Identificacion</asp:ListItem>
                                         <asp:ListItem Value="O">Operacion</asp:ListItem>
@@ -190,9 +190,7 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>
-                                    
-                                </td>
+                                <td></td>
                                 <td colspan="2"></td>
                                 <td></td>
                                 <td></td>
@@ -224,7 +222,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="panel-info">
+                        <div class="panel-info" runat="server" id="DivProyecc" visible="false">
                             <asp:GridView ID="GrdvDatos" runat="server" Width="100%"
                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
                                 EmptyDataText="No Existen Registros" TabIndex="9" AutoGenerateColumns="False"
@@ -232,8 +230,8 @@
                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                 <Columns>
                                     <asp:BoundField DataField="EstadoPago" HeaderText="Gestor"></asp:BoundField>
-                                    <asp:BoundField DataField="Cedula" HeaderText="Prom.Pres" >
-                                    <ItemStyle HorizontalAlign="Right" />
+                                    <asp:BoundField DataField="Cedula" HeaderText="Prom.Pres">
+                                        <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="Enero" HeaderText="Ene">
                                         <ItemStyle HorizontalAlign="Right" />
@@ -241,44 +239,43 @@
                                     <asp:BoundField DataField="Febrero" HeaderText="Feb">
                                         <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="Marzo" HeaderText="Mar" >
-                                    <ItemStyle HorizontalAlign="Right" />
+                                    <asp:BoundField DataField="Marzo" HeaderText="Mar">
+                                        <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Abr" DataField="Abril" >
-                                    <ItemStyle HorizontalAlign="Right" />
+                                    <asp:BoundField HeaderText="Abr" DataField="Abril">
+                                        <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="May" DataField="Mayo" >
-                                    <ItemStyle HorizontalAlign="Right" />
+                                    <asp:BoundField HeaderText="May" DataField="Mayo">
+                                        <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Jun" DataField="Junio" >
-                                    <ItemStyle HorizontalAlign="Right" />
+                                    <asp:BoundField HeaderText="Jun" DataField="Junio">
+                                        <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Jul" DataField="Julio" >
-                                    <ItemStyle HorizontalAlign="Justify" />
+                                    <asp:BoundField HeaderText="Jul" DataField="Julio">
+                                        <ItemStyle HorizontalAlign="Justify" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Ago" DataField="Agosto" >
-                                    <ItemStyle HorizontalAlign="Right" />
+                                    <asp:BoundField HeaderText="Ago" DataField="Agosto">
+                                        <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Sep" DataField="Septiembre" >
-                                    <ItemStyle HorizontalAlign="Right" />
+                                    <asp:BoundField HeaderText="Sep" DataField="Septiembre">
+                                        <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Oct" DataField="Octubre" >
-                                    <ItemStyle HorizontalAlign="Right" />
+                                    <asp:BoundField HeaderText="Oct" DataField="Octubre">
+                                        <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Nov" DataField="Noviembre" >
-                                    <ItemStyle HorizontalAlign="Right" />
+                                    <asp:BoundField HeaderText="Nov" DataField="Noviembre">
+                                        <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Dic" DataField="Diciembre" >
-                                    <ItemStyle HorizontalAlign="Right" />
+                                    <asp:BoundField HeaderText="Dic" DataField="Diciembre">
+                                        <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
                                 </Columns>
-                                <HeaderStyle Font-Size="Small" />
+                                <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                 <RowStyle Font-Size="X-Small" />
+                                <EditRowStyle BackColor="#2461BF" />
+                                <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                             </asp:GridView>
                             <script>
-                                //$(document).ready(function () {
-                                //    $('#GrdvDatos').dataTable();
-                                //});
                                 var prm = Sys.WebForms.PageRequestManager.getInstance();
 
                                 prm.add_endRequest(function () {
@@ -296,8 +293,7 @@
                         <div class="panel panel-default">
                             <table style="width: 100%">
                                 <tr>
-                                    <td style="text-align: right; width: 45%">
-                                        &nbsp;</td>
+                                    <td style="text-align: right; width: 45%"></td>
                                     <td style="width: 10%"></td>
                                     <td style="text-align: left; width: 45%">
                                         <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="8" />

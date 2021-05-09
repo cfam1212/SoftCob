@@ -157,8 +157,8 @@
                                                 <ItemStyle HorizontalAlign="Right" />
                                             </asp:BoundField>
                                             <asp:BoundField DataField="NoEfectivos" HeaderText="No Efectivos">
-                                            <HeaderStyle BackColor="#993333" ForeColor="White" />
-                                            <ItemStyle HorizontalAlign="Right" />
+                                                <HeaderStyle BackColor="#993333" ForeColor="White" />
+                                                <ItemStyle HorizontalAlign="Right" />
                                             </asp:BoundField>
                                         </Columns>
                                         <HeaderStyle Font-Size="Small" />
@@ -185,7 +185,7 @@
                                             <tr>
                                                 <td>
                                                     <asp:Panel ID="PnlProyeccion" runat="server"
-                                                        CssClass="panel panel-primary" Height="280"
+                                                        CssClass="panel panel-primary" Height="310"
                                                         GroupingText="Datos de Proyección">
                                                         <table style="width: 100%">
                                                             <tr>
@@ -238,9 +238,7 @@
                                                                     <h5>Valor:</h5>
                                                                 </td>
                                                                 <td colspan="3">
-
                                                                     <asp:TextBox ID="TxtValor" runat="server" CssClass="form-control alinearDerecha" TabIndex="2" Width="100%" Enabled="False">0.00</asp:TextBox>
-
                                                                 </td>
                                                                 <td></td>
                                                             </tr>
@@ -255,19 +253,38 @@
                                                             <tr>
                                                                 <td></td>
                                                                 <td>
+                                                                    <h5>Documento:</h5>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:TextBox ID="TxtDocumento" runat="server" CssClass="form-control alinearDerecha" Enabled="False" TabIndex="3" Width="100%"></asp:TextBox>
+                                                                </td>
+                                                                <td>
                                                                     <h5>Observación:</h5>
                                                                 </td>
-                                                                <td colspan="2">
-                                                                    <asp:TextBox ID="TxtObservacion" runat="server" CssClass="form-control" onkeydown="return (event.keyCode!=13);" TabIndex="3" Width="100%" Height="50px" TextMode="MultiLine" Enabled="False" MaxLength="100"></asp:TextBox>
+                                                                <td colspan="3">
+                                                                    <asp:TextBox ID="TxtObservacion" runat="server" CssClass="form-control" Enabled="False" Height="50px" MaxLength="100" onkeydown="return (event.keyCode!=13);" TabIndex="4" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                                                 </td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgActualizar" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" Enabled="False" OnClick="ImgActualizar_Click" TabIndex="4" />
+                                                                    <asp:ImageButton ID="ImgActualizar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgActualizar_Click" TabIndex="5" />
                                                                 </td>
-                                                                <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgAgregar" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" Enabled="False" OnClick="ImgAgregar_Click" TabIndex="5" />
+                                                                <td>
+                                                                    <asp:ImageButton ID="ImgAgregar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAgregar_Click" TabIndex="6" />
                                                                 </td>
-                                                                <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgEliminar" runat="server" Height="25px" ImageUrl="~/Botones/eliminar.png" Enabled="False" OnClick="ImgEliminar_Click" TabIndex="6" OnClientClick="return asegurar();" />
+                                                                <td>
+                                                                    <asp:ImageButton ID="ImgEliminar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliminar_Click" OnClientClick="return asegurar();" TabIndex="7" />
                                                                 </td>
                                                                 <td></td>
                                                             </tr>

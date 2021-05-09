@@ -323,6 +323,15 @@
                         ddlCombo.Items.Add(itemDatos);
                     }
                     break;
+                case "YEARS":
+                    int year = DateTime.Now.Year;
+                    for (int i = year - 5; i <= year + 5; i++)
+                    {
+                        ListItem li = new ListItem(i.ToString());
+                        ddlCombo.Items.Add(li);
+                    }
+                    ddlCombo.Items.FindByText(year.ToString()).Selected = true;
+                    break;
             }
         }
         public bool IsNumber(string number)

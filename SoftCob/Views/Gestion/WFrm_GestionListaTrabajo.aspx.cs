@@ -261,6 +261,12 @@
 
                 if (ViewState["TipoMarcado"].ToString() == "DI")
                 {
+                    DivRegistrarTele.Visible = true;
+                    DivDeudor.Visible = true;
+                    DivBotones.Visible = true;
+                    DivGestion.Visible = true;
+                    DivOpciones.Visible = true;
+
                     ViewState["InicioGestion"] = DateTime.Now.ToString("HH:mm:ss");
 
                     if (ViewState["GestorApoyo"].ToString() == "0")
@@ -2961,6 +2967,7 @@
                 DivDeudor.Visible = false;
                 DivBotones.Visible = false;
                 DivGestion.Visible = false;
+                DivOpciones.Visible = false;
 
                 switch (Node.Depth)
                 {
@@ -2994,6 +3001,7 @@
                         DivDeudor.Visible = true;
                         DivBotones.Visible = true;
                         DivGestion.Visible = true;
+                        DivOpciones.Visible = true;
                         ViewState["Estado"] = "I";
                         ViewState["InciarTimer"] = "SI";
                         ViewState["TimerCall"] = "NO";
@@ -3055,6 +3063,7 @@
             DivDeudor.Visible = false;
             DivBotones.Visible = false;
             DivGestion.Visible = false;
+            DivOpciones.Visible = false;
             FunArmarArbolDTS();
         }
 

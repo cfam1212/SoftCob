@@ -57,9 +57,6 @@
                 width: 80px;
                 height: 80px;
             }
-        .auto-style1 {
-            height: 20px;
-        }
     </style>
     <script>
         function asegurar() {
@@ -83,7 +80,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <%--                <div class="panel-info">
+                <div class="panel-info">
                     <asp:UpdateProgress ID="UpdProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdOpciones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -93,7 +90,7 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>--%>
+                </div>
                 <div class="panel-body">
                     <asp:UpdatePanel ID="UpdCabecera" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
@@ -159,28 +156,24 @@
                                                                 <td></td>
                                                             </tr>
                                                             <tr>
-                                                                <td style="text-align: center" class="auto-style1">
-                                                                    &nbsp;</td>
-                                                                <td style="text-align: center" class="auto-style1">
+                                                                <td style="text-align: center"></td>
+                                                                <td style="text-align: center">
                                                                     <asp:CheckBox ID="ChkPago" runat="server" AutoPostBack="True" OnCheckedChanged="ChkPago_CheckedChanged" TabIndex="7" Text="Pago" Visible="False" />
                                                                     <asp:CheckBox ID="ChkLlamar" runat="server" AutoPostBack="True" OnCheckedChanged="ChkLlamar_CheckedChanged" TabIndex="8" Text="LLamar" Visible="False" />
                                                                     <asp:CheckBox ID="ChkEfectivo" runat="server" AutoPostBack="True" OnCheckedChanged="ChkEfectivo_CheckedChanged" TabIndex="9" Text="No Efectivo" Visible="False" />
                                                                     <asp:CheckBox ID="ChkComisiona" runat="server" TabIndex="10" Text="Comisiona" Visible="False" />
                                                                 </td>
-                                                                <td style="text-align: center" class="auto-style1">
-                                                                    &nbsp;</td>
-                                                                <td style="text-align: center" class="auto-style1">
-                                                                    &nbsp;</td>
+                                                                <td style="text-align: center"></td>
+                                                                <td style="text-align: center"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="4">
                                                             </tr>
                                                             <tr>
                                                                 <td></td>
-                                                                <td>
-                                                                    &nbsp;</td>
                                                                 <td></td>
-                                                                <td>&nbsp;</td>
+                                                                <td></td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
