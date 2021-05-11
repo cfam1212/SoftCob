@@ -157,7 +157,7 @@
                                     <h5>Año:</h5>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DdlYear" runat="server" CssClass="form-control" OnSelectedIndexChanged="DdlBuscar_SelectedIndexChanged" TabIndex="5" Width="100%">
+                                    <asp:DropDownList ID="DdlYear" runat="server" CssClass="form-control" TabIndex="5" Width="100%">
                                         <asp:ListItem Value="0">Todo</asp:ListItem>
                                         <asp:ListItem Value="I">Identificacion</asp:ListItem>
                                         <asp:ListItem Value="O">Operacion</asp:ListItem>
@@ -173,28 +173,30 @@
                                 </td>
                                 <td colspan="2">
                                     <asp:DropDownList ID="DdlTipoPago" runat="server" CssClass="form-control" Width="100%">
+                                        <asp:ListItem Value="0">--Seleccione Proyección--</asp:ListItem>
+                                        <asp:ListItem Value="1">Pagos Registrados</asp:ListItem>
+                                        <asp:ListItem Value="2">Compromisos de Pago</asp:ListItem>
+                                        <asp:ListItem Value="3">Negociación</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                                 <td>
                                     <h5>Reporte:</h5>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DdlReporte" runat="server" CssClass="form-control" OnSelectedIndexChanged="DdlBuscar_SelectedIndexChanged" TabIndex="5" Width="100%">
-                                        <asp:ListItem Value="0">Todo</asp:ListItem>
-                                        <asp:ListItem Value="I">Identificacion</asp:ListItem>
-                                        <asp:ListItem Value="O">Operacion</asp:ListItem>
-                                        <asp:ListItem Value="C">Cliente</asp:ListItem>
+                                    <asp:DropDownList ID="DdlReporte" runat="server" CssClass="form-control" TabIndex="5" Width="100%">
+                                        <asp:ListItem Value="0">--Seleccione Reporte--</asp:ListItem>
+                                        <asp:ListItem Value="1">Mensual</asp:ListItem>
+                                        <asp:ListItem Value="2">Trimestral</asp:ListItem>
+                                        <asp:ListItem Value="3">Semestral</asp:ListItem>
+                                        <asp:ListItem Value="4">Anual</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td colspan="2"></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td colspan="6">
+                                    <asp:Panel ID="Panel1" runat="server" Height="20px"></asp:Panel>
+                                </td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -213,7 +215,7 @@
                                 <tr>
                                     <td style="text-align: left">
                                         <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" Visible="false" TabIndex="8" />
-                                        <asp:Label ID="lblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
+                                        <asp:Label ID="LblExportar" runat="server" Text="Exportar" Visible="False"></asp:Label>
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -226,11 +228,11 @@
                             <asp:GridView ID="GrdvDatos" runat="server" Width="100%"
                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
                                 EmptyDataText="No Existen Registros" TabIndex="9" AutoGenerateColumns="False"
-                                ForeColor="#333333" OnRowDataBound="GrdvDatos_RowDataBound" PageSize="5" DataKeyNames="CodigoRESP,EstadoPago,CodigoPRCB,Respuesta,Cedula">
+                                ForeColor="#333333" OnRowDataBound="GrdvDatos_RowDataBound" PageSize="5">
                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                 <Columns>
-                                    <asp:BoundField DataField="EstadoPago" HeaderText="Gestor"></asp:BoundField>
-                                    <asp:BoundField DataField="Cedula" HeaderText="Prom.Pres">
+                                    <asp:BoundField DataField="Gestor" HeaderText="Gestor"></asp:BoundField>
+                                    <asp:BoundField DataField="Presupuesto" HeaderText="Prom.Pres">
                                         <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="Enero" HeaderText="Ene">

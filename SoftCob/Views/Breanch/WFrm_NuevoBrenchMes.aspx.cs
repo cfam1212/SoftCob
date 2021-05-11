@@ -298,7 +298,7 @@
                 ViewState["BrenchDet"] = dtbBrenchDet;
                 GrdvBrenchDet.DataSource = dtbBrenchDet;
                 GrdvBrenchDet.DataBind();
-                TxtPresupuesto.Text = "";
+                //TxtPresupuesto.Text = "";
                 TxtPresupuesto.Enabled = false;
                 ImgModificar.Enabled = false;
             }
@@ -354,7 +354,7 @@
                         0, decimal.Parse(TxtPresupuesto.Text.Trim(), CultureInfo.InvariantCulture), "",
                         int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
                         "", "", "", "", "", int.Parse(DdlCatalogo.SelectedValue), int.Parse(ViewState["Anio"].ToString()),
-                        int.Parse(ViewState["Mes"].ToString()), 0, 0, ViewState["Conectar"].ToString());
+                        int.Parse(ViewState["Mes"].ToString()), 0, 0, Session["Conectar"].ToString());
 
                     SoftCob_BRENCHMESCAB dato1 = new SoftCob_BRENCHMESCAB();
                     {

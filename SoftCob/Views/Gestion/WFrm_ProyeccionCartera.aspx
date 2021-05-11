@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_ProyeccionCartera.aspx.cs" Inherits="SoftCob.Views.Gestion.WFrm_ProyeccionCartera" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="WFrm_ProyeccionCartera.aspx.cs" Inherits="SoftCob.Views.Gestion.WFrm_ProyeccionCartera" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -313,7 +313,7 @@
                             <table style="width: 100%">
                                 <tr>
                                     <td style="text-align: left">
-                                        <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" Visible="false" TabIndex="7" />
+                                        <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" Visible="false" TabIndex="8" />
                                         <asp:Label ID="lblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
                                     </td>
                                     <td></td>
@@ -326,10 +326,11 @@
                         <div class="panel-info">
                             <asp:GridView ID="GrdvDatos" runat="server" Width="100%"
                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                EmptyDataText="No Existen Registros" TabIndex="4" AutoGenerateColumns="False"
-                                ForeColor="#333333" OnRowDataBound="GrdvDatos_RowDataBound" PageSize="5" DataKeyNames="CodigoRESP,EstadoPago,CodigoPRCB,Respuesta">
+                                EmptyDataText="No Existen Registros" TabIndex="9" AutoGenerateColumns="False"
+                                ForeColor="#333333" OnRowDataBound="GrdvDatos_RowDataBound" PageSize="5" DataKeyNames="CodigoRESP,EstadoPago,CodigoPRCB,Respuesta,Cedula">
                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                 <Columns>
+                                    <asp:BoundField DataField="EstadoPago" HeaderText="Estado_Pago"></asp:BoundField>
                                     <asp:BoundField DataField="Cedula" HeaderText="CI" />
                                     <asp:BoundField DataField="Cliente" HeaderText="Cliente"></asp:BoundField>
                                     <asp:BoundField DataField="FechaPago" HeaderText="Fecha_Pago">
@@ -339,11 +340,10 @@
                                         <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="Observacion" HeaderText="Observación"></asp:BoundField>
-                                    <asp:BoundField DataField="EstadoPago" HeaderText="Estado_Pago"></asp:BoundField>
                                     <asp:BoundField DataField="Respuesta" HeaderText="Respuesta" />
                                     <asp:TemplateField HeaderText="Selecc">
                                         <ItemTemplate>
-                                            <asp:ImageButton ID="ImgSeleccionar" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSeleccionar_Click" />
+                                            <asp:ImageButton ID="ImgSeleccionar" runat="server" Height="15px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSeleccionar_Click" />
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField>
@@ -354,12 +354,13 @@
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField>
                                 </Columns>
-                                <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle Font-Size="Small" />
                                 <RowStyle Font-Size="X-Small" />
-                                <EditRowStyle BackColor="#2461BF" />
-                                <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                             </asp:GridView>
                             <script>
+                                //$(document).ready(function () {
+                                //    $('#GrdvDatos').dataTable();
+                                //});
                                 var prm = Sys.WebForms.PageRequestManager.getInstance();
 
                                 prm.add_endRequest(function () {
@@ -379,7 +380,7 @@
                                     <td style="text-align: right; width: 45%"></td>
                                     <td style="width: 10%"></td>
                                     <td style="text-align: left; width: 45%">
-                                        <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="8" />
+                                        <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="10" />
                                     </td>
                                 </tr>
                             </table>

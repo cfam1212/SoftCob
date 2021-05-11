@@ -1,7 +1,9 @@
 ﻿namespace SoftCob.Views.Breanch
 {
     using ControllerSoftCob;
+    using ClosedXML.Excel;
     using System;
+    using System.IO;
     using System.Configuration;
     using System.Data;
     using System.Web.UI;
@@ -10,6 +12,7 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
+        DataTable _dtb = new DataTable();
         DataTable _dtbproyecc = new DataTable();
         ListItem _itemc = new ListItem();
         ListItem _itemg = new ListItem();
@@ -24,9 +27,11 @@
         {
             try
             {
+                ScriptManager scriptManager = ScriptManager.GetCurrent(this.Page);
+                scriptManager.RegisterPostBackControl(this.ImgExportar);
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                   Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Lbltitulo.Text = "Reporte Proyecciones";
                     ViewState["MesActual"] = DateTime.Now.Month;
                     FunCargarCombos(0);
@@ -43,7 +48,7 @@
             {
                 Lblerror.Text = ex.ToString();
             }
-        } 
+        }
         #endregion
 
         #region Procedimiento y Funciones
@@ -107,7 +112,7 @@
                     _itemg.Value = "0";
                     DdlGestor.Items.Add(_itemg);
                     DdlGestor.DataSource = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--",
-                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                        int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",Session["Conectar"].ToString());
                     DdlGestor.DataTextField = "Descripcion";
                     DdlGestor.DataValueField = "Codigo";
                     DdlGestor.DataBind();
@@ -166,23 +171,34 @@
                     return;
                 }
 
+                ImgExportar.Visible = false;
+                LblExportar.Visible = false;
                 DivProyecc.Visible = false;
 
-                if (DdlTipoPago.SelectedValue == "1" && DdlGestor.SelectedValue == "0") _opcion = 15;
+                if (DdlTipoPago.SelectedValue == "1") _opcion = 15;
+                if (DdlTipoPago.SelectedValue == "2") _opcion = 16;
+                if (DdlTipoPago.SelectedValue == "3") _opcion = 17;
 
                 _dts = new ConsultaDatosDAO().FunRepGerencialG(_opcion, int.Parse(DdlCedente.SelectedValue),
                     int.Parse(DdlCatalogo.SelectedValue), "", "", int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1",
                     "", "", "", "", "", "", int.Parse(DdlYear.SelectedValue), int.Parse(ViewState["MesActual"].ToString()),
-                    int.Parse(DdlReporte.SelectedValue), 0, 0, 0, ViewState["Conectar"].ToString());
+                    int.Parse(DdlReporte.SelectedValue), 0, 0, 0,Session["Conectar"].ToString());
 
                 ViewState["Proyeccion"] = _dts.Tables[0];
 
-                if (_dts.Tables[0].Rows.Count > 0) DivProyecc.Visible = true;
+                _enero = 0; _febrero = 0; _marzo = 0; _abril = 0; _mayo = 0; _junio = 0; _julio = 0; _agosto = 0;
+                _septiembre = 0; _octubre = 0; _noviembre = 0; _diciembre = 0;
 
-                GrdvDatos.DataSource = _dts;
-                GrdvDatos.DataBind();
-                GrdvDatos.UseAccessibleHeader = true;
-                GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                if (_dts.Tables[0].Rows.Count > 0)
+                {
+                    ImgExportar.Visible = true;
+                    LblExportar.Visible = true;
+                    DivProyecc.Visible = true;
+                    GrdvDatos.DataSource = _dts;
+                    GrdvDatos.DataBind();
+                    GrdvDatos.UseAccessibleHeader = true;
+                    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
             }
             catch (Exception ex)
             {
@@ -190,9 +206,39 @@
             }
         }
 
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            /* Verifies that the control is rendered */
+        }
+
         protected void ImgExportar_Click(object sender, ImageClickEventArgs e)
         {
+            try
+            {
+                _dtb = (DataTable)ViewState["Proyeccion"];
+                using (XLWorkbook wb = new XLWorkbook())
+                {
+                    wb.Worksheets.Add(_dtb, "Datos");
+                    string FileName = "Reporte_" + DdlTipoPago.SelectedItem.ToString() + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                    Response.Clear();
+                    Response.Buffer = true;
+                    Response.Charset = "";
+                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
+                    using (MemoryStream MyMemoryStream = new MemoryStream())
+                    {
+                        wb.SaveAs(MyMemoryStream);
+                        MyMemoryStream.WriteTo(Response.OutputStream);
+                        Response.Flush();
+                        Response.End();
+                    }
+                }
 
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
         }
 
         protected void GrdvDatos_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -341,7 +387,7 @@
         protected void BtnSalir_Click(object sender, EventArgs e)
         {
             Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
-        } 
+        }
         #endregion
     }
 }

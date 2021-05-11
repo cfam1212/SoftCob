@@ -132,6 +132,15 @@ namespace SoftCob.Views.Breanch
         protected global::System.Web.UI.WebControls.DropDownList DdlReporte;
 
         /// <summary>
+        /// Control Panel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+
+        /// <summary>
         /// Control BtnProcesar.
         /// </summary>
         /// <remarks>
@@ -150,13 +159,13 @@ namespace SoftCob.Views.Breanch
         protected global::System.Web.UI.WebControls.ImageButton ImgExportar;
 
         /// <summary>
-        /// Control lblExportar.
+        /// Control LblExportar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblExportar;
+        protected global::System.Web.UI.WebControls.Label LblExportar;
 
         /// <summary>
         /// Control DivProyecc.
