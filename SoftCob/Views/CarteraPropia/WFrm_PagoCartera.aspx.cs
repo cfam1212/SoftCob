@@ -143,7 +143,7 @@
                 case 1:
                     break;
                 case 2:
-                    DdlTipoPago.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO PAGO", "--Seleccione Tipo--", "S");
+                    DdlTipoPago.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO PAGO", "--Seleccione Tipo--", "I");
                     DdlTipoPago.DataTextField = "Descripcion";
                     DdlTipoPago.DataValueField = "Codigo";
                     DdlTipoPago.DataBind();
@@ -329,7 +329,10 @@
                 }
                 else _concabecera = false;
 
-                _dts = new PagoCarteraDAO().FunGetPagoCartera(7, int.Parse(DdlCedente.SelectedValue), int.Parse(ViewState["CodCatalogo"].ToString()), lblIdentificacion.InnerText, ViewState["operacion"].ToString(), TxtDocumento.Text.Trim(), TxtFechaPago.Text.Trim(), TxtValor.Text.Trim(), "", "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _conexion);
+                _dts = new PagoCarteraDAO().FunGetPagoCartera(7, int.Parse(DdlCedente.SelectedValue), 
+                    int.Parse(ViewState["CodCatalogo"].ToString()), lblIdentificacion.InnerText, ViewState["operacion"].ToString(), 
+                    TxtDocumento.Text.Trim(), TxtFechaPago.Text.Trim(), TxtValor.Text.Trim(), "", "", "", "", 0, 0, 0, 
+                    int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _conexion);
 
                 if (_dts != null && _dts.Tables[0].Rows[0][0].ToString() == "OK")
                 {

@@ -421,7 +421,7 @@
                 GrdvProyeccion.DataSource = _dtbPresupuesto;
                 GrdvProyeccion.DataBind();
 
-                FunCargarProyeccion(0);
+                //FunCargarProyeccion(0);
                 FunLimpiar();
             }
             catch (Exception ex)
@@ -480,7 +480,7 @@
                 GrdvProyeccion.DataSource = _dtbPresupuesto;
                 GrdvProyeccion.DataBind();
 
-                FunCargarProyeccion(0);
+                //FunCargarProyeccion(0);
             }
             catch (Exception ex)
             {

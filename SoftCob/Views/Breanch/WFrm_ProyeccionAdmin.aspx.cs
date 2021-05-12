@@ -171,6 +171,28 @@
                     return;
                 }
 
+                if (DdlGestor.SelectedValue == "0")
+                {
+                    _dts = new ConsultaDatosDAO().FunRepGerencialG(18, int.Parse(DdlCedente.SelectedValue),
+                        int.Parse(DdlCatalogo.SelectedValue), "", "", 0, "sp_RepGerencialV1", "", "", "", "", "", "",
+                        int.Parse(DdlYear.SelectedValue), 0, 0, 0, 0, 0, Session["Conectar"].ToString());
+
+                    foreach (DataRow _drfila in _dts.Tables[0].Rows)
+                    {
+                        _dts = new ConsultaDatosDAO().FunRepGerencialG(19, int.Parse(DdlCedente.SelectedValue),
+                            int.Parse(DdlCatalogo.SelectedValue), "", "", int.Parse(_drfila["Gestor"].ToString()),
+                            "sp_RepGerencialV1", "", "", "", "", "", "", int.Parse(DdlYear.SelectedValue),
+                            0, 0, 0, 0, 0, Session["Conectar"].ToString());
+                    }
+                }
+                else
+                {
+                    _dts = new ConsultaDatosDAO().FunRepGerencialG(19, int.Parse(DdlCedente.SelectedValue),
+                        int.Parse(DdlCatalogo.SelectedValue), "", "", int.Parse(DdlGestor.SelectedValue),
+                        "sp_RepGerencialV1", "", "", "", "", "", "", int.Parse(DdlYear.SelectedValue),
+                        0, 0, 0, 0, 0, Session["Conectar"].ToString());
+                }
+
                 ImgExportar.Visible = false;
                 LblExportar.Visible = false;
                 DivProyecc.Visible = false;

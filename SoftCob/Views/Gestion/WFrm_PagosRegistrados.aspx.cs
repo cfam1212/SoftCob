@@ -50,10 +50,10 @@
                 Lbltitulo.Text = "Titular: << " + _dts.Tables[0].Rows[0]["Nombres"].ToString()
                     + " >> " + ViewState["Cedula"].ToString();
 
-                _dts = new PagoCarteraDAO().FunGetPagoCartera(22, 0, int.Parse(ViewState["CodigoCPCE"].ToString()),
+                _dts = new PagoCarteraDAO().FunGetPagoCartera(21, 0, int.Parse(ViewState["CodigoCPCE"].ToString()),
                      ViewState["Cedula"].ToString(), "", "", "", "", "", "", "", "",
                      int.Parse(ViewState["Year"].ToString()), int.Parse(ViewState["Month"].ToString()),
-                     int.Parse(ViewState["Gestor"].ToString()), 0, "", ViewState["Conectar"].ToString());
+                     int.Parse(ViewState["Gestor"].ToString()), 0, "", Session["Conectar"].ToString());
 
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();
