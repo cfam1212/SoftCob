@@ -36,13 +36,13 @@
                     ViewState["MesActual"] = DateTime.Now.Month;
                     FunCargarCombos(0);
                 }
-                else
-                {
-                    GrdvDatos.DataSource = (DataTable)ViewState["Proyeccion"];
-                    GrdvDatos.DataBind();
-                    GrdvDatos.UseAccessibleHeader = true;
-                    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
-                }
+                //else
+                //{
+                //    GrdvDatos.DataSource = (DataTable)ViewState["Proyeccion"];
+                //    GrdvDatos.DataBind();
+                //    GrdvDatos.UseAccessibleHeader = true;
+                //    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                //}
             }
             catch (Exception ex)
             {
@@ -173,13 +173,13 @@
 
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    _dts = new ConsultaDatosDAO().FunRepGerencialG(18, int.Parse(DdlCedente.SelectedValue),
+                    _dts = new ConsultaDatosDAO().FunRepGerencialG(19, int.Parse(DdlCedente.SelectedValue),
                         int.Parse(DdlCatalogo.SelectedValue), "", "", 0, "sp_RepGerencialV1", "", "", "", "", "", "",
                         int.Parse(DdlYear.SelectedValue), 0, 0, 0, 0, 0, Session["Conectar"].ToString());
 
                     foreach (DataRow _drfila in _dts.Tables[0].Rows)
                     {
-                        _dts = new ConsultaDatosDAO().FunRepGerencialG(19, int.Parse(DdlCedente.SelectedValue),
+                        _dts = new ConsultaDatosDAO().FunRepGerencialG(20, int.Parse(DdlCedente.SelectedValue),
                             int.Parse(DdlCatalogo.SelectedValue), "", "", int.Parse(_drfila["Gestor"].ToString()),
                             "sp_RepGerencialV1", "", "", "", "", "", "", int.Parse(DdlYear.SelectedValue),
                             0, 0, 0, 0, 0, Session["Conectar"].ToString());
@@ -187,7 +187,7 @@
                 }
                 else
                 {
-                    _dts = new ConsultaDatosDAO().FunRepGerencialG(19, int.Parse(DdlCedente.SelectedValue),
+                    _dts = new ConsultaDatosDAO().FunRepGerencialG(20, int.Parse(DdlCedente.SelectedValue),
                         int.Parse(DdlCatalogo.SelectedValue), "", "", int.Parse(DdlGestor.SelectedValue),
                         "sp_RepGerencialV1", "", "", "", "", "", "", int.Parse(DdlYear.SelectedValue),
                         0, 0, 0, 0, 0, Session["Conectar"].ToString());
@@ -200,6 +200,7 @@
                 if (DdlTipoPago.SelectedValue == "1") _opcion = 15;
                 if (DdlTipoPago.SelectedValue == "2") _opcion = 16;
                 if (DdlTipoPago.SelectedValue == "3") _opcion = 17;
+                if (DdlTipoPago.SelectedValue == "4") _opcion = 18;
 
                 _dts = new ConsultaDatosDAO().FunRepGerencialG(_opcion, int.Parse(DdlCedente.SelectedValue),
                     int.Parse(DdlCatalogo.SelectedValue), "", "", int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1",
@@ -220,6 +221,10 @@
                     GrdvDatos.DataBind();
                     GrdvDatos.UseAccessibleHeader = true;
                     GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+                else
+                {
+                    new FuncionesDAO().FunShowJSMessage("No Existen Registros para Mostrar..!", this);
                 }
             }
             catch (Exception ex)

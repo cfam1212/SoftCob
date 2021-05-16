@@ -105,7 +105,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-info">
+            <%--            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -115,7 +115,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>
+            </div>--%>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
@@ -158,6 +158,10 @@
                                             </asp:BoundField>
                                             <asp:BoundField DataField="NoEfectivos" HeaderText="No Efectivos">
                                                 <HeaderStyle BackColor="#993333" ForeColor="White" />
+                                                <ItemStyle HorizontalAlign="Right" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="Lost" HeaderText="Lost Payment">
+                                                <HeaderStyle BackColor="#FF9933" />
                                                 <ItemStyle HorizontalAlign="Right" />
                                             </asp:BoundField>
                                         </Columns>
@@ -333,6 +337,9 @@
                                     <asp:BoundField DataField="EstadoPago" HeaderText="Estado_Pago"></asp:BoundField>
                                     <asp:BoundField DataField="Cedula" HeaderText="CI" />
                                     <asp:BoundField DataField="Cliente" HeaderText="Cliente"></asp:BoundField>
+                                    <asp:BoundField DataField="FechaGestion" HeaderText="Fecha_Gestión">
+                                        <ItemStyle HorizontalAlign="Right" />
+                                    </asp:BoundField>
                                     <asp:BoundField DataField="FechaPago" HeaderText="Fecha_Pago">
                                         <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
@@ -354,8 +361,10 @@
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField>
                                 </Columns>
-                                <HeaderStyle Font-Size="Small" />
+                                <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                 <RowStyle Font-Size="X-Small" />
+                                <EditRowStyle BackColor="#2461BF" />
+                                <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                             </asp:GridView>
                             <script>
                                 //$(document).ready(function () {

@@ -329,9 +329,10 @@
                 }
                 else _concabecera = false;
 
-                _dts = new PagoCarteraDAO().FunGetPagoCartera(7, int.Parse(DdlCedente.SelectedValue), 
-                    int.Parse(ViewState["CodCatalogo"].ToString()), lblIdentificacion.InnerText, ViewState["operacion"].ToString(), 
-                    TxtDocumento.Text.Trim(), TxtFechaPago.Text.Trim(), TxtValor.Text.Trim(), "", "", "", "", 0, 0, 0, 
+                _dts = new PagoCarteraDAO().FunGetPagoCartera(7, int.Parse(DdlCedente.SelectedValue),
+                    int.Parse(ViewState["CodCatalogo"].ToString()), lblIdentificacion.InnerText,
+                    ViewState["operacion"].ToString(), TxtDocumento.Text.Trim(), TxtFechaPago.Text.Trim(),
+                    TxtValor.Text.Trim(), "", "", "", "", int.Parse(ViewState["CodigoGEST"].ToString()), _efectivo, 0,
                     int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _conexion);
 
                 if (_dts != null && _dts.Tables[0].Rows[0][0].ToString() == "OK")
@@ -365,11 +366,12 @@
                 GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
                 _operacion = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Operacion"].ToString();
                 _valorpago = GrdvDatos.DataKeys[gvRow.RowIndex].Values["SumPago"].ToString().Replace(",", ".");
-                //float _valorPago = (float)Math.Round(float.Parse(grdvDatos.DataKeys[intIndex].Values["SumPago"].ToString()), 2);
-                //float _valorPago = (float)Math.Round(float.Parse(grdvDatos.Rows[intIndex].Cells[2].Text.Substring(1).Replace(".", ",")), 2);
                 _documento = GrdvDatos.Rows[gvRow.RowIndex].Cells[3].Text;
 
-                _dts = new PagoCarteraDAO().FunGetPagoCartera(8, int.Parse(DdlCedente.SelectedValue), int.Parse(ViewState["CodCatalogo"].ToString()), lblIdentificacion.InnerText, _operacion, _documento, TxtFechaPago.Text.Trim(), _valorpago, "", "", "", "", 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _conexion);
+                _dts = new PagoCarteraDAO().FunGetPagoCartera(8, int.Parse(DdlCedente.SelectedValue),
+                    int.Parse(ViewState["CodCatalogo"].ToString()), lblIdentificacion.InnerText, _operacion, _documento,
+                    _fechaactual, _valorpago, "", "", "", "", int.Parse(ViewState["CodigoGEST"].ToString()), 0, 0,
+                    int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _conexion);
 
                 if (_dts != null)
                 {

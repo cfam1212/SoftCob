@@ -103,7 +103,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-info">
+<%--            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -113,7 +113,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>
+            </div>--%>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Always">
                     <ContentTemplate>
@@ -174,9 +174,10 @@
                                 <td colspan="2">
                                     <asp:DropDownList ID="DdlTipoPago" runat="server" CssClass="form-control" Width="100%">
                                         <asp:ListItem Value="0">--Seleccione Proyección--</asp:ListItem>
-                                        <asp:ListItem Value="1">Pagos Registrados</asp:ListItem>
-                                        <asp:ListItem Value="2">Compromisos de Pago</asp:ListItem>
-                                        <asp:ListItem Value="3">Negociación</asp:ListItem>
+                                        <asp:ListItem Value="1">Pagos Gestor</asp:ListItem>
+                                        <asp:ListItem Value="2">Pagos Efectivos</asp:ListItem>
+                                        <asp:ListItem Value="3">Compromisos de Pago</asp:ListItem>
+                                        <asp:ListItem Value="4">Negociación</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                                 <td>
