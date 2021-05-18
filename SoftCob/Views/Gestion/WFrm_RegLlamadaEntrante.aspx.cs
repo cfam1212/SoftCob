@@ -1455,7 +1455,7 @@
                 ViewState["TipoTelefono"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["CodTipo"].ToString();
                 ViewState["Propietario"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["CodPro"].ToString();
                 ViewState["Prefijo"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Prefijo"].ToString();
-                ViewState["Origen"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Origen"].ToString();
+                //ViewState["Origen"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Origen"].ToString();
                 ViewState["InicioLlamada"] = DateTime.Now.ToString("HH:mm:ss");
                 _sumarsegundos = double.Parse(ViewState["TiempoMarcado"].ToString());
                 Session["InicioLlamada"] = DateTime.Now.AddSeconds(_sumarsegundos).ToString("HH:mm:ss");
@@ -1747,20 +1747,20 @@
                     return;
                 }
 
-                if (ViewState["Origen"].ToString() != "NUEVO")
-                {
-                    if (DdlAccionDel.SelectedValue == "0")
-                    {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione Acción de Modificación..!", this);
-                        return;
-                    }
+                //if (ViewState["Origen"].ToString() != "NUEVO")
+                //{
+                //    if (DdlAccionDel.SelectedValue == "0")
+                //    {
+                //        new FuncionesDAO().FunShowJSMessage("Seleccione Acción de Modificación..!", this);
+                //        return;
+                //    }
 
-                    if (DdlRespuestaDel.SelectedValue == "0")
-                    {
-                        new FuncionesDAO().FunShowJSMessage("Selecciones Respuesta de Moficiación..!", this);
-                        return;
-                    }
-                }
+                //    if (DdlRespuestaDel.SelectedValue == "0")
+                //    {
+                //        new FuncionesDAO().FunShowJSMessage("Selecciones Respuesta de Moficiación..!", this);
+                //        return;
+                //    }
+                //}
 
                 if (FunValidarTelefonos())
                 {
@@ -1785,31 +1785,31 @@
                         int.Parse(ViewState["CodigoCLDE"].ToString()), DdlTipTelefono.SelectedValue, DdlPropietario2.SelectedValue, TxtNombres.Text.Trim().ToUpper(), TxtApellidos.Text.Trim().ToUpper(), TxtTelefono.Text.Trim(), DdlPrefijo.SelectedValue == "0" ? "" : DdlPrefijo.SelectedValue,
                         ViewState["Telefonoanterior"].ToString(), "", "", "SI", int.Parse(ViewState["CodigoCEDE"].ToString()), 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
-                    if (ViewState["Origen"].ToString() != "NUEVO")
-                    {
-                        SoftCob_ACCIONGESTION newAccion = new SoftCob_ACCIONGESTION();
-                        {
-                            newAccion.acci_tipoaccion = "MODIFICAR TELEFONO";
-                            newAccion.acci_idmotivo = 7;
-                            newAccion.acci_observacion = DdlAccionDel.SelectedItem.ToString() + " - " + DdlRespuestaDel.SelectedItem.ToString();
-                            newAccion.acci_codigocpce = int.Parse(ViewState["CodigoCPCE"].ToString());
-                            newAccion.acci_identificacion = ViewState["NumeroDocumento"].ToString();
-                            newAccion.acci_operacion = "";
-                            newAccion.acci_gestoranterior = 0;
-                            newAccion.acci_gestoractual = 0;
-                            newAccion.acci_datoanterior = ViewState["Prefijo"].ToString() + ViewState["Telefonoanterior"].ToString();
-                            newAccion.acci_auxv1 = DdlPrefijo.SelectedValue == "0" ? TxtTelefono.Text.Trim() : DdlPrefijo.SelectedValue + TxtTelefono.Text.Trim();
-                            newAccion.acci_auxv2 = "";
-                            newAccion.acci_auxv3 = "";
-                            newAccion.acci_auxi1 = int.Parse(ViewState["CodigoPERS"].ToString());
-                            newAccion.acci_auxi2 = 0;
-                            newAccion.acci_auxi3 = 0;
-                            newAccion.acci_fechacreacion = DateTime.Now;
-                            newAccion.acci_usuariocreacion = int.Parse(Session["usuCodigo"].ToString());
-                            newAccion.acci_terminalcreacion = Session["MachineName"].ToString();
-                            new ListaTrabajoDAO().FunInsertarAccionGestion(newAccion);
-                        }
-                    }
+                    //if (ViewState["Origen"].ToString() != "NUEVO")
+                    //{
+                    //    SoftCob_ACCIONGESTION newAccion = new SoftCob_ACCIONGESTION();
+                    //    {
+                    //        newAccion.acci_tipoaccion = "MODIFICAR TELEFONO";
+                    //        newAccion.acci_idmotivo = 7;
+                    //        newAccion.acci_observacion = DdlAccionDel.SelectedItem.ToString() + " - " + DdlRespuestaDel.SelectedItem.ToString();
+                    //        newAccion.acci_codigocpce = int.Parse(ViewState["CodigoCPCE"].ToString());
+                    //        newAccion.acci_identificacion = ViewState["NumeroDocumento"].ToString();
+                    //        newAccion.acci_operacion = "";
+                    //        newAccion.acci_gestoranterior = 0;
+                    //        newAccion.acci_gestoractual = 0;
+                    //        newAccion.acci_datoanterior = ViewState["Prefijo"].ToString() + ViewState["Telefonoanterior"].ToString();
+                    //        newAccion.acci_auxv1 = DdlPrefijo.SelectedValue == "0" ? TxtTelefono.Text.Trim() : DdlPrefijo.SelectedValue + TxtTelefono.Text.Trim();
+                    //        newAccion.acci_auxv2 = "";
+                    //        newAccion.acci_auxv3 = "";
+                    //        newAccion.acci_auxi1 = int.Parse(ViewState["CodigoPERS"].ToString());
+                    //        newAccion.acci_auxi2 = 0;
+                    //        newAccion.acci_auxi3 = 0;
+                    //        newAccion.acci_fechacreacion = DateTime.Now;
+                    //        newAccion.acci_usuariocreacion = int.Parse(Session["usuCodigo"].ToString());
+                    //        newAccion.acci_terminalcreacion = Session["MachineName"].ToString();
+                    //        new ListaTrabajoDAO().FunInsertarAccionGestion(newAccion);
+                    //    }
+                    //}
 
                     _dtbtelefonos = (DataTable)ViewState["TelefonosRegistrados"];
                     _cambiar = _dtbtelefonos.Select("Codigo='" + ViewState["CodigoTelefono"].ToString() + "'").FirstOrDefault();

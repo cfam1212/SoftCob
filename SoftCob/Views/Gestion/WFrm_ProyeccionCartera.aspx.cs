@@ -13,18 +13,19 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
-        DataSet _dtsx = new DataSet();
         DataTable _dtb = new DataTable();
-        DataTable _tblagre = new DataTable();
         DataTable _tblbuscar = new DataTable();
         DataTable _dtbPresupuesto = new DataTable();
         DataRow _result, _addfil;
         DataTable _dtbproyecc = new DataTable();
         ImageButton _imgeselecc = new ImageButton();
         ImageButton _imgverificar = new ImageButton();
-        string _meslabel, _preslabel, _pagado = "", _codigoesp, _respuesta, _observacion, _estado, _valor = "0",
-            _cedula = "", _documento = "";
-        int _mes, _year, _codigocpce, _codigogest, _codigocede, _codigobrmc, _maxcodigo, _codigoprcb;
+
+        string _meslabel = "", _preslabel = "", _pagado = "", _codigoesp = "0", _respuesta = "", _observacion = "",
+            _estado = "", _cedula = "", _documento = "";
+
+        int _mes = 0, _year = 0, _codigocpce = 0, _codigogest = 0, _codigocede = 0, _codigobrmc = 0, _maxcodigo = 0, _codigoprcb;
+
         decimal _presupuesto, _totalpagos, _porcenproyecc, _totalsumapagos, _totalproyecc, _totalsumaproyecc,
             _porcenpagos, _valorpago, _totalnoefectivos, _totallost, _totalsumalost;
         bool _lexiste;
@@ -41,7 +42,7 @@
 
             if (!IsPostBack)
             {
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoBRMC"] = Request["CodigoBRMC"];
                 Lbltitulo.Text = "Proyecciones";
 
@@ -79,10 +80,14 @@
             }
             else
             {
-                GrdvDatos.DataSource = (DataTable)ViewState["Proyeccion"];
-                GrdvDatos.DataBind();
-                GrdvDatos.UseAccessibleHeader = true;
-                GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                _dtb = (DataTable)ViewState["Proyeccion"];
+                if (_dtb != null)
+                {
+                    GrdvDatos.DataSource = (DataTable)ViewState["Proyeccion"];
+                    GrdvDatos.DataBind();
+                    GrdvDatos.UseAccessibleHeader = true;
+                    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
             }
         }
         #endregion
@@ -91,68 +96,74 @@
         private void FunCargarMantenimiento(int opcion)
         {
             _dts = new ConsultaDatosDAO().FunConsultaDatos(227, int.Parse(Session["usuCodigo"].ToString()),
-                0, 0, "", "", "", Session["Conectar"].ToString());
-
-            _codigobrmc = int.Parse(_dts.Tables[0].Rows[0]["CodigoBRMC"].ToString());
-
-            _dts = new ConsultaDatosDAO().FunConsultaDatos(228, _codigobrmc, 0, 0, "", "", "",
-                Session["Conectar"].ToString());
-
-            _meslabel = _dts.Tables[0].Rows[0]["MesLabel"].ToString();
-            _preslabel = _dts.Tables[0].Rows[0]["PresuLabel"].ToString();
-            _mes = int.Parse(_dts.Tables[0].Rows[0]["Mes"].ToString());
-            _year = int.Parse(_dts.Tables[0].Rows[0]["Anio"].ToString());
-            ViewState["Year"] = _year;
-            ViewState["Mes"] = _mes;
-            _codigocede = int.Parse(_dts.Tables[0].Rows[0]["CodigoCPCE"].ToString());
-            _codigocpce = int.Parse(_dts.Tables[0].Rows[0]["CodigoCPCE"].ToString());
-            ViewState["CodigoCPCE"] = _codigocpce;
-            _codigogest = int.Parse(_dts.Tables[0].Rows[0]["CodigoGEST"].ToString());
-            ViewState["CodigoGEST"] = _codigogest;
-            _presupuesto = decimal.Parse(_dts.Tables[0].Rows[0]["Presupuesto"].ToString());
-
-            ViewState["Presupuesto"] = _presupuesto;
-            Lbltitulo.Text = "PROYECCION " + _meslabel + " " + _year.ToString();
-
-            _dts = new PagoCarteraDAO().FunGetPagoCartera(17, _codigocede, _codigocpce, "", "", "", "", "", "",
-                _meslabel, _presupuesto.ToString().Replace(",", "."), "", _codigogest, _year, _mes, 0, "",
-                Session["Conectar"].ToString());
+                0, 0, "", "", "", ViewState["Conectar"].ToString());
 
             if (_dts.Tables[0].Rows.Count > 0)
             {
+
+                _codigobrmc = int.Parse(_dts.Tables[0].Rows[0]["CodigoBRMC"].ToString());
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(228, _codigobrmc, 0, 0, "", "", "",
+                    ViewState["Conectar"].ToString());
+
+                _meslabel = _dts.Tables[0].Rows[0]["MesLabel"].ToString();
+                _preslabel = _dts.Tables[0].Rows[0]["PresuLabel"].ToString();
+                _mes = int.Parse(_dts.Tables[0].Rows[0]["Mes"].ToString());
+                _year = int.Parse(_dts.Tables[0].Rows[0]["Anio"].ToString());
+                ViewState["Year"] = _year;
+                ViewState["Mes"] = _mes;
+                _codigocede = int.Parse(_dts.Tables[0].Rows[0]["CodigoCPCE"].ToString());
+                _codigocpce = int.Parse(_dts.Tables[0].Rows[0]["CodigoCPCE"].ToString());
+                ViewState["CodigoCPCE"] = _codigocpce;
+                _codigogest = int.Parse(_dts.Tables[0].Rows[0]["CodigoGEST"].ToString());
+                ViewState["CodigoGEST"] = _codigogest;
+                _presupuesto = decimal.Parse(_dts.Tables[0].Rows[0]["Presupuesto"].ToString());
+
+                ViewState["Presupuesto"] = _presupuesto;
+                Lbltitulo.Text = "PROYECCION " + _meslabel + " " + _year.ToString();
+            }
+
+            _dts = new PagoCarteraDAO().FunGetPagoCartera(17, _codigocede, _codigocpce, "", "", "", "", "", "",
+                _meslabel, _presupuesto.ToString().Replace(",", "."), "", _codigogest, _year, _mes, 0, "",
+                ViewState["Conectar"].ToString());
+
+            if (_dts.Tables[0].Rows.Count > 0)
+            {
+                ImgBuscar.Enabled = true;
+
                 ViewState["Proyeccion"] = _dts.Tables[0]; ;
                 GrdvDatos.DataSource = _dts.Tables[0]; ;
                 GrdvDatos.DataBind();
                 GrdvDatos.UseAccessibleHeader = true;
                 GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+                _totalsumaproyecc = decimal.Parse(ViewState["TotalProyecc"].ToString());
+                _totalsumapagos = decimal.Parse(ViewState["TotalPagos"].ToString());
+                _totalnoefectivos = decimal.Parse(ViewState["TotalNoEfectivo"].ToString());
+                _totalsumalost = decimal.Parse(ViewState["TotalLost"].ToString());
+
+                if (_totalsumaproyecc > 0) _porcenproyecc = Math.Round((_totalsumaproyecc / _presupuesto) * 100, 2);
+                else _porcenproyecc = 0;
+
+                if (_totalsumapagos > 0) _porcenpagos = Math.Round((_totalsumapagos / _presupuesto) * 100, 2);
+                else _porcenpagos = 0;
+
+                _dtbPresupuesto = (DataTable)ViewState["DatosPresupuesto"];
+                _addfil = _dtbPresupuesto.NewRow();
+                _addfil["Codigo"] = 1;
+                _addfil["VPresupuesto"] = "$" + string.Format("{0:n}", _presupuesto);
+                _addfil["VProyeccion"] = "$" + string.Format("{0:n}", _totalsumaproyecc);
+                _addfil["VPorcenProyecc"] = _porcenproyecc.ToString() + "%";
+                _addfil["VPagos"] = "$" + string.Format("{0:n}", _totalsumapagos);
+                _addfil["VPorcenCumplimiento"] = _porcenpagos.ToString() + "%";
+                _addfil["NoEfectivos"] = "$" + string.Format("{0:n}", _totalnoefectivos);
+                _addfil["Lost"] = "$" + string.Format("{0:n}", _totalsumalost);
+
+                _dtbPresupuesto.Rows.Add(_addfil);
+                ViewState["DatosPresupuesto"] = _dtbPresupuesto;
+                GrdvProyeccion.DataSource = _dtbPresupuesto;
+                GrdvProyeccion.DataBind();
             }
-
-            _totalsumaproyecc = decimal.Parse(ViewState["TotalProyecc"].ToString());
-            _totalsumapagos = decimal.Parse(ViewState["TotalPagos"].ToString());
-            _totalnoefectivos = decimal.Parse(ViewState["TotalNoEfectivo"].ToString());
-            _totalsumalost = decimal.Parse(ViewState["TotalLost"].ToString());
-
-            if (_totalsumaproyecc > 0) _porcenproyecc = Math.Round((_totalsumaproyecc / _presupuesto) * 100, 2);
-            else _porcenproyecc = 0;
-
-            if (_totalsumapagos > 0) _porcenpagos = Math.Round((_totalsumapagos / _presupuesto) * 100, 2);
-            else _porcenpagos = 0;
-
-            _dtbPresupuesto = (DataTable)ViewState["DatosPresupuesto"];
-            _addfil = _dtbPresupuesto.NewRow();
-            _addfil["Codigo"] = 1;
-            _addfil["VPresupuesto"] = "$" + string.Format("{0:n}", _presupuesto);
-            _addfil["VProyeccion"] = "$" + string.Format("{0:n}", _totalsumaproyecc);
-            _addfil["VPorcenProyecc"] = _porcenproyecc.ToString() + "%";
-            _addfil["VPagos"] = "$" + string.Format("{0:n}", _totalsumapagos);
-            _addfil["VPorcenCumplimiento"] = _porcenpagos.ToString() + "%";
-            _addfil["NoEfectivos"] = "$" + string.Format("{0:n}", _totalnoefectivos);
-            _addfil["Lost"] = "$" + string.Format("{0:n}", _totalsumalost);
-
-            _dtbPresupuesto.Rows.Add(_addfil);
-            ViewState["DatosPresupuesto"] = _dtbPresupuesto;
-            GrdvProyeccion.DataSource = _dtbPresupuesto;
-            GrdvProyeccion.DataBind();
         }
 
         private void FunLimpiar()
@@ -228,10 +239,10 @@
                 new PagoCarteraDAO().FunGetPagoCartera(19, 0, 0, "", "", _documento, TxtFecha.Text.Trim(),
                     _valorpago.ToString().Replace(",", "."), "", _observacion, _estado, _documento,
                     int.Parse(ViewState["CodigoRESP"].ToString()), int.Parse(Session["usuCodigo"].ToString()), 0, 0, "",
-                    Session["Conectar"].ToString());
+                    ViewState["Conectar"].ToString());
 
                 _dts = new PagoCarteraDAO().FunGetPagoCartera(22, 0, 0, "", "", "", "", "", "", "", "", "",
-                    int.Parse(ViewState["CodigoPRCB"].ToString()), 0, 0, 0, "", Session["Conectar"].ToString());
+                    int.Parse(ViewState["CodigoPRCB"].ToString()), 0, 0, 0, "", ViewState["Conectar"].ToString());
 
                 ViewState["Proyeccion"] = _dts.Tables[0];
 
@@ -243,6 +254,7 @@
                 _totalsumaproyecc = decimal.Parse(ViewState["TotalProyecc"].ToString());
                 _totalsumapagos = decimal.Parse(ViewState["TotalPagos"].ToString());
                 _totalnoefectivos = decimal.Parse(ViewState["TotalNoEfectivo"].ToString());
+                _totalsumalost = decimal.Parse(ViewState["TotalLost"].ToString());
 
                 if (_totalsumaproyecc > 0) _porcenproyecc = Math.Round((_totalsumaproyecc / _presupuesto) * 100, 2);
                 else _porcenproyecc = 0;
@@ -257,6 +269,7 @@
                 _result["VPagos"] = "$" + string.Format("{0:n}", _totalsumapagos);
                 _result["VPorcenCumplimiento"] = _porcenpagos.ToString() + "%";
                 _result["NoEfectivos"] = "$" + string.Format("{0:n}", _totalnoefectivos);
+                _result["Lost"] = "$" + string.Format("{0:n}", _totalsumalost);
                 _dtbPresupuesto.AcceptChanges();
                 GrdvProyeccion.DataSource = _dtbPresupuesto;
                 GrdvProyeccion.DataBind();
@@ -326,10 +339,10 @@
                 new PagoCarteraDAO().FunGetPagoCartera(18, 0, 0, LblIdentificacion.InnerText, "", "",
                     TxtFecha.Text.Trim(), TxtValor.Text.Trim(), _respuesta, LblCliente.InnerText, _estado,
                     _observacion, int.Parse(ViewState["CodigoPRCB"].ToString()), _maxcodigo + 1, 0, 0, "",
-                    Session["Conectar"].ToString());
+                    ViewState["Conectar"].ToString());
 
                 _dts = new PagoCarteraDAO().FunGetPagoCartera(22, 0, 0, "", "", "", "", "", "", "", "", "",
-                    int.Parse(ViewState["CodigoPRCB"].ToString()), 0, 0, 0, "", Session["Conectar"].ToString());
+                    int.Parse(ViewState["CodigoPRCB"].ToString()), 0, 0, 0, "", ViewState["Conectar"].ToString());
 
                 ViewState["Proyeccion"] = _dts.Tables[0];
 
@@ -383,7 +396,7 @@
 
                 new PagoCarteraDAO().FunGetPagoCartera(20, 0, 0, "", "", "", "", "", "", "", "", "",
                     int.Parse(ViewState["CodigoRESP"].ToString()), int.Parse(Session["usuCodigo"].ToString()), 0, 0, "",
-                    Session["Conectar"].ToString());
+                    ViewState["Conectar"].ToString());
 
                 ViewState["Proyeccion"] = _tblbuscar;
 
