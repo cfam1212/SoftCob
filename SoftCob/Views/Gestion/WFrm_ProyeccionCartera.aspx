@@ -189,7 +189,7 @@
                                             <tr>
                                                 <td>
                                                     <asp:Panel ID="PnlProyeccion" runat="server"
-                                                        CssClass="panel panel-primary" Height="310"
+                                                        CssClass="panel panel-primary" Height="330"
                                                         GroupingText="Datos de Proyección">
                                                         <table style="width: 100%">
                                                             <tr>
@@ -197,7 +197,7 @@
                                                                 <td style="width: 15%"></td>
                                                                 <td style="width: 30%"></td>
                                                                 <td style="width: 15%"></td>
-                                                                <td style="width: 30%" colspan="3"></td>
+                                                                <td style="width: 30%"></td>
                                                                 <td style="width: 5%"></td>
                                                             </tr>
                                                             <tr>
@@ -208,8 +208,6 @@
                                                                 <td>
                                                                     <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/user_new.png" OnClick="ImgBuscar_Click" Height="25px" />
                                                                 </td>
-                                                                <td></td>
-                                                                <td></td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
@@ -225,7 +223,7 @@
                                                                 <td>
                                                                     <h5>Cliente:</h5>
                                                                 </td>
-                                                                <td colspan="3">
+                                                                <td>
                                                                     <h5 runat="server" id="LblCliente"></h5>
                                                                 </td>
                                                                 <td></td>
@@ -241,7 +239,7 @@
                                                                 <td>
                                                                     <h5>Valor:</h5>
                                                                 </td>
-                                                                <td colspan="3">
+                                                                <td>
                                                                     <asp:TextBox ID="TxtValor" runat="server" CssClass="form-control alinearDerecha" TabIndex="2" Width="100%" Enabled="False">0.00</asp:TextBox>
                                                                 </td>
                                                                 <td></td>
@@ -257,23 +255,23 @@
                                                             <tr>
                                                                 <td></td>
                                                                 <td>
-                                                                    <h5>Documento:</h5>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:TextBox ID="TxtDocumento" runat="server" CssClass="form-control alinearDerecha" Enabled="False" TabIndex="3" Width="100%"></asp:TextBox>
-                                                                </td>
-                                                                <td>
                                                                     <h5>Observación:</h5>
                                                                 </td>
-                                                                <td colspan="3">
+                                                                <td>
                                                                     <asp:TextBox ID="TxtObservacion" runat="server" CssClass="form-control" Enabled="False" Height="50px" MaxLength="100" onkeydown="return (event.keyCode!=13);" TabIndex="4" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                                                 </td>
+                                                                <td>
+                                                                    
+                                                                </td>
+                                                                <td></td>
                                                                 <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td></td>
+                                                                <td>
+                                                                    <asp:TextBox ID="TxtDocumento" runat="server" CssClass="form-control alinearDerecha" Enabled="False" TabIndex="3" Width="100%" Visible="False"></asp:TextBox>
+                                                                </td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>

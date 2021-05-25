@@ -17,7 +17,6 @@ namespace ModeloSoftCob
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SoftCob_CLIENTE_DEUDOR()
         {
-            this.SoftCob_DEUDOR_REFERENCIAS = new HashSet<SoftCob_DEUDOR_REFERENCIAS>();
             this.SoftCob_CITACIONES_CAB = new HashSet<SoftCob_CITACIONES_CAB>();
             this.SoftCob_CUENTA_DEUDOR = new HashSet<SoftCob_CUENTA_DEUDOR>();
         }
@@ -41,8 +40,6 @@ namespace ModeloSoftCob
         public string clde_tum { get; set; }
     
         public virtual SoftCob_CATALOGO_PRODUCTOS_CEDENTE SoftCob_CATALOGO_PRODUCTOS_CEDENTE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SoftCob_DEUDOR_REFERENCIAS> SoftCob_DEUDOR_REFERENCIAS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoftCob_CITACIONES_CAB> SoftCob_CITACIONES_CAB { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -17,7 +17,7 @@ namespace ModeloSoftCob
         public int TECE_CODIGO { get; set; }
         public int tece_cedecodigo { get; set; }
         public int tece_perscodigo { get; set; }
-        public int tece_telecodigo { get; set; }
+        public int tece_referencodigo { get; set; }
         public string tece_numero { get; set; }
         public string tece_tipo { get; set; }
         public string tece_propietario { get; set; }

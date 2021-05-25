@@ -15,16 +15,26 @@ namespace ModeloSoftCob
     public partial class SoftCob_GARANTES
     {
         public int GART_CODIGO { get; set; }
-        public string CEDULA_TITULAR { get; set; }
-        public string CEDULA { get; set; }
-        public string GARANTE { get; set; }
-        public string TIPO { get; set; }
-        public string NUM_OPERACION { get; set; }
-        public string DIRECCION_DOMICILIO { get; set; }
-        public string REFERENCIA_DOMICILIO { get; set; }
-        public string DIRECCION_TRABAJO { get; set; }
-        public string REFERENCIA_TRABAJO { get; set; }
-        public string EMAIL_PERSONAL { get; set; }
-        public string EMAIL_TRABAJO { get; set; }
+        public string gara_cedulatitular { get; set; }
+        public string gara_cedulagarante { get; set; }
+        public string gara_nombres { get; set; }
+        public string gara_tipo { get; set; }
+        public string gara_operacion { get; set; }
+        public string gara_auxv1 { get; set; }
+        public string gara_auxv2 { get; set; }
+        public string gara_auxv3 { get; set; }
+        public string gara_auxv4 { get; set; }
+        public string gara_auxv5 { get; set; }
+        public Nullable<int> gara_auxi1 { get; set; }
+        public Nullable<int> gara_auxi2 { get; set; }
+        public Nullable<int> gara_auxi3 { get; set; }
+        public Nullable<int> gara_auxi4 { get; set; }
+        public Nullable<int> gara_auxi5 { get; set; }
+        public System.DateTime gara_fechacreacion { get; set; }
+        public int gara_usuariocreacion { get; set; }
+        public string gara_terminalcreacion { get; set; }
+        public System.DateTime gara_fum { get; set; }
+        public int gara_uum { get; set; }
+        public string gara_tum { get; set; }
     }
 }

@@ -58,8 +58,8 @@
                 _dtbspeech.Columns.Add("auxi1");
                 _dtbspeech.Columns.Add("auxi2");
                 ViewState["SpeechArbol"] = _dtbspeech;
-                ViewState["codigoCPCE"] = "0";
-                ViewState["codigoCEDE"] = "0";
+                ViewState["CodigoCPCE"] = "0";
+                ViewState["CodigoCEDE"] = "0";
                 FunCargarCombos(0);
                 FunCargarCombos(1);
 
@@ -168,11 +168,10 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(180, int.Parse(ViewState["codigoCEDE"].ToString()), 0, 0,
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(180, int.Parse(ViewState["CodigoCEDE"].ToString()), 0, 0,
                     "", "", "", Session["Conectar"].ToString());
 
                 ViewState["NivelArbol"] = _dts.Tables[0].Rows[0]["Nivel"].ToString();
-
 
                 ViewState["CodigoSpeechCab"] = "0";
 
@@ -186,7 +185,7 @@
                 GrdvSpeech.DataSource = null;
                 GrdvSpeech.DataBind();
 
-                SoftCob_SPEECH_CABECERA _datos = new ArbolDecisionDAO().FunGetSpeechPorID(int.Parse(ViewState["codigoCPCE"].ToString()));
+                SoftCob_SPEECH_CABECERA _datos = new ArbolDecisionDAO().FunGetSpeechPorID(int.Parse(ViewState["CodigoCPCE"].ToString()));
 
                 if (_datos != null)
                 {
@@ -229,8 +228,8 @@
         {
             try
             {
-                ViewState["codigoCPCE"] = "0";
-                ViewState["codigoCEDE"] = "0";
+                ViewState["CodigoCPCE"] = "0";
+                ViewState["CodigoCEDE"] = "0";
 
                 _dtbspeech.Clear();
                 _dtbspeech.Columns.Add("Codigo");
@@ -288,7 +287,7 @@
                         LstCamposB.DataBind();
                         break;
                     case 2:
-                        DdlAccion.DataSource = new SpeechDAO().FunGetArbolNewAccion(int.Parse(ViewState["codigoCPCE"].ToString()));
+                        DdlAccion.DataSource = new SpeechDAO().FunGetArbolNewAccion(int.Parse(ViewState["CodigoCPCE"].ToString()));
                         DdlAccion.DataTextField = "Descripcion";
                         DdlAccion.DataValueField = "Codigo";
                         DdlAccion.DataBind();
@@ -361,25 +360,25 @@
             TreeNode node = arbolPres.SelectedNode;
             try
             {
-                ViewState["codigoCPCE"] = "0";
+                ViewState["CodigoCPCE"] = "0";
 
                 switch (node.Depth)
                 {
                     case 1:
-                        ViewState["codigoCPCE"] = "0";
+                        ViewState["CodigoCPCE"] = "0";
                         Lbltitulo.Text = "SPEECH Catálogo: ";
                         break;
                     case 2:
-                        ViewState["codigoCPCE"] = "0";
+                        ViewState["CodigoCPCE"] = "0";
                         break;
                     case 3:
-                        ViewState["codigoCPCE"] = "0";
+                        ViewState["CodigoCPCE"] = "0";
                         break;
                     case 4:
                         FunLimpiarObjects();
                         string[] pathRoot = node.ValuePath.Split(new char[] { '/' });
-                        ViewState["codigoCPCE"] = pathRoot[5].ToString();
-                        ViewState["codigoCEDE"] = pathRoot[3].ToString();
+                        ViewState["CodigoCPCE"] = pathRoot[5].ToString();
+                        ViewState["CodigoCEDE"] = pathRoot[3].ToString();
                         lblCatalogo.InnerText = "SPEECH Catálogo >>" + new CedenteDAO().FunGetNameCatalogoporID(int.Parse(pathRoot[5].ToString()));
                         FunCargarCombos(2);
                         FunCargarMantenimiento();
@@ -433,7 +432,7 @@
         {
             try
             {
-                if (int.Parse(ViewState["codigoCPCE"].ToString()) == 0)
+                if (int.Parse(ViewState["CodigoCPCE"].ToString()) == 0)
                 {
                     new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo del Cedente..", this);
                     return;
@@ -684,7 +683,7 @@
                     return;
                 }
 
-                if (int.Parse(ViewState["codigoCPCE"].ToString()) == 0)
+                if (int.Parse(ViewState["CodigoCPCE"].ToString()) == 0)
                 {
                     new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo del Cedente..", this);
                     return;
@@ -693,8 +692,8 @@
                 SoftCob_SPEECH_CABECERA _datos = new SoftCob_SPEECH_CABECERA();
                 {
                     _datos.SPCA_CODIGO = int.Parse(ViewState["CodigoSpeechCab"].ToString());
-                    _datos.spca_cedecodigo = int.Parse(ViewState["codigoCEDE"].ToString());
-                    _datos.spca_cpcecodigo = int.Parse(ViewState["codigoCPCE"].ToString());
+                    _datos.spca_cedecodigo = int.Parse(ViewState["CodigoCEDE"].ToString());
+                    _datos.spca_cpcecodigo = int.Parse(ViewState["CodigoCPCE"].ToString());
                     _datos.spca_speechbv = TxtEditor1.Content;
                     _datos.spca_estado = ChkEstadoB.Checked;
                     _datos.spca_auxv1 = "";

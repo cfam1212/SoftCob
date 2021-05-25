@@ -972,9 +972,6 @@
                                                                     <td colspan="5">
                                                                         <div id="divException" class="alert-danger" style="visibility: hidden">
                                                                             <asp:Literal ID="litMensajeEx" runat="server">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                             </asp:Literal>
                                                                         </div>
                                                                     </td>
@@ -1034,7 +1031,7 @@
                                                                     <td colspan="4">
                                                                         <asp:UpdatePanel ID="updObservacion" runat="server" UpdateMode="Conditional">
                                                                             <ContentTemplate>
-                                                                                <asp:TextBox ID="TxtObservacion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="upperCase" Height="80px" TextMode="MultiLine" Width="100%" TabIndex="28" MaxLength="500"></asp:TextBox>
+                                                                                <asp:TextBox ID="TxtObservacion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Height="80px" TextMode="MultiLine" Width="100%" TabIndex="28" MaxLength="500"></asp:TextBox>
                                                                             </ContentTemplate>
                                                                         </asp:UpdatePanel>
                                                                     </td>
@@ -1070,13 +1067,13 @@
                                                             <h5>Fecha Pago:</h5>
                                                         </td>
                                                         <td style="width: 40%">
-                                                            <asp:TextBox ID="TxtFechaPago" runat="server" Width="100%" TabIndex="30"></asp:TextBox>
+                                                            <asp:TextBox ID="TxtFechaPago" runat="server" CssClass="form-control" Width="100%" TabIndex="30"></asp:TextBox>
                                                         </td>
                                                         <td style="width: 15%">
                                                             <h5>Valor Pago:</h5>
                                                         </td>
                                                         <td style="width: 30%">
-                                                            <asp:TextBox ID="TxtValorAbono" runat="server" CssClass="alinearDerecha" MaxLength="7" TabIndex="31"></asp:TextBox>
+                                                            <asp:TextBox ID="TxtValorAbono" runat="server" CssClass="form-control alinearDerecha" MaxLength="7" TabIndex="31"></asp:TextBox>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1091,7 +1088,7 @@
                                                             <h5>No.Documento:</h5>
                                                         </td>
                                                         <td>
-                                                            <asp:TextBox ID="TxtNumDocumento" runat="server" MaxLength="20" TabIndex="33"></asp:TextBox>
+                                                            <asp:TextBox ID="TxtNumDocumento" runat="server" CssClass="form-control" MaxLength="20" TabIndex="33"></asp:TextBox>
                                                         </td>
                                                     </tr>
                                                 </table>

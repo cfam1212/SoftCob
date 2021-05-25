@@ -47,7 +47,6 @@
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_CAMPOS_SPEECH" Width="1.5" PointX="17.375" PointY="5.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_REGISTRO_VOLVERALLAMAR" Width="1.5" PointX="17.375" PointY="18.75" />
-        <EntityTypeShape EntityType="SoftCobModel.SoftCob_TELEFONOS_CEDENTE" Width="1.5" PointX="19.375" PointY="0.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_BRENCH" Width="1.5" PointX="19.375" PointY="6.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_LISTATRABAJO_ACTIVAS" Width="1.5" PointX="3.375" PointY="7.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_LISTATRABAJO_CABECERA" Width="1.5" PointX="19.375" PointY="19.125" />
@@ -80,7 +79,6 @@
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_BRENCHGESTORCAB" Width="1.5" PointX="17.75" PointY="27.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_CAMPOS_ADICIONALES" Width="1.5" PointX="28.75" PointY="0.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_CAMPOS_ESTRATEGIA" Width="1.5" PointX="3.375" PointY="40.875" />
-        <EntityTypeShape EntityType="SoftCobModel.SoftCob_DEUDOR_REFERENCIAS" Width="1.5" PointX="10.125" PointY="31.375" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_EMPLOYEE" Width="1.5" PointX="7.375" PointY="40.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_ESTADOS_DELYO" Width="1.5" PointX="26.75" PointY="16.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_ESTILOS_NEGOCIACION" Width="1.5" PointX="28.75" PointY="9.75" />
@@ -106,7 +104,6 @@
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_REGISTRO_BROADCAST" Width="1.5" PointX="30.75" PointY="0.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_SEGMENTO_CABECERA" Width="1.5" PointX="30.75" PointY="5.75" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_CAMPOS_ESTRATEGIA_SoftCob_TABLAS_BDD" />
-        <AssociationConnector Association="SoftCobModel.FK_SoftCob_DEUDOR_REFERENCIAS_SoftCob_CLIENTE_DEUDOR" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_EMPLOYEE_SoftCob_DEPARTAMENTO" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_ESTUDIOS_SoftCob_EMPLOYEE" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_EXPERIENCIA_SoftCob_EMPLOYEE" />
@@ -150,7 +147,6 @@
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_REFERENCIASPERSONALES_SoftCob_EMPLOYEE" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_EVALUACION_DET_SoftCob_EVALUACION_CAB" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_EVALUACION_USU_SoftCob_EVALUACION_CAB" />
-        <EntityTypeShape EntityType="SoftCobModel.SoftCob_GARANTES" Width="1.5" PointX="30.375" PointY="34.75" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_OPCIONESMULTIPLES_LISTA" Width="1.5" PointX="21.625" PointY="38.375" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_OPCIONESMULTIPLES_LISTA_SoftCob_LISTATRABAJO_CABECERA" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_ARBOL_ACCION" Width="1.5" PointX="7.5" PointY="82.25" />
@@ -163,6 +159,9 @@
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_ARBOL_RESPUESTA_SoftCob_ARBOL_EFECTO" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_PERSONA" Width="1.5" PointX="35.375" PointY="1.125" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_CLIENTE_DEUDOR_SoftCob_PERSONA" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_DEUDOR_REFERENCIAS" Width="1.5" PointX="10.375" PointY="31.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_TELEFONOS_CEDENTE" Width="1.5" PointX="12.375" PointY="35.75" />
+        <EntityTypeShape EntityType="SoftCobModel.SoftCob_GARANTES" Width="1.5" PointX="30.375" PointY="34.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

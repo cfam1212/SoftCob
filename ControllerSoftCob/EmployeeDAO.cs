@@ -354,20 +354,20 @@
         {
             SoftCob_GARANTES _original = new SoftCob_GARANTES();
 
-            using (SoftCobEntities _db = new SoftCobEntities())
-            {
-                _original = _db.SoftCob_GARANTES.Where(g => g.GART_CODIGO == codigogara).FirstOrDefault();
-                if (tipo == "P")
-                {
-                    _original.EMAIL_PERSONAL = email;
-                }
+            //using (SoftCobEntities _db = new SoftCobEntities())
+            //{
+            //    _original = _db.SoftCob_GARANTES.Where(g => g.GART_CODIGO == codigogara).FirstOrDefault();
+            //    if (tipo == "P")
+            //    {
+            //        _original.gara_ = email;
+            //    }
 
-                if (tipo == "T")
-                {
-                    _original.EMAIL_TRABAJO = email;
-                }
-                _db.SaveChanges();
-            }
+            //    if (tipo == "T")
+            //    {
+            //        _original.EMAIL_TRABAJO = email;
+            //    }
+            //    _db.SaveChanges();
+            //}
 
             return "OK";
         }

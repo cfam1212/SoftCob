@@ -24,7 +24,7 @@
         string _meslabel = "", _preslabel = "", _pagado = "", _codigoesp = "0", _respuesta = "", _observacion = "",
             _estado = "", _cedula = "", _documento = "";
 
-        int _mes = 0, _year = 0, _codigocpce = 0, _codigogest = 0, _codigocede = 0, _codigobrmc = 0, _maxcodigo = 0, _codigoprcb;
+        int _mes = 0, _year = 0, _codigocpce = 0, _codigogest = 0, _codigocede = 0, _codigobrmc = 0, _maxcodigo = 0;
 
         decimal _presupuesto, _totalpagos, _porcenproyecc, _totalsumapagos, _totalproyecc, _totalsumaproyecc,
             _porcenpagos, _valorpago, _totalnoefectivos, _totallost, _totalsumalost;
@@ -226,15 +226,15 @@
                 _valorpago = decimal.Parse(TxtValor.Text.Trim(), CultureInfo.InvariantCulture);
                 _observacion = TxtObservacion.Text.Trim();
 
-                SoftCob_PAGOSCARTERA _pagos = new PagoCarteraDAO().FunGetPagados(LblIdentificacion.InnerText,
-                    TxtFecha.Text.Trim(), TxtDocumento.Text.Trim());
+                //SoftCob_PAGOSCARTERA _pagos = new PagoCarteraDAO().FunGetPagados(LblIdentificacion.InnerText,
+                //    TxtFecha.Text.Trim(), TxtDocumento.Text.Trim());
 
-                if (_pagos != null)
-                {
-                    _valorpago = _pagos.pacp_valorpago;
-                    _estado = "PAGO REGISTRADO";
-                    _documento = _pagos.pacp_documento;
-                }
+                //if (_pagos != null)
+                //{
+                //    _valorpago = _pagos.pacp_valorpago;
+                //    _estado = "PAGO REGISTRADO";
+                //    _documento = _pagos.pacp_documento;
+                //}
 
                 new PagoCarteraDAO().FunGetPagoCartera(19, 0, 0, "", "", _documento, TxtFecha.Text.Trim(),
                     _valorpago.ToString().Replace(",", "."), "", _observacion, _estado, _documento,

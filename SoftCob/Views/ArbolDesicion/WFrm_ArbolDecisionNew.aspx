@@ -225,7 +225,7 @@
                             <table style="width: 100%">
                                 <tr>
                                     <td style="text-align: center; width: 45%">
-                                        <asp:Button ID="BtnGrabar" runat="server" CssClass="button" TabIndex="12" Text="Grabar" Width="120px" OnClick="BtnGrabar_Click" />
+                                        <asp:Button ID="BtnGrabar" runat="server" CssClass="button" TabIndex="12" Text="Grabar" Width="120px" OnClick="BtnGrabar_Click" Visible="False" />
                                     </td>
                                     <td style="width: 10%"></td>
                                     <td style="text-align: center; width: 45%">

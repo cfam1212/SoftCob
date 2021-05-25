@@ -9,7 +9,7 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
-        string _codigo = "";
+        
         #endregion
 
         #region Load

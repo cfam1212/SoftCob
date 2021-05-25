@@ -158,10 +158,6 @@
                                 </td>
                                 <td>
                                     <asp:DropDownList ID="DdlYear" runat="server" CssClass="form-control" TabIndex="5" Width="100%">
-                                        <asp:ListItem Value="0">Todo</asp:ListItem>
-                                        <asp:ListItem Value="I">Identificacion</asp:ListItem>
-                                        <asp:ListItem Value="O">Operacion</asp:ListItem>
-                                        <asp:ListItem Value="C">Cliente</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                                 <td></td>
@@ -174,8 +170,8 @@
                                 <td colspan="2">
                                     <asp:DropDownList ID="DdlTipoPago" runat="server" CssClass="form-control" Width="100%">
                                         <asp:ListItem Value="0">--Seleccione Proyección--</asp:ListItem>
-                                        <asp:ListItem Value="1">Pagos Gestor</asp:ListItem>
-                                        <asp:ListItem Value="2">Pagos Efectivos</asp:ListItem>
+                                        <asp:ListItem Value="1">Pagos Efectivos (GESTOR)</asp:ListItem>
+                                        <asp:ListItem Value="2">Pagos Efectivos (ENTERPRISE)</asp:ListItem>
                                         <asp:ListItem Value="3">Compromisos de Pago</asp:ListItem>
                                         <asp:ListItem Value="4">Negociación</asp:ListItem>
                                     </asp:DropDownList>

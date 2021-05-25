@@ -12,7 +12,7 @@
         DataSet _dts = new DataSet();
         ImageButton _imgasigna = new ImageButton();
         ImageButton _imgquita = new ImageButton();
-        string _codigoeployee, _codigousu, _mensaje, _redirect, _codigo;
+        string _codigoeployee, _codigousu, _mensaje, _redirect;
         #endregion
 
         #region Load

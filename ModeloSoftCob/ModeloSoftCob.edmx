@@ -824,25 +824,23 @@
             <PropertyRef Name="DERE_CODIGO" />
           </Key>
           <Property Name="DERE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CLDE_CODIGO" Type="int" Nullable="false" />
-          <Property Name="dere_parentesco" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="pers_codigo" Type="int" Nullable="false" />
+          <Property Name="dere_numdocumento" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="dere_tiporeferencia" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="dere_nombrereferencia" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="dere_apellidoreferencia" Type="varchar" MaxLength="80" Nullable="false" />
-          <Property Name="dere_tipotelefono" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="dere_telefono" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="dere_auxv1" Type="varchar" MaxLength="50" />
           <Property Name="dere_auxv2" Type="varchar" MaxLength="50" />
           <Property Name="dere_auxv3" Type="varchar" MaxLength="50" />
           <Property Name="dere_auxi1" Type="int" />
           <Property Name="dere_auxi2" Type="int" />
           <Property Name="dere_auxi3" Type="int" />
-          <Property Name="dere_fechacreacion" Type="datetime" Nullable="false" />
-          <Property Name="dere_usuariocreacion" Type="int" Nullable="false" />
-          <Property Name="dere_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="dere_fum" Type="datetime" Nullable="false" />
           <Property Name="dere_uum" Type="int" Nullable="false" />
           <Property Name="dere_tum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dere_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="dere_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="dere_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="SoftCob_EFECTO">
           <Key>
@@ -1083,17 +1081,27 @@
             <PropertyRef Name="GART_CODIGO" />
           </Key>
           <Property Name="GART_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CEDULA_TITULAR" Type="varchar" MaxLength="10" />
-          <Property Name="CEDULA" Type="varchar" MaxLength="10" />
-          <Property Name="GARANTE" Type="varchar" MaxLength="150" />
-          <Property Name="TIPO" Type="varchar" MaxLength="50" />
-          <Property Name="NUM_OPERACION" Type="varchar" MaxLength="50" />
-          <Property Name="DIRECCION_DOMICILIO" Type="varchar" MaxLength="150" />
-          <Property Name="REFERENCIA_DOMICILIO" Type="varchar" MaxLength="150" />
-          <Property Name="DIRECCION_TRABAJO" Type="varchar" MaxLength="150" />
-          <Property Name="REFERENCIA_TRABAJO" Type="varchar" MaxLength="150" />
-          <Property Name="EMAIL_PERSONAL" Type="varchar" MaxLength="100" />
-          <Property Name="EMAIL_TRABAJO" Type="varchar" MaxLength="100" />
+          <Property Name="gara_cedulatitular" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="gara_cedulagarante" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="gara_nombres" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="gara_tipo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="gara_operacion" Type="varchar" MaxLength="50" />
+          <Property Name="gara_auxv1" Type="varchar" MaxLength="50" />
+          <Property Name="gara_auxv2" Type="varchar" MaxLength="50" />
+          <Property Name="gara_auxv3" Type="varchar" MaxLength="50" />
+          <Property Name="gara_auxv4" Type="varchar" MaxLength="50" />
+          <Property Name="gara_auxv5" Type="varchar" MaxLength="50" />
+          <Property Name="gara_auxi1" Type="int" />
+          <Property Name="gara_auxi2" Type="int" />
+          <Property Name="gara_auxi3" Type="int" />
+          <Property Name="gara_auxi4" Type="int" />
+          <Property Name="gara_auxi5" Type="int" />
+          <Property Name="gara_fechacreacion" Type="datetime" Nullable="false" />
+          <Property Name="gara_usuariocreacion" Type="int" Nullable="false" />
+          <Property Name="gara_terminalcreacion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="gara_fum" Type="datetime" Nullable="false" />
+          <Property Name="gara_uum" Type="int" Nullable="false" />
+          <Property Name="gara_tum" Type="varchar" MaxLength="80" Nullable="false" />
         </EntityType>
         <EntityType Name="SoftCob_GESTION_TELEFONICA">
           <Key>
@@ -2142,7 +2150,7 @@
           <Property Name="TECE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tece_cedecodigo" Type="int" Nullable="false" />
           <Property Name="tece_perscodigo" Type="int" Nullable="false" />
-          <Property Name="tece_telecodigo" Type="int" Nullable="false" />
+          <Property Name="tece_referencodigo" Type="int" Nullable="false" />
           <Property Name="tece_numero" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="tece_tipo" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="tece_propietario" Type="varchar" MaxLength="5" Nullable="false" />
@@ -2429,18 +2437,6 @@
               <PropertyRef Name="CLDE_CODIGO" />
             </Principal>
             <Dependent Role="SoftCob_CUENTA_DEUDOR">
-              <PropertyRef Name="CLDE_CODIGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SoftCob_DEUDOR_REFERENCIAS_SoftCob_CLIENTE_DEUDOR">
-          <End Role="SoftCob_CLIENTE_DEUDOR" Type="Self.SoftCob_CLIENTE_DEUDOR" Multiplicity="1" />
-          <End Role="SoftCob_DEUDOR_REFERENCIAS" Type="Self.SoftCob_DEUDOR_REFERENCIAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SoftCob_CLIENTE_DEUDOR">
-              <PropertyRef Name="CLDE_CODIGO" />
-            </Principal>
-            <Dependent Role="SoftCob_DEUDOR_REFERENCIAS">
               <PropertyRef Name="CLDE_CODIGO" />
             </Dependent>
           </ReferentialConstraint>
@@ -3090,10 +3086,6 @@
             <End Role="SoftCob_CLIENTE_DEUDOR" EntitySet="SoftCob_CLIENTE_DEUDOR" />
             <End Role="SoftCob_CUENTA_DEUDOR" EntitySet="SoftCob_CUENTA_DEUDOR" />
           </AssociationSet>
-          <AssociationSet Name="FK_SoftCob_DEUDOR_REFERENCIAS_SoftCob_CLIENTE_DEUDOR" Association="Self.FK_SoftCob_DEUDOR_REFERENCIAS_SoftCob_CLIENTE_DEUDOR">
-            <End Role="SoftCob_CLIENTE_DEUDOR" EntitySet="SoftCob_CLIENTE_DEUDOR" />
-            <End Role="SoftCob_DEUDOR_REFERENCIAS" EntitySet="SoftCob_DEUDOR_REFERENCIAS" />
-          </AssociationSet>
           <AssociationSet Name="FK_SoftCob_EFECTO_SoftCob_ACCION" Association="Self.FK_SoftCob_EFECTO_SoftCob_ACCION">
             <End Role="SoftCob_ACCION" EntitySet="SoftCob_ACCION" />
             <End Role="SoftCob_EFECTO" EntitySet="SoftCob_EFECTO" />
@@ -3566,7 +3558,6 @@
           </AssociationSet>
           <EntitySet Name="SoftCob_CAMPOS_SPEECH" EntityType="SoftCobModel.SoftCob_CAMPOS_SPEECH" />
           <EntitySet Name="SoftCob_REGISTRO_VOLVERALLAMAR" EntityType="SoftCobModel.SoftCob_REGISTRO_VOLVERALLAMAR" />
-          <EntitySet Name="SoftCob_TELEFONOS_CEDENTE" EntityType="SoftCobModel.SoftCob_TELEFONOS_CEDENTE" />
           <EntitySet Name="SoftCob_BRENCH" EntityType="SoftCobModel.SoftCob_BRENCH" />
           <EntitySet Name="SoftCob_LISTATRABAJO_ACTIVAS" EntityType="SoftCobModel.SoftCob_LISTATRABAJO_ACTIVAS" />
           <EntitySet Name="SoftCob_LISTATRABAJO_CABECERA" EntityType="SoftCobModel.SoftCob_LISTATRABAJO_CABECERA" />
@@ -3629,7 +3620,6 @@
           <EntitySet Name="SoftCob_BRENCHGESTORCAB" EntityType="SoftCobModel.SoftCob_BRENCHGESTORCAB" />
           <EntitySet Name="SoftCob_CAMPOS_ADICIONALES" EntityType="SoftCobModel.SoftCob_CAMPOS_ADICIONALES" />
           <EntitySet Name="SoftCob_CAMPOS_ESTRATEGIA" EntityType="SoftCobModel.SoftCob_CAMPOS_ESTRATEGIA" />
-          <EntitySet Name="SoftCob_DEUDOR_REFERENCIAS" EntityType="SoftCobModel.SoftCob_DEUDOR_REFERENCIAS" />
           <EntitySet Name="SoftCob_EMPLOYEE" EntityType="SoftCobModel.SoftCob_EMPLOYEE" />
           <EntitySet Name="SoftCob_ESTADOS_DELYO" EntityType="SoftCobModel.SoftCob_ESTADOS_DELYO" />
           <EntitySet Name="SoftCob_ESTILOS_NEGOCIACION" EntityType="SoftCobModel.SoftCob_ESTILOS_NEGOCIACION" />
@@ -3657,10 +3647,6 @@
           <AssociationSet Name="FK_SoftCob_CAMPOS_ESTRATEGIA_SoftCob_TABLAS_BDD" Association="SoftCobModel.FK_SoftCob_CAMPOS_ESTRATEGIA_SoftCob_TABLAS_BDD">
             <End Role="SoftCob_TABLAS_BDD" EntitySet="SoftCob_TABLAS_BDD" />
             <End Role="SoftCob_CAMPOS_ESTRATEGIA" EntitySet="SoftCob_CAMPOS_ESTRATEGIA" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SoftCob_DEUDOR_REFERENCIAS_SoftCob_CLIENTE_DEUDOR" Association="SoftCobModel.FK_SoftCob_DEUDOR_REFERENCIAS_SoftCob_CLIENTE_DEUDOR">
-            <End Role="SoftCob_CLIENTE_DEUDOR" EntitySet="SoftCob_CLIENTE_DEUDOR" />
-            <End Role="SoftCob_DEUDOR_REFERENCIAS" EntitySet="SoftCob_DEUDOR_REFERENCIAS" />
           </AssociationSet>
           <AssociationSet Name="FK_SoftCob_EMPLOYEE_SoftCob_DEPARTAMENTO" Association="SoftCobModel.FK_SoftCob_EMPLOYEE_SoftCob_DEPARTAMENTO">
             <End Role="SoftCob_DEPARTAMENTO" EntitySet="SoftCob_DEPARTAMENTO" />
@@ -3768,7 +3754,6 @@
             <End Role="SoftCob_EVALUACION_CAB" EntitySet="SoftCob_EVALUACION_CAB" />
             <End Role="SoftCob_EVALUACION_USU" EntitySet="SoftCob_EVALUACION_USU" />
           </AssociationSet>
-          <EntitySet Name="SoftCob_GARANTES" EntityType="SoftCobModel.SoftCob_GARANTES" />
           <EntitySet Name="SoftCob_OPCIONESMULTIPLES_LISTA" EntityType="SoftCobModel.SoftCob_OPCIONESMULTIPLES_LISTA" />
           <AssociationSet Name="FK_SoftCob_OPCIONESMULTIPLES_LISTA_SoftCob_LISTATRABAJO_CABECERA" Association="SoftCobModel.FK_SoftCob_OPCIONESMULTIPLES_LISTA_SoftCob_LISTATRABAJO_CABECERA">
             <End Role="SoftCob_LISTATRABAJO_CABECERA" EntitySet="SoftCob_LISTATRABAJO_CABECERA" />
@@ -3799,6 +3784,9 @@
             <End Role="SoftCob_PERSONA" EntitySet="SoftCob_PERSONA" />
             <End Role="SoftCob_CLIENTE_DEUDOR" EntitySet="SoftCob_CLIENTE_DEUDOR" />
           </AssociationSet>
+          <EntitySet Name="SoftCob_DEUDOR_REFERENCIAS" EntityType="SoftCobModel.SoftCob_DEUDOR_REFERENCIAS" />
+          <EntitySet Name="SoftCob_TELEFONOS_CEDENTE" EntityType="SoftCobModel.SoftCob_TELEFONOS_CEDENTE" />
+          <EntitySet Name="SoftCob_GARANTES" EntityType="SoftCobModel.SoftCob_GARANTES" />
         </EntityContainer>
         <EntityType Name="SoftCob_USUARIO">
           <Key>
@@ -4375,29 +4363,6 @@
           <Property Name="revl_usuariocreacion" Type="Int32" Nullable="false" />
           <Property Name="revl_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="SoftCob_TELEFONOS_CEDENTE">
-          <Key>
-            <PropertyRef Name="TECE_CODIGO" />
-          </Key>
-          <Property Name="TECE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tece_cedecodigo" Type="Int32" Nullable="false" />
-          <Property Name="tece_perscodigo" Type="Int32" Nullable="false" />
-          <Property Name="tece_telecodigo" Type="Int32" Nullable="false" />
-          <Property Name="tece_numero" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="tece_tipo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="tece_propietario" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="tece_score" Type="Int32" Nullable="false" />
-          <Property Name="tece_estado" Type="Boolean" Nullable="false" />
-          <Property Name="tece_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tece_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tece_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tece_auxi1" Type="Int32" />
-          <Property Name="tece_auxi2" Type="Int32" />
-          <Property Name="tece_auxi3" Type="Int32" />
-          <Property Name="tece_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="tece_usuariocreacion" Type="Int32" Nullable="false" />
-          <Property Name="tece_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="SoftCob_BRENCH">
           <Key>
             <PropertyRef Name="BRCH_CODIGO" />
@@ -4820,7 +4785,6 @@
           <Property Name="clde_uum" Type="Int32" Nullable="false" />
           <Property Name="clde_tum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Relationship="SoftCobModel.FK_SoftCob_CLIENTE_DEUDOR_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" FromRole="SoftCob_CLIENTE_DEUDOR" ToRole="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
-          <NavigationProperty Name="SoftCob_DEUDOR_REFERENCIAS" Relationship="SoftCobModel.FK_SoftCob_DEUDOR_REFERENCIAS_SoftCob_CLIENTE_DEUDOR" FromRole="SoftCob_CLIENTE_DEUDOR" ToRole="SoftCob_DEUDOR_REFERENCIAS" />
           <NavigationProperty Name="SoftCob_CITACIONES_CAB" Relationship="SoftCobModel.FK_SoftCob_CITACIONES_CAB_SoftCob_CLIENTE_DEUDOR" FromRole="SoftCob_CLIENTE_DEUDOR" ToRole="SoftCob_CITACIONES_CAB" />
           <NavigationProperty Name="SoftCob_CUENTA_DEUDOR" Relationship="SoftCobModel.FK_SoftCob_CUENTA_DEUDOR_SoftCob_CLIENTE_DEUDOR" FromRole="SoftCob_CLIENTE_DEUDOR" ToRole="SoftCob_CUENTA_DEUDOR" />
           <NavigationProperty Name="SoftCob_PERSONA" Relationship="SoftCobModel.FK_SoftCob_CLIENTE_DEUDOR_SoftCob_PERSONA" FromRole="SoftCob_CLIENTE_DEUDOR" ToRole="SoftCob_PERSONA" />
@@ -5065,32 +5029,6 @@
           <Property Name="caes_uum" Type="Int32" Nullable="false" />
           <Property Name="caes_tum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SoftCob_TABLAS_BDD" Relationship="SoftCobModel.FK_SoftCob_CAMPOS_ESTRATEGIA_SoftCob_TABLAS_BDD" FromRole="SoftCob_CAMPOS_ESTRATEGIA" ToRole="SoftCob_TABLAS_BDD" />
-        </EntityType>
-        <EntityType Name="SoftCob_DEUDOR_REFERENCIAS">
-          <Key>
-            <PropertyRef Name="DERE_CODIGO" />
-          </Key>
-          <Property Name="DERE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CLDE_CODIGO" Type="Int32" Nullable="false" />
-          <Property Name="dere_parentesco" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="dere_tiporeferencia" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="dere_nombrereferencia" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="dere_apellidoreferencia" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="dere_tipotelefono" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="dere_telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="dere_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="dere_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="dere_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="dere_auxi1" Type="Int32" />
-          <Property Name="dere_auxi2" Type="Int32" />
-          <Property Name="dere_auxi3" Type="Int32" />
-          <Property Name="dere_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dere_usuariocreacion" Type="Int32" Nullable="false" />
-          <Property Name="dere_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="dere_fum" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dere_uum" Type="Int32" Nullable="false" />
-          <Property Name="dere_tum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SoftCob_CLIENTE_DEUDOR" Relationship="SoftCobModel.FK_SoftCob_DEUDOR_REFERENCIAS_SoftCob_CLIENTE_DEUDOR" FromRole="SoftCob_DEUDOR_REFERENCIAS" ToRole="SoftCob_CLIENTE_DEUDOR" />
         </EntityType>
         <EntityType Name="SoftCob_EMPLOYEE">
           <Key>
@@ -5562,18 +5500,6 @@
             </Principal>
             <Dependent Role="SoftCob_CAMPOS_ESTRATEGIA">
               <PropertyRef Name="TABD_CODIGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SoftCob_DEUDOR_REFERENCIAS_SoftCob_CLIENTE_DEUDOR">
-          <End Type="SoftCobModel.SoftCob_CLIENTE_DEUDOR" Role="SoftCob_CLIENTE_DEUDOR" Multiplicity="1" />
-          <End Type="SoftCobModel.SoftCob_DEUDOR_REFERENCIAS" Role="SoftCob_DEUDOR_REFERENCIAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SoftCob_CLIENTE_DEUDOR">
-              <PropertyRef Name="CLDE_CODIGO" />
-            </Principal>
-            <Dependent Role="SoftCob_DEUDOR_REFERENCIAS">
-              <PropertyRef Name="CLDE_CODIGO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6363,23 +6289,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="SoftCob_GARANTES">
-          <Key>
-            <PropertyRef Name="GART_CODIGO" />
-          </Key>
-          <Property Name="GART_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CEDULA_TITULAR" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="CEDULA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="GARANTE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NUM_OPERACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DIRECCION_DOMICILIO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="REFERENCIA_DOMICILIO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="DIRECCION_TRABAJO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="REFERENCIA_TRABAJO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="EMAIL_PERSONAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="EMAIL_TRABAJO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="SoftCob_OPCIONESMULTIPLES_LISTA">
           <Key>
             <PropertyRef Name="REOM_CODIGO" />
@@ -6599,6 +6508,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="SoftCob_DEUDOR_REFERENCIAS">
+          <Key>
+            <PropertyRef Name="DERE_CODIGO" />
+          </Key>
+          <Property Name="DERE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pers_codigo" Type="Int32" Nullable="false" />
+          <Property Name="dere_numdocumento" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="dere_tiporeferencia" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="dere_nombrereferencia" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="dere_apellidoreferencia" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="dere_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dere_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dere_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dere_auxi1" Type="Int32" />
+          <Property Name="dere_auxi2" Type="Int32" />
+          <Property Name="dere_auxi3" Type="Int32" />
+          <Property Name="dere_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dere_uum" Type="Int32" Nullable="false" />
+          <Property Name="dere_tum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dere_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dere_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="dere_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_TELEFONOS_CEDENTE">
+          <Key>
+            <PropertyRef Name="TECE_CODIGO" />
+          </Key>
+          <Property Name="TECE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tece_cedecodigo" Type="Int32" Nullable="false" />
+          <Property Name="tece_perscodigo" Type="Int32" Nullable="false" />
+          <Property Name="tece_referencodigo" Type="Int32" Nullable="false" />
+          <Property Name="tece_numero" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tece_tipo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="tece_propietario" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="tece_score" Type="Int32" Nullable="false" />
+          <Property Name="tece_estado" Type="Boolean" Nullable="false" />
+          <Property Name="tece_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tece_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tece_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tece_auxi1" Type="Int32" />
+          <Property Name="tece_auxi2" Type="Int32" />
+          <Property Name="tece_auxi3" Type="Int32" />
+          <Property Name="tece_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tece_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="tece_terminalcreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SoftCob_GARANTES">
+          <Key>
+            <PropertyRef Name="GART_CODIGO" />
+          </Key>
+          <Property Name="GART_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gara_cedulatitular" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="gara_cedulagarante" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="gara_nombres" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="gara_tipo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="gara_operacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gara_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gara_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gara_auxv3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gara_auxv4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gara_auxv5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gara_auxi1" Type="Int32" />
+          <Property Name="gara_auxi2" Type="Int32" />
+          <Property Name="gara_auxi3" Type="Int32" />
+          <Property Name="gara_auxi4" Type="Int32" />
+          <Property Name="gara_auxi5" Type="Int32" />
+          <Property Name="gara_fechacreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="gara_usuariocreacion" Type="Int32" Nullable="false" />
+          <Property Name="gara_terminalcreacion" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="gara_fum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="gara_uum" Type="Int32" Nullable="false" />
+          <Property Name="gara_tum" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7139,30 +7121,6 @@
                 <ScalarProperty Name="revl_ltdecodigo" ColumnName="revl_ltdecodigo" />
                 <ScalarProperty Name="revl_ltcacodigo" ColumnName="revl_ltcacodigo" />
                 <ScalarProperty Name="REVL_CODIGO" ColumnName="REVL_CODIGO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SoftCob_TELEFONOS_CEDENTE">
-            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_TELEFONOS_CEDENTE">
-              <MappingFragment StoreEntitySet="SoftCob_TELEFONOS_CEDENTE">
-                <ScalarProperty Name="tece_terminalcreacion" ColumnName="tece_terminalcreacion" />
-                <ScalarProperty Name="tece_usuariocreacion" ColumnName="tece_usuariocreacion" />
-                <ScalarProperty Name="tece_fechacreacion" ColumnName="tece_fechacreacion" />
-                <ScalarProperty Name="tece_auxi3" ColumnName="tece_auxi3" />
-                <ScalarProperty Name="tece_auxi2" ColumnName="tece_auxi2" />
-                <ScalarProperty Name="tece_auxi1" ColumnName="tece_auxi1" />
-                <ScalarProperty Name="tece_auxv3" ColumnName="tece_auxv3" />
-                <ScalarProperty Name="tece_auxv2" ColumnName="tece_auxv2" />
-                <ScalarProperty Name="tece_auxv1" ColumnName="tece_auxv1" />
-                <ScalarProperty Name="tece_estado" ColumnName="tece_estado" />
-                <ScalarProperty Name="tece_score" ColumnName="tece_score" />
-                <ScalarProperty Name="tece_propietario" ColumnName="tece_propietario" />
-                <ScalarProperty Name="tece_tipo" ColumnName="tece_tipo" />
-                <ScalarProperty Name="tece_numero" ColumnName="tece_numero" />
-                <ScalarProperty Name="tece_telecodigo" ColumnName="tece_telecodigo" />
-                <ScalarProperty Name="tece_perscodigo" ColumnName="tece_perscodigo" />
-                <ScalarProperty Name="tece_cedecodigo" ColumnName="tece_cedecodigo" />
-                <ScalarProperty Name="TECE_CODIGO" ColumnName="TECE_CODIGO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7710,32 +7668,6 @@
                 <ScalarProperty Name="caes_nombre" ColumnName="caes_nombre" />
                 <ScalarProperty Name="TABD_CODIGO" ColumnName="TABD_CODIGO" />
                 <ScalarProperty Name="CAES_CODIGO" ColumnName="CAES_CODIGO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SoftCob_DEUDOR_REFERENCIAS">
-            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_DEUDOR_REFERENCIAS">
-              <MappingFragment StoreEntitySet="SoftCob_DEUDOR_REFERENCIAS">
-                <ScalarProperty Name="dere_tum" ColumnName="dere_tum" />
-                <ScalarProperty Name="dere_uum" ColumnName="dere_uum" />
-                <ScalarProperty Name="dere_fum" ColumnName="dere_fum" />
-                <ScalarProperty Name="dere_terminalcreacion" ColumnName="dere_terminalcreacion" />
-                <ScalarProperty Name="dere_usuariocreacion" ColumnName="dere_usuariocreacion" />
-                <ScalarProperty Name="dere_fechacreacion" ColumnName="dere_fechacreacion" />
-                <ScalarProperty Name="dere_auxi3" ColumnName="dere_auxi3" />
-                <ScalarProperty Name="dere_auxi2" ColumnName="dere_auxi2" />
-                <ScalarProperty Name="dere_auxi1" ColumnName="dere_auxi1" />
-                <ScalarProperty Name="dere_auxv3" ColumnName="dere_auxv3" />
-                <ScalarProperty Name="dere_auxv2" ColumnName="dere_auxv2" />
-                <ScalarProperty Name="dere_auxv1" ColumnName="dere_auxv1" />
-                <ScalarProperty Name="dere_telefono" ColumnName="dere_telefono" />
-                <ScalarProperty Name="dere_tipotelefono" ColumnName="dere_tipotelefono" />
-                <ScalarProperty Name="dere_apellidoreferencia" ColumnName="dere_apellidoreferencia" />
-                <ScalarProperty Name="dere_nombrereferencia" ColumnName="dere_nombrereferencia" />
-                <ScalarProperty Name="dere_tiporeferencia" ColumnName="dere_tiporeferencia" />
-                <ScalarProperty Name="dere_parentesco" ColumnName="dere_parentesco" />
-                <ScalarProperty Name="CLDE_CODIGO" ColumnName="CLDE_CODIGO" />
-                <ScalarProperty Name="DERE_CODIGO" ColumnName="DERE_CODIGO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8746,24 +8678,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SoftCob_GARANTES">
-            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_GARANTES">
-              <MappingFragment StoreEntitySet="SoftCob_GARANTES">
-                <ScalarProperty Name="EMAIL_TRABAJO" ColumnName="EMAIL_TRABAJO" />
-                <ScalarProperty Name="EMAIL_PERSONAL" ColumnName="EMAIL_PERSONAL" />
-                <ScalarProperty Name="REFERENCIA_TRABAJO" ColumnName="REFERENCIA_TRABAJO" />
-                <ScalarProperty Name="DIRECCION_TRABAJO" ColumnName="DIRECCION_TRABAJO" />
-                <ScalarProperty Name="REFERENCIA_DOMICILIO" ColumnName="REFERENCIA_DOMICILIO" />
-                <ScalarProperty Name="DIRECCION_DOMICILIO" ColumnName="DIRECCION_DOMICILIO" />
-                <ScalarProperty Name="NUM_OPERACION" ColumnName="NUM_OPERACION" />
-                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
-                <ScalarProperty Name="GARANTE" ColumnName="GARANTE" />
-                <ScalarProperty Name="CEDULA" ColumnName="CEDULA" />
-                <ScalarProperty Name="CEDULA_TITULAR" ColumnName="CEDULA_TITULAR" />
-                <ScalarProperty Name="GART_CODIGO" ColumnName="GART_CODIGO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SoftCob_OPCIONESMULTIPLES_LISTA">
             <EntityTypeMapping TypeName="SoftCobModel.SoftCob_OPCIONESMULTIPLES_LISTA">
               <MappingFragment StoreEntitySet="SoftCob_OPCIONESMULTIPLES_LISTA">
@@ -8905,6 +8819,82 @@
                 <ScalarProperty Name="pers_numerodocumento" ColumnName="pers_numerodocumento" />
                 <ScalarProperty Name="pers_tipodocumento" ColumnName="pers_tipodocumento" />
                 <ScalarProperty Name="PERS_CODIGO" ColumnName="PERS_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_DEUDOR_REFERENCIAS">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_DEUDOR_REFERENCIAS">
+              <MappingFragment StoreEntitySet="SoftCob_DEUDOR_REFERENCIAS">
+                <ScalarProperty Name="dere_terminalcreacion" ColumnName="dere_terminalcreacion" />
+                <ScalarProperty Name="dere_usuariocreacion" ColumnName="dere_usuariocreacion" />
+                <ScalarProperty Name="dere_fechacreacion" ColumnName="dere_fechacreacion" />
+                <ScalarProperty Name="dere_tum" ColumnName="dere_tum" />
+                <ScalarProperty Name="dere_uum" ColumnName="dere_uum" />
+                <ScalarProperty Name="dere_fum" ColumnName="dere_fum" />
+                <ScalarProperty Name="dere_auxi3" ColumnName="dere_auxi3" />
+                <ScalarProperty Name="dere_auxi2" ColumnName="dere_auxi2" />
+                <ScalarProperty Name="dere_auxi1" ColumnName="dere_auxi1" />
+                <ScalarProperty Name="dere_auxv3" ColumnName="dere_auxv3" />
+                <ScalarProperty Name="dere_auxv2" ColumnName="dere_auxv2" />
+                <ScalarProperty Name="dere_auxv1" ColumnName="dere_auxv1" />
+                <ScalarProperty Name="dere_apellidoreferencia" ColumnName="dere_apellidoreferencia" />
+                <ScalarProperty Name="dere_nombrereferencia" ColumnName="dere_nombrereferencia" />
+                <ScalarProperty Name="dere_tiporeferencia" ColumnName="dere_tiporeferencia" />
+                <ScalarProperty Name="dere_numdocumento" ColumnName="dere_numdocumento" />
+                <ScalarProperty Name="pers_codigo" ColumnName="pers_codigo" />
+                <ScalarProperty Name="DERE_CODIGO" ColumnName="DERE_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_TELEFONOS_CEDENTE">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_TELEFONOS_CEDENTE">
+              <MappingFragment StoreEntitySet="SoftCob_TELEFONOS_CEDENTE">
+                <ScalarProperty Name="tece_terminalcreacion" ColumnName="tece_terminalcreacion" />
+                <ScalarProperty Name="tece_usuariocreacion" ColumnName="tece_usuariocreacion" />
+                <ScalarProperty Name="tece_fechacreacion" ColumnName="tece_fechacreacion" />
+                <ScalarProperty Name="tece_auxi3" ColumnName="tece_auxi3" />
+                <ScalarProperty Name="tece_auxi2" ColumnName="tece_auxi2" />
+                <ScalarProperty Name="tece_auxi1" ColumnName="tece_auxi1" />
+                <ScalarProperty Name="tece_auxv3" ColumnName="tece_auxv3" />
+                <ScalarProperty Name="tece_auxv2" ColumnName="tece_auxv2" />
+                <ScalarProperty Name="tece_auxv1" ColumnName="tece_auxv1" />
+                <ScalarProperty Name="tece_estado" ColumnName="tece_estado" />
+                <ScalarProperty Name="tece_score" ColumnName="tece_score" />
+                <ScalarProperty Name="tece_propietario" ColumnName="tece_propietario" />
+                <ScalarProperty Name="tece_tipo" ColumnName="tece_tipo" />
+                <ScalarProperty Name="tece_numero" ColumnName="tece_numero" />
+                <ScalarProperty Name="tece_referencodigo" ColumnName="tece_referencodigo" />
+                <ScalarProperty Name="tece_perscodigo" ColumnName="tece_perscodigo" />
+                <ScalarProperty Name="tece_cedecodigo" ColumnName="tece_cedecodigo" />
+                <ScalarProperty Name="TECE_CODIGO" ColumnName="TECE_CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftCob_GARANTES">
+            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_GARANTES">
+              <MappingFragment StoreEntitySet="SoftCob_GARANTES">
+                <ScalarProperty Name="gara_tum" ColumnName="gara_tum" />
+                <ScalarProperty Name="gara_uum" ColumnName="gara_uum" />
+                <ScalarProperty Name="gara_fum" ColumnName="gara_fum" />
+                <ScalarProperty Name="gara_terminalcreacion" ColumnName="gara_terminalcreacion" />
+                <ScalarProperty Name="gara_usuariocreacion" ColumnName="gara_usuariocreacion" />
+                <ScalarProperty Name="gara_fechacreacion" ColumnName="gara_fechacreacion" />
+                <ScalarProperty Name="gara_auxi5" ColumnName="gara_auxi5" />
+                <ScalarProperty Name="gara_auxi4" ColumnName="gara_auxi4" />
+                <ScalarProperty Name="gara_auxi3" ColumnName="gara_auxi3" />
+                <ScalarProperty Name="gara_auxi2" ColumnName="gara_auxi2" />
+                <ScalarProperty Name="gara_auxi1" ColumnName="gara_auxi1" />
+                <ScalarProperty Name="gara_auxv5" ColumnName="gara_auxv5" />
+                <ScalarProperty Name="gara_auxv4" ColumnName="gara_auxv4" />
+                <ScalarProperty Name="gara_auxv3" ColumnName="gara_auxv3" />
+                <ScalarProperty Name="gara_auxv2" ColumnName="gara_auxv2" />
+                <ScalarProperty Name="gara_auxv1" ColumnName="gara_auxv1" />
+                <ScalarProperty Name="gara_operacion" ColumnName="gara_operacion" />
+                <ScalarProperty Name="gara_tipo" ColumnName="gara_tipo" />
+                <ScalarProperty Name="gara_nombres" ColumnName="gara_nombres" />
+                <ScalarProperty Name="gara_cedulagarante" ColumnName="gara_cedulagarante" />
+                <ScalarProperty Name="gara_cedulatitular" ColumnName="gara_cedulatitular" />
+                <ScalarProperty Name="GART_CODIGO" ColumnName="GART_CODIGO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

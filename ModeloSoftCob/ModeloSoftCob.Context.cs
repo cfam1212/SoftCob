@@ -51,7 +51,6 @@ namespace ModeloSoftCob
         public virtual DbSet<SoftCob_SPEECH_DETALLE> SoftCob_SPEECH_DETALLE { get; set; }
         public virtual DbSet<SoftCob_CAMPOS_SPEECH> SoftCob_CAMPOS_SPEECH { get; set; }
         public virtual DbSet<SoftCob_REGISTRO_VOLVERALLAMAR> SoftCob_REGISTRO_VOLVERALLAMAR { get; set; }
-        public virtual DbSet<SoftCob_TELEFONOS_CEDENTE> SoftCob_TELEFONOS_CEDENTE { get; set; }
         public virtual DbSet<SoftCob_BRENCH> SoftCob_BRENCH { get; set; }
         public virtual DbSet<SoftCob_LISTATRABAJO_ACTIVAS> SoftCob_LISTATRABAJO_ACTIVAS { get; set; }
         public virtual DbSet<SoftCob_LISTATRABAJO_CABECERA> SoftCob_LISTATRABAJO_CABECERA { get; set; }
@@ -74,7 +73,6 @@ namespace ModeloSoftCob
         public virtual DbSet<SoftCob_BRENCHGESTORCAB> SoftCob_BRENCHGESTORCAB { get; set; }
         public virtual DbSet<SoftCob_CAMPOS_ADICIONALES> SoftCob_CAMPOS_ADICIONALES { get; set; }
         public virtual DbSet<SoftCob_CAMPOS_ESTRATEGIA> SoftCob_CAMPOS_ESTRATEGIA { get; set; }
-        public virtual DbSet<SoftCob_DEUDOR_REFERENCIAS> SoftCob_DEUDOR_REFERENCIAS { get; set; }
         public virtual DbSet<SoftCob_EMPLOYEE> SoftCob_EMPLOYEE { get; set; }
         public virtual DbSet<SoftCob_ESTADOS_DELYO> SoftCob_ESTADOS_DELYO { get; set; }
         public virtual DbSet<SoftCob_ESTILOS_NEGOCIACION> SoftCob_ESTILOS_NEGOCIACION { get; set; }
@@ -121,13 +119,15 @@ namespace ModeloSoftCob
         public virtual DbSet<SoftCob_REFERENCIASPERSONALES> SoftCob_REFERENCIASPERSONALES { get; set; }
         public virtual DbSet<SoftCob_SCORETELEFONO> SoftCob_SCORETELEFONO { get; set; }
         public virtual DbSet<SoftCob_SCORING_TELEFONICO> SoftCob_SCORING_TELEFONICO { get; set; }
-        public virtual DbSet<SoftCob_GARANTES> SoftCob_GARANTES { get; set; }
         public virtual DbSet<SoftCob_OPCIONESMULTIPLES_LISTA> SoftCob_OPCIONESMULTIPLES_LISTA { get; set; }
         public virtual DbSet<SoftCob_ARBOL_ACCION> SoftCob_ARBOL_ACCION { get; set; }
         public virtual DbSet<SoftCob_ARBOL_CONTACTO> SoftCob_ARBOL_CONTACTO { get; set; }
         public virtual DbSet<SoftCob_ARBOL_EFECTO> SoftCob_ARBOL_EFECTO { get; set; }
         public virtual DbSet<SoftCob_ARBOL_RESPUESTA> SoftCob_ARBOL_RESPUESTA { get; set; }
         public virtual DbSet<SoftCob_PERSONA> SoftCob_PERSONA { get; set; }
+        public virtual DbSet<SoftCob_DEUDOR_REFERENCIAS> SoftCob_DEUDOR_REFERENCIAS { get; set; }
+        public virtual DbSet<SoftCob_TELEFONOS_CEDENTE> SoftCob_TELEFONOS_CEDENTE { get; set; }
+        public virtual DbSet<SoftCob_GARANTES> SoftCob_GARANTES { get; set; }
     
         public virtual ObjectResult<string> FunMenuEditUpdate(string in_check, Nullable<int> in_codigomenu, Nullable<int> in_codigotarea, Nullable<int> in_emprcodigo, string in_auxv1, string in_auxv2, string in_auxv3, Nullable<int> in_auxi1, Nullable<int> in_auxi2, Nullable<int> in_auxi3, Nullable<int> in_usucodigo, string in_terminal)
         {

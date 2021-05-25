@@ -1029,6 +1029,51 @@
             }
             return _dts;
         }
+
+        public DataSet FunNewDireccionEmail(int tipo, int codigodigt, string cedula, string tipodato, string tipocliente, string definicion, 
+            string direccion, string referencia, string email, string auxv1, string auxv2, string auxv3, string auxv4,
+            int auxi1, int auxi2, int auxi3, int auxi4, int usuacodigo, string terminal, string conexion)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(conexion))
+                {
+                    using (SqlCommand comm = new SqlCommand())
+                    {
+                        comm.Connection = con;
+                        comm.CommandTimeout = 9000;
+                        comm.CommandType = CommandType.StoredProcedure;
+                        comm.CommandText = "sp_NewDireccionEmail";
+                        comm.Parameters.AddWithValue("@in_tipo", tipo);
+                        comm.Parameters.AddWithValue("@in_codigodigt", codigodigt);
+                        comm.Parameters.AddWithValue("@in_cedula", cedula);
+                        comm.Parameters.AddWithValue("@in_tipodato", tipodato);
+                        comm.Parameters.AddWithValue("@in_tipocliente", tipocliente);
+                        comm.Parameters.AddWithValue("@in_definicion", definicion);
+                        comm.Parameters.AddWithValue("@in_direccion", direccion);
+                        comm.Parameters.AddWithValue("@in_referencia", referencia);
+                        comm.Parameters.AddWithValue("@in_email", email);
+                        comm.Parameters.AddWithValue("@in_auxv1", auxv1);
+                        comm.Parameters.AddWithValue("@in_auxv2", auxv2);
+                        comm.Parameters.AddWithValue("@in_auxv3", auxv3);
+                        comm.Parameters.AddWithValue("@in_auxv4", auxv4);
+                        comm.Parameters.AddWithValue("@in_auxi1", auxi1);
+                        comm.Parameters.AddWithValue("@in_auxi2", auxi2);
+                        comm.Parameters.AddWithValue("@in_auxi3", auxi3);
+                        comm.Parameters.AddWithValue("@in_auxi4", auxi4);
+                        comm.Parameters.AddWithValue("@in_usuacodigo", usuacodigo);
+                        comm.Parameters.AddWithValue("@in_terminal", terminal);
+                        _dap.SelectCommand = comm;
+                        _dap.Fill(_dts);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return _dts;
+        }
         #endregion
     }
 }

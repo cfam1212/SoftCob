@@ -298,7 +298,6 @@
         {
             try
             {
-
                 var query = from SPD in _dtb.SoftCob_SPEECH_DETALLE
                             join ACC in _dtb.SoftCob_ARBOL_ACCION on SPD.spde_araccodigo equals ACC.ARAC_CODIGO
                             join EFE in _dtb.SoftCob_ARBOL_EFECTO on SPD.spde_arefcodigo equals EFE.AREF_CODIGO
@@ -339,9 +338,9 @@
             try
             {
                 var query = from SPD in _dtb.SoftCob_SPEECH_DETALLE
-                            join ACC in _dtb.SoftCob_ACCION on SPD.spde_araccodigo equals ACC.ARAC_CODIGO
-                            join EFE in _dtb.SoftCob_EFECTO on SPD.spde_arefcodigo equals EFE.AREF_CODIGO
-                            join ARE in _dtb.SoftCob_RESPUESTA on SPD.spde_arrecodigo equals ARE.ARRE_CODIGO
+                            join ACC in _dtb.SoftCob_ARBOL_ACCION on SPD.spde_araccodigo equals ACC.ARAC_CODIGO
+                            join EFE in _dtb.SoftCob_ARBOL_EFECTO on SPD.spde_arefcodigo equals EFE.AREF_CODIGO
+                            join ARE in _dtb.SoftCob_ARBOL_RESPUESTA on SPD.spde_arrecodigo equals ARE.ARRE_CODIGO
                             where SPD.SPCA_CODIGO == codigoSPCA
                             orderby ACC.arac_descripcion
                             select new ArbolSpeechDTO

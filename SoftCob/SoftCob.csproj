@@ -311,6 +311,7 @@
     <Content Include="Views\Cedente\WFrm_AsignarCartera.aspx" />
     <Content Include="Views\Cedente\WFrm_CedenteAdmin.aspx" />
     <Content Include="Views\Cedente\WFrm_GestorSupervisor.aspx" />
+    <Content Include="Views\Cedente\WFrm_NewDeudor.aspx" />
     <Content Include="Views\Cedente\WFrm_NuevoCedente.aspx" />
     <Content Include="Views\Cedente\WFrm_NuevoDeudor.aspx" />
     <Content Include="Views\Cedente\WFrm_ReasignarCartera.aspx" />
@@ -664,6 +665,13 @@
     </Compile>
     <Compile Include="Views\Cedente\WFrm_GestorSupervisor.aspx.designer.cs">
       <DependentUpon>WFrm_GestorSupervisor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_NewDeudor.aspx.cs">
+      <DependentUpon>WFrm_NewDeudor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cedente\WFrm_NewDeudor.aspx.designer.cs">
+      <DependentUpon>WFrm_NewDeudor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Cedente\WFrm_NuevoCedente.aspx.cs">
       <DependentUpon>WFrm_NuevoCedente.aspx</DependentUpon>

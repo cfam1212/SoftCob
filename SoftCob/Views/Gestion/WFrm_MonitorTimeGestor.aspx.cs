@@ -4,15 +4,17 @@
     using System;
     using System.Data;
     using System.Web.UI;
+    using System.Linq;
     using System.Web.UI.WebControls;
     public partial class WFrm_MonitorTimeGestor : Page
     {
         #region Variables
         DataSet _dts = new DataSet();
         TimeSpan _turnotarde, _turnonoche, _tiempoactual, _diferencia, _tiempo1, _tiempo2;
-        string _time1 = "", _time2 = "";
+        string _time1 = "", _time2 = "", _validar = "";
         int _minutoslatencia = 0;
         Label _lblcalifica = new Label();
+        DataRow _result;
         #endregion
 
         #region Load
@@ -26,33 +28,43 @@
                 _tiempoactual = DateTime.Now.TimeOfDay;
                 _dts = new ControllerDAO().FunGetDatosParametroDet("HORARIOS SALIDA");
 
-                if (_dts.Tables[0].Rows.Count == 0) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
-
-                if (_dts.Tables[0].Rows[0]["Prametro"].ToString() == "SALIDA TARDE") _turnotarde = TimeSpan.Parse(_dts.Tables[0].Rows[0]["ValorV"].ToString());
-
-                if (_dts.Tables[0].Rows[1]["Prametro"].ToString() == "SALIDA NOCHE") _turnonoche = TimeSpan.Parse(_dts.Tables[0].Rows[1]["ValorV"].ToString());
-
-                if (_dts.Tables[0].Rows[2]["Prametro"].ToString() == "MINUTOS LATENCIA") _minutoslatencia = int.Parse(_dts.Tables[0].Rows[2]["ValorI"].ToString());
-
-                if (Session["IN-CALL"].ToString() == "SI" || Session["codigoCPCE"] == null) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
-
-                _diferencia = _turnotarde - _tiempoactual;
-
-                if (_diferencia.Hours > 0) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
-
-                if (_diferencia.Hours == 0 && _diferencia.Minutes > _minutoslatencia) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
-
-                if (_diferencia.Hours < 0)
+                _result = _dts.Tables[0].Select("Prametro='VALIDAR'").FirstOrDefault();
+                if (_result != null)
                 {
-                    _diferencia = _turnonoche - _tiempoactual;
-
-                    if (_diferencia.Hours > 0) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
-
-                    if (_diferencia.Hours == 0 && _diferencia.Minutes > _minutoslatencia) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
+                    _validar = _result[1].ToString();
                 }
 
                 ViewState["FechaActual"] = DateTime.Now.ToString("MM/dd/yyyy");
                 Lbltitulo.Text = "Monitoreo Challenger - Tiempos - Gestión - Llamada";
+
+                if (_validar == "SI")
+                {
+                    if (_dts.Tables[0].Rows.Count == 0) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
+
+                    if (_dts.Tables[0].Rows[0]["Prametro"].ToString() == "SALIDA TARDE") _turnotarde = TimeSpan.Parse(_dts.Tables[0].Rows[0]["ValorV"].ToString());
+
+                    if (_dts.Tables[0].Rows[1]["Prametro"].ToString() == "SALIDA NOCHE") _turnonoche = TimeSpan.Parse(_dts.Tables[0].Rows[1]["ValorV"].ToString());
+
+                    if (_dts.Tables[0].Rows[2]["Prametro"].ToString() == "MINUTOS LATENCIA") _minutoslatencia = int.Parse(_dts.Tables[0].Rows[2]["ValorI"].ToString());
+
+                    if (Session["IN-CALL"].ToString() == "SI" || Session["codigoCPCE"] == null) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
+
+                    _diferencia = _turnotarde - _tiempoactual;
+
+                    if (_diferencia.Hours > 0) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
+
+                    if (_diferencia.Hours == 0 && _diferencia.Minutes > _minutoslatencia) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
+
+                    if (_diferencia.Hours < 0)
+                    {
+                        _diferencia = _turnonoche - _tiempoactual;
+
+                        if (_diferencia.Hours > 0) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
+
+                        if (_diferencia.Hours == 0 && _diferencia.Minutes > _minutoslatencia) Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
+                    }
+                }
+
                 FunCargarMantenimiento();
             }
         }
@@ -63,13 +75,20 @@
         {
             try
             {
+
+                if (Session["CodigoCPCE"] == null)
+                {
+                    new FuncionesDAO().FunShowJSMessage("No ha realizado ninguna gestión para monitorear sus resultados..!", this);
+                    return;
+                }
+
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(100, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "",
                     ViewState["FechaActual"].ToString(), ViewState["FechaActual"].ToString(), Session["Conectar"].ToString());
                 GrdvEfectivas.DataSource = _dts.Tables[0];
                 GrdvEfectivas.DataBind();
                 GrdvMaxLlamada.DataSource = _dts.Tables[1];
                 GrdvMaxLlamada.DataBind();
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(102, int.Parse(Session["codigoCPCE"].ToString()), 0, 0, "",
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(102, int.Parse(Session["CodigoCPCE"].ToString()), 0, 0, "",
                     ViewState["FechaActual"].ToString(), ViewState["FechaActual"].ToString(), Session["Conectar"].ToString());
                 ViewState["Efectivas"] = _dts.Tables[0].Rows.Count;
                 GrdvChallenger.DataSource = _dts.Tables[0];

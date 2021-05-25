@@ -15,26 +15,22 @@ namespace ModeloSoftCob
     public partial class SoftCob_DEUDOR_REFERENCIAS
     {
         public int DERE_CODIGO { get; set; }
-        public int CLDE_CODIGO { get; set; }
-        public string dere_parentesco { get; set; }
+        public int pers_codigo { get; set; }
+        public string dere_numdocumento { get; set; }
         public string dere_tiporeferencia { get; set; }
         public string dere_nombrereferencia { get; set; }
         public string dere_apellidoreferencia { get; set; }
-        public string dere_tipotelefono { get; set; }
-        public string dere_telefono { get; set; }
         public string dere_auxv1 { get; set; }
         public string dere_auxv2 { get; set; }
         public string dere_auxv3 { get; set; }
         public Nullable<int> dere_auxi1 { get; set; }
         public Nullable<int> dere_auxi2 { get; set; }
         public Nullable<int> dere_auxi3 { get; set; }
-        public System.DateTime dere_fechacreacion { get; set; }
-        public int dere_usuariocreacion { get; set; }
-        public string dere_terminalcreacion { get; set; }
         public System.DateTime dere_fum { get; set; }
         public int dere_uum { get; set; }
         public string dere_tum { get; set; }
-    
-        public virtual SoftCob_CLIENTE_DEUDOR SoftCob_CLIENTE_DEUDOR { get; set; }
+        public System.DateTime dere_fechacreacion { get; set; }
+        public int dere_usuariocreacion { get; set; }
+        public string dere_terminalcreacion { get; set; }
     }
 }

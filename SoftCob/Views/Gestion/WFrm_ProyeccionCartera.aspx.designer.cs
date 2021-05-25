@@ -159,15 +159,6 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.TextBox TxtValor;
 
         /// <summary>
-        /// Control TxtDocumento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDocumento;
-
-        /// <summary>
         /// Control TxtObservacion.
         /// </summary>
         /// <remarks>
@@ -175,6 +166,15 @@ namespace SoftCob.Views.Gestion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtObservacion;
+
+        /// <summary>
+        /// Control TxtDocumento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtDocumento;
 
         /// <summary>
         /// Control ImgActualizar.

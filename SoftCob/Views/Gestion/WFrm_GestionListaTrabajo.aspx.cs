@@ -168,7 +168,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        _dtsx = new ConsultaDatosDAO().FunConsultaDatos(224, int.Parse(Session["codigoCPCE"].ToString()),
+                        _dtsx = new ConsultaDatosDAO().FunConsultaDatos(224, int.Parse(Session["CodigoCPCE"].ToString()),
                             _day, int.Parse(Session["usuCodigo"].ToString()), "", "", "", Session["Conectar"].ToString());
 
                         if (_dtsx.Tables[0].Rows.Count == 0)
@@ -177,7 +177,7 @@
                             {
                                 if (_day == int.Parse(_drfila["ValirI"].ToString()))
                                 {
-                                    _dts = new ConsultaDatosDAO().FunConsultaDatos(225, int.Parse(Session["codigoCPCE"].ToString()),
+                                    _dts = new ConsultaDatosDAO().FunConsultaDatos(225, int.Parse(Session["CodigoCPCE"].ToString()),
                                         _day, int.Parse(Session["usuCodigo"].ToString()), "", "", "", Session["Conectar"].ToString());
                                     _mostrarpopup = true;
                                     break;
@@ -190,7 +190,7 @@
                     {
                         ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", "javascript: var posicion_x; " +
                             "var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); " +
-                            "window.open('../Breanch/WFrm_CompararBrench.aspx?CodigoCPCE=" + Session["codigoCPCE"].ToString() +
+                            "window.open('../Breanch/WFrm_CompararBrench.aspx?CodigoCPCE=" + Session["CodigoCPCE"].ToString() +
                             "',null,'left=' + posicion_x + " +
                             "', top=' + posicion_y + ', width=850px, height=450px, status=no,resizable= yes, scrollbars=yes, " +
                             "toolbar=no, location=no, menubar=no,titlebar=0');", true);
@@ -210,7 +210,7 @@
                         break;
                 }
 
-                if (Session["codigoCPCE"].ToString() == "3") ImgCitacion.Visible = true;
+                //if (Session["CodigoCPCE"].ToString() == "3") ImgCitacion.Visible = true;
 
                 Lbltitulo.Text = "Gestion Lista de Trabajo " + ViewState["Catalogo"].ToString();
 
@@ -219,7 +219,7 @@
                         "", "", Session["Conectar"].ToString());
                 GrdvEstadisticas.DataSource = _dts;
                 GrdvEstadisticas.DataBind();
-                _dts = new ListaTrabajoDAO().FunGetArbolRespuesta(int.Parse(Session["codigoCPCE"].ToString()));
+                _dts = new ListaTrabajoDAO().FunGetArbolRespuesta(int.Parse(Session["CodigoCPCE"].ToString()));
                 ViewState["ArbolContactoEfectivo"] = _dts.Tables[0];
 
                 FunCargarCombos(0);
@@ -295,7 +295,7 @@
                         GrdvDatosDeudor.DataBind();
                         //Datos Obligacion
                         _dts = new ConsultaDatosDAO().FunConsultaDatos(33, int.Parse(ViewState["CodigoCedente"].ToString()),
-                            int.Parse(Session["codigoCPCE"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()),
+                            int.Parse(Session["CodigoCPCE"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()),
                             ViewState["Catalogo"].ToString(), "", "", Session["Conectar"].ToString().ToString());
                         GrdvDatosObligacion.DataSource = _dts;
                         GrdvDatosObligacion.DataBind();
@@ -365,7 +365,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(39, idListaCabecera, int.Parse(Session["usuCodigo"].ToString()),
-                    int.Parse(Session["codigoCPCE"].ToString()), "", "", "", Session["Conectar"].ToString());
+                    int.Parse(Session["CodigoCPCE"].ToString()), "", "", "", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -654,7 +654,7 @@
                 ViewState["CodigoCedente"] = _dts.Tables[0].Rows[0]["CedeCodigo"].ToString();
                 ViewState["CodigoProducto"] = _dts.Tables[0].Rows[0]["PrceCodigo"].ToString();
                 ViewState["Producto"] = _dts.Tables[0].Rows[0]["Producto"].ToString();
-                Session["codigoCPCE"] = _dts.Tables[0].Rows[0]["CpceCodigo"].ToString();
+                Session["CodigoCPCE"] = _dts.Tables[0].Rows[0]["CpceCodigo"].ToString();
                 Session["codigoCEDE"] = _dts.Tables[0].Rows[0]["CedeCodigo"].ToString();
                 ViewState["Catalogo"] = _dts.Tables[0].Rows[0]["Catalogo"].ToString();
                 ViewState["Operaciones"] = _dts.Tables[0].Rows[0]["Operaciones"].ToString();
@@ -663,12 +663,12 @@
                 ViewState["NivelArbol"] = cedente.cede_auxi1;
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(213, int.Parse(Session["usuCodigo"].ToString()),
-                    int.Parse(Session["codigoCPCE"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
+                    int.Parse(Session["CodigoCPCE"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
                 GrdvBrenchGestor.DataSource = _dts;
                 GrdvBrenchGestor.DataBind();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(214, int.Parse(Session["usuCodigo"].ToString()),
-                    int.Parse(Session["codigoCPCE"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
+                    int.Parse(Session["CodigoCPCE"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
                 GrdvBrenchPago.DataSource = _dts;
                 GrdvBrenchPago.DataBind();
             }
@@ -800,7 +800,7 @@
 
                         break;
                     case 1:
-                        DdlAccion.DataSource = new SpeechDAO().FunGetArbolNewAccion(int.Parse(Session["codigoCPCE"].ToString()));
+                        DdlAccion.DataSource = new SpeechDAO().FunGetArbolNewAccion(int.Parse(Session["CodigoCPCE"].ToString()));
                         DdlAccion.DataTextField = "Descripcion";
                         DdlAccion.DataValueField = "Codigo";
                         DdlAccion.DataBind();
@@ -918,7 +918,7 @@
             {
                 ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", "javascript: var posicion_x; " +
                     "var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); " +
-                    "window.open('../Breanch/WFrm_CompararBrench.aspx?CodigoCPCE=" + Session["codigoCPCE"].ToString() +
+                    "window.open('../Breanch/WFrm_CompararBrench.aspx?CodigoCPCE=" + Session["CodigoCPCE"].ToString() +
                     "',null,'left=' + posicion_x + " +
                     "', top=' + posicion_y + ', width=850px, height=450px, status=no,resizable= yes, scrollbars=yes, " +
                     "toolbar=no, location=no, menubar=no,titlebar=0');", true);
@@ -966,7 +966,7 @@
             ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", "javascript: var posicion_x; " +
                 "var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); " +
                 "window.open('WFrm_InfAdicional.aspx?CodigoCEDE=" + Session["codigoCEDE"].ToString() +
-                "&CodigoCPCE=" + Session["codigoCPCE"].ToString() + "&CodigoPERS=" + ViewState["PersCodigo"].ToString() +
+                "&CodigoCPCE=" + Session["CodigoCPCE"].ToString() + "&CodigoPERS=" + ViewState["PersCodigo"].ToString() +
                 "&Operacion=" + _operacion + "',null,'left=' + posicion_x + " +
                 "', top=' + posicion_y + ', width=850px, height=450px, status=no,resizable= yes, scrollbars=yes, " +
                 "toolbar=no, location=no, menubar=no,titlebar=0');", true);
@@ -994,7 +994,7 @@
             try
             {
                 _txtspeech = FunConsultarSpeech(1, int.Parse(ViewState["CodigoCedente"].ToString()),
-                    int.Parse(Session["codigoCPCE"].ToString()), araccodigo, arefcodigo, arrecodigo, arcocodigo,
+                    int.Parse(Session["CodigoCPCE"].ToString()), araccodigo, arefcodigo, arrecodigo, arcocodigo,
                     int.Parse(ViewState["CodigoSpeechCab"].ToString()));
             }
             catch (Exception ex)
@@ -1097,7 +1097,7 @@
                 {
                     _porcumplido = decimal.Parse(GrdvBrenchGestor.DataKeys[e.Row.RowIndex].Values["PorCumplido"].ToString());
 
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(216, int.Parse(Session["codigoCPCE"].ToString()), 1,
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(216, int.Parse(Session["CodigoCPCE"].ToString()), 1,
                         0, "", _porcumplido.ToString(), "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
@@ -1121,7 +1121,7 @@
                 {
                     _porcumplido = decimal.Parse(GrdvBrenchPago.DataKeys[e.Row.RowIndex].Values["PorCumplido"].ToString());
 
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(216, int.Parse(Session["codigoCPCE"].ToString()), 1,
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(216, int.Parse(Session["CodigoCPCE"].ToString()), 1,
                         0, "", _porcumplido.ToString(), "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
@@ -1193,7 +1193,7 @@
                 _dtbgestion = view.ToTable(true, columnas);
                 _dtbtelefonos = (DataTable)ViewState["TelefonosRegistrados"];
                 _mensaje = new GestionTelefonicaDAO().FunRegistrarGestionTelefonica(int.Parse(ViewState["CodigoCedente"].ToString()),
-                    int.Parse(Session["codigoCPCE"].ToString()), int.Parse(Session["IdListaCabecera"].ToString()),
+                    int.Parse(Session["CodigoCPCE"].ToString()), int.Parse(Session["IdListaCabecera"].ToString()),
                     int.Parse(ViewState["IdSecuencial"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()),
                     int.Parse(ViewState["PersCodigo"].ToString()), ViewState["NumeroDocumento"].ToString(),
                     int.Parse(Session["usuCodigo"].ToString()), ViewState["DialerNumber"].ToString(), ViewState["TipoTelefono"].ToString(),
@@ -1427,7 +1427,7 @@
                 {
                     TreeNode unnode = new TreeNode("CLICK TO CALL", "CT");
                     //LLAMAR A FUNCION PARA CARGAR CLIENTES
-                    if (Session["codigoCPCE"].ToString() == "3")
+                    if (Session["CodigoCPCE"].ToString() == "3")
                         unnode = FunCargarGrupoCTC(unnode, int.Parse(Session["IdListaCabecera"].ToString()));
                     else
                         unnode = FunCargarItemCTC(unnode, int.Parse(Session["IdListaCabecera"].ToString()), "");
@@ -1446,7 +1446,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(74, int.Parse(Session["codigoCPCE"].ToString()), 0, 0,
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(74, int.Parse(Session["CodigoCPCE"].ToString()), 0, 0,
                     "", "", "", Session["Conectar"].ToString());
                 foreach (DataRow drfila in _dts.Tables[0].Rows)
                 {
@@ -1616,7 +1616,7 @@
                 GrdvDatosDeudor.DataBind();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(33, int.Parse(ViewState["CodigoCedente"].ToString()),
-                    int.Parse(Session["codigoCPCE"].ToString()), codigoCLDE, ViewState["Catalogo"].ToString(), "", "",
+                    int.Parse(Session["CodigoCPCE"].ToString()), codigoCLDE, ViewState["Catalogo"].ToString(), "", "",
                     Session["Conectar"].ToString().ToString());
                 GrdvDatosObligacion.DataSource = _dts;
                 GrdvDatosObligacion.DataBind();
@@ -1663,7 +1663,7 @@
                     GrdvDatosDeudor.DataBind();
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(33, int.Parse(ViewState["CodigoCedente"].ToString()),
-                        int.Parse(Session["codigoCPCE"].ToString()), codigoCLDE, ViewState["Catalogo"].ToString(), "", "",
+                        int.Parse(Session["CodigoCPCE"].ToString()), codigoCLDE, ViewState["Catalogo"].ToString(), "", "",
                         Session["Conectar"].ToString().ToString());
                     GrdvDatosObligacion.DataSource = _dts;
                     GrdvDatosObligacion.DataBind();
@@ -1898,7 +1898,7 @@
             try
             {
                 _dtssegmento = new CedenteDAO().FunGetSegmentoCabecera(int.Parse(ViewState["CodigoCedente"].ToString()),
-                    int.Parse(Session["codigoCPCE"].ToString()), 0);
+                    int.Parse(Session["CodigoCPCE"].ToString()), 0);
 
                 if (_dtssegmento.Tables[0].Rows.Count == 0) _segmento = "SIN DEFINIR";
                 else
@@ -1964,7 +1964,7 @@
                 FunClearObject(0);
                 FunCargarCombos(2);
                 _dts = new ListaTrabajoDAO().FunGetSpeech(0, int.Parse(ViewState["CodigoCedente"].ToString()),
-                    int.Parse(Session["codigoCPCE"].ToString()), 0, 0, 0, 0, 0);
+                    int.Parse(Session["CodigoCPCE"].ToString()), 0, 0, 0, 0, 0);
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
                     ViewState["CodigoSpeechCab"] = _dts.Tables[0].Rows[0]["CodigoSpeech"].ToString();
@@ -1987,7 +1987,7 @@
                 FunClearObject(0);
                 FunCargarCombos(3);
                 _dts = new ListaTrabajoDAO().FunGetSpeech(0, int.Parse(ViewState["CodigoCedente"].ToString()),
-                    int.Parse(Session["codigoCPCE"].ToString()), 0, 0, 0, 0, 0);
+                    int.Parse(Session["CodigoCPCE"].ToString()), 0, 0, 0, 0, 0);
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -2011,7 +2011,7 @@
                 FunClearObject(0);
 
                 _dts = new ListaTrabajoDAO().FunGetSpeech(0, int.Parse(ViewState["CodigoCedente"].ToString()),
-                        int.Parse(Session["codigoCPCE"].ToString()), 0, 0, 0, 0, 0);
+                        int.Parse(Session["CodigoCPCE"].ToString()), 0, 0, 0, 0, 0);
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -2061,7 +2061,7 @@
                 TxtObservacion.Text = "";
                 updObservacion.Update();
                 _dts = new ListaTrabajoDAO().FunGetSpeech(0, int.Parse(ViewState["CodigoCedente"].ToString()),
-                        int.Parse(Session["codigoCPCE"].ToString()), 0, 0, 0, 0, 0);
+                        int.Parse(Session["CodigoCPCE"].ToString()), 0, 0, 0, 0, 0);
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
                     ViewState["CodigoSpeechCab"] = _dts.Tables[0].Rows[0]["CodigoSpeech"].ToString();
@@ -2212,7 +2212,7 @@
                     {
                         addTelefono.tece_cedecodigo = int.Parse(ViewState["CodigoCedente"].ToString());
                         addTelefono.tece_perscodigo = int.Parse(ViewState["PersCodigo"].ToString());
-                        addTelefono.tece_telecodigo = 0;
+                        addTelefono.tece_referencodigo = 0;
                         addTelefono.tece_numero = TxtTelefono.Text.Trim();
                         addTelefono.tece_tipo = DdlTipTelefono2.SelectedValue;
                         addTelefono.tece_propietario = DdlPropietario2.SelectedValue;
@@ -2235,14 +2235,11 @@
                     {
                         SoftCob_DEUDOR_REFERENCIAS addTelefonoref = new SoftCob_DEUDOR_REFERENCIAS();
                         {
-                            addTelefonoref.CLDE_CODIGO = int.Parse(ViewState["CodigoCLDE"].ToString());
-                            addTelefonoref.dere_parentesco = DdlPropietario2.SelectedValue;
-                            addTelefonoref.dere_tiporeferencia = "GA";
+                            addTelefonoref.pers_codigo = int.Parse(ViewState["CodigoCLDE"].ToString());
+                            addTelefonoref.dere_tiporeferencia = "GAR";
                             addTelefonoref.dere_nombrereferencia = TxtNombres.Text.Trim().ToUpper();
                             addTelefonoref.dere_apellidoreferencia = TxtApellidos.Text.Trim().ToUpper();
-                            addTelefonoref.dere_tipotelefono = DdlTipTelefono2.SelectedValue;
-                            addTelefonoref.dere_telefono = TxtTelefono.Text.Trim();
-                            addTelefonoref.dere_auxv1 = DdlTipTelefono2.SelectedValue == "CN" ? DdlPrefijo.SelectedValue : "";
+                            addTelefonoref.dere_auxv1 = "";
                             addTelefonoref.dere_auxv2 = "";
                             addTelefonoref.dere_auxv3 = "";
                             addTelefonoref.dere_auxi1 = 0;
@@ -2518,6 +2515,22 @@
                 _valorpago = TxtValorAbono.Text.Trim() == "" ? "0.00" : TxtValorAbono.Text;
                 _fechallamar = TxtFechaLLamar.Text.Trim() == "" ? DateTime.Now.ToString("MM/dd/yyyy") : TxtFechaLLamar.Text;
                 _horallamar = TxtHoraLLamar.Text.Trim() == "" ? "00:00:00" : TxtHoraLLamar.Text.Trim();
+
+                //VALIDAR SI EXISTE UN REGISTRO DE PAGO CON LA MISMA FECHA
+                if (ViewState["Pago"].ToString() == "S")
+                {
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(240, int.Parse(ViewState["PersCodigo"].ToString()),
+                        int.Parse(DdlContacto.SelectedValue), int.Parse(Session["CodigoCPCE"].ToString()), "", TxtFechaPago.Text,
+                        TxtValorAbono.Text, Session["Conectar"].ToString());
+
+                    if (_dts.Tables[0].Rows.Count > 0)
+                    {
+                        new FuncionesDAO().FunShowJSMessage("Cliente ya tien regitrdo un COMPROMISO en esa Fecha " +
+                            "Verifique el registro o Consulte con el Administrador..!", this);
+                        return;
+                    }
+                }
+
                 FunInsertarGestion();
             }
             catch (Exception ex)
@@ -2827,7 +2840,7 @@
                             newAccion.acci_tipoaccion = "MODIFICAR TELEFONO";
                             newAccion.acci_idmotivo = 7;
                             newAccion.acci_observacion = DdlAccionDel.SelectedItem.ToString() + " - " + DdlRespuestaDel.SelectedItem.ToString();
-                            newAccion.acci_codigocpce = int.Parse(Session["codigoCPCE"].ToString());
+                            newAccion.acci_codigocpce = int.Parse(Session["CodigoCPCE"].ToString());
                             newAccion.acci_identificacion = ViewState["NumeroDocumento"].ToString();
                             newAccion.acci_operacion = "";
                             newAccion.acci_gestoranterior = 0;
@@ -2892,7 +2905,7 @@
                     {
                         loguintime.USUA_CODIGO = int.Parse(Session["usuCodigo"].ToString());
                         loguintime.empr_codigo = int.Parse(Session["CodigoEMPR"].ToString());
-                        loguintime.cpce_codigo = int.Parse(Session["codigoCPCE"].ToString());
+                        loguintime.cpce_codigo = int.Parse(Session["CodigoCPCE"].ToString());
                         loguintime.ltca_codigo = int.Parse(Session["IdListaCabecera"].ToString());
                         loguintime.loti_tipologueo = "SG";
                         _fechalogueo = DateTime.Now.ToString("MM/dd/yyyy");
@@ -3313,7 +3326,7 @@
                 ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", 
                     "javascript: var posicion_x; var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); " +
                     "window.open('WFrm_SpeechBV.aspx?CodigoCEDE=" + Session["codigoCEDE"].ToString() + "&CodigoCPCE=" + 
-                    Session["codigoCPCE"].ToString() + "',null,'left=' + posicion_x + ', top=' + posicion_y + ', width=750px, height=400px," +
+                    Session["CodigoCPCE"].ToString() + "',null,'left=' + posicion_x + ', top=' + posicion_y + ', width=750px, height=400px," +
                     " status=no,resizable= yes, scrollbars=yes, toolbar=no, location=no, menubar=no,titlebar=0');", true);
             }
             catch (Exception ex)
@@ -3326,7 +3339,7 @@
             try
             {
                 ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", "javascript: var posicion_x; var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); window.open('wFrm_SpeechAD.aspx?CodigoCEDE=" + Session["codigoCEDE"].ToString() +
-                    "&CodigoCPCE=" + Session["codigoCPCE"].ToString() + "&CodigoARAC=" + DdlAccion.SelectedValue + "&CodigoAREF=" + DddlEfecto.SelectedValue +
+                    "&CodigoCPCE=" + Session["CodigoCPCE"].ToString() + "&CodigoARAC=" + DdlAccion.SelectedValue + "&CodigoAREF=" + DddlEfecto.SelectedValue +
                     "&CodigoARRE=" + DdlRespuesta.SelectedValue + "&CodigoARCO=" + DdlContacto.SelectedValue + "',null,'left=' + posicion_x + ', top=' + posicion_y + ', width=750px, height=400px, status=no,resizable= yes, scrollbars=yes, toolbar=no, location=no, menubar=no,titlebar=0');", true);
             }
             catch (Exception ex)
@@ -3372,7 +3385,7 @@
                 if (ViewState["PersCodigo"].ToString() != "")
                 {
                     ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", "javascript: var posicion_x; var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); window.open('wFrm_NotasGestion.aspx?CodigoCEDE=" + ViewState["CodigoCedente"].ToString() +
-                        "&CodigoCPCE=" + Session["codigoCPCE"].ToString() + "&codigoPERS=" + ViewState["PersCodigo"].ToString() +
+                        "&CodigoCPCE=" + Session["CodigoCPCE"].ToString() + "&codigoPERS=" + ViewState["PersCodigo"].ToString() +
                         "',null,'left=' + posicion_x + ', top=' + posicion_y + ', width=750px, height=400px, status=no,resizable= yes, scrollbars=yes, toolbar=no, location=no, menubar=no,titlebar=0');", true);
                 }
             }
@@ -3390,7 +3403,7 @@
                 new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
 
                 Response.Redirect("WFrm_RegLlamadaEntrante.aspx?CodigoCEDE=" + Session["codigoCEDE"].ToString() +
-                    "&CodigoCPCE=" + Session["codigoCPCE"].ToString() + "&CodigoCLDE=" + ViewState["CodigoCLDEaux"].ToString() +
+                    "&CodigoCPCE=" + Session["CodigoCPCE"].ToString() + "&CodigoCLDE=" + ViewState["CodigoCLDEaux"].ToString() +
                 "&CodigoPERS=" + ViewState["PersCodigoaux"].ToString() + "&NumeroDocumento=" + ViewState["NumDocumentoaux"].ToString() +
                 "&Operacion=" + ViewState["Operacionaux"].ToString() + "&CodigoLTCA=" + Session["IdListaCabecera"].ToString() +
                 "&CodigoUSU=0&Retornar=3", true);
