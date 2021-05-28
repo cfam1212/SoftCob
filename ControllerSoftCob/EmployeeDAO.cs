@@ -427,6 +427,7 @@
                     _db.SoftCob_USUARIO.Attach(_original);
                     _original.empl_codigo = _usuario.empl_codigo;
                     _db.SaveChanges();
+                    _mensaje = "0";
                 }
             }
             catch (Exception ex)

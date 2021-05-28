@@ -12,7 +12,7 @@
         DataSet _dts = new DataSet();
         ImageButton _imgasigna = new ImageButton();
         ImageButton _imgquita = new ImageButton();
-        string _codigoeployee, _codigousu, _mensaje, _redirect;
+        string _codigoeployee = "0", _codigousu = "0", _mensaje = "0", _redirect = "0";
         #endregion
 
         #region Load
@@ -44,7 +44,7 @@
         {
             try
             {
-                _dts = new EmployeeDAO().FunGetEmployeeAdmin();
+               _dts = new EmployeeDAO().FunGetEmployeeAdmin();
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {

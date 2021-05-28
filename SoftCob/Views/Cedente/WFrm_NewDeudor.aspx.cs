@@ -17,8 +17,8 @@
         ListItem _itemp = new ListItem();
         ListItem _itemg = new ListItem();
         ListItem _itemr = new ListItem();
-        ListItem _itemdirecc = new ListItem();
-        ListItem _itememail = new ListItem();
+        //ListItem _itemdirecc = new ListItem();
+        //ListItem _itememail = new ListItem();
 
         DataSet _dts = new DataSet();
         DataTable _dtboperacion = new DataTable();
@@ -33,7 +33,7 @@
         DataRow _result, _filagre;
         //DataRow[] _resultado;
         CheckBox _chkest = new CheckBox();
-        ImageButton _imgeliminar = new ImageButton();
+        //ImageButton _imgeliminar = new ImageButton();
         string _estado = "", _codigocpce = "", _operacion = "", _nuevo = "", _codigo = "", _cedula = "";
         int _maxcodigo = 0, _perscodigo = 0;
         decimal _totaldeuda, _exigible;

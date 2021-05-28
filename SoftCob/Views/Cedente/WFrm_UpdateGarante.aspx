@@ -144,7 +144,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-info">
+<%--            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -154,7 +154,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>
+            </div>--%>
             <div class="panel-body">
                 <h3 class="label label-primary" style="font-size: 14px; display: block; text-align: left">DATOS GARANTE/CODEUDOR</h3>
                 <asp:UpdatePanel ID="updCabecera" runat="server">

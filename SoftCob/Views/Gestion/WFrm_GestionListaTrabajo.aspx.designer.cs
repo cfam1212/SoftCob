@@ -69,15 +69,6 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.Label Lblerror;
 
         /// <summary>
-        /// Control updProgress.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress updProgress;
-
-        /// <summary>
         /// Control updTimer.
         /// </summary>
         /// <remarks>
@@ -303,6 +294,15 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.Panel PnlAgregarTelefono;
 
         /// <summary>
+        /// Control DdlTipTelefono2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlTipTelefono2;
+
+        /// <summary>
         /// Control TxtTelefono.
         /// </summary>
         /// <remarks>
@@ -321,15 +321,6 @@ namespace SoftCob.Views.Gestion
         protected global::AjaxControlToolkit.FilteredTextBoxExtender txtTelefono_FilteredTextBoxExtender;
 
         /// <summary>
-        /// Control DdlTipTelefono2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlTipTelefono2;
-
-        /// <summary>
         /// Control DdlPrefijo.
         /// </summary>
         /// <remarks>
@@ -346,6 +337,15 @@ namespace SoftCob.Views.Gestion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DdlPropietario2;
+
+        /// <summary>
+        /// Control TxtDocumentoRef.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtDocumentoRef;
 
         /// <summary>
         /// Control TxtNombres.

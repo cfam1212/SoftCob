@@ -124,8 +124,8 @@
             return _dts;
         }
 
-        public string FunEditarTelefonos(int tipo, int perscodigo, int cldecodigo, string tipotelefono, string propietario,
-            string nombreref, string apellidoref, string telefono, string prefijo, string telefonoanterior, string auxv1, string auxv2, 
+        public string FunEditarTelefonos(int tipo, int perscodigo, int codigotelefono, string tipotelefono, string propietario,
+            string nombreref, string apellidoref, string telefono, string prefijo, string numerodocumento, string auxv1, string auxv2, 
             string auxv3, int auxi1, int auxi2, int auxi3, int usucodigo, string terminal, string conexion)
         {
             try
@@ -140,14 +140,14 @@
                         comm.CommandText = "sp_ModificarTelefonos";
                         comm.Parameters.AddWithValue("@in_tipo", tipo);
                         comm.Parameters.AddWithValue("@in_perscodigo", perscodigo);
-                        comm.Parameters.AddWithValue("@in_cldecodigo", cldecodigo);
+                        comm.Parameters.AddWithValue("@in_codigotelefono", codigotelefono);
                         comm.Parameters.AddWithValue("@in_tipotelefono", tipotelefono);
                         comm.Parameters.AddWithValue("@in_propietario", propietario);
                         comm.Parameters.AddWithValue("@in_nombrereferencia", nombreref);
                         comm.Parameters.AddWithValue("@in_apellidoreferencia", apellidoref);
                         comm.Parameters.AddWithValue("@in_telefono", telefono);
                         comm.Parameters.AddWithValue("@in_prefijo", prefijo);
-                        comm.Parameters.AddWithValue("@in_telefonoanterior", telefonoanterior);
+                        comm.Parameters.AddWithValue("@in_numerodocumento", numerodocumento);
                         comm.Parameters.AddWithValue("@in_auxv1", auxv1);
                         comm.Parameters.AddWithValue("@in_auxv2", auxv2);
                         comm.Parameters.AddWithValue("@in_auxv3", auxv3);

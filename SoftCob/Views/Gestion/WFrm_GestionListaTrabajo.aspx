@@ -271,7 +271,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <div class="panel-info">
+                <%--                <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updOpciones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -281,7 +281,7 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>
+                </div>--%>
                 <asp:UpdatePanel ID="updTimer" runat="server">
                     <ContentTemplate>
                         <div>
@@ -329,7 +329,7 @@
                                                                         GroupingText="Estadisticas Gestión" ScrollBars="Horizontal">
                                                                         <asp:GridView ID="GrdvEstadisticas" runat="server"
                                                                             CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                                                            ForeColor="#333333" PageSize="3" TabIndex="2" Width="100%">
+                                                                            ForeColor="#333333" PageSize="3" TabIndex="1" Width="100%">
                                                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                                                             <RowStyle Font-Size="X-Small" />
@@ -373,7 +373,7 @@
                                                                                 GroupingText="Presupuesto Compromisos de Pago" ScrollBars="Horizontal">
                                                                                 <asp:GridView ID="GrdvBrenchGestor" runat="server" Width="100%"
                                                                                     CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                                                                    EmptyDataText="No existen datos para mostrar" TabIndex="7"
+                                                                                    EmptyDataText="No existen datos para mostrar" TabIndex="2"
                                                                                     AutoGenerateColumns="False" PageSize="12" DataKeyNames="CodigoBRMC,PorCumplido"
                                                                                     OnRowDataBound="GrdvBrenchGestor_RowDataBound">
                                                                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
@@ -418,7 +418,7 @@
                                                                             <asp:Panel ID="PnlBrenchPagos" runat="server" Height="200px" GroupingText="Presupuesto Pagos Realizados">
                                                                                 <asp:GridView ID="GrdvBrenchPago" runat="server" Width="100%"
                                                                                     CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                                                                    EmptyDataText="No existen datos para mostrar" TabIndex="7"
+                                                                                    EmptyDataText="No existen datos para mostrar" TabIndex="3"
                                                                                     AutoGenerateColumns="False" PageSize="12" DataKeyNames="CodigoBRMC,PorCumplido"
                                                                                     OnRowDataBound="GrdvBrenchPago_RowDataBound">
                                                                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
@@ -481,11 +481,12 @@
                                                 <tr>
                                                     <td>
                                                         <asp:Panel ID="PnlDatosTelefonos" runat="server" CssClass="panel panel-primary" 
-                                                            Height="750px">
+                                                            Height="780px">
                                                             <table style="width: 100%">
                                                                 <tr>
                                                                     <td>
-                                                                        <asp:Panel ID="PnlAgregarTelefono" runat="server" Height="220px" GroupingText="Agregar Teléfono" Visible="False">
+                                                                        <asp:Panel ID="PnlAgregarTelefono" runat="server" Height="290px" 
+                                                                            GroupingText="Agregar Teléfono" Visible="False">
                                                                             <table style="width: 100%">
                                                                                 <tr>
                                                                                     <td style="width: 15%"></td>
@@ -495,19 +496,19 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
-                                                                                        <h5>Número:</h5>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        <asp:TextBox ID="TxtTelefono" runat="server" CssClass="form-control" Width="100%" TabIndex="3" MaxLength="10"></asp:TextBox>
-                                                                                        <asp:FilteredTextBoxExtender ID="txtTelefono_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtTelefono">
-                                                                                        </asp:FilteredTextBoxExtender>
-                                                                                    </td>
-                                                                                    <td>
                                                                                         <h5>Tipo Teléfono:</h5>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <asp:DropDownList ID="DdlTipTelefono2" runat="server" CssClass="form-control" TabIndex="4" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="DdlTipTelefono2_SelectedIndexChanged">
+                                                                                        <asp:DropDownList ID="DdlTipTelefono2" runat="server" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="DdlTipTelefono2_SelectedIndexChanged" TabIndex="4" Width="100%">
                                                                                         </asp:DropDownList>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <h5>Número:</h5>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <asp:TextBox ID="TxtTelefono" runat="server" CssClass="form-control" MaxLength="10" TabIndex="5" Width="100%"></asp:TextBox>
+                                                                                        <asp:FilteredTextBoxExtender ID="txtTelefono_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtTelefono">
+                                                                                        </asp:FilteredTextBoxExtender>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -515,29 +516,47 @@
                                                                                         <h5>Prefijo:</h5>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <asp:DropDownList ID="DdlPrefijo" runat="server" CssClass="form-control" TabIndex="5" Width="100%">
+                                                                                        <asp:DropDownList ID="DdlPrefijo" runat="server" CssClass="form-control" TabIndex="6" Width="100%">
                                                                                         </asp:DropDownList>
                                                                                     </td>
                                                                                     <td>
                                                                                         <h5>Propietario:</h5>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <asp:DropDownList ID="DdlPropietario2" runat="server" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="DdlPropietario2_SelectedIndexChanged" TabIndex="6" Width="100%">
+                                                                                        <asp:DropDownList ID="DdlPropietario2" runat="server" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="DdlPropietario2_SelectedIndexChanged" TabIndex="7" Width="100%">
                                                                                         </asp:DropDownList>
                                                                                     </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td><h5>No. Documento:</h5></td>
+                                                                                    <td>
+                                                                                        <asp:TextBox ID="TxtDocumentoRef" runat="server" CssClass="form-control upperCase" Enabled="False" MaxLength="10" TabIndex="8" Width="100%"></asp:TextBox>
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
                                                                                         <h5>Nombres:</h5>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <asp:TextBox ID="TxtNombres" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="7" Width="100%" Enabled="False"></asp:TextBox>
+                                                                                        <asp:TextBox ID="TxtNombres" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="9" Width="100%" Enabled="False"></asp:TextBox>
                                                                                     </td>
                                                                                     <td>
                                                                                         <h5>Apellidos:</h5>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <asp:TextBox ID="TxtApellidos" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="8" Width="100%" Enabled="False"></asp:TextBox>
+                                                                                        <asp:TextBox ID="TxtApellidos" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="10" Width="100%" Enabled="False"></asp:TextBox>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -561,7 +580,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <asp:Panel ID="PnlDiv10" runat="server" Height="20px"></asp:Panel>
+                                                                        <asp:Panel ID="PnlDiv10" runat="server" Height="30px"></asp:Panel>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -614,7 +633,7 @@
                                                                                         <asp:Panel ID="pnlTelefonos" runat="server" Height="390px" ScrollBars="Vertical">
                                                                                             <asp:GridView ID="GrdvTelefonos" runat="server" AutoGenerateColumns="False"
                                                                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                                                                                DataKeyNames="Codigo,Telefono,Prefijo,CodTipo,CodPro,Nuevo,Score,BCast"
+                                                                                                DataKeyNames="Codigo,Telefono,Prefijo,CodTipo,CodPro,Nuevo,Score,BCast,NumDocumento"
                                                                                                 ForeColor="#333333" TabIndex="14" Width="100%"
                                                                                                 OnRowDataBound="GrdvTelefonos_RowDataBound">
                                                                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
@@ -1292,7 +1311,7 @@
                                         <asp:Button ID="BtnSalir" runat="server" CssClass="button" OnClick="BtnSalir_Click" TabIndex="42" Text="Salir" Width="120px" />
                                     </td>
                                     <td style="text-align: right">
-                                        <asp:Button ID="BtnPasar" runat="server" BackColor="#FF3300" CssClass="button" OnClick="BtnPasar_Click" TabIndex="41" Text="Pasar" Width="100px" />
+                                        <asp:Button ID="BtnPasar" runat="server" BackColor="#FF3300" CssClass="button" OnClick="BtnPasar_Click" TabIndex="41" Text="Pasar" Width="100px" Visible="False" />
                                     </td>
                                     <td></td>
                                 </tr>

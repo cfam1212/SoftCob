@@ -110,8 +110,8 @@
                 ViewState["DialerNumberaux"] = "";
                 ViewState["PrefijoMarcacion"] = "";
                 ViewState["DialerNumber"] = "";
-                ViewState["PersCodigo"] = "";
-                ViewState["CodigoCLDE"] = "";
+                ViewState["PersCodigo"] = "0";
+                ViewState["CodigoCLDE"] = "0";
                 ViewState["TimerCall"] = "SI";
                 Session["InicioLlamada"] = DateTime.Now.AddSeconds(_sumarsegundos).ToString("HH:mm:ss");
                 FunCargarPerfilUsuario(int.Parse(Session["usuPerfil"].ToString()));
@@ -132,7 +132,7 @@
 
                 FunCargarMantenimiento(int.Parse(Session["IdListaCabecera"].ToString()));
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(232, int.Parse(Session["codigoCEDE"].ToString()),
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(232, int.Parse(ViewState["CodigoCEDE"].ToString()),
                     int.Parse(Session["usuCodigo"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows[0][0].ToString() == "SI")
@@ -261,6 +261,7 @@
 
                 if (ViewState["TipoMarcado"].ToString() == "DI")
                 {
+                    BtnPasar.Visible = true;
                     DivRegistrarTele.Visible = true;
                     DivDeudor.Visible = true;
                     DivBotones.Visible = true;
@@ -595,10 +596,9 @@
         {
             try
             {
-                //Llenar Telefonos de la primera tabla INCALL
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(141, cedecodigo, int.Parse(Session["usuCodigo"].ToString()),
-                    perscodigo, "", ViewState["NumeroDocumento"].ToString(), Session["MachineName"].ToString(), 
-                    Session["Conectar"].ToString());
+                //_dts = new ConsultaDatosDAO().FunConsultaDatos(141, cedecodigo, int.Parse(Session["usuCodigo"].ToString()),
+                //    perscodigo, "", ViewState["NumeroDocumento"].ToString(), Session["MachineName"].ToString(), 
+                //    Session["Conectar"].ToString());
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(35, cedecodigo, perscodigo, cldecodigo, "", "", "", 
                     Session["Conectar"].ToString());
@@ -655,11 +655,11 @@
                 ViewState["CodigoProducto"] = _dts.Tables[0].Rows[0]["PrceCodigo"].ToString();
                 ViewState["Producto"] = _dts.Tables[0].Rows[0]["Producto"].ToString();
                 Session["CodigoCPCE"] = _dts.Tables[0].Rows[0]["CpceCodigo"].ToString();
-                Session["codigoCEDE"] = _dts.Tables[0].Rows[0]["CedeCodigo"].ToString();
+                ViewState["CodigoCEDE"] = _dts.Tables[0].Rows[0]["CedeCodigo"].ToString();
                 ViewState["Catalogo"] = _dts.Tables[0].Rows[0]["Catalogo"].ToString();
                 ViewState["Operaciones"] = _dts.Tables[0].Rows[0]["Operaciones"].ToString();
                 ViewState["GestorApoyo"] = _dts.Tables[0].Rows[0]["GestorApoyo"].ToString();
-                SoftCob_CEDENTE cedente = new CedenteDAO().FunGetCedentePorID(int.Parse(Session["codigoCEDE"].ToString()));
+                SoftCob_CEDENTE cedente = new CedenteDAO().FunGetCedentePorID(int.Parse(ViewState["CodigoCEDE"].ToString()));
                 ViewState["NivelArbol"] = cedente.cede_auxi1;
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(213, int.Parse(Session["usuCodigo"].ToString()),
@@ -965,7 +965,7 @@
 
             ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", "javascript: var posicion_x; " +
                 "var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); " +
-                "window.open('WFrm_InfAdicional.aspx?CodigoCEDE=" + Session["codigoCEDE"].ToString() +
+                "window.open('WFrm_InfAdicional.aspx?CodigoCEDE=" + ViewState["CodigoCEDE"].ToString() +
                 "&CodigoCPCE=" + Session["CodigoCPCE"].ToString() + "&CodigoPERS=" + ViewState["PersCodigo"].ToString() +
                 "&Operacion=" + _operacion + "',null,'left=' + posicion_x + " +
                 "', top=' + posicion_y + ', width=850px, height=450px, status=no,resizable= yes, scrollbars=yes, " +
@@ -2179,34 +2179,35 @@
                         return;
                     }
                     //BUSCAR SI YA EXISTE EL TELEFONO INGRESADO Y ESTA INACTIVADO
-                    _mensaje = new GestionTelefonicaDAO().FunConsultarFonoEstado(int.Parse(ViewState["CodigoCedente"].ToString()), int.Parse(ViewState["PersCodigo"].ToString()), TxtTelefono.Text.Trim());
+                    _mensaje = new GestionTelefonicaDAO().FunConsultarFonoEstado(int.Parse(ViewState["CodigoCedente"].ToString()), 
+                        int.Parse(ViewState["PersCodigo"].ToString()), TxtTelefono.Text.Trim());
 
                     if (_mensaje != "")
                     {
-                        new FuncionesDAO().FunShowJSMessage("El Teléfono se encuenta INACTIVO, solcite ACTIVAR el mismo..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Telefono ya Existe..!..!", this);
                         return;
                     }
 
                     ViewState["UltimoNumeroAgregado"] = TxtTelefono.Text.Trim();
-                    _tblagre = new DataTable();
-                    _tblagre = (DataTable)ViewState["TelefonosRegistrados"];
-                    _filagre = _tblagre.NewRow();
-                    _filagre["Codigo"] = _maxcodigo + 1;
-                    _filagre["Telefono"] = TxtTelefono.Text.Trim();
-                    _filagre["Tipo"] = DdlTipTelefono2.SelectedItem.ToString();
-                    _filagre["CodTipo"] = DdlTipTelefono2.SelectedValue;
-                    _filagre["Propietario"] = DdlPropietario2.SelectedItem.ToString();
-                    _filagre["CodPro"] = DdlPropietario2.SelectedValue;
-                    _filagre["Prefijo"] = DdlTipTelefono2.SelectedValue == "CL" ? "" : DdlPrefijo.SelectedValue;
-                    _filagre["Nombres"] = TxtNombres.Text.Trim().ToUpper();
-                    _filagre["Apellidos"] = TxtApellidos.Text.Trim().ToUpper();
-                    _filagre["NomApe"] = TxtNombres.Text.Trim().ToUpper() + " " + TxtApellidos.Text.Trim().ToUpper();
-                    _filagre["Score"] = 0;
-                    _filagre["Origen"] = "NUEVO";
-                    _tblagre.Rows.Add(_filagre);
-                    ViewState["TelefonosRegistrados"] = _tblagre;
-                    GrdvTelefonos.DataSource = _tblagre;
-                    GrdvTelefonos.DataBind();
+                    //_tblagre = new DataTable();
+                    //_tblagre = (DataTable)ViewState["TelefonosRegistrados"];
+                    //_filagre = _tblagre.NewRow();
+                    //_filagre["Codigo"] = _maxcodigo + 1;
+                    //_filagre["Telefono"] = TxtTelefono.Text.Trim();
+                    //_filagre["Tipo"] = DdlTipTelefono2.SelectedItem.ToString();
+                    //_filagre["CodTipo"] = DdlTipTelefono2.SelectedValue;
+                    //_filagre["Propietario"] = DdlPropietario2.SelectedItem.ToString();
+                    //_filagre["CodPro"] = DdlPropietario2.SelectedValue;
+                    //_filagre["Prefijo"] = DdlTipTelefono2.SelectedValue == "CL" ? "" : DdlPrefijo.SelectedValue;
+                    //_filagre["Nombres"] = TxtNombres.Text.Trim().ToUpper();
+                    //_filagre["Apellidos"] = TxtApellidos.Text.Trim().ToUpper();
+                    //_filagre["NomApe"] = TxtNombres.Text.Trim().ToUpper() + " " + TxtApellidos.Text.Trim().ToUpper();
+                    //_filagre["Score"] = 0;
+                    //_filagre["Origen"] = "NUEVO";
+                    //_tblagre.Rows.Add(_filagre);
+                    //ViewState["TelefonosRegistrados"] = _tblagre;
+                    //GrdvTelefonos.DataSource = _tblagre;
+                    //GrdvTelefonos.DataBind();
 
                     SoftCob_TELEFONOS_CEDENTE addTelefono = new SoftCob_TELEFONOS_CEDENTE();
                     {
@@ -2236,7 +2237,8 @@
                         SoftCob_DEUDOR_REFERENCIAS addTelefonoref = new SoftCob_DEUDOR_REFERENCIAS();
                         {
                             addTelefonoref.pers_codigo = int.Parse(ViewState["CodigoCLDE"].ToString());
-                            addTelefonoref.dere_tiporeferencia = "GAR";
+                            addTelefonoref.dere_numdocumento = TxtNumDocumento.Text;
+                            addTelefonoref.dere_tiporeferencia = DdlPropietario2.SelectedValue;
                             addTelefonoref.dere_nombrereferencia = TxtNombres.Text.Trim().ToUpper();
                             addTelefonoref.dere_apellidoreferencia = TxtApellidos.Text.Trim().ToUpper();
                             addTelefonoref.dere_auxv1 = "";
@@ -2268,15 +2270,16 @@
                         AgregarTelefono.Add(strDialerFones);
                         Session["TelefonoPredictivo"] = AgregarTelefono;
                     }
-                    TxtTelefono.Text = "";
-                    DdlTipTelefono2.SelectedValue = "0";
-                    DdlPropietario2.SelectedValue = "0";
-                    DdlPrefijo.SelectedValue = "0";
-                    TxtNombres.Text = "";
-                    TxtApellidos.Text = "";
-                    ImgEditelefono.Enabled = false;
-                    DdlAccionDel.SelectedValue = "0";
-                    DdlRespuestaDel.SelectedValue = "0";
+
+                    FunCargarCombos(8);
+
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(35, int.Parse(ViewState["CodigoCEDE"].ToString()),
+                           int.Parse(ViewState["PersCodigo"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()), "",
+                           "", "", Session["Conectar"].ToString());
+
+                    GrdvTelefonos.DataSource = _dts;
+                    GrdvTelefonos.DataBind();
+                    ViewState["TelefonosRegistrados"] = _dts.Tables[0];
                 }
                 else new FuncionesDAO().FunShowJSMessage("Teléfono incorrecto..!", this);
             }
@@ -2708,6 +2711,7 @@
                 {
                     fr.Cells[0].BackColor = System.Drawing.Color.White;
                 }
+
                 GrdvTelefonos.Rows[gvRow.RowIndex].Cells[0].BackColor = System.Drawing.Color.Coral;
                 _codigo = int.Parse(GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Codigo"].ToString());
                 _dtbtelefonos = (DataTable)ViewState["TelefonosRegistrados"];
@@ -2721,22 +2725,29 @@
                 DdlPropietario2.SelectedValue = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["CodPro"].ToString();
                 TxtNombres.Text = _result["Nombres"].ToString();
                 TxtApellidos.Text = _result["Apellidos"].ToString();
+                TxtNombres.Enabled = true;
+                TxtApellidos.Enabled = true;
+                TxtDocumentoRef.Enabled = true;
+                //TxtDocumentoRef.ReadOnly = true;
 
-                ViewState["Telefonoanterior"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Telefono"].ToString();
+                TxtDocumentoRef.Text = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["NumDocumento"].ToString();
+                ViewState["NumDocumentoRef"] = TxtDocumentoRef.Text;
                 ViewState["UltimoNumeroAgregado"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Telefono"].ToString();
+                ViewState["Telefonoanterior"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Telefono"].ToString();
                 ViewState["CodigoTelefono"] = _codigo;
                 ViewState["PrefijoMarcacion"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Prefijo"].ToString();
                 ViewState["DialerNumber"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Telefono"].ToString();
                 ViewState["TipoTelefono"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["CodTipo"].ToString();
                 ViewState["Propietario"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["CodPro"].ToString();
                 ViewState["Score"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Score"].ToString();
-                ViewState["Origen"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Origen"].ToString();
 
                 if (ViewState["TipoTelefono"].ToString() == "CN")
                 {
                     FunCargarCombos(6);
 
                     if (ViewState["PrefijoMarcacion"].ToString() == "") ViewState["PrefijoMarcacion"] = "02";
+
+                    DdlPrefijo.SelectedValue = ViewState["PrefijoMarcacion"].ToString();
 
                     lblNumMarcado.Text = ViewState["DialerNumber"] == null ? "" : "Marcando..." + ViewState["PrefijoMarcacion"].ToString() +
                         ViewState["DialerNumber"].ToString() + " - " + ViewState["Cliente"].ToString();
@@ -2796,20 +2807,6 @@
                     return;
                 }
 
-                if (ViewState["Origen"].ToString() != "NUEVO")
-                {
-                    if (DdlAccionDel.SelectedValue == "0")
-                    {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione Acción de Modificación..!", this);
-                        return;
-                    }
-                    if (DdlRespuestaDel.SelectedValue == "0")
-                    {
-                        new FuncionesDAO().FunShowJSMessage("Selecciones Respuesta de Moficiación..!", this);
-                        return;
-                    }
-                }
-
                 if (FunValidarTelefonos())
                 {
                     if (ViewState["TelefonosRegistrados"] != null)
@@ -2818,7 +2815,6 @@
                         {
                             _tblbuscar = (DataTable)ViewState["TelefonosRegistrados"];
                             _result = _tblbuscar.Select("Telefono='" + TxtTelefono.Text.Trim() + "'").FirstOrDefault();
-                            _tblbuscar.DefaultView.Sort = "Codigo";
                             if (_result != null) _lexiste = true;
                         }
                     }
@@ -2828,57 +2824,83 @@
                         new FuncionesDAO().FunShowJSMessage("Ya existe teléfono..!", this);
                         return;
                     }
-                    //EDITAR TELEFONO CEDENTE Y REFERENCIAS
-                    _mensaje = new ConsultaDatosDAO().FunEditarTelefonos(0, int.Parse(ViewState["PersCodigo"].ToString()),
-                        int.Parse(ViewState["CodigoCLDE"].ToString()), DdlTipTelefono2.SelectedValue, DdlPropietario2.SelectedValue, TxtNombres.Text.Trim().ToUpper(), TxtApellidos.Text.Trim().ToUpper(), TxtTelefono.Text.Trim(), DdlPrefijo.SelectedValue == "0" ? "" : DdlPrefijo.SelectedValue,
-                        ViewState["Telefonoanterior"].ToString(), "", "", "SI", int.Parse(ViewState["CodigoCedente"].ToString()), 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
-                    //INSERTAR EN SoftCob_ACCIONGESTION LA MODIFICACION DEL TELEFONO  ViewState["Telefonoanterior"]
-                    if (ViewState["Origen"].ToString() != "NUEVO")
+
+                    if (ViewState["NumDocumentoRef"].ToString() != TxtDocumentoRef.Text.Trim())
                     {
-                        SoftCob_ACCIONGESTION newAccion = new SoftCob_ACCIONGESTION();
+                        _tblbuscar = (DataTable)ViewState["TelefonosRegistrados"];
+                        _result = _tblbuscar.Select("NumDocumento='" + TxtDocumentoRef.Text.Trim() + "'").FirstOrDefault();
+                        if (_result != null) _lexiste = true;
+
+                        if (_lexiste)
                         {
-                            newAccion.acci_tipoaccion = "MODIFICAR TELEFONO";
-                            newAccion.acci_idmotivo = 7;
-                            newAccion.acci_observacion = DdlAccionDel.SelectedItem.ToString() + " - " + DdlRespuestaDel.SelectedItem.ToString();
-                            newAccion.acci_codigocpce = int.Parse(Session["CodigoCPCE"].ToString());
-                            newAccion.acci_identificacion = ViewState["NumeroDocumento"].ToString();
-                            newAccion.acci_operacion = "";
-                            newAccion.acci_gestoranterior = 0;
-                            newAccion.acci_gestoractual = 0;
-                            newAccion.acci_datoanterior = ViewState["PrefijoMarcacion"].ToString() + ViewState["Telefonoanterior"].ToString();
-                            newAccion.acci_auxv1 = DdlPrefijo.SelectedValue == "0" ? TxtTelefono.Text.Trim() : DdlPrefijo.SelectedValue + TxtTelefono.Text.Trim();
-                            newAccion.acci_auxv2 = "";
-                            newAccion.acci_auxv3 = "";
-                            newAccion.acci_auxi1 = int.Parse(ViewState["PersCodigo"].ToString());
-                            newAccion.acci_auxi2 = 0;
-                            newAccion.acci_auxi3 = 0;
-                            newAccion.acci_fechacreacion = DateTime.Now;
-                            newAccion.acci_usuariocreacion = int.Parse(Session["usuCodigo"].ToString());
-                            newAccion.acci_terminalcreacion = Session["MachineName"].ToString();
-                            new ListaTrabajoDAO().FunInsertarAccionGestion(newAccion);
+                            new FuncionesDAO().FunShowJSMessage("No. de Documento ya Existe..!", this);
+                            return;
                         }
                     }
 
-                    _dtbtelefonos = (DataTable)ViewState["TelefonosRegistrados"];
-                    _cambiar = _dtbtelefonos.Select("Codigo='" + ViewState["CodigoTelefono"].ToString() + "'").FirstOrDefault();
-                    _cambiar["Telefono"] = TxtTelefono.Text.Trim();
-                    _cambiar["Tipo"] = DdlTipTelefono2.SelectedItem.ToString();
-                    _cambiar["CodTipo"] = DdlTipTelefono2.SelectedValue;
-                    _cambiar["Propietario"] = DdlPropietario2.SelectedItem.ToString();
-                    _cambiar["CodPro"] = DdlPropietario2.SelectedValue;
-                    _cambiar["Prefijo"] = DdlTipTelefono2.SelectedValue == "CL" ? "" : DdlPrefijo.SelectedValue;
-                    _cambiar["Nombres"] = TxtNombres.Text.Trim().ToUpper();
-                    _cambiar["Apellidos"] = TxtApellidos.Text.Trim().ToUpper();
-                    _cambiar["NomApe"] = TxtNombres.Text.Trim().ToUpper() + " " + TxtApellidos.Text.Trim().ToUpper();
-                    _dtbtelefonos.AcceptChanges();
-                    ViewState["TelefonosRegistrados"] = _dtbtelefonos;
-                    _dtbtelefonos.DefaultView.Sort = "Score desc, Telefono asc";
-                    _dtbtelefonos = _dtbtelefonos.DefaultView.ToTable();
-                    GrdvTelefonos.DataSource = _dtbtelefonos;
-                    GrdvTelefonos.DataBind();
+                    //EDITAR TELEFONO CEDENTE Y REFERENCIAS
+                    _mensaje = new ConsultaDatosDAO().FunEditarTelefonos(0, int.Parse(ViewState["PersCodigo"].ToString()),
+                        int.Parse(ViewState["CodigoTelefono"].ToString()), DdlTipTelefono2.SelectedValue, DdlPropietario2.SelectedValue,
+                        TxtNombres.Text.Trim().ToUpper(), TxtApellidos.Text.Trim().ToUpper(), TxtTelefono.Text.Trim(),
+                        DdlPrefijo.SelectedValue == "0" ? "" : DdlPrefijo.SelectedValue, TxtDocumentoRef.Text, "", "", "",
+                        int.Parse(ViewState["CodigoCedente"].ToString()), 0, 0, int.Parse(Session["usuCodigo"].ToString()),
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
+
+
+                    //INSERTAR EN SoftCob_ACCIONGESTION LA MODIFICACION DEL TELEFONO  ViewState["Telefonoanterior"]
+                    //if (ViewState["Origen"].ToString() != "NUEVO")
+                    //{
+                    //    SoftCob_ACCIONGESTION newAccion = new SoftCob_ACCIONGESTION();
+                    //    {
+                    //        newAccion.acci_tipoaccion = "MODIFICAR TELEFONO";
+                    //        newAccion.acci_idmotivo = 7;
+                    //        newAccion.acci_observacion = DdlAccionDel.SelectedItem.ToString() + " - " + DdlRespuestaDel.SelectedItem.ToString();
+                    //        newAccion.acci_codigocpce = int.Parse(Session["CodigoCPCE"].ToString());
+                    //        newAccion.acci_identificacion = ViewState["NumeroDocumento"].ToString();
+                    //        newAccion.acci_operacion = "";
+                    //        newAccion.acci_gestoranterior = 0;
+                    //        newAccion.acci_gestoractual = 0;
+                    //        newAccion.acci_datoanterior = ViewState["PrefijoMarcacion"].ToString() + ViewState["Telefonoanterior"].ToString();
+                    //        newAccion.acci_auxv1 = DdlPrefijo.SelectedValue == "0" ? TxtTelefono.Text.Trim() : DdlPrefijo.SelectedValue + TxtTelefono.Text.Trim();
+                    //        newAccion.acci_auxv2 = "";
+                    //        newAccion.acci_auxv3 = "";
+                    //        newAccion.acci_auxi1 = int.Parse(ViewState["PersCodigo"].ToString());
+                    //        newAccion.acci_auxi2 = 0;
+                    //        newAccion.acci_auxi3 = 0;
+                    //        newAccion.acci_fechacreacion = DateTime.Now;
+                    //        newAccion.acci_usuariocreacion = int.Parse(Session["usuCodigo"].ToString());
+                    //        newAccion.acci_terminalcreacion = Session["MachineName"].ToString();
+                    //        new ListaTrabajoDAO().FunInsertarAccionGestion(newAccion);
+                    //    }
+                    //}
+
                     PnlAgregarTelefono.Visible = false;
                     ChkAgregar.Checked = false;
                     FunCargarCombos(8);
+
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(35, int.Parse(ViewState["CodigoCEDE"].ToString()),
+                           int.Parse(ViewState["PersCodigo"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()), "",
+                           "", "", Session["Conectar"].ToString());
+
+                    GrdvTelefonos.DataSource = _dts;
+                    GrdvTelefonos.DataBind();
+                    ViewState["TelefonosRegistrados"] = _dts.Tables[0];
+
+                    //_dtbtelefonos = (DataTable)ViewState["TelefonosRegistrados"];
+                    //_cambiar = _dtbtelefonos.Select("Codigo='" + ViewState["CodigoTelefono"].ToString() + "'").FirstOrDefault();
+                    //_cambiar["Telefono"] = TxtTelefono.Text.Trim();
+                    //_cambiar["Tipo"] = DdlTipTelefono2.SelectedItem.ToString();
+                    //_cambiar["CodTipo"] = DdlTipTelefono2.SelectedValue;
+                    //_cambiar["Propietario"] = DdlPropietario2.SelectedItem.ToString();
+                    //_cambiar["CodPro"] = DdlPropietario2.SelectedValue;
+                    //_cambiar["Prefijo"] = DdlTipTelefono2.SelectedValue == "CL" ? "" : DdlPrefijo.SelectedValue;
+                    //_cambiar["Nombres"] = TxtNombres.Text.Trim().ToUpper();
+                    //_cambiar["Apellidos"] = TxtApellidos.Text.Trim().ToUpper();
+                    //_cambiar["NomApe"] = TxtNombres.Text.Trim().ToUpper() + " " + TxtApellidos.Text.Trim().ToUpper();
+                    //_dtbtelefonos.AcceptChanges();
+                    //ViewState["TelefonosRegistrados"] = _dtbtelefonos;
+                    //_dtbtelefonos.DefaultView.Sort = "Score desc, Telefono asc";
+                    //_dtbtelefonos = _dtbtelefonos.DefaultView.ToTable();
                 }
                 else new FuncionesDAO().FunShowJSMessage("Teléfono incorrecto..!", this);
 
@@ -3234,13 +3256,14 @@
 
         protected void DdlPropietario2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TxtNombres.Text = "";
-            TxtApellidos.Text = "";
+            //TxtNombres.Text = "";
+            //TxtApellidos.Text = "";
             TxtNombres.Enabled = false;
             TxtApellidos.Enabled = false;
 
             if (DdlPropietario2.SelectedValue != "DE" && DdlPropietario2.SelectedValue != "0")
             {
+                TxtDocumentoRef.Enabled = true;
                 TxtNombres.Enabled = true;
                 TxtApellidos.Enabled = true;
             }
@@ -3325,7 +3348,7 @@
             {
                 ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", 
                     "javascript: var posicion_x; var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); " +
-                    "window.open('WFrm_SpeechBV.aspx?CodigoCEDE=" + Session["codigoCEDE"].ToString() + "&CodigoCPCE=" + 
+                    "window.open('WFrm_SpeechBV.aspx?CodigoCEDE=" + ViewState["CodigoCEDE"].ToString() + "&CodigoCPCE=" + 
                     Session["CodigoCPCE"].ToString() + "',null,'left=' + posicion_x + ', top=' + posicion_y + ', width=750px, height=400px," +
                     " status=no,resizable= yes, scrollbars=yes, toolbar=no, location=no, menubar=no,titlebar=0');", true);
             }
@@ -3338,7 +3361,7 @@
         {
             try
             {
-                ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", "javascript: var posicion_x; var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); window.open('wFrm_SpeechAD.aspx?CodigoCEDE=" + Session["codigoCEDE"].ToString() +
+                ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", "javascript: var posicion_x; var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); window.open('wFrm_SpeechAD.aspx?CodigoCEDE=" + ViewState["CodigoCEDE"].ToString() +
                     "&CodigoCPCE=" + Session["CodigoCPCE"].ToString() + "&CodigoARAC=" + DdlAccion.SelectedValue + "&CodigoAREF=" + DddlEfecto.SelectedValue +
                     "&CodigoARRE=" + DdlRespuesta.SelectedValue + "&CodigoARCO=" + DdlContacto.SelectedValue + "',null,'left=' + posicion_x + ', top=' + posicion_y + ', width=750px, height=400px, status=no,resizable= yes, scrollbars=yes, toolbar=no, location=no, menubar=no,titlebar=0');", true);
             }
@@ -3402,7 +3425,7 @@
 
                 new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
 
-                Response.Redirect("WFrm_RegLlamadaEntrante.aspx?CodigoCEDE=" + Session["codigoCEDE"].ToString() +
+                Response.Redirect("WFrm_RegLlamadaEntrante.aspx?CodigoCEDE=" + ViewState["CodigoCEDE"].ToString() +
                     "&CodigoCPCE=" + Session["CodigoCPCE"].ToString() + "&CodigoCLDE=" + ViewState["CodigoCLDEaux"].ToString() +
                 "&CodigoPERS=" + ViewState["PersCodigoaux"].ToString() + "&NumeroDocumento=" + ViewState["NumDocumentoaux"].ToString() +
                 "&Operacion=" + ViewState["Operacionaux"].ToString() + "&CodigoLTCA=" + Session["IdListaCabecera"].ToString() +
