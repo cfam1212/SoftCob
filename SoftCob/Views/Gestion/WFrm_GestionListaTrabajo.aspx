@@ -271,7 +271,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <%--                <div class="panel-info">
+                <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updOpciones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -281,7 +281,7 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>--%>
+                </div>
                 <asp:UpdatePanel ID="updTimer" runat="server">
                     <ContentTemplate>
                         <div>
@@ -480,12 +480,12 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <asp:Panel ID="PnlDatosTelefonos" runat="server" CssClass="panel panel-primary" 
+                                                        <asp:Panel ID="PnlDatosTelefonos" runat="server" CssClass="panel panel-primary"
                                                             Height="780px">
                                                             <table style="width: 100%">
                                                                 <tr>
                                                                     <td>
-                                                                        <asp:Panel ID="PnlAgregarTelefono" runat="server" Height="290px" 
+                                                                        <asp:Panel ID="PnlAgregarTelefono" runat="server" Height="290px"
                                                                             GroupingText="Agregar Teléfono" Visible="False">
                                                                             <table style="width: 100%">
                                                                                 <tr>
@@ -535,28 +535,30 @@
                                                                                     <td></td>
                                                                                     <td></td>
                                                                                 </tr>
-                                                                                <tr>
-                                                                                    <td><h5>No. Documento:</h5></td>
+                                                                                <tr runat="server" id="TrFila1" visible="false">
                                                                                     <td>
-                                                                                        <asp:TextBox ID="TxtDocumentoRef" runat="server" CssClass="form-control upperCase" Enabled="False" MaxLength="10" TabIndex="8" Width="100%"></asp:TextBox>
+                                                                                        <h5>No. Documento:</h5>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <asp:TextBox ID="TxtDocumentoRef" runat="server" CssClass="form-control upperCase" MaxLength="10" TabIndex="8" Width="100%"></asp:TextBox>
                                                                                     </td>
                                                                                     <td></td>
                                                                                     <td></td>
                                                                                     <td></td>
                                                                                     <td></td>
                                                                                 </tr>
-                                                                                <tr>
+                                                                                <tr runat="server" id="TrFila2" visible="false">
                                                                                     <td>
                                                                                         <h5>Nombres:</h5>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <asp:TextBox ID="TxtNombres" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="9" Width="100%" Enabled="False"></asp:TextBox>
+                                                                                        <asp:TextBox ID="TxtNombres" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="9" Width="100%"></asp:TextBox>
                                                                                     </td>
                                                                                     <td>
                                                                                         <h5>Apellidos:</h5>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <asp:TextBox ID="TxtApellidos" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="10" Width="100%" Enabled="False"></asp:TextBox>
+                                                                                        <asp:TextBox ID="TxtApellidos" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="10" Width="100%"></asp:TextBox>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -585,7 +587,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <asp:Panel ID="PnlTelefonosExistentes" runat="server" Height="510px" 
+                                                                        <asp:Panel ID="PnlTelefonosExistentes" runat="server" Height="510px"
                                                                             GroupingText="Teléfonos Existentes">
                                                                             <table style="width: 100%">
                                                                                 <tr>
@@ -684,7 +686,7 @@
                                                                                             </asp:GridView>
                                                                                         </asp:Panel>
                                                                                     </td>
-                                                                                </tr>               
+                                                                                </tr>
                                                                             </table>
                                                                         </asp:Panel>
                                                                     </td>
@@ -708,7 +710,7 @@
                                         </div>
 
                                         <div class="panel panel-primary" runat="server" id="DivDeudor" visible="false">
-                                            <table style="width:100%">
+                                            <table style="width: 100%">
                                                 <tr>
                                                     <td style="width: 100%">
                                                         <asp:Panel ID="PnlHeaderDeudor" runat="server">
@@ -916,7 +918,7 @@
                                                                         <asp:ImageButton ID="ImgArbolGen" runat="server" Height="30px" ImageUrl="~/Botones/con_usuario.jpg" OnClick="ImgArbolGen_Click" TabIndex="23" ToolTip="Mostrar Árbol Genealógico" />
                                                                     </td>
                                                                     <td style="text-align: center">
-                                                                        <asp:ImageButton ID="ImgCitacion" runat="server" Height="30px" ImageUrl="~/Botones/btncitacion.png" OnClick="ImgCitacion_Click" TabIndex="23" ToolTip="Crear Citación" Visible="False" />
+                                                                        <asp:ImageButton ID="ImgCitacion" runat="server" Height="30px" ImageUrl="~/Botones/btncitacion.png" OnClick="ImgCitacion_Click" TabIndex="23" ToolTip="Crear Citación" />
                                                                     </td>
                                                                     <td style="text-align: center">
                                                                         <asp:ImageButton ID="ImgComparar" runat="server" Height="35px" ImageUrl="~/Botones/comparar.png" OnClick="ImgComparar_Click" TabIndex="23" ToolTip="Compararme con Todos" Visible="False" />

@@ -13,6 +13,7 @@
         SoftCobEntities _dtb = new SoftCobEntities();
         SqlDataAdapter _dap = new SqlDataAdapter();
         string _mensaje = "";
+        int _codigo = 0;
         #endregion
 
         #region Procedimientos y Funciones
@@ -216,7 +217,7 @@
             }
         }
 
-        public void FunCrearTelefonoReferencia(SoftCob_DEUDOR_REFERENCIAS _telefonoref)
+        public int FunCrearTelefonoReferencia(SoftCob_DEUDOR_REFERENCIAS _telefonoref)
         {
             try
             {
@@ -224,12 +225,15 @@
                 {
                     _db.SoftCob_DEUDOR_REFERENCIAS.Add(_telefonoref);
                     _db.SaveChanges();
+                    _codigo = _telefonoref.DERE_CODIGO;
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                _codigo = 0;
             }
+
+            return _codigo;
         }
 
         public string FunRegistrarPerfilCalifica(int tipo, string auxv1, string auxv2, string auxv3, int auxi1,

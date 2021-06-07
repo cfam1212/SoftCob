@@ -321,6 +321,15 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.Panel PnlOpcionTelefonos;
 
         /// <summary>
+        /// Control DdlTipTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlTipTelefono;
+
+        /// <summary>
         /// Control TxtTelefono.
         /// </summary>
         /// <remarks>
@@ -337,15 +346,6 @@ namespace SoftCob.Views.Gestion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.FilteredTextBoxExtender txtTelefono_FilteredTextBoxExtender;
-
-        /// <summary>
-        /// Control DdlTipTelefono.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlTipTelefono;
 
         /// <summary>
         /// Control DdlPrefijo.
@@ -366,6 +366,33 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.DropDownList DdlPropietario2;
 
         /// <summary>
+        /// Control TrFila1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrFila1;
+
+        /// <summary>
+        /// Control TxtDocumentoRef.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtDocumentoRef;
+
+        /// <summary>
+        /// Control TrFila2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrFila2;
+
+        /// <summary>
         /// Control TxtNombres.
         /// </summary>
         /// <remarks>
@@ -382,6 +409,15 @@ namespace SoftCob.Views.Gestion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtApellidos;
+
+        /// <summary>
+        /// Control TrOpciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrOpciones;
 
         /// <summary>
         /// Control DdlAccionDel.
@@ -436,6 +472,15 @@ namespace SoftCob.Views.Gestion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImgBuscarFono;
+
+        /// <summary>
+        /// Control PnlDiv10.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlDiv10;
 
         /// <summary>
         /// Control pnlTelefonos.

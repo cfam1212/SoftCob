@@ -69,6 +69,15 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.Label Lblerror;
 
         /// <summary>
+        /// Control updProgress.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress updProgress;
+
+        /// <summary>
         /// Control updTimer.
         /// </summary>
         /// <remarks>
@@ -339,6 +348,15 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.DropDownList DdlPropietario2;
 
         /// <summary>
+        /// Control TrFila1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrFila1;
+
+        /// <summary>
         /// Control TxtDocumentoRef.
         /// </summary>
         /// <remarks>
@@ -346,6 +364,15 @@ namespace SoftCob.Views.Gestion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtDocumentoRef;
+
+        /// <summary>
+        /// Control TrFila2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrFila2;
 
         /// <summary>
         /// Control TxtNombres.
