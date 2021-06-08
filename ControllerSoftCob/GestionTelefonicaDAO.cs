@@ -236,6 +236,28 @@
             return _codigo;
         }
 
+        public void FunModificarDeudorReferen(SoftCob_DEUDOR_REFERENCIAS _deudorref)
+        {
+            try
+            {
+                using (SoftCobEntities _db = new SoftCobEntities())
+                {
+                    SoftCob_DEUDOR_REFERENCIAS _original = _db.SoftCob_DEUDOR_REFERENCIAS.Where(d => d.DERE_CODIGO ==_deudorref.DERE_CODIGO &&
+                    d.dere_numdocumento==_deudorref.dere_numdocumento).FirstOrDefault();
+
+                    _db.SoftCob_DEUDOR_REFERENCIAS.Attach(_original);
+                    _original.dere_tiporeferencia = _deudorref.dere_tiporeferencia;
+                    _original.dere_nombrereferencia = _deudorref.dere_nombrereferencia;
+                    _original.dere_apellidoreferencia = _deudorref.dere_apellidoreferencia;
+                    _db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public string FunRegistrarPerfilCalifica(int tipo, string auxv1, string auxv2, string auxv3, int auxi1,
             int auxi2, int auxi3, int usucodigo, string terminal, DataTable dtbPerfiles, string conexion)
         {

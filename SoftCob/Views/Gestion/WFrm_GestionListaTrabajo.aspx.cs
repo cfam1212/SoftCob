@@ -897,6 +897,8 @@
                         ImgAddTelefono.Enabled = true;
                         DdlAccionDel.SelectedValue = "0";
                         DdlRespuestaDel.SelectedValue = "0";
+                        TxtDocumentoRef.ReadOnly = false;
+                        TxtDocumentoRef.Text = "";
                         TrFila1.Visible = false;
                         TrFila2.Visible = false;
                         ViewState["Cambiar"] = "SI";
@@ -2210,6 +2212,12 @@
                             new FuncionesDAO().FunShowJSMessage("Ingrese Al Menos Nombre del Contacto..!", this);
                             return;
                         }
+                        //VERIFICAR SI EL NUMERO DE DOCUMENTO YA EXISTE
+
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(241, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "",
+                            TxtDocumentoRef.Text.Trim(), "", Session["Conectar"].ToString());
+
+                        _codigo = int.Parse(_dts.Tables[0].Rows[0]["Codigo"].ToString());
 
                         SoftCob_DEUDOR_REFERENCIAS addTelefonoref = new SoftCob_DEUDOR_REFERENCIAS();
                         {
@@ -2231,8 +2239,10 @@
                             addTelefonoref.dere_uum = int.Parse(Session["usuCodigo"].ToString());
                             addTelefonoref.dere_tum = Session["MachineName"].ToString();
                         }
-                        _codigo = new GestionTelefonicaDAO().FunCrearTelefonoReferencia(addTelefonoref);
-                        new GestionTelefonicaDAO().FunCrearTelefonoReferencia(addTelefonoref);
+
+                        if (_codigo == 0) _codigo = new GestionTelefonicaDAO().FunCrearTelefonoReferencia(addTelefonoref);
+                        else new GestionTelefonicaDAO().FunModificarDeudorReferen(addTelefonoref);
+
                     }
 
                     SoftCob_TELEFONOS_CEDENTE addTelefono = new SoftCob_TELEFONOS_CEDENTE();
