@@ -598,10 +598,6 @@
         {
             try
             {
-                //_dts = new ConsultaDatosDAO().FunConsultaDatos(141, cedecodigo, int.Parse(Session["usuCodigo"].ToString()),
-                //    perscodigo, "", ViewState["NumeroDocumento"].ToString(), Session["MachineName"].ToString(), 
-                //    Session["Conectar"].ToString());
-
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(35, cedecodigo, perscodigo, cldecodigo, "", "", "", 
                     Session["Conectar"].ToString());
                 GrdvTelefonos.DataSource = _dts;
@@ -2214,13 +2210,14 @@
                         }
                         //VERIFICAR SI EL NUMERO DE DOCUMENTO YA EXISTE
 
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(241, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "",
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(241, int.Parse(ViewState["PersCodigo"].ToString()), 0, 0, "",
                             TxtDocumentoRef.Text.Trim(), "", Session["Conectar"].ToString());
 
                         _codigo = int.Parse(_dts.Tables[0].Rows[0]["Codigo"].ToString());
 
                         SoftCob_DEUDOR_REFERENCIAS addTelefonoref = new SoftCob_DEUDOR_REFERENCIAS();
                         {
+                            addTelefonoref.DERE_CODIGO = _codigo;
                             addTelefonoref.pers_codigo = int.Parse(ViewState["CodigoCLDE"].ToString());
                             addTelefonoref.dere_numdocumento = TxtDocumentoRef.Text;
                             addTelefonoref.dere_tiporeferencia = DdlPropietario2.SelectedValue;
@@ -2738,10 +2735,8 @@
                 DdlPropietario2.SelectedValue = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["CodPro"].ToString();
                 TxtNombres.Text = _result["Nombres"].ToString();
                 TxtApellidos.Text = _result["Apellidos"].ToString();
-                TxtDocumentoRef.ReadOnly = true;
-
                 TxtDocumentoRef.Text = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["NumDocumento"].ToString();
-                ViewState["NumDocumentoRef"] = TxtDocumentoRef.Text;
+                ViewState["NumDocumentoRef"] = TxtDocumentoRef.Text.Trim();
                 ViewState["UltimoNumeroAgregado"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Telefono"].ToString();
                 ViewState["Telefonoanterior"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Telefono"].ToString();
                 ViewState["CodigoTelefono"] = _codigo;
@@ -2751,6 +2746,10 @@
                 ViewState["Propietario"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["CodPro"].ToString();
                 ViewState["Score"] = GrdvTelefonos.DataKeys[gvRow.RowIndex].Values["Score"].ToString();
 
+                if (string.IsNullOrEmpty(TxtDocumentoRef.Text.Trim())) TxtDocumentoRef.ReadOnly = false;
+                else TxtDocumentoRef.ReadOnly = true;
+
+                ImgAddTelefono.Enabled = false;
                 ImgEditelefono.Enabled = true;
                 ChkAgregar.Checked = true;
                 PnlAgregarTelefono.Visible = true;
@@ -3251,8 +3250,8 @@
 
             if (DdlPropietario2.SelectedValue != "DE" && DdlPropietario2.SelectedValue != "0")
             {
-                if (string.IsNullOrEmpty(ViewState["DocumentoRef"].ToString()))
-                    TxtDocumentoRef.ReadOnly = false;
+                if (!string.IsNullOrEmpty(ViewState["DocumentoRef"].ToString()))
+                    TxtDocumentoRef.ReadOnly = true;
                 TrFila1.Visible = true;
                 TrFila2.Visible = true;
             }

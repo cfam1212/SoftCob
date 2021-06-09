@@ -249,6 +249,9 @@
                     _original.dere_tiporeferencia = _deudorref.dere_tiporeferencia;
                     _original.dere_nombrereferencia = _deudorref.dere_nombrereferencia;
                     _original.dere_apellidoreferencia = _deudorref.dere_apellidoreferencia;
+                    _original.dere_fum = _deudorref.dere_fum;
+                    _original.dere_uum = _deudorref.dere_uum;
+                    _original.dere_tum = _deudorref.dere_tum;
                     _db.SaveChanges();
                 }
             }
