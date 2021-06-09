@@ -1,0 +1,70 @@
+USE [SoftCob]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ModificarTelefonos]    Script Date: 9/6/2021 18:14:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_ModificarTelefonos]
+@in_tipo int,
+@in_perscodigo int,
+@in_codigotelefono int,
+@in_tipotelefono varchar(5),
+@in_propietario varchar(5),
+@in_nombrereferencia varchar(80),
+@in_apellidoreferencia varchar(80),
+@in_telefono varchar(10),
+@in_prefijo varchar(2),
+@in_numerodocumento varchar(10),
+@in_auxv1 varchar(50),
+@in_auxv2 varchar(50),
+@in_auxv3 varchar(50),
+@in_auxi1 int,
+@in_auxi2 int,
+@in_auxi3 int,
+@in_usucodigo int,
+@in_terminal varchar(50)
+AS
+BEGIN
+	DECLARE @codigoreferen int
+
+	IF @in_tipo = 0 BEGIN --ACTUALIZAR TELEFONOS
+		UPDATE SoftCob_TELEFONOS_CEDENTE SET tece_numero=@in_telefono,tece_tipo=@in_tipotelefono,
+			tece_auxv1=@in_prefijo WHERE TECE_CODIGO=@in_codigotelefono
+
+		IF @in_propietario='DE' BEGIN --ELIMINAR DE LA REFERENCIA
+			UPDATE SoftCob_TELEFONOS_CEDENTE SET tece_referencodigo=0,tece_propietario=@in_propietario WHERE tece_referencodigo=(
+					SELECT TEL.tece_referencodigo FROM SoftCob_TELEFONOS_CEDENTE TEL (NOLOCK) WHERE TEL.TECE_CODIGO=@in_codigotelefono)
+
+			DELETE FROM SoftCob_DEUDOR_REFERENCIAS WHERE dere_numdocumento=@in_numerodocumento
+
+			SELECT 'OK-Update'
+			
+		END
+		ELSE BEGIN
+			IF NOT EXISTS(SELECT 1 FROM SoftCob_DEUDOR_REFERENCIAS (NOLOCK) WHERE pers_codigo=@in_perscodigo AND 
+							dere_numdocumento=@in_numerodocumento) BEGIN
+
+					INSERT INTO SoftCob_DEUDOR_REFERENCIAS VALUES(@in_perscodigo,@in_numerodocumento,@in_propietario,@in_nombrereferencia,
+						@in_apellidoreferencia,'','','',0,0,0,GETDATE(),@in_usucodigo,@in_terminal,GETDATE(),@in_usucodigo,@in_terminal)
+
+					SET @codigoreferen = SCOPE_IDENTITY()
+
+				UPDATE SoftCob_TELEFONOS_CEDENTE SET tece_propietario=@in_propietario,tece_referencodigo=@codigoreferen 
+						WHERE tece_perscodigo=@in_perscodigo AND tece_numero=@in_telefono
+			END
+			ELSE BEGIN
+				UPDATE SoftCob_DEUDOR_REFERENCIAS SET dere_tiporeferencia=@in_propietario,dere_nombrereferencia=@in_nombrereferencia,
+					dere_apellidoreferencia=@in_apellidoreferencia,dere_fum=GETDATE(),dere_uum=@in_usucodigo,dere_tum=@in_terminal
+					WHERE pers_codigo=@in_perscodigo AND dere_numdocumento=@in_numerodocumento
+
+				UPDATE SoftCob_TELEFONOS_CEDENTE SET tece_propietario=@in_propietario WHERE tece_referencodigo = (
+						SELECT DER.DERE_CODIGO FROM SoftCob_DEUDOR_REFERENCIAS DER (NOLOCK) WHERE DER.pers_codigo=@in_perscodigo AND
+							DER.dere_numdocumento=@in_numerodocumento)
+						AND tece_perscodigo=@in_perscodigo
+
+			END
+		END
+		SELECT 'OK-Update'
+	END
+END
