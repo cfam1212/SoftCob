@@ -168,6 +168,7 @@
     <Content Include="Botones\activada_up.png" />
     <Content Include="Botones\agendarmail.png" />
     <Content Include="Botones\agregar.jpg" />
+    <Content Include="Botones\agregar.png" />
     <Content Include="Botones\agregar_usuario.jpg" />
     <Content Include="Botones\arbol.png" />
     <Content Include="Botones\bntbuscarfono.png" />
@@ -193,6 +194,7 @@
     <Content Include="Botones\btnquitar.jpg" />
     <Content Include="Botones\btnquitaruno.png" />
     <Content Include="Botones\btntodos.jpg" />
+    <Content Include="Botones\btnwhastapp.png" />
     <Content Include="Botones\Buscar.png" />
     <Content Include="Botones\Buscargris.png" />
     <Content Include="Botones\busqueda.png" />
@@ -238,6 +240,7 @@
     <Content Include="Botones\verificargris.png" />
     <Content Include="Botones\vistodisable.png" />
     <Content Include="Botones\vistoenable.png" />
+    <Content Include="Botones\vistoverde.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -297,7 +300,6 @@
     <Content Include="Views\Bitacora\WFrm_ConsultaBitacoraAdmin.aspx" />
     <Content Include="Views\Bitacora\WFrm_DatosBitacora.aspx" />
     <Content Include="Views\Bitacora\WFrm_NuevaBitacora.aspx" />
-    <Content Include="Views\BPM\WebForm1.aspx" />
     <Content Include="Views\BPM\WFrm_CrearCitacion.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchAdmin.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchEfectivoOn.aspx" />
@@ -569,13 +571,6 @@
     </Compile>
     <Compile Include="Views\Bitacora\WFrm_NuevaBitacora.aspx.designer.cs">
       <DependentUpon>WFrm_NuevaBitacora.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\BPM\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\BPM\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\BPM\WFrm_CrearCitacion.aspx.cs">
       <DependentUpon>WFrm_CrearCitacion.aspx</DependentUpon>
