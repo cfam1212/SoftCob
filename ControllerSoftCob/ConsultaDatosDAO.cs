@@ -1075,9 +1075,11 @@
             return _dts;
         }
 
-        public DataSet FunNewSolictudCitacion(int tipo, int citacodigo, string cedula, string tipodato, string tipocliente, string definicion,
-                   string direccion, string referencia, string email, string auxv1, string auxv2, string auxv3, string auxv4,
-                   int auxi1, int auxi2, int auxi3, int auxi4, int usuacodigo, string terminal, string conexion)
+        public DataSet FunNewSolictudCitacion(int tipo, int citacodigo, int cpcecodigo, int perscodigo, int cldecodigo, string estado,
+                   string valorcitacion, int usuacitacion, string observacioncita, int whatsapp, string observacionwhatsapp, int email, string observaemail,
+                   int terreno, string observacionterreno, string canal, string celular, string correo, string direccion, string referencia,
+                   string tipocliente, string definicion, string observacion, string auxv1, string auxv2, string auxv3, string auxv4, string auxv5,
+                   int auxi1, int auxi2, int auxi3, int auxi4, int auxi5, int usucodigo, string terminal, string conexion)
         {
             try
             {
@@ -1091,22 +1093,38 @@
                         comm.CommandText = "sp_NewSolictudCitacion";
                         comm.Parameters.AddWithValue("@in_tipo", tipo);
                         comm.Parameters.AddWithValue("@in_citacodigo", citacodigo);
-                        comm.Parameters.AddWithValue("@in_cpcecodigo", cedula);
-                        comm.Parameters.AddWithValue("@in_tipodato", tipodato);
-                        comm.Parameters.AddWithValue("@in_tipocliente", tipocliente);
-                        comm.Parameters.AddWithValue("@in_definicion", definicion);
+                        comm.Parameters.AddWithValue("@in_cpcecodigo", cpcecodigo);
+                        comm.Parameters.AddWithValue("@in_perscodigo", perscodigo);
+                        comm.Parameters.AddWithValue("@in_cldecodigo", cldecodigo);
+                        comm.Parameters.AddWithValue("@in_estado", estado);
+                        comm.Parameters.AddWithValue("@in_valorcitacion", valorcitacion);
+                        comm.Parameters.AddWithValue("@in_usuacitacion", usuacitacion);
+                        comm.Parameters.AddWithValue("@in_observacioncita", observacioncita);
+                        comm.Parameters.AddWithValue("@in_whatsapp", whatsapp);
+                        comm.Parameters.AddWithValue("@in_observawhatsapp", observacionwhatsapp);
+                        comm.Parameters.AddWithValue("@in_email", email);
+                        comm.Parameters.AddWithValue("@in_observaemail", observaemail);
+                        comm.Parameters.AddWithValue("@in_terreno", terreno);
+                        comm.Parameters.AddWithValue("@in_observacionterreno", observacionterreno);
+                        comm.Parameters.AddWithValue("@in_canal", canal);
+                        comm.Parameters.AddWithValue("@in_celular", celular);
+                        comm.Parameters.AddWithValue("@in_correo", correo);
                         comm.Parameters.AddWithValue("@in_direccion", direccion);
                         comm.Parameters.AddWithValue("@in_referencia", referencia);
-                        comm.Parameters.AddWithValue("@in_email", email);
+                        comm.Parameters.AddWithValue("@in_tipocliente", tipocliente);
+                        comm.Parameters.AddWithValue("@in_definicion", definicion);
+                        comm.Parameters.AddWithValue("@in_observacion", observacion);
                         comm.Parameters.AddWithValue("@in_auxv1", auxv1);
                         comm.Parameters.AddWithValue("@in_auxv2", auxv2);
                         comm.Parameters.AddWithValue("@in_auxv3", auxv3);
                         comm.Parameters.AddWithValue("@in_auxv4", auxv4);
+                        comm.Parameters.AddWithValue("@in_auxv5", auxv5);
                         comm.Parameters.AddWithValue("@in_auxi1", auxi1);
                         comm.Parameters.AddWithValue("@in_auxi2", auxi2);
                         comm.Parameters.AddWithValue("@in_auxi3", auxi3);
                         comm.Parameters.AddWithValue("@in_auxi4", auxi4);
-                        comm.Parameters.AddWithValue("@in_usuacodigo", usuacodigo);
+                        comm.Parameters.AddWithValue("@in_auxi5", auxi5);
+                        comm.Parameters.AddWithValue("@in_usucodigo", usucodigo);
                         comm.Parameters.AddWithValue("@in_terminal", terminal);
                         _dap.SelectCommand = comm;
                         _dap.Fill(_dts);

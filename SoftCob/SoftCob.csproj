@@ -301,6 +301,10 @@
     <Content Include="Views\Bitacora\WFrm_DatosBitacora.aspx" />
     <Content Include="Views\Bitacora\WFrm_NuevaBitacora.aspx" />
     <Content Include="Views\BPM\WFrm_CrearCitacion.aspx" />
+    <Content Include="Views\BPM\WFrm_DatosCanalCitacion.aspx" />
+    <Content Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx" />
+    <Content Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx" />
+    <Content Include="Views\BPM\WFrm_ViewPdf.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchAdmin.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchEfectivoOn.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchGestiones.aspx" />
@@ -578,6 +582,34 @@
     </Compile>
     <Compile Include="Views\BPM\WFrm_CrearCitacion.aspx.designer.cs">
       <DependentUpon>WFrm_CrearCitacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_DatosCanalCitacion.aspx.cs">
+      <DependentUpon>WFrm_DatosCanalCitacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_DatosCanalCitacion.aspx.designer.cs">
+      <DependentUpon>WFrm_DatosCanalCitacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx.cs">
+      <DependentUpon>WFrm_ListaSolicitudGestores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaSolicitudGestores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx.cs">
+      <DependentUpon>WFrm_ListaSolicitudTerreno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaSolicitudTerreno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_ViewPdf.aspx.cs">
+      <DependentUpon>WFrm_ViewPdf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_ViewPdf.aspx.designer.cs">
+      <DependentUpon>WFrm_ViewPdf.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Breanch\WFrm_BrenchAdmin.aspx.cs">
       <DependentUpon>WFrm_BrenchAdmin.aspx</DependentUpon>

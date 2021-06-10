@@ -77,7 +77,7 @@
                     </ProgressTemplate>
                 </asp:UpdateProgress>
             </div>--%>
-                        <div class="panel-info">
+                       <%-- <div class="panel-info">
                 <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -87,7 +87,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>
+            </div>--%>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server">
                     <ContentTemplate>
@@ -154,8 +154,10 @@
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
-                                            <RowStyle Font-Size="XX-Small" Font-Bold="true" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -216,8 +218,10 @@
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
-                                            <RowStyle Font-Size="XX-Small" Font-Bold="true" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -300,8 +304,10 @@
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
-                                            <RowStyle Font-Bold="true" Font-Size="XX-Small" />
+                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -390,8 +396,10 @@
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
-                                            <RowStyle Font-Bold="true" Font-Size="XX-Small" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
@@ -498,8 +506,10 @@
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
                                             </Columns>
-                                            <HeaderStyle Font-Size="X-Small" />
-                                            <RowStyle Font-Bold="true" Font-Size="XX-Small" />
+                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </td>
