@@ -24,7 +24,8 @@
             </div>
             <div class="panel-body">
                 <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-                </asp:ToolkitScriptManager>
+                    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </asp:ToolkitScriptManager>
                 <asp:UpdatePanel ID="UpdPrincipal" runat="server">
                     <ContentTemplate>
                         <table class="table table-bordered table-condensed table-hover table-responsive">

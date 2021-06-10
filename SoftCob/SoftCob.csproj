@@ -297,6 +297,7 @@
     <Content Include="Views\Bitacora\WFrm_ConsultaBitacoraAdmin.aspx" />
     <Content Include="Views\Bitacora\WFrm_DatosBitacora.aspx" />
     <Content Include="Views\Bitacora\WFrm_NuevaBitacora.aspx" />
+    <Content Include="Views\BPM\WFrm_CrearCitacion.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchAdmin.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchEfectivoOn.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchGestiones.aspx" />
@@ -567,6 +568,13 @@
     </Compile>
     <Compile Include="Views\Bitacora\WFrm_NuevaBitacora.aspx.designer.cs">
       <DependentUpon>WFrm_NuevaBitacora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_CrearCitacion.aspx.cs">
+      <DependentUpon>WFrm_CrearCitacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_CrearCitacion.aspx.designer.cs">
+      <DependentUpon>WFrm_CrearCitacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Breanch\WFrm_BrenchAdmin.aspx.cs">
       <DependentUpon>WFrm_BrenchAdmin.aspx</DependentUpon>
