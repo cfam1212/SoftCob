@@ -1604,7 +1604,7 @@
 
                         //VERIFICAR SI EL NUMERO DE DOCUMENTO YA EXISTE
 
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(241, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "",
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(235, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "",
                             TxtDocumentoRef.Text.Trim(), "", Session["Conectar"].ToString());
 
                         _codigo = int.Parse(_dts.Tables[0].Rows[0]["Codigo"].ToString());

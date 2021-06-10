@@ -1,0 +1,153 @@
+	IF @in_tipo = 235 BEGIN --ELIMINAR CORREO O DIRECCION DE LA TABLA BPM_DIRECCIONES
+		SET @codigo = ISNULL((SELECT DER.DERE_CODIGO FROM SoftCob_DEUDOR_REFERENCIAS DER (NOLOCK) 
+						WHERE DER.pers_codigo=@in_int1 AND DER.dere_numdocumento=@in_var2),0)
+		SELECT Codigo = @codigo
+	END
+
+	IF @in_tipo = 236 BEGIN --ACTUALIZAR ESTADO CUENTA DEUDOR
+		UPDATE SoftCob_CUENTA_DEUDOR SET ctde_estado=CASE @in_var2 WHEN 'Activo' THEN 1 ELSE 0 END
+		WHERE CTDE_CODIGO=@in_int1
+		SELECT 'OK-Update'
+	END
+
+	IF @in_tipo = 237 BEGIN --ELIMINAR OPERACION CUENTA DEUDOR
+		DELETE FROM SoftCob_CUENTA_DEUDOR WHERE CTDE_CODIGO=@in_int1
+		SELECT 'OK-Delete'
+	END
+
+	IF @in_tipo = 238 BEGIN --ELIMINAR TELEFONO
+		DELETE FROM SoftCob_TELEFONOS_CEDENTE WHERE TECE_CODIGO=@in_int1
+		SELECT 'OK-Delete'
+	END
+
+	IF @in_tipo = 239 BEGIN --ELIMINAR REGISTRO GARANTE - DIRECCION -MAIL
+		DELETE FROM SoftCob_GARANTES WHERE GART_CODIGO=@in_int1
+		DELETE FROM SoftCob_DIRECCION_CORREOS WHERE digt_cedula=@in_var2
+		SELECT 'OK-Delete'
+	END
+
+	IF @in_tipo = 240 BEGIN ---CONSULTAR SI EXISTE PAGO REGISTRADO EN ESA FECHA Y CLIENTE
+		SELECT
+			1
+		FROM SoftCob_SoftCob_PROYECCION_DET PYD (NOLOCK)
+		WHERE YEAR(PYD.prde_fechapago)=YEAR(CONVERT(DATE,@in_var2,101)) AND
+		MONTH(PYD.prde_fechapago)=MONTH(CONVERT(DATE,@in_var2,101)) AND PYD.prde_auxi2=@in_int1 AND 
+		PYD.prde_auxi1=1		
+	END
+
+	IF @in_tipo = 241 BEGIN --LISTAR CITACIONES POR ESTADO SIN TERRENO
+		SELECT 
+			FechaSolicitud = CONVERT(VARCHAR(16),BCC.cita_fechasolicitud,121),
+			Valor = BCC.cita_valorcitacion,
+			Canal = CASE BCC.cita_email WHEN 1 THEN 'Email' ELSE '' END +
+					CASE BCC.cita_terreno WHEN 1 THEN '/Terreno' ELSE '' END +
+					CASE BCC.cita_whatsapp WHEN 1 THEN '/Whastapp' ELSE '' END,
+			Identificacion = BCC.cita_numdocumento,
+			Cliente = (SELECT PER.pers_nombrescompletos FROM SoftCob_PERSONA PER (NOLOCK) WHERE PER.PERS_CODIGO=BCC.cita_perscodigo),
+			Provincia = (SELECT PRV.prov_nombre FROM SoftCob_Provincia PRV (NOLOCK) WHERE PRV.PROV_CODIGO = 
+							(SELECT PER.pers_provincia FROM SoftCob_PERSONA PER (NOLOCK) WHERE PER.PERS_CODIGO=BCC.cita_perscodigo)),
+			Gestor = (SELECT USU.usua_nombres+' '+USU.usua_apellidos FROM SoftCob_USUARIO USU (NOLOCK) WHERE USU.USUA_CODIGO=BCC.cita_usuacitacion),
+			Observacion = BCC.cita_observacioncita,
+			CodigoCITA = BCC.CITA_CODIGO,
+			CodigoPERS = BCC.cita_perscodigo,
+			CodigoCLDE = BCC.cita_cldecodigo,
+			CodigoCPCE = BCC.CPCE_CODIGO,
+			CodigoGEST = BCC.cita_usuacitacion,
+			CodigoESTA = BCC.cita_estado
+		FROM SoftCob_BPM_CITA_CABECERA BCC (NOLOCK)
+			WHERE BCC.cita_estado IN('CSL','REV') AND BCC.cita_terreno=@in_int1
+	END
+
+	IF @in_tipo = 242 BEGIN --LISTAR CITACION CABECERA POR CODIGO CITA
+		SELECT
+			CitaCodigo = BCC.CITA_CODIGO,
+			Whastapp = CASE BCC.cita_whatsapp WHEN 1 THEN 'Whatsapp' ELSE '' END,
+			Email = CASE BCC.cita_email WHEN 1 THEN 'Email' ELSE '' END,
+			Terreno = CASE BCC.cita_terreno WHEN 1 THEN 'Terreno' ELSE '' END,
+			ObservaWhastapp = BCC.cita_observawhatsapp,
+			ObservaEmail = BCC.cita_observaemail,
+			ObservaTerreno = BCC.cita_observaterreno,
+			FechaCitacion = CONVERT(VARCHAR(10),BCC.cita_fechacitacion,121),
+			HoraCitacion = ISNULL((SELECT CONVERT(VARCHAR(5),HDE.chor_inicio,108) FROM BPM_HORARIOS_DET HDE (NOLOCK) 
+									WHERE HDE.CHOR_CODIGO=BCC.cita_horacitacion),''),
+			HoraCodigo = BCC.cita_horacitacion
+		FROM SoftCob_BPM_CITA_CABECERA BCC (NOLOCK)
+		WHERE BCC.CITA_CODIGO=@in_int1
+	END
+
+	IF @in_tipo = 243 BEGIN --CONSULTAR SI EXISTE UNA FECHA DE CITACION EN EL RAGO ESTABLECIDO
+		SELECT 
+			Fecha = CONVERT(VARCHAR(16),BCI.cita_fechacitacion,121)
+		FROM SoftCob_BPM_CITA_CABECERA BCI (NOLOCK)
+		WHERE CONVERT(VARCHAR(16),@fecha,121)<=CONVERT(VARCHAR(16),DATEADD(MINUTE,@in_int1,BCI.cita_fechacitacion),121)
+		AND BCI.cita_estado IN('CSL','CPR')
+	END
+
+	IF @in_tipo = 244 BEGIN --ESTABLECER ESTADO PARA CABECERA CITACION
+		UPDATE SoftCob_BPM_CITA_CABECERA SET cita_estado=@in_var2,cita_respuestacitacion=@in_var1
+		WHERE CITA_CODIGO=@in_int1
+
+		UPDATE SoftCob_CLIENTE_DEUDOR SET clde_auxv3=@in_var2 WHERE CLDE_CODIGO=@in_int2
+		DELETE FROM SoftCob_BPM_CITACIONES_REV WHERE pers_codigo=@in_int3
+
+		SELECT 'OK-Update'
+	END
+
+	IF @in_tipo = 245 BEGIN --CAMBIAR EL ESTADO DE LA PROYECCION PARA EFECTIVDAD
+		UPDATE SoftCob_PROYECCION_DET SET prde_estadopago=@in_var2,prde_auxi3=@in_int1
+		WHERE PRDE_CODIGO=@in_int2
+		SELECT 'OK-Update'
+	END
+
+	IF @in_tipo = 246 BEGIN --CONSULTAR DATOS DE CITACIONES POR CANAL
+		IF @in_int1 = 0 BEGIN --CANAL WHASTAPP
+			SELECT
+				TipoCliente = (SELECT PDE.pade_nombre FROM SoftCob_PARAMETRO_DETALLE PDE (NOLOCK) WHERE PDE.pade_valorV=CTD.hcit_tipocliente
+								AND PDE.PARA_CODIGO=(SELECT PRC.PARA_CODIGO FROM SoftCob_PARAMETRO_CABECERA PRC (NOLOCK) 
+														WHERE PRC.para_nombre='PROPIEDAD TELEFONO')),
+				Definicion = (SELECT PDE.pade_nombre FROM SoftCob_PARAMETRO_DETALLE PDE (NOLOCK) WHERE PDE.pade_valorV=CTD.hcit_definicion
+								AND PDE.PARA_CODIGO=(SELECT PRC.PARA_CODIGO FROM SoftCob_PARAMETRO_CABECERA PRC (NOLOCK) 
+														WHERE PRC.para_nombre='TIPO TELEFONO')),
+				Celular = CTD.hcit_celular,
+				Email = CTD.hcit_correo,
+				Direccion = CTD.hcit_direccion,
+				Referencia = CTD.hcit_referencia,
+				Observacion = CTD.hcit_observacion
+				FROM SoftCob_BMP_CITA_DETALLE CTD (NOLOCK)
+				WHERE CTD.CITA_CODIGO=@in_int2 AND CTD.hcit_canal=@in_var2
+		END
+
+		IF @in_int1 = 1 BEGIN --CANAL EMAIL
+			SELECT
+				TipoCliente = (SELECT PDE.pade_nombre FROM SoftCob_PARAMETRO_DETALLE PDE (NOLOCK) WHERE PDE.pade_valorV=CTD.hcit_tipocliente
+								AND PDE.PARA_CODIGO=(SELECT PRC.PARA_CODIGO FROM SoftCob_PARAMETRO_CABECERA PRC (NOLOCK) 
+														WHERE PRC.para_nombre='TIPO CLIENTE')),
+				Definicion = (SELECT PDE.pade_nombre FROM SoftCob_PARAMETRO_DETALLE PDE (NOLOCK) WHERE PDE.pade_valorV=CTD.hcit_definicion
+								AND PDE.PARA_CODIGO=(SELECT PRC.PARA_CODIGO FROM SoftCob_PARAMETRO_CABECERA PRC (NOLOCK) 
+														WHERE PRC.para_nombre='TIPO CORREO')),
+				Celular = CTD.hcit_celular,
+				Email = CTD.hcit_correo,
+				Direccion = CTD.hcit_direccion,
+				Referencia = CTD.hcit_referencia,
+				Observacion = CTD.hcit_observacion
+				FROM SoftCob_BMP_CITA_DETALLE CTD (NOLOCK)
+				WHERE CTD.CITA_CODIGO=@in_int2 AND CTD.hcit_canal=@in_var2
+		END
+
+		IF @in_int1 = 2 BEGIN --CANAL TERRENO
+			SELECT
+				TipoCliente = (SELECT PDE.pade_nombre FROM SoftCob_PARAMETRO_DETALLE PDE (NOLOCK) WHERE PDE.pade_valorV=CTD.hcit_tipocliente
+								AND PDE.PARA_CODIGO=(SELECT PRC.PARA_CODIGO FROM SoftCob_PARAMETRO_CABECERA PRC (NOLOCK) 
+														WHERE PRC.para_nombre='TIPO CLIENTE')),
+				Definicion = (SELECT PDE.pade_nombre FROM SoftCob_PARAMETRO_DETALLE PDE (NOLOCK) WHERE PDE.pade_valorV=CTD.hcit_definicion
+								AND PDE.PARA_CODIGO=(SELECT PRC.PARA_CODIGO FROM SoftCob_PARAMETRO_CABECERA PRC (NOLOCK) 
+														WHERE PRC.para_nombre='TIPO DIRECCION')),
+				Celular = CTD.hcit_celular,
+				Email = CTD.hcit_correo,
+				Direccion = CTD.hcit_direccion,
+				Referencia = CTD.hcit_referencia,
+				Observacion = CTD.hcit_observacion
+				FROM SoftCob_BMP_CITA_DETALLE CTD (NOLOCK)
+				WHERE CTD.CITA_CODIGO=@in_int2 AND CTD.hcit_canal=@in_var2
+		END
+	END

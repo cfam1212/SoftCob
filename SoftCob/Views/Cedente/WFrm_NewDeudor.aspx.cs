@@ -249,10 +249,10 @@
                         _dts = new ConsultaDatosDAO().FunConsultaDatos(187, int.Parse(DdlCedente.SelectedValue), 0, 0, "",
                             TxtNumeroDocumento.Text.Trim(), "", Session["Conectar"].ToString());
 
-                        ViewState["DatosOperacion"] = _dts.Tables[1];
-                        ViewState["DatosTelefonos"] = _dts.Tables[2];
-                        ViewState["DireccionTitular"] = _dts.Tables[3];
-                        ViewState["CorreoTitular"] = _dts.Tables[4];
+                        ViewState["DatosOperacion"] = _dts.Tables[0];
+                        ViewState["DatosTelefonos"] = _dts.Tables[1];
+                        ViewState["DireccionTitular"] = _dts.Tables[2];
+                        ViewState["CorreoTitular"] = _dts.Tables[3];
 
                         GrdvDatos.DataSource = _dts.Tables[1];
                         GrdvDatos.DataBind();

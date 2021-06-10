@@ -365,9 +365,6 @@
                                 <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                             </asp:GridView>
                             <script>
-                                //$(document).ready(function () {
-                                //    $('#GrdvDatos').dataTable();
-                                //});
                                 var prm = Sys.WebForms.PageRequestManager.getInstance();
 
                                 prm.add_endRequest(function () {

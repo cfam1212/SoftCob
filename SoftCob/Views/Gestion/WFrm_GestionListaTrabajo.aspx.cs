@@ -2210,7 +2210,7 @@
                         }
                         //VERIFICAR SI EL NUMERO DE DOCUMENTO YA EXISTE
 
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(241, int.Parse(ViewState["PersCodigo"].ToString()), 0, 0, "",
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(235, int.Parse(ViewState["PersCodigo"].ToString()), 0, 0, "",
                             TxtDocumentoRef.Text.Trim(), "", Session["Conectar"].ToString());
 
                         _codigo = int.Parse(_dts.Tables[0].Rows[0]["Codigo"].ToString());
@@ -2842,19 +2842,6 @@
                         new FuncionesDAO().FunShowJSMessage("Ya existe teléfono..!", this);
                         return;
                     }
-
-                    //if (ViewState["NumDocumentoRef"].ToString() != TxtDocumentoRef.Text.Trim())
-                    //{
-                    //    _tblbuscar = (DataTable)ViewState["TelefonosRegistrados"];
-                    //    _result = _tblbuscar.Select("NumDocumento='" + TxtDocumentoRef.Text.Trim() + "'").FirstOrDefault();
-                    //    if (_result != null) _lexiste = true;
-
-                    //    if (_lexiste)
-                    //    {
-                    //        new FuncionesDAO().FunShowJSMessage("No. de Documento ya Existe..!", this);
-                    //        return;
-                    //    }
-                    //}
 
                     if (DdlPropietario2.SelectedValue != "DE")
                     {
