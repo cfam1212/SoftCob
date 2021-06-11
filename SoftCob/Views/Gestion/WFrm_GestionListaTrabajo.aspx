@@ -569,10 +569,10 @@
                                                                                 <tr>
                                                                                     <td></td>
                                                                                     <td style="text-align: center">
-                                                                                        <asp:ImageButton ID="ImgAddTelefono" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddTelefono_Click" TabIndex="11" Enabled="False" ToolTip="Agregar Nuevo Teléfono" />
+                                                                                        <asp:ImageButton ID="ImgAddTelefono" runat="server" Height="25px" ImageUrl="~/Botones/agregar.png" OnClick="ImgAddTelefono_Click" TabIndex="11" Enabled="False" ToolTip="Agregar Nuevo Teléfono" />
                                                                                     </td>
                                                                                     <td>
-                                                                                        <asp:ImageButton ID="ImgEditelefono" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgEditelefono_Click" TabIndex="12" ToolTip="Modificar Teléfono" />
+                                                                                        <asp:ImageButton ID="ImgEditelefono" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificarnew.png" OnClick="ImgEditelefono_Click" TabIndex="12" ToolTip="Modificar Teléfono" />
                                                                                     </td>
                                                                                     <td></td>
                                                                                 </tr>

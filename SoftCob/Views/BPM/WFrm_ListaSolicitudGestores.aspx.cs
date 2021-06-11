@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.BPM
+﻿namespace SoftCob.Views.BPM
 {
     using ControllerSoftCob;
     using System;
@@ -10,7 +8,6 @@ namespace SoftCob.Views.BPM
     using System.Web.UI.WebControls;
     using ClosedXML.Excel;
     using System.IO;
-
     public partial class WFrm_ListaSolicitudGestores : Page
     {
         #region Variables

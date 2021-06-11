@@ -1,13 +1,10 @@
-﻿
-
-namespace SoftCob.Views.BPM
+﻿namespace SoftCob.Views.BPM
 {
     using ControllerSoftCob;
     using System;
     using System.Data;
     using System.Web.UI;
     using System.Configuration;
-
     public partial class WFrm_DatosCanalCitacion : Page
     {
 

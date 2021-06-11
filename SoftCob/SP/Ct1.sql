@@ -1,7 +1,7 @@
 USE [SoftCob]
 GO
 
-/****** Object:  Table [dbo].[SoftCob_BPM_CITA_CABECERA]    Script Date: 9/6/2021 19:28:11 ******/
+/****** Object:  Table [dbo].[SoftCob_BPM_CITA_CABECERA]    Script Date: 10/6/2021 19:07:55 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -23,20 +23,17 @@ CREATE TABLE [dbo].[SoftCob_BPM_CITA_CABECERA](
 	[cita_whatsapp] [int] NULL,
 	[cita_observawhatsapp] [varchar](500) NULL,
 	[cita_whatsappfin] [varchar](2) NULL,
-	[cita_pathwhatsapp] [varchar](50) NULL,
-	[cita_nomwhatsapp] [varchar](50) NULL,
-	[cita_extwhatsapp] [varchar](5) NULL,
-	[cita_contentwhatsapp] [varchar](50) NULL,
 	[cita_email] [int] NULL,
 	[cita_observaemail] [varchar](500) NULL,
 	[cita_emailfin] [varchar](2) NULL,
-	[cita_pathemail] [varchar](50) NULL,
-	[cita_nomemail] [varchar](50) NULL,
-	[cita_extemail] [varchar](5) NULL,
-	[cita_contentemail] [varchar](50) NULL,
 	[cita_terreno] [int] NULL,
 	[cita_observaterreno] [varchar](500) NULL,
 	[cita_terrenofin] [varchar](2) NULL,
+	[cita_fecharutaterreno] [date] NOT NULL,
+	[cita_patharchivo] [varchar](50) NULL,
+	[cita_nomarchivo] [varchar](50) NULL,
+	[cita_extarchivo] [varchar](5) NULL,
+	[cita_contentarchivo] [varchar](50) NULL,
 	[cita_fechacitacion] [date] NOT NULL,
 	[cita_horacitacion] [int] NULL,
 	[cita_usuariocitacion] [int] NULL,

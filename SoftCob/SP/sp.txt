@@ -1,0 +1,18 @@
+	IF @in_tipo = 234 BEGIN --LISTAR CORREO PARA REALIZAR CITACION
+		SELECT
+			Tipo = ISNULL((SELECT PD.pade_nombre FROM SoftCob_PARAMETRO_DETALLE PD (NOLOCK) WHERE PD.pade_valorV=
+								CDI.matd_tipocliente AND PD.PARA_CODIGO IN(SELECT PARA_CODIGO FROM 
+								SoftCob_PARAMETRO_CABECERA (NOLOCK) WHERE para_nombre='TIPO CLIENTE')),''),
+			Definicion = ISNULL((SELECT PD.pade_nombre FROM SoftCob_PARAMETRO_DETALLE PD (NOLOCK) WHERE PD.pade_valorV=
+								CDI.matd_definicion AND PD.PARA_CODIGO IN(SELECT PARA_CODIGO FROM 
+								SoftCob_PARAMETRO_CABECERA (NOLOCK) WHERE para_nombre='TIPO CORREO')),''),
+			Email = matd_email,
+			Direccion = matd_direccion,
+			Referencia = matd_referencia,
+			Observacion = '',
+			CodigoMATD = CAST(MATD_CODIGO  AS varchar),
+			CodigoTIPO = CDI.matd_tipocliente
+		FROM SoftCob_BPM_CORREO_DIRECCIONES CDI (NOLOCK)
+		WHERE CDI.matd_tipo=@in_var2 AND CDI.matd_numerodocumento=@in_var3
+		ORDER BY matd_numerodocumento
+	END

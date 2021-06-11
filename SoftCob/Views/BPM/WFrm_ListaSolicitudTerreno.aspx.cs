@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.BPM
+﻿namespace SoftCob.Views.BPM
 {
     using ControllerSoftCob;
     using System;

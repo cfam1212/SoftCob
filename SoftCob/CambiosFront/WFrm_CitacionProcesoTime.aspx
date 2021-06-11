@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_ListaSolicitudGestores.aspx.cs" Inherits="Pry_wGSBPO.GSBPO.BPM.WFrm_ListaSolicitudGestores" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_CitacionProcesoTime.aspx.cs" Inherits="Pry_wGSBPO.GSBPO.BPM.WFrm_CitacionProcesoTime" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -36,32 +36,43 @@
                         <table style="width:100%">
                             <tr>
                                 <td>
-                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" 
-                                        Width="40px" Height="30px" Visible="false" OnClick="ImgExportar_Click" />
-                                    <asp:Label ID="LblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
+                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" />
+                                    <asp:Label ID="lblExportar" runat="server" Text="Exportar"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
                                         CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                        ShowHeaderWhenEmpty="True" DataKeyNames="CodigoCITA,CodigoPERS,CodigoCLDE,CodigoCPCE,CodigoGEST,CodigoESTA" OnRowDataBound="GrdvDatos_RowDataBound">
+                                        ShowHeaderWhenEmpty="True" DataKeyNames="CodigoCITA,CodigoPERS,CodigoCLDE,Terreno,Email,Whastapp" OnRowDataBound="GrdvDatos_RowDataBound">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:BoundField DataField="FechaSolicitud" HeaderText="Solicitud" />
-                                            <asp:BoundField DataField="Canal" HeaderText="Canal" />
-                                            <asp:BoundField DataField="Identificacion" HeaderText="Identificación" >
-                                            <ItemStyle HorizontalAlign="Right" />
-                                            </asp:BoundField>
+                                            <asp:BoundField DataField="FechaCita" HeaderText="Fecha" />
+                                            <asp:BoundField DataField="HoraCita" HeaderText="Hora" />
+                                            <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
                                             <asp:BoundField DataField="Cliente" HeaderText="Cliente">
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="Provincia" HeaderText="Provincia" />
-                                            <asp:BoundField DataField="Valor" HeaderText="Valor" />
-                                            <asp:BoundField DataField="Gestor" HeaderText="Gestor" >
+                                            <asp:BoundField DataField="Observacion" HeaderText="Observación" >
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="Observacion" HeaderText="Observacion">
-                                            </asp:BoundField>
-                                            <asp:TemplateField HeaderText="Citación">
+                                            <asp:TemplateField HeaderText="Terreno">
+                                                <ItemTemplate>
+                                                    <asp:Image ID="ImgTerreno" runat="server" Height="20px" ImageUrl="~/Botones/vistonegro.png" />
+                                                </ItemTemplate>
+                                                <ItemStyle HorizontalAlign="Center" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Email">
+                                                <ItemTemplate>
+                                                    <asp:Image ID="ImgEmail" runat="server" Height="20px" ImageUrl="~/Botones/vistonegro.png" />
+                                                </ItemTemplate>
+                                                <ItemStyle HorizontalAlign="Center" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Whastapp">
+                                                <ItemTemplate>
+                                                    <asp:Image ID="ImgWhastapp" runat="server" Height="20px" ImageUrl="~/Botones/vistonegro.png" />
+                                                </ItemTemplate>
+                                                <ItemStyle HorizontalAlign="Center" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Generar">
                                                 <ItemTemplate>
                                                     <asp:ImageButton ID="ImgCitacion" runat="server" Height="15px" ImageUrl="~/Botones/btncitaproceso.png" OnClick="ImgCitacion_Click" />
                                                 </ItemTemplate>

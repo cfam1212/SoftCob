@@ -1,7 +1,7 @@
 USE [SoftCob]
 GO
 
-/****** Object:  Table [dbo].[SoftCob_BPM_CITA_DETALLE]    Script Date: 9/6/2021 19:28:39 ******/
+/****** Object:  Table [dbo].[SoftCob_BPM_CITA_DETALLE]    Script Date: 10/6/2021 19:08:08 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -48,7 +48,7 @@ CREATE TABLE [dbo].[SoftCob_BPM_CITA_DETALLE](
 	[hcit_fechacreacion] [datetime] NOT NULL,
 	[hcit_usuariocreacion] [int] NOT NULL,
 	[hcit_terminalcreacion] [varchar](50) NOT NULL,
- CONSTRAINT [PK_SoftCob_BPM_CITA_DETALLE] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_BPM_CITA_DETALLE] PRIMARY KEY CLUSTERED 
 (
 	[HCIT_CODIGO] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]

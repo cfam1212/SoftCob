@@ -9,12 +9,15 @@
     using ClosedXML.Excel;
     using System.IO;
 
-    public partial class WFrm_ListaSolicitudTerreno : Page
+    public partial class WFrm_CitacionProcesoTime : Page
     {
         #region Variables
         DataSet _dts = new DataSet();
-        string _codigo = "", _codigoclde = "", _codigopers = "", _codigocpce = "", _codigogest = "", _codigoesta = "";
+        string _codigo = "", _codigoclde = "", _codigopers = "", _terreno = "", _email = "", _whastapp = "";
         DataTable _dtb = new DataTable();
+        Image _imgterreno = new Image();
+        Image _imgemail = new Image();
+        Image _imgwhastapp = new Image();
         #endregion
 
         #region Load
@@ -31,7 +34,7 @@
                 if (!IsPostBack)
                 {
                     ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
-                    Lbltitulo.Text = "Lista Citaciones Solicitadas << VARIOS MEDIOS - TERRENO >>";
+                    Lbltitulo.Text = "Citaciones en Proceso";
                     FunCargarMantenimiento();
 
                     if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
@@ -50,18 +53,25 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(241, 1, 0, 0, "", "", "", ViewState["Conectar"].ToString());
-
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(247, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();
                 ViewState["GrdvDatos"] = _dts.Tables[0];
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
-                    ImgExportar.Visible = true;
-                    LblExportar.Visible = true;
                     GrdvDatos.UseAccessibleHeader = true;
                     GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(248, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+
+                if (_dts.Tables[0].Rows[0]["Citas"].ToString() != "0")
+                {
+                    if (Request["MensajeRetornado"] == null)
+                        SIFunBasicas.Basicas.PresentarMensaje(Page,
+                            "::GSBPO GLOBAL SERVICES::", "Existe(n) " + _dts.Tables[0].Rows[0]["Citas"].ToString() +
+                            " Cita(s) en Proceso con fecha(s) fuera de rango");
                 }
             }
             catch (Exception ex)
@@ -77,15 +87,35 @@
             try
             {
                 GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
-                _codigo = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCITA"].ToString();
-                _codigocpce = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCPCE"].ToString();
-                _codigopers = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoPERS"].ToString();
+                _codigo = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Codigo"].ToString();
                 _codigoclde = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCLDE"].ToString();
-                _codigogest = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoGEST"].ToString();
+                _codigopers = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoPERS"].ToString();
+                Response.Redirect("WFrm_GenerarCitacion.aspx?Codigo=" + _codigo + "&CodigoPERS=" + _codigopers +
+                    "&CodigoCLDE=" + _codigoclde, true);
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
 
-                Response.Redirect("WFrm_EstablecerFechaCitacion.aspx?CodigoCITA=" + _codigo + "&CodigoPERS=" + _codigopers +
-                    "&CodigoCLDE=" + _codigoclde + "&CodigoCPCE=" + _codigocpce + "&CodigoGEST=" + _codigogest +
-                    "&Retornar=1", true);
+        protected void GrdvDatos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowIndex >= 0)
+                {
+                    _terreno = GrdvDatos.DataKeys[e.Row.RowIndex].Values["Terreno"].ToString();
+                    _email = GrdvDatos.DataKeys[e.Row.RowIndex].Values["Email"].ToString();
+                    _whastapp = GrdvDatos.DataKeys[e.Row.RowIndex].Values["Whastapp"].ToString();
+                    _imgterreno = (Image)(e.Row.Cells[5].FindControl("ImgTerreno"));
+                    _imgemail = (Image)(e.Row.Cells[6].FindControl("ImgEmail"));
+                    _imgwhastapp = (Image)(e.Row.Cells[7].FindControl("ImgWhastapp"));
+
+                    if(_terreno=="SI") _imgterreno.ImageUrl= "~/Botones/vistoverde.png";
+                    if (_email == "SI") _imgemail.ImageUrl = "~/Botones/vistoverde.png";
+                    if (_whastapp == "SI") _imgwhastapp.ImageUrl = "~/Botones/vistoverde.png";
+                }
             }
             catch (Exception ex)
             {
@@ -106,7 +136,7 @@
                 using (XLWorkbook wb = new XLWorkbook())
                 {
                     wb.Worksheets.Add(_dtb, "Datos");
-                    string FileName = "SolicitudCitaciones_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                    string FileName = "CitacionesGeneradas_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
                     Response.Clear();
                     Response.Buffer = true;
                     Response.Charset = "";
@@ -118,28 +148,6 @@
                         MyMemoryStream.WriteTo(Response.OutputStream);
                         Response.Flush();
                         Response.End();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Lblerror.Text = ex.ToString();
-            }
-        }
-
-        protected void GrdvDatos_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            try
-            {
-                if (e.Row.RowIndex >= 0)
-                {
-                    _codigoesta = GrdvDatos.DataKeys[e.Row.RowIndex].Values["CodigoESTA"].ToString();
-
-                    switch (_codigoesta)
-                    {
-                        case "REV":
-                            e.Row.Cells[0].BackColor = System.Drawing.Color.Tomato;
-                            break;
                     }
                 }
             }

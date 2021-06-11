@@ -221,6 +221,7 @@
     <Content Include="Botones\informacion.png" />
     <Content Include="Botones\medico.png" />
     <Content Include="Botones\modificar.png" />
+    <Content Include="Botones\modificarnew.png" />
     <Content Include="Botones\notas.png" />
     <Content Include="Botones\ocultarFrame.png" />
     <Content Include="Botones\phonered.jpg" />
@@ -240,6 +241,7 @@
     <Content Include="Botones\verificargris.png" />
     <Content Include="Botones\vistodisable.png" />
     <Content Include="Botones\vistoenable.png" />
+    <Content Include="Botones\vistonegro.png" />
     <Content Include="Botones\vistoverde.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
