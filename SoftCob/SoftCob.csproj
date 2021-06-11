@@ -302,8 +302,10 @@
     <Content Include="Views\Bitacora\WFrm_ConsultaBitacoraAdmin.aspx" />
     <Content Include="Views\Bitacora\WFrm_DatosBitacora.aspx" />
     <Content Include="Views\Bitacora\WFrm_NuevaBitacora.aspx" />
+    <Content Include="Views\BPM\WFrm_CitacionProcesoTime.aspx" />
     <Content Include="Views\BPM\WFrm_CrearCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_DatosCanalCitacion.aspx" />
+    <Content Include="Views\BPM\WFrm_EfectivoLostPayment.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_ViewPdf.aspx" />
@@ -578,6 +580,13 @@
     <Compile Include="Views\Bitacora\WFrm_NuevaBitacora.aspx.designer.cs">
       <DependentUpon>WFrm_NuevaBitacora.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BPM\WFrm_CitacionProcesoTime.aspx.cs">
+      <DependentUpon>WFrm_CitacionProcesoTime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_CitacionProcesoTime.aspx.designer.cs">
+      <DependentUpon>WFrm_CitacionProcesoTime.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\BPM\WFrm_CrearCitacion.aspx.cs">
       <DependentUpon>WFrm_CrearCitacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -591,6 +600,13 @@
     </Compile>
     <Compile Include="Views\BPM\WFrm_DatosCanalCitacion.aspx.designer.cs">
       <DependentUpon>WFrm_DatosCanalCitacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_EfectivoLostPayment.aspx.cs">
+      <DependentUpon>WFrm_EfectivoLostPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_EfectivoLostPayment.aspx.designer.cs">
+      <DependentUpon>WFrm_EfectivoLostPayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx.cs">
       <DependentUpon>WFrm_ListaSolicitudGestores.aspx</DependentUpon>
