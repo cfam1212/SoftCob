@@ -152,6 +152,8 @@
                 throw ex;
             }
         }
+
+       
         public DataSet FunGetCedentes()
         {
             List<SoftCob_CEDENTE> _cedente = new List<SoftCob_CEDENTE>();

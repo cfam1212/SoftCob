@@ -46,7 +46,7 @@
                                             <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
                                             <asp:TemplateField HeaderText="Editar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecc_Click" />
+                                                    <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecc_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

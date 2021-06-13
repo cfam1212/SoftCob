@@ -78,7 +78,7 @@
                                             <asp:BoundField DataField="Riesgo" HeaderText="Riesgo" Visible="False" />
                                             <asp:TemplateField HeaderText="Gestionar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgGestionar" runat="server" Height="20px" ImageUrl="~/Botones/procesar.png" OnClick="ImgGestionar_Click" />
+                                                    <asp:ImageButton ID="ImgGestionar" runat="server" Height="20px" ImageUrl="~/Botones/procesarbg.png" OnClick="ImgGestionar_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

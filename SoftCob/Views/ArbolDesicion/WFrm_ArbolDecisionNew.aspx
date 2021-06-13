@@ -120,7 +120,7 @@
                                                     <h4 runat="server" id="LblDefinicion" style="color: brown;"></h4>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgDelete" runat="server" Height="25px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelete_Click" OnClientClick="return asegurar();" TabIndex="11" Visible="False" />
+                                                    <asp:ImageButton ID="ImgDelete" runat="server" Height="25px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelete_Click" OnClientClick="return asegurar();" TabIndex="11" Visible="False" />
                                                 </td>
                                             </tr>
                                             <tr>

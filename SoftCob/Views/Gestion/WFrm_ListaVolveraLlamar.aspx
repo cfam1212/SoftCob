@@ -66,7 +66,7 @@
                                             </asp:BoundField>
                                             <asp:TemplateField HeaderText="Gestionar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="BtnProcesar" runat="server" Height="20px" ImageUrl="~/Botones/procesar.png" OnClick="BtnProcesar_Click" />
+                                                    <asp:ImageButton ID="BtnProcesar" runat="server" Height="20px" ImageUrl="~/Botones/procesarbg.png" OnClick="BtnProcesar_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

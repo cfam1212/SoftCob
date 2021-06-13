@@ -164,9 +164,13 @@
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\npm.js" />
     <Content Include="Botones\abonar.png" />
+    <Content Include="Botones\abonarbg.png" />
+    <Content Include="Botones\abonarbg1.png" />
     <Content Include="Botones\activada_down.png" />
     <Content Include="Botones\activada_up.png" />
     <Content Include="Botones\agendarmail.png" />
+    <Content Include="Botones\agendarmailbg.png" />
+    <Content Include="Botones\agragarusuariobg.png" />
     <Content Include="Botones\agregar.jpg" />
     <Content Include="Botones\agregar.png" />
     <Content Include="Botones\agregar_usuario.jpg" />
@@ -174,9 +178,12 @@
     <Content Include="Botones\bntbuscarfono.png" />
     <Content Include="Botones\btnbalanza.png" />
     <Content Include="Botones\btncandadocerrado.png" />
+    <Content Include="Botones\btncandadocerradobg.png" />
     <Content Include="Botones\btncitacion.png" />
     <Content Include="Botones\btncitaelimina.png" />
+    <Content Include="Botones\btncitaeliminabg.png" />
     <Content Include="Botones\btncitagenerada.png" />
+    <Content Include="Botones\btncitageneradabg.png" />
     <Content Include="Botones\btncitagris.png" />
     <Content Include="Botones\btncitaproceso.png" />
     <Content Include="Botones\btncitarealizada.png" />
@@ -188,21 +195,27 @@
     <Content Include="Botones\btnInciarsesion.png" />
     <Content Include="Botones\btnllaves.png" />
     <Content Include="Botones\btnnoemail.jpg" />
+    <Content Include="Botones\btnnoemailbg.png" />
     <Content Include="Botones\btnnotepad.png" />
     <Content Include="Botones\btnnotepadgris.png" />
     <Content Include="Botones\btnpasaruno.jpg" />
+    <Content Include="Botones\btnpasarunobg.png" />
     <Content Include="Botones\btnquitar.jpg" />
+    <Content Include="Botones\btnquitarbg.png" />
     <Content Include="Botones\btnquitaruno.png" />
     <Content Include="Botones\btntodos.jpg" />
+    <Content Include="Botones\btntodosbg.png" />
     <Content Include="Botones\btnwhastapp.png" />
     <Content Include="Botones\Buscar.png" />
     <Content Include="Botones\Buscargris.png" />
+    <Content Include="Botones\buscargrisbg.png" />
     <Content Include="Botones\busqueda.png" />
     <Content Include="Botones\callapse.png" />
     <Content Include="Botones\call_small.png" />
     <Content Include="Botones\call_small_disabled.png" />
     <Content Include="Botones\call_small_gris.png" />
     <Content Include="Botones\cancelar.jpg" />
+    <Content Include="Botones\cancelarbg.png" />
     <Content Include="Botones\casa.png" />
     <Content Include="Botones\citamedica.png" />
     <Content Include="Botones\citamedicadesac.png" />
@@ -214,6 +227,7 @@
     <Content Include="Botones\desactivada_up.png" />
     <Content Include="Botones\editargris.png" />
     <Content Include="Botones\eliminar.png" />
+    <Content Include="Botones\eliminarbg.png" />
     <Content Include="Botones\eliminargris.png" />
     <Content Include="Botones\excel.png" />
     <Content Include="Botones\gafas.png" />
@@ -223,21 +237,27 @@
     <Content Include="Botones\modificar.png" />
     <Content Include="Botones\modificarnew.png" />
     <Content Include="Botones\notas.png" />
+    <Content Include="Botones\notasbg.png" />
     <Content Include="Botones\ocultarFrame.png" />
     <Content Include="Botones\phonered.jpg" />
+    <Content Include="Botones\phoneredbg.png" />
     <Content Include="Botones\procesar.jpg" />
     <Content Include="Botones\procesar.png" />
+    <Content Include="Botones\procesarbg.png" />
     <Content Include="Botones\productos.png" />
     <Content Include="Botones\proyeccion.png" />
     <Content Include="Botones\quitar_usuario.jpg" />
     <Content Include="Botones\resetpassword.png" />
+    <Content Include="Botones\ressetpasswordbg.png" />
     <Content Include="Botones\selecc.png" />
+    <Content Include="Botones\seleccbg.png" />
     <Content Include="Botones\seleccionar.png" />
     <Content Include="Botones\sin_usuario.png" />
     <Content Include="Botones\speechAB.png" />
     <Content Include="Botones\speechBV.png" />
     <Content Include="Botones\user_new.png" />
     <Content Include="Botones\verificar.png" />
+    <Content Include="Botones\verificarbg.png" />
     <Content Include="Botones\verificargris.png" />
     <Content Include="Botones\vistodisable.png" />
     <Content Include="Botones\vistoenable.png" />
@@ -302,8 +322,10 @@
     <Content Include="Views\Bitacora\WFrm_ConsultaBitacoraAdmin.aspx" />
     <Content Include="Views\Bitacora\WFrm_DatosBitacora.aspx" />
     <Content Include="Views\Bitacora\WFrm_NuevaBitacora.aspx" />
+    <Content Include="Views\BPM\WFrm_CitacionProcesoTime.aspx" />
     <Content Include="Views\BPM\WFrm_CrearCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_DatosCanalCitacion.aspx" />
+    <Content Include="Views\BPM\WFrm_EfectivoLostPayment.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_ViewPdf.aspx" />
@@ -578,6 +600,13 @@
     <Compile Include="Views\Bitacora\WFrm_NuevaBitacora.aspx.designer.cs">
       <DependentUpon>WFrm_NuevaBitacora.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BPM\WFrm_CitacionProcesoTime.aspx.cs">
+      <DependentUpon>WFrm_CitacionProcesoTime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_CitacionProcesoTime.aspx.designer.cs">
+      <DependentUpon>WFrm_CitacionProcesoTime.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\BPM\WFrm_CrearCitacion.aspx.cs">
       <DependentUpon>WFrm_CrearCitacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -591,6 +620,13 @@
     </Compile>
     <Compile Include="Views\BPM\WFrm_DatosCanalCitacion.aspx.designer.cs">
       <DependentUpon>WFrm_DatosCanalCitacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_EfectivoLostPayment.aspx.cs">
+      <DependentUpon>WFrm_EfectivoLostPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_EfectivoLostPayment.aspx.designer.cs">
+      <DependentUpon>WFrm_EfectivoLostPayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx.cs">
       <DependentUpon>WFrm_ListaSolicitudGestores.aspx</DependentUpon>

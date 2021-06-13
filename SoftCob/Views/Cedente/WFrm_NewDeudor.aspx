@@ -175,7 +175,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-<%--            <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -185,7 +185,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>--%>
+            </div>
             <div class="panel-body">
                 <h3 class="label label-primary" style="font-size: 14px; display: block; text-align: left">Datos - TITULAR</h3>
                 <asp:UpdatePanel ID="updCabecera" runat="server">
@@ -371,13 +371,13 @@
                                                     <asp:BoundField DataField="Referencia" HeaderText="Referencia"></asp:BoundField>
                                                     <asp:TemplateField HeaderText="Selecc">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgSelecDirTitular" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecDirTitular_Click" />
+                                                            <asp:ImageButton ID="ImgSelecDirTitular" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecDirTitular_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Eliminar">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgEliDirTitular" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliDirTitular_Click" OnClientClick="return asegurar();" />
+                                                            <asp:ImageButton ID="ImgEliDirTitular" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliDirTitular_Click" OnClientClick="return asegurar();" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -458,13 +458,13 @@
                                                     <asp:BoundField DataField="Email" HeaderText="Email" />
                                                     <asp:TemplateField HeaderText="Selecc">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgSelecMailTitular" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecMailTitular_Click" />
+                                                            <asp:ImageButton ID="ImgSelecMailTitular" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecMailTitular_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Eliminar">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgEliMailTitular" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliMailTitular_Click" OnClientClick="return asegurar();" />
+                                                            <asp:ImageButton ID="ImgEliMailTitular" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliMailTitular_Click" OnClientClick="return asegurar();" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -610,7 +610,7 @@
                                                     </asp:BoundField>
                                                     <asp:TemplateField HeaderText="Selecc">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgSeleccOperacion" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSeleccOperacion_Click" />
+                                                            <asp:ImageButton ID="ImgSeleccOperacion" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSeleccOperacion_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -622,7 +622,7 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Eliminar">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgEliOperacion" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliOperacion_Click" OnClientClick="return asegurar();" />
+                                                            <asp:ImageButton ID="ImgEliOperacion" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliOperacion_Click" OnClientClick="return asegurar();" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -749,7 +749,7 @@
                                                     </asp:BoundField>
                                                     <asp:TemplateField HeaderText="Eliminar">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgEliTelefono" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliTelefono_Click" OnClientClick="return asegurar();" />
+                                                            <asp:ImageButton ID="ImgEliTelefono" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliTelefono_Click" OnClientClick="return asegurar();" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -860,13 +860,13 @@
                                                     <asp:BoundField DataField="Operacion" HeaderText="Operación"></asp:BoundField>
                                                     <asp:TemplateField HeaderText="Selecc">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgSeleccGarante" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSeleccGarante_Click" />
+                                                            <asp:ImageButton ID="ImgSeleccGarante" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSeleccGarante_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Eliminar">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgEliGarante" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliGarante_Click" OnClientClick="return asegurar();" />
+                                                            <asp:ImageButton ID="ImgEliGarante" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliGarante_Click" OnClientClick="return asegurar();" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -963,13 +963,13 @@
                                                     <asp:BoundField DataField="Referencia" HeaderText="Referencia"></asp:BoundField>
                                                     <asp:TemplateField HeaderText="Selecc">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgSelecDirGarante" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecDirGarante_Click" />
+                                                            <asp:ImageButton ID="ImgSelecDirGarante" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecDirGarante_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Eliminar">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgEliDirGarante" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliDirGarante_Click" OnClientClick="return asegurar();" />
+                                                            <asp:ImageButton ID="ImgEliDirGarante" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliDirGarante_Click" OnClientClick="return asegurar();" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -1053,13 +1053,13 @@
                                                     <asp:BoundField DataField="Email" HeaderText="Email" />
                                                     <asp:TemplateField HeaderText="Selecc">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgSelecMailGarante" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecMailGarante_Click" />
+                                                            <asp:ImageButton ID="ImgSelecMailGarante" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecMailGarante_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Eliminar">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgEliMailGarante" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliMailGarante_Click" OnClientClick="return asegurar();" />
+                                                            <asp:ImageButton ID="ImgEliMailGarante" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliMailGarante_Click" OnClientClick="return asegurar();" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>

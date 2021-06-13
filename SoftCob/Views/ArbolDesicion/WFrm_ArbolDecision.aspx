@@ -153,13 +153,13 @@
                                                                         </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="Selecc">
                                                                             <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgSelecAccion" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecAccion_Click" />
+                                                                                <asp:ImageButton ID="ImgSelecAccion" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecAccion_Click" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="Eliminar">
                                                                             <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgDelAccion" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelAccion_Click" />
+                                                                                <asp:ImageButton ID="ImgDelAccion" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelAccion_Click" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
@@ -194,7 +194,7 @@
                                                     <asp:ImageButton ID="ImgAddEfecto" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="7" OnClick="ImgAddEfecto_Click" />
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgModiEfecto" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModiEfecto_Click" TabIndex="8" />
+                                                    <asp:ImageButton ID="ImgModiEfecto" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModiEfecto_Click" TabIndex="8" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -240,19 +240,19 @@
                                                                         </asp:BoundField>
                                                                         <asp:TemplateField HeaderText="Editar">
                                                                             <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgEdiEfecto" runat="server" Height="15px" ImageUrl="~/Botones/seleccionar.png" OnClick="ImgEdiEfecto_Click" />
+                                                                                <asp:ImageButton ID="ImgEdiEfecto" runat="server" Height="20px" ImageUrl="~/Botones/seleccionar.png" OnClick="ImgEdiEfecto_Click" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="Selecc">
                                                                             <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgSelecEfecto" runat="server" Height="15px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecEfecto_Click" />
+                                                                                <asp:ImageButton ID="ImgSelecEfecto" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecEfecto_Click" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="Eliminar">
                                                                             <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgDelEfecto" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelEfecto_Click" />
+                                                                                <asp:ImageButton ID="ImgDelEfecto" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelEfecto_Click" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
@@ -325,19 +325,19 @@
                                                                         </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="Editar">
                                                                             <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgEdiRespuesta" runat="server" Height="15px" ImageUrl="~/Botones/seleccionar.png" OnClick="ImgEdiRespuesta_Click" />
+                                                                                <asp:ImageButton ID="ImgEdiRespuesta" runat="server" Height="20px" ImageUrl="~/Botones/seleccionar.png" OnClick="ImgEdiRespuesta_Click" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="Selecc">
                                                                             <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgSelecRespuesta" runat="server" Height="15px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecRespuesta_Click" />
+                                                                                <asp:ImageButton ID="ImgSelecRespuesta" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecRespuesta_Click" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="Eliminar">
                                                                             <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgDelRespuesta" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelRespuesta_Click" />
+                                                                                <asp:ImageButton ID="ImgDelRespuesta" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelRespuesta_Click" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
@@ -392,13 +392,13 @@
                                                                         </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="Editar">
                                                                             <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgEdiContacto" runat="server" Height="15px" ImageUrl="~/Botones/seleccionar.png" OnClick="ImgEdiContacto_Click" />
+                                                                                <asp:ImageButton ID="ImgEdiContacto" runat="server" Height="20px" ImageUrl="~/Botones/seleccionar.png" OnClick="ImgEdiContacto_Click" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="Eliminar">
                                                                             <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgDelContacto" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelContacto_Click" />
+                                                                                <asp:ImageButton ID="ImgDelContacto" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelContacto_Click" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>

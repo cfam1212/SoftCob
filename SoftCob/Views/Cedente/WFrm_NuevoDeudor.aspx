@@ -212,7 +212,7 @@
                                     </asp:FilteredTextBoxExtender>
                                 </td>
                                 <td>
-                                    <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/Buscar.png" OnClick="ImgBuscar_Click" />
+                                    <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/Buscar.png" OnClick="ImgBuscar_Click" Height="25px" />
                                 </td>
                             </tr>
                             <tr>
@@ -478,7 +478,7 @@
                                                     <asp:BoundField DataField="Operacion" HeaderText="Operación"></asp:BoundField>
                                                     <asp:TemplateField HeaderText="Selecc">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgSeleccGarante" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSeleccGarante_Click" />
+                                                            <asp:ImageButton ID="ImgSeleccGarante" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSeleccGarante_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -629,7 +629,7 @@
                                                     </asp:BoundField>
                                                     <asp:TemplateField HeaderText="Selecc">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgEditar" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgEditar_Click" />
+                                                            <asp:ImageButton ID="ImgEditar" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgEditar_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>

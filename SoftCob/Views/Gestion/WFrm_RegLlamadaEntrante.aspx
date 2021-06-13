@@ -451,6 +451,15 @@
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                                 </asp:TemplateField>
+<<<<<<< HEAD
+=======
+                                                                                <asp:TemplateField HeaderText="Teléfono">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:ImageButton ID="ImgPhoneD" runat="server" Height="20px" ImageUrl="~/Botones/buscargrisbg.png" OnClick="ImgPhoneD_Click" />
+                                                                                    </ItemTemplate>
+                                                                                    <ItemStyle HorizontalAlign="Center" />
+                                                                                </asp:TemplateField>
+>>>>>>> 5cb30355c70c71e33a645ddace8c6539345bfaf1
                                                                             </Columns>
                                                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                                                             <RowStyle Font-Size="X-Small" />

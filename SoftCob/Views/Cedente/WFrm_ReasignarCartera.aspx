@@ -254,7 +254,7 @@
                                                                     <asp:TextBox ID="TxtOperaciones" runat="server" Enabled="False" CssClass="form-control alinearDerecha" TabIndex="9"></asp:TextBox>
                                                                 </td>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgPasar" runat="server" Height="25px" ImageUrl="~/Botones/btnpasaruno.jpg" TabIndex="10" Enabled="False" OnClick="ImgPasar_Click" />
+                                                                    <asp:ImageButton ID="ImgPasar" runat="server" Height="25px" ImageUrl="~/Botones/btnpasarunobg.png" TabIndex="10" Enabled="False" OnClick="ImgPasar_Click" />
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -277,7 +277,7 @@
                                                                 </asp:BoundField>
                                                                 <asp:TemplateField HeaderText="Eliminar">
                                                                     <ItemTemplate>
-                                                                        <asp:ImageButton ID="ImgDelGestor" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelGestor_Click" />
+                                                                        <asp:ImageButton ID="ImgDelGestor" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelGestor_Click" />
                                                                     </ItemTemplate>
                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                 </asp:TemplateField>
@@ -336,7 +336,7 @@
                                                     <asp:ListBox ID="LstOrigen" runat="server" CssClass="form-control" Height="230px" SelectionMode="Multiple" Width="100%" TabIndex="17"></asp:ListBox>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgPasar1" runat="server" Height="25px" ImageUrl="~/Botones/btnpasaruno.jpg" TabIndex="18" Enabled="False" OnClick="ImgPasar1_Click" />
+                                                    <asp:ImageButton ID="ImgPasar1" runat="server" Height="25px" ImageUrl="~/Botones/btnpasarunobg.png" TabIndex="18" Enabled="False" OnClick="ImgPasar1_Click" />
                                                 </td>
                                                 <td rowspan="2">
                                                     <asp:ListBox ID="LstDestino" runat="server" CssClass="form-control" Height="230px" Width="100%" TabIndex="20"></asp:ListBox>

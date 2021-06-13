@@ -165,7 +165,7 @@
                                                             <asp:BoundField DataField="Gestor" HeaderText="Gestor" />
                                                             <asp:TemplateField HeaderText="Selecc">
                                                                 <ItemTemplate>
-                                                                    <asp:ImageButton ID="imgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecc_Click" />
+                                                                    <asp:ImageButton ID="imgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecc_Click" />
                                                                 </ItemTemplate>
                                                                 <ItemStyle HorizontalAlign="Center" />
                                                             </asp:TemplateField>
@@ -266,7 +266,7 @@
                                                         </asp:TemplateField>
                                                         <asp:TemplateField HeaderText="Eliminar">
                                                             <ItemTemplate>
-                                                                <asp:ImageButton ID="ImgEliminaTele" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliminaTele_Click" OnClientClick="return asegurar();" />
+                                                                <asp:ImageButton ID="ImgEliminaTele" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliminaTele_Click" OnClientClick="return asegurar();" />
                                                             </ItemTemplate>
                                                             <ItemStyle HorizontalAlign="Center" />
                                                         </asp:TemplateField>
@@ -343,7 +343,7 @@
                                                         <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
                                                         <asp:TemplateField HeaderText="Eliminar">
                                                             <ItemTemplate>
-                                                                <asp:ImageButton ID="ImgEliminaGes" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliminaGes_Click" OnClientClick="return asegurar();" />
+                                                                <asp:ImageButton ID="ImgEliminaGes" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliminaGes_Click" OnClientClick="return asegurar();" />
                                                             </ItemTemplate>
                                                             <ItemStyle HorizontalAlign="Center" />
                                                         </asp:TemplateField>

@@ -650,13 +650,13 @@
                                                                                                     </asp:BoundField>
                                                                                                     <asp:TemplateField HeaderText="Selecc">
                                                                                                         <ItemTemplate>
-                                                                                                            <asp:ImageButton ID="ImgEditar" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgEditar_Click" />
+                                                                                                            <asp:ImageButton ID="ImgEditar" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgEditar_Click" />
                                                                                                         </ItemTemplate>
                                                                                                         <ItemStyle HorizontalAlign="Center" />
                                                                                                     </asp:TemplateField>
                                                                                                     <asp:TemplateField HeaderText="Del">
                                                                                                         <ItemTemplate>
-                                                                                                            <asp:ImageButton ID="ImgDelete" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelete_Click" OnClientClick="return asegurar();" />
+                                                                                                            <asp:ImageButton ID="ImgDelete" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelete_Click" OnClientClick="return asegurar();" />
                                                                                                         </ItemTemplate>
                                                                                                         <ItemStyle HorizontalAlign="Center" />
                                                                                                     </asp:TemplateField>

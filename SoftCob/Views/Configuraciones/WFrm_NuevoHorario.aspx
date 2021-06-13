@@ -142,7 +142,7 @@
                                 </asp:DropDownList>
                             </td>
                             <td>
-                                <asp:ImageButton ID="ImgProcesar" runat="server" ImageUrl="~/Botones/procesar.png" OnClick="ImgProcesar_Click" Height="25px" TabIndex="8" />
+                                <asp:ImageButton ID="ImgProcesar" runat="server" ImageUrl="~/Botones/procesarbg.png" OnClick="ImgProcesar_Click" Height="25px" TabIndex="8" />
                             </td>
                         </tr>
                         <tr>

@@ -243,13 +243,13 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Selecc">
                                             <ItemTemplate>
-                                                <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecc_Click" />
+                                                <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecc_Click" />
                                             </ItemTemplate>
                                             <ItemStyle HorizontalAlign="Center" />
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Eliminar">
                                             <ItemTemplate>
-                                                <asp:ImageButton ID="ImgDelCampo" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelCampo_Click" OnClientClick="return asegurar();" />
+                                                <asp:ImageButton ID="ImgDelCampo" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelCampo_Click" OnClientClick="return asegurar();" />
                                             </ItemTemplate>
                                             <ItemStyle HorizontalAlign="Center" />
                                         </asp:TemplateField>

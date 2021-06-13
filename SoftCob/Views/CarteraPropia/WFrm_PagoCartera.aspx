@@ -225,7 +225,7 @@
                                                     <asp:BoundField DataField="Gestor" HeaderText="Gestor" />
                                                     <asp:TemplateField HeaderText="Pagar">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgSelecc" runat="server" Height="22px" ImageUrl="~/Botones/abonar.png" Width="22px" OnClick="ImgSelecc_Click" />
+                                                            <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/abonarbg.png" Width="22px" OnClick="ImgSelecc_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -339,7 +339,7 @@
                                                         <asp:BoundField DataField="Usuario" HeaderText="Usuario" />
                                                         <asp:TemplateField HeaderText="Reversar">
                                                             <ItemTemplate>
-                                                                <asp:ImageButton ID="ImgReversar" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" Width="15px" OnClick="ImgReversar_Click" />
+                                                                <asp:ImageButton ID="ImgReversar" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgReversar_Click" />
                                                             </ItemTemplate>
                                                             <ItemStyle HorizontalAlign="Center" />
                                                         </asp:TemplateField>
