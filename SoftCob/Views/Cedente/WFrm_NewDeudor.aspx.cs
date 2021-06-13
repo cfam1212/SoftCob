@@ -17,9 +17,6 @@
         ListItem _itemp = new ListItem();
         ListItem _itemg = new ListItem();
         ListItem _itemr = new ListItem();
-        //ListItem _itemdirecc = new ListItem();
-        //ListItem _itememail = new ListItem();
-
         DataSet _dts = new DataSet();
         DataTable _dtboperacion = new DataTable();
         DataTable _dtbtelefonos = new DataTable();
@@ -31,9 +28,7 @@
         DataTable _dtbdirgarante = new DataTable();
         DataTable _tblbuscar = new DataTable();
         DataRow _result, _filagre;
-        //DataRow[] _resultado;
         CheckBox _chkest = new CheckBox();
-        //ImageButton _imgeliminar = new ImageButton();
         string _estado = "", _codigocpce = "", _operacion = "", _nuevo = "", _codigo = "", _cedula = "";
         int _maxcodigo = 0, _perscodigo = 0;
         decimal _totaldeuda, _exigible;
@@ -63,7 +58,7 @@
                 Lbltitulo.Text = "Cliente-Deudor << AGREGAR - ACTUALIZAR >>";
 
                 if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                    "::GS-BPO GLOBAL SERVICES::", Request["MensajeRetornado"].ToString());
+                    "::SOFTCOB::", Request["MensajeRetornado"].ToString());
             }
         }
         #endregion
@@ -238,21 +233,13 @@
                         ChkEstado.Checked = true;
                         ChkEstado.Text = "Activo";
 
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(205, 0, 0, 0, "", TxtNumeroDocumento.Text.Trim(), "",
-                            Session["Conectar"].ToString());
-
-                        ViewState["DatosGarante"] = _dts.Tables[0];
-
-                        GrdvGarante.DataSource = _dts.Tables[0];
-                        GrdvGarante.DataBind();
-
                         _dts = new ConsultaDatosDAO().FunConsultaDatos(187, int.Parse(DdlCedente.SelectedValue), 0, 0, "",
                             TxtNumeroDocumento.Text.Trim(), "", Session["Conectar"].ToString());
 
-                        ViewState["DatosOperacion"] = _dts.Tables[0];
-                        ViewState["DatosTelefonos"] = _dts.Tables[1];
-                        ViewState["DireccionTitular"] = _dts.Tables[2];
-                        ViewState["CorreoTitular"] = _dts.Tables[3];
+                        ViewState["DatosOperacion"] = _dts.Tables[1];
+                        ViewState["DatosTelefonos"] = _dts.Tables[2];
+                        ViewState["DireccionTitular"] = _dts.Tables[3];
+                        ViewState["CorreoTitular"] = _dts.Tables[4];
 
                         GrdvDatos.DataSource = _dts.Tables[1];
                         GrdvDatos.DataBind();
@@ -289,6 +276,14 @@
                         ImgAddOperacion.Enabled = true;
                         ImgAddTelefono.Enabled = true;
                         ImgAddGarante.Enabled = true;
+
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(205, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "",
+                            TxtNumeroDocumento.Text.Trim(), "", Session["Conectar"].ToString());
+
+                        ViewState["DatosGarante"] = _dts.Tables[0];
+
+                        GrdvGarante.DataSource = _dts.Tables[0];
+                        GrdvGarante.DataBind();
 
                         break;
                     case 4:
@@ -1358,8 +1353,7 @@
                     return;
                 }
 
-                if (string.IsNullOrEmpty(TxtCedulaGarante
-                    .Text.Trim()))
+                if (string.IsNullOrEmpty(TxtCedulaGarante.Text.Trim()))
                 {
                     new FuncionesDAO().FunShowJSMessage("Ingrese Cedula..!", this);
                     return;
@@ -1404,6 +1398,7 @@
                 _filagre["Tipo"] = DdlTipoGarante.SelectedItem.ToString();
                 _filagre["Cedula"] = TxtCedulaGarante.Text.Trim();
                 _filagre["Nombres"] = TxtGarante.Text.Trim().ToUpper();
+                _filagre["Apellidos"] = TxtApellidoGarante.Text.Trim().ToUpper();
                 _filagre["Operacion"] = TxtNumOperacion.Text.Trim();
                 _filagre["Nuevo"] = "SI";
                 _dtbdeudor.Rows.Add(_filagre);
@@ -1413,13 +1408,13 @@
 
                 if (ViewState["CodigoPERS"].ToString() != "0")
                 {
-                    _dts = new ConsultaDatosDAO().FunCrearNuevoDeudor(2, "", TxtNumeroDocumento.Text.Trim(), "", "", "", "",
-                        0, 0, "", "", 0, TxtNumOperacion.Text.Trim(), "", "", 0, 0, "", DdlTipoGarante.SelectedValue,
-                        "", "", "", "", TxtGarante.Text.Trim().ToUpper(), "", "", "", "",
-                        int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                        TxtCedulaGarante.Text.Trim(), "", "", 0, 0, 0, Session["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunCrearNuevoDeudor(2, "", TxtCedulaGarante.Text.Trim(), TxtGarante.Text.Trim().ToUpper(),
+                        TxtApellidoGarante.Text.Trim().ToUpper(), "", "", 0, 0, "", "", 0, TxtNumOperacion.Text.Trim(), "", "", 0, 0, "",
+                        DdlTipoGarante.SelectedValue, "", "", "", "", "", "", "", "", "", int.Parse(Session["usuCodigo"].ToString()),
+                        Session["MachineName"].ToString(), "", "", "", int.Parse(ViewState["CodigoPERS"].ToString()),
+                        0, 0, Session["Conectar"].ToString());
 
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(205, 0, 0, 0, "", TxtNumeroDocumento.Text.Trim(), "",
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(205, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "", "", "",
                         Session["Conectar"].ToString());
 
                     ViewState["DatosGarante"] = _dts.Tables[0];

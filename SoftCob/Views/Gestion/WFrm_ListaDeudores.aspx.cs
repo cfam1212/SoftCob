@@ -22,7 +22,7 @@
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                    Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
 
                     ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
                     ViewState["CodigoGEST"] = Request["CodigoGEST"];
@@ -44,7 +44,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(233, int.Parse(ViewState["CodigoCPCE"].ToString()),
-                    int.Parse(ViewState["CodigoGEST"].ToString()), 0, "", "", "", ViewState["Conectar"].ToString());
+                    int.Parse(ViewState["CodigoGEST"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
 
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();

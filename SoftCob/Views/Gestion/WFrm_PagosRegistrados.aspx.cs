@@ -21,7 +21,7 @@
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                    Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
 
                     ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
                     ViewState["Cedula"] = Request["Cedula"];
@@ -45,7 +45,7 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(175, 0, 0, 0, "", ViewState["Cedula"].ToString(), "",
-                    ViewState["Conectar"].ToString());
+                    Session["Conectar"].ToString());
 
                 Lbltitulo.Text = "Titular: << " + _dts.Tables[0].Rows[0]["Nombres"].ToString()
                     + " >> " + ViewState["Cedula"].ToString();

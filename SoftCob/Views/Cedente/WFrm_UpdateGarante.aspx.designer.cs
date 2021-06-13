@@ -87,6 +87,15 @@ namespace SoftCob.Views.Cedente
         protected global::AjaxControlToolkit.FilteredTextBoxExtender TxtNumeroDocumento_FilteredTextBoxExtender;
 
         /// <summary>
+        /// Control DdlTipo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlTipo;
+
+        /// <summary>
         /// Control TxtNombres.
         /// </summary>
         /// <remarks>
@@ -96,13 +105,13 @@ namespace SoftCob.Views.Cedente
         protected global::System.Web.UI.WebControls.TextBox TxtNombres;
 
         /// <summary>
-        /// Control DdlTipo.
+        /// Control TxtApellidos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlTipo;
+        protected global::System.Web.UI.WebControls.TextBox TxtApellidos;
 
         /// <summary>
         /// Control TxtOperacion.
@@ -114,58 +123,193 @@ namespace SoftCob.Views.Cedente
         protected global::System.Web.UI.WebControls.TextBox TxtOperacion;
 
         /// <summary>
-        /// Control TxtMailPersonal.
+        /// Control UpdatePanel5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtMailPersonal;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel5;
 
         /// <summary>
-        /// Control TxtMailEmpresa.
+        /// Control DdlDirGarante.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtMailEmpresa;
+        protected global::System.Web.UI.WebControls.DropDownList DdlDirGarante;
 
         /// <summary>
-        /// Control TxtDirDomicilio.
+        /// Control TxtDirGarante.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDirDomicilio;
+        protected global::System.Web.UI.WebControls.TextBox TxtDirGarante;
 
         /// <summary>
-        /// Control TxtRefDomicilio.
+        /// Control TxtRefGarante.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtRefDomicilio;
+        protected global::System.Web.UI.WebControls.TextBox TxtRefGarante;
 
         /// <summary>
-        /// Control TxtDirTrabajo.
+        /// Control Panel16.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDirTrabajo;
+        protected global::System.Web.UI.WebControls.Panel Panel16;
 
         /// <summary>
-        /// Control TxtRefTrabajo.
+        /// Control ImgAddDirGarante.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtRefTrabajo;
+        protected global::System.Web.UI.WebControls.ImageButton ImgAddDirGarante;
+
+        /// <summary>
+        /// Control ImgModDirGarante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgModDirGarante;
+
+        /// <summary>
+        /// Control Panel17.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel17;
+
+        /// <summary>
+        /// Control Tr3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr3;
+
+        /// <summary>
+        /// Control Panel18.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel18;
+
+        /// <summary>
+        /// Control GrdvDirecGarante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrdvDirecGarante;
+
+        /// <summary>
+        /// Control UpdatePanel6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel6;
+
+        /// <summary>
+        /// Control DdlMailGarante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlMailGarante;
+
+        /// <summary>
+        /// Control TxtMailGarante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtMailGarante;
+
+        /// <summary>
+        /// Control Panel19.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel19;
+
+        /// <summary>
+        /// Control ImgAddMailGarante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgAddMailGarante;
+
+        /// <summary>
+        /// Control ImgModMailGarante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgModMailGarante;
+
+        /// <summary>
+        /// Control Panel20.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel20;
+
+        /// <summary>
+        /// Control Tr4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr4;
+
+        /// <summary>
+        /// Control Panel21.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel21;
+
+        /// <summary>
+        /// Control GrdvMailGarante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrdvMailGarante;
 
         /// <summary>
         /// Control UpdBotones.

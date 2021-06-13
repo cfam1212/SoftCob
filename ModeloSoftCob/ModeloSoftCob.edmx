@@ -4742,7 +4742,7 @@
           <Property Name="COCE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CEDE_CODIGO" Type="Int32" Nullable="false" />
           <Property Name="coce_contacto" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="coce_cargo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="coce_cargo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="coce_extension" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="coce_email1" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="coce_email2" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />

@@ -4,7 +4,9 @@
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using System.Data.Entity.Validation;
     using System.Data.SqlClient;
+    using System.Diagnostics;
     using System.Linq;
     public class CedenteDAO
     {
@@ -777,8 +779,15 @@
                     _codigo = _cedente.CEDE_CODIGO;
                 }
             }
-            catch (Exception)
+            catch (DbEntityValidationException ex)
             {
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
                 _codigo = -1;
             }
             return _codigo;

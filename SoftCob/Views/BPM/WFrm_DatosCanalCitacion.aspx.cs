@@ -23,7 +23,7 @@
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                    Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     ViewState["CodigoCITA"] = Request["CodigoCITA"];
                     ViewState["Canal"] = Request["Canal"];
                     Lbltitulo.Text = "LISTA DATOS CANAL - <<" + ViewState["Canal"].ToString() + ">>";
@@ -56,7 +56,7 @@
                 }
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(246, _opcion, int.Parse(ViewState["CodigoCITA"].ToString()), 0, "",
-                    ViewState["Canal"].ToString(), "", ViewState["Conectar"].ToString());
+                    ViewState["Canal"].ToString(), "", Session["Conectar"].ToString());
 
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();

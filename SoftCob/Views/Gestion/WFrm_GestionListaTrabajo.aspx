@@ -271,7 +271,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <div class="panel-info">
+<%--                <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updOpciones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -281,7 +281,7 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>
+                </div>--%>
                 <asp:UpdatePanel ID="updTimer" runat="server">
                     <ContentTemplate>
                         <div>
@@ -732,23 +732,19 @@
                                                                             GroupingText="Datos Deudor" TabIndex="15">
                                                                             <asp:GridView ID="GrdvDatosDeudor" runat="server" AutoGenerateColumns="False"
                                                                                 CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
-                                                                                PageSize="3" TabIndex="16" Width="100%" DataKeyNames="Existe" OnRowDataBound="GrdvDatosDeudor_RowDataBound">
+                                                                                PageSize="3" TabIndex="16" Width="100%">
                                                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                                 <Columns>
                                                                                     <asp:BoundField DataField="Cedula" HeaderText="Cédula" />
                                                                                     <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
                                                                                     <asp:BoundField DataField="Provincia" HeaderText="Provincia" />
                                                                                     <asp:BoundField DataField="Ciudad" HeaderText="Ciudad" />
-                                                                                    <asp:BoundField DataField="Edad" HeaderText="Edad" />
+                                                                                    <asp:BoundField DataField="Edad" HeaderText="Edad" >
+                                                                                    <ItemStyle HorizontalAlign="Right" />
+                                                                                    </asp:BoundField>
                                                                                     <asp:TemplateField HeaderText="Actualizar">
                                                                                         <ItemTemplate>
                                                                                             <asp:ImageButton ID="ImgUpdate" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="Imgupdate_Click" />
-                                                                                        </ItemTemplate>
-                                                                                        <ItemStyle HorizontalAlign="Center" />
-                                                                                    </asp:TemplateField>
-                                                                                    <asp:TemplateField HeaderText="Telefono">
-                                                                                        <ItemTemplate>
-                                                                                            <asp:ImageButton ID="ImgPhoneD" runat="server" Height="20px" ImageUrl="~/Botones/Buscargris.png" OnClick="ImgPhoneD_Click" Enabled="False" />
                                                                                         </ItemTemplate>
                                                                                         <ItemStyle HorizontalAlign="Center" />
                                                                                     </asp:TemplateField>
@@ -818,12 +814,12 @@
                                                                             GroupingText="Datos Garante-CoDeudor" TabIndex="15" Visible="False">
                                                                             <asp:GridView ID="GrdvDatosGarante" runat="server" AutoGenerateColumns="False"
                                                                                 CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
-                                                                                PageSize="3" TabIndex="16" Width="100%" DataKeyNames="CedulaGarante,Existe,CodigoGARA,Operacion" OnRowDataBound="GrdvDatosGarante_RowDataBound">
+                                                                                PageSize="3" TabIndex="16" Width="100%" DataKeyNames="CedulaGarante,CodigoGARA,Operacion">
                                                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                                 <Columns>
                                                                                     <asp:BoundField DataField="CedulaGarante" HeaderText="Cédula" />
-                                                                                    <asp:BoundField DataField="Garante" HeaderText="Nombres" />
                                                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
+                                                                                    <asp:BoundField DataField="Garante" HeaderText="Nombres" />
                                                                                     <asp:BoundField DataField="Operacion" HeaderText="Operación" />
                                                                                     <asp:TemplateField HeaderText="Actualizar">
                                                                                         <ItemTemplate>
@@ -834,12 +830,6 @@
                                                                                     <asp:TemplateField HeaderText="Buscar">
                                                                                         <ItemTemplate>
                                                                                             <asp:ImageButton ID="ImgBuscarAarbol" runat="server" Height="20px" ImageUrl="~/Botones/con_usuario.jpg" OnClick="ImgBuscarAarbol_Click" />
-                                                                                        </ItemTemplate>
-                                                                                        <ItemStyle HorizontalAlign="Center" />
-                                                                                    </asp:TemplateField>
-                                                                                    <asp:TemplateField HeaderText="Telefono">
-                                                                                        <ItemTemplate>
-                                                                                            <asp:ImageButton ID="ImgPhoneG" runat="server" Enabled="False" Height="20px" ImageUrl="~/Botones/Buscargris.png" OnClick="ImgPhoneG_Click" />
                                                                                         </ItemTemplate>
                                                                                         <ItemStyle HorizontalAlign="Center" />
                                                                                     </asp:TemplateField>

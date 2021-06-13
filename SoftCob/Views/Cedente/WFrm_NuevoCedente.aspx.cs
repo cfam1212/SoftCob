@@ -1257,6 +1257,10 @@
                     }
                     else
                     {
+                        if (ViewState["fechacreacion"] == null) ViewState["fechacreacion"] = DateTime.Now;
+                        if (ViewState["usucreacion"] == null) ViewState["usucreacion"] = Session["usuCodigo"].ToString();
+                        if (ViewState["terminalcreacion"] == null) ViewState["terminalcreacion"] = Session["MachineName"].ToString();
+
                         cedente.cede_fechacreacion = DateTime.Parse(ViewState["fechacreacion"].ToString());
                         cedente.cede_usuariocreacion = int.Parse(ViewState["usucreacion"].ToString());
                         cedente.cede_terminalcreacion = ViewState["terminalcreacion"].ToString();
@@ -1376,7 +1380,9 @@
                 {
                     foreach (DataRow _dr in _dtb.Rows)
                     {
-                        _mensaje = new CedenteDAO().FunCatalogoProductos(0, int.Parse(ViewState["CodigoCedente"].ToString()), _dr[0].ToString(), int.Parse(_dr[1].ToString()), _dr[2].ToString(), _dr[3].ToString(), _dr[4].ToString(), _dr[5].ToString(), _dr[6].ToString(), "", "", 0, 0, Session["Conectar"].ToString());
+                        _mensaje = new CedenteDAO().FunCatalogoProductos(0, int.Parse(ViewState["CodigoCedente"].ToString()), _dr[0].ToString(),
+                            int.Parse(_dr[1].ToString()), _dr[2].ToString(), _dr[3].ToString(), _dr[4].ToString(), _dr[5].ToString(), 
+                            _dr[6].ToString(), "", "", 0, 0, Session["Conectar"].ToString());
                     }
                 }
 

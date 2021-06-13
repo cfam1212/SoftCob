@@ -217,7 +217,7 @@
                                     </asp:FilteredTextBoxExtender>
                                 </td>
                                 <td style="text-align: center">
-                                    <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/Buscar.png" OnClick="ImgBuscar_Click" TabIndex="61" Height="30px" Visible="False" />
+                                    <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/Buscar.png" OnClick="ImgBuscar_Click" TabIndex="600" Height="30px" Visible="False" />
                                 </td>
                             </tr>
                             <tr>
@@ -737,7 +737,7 @@
                                         <asp:Panel ID="Panel4" runat="server" Height="180px" ScrollBars="Vertical">
                                             <asp:GridView ID="GrdvTelefonos" runat="server" AutoGenerateColumns="False"
                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                                ForeColor="#333333" PageSize="7" TabIndex="40" Width="100%" DataKeyNames="Codigo,Nuevo">
+                                                ForeColor="#333333" PageSize="7" TabIndex="40" Width="100%" DataKeyNames="Codigo">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>
                                                     <asp:BoundField DataField="Prefijo" HeaderText="Prefijo"></asp:BoundField>
@@ -801,14 +801,26 @@
                                         <h5>Nombres:</h5>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TxtGarante" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="43" Width="100%"></asp:TextBox>
+                                        <asp:TextBox ID="TxtGarante" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="43" Width="100%"></asp:TextBox>
                                     </td>
+                                    <td>
+                                        <h5>Apellidos:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="TxtApellidoGarante" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="44" Width="100%"></asp:TextBox>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
                                     <td>
                                         <h5>Operación:</h5>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TxtNumOperacion" runat="server" CssClass="form-control upperCase" MaxLength="50" TabIndex="44" Width="100%"></asp:TextBox>
+                                        <asp:TextBox ID="TxtNumOperacion" runat="server" CssClass="form-control upperCase" MaxLength="50" TabIndex="45" Width="100%"></asp:TextBox>
                                     </td>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                 </tr>
                                 <tr>
@@ -820,10 +832,10 @@
                                     <td></td>
                                     <td></td>
                                     <td style="text-align: center">
-                                        <asp:ImageButton ID="ImgAddGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddGarante_Click" TabIndex="45" Enabled="False" />
+                                        <asp:ImageButton ID="ImgAddGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddGarante_Click" TabIndex="46" Enabled="False" />
                                     </td>
                                     <td>
-                                        <asp:ImageButton ID="ImgEditGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgEditGarante_Click" TabIndex="46" Enabled="False" />
+                                        <asp:ImageButton ID="ImgEditGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgEditGarante_Click" TabIndex="47" Enabled="False" />
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -839,7 +851,7 @@
                                             <asp:GridView ID="GrdvGarante" runat="server" AutoGenerateColumns="False"
                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
                                                 DataKeyNames="CodigoGART,Tipo"
-                                                ForeColor="#333333" PageSize="7" TabIndex="47" Width="100%">
+                                                ForeColor="#333333" PageSize="7" TabIndex="48" Width="100%">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo"></asp:BoundField>
@@ -889,7 +901,7 @@
                                         <h5>Tipo:</h5>
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="DdlDirGarante" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="48" Width="100%">
+                                        <asp:DropDownList ID="DdlDirGarante" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="49" Width="100%">
                                             <asp:ListItem Value="0">--Seleccione Tipo--</asp:ListItem>
                                             <asp:ListItem Value="DOMICILIO">DOMICILIO</asp:ListItem>
                                             <asp:ListItem Value="TRABAJO">TRABAJO</asp:ListItem>
@@ -905,13 +917,13 @@
                                         <h5>Dircción:</h5>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TxtDirGarante" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="49" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                        <asp:TextBox ID="TxtDirGarante" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="50" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                     </td>
                                     <td>
                                         <h5>Referencia:</h5>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TxtRefGarante" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="50" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                        <asp:TextBox ID="TxtRefGarante" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="51" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                     </td>
                                     <td></td>
                                 </tr>
@@ -924,10 +936,10 @@
                                     <td></td>
                                     <td></td>
                                     <td style="text-align: center">
-                                        <asp:ImageButton ID="ImgAddDirGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddDirGarante_Click" TabIndex="51" Enabled="False" />
+                                        <asp:ImageButton ID="ImgAddDirGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddDirGarante_Click" TabIndex="52" Enabled="False" />
                                     </td>
                                     <td>
-                                        <asp:ImageButton ID="ImgModDirGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModDirGarante_Click" TabIndex="52" Enabled="False" />
+                                        <asp:ImageButton ID="ImgModDirGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModDirGarante_Click" TabIndex="53" Enabled="False" />
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -943,7 +955,7 @@
                                             <asp:GridView ID="GrdvDirecGarante" runat="server" AutoGenerateColumns="False"
                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
                                                 DataKeyNames="CodigoDIGT,Nuevo"
-                                                ForeColor="#333333" PageSize="7" TabIndex="53" Width="100%">
+                                                ForeColor="#333333" PageSize="7" TabIndex="54" Width="100%">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo"></asp:BoundField>
@@ -992,7 +1004,7 @@
                                         <h5>Tipo:</h5>
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="DdlMailGarante" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="54" Width="100%">
+                                        <asp:DropDownList ID="DdlMailGarante" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="55" Width="100%">
                                             <asp:ListItem Value="0">--Seleccione Tipo--</asp:ListItem>
                                             <asp:ListItem Value="1">DOMICILIO</asp:ListItem>
                                             <asp:ListItem Value="2">TRABAJO</asp:ListItem>
@@ -1002,7 +1014,7 @@
                                         <h5>E-mail:</h5>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TxtMailGarante" runat="server" CssClass="form-control lowCase" MaxLength="100" TabIndex="55" Width="100%"></asp:TextBox>
+                                        <asp:TextBox ID="TxtMailGarante" runat="server" CssClass="form-control lowCase" MaxLength="100" TabIndex="56" Width="100%"></asp:TextBox>
                                     </td>
                                     <td></td>
                                 </tr>
@@ -1015,10 +1027,10 @@
                                     <td></td>
                                     <td></td>
                                     <td style="text-align: center">
-                                        <asp:ImageButton ID="ImgAddMailGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddMailGarante_Click" TabIndex="56" Enabled="False" />
+                                        <asp:ImageButton ID="ImgAddMailGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddMailGarante_Click" TabIndex="57" Enabled="False" />
                                     </td>
                                     <td>
-                                        <asp:ImageButton ID="ImgModMailGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModMailGarante_Click" TabIndex="57" Enabled="False" />
+                                        <asp:ImageButton ID="ImgModMailGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModMailGarante_Click" TabIndex="58" Enabled="False" />
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -1034,7 +1046,7 @@
                                             <asp:GridView ID="GrdvMailGarante" runat="server" AutoGenerateColumns="False"
                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
                                                 DataKeyNames="CodigoDIGT,Nuevo"
-                                                ForeColor="#333333" PageSize="7" TabIndex="58" Width="100%">
+                                                ForeColor="#333333" PageSize="7" TabIndex="59" Width="100%">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo"></asp:BoundField>
@@ -1063,7 +1075,6 @@
                             </table>
                         </ContentTemplate>
                     </asp:UpdatePanel>
-
                 </div>
             </div>
             <div class="panel panel-default">
@@ -1072,11 +1083,11 @@
                         <table style="width: 100%">
                             <tr>
                                 <td style="text-align: right; width: 45%">
-                                    <asp:Button ID="BtnGrabar" runat="server" Text="Grabar" Width="120px" CssClass="button" OnClick="BtnGrabar_Click" TabIndex="59" Visible="False" />
+                                    <asp:Button ID="BtnGrabar" runat="server" Text="Grabar" Width="120px" CssClass="button" OnClick="BtnGrabar_Click" TabIndex="60" Visible="False" />
                                 </td>
                                 <td style="width: 10%"></td>
                                 <td style="text-align: left; width: 45%">
-                                    <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="60" />
+                                    <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="61" />
                                 </td>
                             </tr>
                         </table>

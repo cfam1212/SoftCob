@@ -22,6 +22,7 @@
                 ViewState["CedulaGarante"] = Request["CedulaGarante"];
                 ViewState["CodigoGARA"] = Request["CodigoGARA"];
                 Lbltitulo.Text = "Actualizar Datos << GARANTE/CODEUDOR >>";
+                FunCargarCombos(0);
                 FunCargarMantenimiento();
 
                 if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
@@ -45,6 +46,21 @@
             TxtRefTrabajo.Text = _dts.Tables[0].Rows[0]["RefTra"].ToString();
             TxtMailPersonal.Text = _dts.Tables[0].Rows[0]["MailPersonal"].ToString();
             TxtMailEmpresa.Text = _dts.Tables[0].Rows[0]["MailTrabajo"].ToString();
+        }
+
+        private void FunCargarCombos(int opcion)
+        {
+            switch (opcion)
+            {
+                case 0:
+                    DdlTipo.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO REFERENCIA", "--Seleccione Tipo--", "S");
+                    DdlTipo.DataTextField = "Descripcion";
+                    DdlTipo.DataValueField = "Codigo";
+                    DdlTipo.DataBind();
+                    break;
+                default:
+                    break;
+            }
         }
         #endregion
 
@@ -116,5 +132,45 @@
             ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:window.close();", true);
         }
         #endregion
+
+        protected void ImgAddDirGarante_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void ImgModDirGarante_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void ImgSelecDirGarante_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void ImgEliDirGarante_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void ImgAddMailGarante_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void ImgModMailGarante_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void ImgSelecMailGarante_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void ImgEliMailGarante_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
     }
 }

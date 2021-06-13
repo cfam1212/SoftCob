@@ -46,7 +46,7 @@
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                    Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     ViewState["CodigoPERS"] = Request["CodigoPERS"];
                     ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
                     ViewState["CodigoCLDE"] = Request["CodigoCLDE"];
@@ -71,14 +71,14 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0,
-                    "", "", "", ViewState["Conectar"].ToString().ToString());
+                    "", "", "", Session["Conectar"].ToString().ToString());
 
                 ViewState["NumeroDocumento"] = _dts.Tables[0].Rows[0]["Cedula"].ToString();
                 GrdvDatosDeudor.DataSource = _dts;
                 GrdvDatosDeudor.DataBind();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(33, 0, 0, int.Parse(ViewState["CodigoCLDE"].ToString()),
-                    "", "", "", ViewState["Conectar"].ToString().ToString());
+                    "", "", "", Session["Conectar"].ToString().ToString());
 
                 GrdvDatosObligacion.DataSource = _dts;
                 GrdvDatosObligacion.DataBind();
@@ -161,7 +161,7 @@
                 TrWhast3.Visible = true;
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(208, 0, int.Parse(ViewState["CodigoPERS"].ToString()), 0,
-                    "", ViewState["NumeroDocumento"].ToString(), "", ViewState["Conectar"].ToString().ToString());
+                    "", ViewState["NumeroDocumento"].ToString(), "", Session["Conectar"].ToString().ToString());
 
                 ViewState["Whatsapp"] = _dts.Tables[0];
                 GrdvCelulares.DataSource = _dts;
@@ -215,7 +215,7 @@
                     TrEmail4.Visible = true;
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(234, 0, 0, 0, "TIPO CORREO", "CORREO",
-                        ViewState["NumeroDocumento"].ToString(), ViewState["Conectar"].ToString().ToString());
+                        ViewState["NumeroDocumento"].ToString(), Session["Conectar"].ToString().ToString());
                     GrdvEmails.DataSource = _dts;
                     GrdvEmails.DataBind();
                     ViewState["Emails"] = _dts.Tables[0];
@@ -271,11 +271,11 @@
         //        _dts = new ConsultaDatosDAO().FunInsertAdicionales(1, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
         //            "CORREO", DdlTipoMail.SelectedValue, RdbEmail.SelectedValue, TxtEmail.Text.Trim().ToLower(),
         //            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            "", "", ViewState["Conectar"].ToString());
+        //            "", "", Session["Conectar"].ToString());
 
         //        _dts = new ConsultaDatosDAO().FunInsertAdicionales(6, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
         //            "CORREO", "TIPO CORREO", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            "", "", "", "", "", "", "", "", "", "", "", "", ViewState["Conectar"].ToString());
+        //            "", "", "", "", "", "", "", "", "", "", "", "", Session["Conectar"].ToString());
 
         //        ViewState["Emails"] = _dts.Tables[0];
         //        GrdvEmails.DataSource = _dts.Tables[0];
@@ -332,7 +332,7 @@
         //        _dts = new ConsultaDatosDAO().FunInsertAdicionales(4, int.Parse(_codigo),
         //            0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "",
         //            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            ViewState["Conectar"].ToString());
+        //            Session["Conectar"].ToString());
         //    }
         //    catch (Exception ex)
         //    {
@@ -367,7 +367,7 @@
                     TrTerreno6.Visible = true;
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(234, 0, 0, 0, "TIPO DIRECCION", "DIRECCION",
-                        ViewState["NumeroDocumento"].ToString(), ViewState["Conectar"].ToString().ToString());
+                        ViewState["NumeroDocumento"].ToString(), Session["Conectar"].ToString().ToString());
 
                     GrdvTerreno.DataSource = _dts;
                     GrdvTerreno.DataBind();
@@ -420,11 +420,11 @@
         //        _dts = new ConsultaDatosDAO().FunInsertAdicionales(2, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
         //            "DIRECCION", DdlDireccion.SelectedValue, RdbTerreno.SelectedValue, TxtDireccion.Text.Trim().ToUpper(),
         //            TxtReferencia.Text.Trim().ToUpper(), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            "", "", "", "", "", "", "", "", ViewState["Conectar"].ToString());
+        //            "", "", "", "", "", "", "", "", Session["Conectar"].ToString());
 
         //        _dts = new ConsultaDatosDAO().FunInsertAdicionales(6, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
         //            "DIRECCION", "TIPO DIRECCION", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            "", "", "", "", "", "", "", "", "", "", "", "", ViewState["Conectar"].ToString());
+        //            "", "", "", "", "", "", "", "", "", "", "", "", Session["Conectar"].ToString());
 
         //        ViewState["Terreno"] = _dts.Tables[0];
         //        GrdvTerreno.DataSource = _dts;
@@ -480,7 +480,7 @@
         //        _dts = new ConsultaDatosDAO().FunInsertAdicionales(4, int.Parse(_codigo),
         //            0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "",
         //            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            ViewState["Conectar"].ToString());
+        //            Session["Conectar"].ToString());
         //    }
         //    catch (Exception ex)
         //    {
@@ -522,7 +522,7 @@
                         1, TxtObservaWhatsapp.Text.Trim().ToUpper(), 0, "", 0, "", "", "", "", "", "",
                         _result[0]["CodigoTipo"].ToString(), "CEL", "", "", "", "", "", "", 0, 0, 0, 0, 0,
                         int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                        ViewState["Conectar"].ToString());
+                        Session["Conectar"].ToString());
 
                     _codigocita = int.Parse(_dts.Tables[0].Rows[0]["Codigo"].ToString());
 
@@ -541,7 +541,7 @@
                                 _dts = new ConsultaDatosDAO().FunNewSolictudCitacion(1, _codigocita, 0, 0, 0, "", "", 0, "",
                                     1, "", 0, "", 0, "", "Whatsapp", _drfila["Celular"].ToString(), "", "", "", "", "",
                                     _observacion, "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                                    Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                                    Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                                 break;
                             }
@@ -566,7 +566,7 @@
                         ChkWathaspp.Checked ? 1 : 0, TxtObservaWhatsapp.Text.Trim().ToUpper(), 1,
                         TxtObservaEmail.Text.Trim().ToUpper(), 0, "", "", "", "", "", "", "", "",
                         "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                        Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                     _codigocita = int.Parse(_dts.Tables[0].Rows[0]["Codigo"].ToString());
 
@@ -586,7 +586,7 @@
                                     1, "", 0, "", 0, "", "Email", "", _drfila["Email"].ToString(), "", "",
                                     _drfila["CodigoTIPO"].ToString(), _drfila["CodigoDEFI"].ToString(), _observacion, "", "",
                                     "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                                    Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                                    Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                                 break;
                             }
@@ -611,7 +611,7 @@
                         ChkWathaspp.Checked ? 1 : 0, "", ChkEmail.Checked ? 1 : 0, TxtObservaEmail.Text.Trim().ToUpper(),
                         1, TxtObservaTerreno.Text.Trim().ToUpper(), "", "", "", "", "", "", "",
                         "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                        Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                     _codigocita = int.Parse(_dts.Tables[0].Rows[0]["Codigo"].ToString());
 
@@ -632,7 +632,7 @@
                                     _drfila["Referencia"].ToString(), _drfila["CodigoTIPO"].ToString(),
                                     _drfila["CodigoDEFI"].ToString(), _observacion, "", "", "", "", "", 0, 0, 0, 0, 0,
                                     int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                                    ViewState["Conectar"].ToString());
+                                    Session["Conectar"].ToString());
 
                                 break;
                             }

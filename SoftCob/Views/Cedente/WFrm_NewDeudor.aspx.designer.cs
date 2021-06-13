@@ -690,6 +690,15 @@ namespace SoftCob.Views.Cedente
         protected global::System.Web.UI.WebControls.TextBox TxtGarante;
 
         /// <summary>
+        /// Control TxtApellidoGarante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtApellidoGarante;
+
+        /// <summary>
         /// Control TxtNumOperacion.
         /// </summary>
         /// <remarks>

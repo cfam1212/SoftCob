@@ -93,8 +93,8 @@
                         break;
                     case 1:
                         DdlSupervisor.Items.Clear();
-                        DdlSupervisor.DataSource = new ConsultaDatosDAO().FunConsultaDatos(4,
-                            int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", Session["Conectar"].ToString());
+                        DdlSupervisor.DataSource = new ConsultaDatosDAO().FunConsultaDatos(4, int.Parse(DdlCedente.SelectedValue),
+                            0, 0, "", "", "", Session["Conectar"].ToString());
                         DdlSupervisor.DataTextField = "Descripcion";
                         DdlSupervisor.DataValueField = "Codigo";
                         DdlSupervisor.DataBind();

@@ -136,18 +136,18 @@
                 SoftCob_CEDENTE cedente = new CedenteDAO().FunGetCedentePorID(int.Parse(ViewState["CodigoCEDE"].ToString()));
                 ViewState["NivelArbol"] = cedente.cede_auxi1;
 
-                switch (ViewState["NivelArbol"].ToString())
-                {
-                    case "3":
-                        LblContacto.Visible = false;
-                        DdlContacto.Visible = false;
-                        Chkcitacion.Visible = true;
-                        DdlCitacion.Visible = true;
-                        break;
-                    default:
-                        GrdvDatosGarante.Columns[7].Visible = false;
-                        break;
-                }
+                //switch (ViewState["NivelArbol"].ToString())
+                //{
+                //    case "3":
+                //        LblContacto.Visible = false;
+                //        DdlContacto.Visible = false;
+                //        Chkcitacion.Visible = true;
+                //        DdlCitacion.Visible = true;
+                //        break;
+                //    default:
+                //        GrdvDatosGarante.Columns[7].Visible = false;
+                //        break;
+                //}
 
                 if (Session["PermisoEspecial"].ToString() == "SI")
                 {
@@ -255,7 +255,8 @@
                 GrdvBrenchPago.DataSource = _dts;
                 GrdvBrenchPago.DataBind();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString().ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "", "", "", 
+                    Session["Conectar"].ToString().ToString());
                 GrdvDatosDeudor.DataSource = _dts;
                 GrdvDatosDeudor.DataBind();
 
@@ -636,7 +637,6 @@
             }
             return _strrespuesta;
         }
-
         protected void ChkBCast_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -2046,31 +2046,10 @@
         {
             ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "Visualizar", "javascript: var posicion_x; var posicion_y; posicion_x=(screen.width/2)-(900/2); " +
                 "posicion_y=(screen.height/2)-(600/2); window.open('../Cedente/WFrm_UpdateDeudor.aspx?CodigoPERS=" +
-                ViewState["CodigoPERS"].ToString() + "',null,'left=' + posicion_x + ', top=' + posicion_y + ', width=950px, height=500px, " +
+                ViewState["CodigoPERS"].ToString() + "&NumDocumento=" + ViewState["NumeroDocumento"].ToString() + "',null,'left=' + " +
+                "posicion_x + ', top=' + posicion_y + ', width=950px, height=500px, " +
                 "status=no,resizable= yes, scrollbars=yes, toolbar=no, location=no, menubar=no,titlebar=0');", true);
         }
-
-        protected void GrdvDatosDeudor_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            try
-            {
-                if (e.Row.RowIndex >= 0)
-                {
-                    _imgphone = (ImageButton)(e.Row.Cells[6].FindControl("ImgPhoneD"));
-                    _existe = GrdvDatosDeudor.DataKeys[e.Row.RowIndex].Values["Existe"].ToString();
-                    if (_existe == "SI")
-                    {
-                        _imgphone.ImageUrl = "~/Botones/busqueda.png";
-                        _imgphone.Enabled = true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Lblerror.Text = ex.ToString();
-            }
-        }
-
         protected void ImgPhoneD_Click(object sender, ImageClickEventArgs e)
         {
             GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
@@ -2083,28 +2062,6 @@
                 ViewState["NumeroDocumento"].ToString() + "',null,'left=' + posicion_x + ', top=' + posicion_y + ', width=950px, height=500px, " +
                 "status=no,resizable= yes, scrollbars=yes, toolbar=no, location=no, menubar=no,titlebar=0');", true);
         }
-
-        protected void GrdvDatosGarante_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            try
-            {
-                if (e.Row.RowIndex >= 0)
-                {
-                    _imgphone = (ImageButton)(e.Row.Cells[6].FindControl("ImgPhoneG"));
-                    _existe = GrdvDatosGarante.DataKeys[e.Row.RowIndex].Values["Existe"].ToString();
-                    if (_existe == "SI")
-                    {
-                        _imgphone.ImageUrl = "~/Botones/busqueda.png";
-                        _imgphone.Enabled = true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Lblerror.Text = ex.ToString();
-            }
-        }
-
         protected void ImgPhoneG_Click(object sender, ImageClickEventArgs e)
         {
             GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;

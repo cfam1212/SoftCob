@@ -66,7 +66,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <%--  <div class="panel-info">
+              <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -76,18 +76,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>--%>
-                       <%-- <div class="panel-info">
-                <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
-                    <ProgressTemplate>
-                        <div class="overlay" />
-                        <div class="overlayContent">
-                            <h2>Procesando..</h2>
-                            <img src="../../Images/load.gif" alt="Loading" border="1" />
-                        </div>
-                    </ProgressTemplate>
-                </asp:UpdateProgress>
-            </div>--%>
+            </div>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server">
                     <ContentTemplate>

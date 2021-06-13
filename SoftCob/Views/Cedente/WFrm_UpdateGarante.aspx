@@ -21,25 +21,6 @@
     <script src="../../Scripts/jquery-ui.min.js"></script>
 
     <script type="text/javascript">
-        function pageLoad(sender, arg) {
-            $(document).ready(function () {
-                $.datepicker.setDefaults($.datepicker.regional['es']);
-                $('#TxtFechaNacimiento').datepicker(
-                    {
-                        inline: true,
-                        dateFormat: "mm/dd/yy",
-                        monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-                        monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
-                        dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-                        numberOfMonths: 1,
-                        showButtonPanel: true,
-                        changeMonth: true,
-                        changeYear: true,
-                        yearRange: "-100:+5"
-                    });
-            });
-        }
-
         function Validar_Cedula() {
             var cedula = document.getElementById("<%=TxtNumeroDocumento.ClientID%>").value;
             var digito_region = cedula.substring(0, 2);
@@ -128,6 +109,11 @@
                 height: 80px;
             }
     </style>
+    <script>
+        $(function () {
+            $("#acordionParametro").accordion();
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -144,7 +130,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-<%--            <div class="panel-info">
+            <%--            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -179,83 +165,241 @@
                                     </asp:FilteredTextBoxExtender>
                                 </td>
                                 <td>
-                                    <h5>Nombres:</h5>
+                                    <h5>Tipo:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtNombres" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="2" Width="100%"></asp:TextBox>
+                                    <asp:DropDownList ID="DdlTipo" runat="server" CssClass="form-control" TabIndex="2" Width="100%">
+                                    </asp:DropDownList>
                                 </td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <h5>Tipo:</h5>
+                                    <h5>Nombres:</h5>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DdlTipo" runat="server" CssClass="form-control" TabIndex="3" Width="100%">
-                                        <asp:ListItem>GARANTE</asp:ListItem>
-                                        <asp:ListItem>CODEUDOR</asp:ListItem>
-                                    </asp:DropDownList>
+                                    <asp:TextBox ID="TxtNombres" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="3" Width="100%"></asp:TextBox>
                                 </td>
+                                <td>
+                                    <h5>Apellidos:</h5>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="TxtApellidos" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="3" Width="100%"></asp:TextBox>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
                                 <td>
                                     <h5>Operación:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtOperacion" runat="server" Width="100%" CssClass="form-control" MaxLength="50" TabIndex="4"></asp:TextBox>
+                                    <asp:TextBox ID="TxtOperacion" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="4" Width="100%"></asp:TextBox>
                                 </td>
                                 <td></td>
-                            </tr>
-                            <tr>
                                 <td></td>
-                                <td>
-                                    <h5>Email Personal:</h5>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="TxtMailPersonal" runat="server" CssClass="form-control lowCase" MaxLength="100" TabIndex="5" Width="100%"></asp:TextBox>
-                                </td>
-                                <td>
-                                    <h5>Email Empresa:</h5>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="TxtMailEmpresa" runat="server" CssClass="form-control lowCase" MaxLength="100" TabIndex="6" Width="100%"></asp:TextBox>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <h5>Dir.Domicilio:</h5>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="TxtDirDomicilio" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="7" TextMode="MultiLine" Width="100%"></asp:TextBox>
-                                </td>
-                                <td>
-                                    <h5>Ref.Domicilio:</h5>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="TxtRefDomicilio" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Height="50px" MaxLength="150" TabIndex="8" TextMode="MultiLine" Width="100%"></asp:TextBox>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <h5>Dir.Trabajo:</h5>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="TxtDirTrabajo" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="9" TextMode="MultiLine" Width="100%"></asp:TextBox>
-                                </td>
-                                <td>
-                                    <h5>Ref.Trabajo:</h5>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="TxtRefTrabajo" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="10" TextMode="MultiLine" Width="100%"></asp:TextBox>
-                                </td>
                                 <td></td>
                             </tr>
                         </table>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+            </div>
+            <div class="panel-body">
+                <div id="acordionParametro">
+                    <h3 class="label label-primary" style="font-size: 14px; display: block; text-align: left">Dirección - GARANTE/CODEUDOR</h3>
+                    <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+                        <ContentTemplate>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="width: 5%"></td>
+                                    <td style="width: 10%"></td>
+                                    <td style="width: 35%"></td>
+                                    <td style="width: 10%"></td>
+                                    <td style="width: 35%"></td>
+                                    <td style="width: 5%"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <h5>Tipo:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="DdlDirGarante" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="5" Width="100%">
+                                            <asp:ListItem Value="0">--Seleccione Tipo--</asp:ListItem>
+                                            <asp:ListItem Value="DOMICILIO">DOMICILIO</asp:ListItem>
+                                            <asp:ListItem Value="TRABAJO">TRABAJO</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <h5>Dircción:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="TxtDirGarante" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="6" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                    </td>
+                                    <td>
+                                        <h5>Referencia:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="TxtRefGarante" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="150" onkeydown="return (event.keyCode!=13);" TabIndex="7" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <asp:Panel ID="Panel16" runat="server" Height="20px"></asp:Panel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align: center">
+                                        <asp:ImageButton ID="ImgAddDirGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddDirGarante_Click" TabIndex="8" Enabled="False" />
+                                    </td>
+                                    <td>
+                                        <asp:ImageButton ID="ImgModDirGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModDirGarante_Click" TabIndex="9" Enabled="False" />
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <asp:Panel ID="Panel17" runat="server" Height="20px"></asp:Panel>
+                                    </td>
+                                </tr>
+                                <tr runat="server" id="Tr3">
+                                    <td colspan="6">
+                                        <asp:Panel ID="Panel18" runat="server" Height="180px" ScrollBars="Vertical">
+                                            <asp:GridView ID="GrdvDirecGarante" runat="server" AutoGenerateColumns="False"
+                                                CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                                DataKeyNames="CodigoDIGT,Nuevo"
+                                                ForeColor="#333333" PageSize="7" TabIndex="10" Width="100%">
+                                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                                <Columns>
+                                                    <asp:BoundField DataField="Tipo" HeaderText="Tipo"></asp:BoundField>
+                                                    <asp:BoundField DataField="Direccion" HeaderText="Dirección" />
+                                                    <asp:BoundField DataField="Referencia" HeaderText="Referencia"></asp:BoundField>
+                                                    <asp:TemplateField HeaderText="Selecc">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="ImgSelecDirGarante" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecDirGarante_Click" />
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" />
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Eliminar">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="ImgEliDirGarante" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliDirGarante_Click" OnClientClick="return asegurar();" />
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" />
+                                                    </asp:TemplateField>
+                                                </Columns>
+                                                <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                                <RowStyle Font-Size="X-Small" />
+                                                <EditRowStyle BackColor="#2461BF" />
+                                                <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                            </asp:GridView>
+                                        </asp:Panel>
+                                    </td>
+                                </tr>
+                            </table>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+
+                    <h3 class="label label-primary" style="font-size: 14px; display: block; text-align: left">E-Mail - GARANTE/CODEUDOR</h3>
+                    <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+                        <ContentTemplate>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="width: 5%"></td>
+                                    <td style="width: 10%"></td>
+                                    <td style="width: 35%"></td>
+                                    <td style="width: 10%"></td>
+                                    <td style="width: 35%"></td>
+                                    <td style="width: 5%"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <h5>Tipo:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="DdlMailGarante" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="11" Width="100%">
+                                            <asp:ListItem Value="0">--Seleccione Tipo--</asp:ListItem>
+                                            <asp:ListItem Value="1">DOMICILIO</asp:ListItem>
+                                            <asp:ListItem Value="2">TRABAJO</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td>
+                                        <h5>E-mail:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="TxtMailGarante" runat="server" CssClass="form-control lowCase" MaxLength="100" TabIndex="12" Width="100%"></asp:TextBox>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <asp:Panel ID="Panel19" runat="server" Height="20px"></asp:Panel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align: center">
+                                        <asp:ImageButton ID="ImgAddMailGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddMailGarante_Click" TabIndex="13" Enabled="False" />
+                                    </td>
+                                    <td>
+                                        <asp:ImageButton ID="ImgModMailGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModMailGarante_Click" TabIndex="14" Enabled="False" />
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <asp:Panel ID="Panel20" runat="server" Height="20px"></asp:Panel>
+                                    </td>
+                                </tr>
+                                <tr runat="server" id="Tr4">
+                                    <td colspan="6">
+                                        <asp:Panel ID="Panel21" runat="server" Height="180px" ScrollBars="Vertical">
+                                            <asp:GridView ID="GrdvMailGarante" runat="server" AutoGenerateColumns="False"
+                                                CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                                DataKeyNames="CodigoDIGT,Nuevo"
+                                                ForeColor="#333333" PageSize="7" TabIndex="15" Width="100%">
+                                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                                <Columns>
+                                                    <asp:BoundField DataField="Tipo" HeaderText="Tipo"></asp:BoundField>
+                                                    <asp:BoundField DataField="Email" HeaderText="Email" />
+                                                    <asp:TemplateField HeaderText="Selecc">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="ImgSelecMailGarante" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecMailGarante_Click" />
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" />
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Eliminar">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="ImgEliMailGarante" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliMailGarante_Click" OnClientClick="return asegurar();" />
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" />
+                                                    </asp:TemplateField>
+                                                </Columns>
+                                                <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                                <RowStyle Font-Size="X-Small" />
+                                                <EditRowStyle BackColor="#2461BF" />
+                                                <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                            </asp:GridView>
+                                        </asp:Panel>
+                                    </td>
+                                </tr>
+                            </table>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
             </div>
             <div class="panel panel-default">
                 <asp:UpdatePanel ID="UpdBotones" runat="server">
@@ -263,11 +407,11 @@
                         <table style="width: 100%">
                             <tr>
                                 <td style="text-align: right; width: 45%">
-                                    <asp:Button ID="BtnGrabar" runat="server" Text="Grabar" Width="120px" CssClass="button" OnClick="BtnGrabar_Click" TabIndex="13" />
+                                    <asp:Button ID="BtnGrabar" runat="server" Text="Grabar" Width="120px" CssClass="button" OnClick="BtnGrabar_Click" TabIndex="16" />
                                 </td>
                                 <td style="width: 10%"></td>
                                 <td style="text-align: left; width: 45%">
-                                    <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="14" />
+                                    <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="17" />
                                 </td>
                             </tr>
                         </table>

@@ -30,7 +30,7 @@
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                    Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Lbltitulo.Text = "Lista Citaciones Solicitadas << VARIOS MEDIOS - TERRENO >>";
                     FunCargarMantenimiento();
 
@@ -50,7 +50,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(241, 1, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(241, 1, 0, 0, "", "", "", Session["Conectar"].ToString());
 
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();
