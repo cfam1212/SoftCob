@@ -74,16 +74,16 @@
             height: 80px;
         }
 
-        .overlayContent h2 {
-            font-size: 18px;
-            font-weight: bold;
-            color: #000;
-        }
+            .overlayContent h2 {
+                font-size: 18px;
+                font-weight: bold;
+                color: #000;
+            }
 
-        .overlayContent img {
-            width: 80px;
-            height: 80px;
-        }
+            .overlayContent img {
+                width: 80px;
+                height: 80px;
+            }
     </style>
 </head>
 <body>
@@ -92,7 +92,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="background-color: #79BBB8;">
                 <asp:Label ID="Lbltitulo" runat="server"></asp:Label>
-            </div>            
+            </div>
             <asp:UpdatePanel ID="updError" runat="server">
                 <ContentTemplate>
                     <div style="background-color: beige; text-align: left; width: 100%; font-size: 25px">
@@ -100,7 +100,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-info">
+             <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -139,69 +139,72 @@
                                     TabIndex="10" OnPageIndexChanging="GrdvDatos_PageIndexChanging" AllowPaging="True">
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
-                                        <asp:BoundField DataField="Cliente" HeaderText="Cliente" HtmlEncode="false" >
-                                        <ItemStyle Wrap="False" />
+                                        <asp:BoundField DataField="Cliente" HeaderText="Cliente" HtmlEncode="false">
+                                            <ItemStyle Wrap="False" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="Grupo" HeaderText="Grupo" />
                                         <asp:BoundField DataField="CodigoCNS" HeaderText="Cod.CNS" />
-                                        <asp:BoundField DataField="Cedula" HeaderText="Cedula" >
-                                        <ItemStyle HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="Cedula" HeaderText="Cedula">
+                                            <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Operacion" HeaderText="Operacion" >
-                                        <ItemStyle HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="Operacion" HeaderText="Operacion">
+                                            <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:d}" />
                                         <asp:BoundField DataField="Hora" HeaderText="Hora" />
-                                        <asp:BoundField DataField="Gestor" HeaderText="Gestor" >
-                                        <ItemStyle Wrap="False" />
+                                        <asp:BoundField DataField="Gestor" HeaderText="Gestor">
+                                            <ItemStyle Wrap="False" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Sucursal" HeaderText="Sucursal" >
-                                        <ItemStyle Wrap="False" />
+                                        <asp:BoundField DataField="Sucursal" HeaderText="Sucursal">
+                                            <ItemStyle Wrap="False" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Producto" HeaderText="Producto" >
-                                        <ItemStyle Wrap="False" />
+                                        <asp:BoundField DataField="Producto" HeaderText="Producto">
+                                            <ItemStyle Wrap="False" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Accion" HeaderText="Accion" HtmlEncode="false" >
-                                        <ItemStyle Wrap="False" />
+                                        <asp:BoundField DataField="Accion" HeaderText="Accion" HtmlEncode="false">
+                                            <ItemStyle Wrap="False" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Efecto" HeaderText="Efecto" HtmlEncode="false" >
-                                        <ItemStyle Wrap="False" />
+                                        <asp:BoundField DataField="Efecto" HeaderText="Efecto" HtmlEncode="false">
+                                            <ItemStyle Wrap="False" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Respuesta" HeaderText="Respuesta" HtmlEncode="false" >
-                                        <ItemStyle Wrap="False" />
+                                        <asp:BoundField DataField="Respuesta" HeaderText="Respuesta" HtmlEncode="false">
+                                            <ItemStyle Wrap="False" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Contacto" HeaderText="Contacto" HtmlEncode="false" >
-                                        <ItemStyle Wrap="False" />
+                                        <asp:BoundField DataField="Contacto" HeaderText="Contacto" HtmlEncode="false">
+                                            <ItemStyle Wrap="False" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Observacion" HeaderText="Observación" HtmlEncode="false" >
-                                        <ItemStyle Wrap="False" />
+                                        <asp:BoundField DataField="Observacion" HeaderText="Observación" HtmlEncode="false">
+                                            <ItemStyle Wrap="False" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Telefono" HeaderText="Telefono" >
-                                        <ItemStyle HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="Telefono" HeaderText="Telefono">
+                                            <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="TipoGestion" HeaderText="Gestion" >
-                                        <ItemStyle Wrap="False" />
+                                        <asp:BoundField DataField="TipoGestion" HeaderText="Gestion">
+                                            <ItemStyle Wrap="False" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="TipoCartera" HeaderText="Cartera" >
-                                        <ItemStyle Wrap="False" />
+                                        <asp:BoundField DataField="TipoCartera" HeaderText="Cartera">
+                                            <ItemStyle Wrap="False" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="DiasMora" HeaderText="DMora" >
-                                        <ItemStyle HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="DiasMora" HeaderText="DMora">
+                                            <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="ValorDeuda" HeaderText="Deuda" >
-                                        <ItemStyle HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="ValorDeuda" HeaderText="Deuda">
+                                            <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Exigible" HeaderText="Exigible" >
-                                        <ItemStyle HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="Exigible" HeaderText="Exigible">
+                                            <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="FechaPromesa" HeaderText="FechaPromesa" >
-                                        <ItemStyle HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="FechaPromesa" HeaderText="FechaPromesa">
+                                            <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="ValorPromesa" HeaderText="ValorPromesa" >
-                                        <ItemStyle HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="ValorPromesa" HeaderText="ValorPromesa">
+                                            <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
                                     </Columns>
+                                    <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                     <RowStyle Font-Size="X-Small" />
+                                    <EditRowStyle BackColor="#2461BF" />
+                                    <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                 </asp:GridView>
                                 <script>
                                     $(document).ready(function () {

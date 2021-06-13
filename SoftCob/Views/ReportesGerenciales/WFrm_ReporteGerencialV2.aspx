@@ -184,7 +184,7 @@
                                             <asp:BoundField DataField="Gestor" HeaderText="Gestor"></asp:BoundField>
                                             <asp:TemplateField HeaderText="Borrar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgDelete" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelete_Click" OnClientClick="return asegurar();" />
+                                                    <asp:ImageButton ID="ImgDelete" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelete_Click" OnClientClick="return asegurar();" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

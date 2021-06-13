@@ -172,7 +172,7 @@
                                         </asp:BoundField>
                                         <asp:TemplateField HeaderText="Efetivo">
                                             <ItemTemplate>
-                                                <asp:ImageButton ID="ImgEfectivo" runat="server" Height="20px" ImageUrl="~/Botones/abonar.png" OnClick="ImgEfectivo_Click" OnClientClick="return asegurar();" />
+                                                <asp:ImageButton ID="ImgEfectivo" runat="server" Height="20px" ImageUrl="~/Botones/abonarbg.png" OnClick="ImgEfectivo_Click" OnClientClick="return asegurar();" />
                                             </ItemTemplate>
                                             <ItemStyle HorizontalAlign="Center" />
                                         </asp:TemplateField>

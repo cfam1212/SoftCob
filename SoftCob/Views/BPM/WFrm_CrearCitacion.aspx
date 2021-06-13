@@ -66,7 +66,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <%--  <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -76,8 +76,8 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>--%>
-                       <%-- <div class="panel-info">
+            </div>
+            <div class="panel-info">
                 <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -87,7 +87,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>--%>
+            </div>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server">
                     <ContentTemplate>
@@ -195,19 +195,19 @@
                                                 <asp:BoundField DataField="Cliente" HeaderText="Estado"></asp:BoundField>
                                                 <asp:TemplateField HeaderText="Terreno">
                                                     <ItemTemplate>
-                                                        <asp:Image ID="ImgTerreno" runat="server" Height="15px" ImageUrl="~/Botones/eliminargris.png" />
+                                                        <asp:Image ID="ImgTerreno" runat="server" Height="20px" ImageUrl="~/Botones/eliminargris.png" />
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Email">
                                                     <ItemTemplate>
-                                                        <asp:Image ID="ImgMail" runat="server" Height="15px" ImageUrl="~/Botones/eliminargris.png" />
+                                                        <asp:Image ID="ImgMail" runat="server" Height="20px" ImageUrl="~/Botones/eliminargris.png" />
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Whastapp">
                                                     <ItemTemplate>
-                                                        <asp:Image ID="ImgWhastapp" runat="server" Height="15px" ImageUrl="~/Botones/eliminargris.png" />
+                                                        <asp:Image ID="ImgWhastapp" runat="server" Height="20px" ImageUrl="~/Botones/eliminargris.png" />
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
@@ -304,7 +304,7 @@
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
                                             </Columns>
-                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
                                             <EditRowStyle BackColor="#2461BF" />
                                             <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
@@ -391,7 +391,7 @@
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Eliminar">
                                                     <ItemTemplate>
-                                                        <asp:ImageButton ID="ImgDelEmail" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelEmail_Click" OnClientClick="return asegurar();" />
+                                                        <asp:ImageButton ID="ImgDelEmail" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelEmail_Click" OnClientClick="return asegurar();" />
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
@@ -501,12 +501,12 @@
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Eliminar">
                                                     <ItemTemplate>
-                                                        <asp:ImageButton ID="ImgDelTerreno" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelTerreno_Click" />
+                                                        <asp:ImageButton ID="ImgDelTerreno" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelTerreno_Click" />
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
                                             </Columns>
-                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
                                             <EditRowStyle BackColor="#2461BF" />
                                             <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />

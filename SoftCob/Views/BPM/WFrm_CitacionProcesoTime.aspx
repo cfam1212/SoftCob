@@ -72,7 +72,7 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Generar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="15px" ImageUrl="~/Botones/btncitaproceso.png" OnClick="ImgCitacion_Click" />
+                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btncitaproceso.png" OnClick="ImgCitacion_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

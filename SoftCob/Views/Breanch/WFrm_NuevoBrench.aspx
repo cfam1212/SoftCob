@@ -189,7 +189,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Eliminar">
                                             <ItemTemplate>
-                                                <asp:ImageButton ID="ImgEliminar" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliminar_Click" />
+                                                <asp:ImageButton ID="ImgEliminar" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliminar_Click" />
                                             </ItemTemplate>
                                             <ItemStyle HorizontalAlign="Center" />
                                         </asp:TemplateField>

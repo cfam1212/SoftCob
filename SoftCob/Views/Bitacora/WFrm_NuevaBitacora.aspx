@@ -99,7 +99,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-info">
+      <%--      <div class="panel-info">
                 <asp:UpdateProgress ID="UpdProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -109,7 +109,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>
+            </div>--%>
             <div class="panel-body">
                 <div>
                     <table style="border: 2px solid #008080; width: 100%">
@@ -1081,7 +1081,7 @@
                                                                 <asp:ImageButton ID="ImgModGT" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModGT_Click" TabIndex="58" Visible="False" />
                                                             </td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgDelGT" runat="server" Height="25px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelGT_Click" TabIndex="59" Visible="False" OnClientClick="return asegurar();" />
+                                                                <asp:ImageButton ID="ImgDelGT" runat="server" Height="25px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelGT_Click" TabIndex="59" Visible="False" OnClientClick="return asegurar();" />
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -1108,7 +1108,7 @@
                                                                             </asp:BoundField>
                                                                             <asp:TemplateField HeaderText="Seleccionar">
                                                                                 <ItemTemplate>
-                                                                                    <asp:ImageButton ID="ImgSeleccGT" runat="server" Height="15px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSeleccGT_Click" />
+                                                                                    <asp:ImageButton ID="ImgSeleccGT" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSeleccGT_Click" />
                                                                                 </ItemTemplate>
                                                                                 <HeaderStyle CssClass="GVFixedHeader" />
                                                                                 <ItemStyle HorizontalAlign="Center" />

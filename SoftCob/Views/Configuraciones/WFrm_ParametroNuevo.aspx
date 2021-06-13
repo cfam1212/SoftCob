@@ -144,7 +144,7 @@
                                             <asp:TextBox ID="TxtDetalle" runat="server" Width="100%" CssClass="form-control upperCase" MaxLength="80" TabIndex="4"></asp:TextBox>
                                         </td>
                                         <td style="width: 15%; text-align: center;">
-                                            <asp:ImageButton ID="ImgAgregar" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAgregar_Click" TabIndex="8" />
+                                            <asp:ImageButton ID="ImgAgregar" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAgregar_Click" TabIndex="8" />
                                         </td>
                                         <td style="width: 5%"></td>
                                     </tr>
@@ -157,7 +157,7 @@
                                             <asp:TextBox ID="TxtValorV" runat="server" CssClass="form-control" Width="100%" MaxLength="80" TabIndex="5"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgModificar" runat="server" Enabled="False" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModificar_Click" TabIndex="9" />
+                                            <asp:ImageButton ID="ImgModificar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModificar_Click" TabIndex="9" />
                                         </td>
                                         <td></td>
                                     </tr>
@@ -172,7 +172,7 @@
                                             </asp:FilteredTextBoxExtender>
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgCancelar" runat="server" CausesValidation="False" Enabled="False" Height="20px" ImageUrl="~/Botones/cancelar.jpg" OnClick="ImgCancelar_Click" TabIndex="10" />
+                                            <asp:ImageButton ID="ImgCancelar" runat="server" CausesValidation="False" Enabled="False" Height="25px" ImageUrl="~/Botones/cancelarbg.png" OnClick="ImgCancelar_Click" TabIndex="10" />
                                         </td>
                                         <td></td>
                                     </tr>
@@ -223,7 +223,7 @@
                                                         </asp:TemplateField>
                                                         <asp:TemplateField HeaderText="Eliminar">
                                                             <ItemTemplate>
-                                                                <asp:ImageButton ID="ImgEliminar" runat="server" Enabled="False" Height="15px" ImageUrl="~/Botones/eliminargris.png" OnClick="ImgEliminar_Click" />
+                                                                <asp:ImageButton ID="ImgEliminar" runat="server" Enabled="False" Height="20px" ImageUrl="~/Botones/eliminargris.png" OnClick="ImgEliminar_Click" />
                                                             </ItemTemplate>
                                                             <ItemStyle HorizontalAlign="Center" />
                                                         </asp:TemplateField>

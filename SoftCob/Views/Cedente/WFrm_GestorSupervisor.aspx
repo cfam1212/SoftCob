@@ -174,13 +174,13 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Editar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgEdiGestor" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgEdiGestor_Click" />
+                                                    <asp:ImageButton ID="ImgEdiGestor" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgEdiGestor_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Eliminar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgDelGestor" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" Width="15px" OnClick="ImgDelGestor_Click" />
+                                                    <asp:ImageButton ID="ImgDelGestor" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelGestor_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

@@ -298,7 +298,7 @@
                                                     </asp:FilteredTextBoxExtender>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgAddGrupo" runat="server" Height="20px" ImageUrl="~/Botones/agregar.jpg" TabIndex="13" OnClick="ImgAddGrupo_Click" />
+                                                    <asp:ImageButton ID="ImgAddGrupo" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="13" OnClick="ImgAddGrupo_Click" />
                                                 </td>
                                                 <td></td>
                                             </tr>
@@ -327,7 +327,7 @@
                                                                 <asp:BoundField DataField="Grupo" HeaderText="Grupo" />
                                                                 <asp:TemplateField HeaderText="Eliminar">
                                                                     <ItemTemplate>
-                                                                        <asp:ImageButton ID="ImgDelGrupo" runat="server" Height="15px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgDelGrupo_Click" />
+                                                                        <asp:ImageButton ID="ImgDelGrupo" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelGrupo_Click" />
                                                                     </ItemTemplate>
                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                 </asp:TemplateField>
