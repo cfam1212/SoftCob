@@ -140,7 +140,7 @@
                                     <asp:BoundField DataField="Ciudad" HeaderText="Ciudad" />
                                     <asp:TemplateField HeaderText="Marcar">
                                         <ItemTemplate>
-                                            <asp:ImageButton ID="ImgCelular" runat="server" Height="15px" ImageUrl="~/Botones/call_small.png" OnClick="ImgCelular_Click" />
+                                            <asp:ImageButton ID="ImgCelular" runat="server" Height="20px" ImageUrl="~/Botones/call_small.png" OnClick="ImgCelular_Click" />
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField>
@@ -172,7 +172,7 @@
                                     <asp:BoundField DataField="Provincia" HeaderText="Provincia" />
                                     <asp:TemplateField HeaderText="Marcar">
                                         <ItemTemplate>
-                                            <asp:ImageButton ID="ImgTelefono" runat="server" Height="15px" ImageUrl="~/Botones/call_small.png" OnClick="ImgTelefono_Click" />
+                                            <asp:ImageButton ID="ImgTelefono" runat="server" Height="20px" ImageUrl="~/Botones/call_small.png" OnClick="ImgTelefono_Click" />
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField>

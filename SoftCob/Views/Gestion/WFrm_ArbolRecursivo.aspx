@@ -77,7 +77,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-info">
+           <%-- <div class="panel-info">
                 <asp:UpdateProgress ID="UpdProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdCabecera">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -87,7 +87,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>
+            </div>--%>
             <div class="panel-body">
                 <asp:UpdatePanel ID="UpdCabecera" runat="server">
                     <ContentTemplate>
@@ -99,7 +99,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:ImageButton ID="BtnRegresar" runat="server" ImageUrl="~/Botones/cancelar.jpg" OnClick="BtnRegresar_Click" Width="16px" />
+                                    <asp:ImageButton ID="BtnRegresar" runat="server" ImageUrl="~/Botones/cancelarbg.png" OnClick="BtnRegresar_Click" Width="25px" />
                                 </td>
                                 <td>
                                     <asp:Label ID="LblNombres" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#3366FF"></asp:Label>
@@ -379,7 +379,7 @@
                                                                 <asp:BoundField DataField="Localidad" HeaderText="Localidad" />
                                                                 <asp:TemplateField HeaderText="Marcar">
                                                                     <ItemTemplate>
-                                                                        <asp:ImageButton ID="ImgPhone" runat="server" Height="15px" ImageUrl="~/Botones/call_small.png" OnClick="ImgPhone_Click" />
+                                                                        <asp:ImageButton ID="ImgPhone" runat="server" Height="20px" ImageUrl="~/Botones/call_small.png" OnClick="ImgPhone_Click" />
                                                                     </ItemTemplate>
                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                 </asp:TemplateField>
@@ -453,7 +453,7 @@
                                             <asp:BoundField HeaderText="Fecha_Fallece" DataField="FechaFallece" />
                                             <asp:TemplateField HeaderText="Selecc">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgSelecc" runat="server" Height="15px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecc_Click" />
+                                                    <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecc_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

@@ -149,7 +149,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-                                                    <asp:ImageButton ID="BtnRegresar" runat="server" ImageUrl="~/Botones/cancelar.jpg" OnClick="BtnRegresar_Click" Width="16px" />
+                                                    <asp:ImageButton ID="BtnRegresar" runat="server" ImageUrl="~/Botones/cancelarbg.png" OnClick="BtnRegresar_Click" Width="25px" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -332,7 +332,7 @@
                                                     <asp:BoundField HeaderText="FechaFallece" DataField="FechaFallece" />
                                                     <asp:TemplateField HeaderText="Selecc">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecc_Click" />
+                                                            <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecc_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>

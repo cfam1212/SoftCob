@@ -59,7 +59,7 @@
                                             </asp:BoundField>
                                             <asp:TemplateField HeaderText="Eliminar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgEliminar" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliminar_Click" OnClientClick="return asegurar();" />
+                                                    <asp:ImageButton ID="ImgEliminar" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliminar_Click" OnClientClick="return asegurar();" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

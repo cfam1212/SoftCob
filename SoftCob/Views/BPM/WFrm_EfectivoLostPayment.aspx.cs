@@ -11,7 +11,7 @@ namespace SoftCob.Views.BPM
     using System.Web.UI;
     using System.Web.UI.WebControls;
 
-    public partial class WFrm_EfectivoLostPayment : System.Web.UI.Page
+    public partial class WFrm_EfectivoLostPayment : Page
     {
         #region Variables
         DataSet _dts = new DataSet();
@@ -51,7 +51,7 @@ namespace SoftCob.Views.BPM
             switch (opcion)
             {
                 case 0:
-                    DdlCedente.DataSource = new CatalogosDTO().FunGetCedentes();
+                    DdlCedente.DataSource = new CedenteDAO().FunGetCedentes();
                     DdlCedente.DataTextField = "Descripcion";
                     DdlCedente.DataValueField = "Codigo";
                     DdlCedente.DataBind();
@@ -69,15 +69,15 @@ namespace SoftCob.Views.BPM
                     _itemg.Text = "--Seleccione Gestor--";
                     _itemg.Value = "0";
                     DdlGestor.Items.Add(_itemg);
-                    DdlGestor.DataSource = new CatalogosDTO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--",
+                    DdlGestor.DataSource = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--",
                         int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", ViewState["Conectar"].ToString());
                     DdlGestor.DataTextField = "Descripcion";
                     DdlGestor.DataValueField = "Codigo";
                     DdlGestor.DataBind();
                     break;
                 case 2:
-                    _dts = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataSource = new CedenteDTO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                     DdlCatalogo.DataTextField = "CatalogoProducto";
                     DdlCatalogo.DataValueField = "CodigoCatalogo";
                     DdlCatalogo.DataBind();
@@ -115,19 +115,19 @@ namespace SoftCob.Views.BPM
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
                     return;
                 }
 
                 if (DdlCatalogo.SelectedValue.ToString() == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Catalogo/Producto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catalogo/Producto..!", this);
                     return;
                 }
 
                 if (DdlGestor.SelectedValue.ToString() == "0")
                 {
-                    new FuncionesBAS().FunShowJSMessage("Seleccione Gestor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this);
                     return;
                 }
 

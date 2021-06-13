@@ -286,7 +286,7 @@
                                                                     <asp:ImageButton ID="ImgAgregar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAgregar_Click" TabIndex="6" />
                                                                 </td>
                                                                 <td>
-                                                                    <asp:ImageButton ID="ImgEliminar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliminar_Click" OnClientClick="return asegurar();" TabIndex="7" />
+                                                                    <asp:ImageButton ID="ImgEliminar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliminar_Click" OnClientClick="return asegurar();" TabIndex="7" />
                                                                 </td>
                                                                 <td></td>
                                                             </tr>
@@ -348,7 +348,7 @@
                                     <asp:BoundField DataField="Respuesta" HeaderText="Respuesta" />
                                     <asp:TemplateField HeaderText="Selecc">
                                         <ItemTemplate>
-                                            <asp:ImageButton ID="ImgSeleccionar" runat="server" Height="15px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSeleccionar_Click" />
+                                            <asp:ImageButton ID="ImgSeleccionar" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSeleccionar_Click" />
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField>

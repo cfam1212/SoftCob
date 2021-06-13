@@ -451,7 +451,7 @@
                                                                                 </asp:TemplateField>
                                                                                 <asp:TemplateField HeaderText="Teléfono">
                                                                                     <ItemTemplate>
-                                                                                        <asp:ImageButton ID="ImgPhoneD" runat="server" Height="20px" ImageUrl="~/Botones/Buscargris.png" OnClick="ImgPhoneD_Click" />
+                                                                                        <asp:ImageButton ID="ImgPhoneD" runat="server" Height="20px" ImageUrl="~/Botones/buscargrisbg.png" OnClick="ImgPhoneD_Click" />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                                 </asp:TemplateField>
