@@ -199,21 +199,6 @@
                     }
                 }
 
-                //switch (ViewState["NivelArbol"].ToString())
-                //{
-                //    case "3":
-                //        LblContacto.Visible = false;
-                //        DdlContacto.Visible = false;
-                //        Chkcitacion.Visible = true;
-                //        DdlCitacion.Visible = true;
-                //        break;
-                //    default:
-                //        GrdvDatosGarante.Columns[7].Visible = false;
-                //        break;
-                //}
-
-                //if (Session["CodigoCPCE"].ToString() == "3") ImgCitacion.Visible = true;
-
                 Lbltitulo.Text = "Gestion Lista de Trabajo " + ViewState["Catalogo"].ToString();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(36, int.Parse(Session["IdListaCabecera"].ToString()),

@@ -713,9 +713,8 @@
             }
             return _dts;
         }
-        public DataSet FunActualizarDatos(int tipo, int cambio, int perscodigo, string cedulatitular, string cedulagarante,
-            string email, string direccion, string referencia, string dirtrabajo, string reftrabajo, string mailtrabajo,
-            string auxv1, string auxv2, string auxv3, int auxi1, int auxi2, int auxi3, string conexion)
+        public DataSet FunActualizarDatos(int tipo, int codigodere, string cedulagarante, string tipogarante, string nombres, string apellidos, 
+            string operacion, string auxv1, string auxv2, string auxv3, int auxi1, int auxi2, int auxi3, string conexion)
         {
             try
             {
@@ -728,16 +727,12 @@
                         comm.CommandType = CommandType.StoredProcedure;
                         comm.CommandText = "sp_ActualizarDatos";
                         comm.Parameters.AddWithValue("@in_tipo", tipo);
-                        comm.Parameters.AddWithValue("@in_cambio", cambio);
-                        comm.Parameters.AddWithValue("@in_perscodigo", perscodigo);
-                        comm.Parameters.AddWithValue("@in_cedulatitular", cedulatitular);
+                        comm.Parameters.AddWithValue("@in_codigodere", codigodere);
                         comm.Parameters.AddWithValue("@in_cedulagarante", cedulagarante);
-                        comm.Parameters.AddWithValue("@in_email", email);
-                        comm.Parameters.AddWithValue("@in_direccion", direccion);
-                        comm.Parameters.AddWithValue("@in_referencia", referencia);
-                        comm.Parameters.AddWithValue("@in_dirtrabajo", dirtrabajo);
-                        comm.Parameters.AddWithValue("@in_reftrabajo", reftrabajo);
-                        comm.Parameters.AddWithValue("@in_emailtrabajo", mailtrabajo);
+                        comm.Parameters.AddWithValue("@in_tipogarante", tipogarante);
+                        comm.Parameters.AddWithValue("@in_nombres", nombres);
+                        comm.Parameters.AddWithValue("@in_apellidos", apellidos);
+                        comm.Parameters.AddWithValue("@in_operacion", operacion);
                         comm.Parameters.AddWithValue("@in_auxv1", auxv1);
                         comm.Parameters.AddWithValue("@in_auxv2", auxv2);
                         comm.Parameters.AddWithValue("@in_auxv3", auxv3);

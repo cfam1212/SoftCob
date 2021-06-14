@@ -737,7 +737,7 @@
                                         <asp:Panel ID="Panel4" runat="server" Height="180px" ScrollBars="Vertical">
                                             <asp:GridView ID="GrdvTelefonos" runat="server" AutoGenerateColumns="False"
                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                                ForeColor="#333333" PageSize="7" TabIndex="40" Width="100%" DataKeyNames="Codigo">
+                                                ForeColor="#333333" PageSize="7" TabIndex="40" Width="100%" DataKeyNames="CodigoTELE">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>
                                                     <asp:BoundField DataField="Prefijo" HeaderText="Prefijo"></asp:BoundField>
@@ -856,7 +856,7 @@
                                                 <Columns>
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo"></asp:BoundField>
                                                     <asp:BoundField DataField="Cedula" HeaderText="Cédula" />
-                                                    <asp:BoundField DataField="Nombres" HeaderText="Nombres"></asp:BoundField>
+                                                    <asp:BoundField DataField="Garante" HeaderText="Nombres"></asp:BoundField>
                                                     <asp:BoundField DataField="Operacion" HeaderText="Operación"></asp:BoundField>
                                                     <asp:TemplateField HeaderText="Selecc">
                                                         <ItemTemplate>
@@ -954,7 +954,7 @@
                                         <asp:Panel ID="Panel18" runat="server" Height="180px" ScrollBars="Vertical">
                                             <asp:GridView ID="GrdvDirecGarante" runat="server" AutoGenerateColumns="False"
                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                                DataKeyNames="CodigoDIGT,Nuevo"
+                                                DataKeyNames="CodigoDIGT,Nuevo,Definicion"
                                                 ForeColor="#333333" PageSize="7" TabIndex="54" Width="100%">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>

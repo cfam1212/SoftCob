@@ -130,84 +130,82 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-<<<<<<< HEAD
-            <%--            <div class="panel-info">
-=======
             <div class="panel-info">
->>>>>>> 5cb30355c70c71e33a645ddace8c6539345bfaf1
-                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdBotones">
-                    <ProgressTemplate>
-                        <div class="overlay" />
-                        <div class="overlayContent">
-                            <h2>Procesando..</h2>
-                            <img src="../../Images/load.gif" alt="Loading" border="1" />
-                        </div>
-                    </ProgressTemplate>
-                </asp:UpdateProgress>
-            </div>
-            <div class="panel-body">
-                <h3 class="label label-primary" style="font-size: 14px; display: block; text-align: left">DATOS GARANTE/CODEUDOR</h3>
-                <asp:UpdatePanel ID="updCabecera" runat="server">
-                    <ContentTemplate>
-                        <table style="width: 100%">
-                            <tr>
-                                <td style="width: 5%"></td>
-                                <td style="width: 15%"></td>
-                                <td style="width: 30%"></td>
-                                <td style="width: 15%"></td>
-                                <td style="width: 30%"></td>
-                                <td style="width: 5%"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <h5>No. Documento:</h5>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="TxtNumeroDocumento" runat="server" AutoPostBack="True" CssClass="form-control upperCase" MaxLength="10" TabIndex="1" Width="100%"></asp:TextBox>
-                                    <asp:FilteredTextBoxExtender ID="TxtNumeroDocumento_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="TxtNumeroDocumento">
-                                    </asp:FilteredTextBoxExtender>
-                                </td>
-                                <td>
-                                    <h5>Tipo:</h5>
-                                </td>
-                                <td>
-                                    <asp:DropDownList ID="DdlTipo" runat="server" CssClass="form-control" TabIndex="2" Width="100%">
-                                    </asp:DropDownList>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <h5>Nombres:</h5>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="TxtNombres" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="3" Width="100%"></asp:TextBox>
-                                </td>
-                                <td>
-                                    <h5>Apellidos:</h5>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="TxtApellidos" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="3" Width="100%"></asp:TextBox>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <h5>Operación:</h5>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="TxtOperacion" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="4" Width="100%"></asp:TextBox>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                <div class="panel-info">
+                    <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdBotones">
+                        <ProgressTemplate>
+                            <div class="overlay" />
+                            <div class="overlayContent">
+                                <h2>Procesando..</h2>
+                                <img src="../../Images/load.gif" alt="Loading" border="1" />
+                            </div>
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+                </div>
+                <div class="panel-body">
+                    <h3 class="label label-primary" style="font-size: 14px; display: block; text-align: left">DATOS GARANTE/CODEUDOR</h3>
+                    <asp:UpdatePanel ID="updCabecera" runat="server">
+                        <ContentTemplate>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="width: 5%"></td>
+                                    <td style="width: 15%"></td>
+                                    <td style="width: 30%"></td>
+                                    <td style="width: 15%"></td>
+                                    <td style="width: 30%"></td>
+                                    <td style="width: 5%"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <h5>No. Documento:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="TxtNumeroDocumento" runat="server" AutoPostBack="True" CssClass="form-control upperCase" MaxLength="10" TabIndex="1" Width="100%"></asp:TextBox>
+                                        <asp:FilteredTextBoxExtender ID="TxtNumeroDocumento_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="TxtNumeroDocumento">
+                                        </asp:FilteredTextBoxExtender>
+                                    </td>
+                                    <td>
+                                        <h5>Tipo:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="DdlTipo" runat="server" CssClass="form-control" TabIndex="2" Width="100%">
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <h5>Nombres:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="TxtNombres" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="3" Width="100%" style="margin-bottom: 0"></asp:TextBox>
+                                    </td>
+                                    <td>
+                                        <h5>Apellidos:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="TxtApellidos" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="3" Width="100%"></asp:TextBox>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <h5>Operación:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="TxtOperacion" runat="server" CssClass="form-control upperCase" MaxLength="50" TabIndex="4" Width="100%"></asp:TextBox>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
             </div>
             <div class="panel-body">
                 <div id="acordionParametro">
@@ -264,10 +262,10 @@
                                     <td></td>
                                     <td></td>
                                     <td style="text-align: center">
-                                        <asp:ImageButton ID="ImgAddDirGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddDirGarante_Click" TabIndex="8" Enabled="False" />
+                                        <asp:ImageButton ID="ImgAddDirGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.png" OnClick="ImgAddDirGarante_Click" TabIndex="8" />
                                     </td>
                                     <td>
-                                        <asp:ImageButton ID="ImgModDirGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModDirGarante_Click" TabIndex="9" Enabled="False" />
+                                        <asp:ImageButton ID="ImgModDirGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificarnew.png" OnClick="ImgModDirGarante_Click" TabIndex="9" Enabled="False" />
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -291,13 +289,13 @@
                                                     <asp:BoundField DataField="Referencia" HeaderText="Referencia"></asp:BoundField>
                                                     <asp:TemplateField HeaderText="Selecc">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgSelecDirGarante" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelecDirGarante_Click" />
+                                                            <asp:ImageButton ID="ImgSelecDirGarante" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecDirGarante_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Eliminar">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgEliDirGarante" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliDirGarante_Click" OnClientClick="return asegurar();" />
+                                                            <asp:ImageButton ID="ImgEliDirGarante" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliDirGarante_Click" OnClientClick="return asegurar();" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -355,7 +353,7 @@
                                     <td></td>
                                     <td></td>
                                     <td style="text-align: center">
-                                        <asp:ImageButton ID="ImgAddMailGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddMailGarante_Click" TabIndex="13" Enabled="False" />
+                                        <asp:ImageButton ID="ImgAddMailGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddMailGarante_Click" TabIndex="13" />
                                     </td>
                                     <td>
                                         <asp:ImageButton ID="ImgModMailGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModMailGarante_Click" TabIndex="14" Enabled="False" />

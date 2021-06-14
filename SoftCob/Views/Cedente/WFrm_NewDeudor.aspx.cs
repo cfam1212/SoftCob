@@ -233,8 +233,8 @@
                         ChkEstado.Checked = true;
                         ChkEstado.Text = "Activo";
 
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(187, int.Parse(DdlCedente.SelectedValue), 0, 0, "",
-                            TxtNumeroDocumento.Text.Trim(), "", Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(187, 0, 0, 0, "", TxtNumeroDocumento.Text.Trim(), "",
+                            Session["Conectar"].ToString());
 
                         ViewState["DatosOperacion"] = _dts.Tables[1];
                         ViewState["DatosTelefonos"] = _dts.Tables[2];
@@ -1322,9 +1322,9 @@
             try
             {
                 GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-                _codigo = GrdvTelefonos.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString();
+                _codigo = GrdvTelefonos.DataKeys[_gvrow.RowIndex].Values["CodigoTELE"].ToString();
                 _dtbtelefonos = (DataTable)ViewState["DatosTelefonos"];
-                _result = _dtbtelefonos.Select("Codigo='" + _codigo + "'").FirstOrDefault();
+                _result = _dtbtelefonos.Select("CodigoTELE='" + _codigo + "'").FirstOrDefault();
                 _result.Delete();
                 _dtbtelefonos.AcceptChanges();
                 GrdvTelefonos.DataSource = _dtbtelefonos;
@@ -1399,6 +1399,7 @@
                 _filagre["Cedula"] = TxtCedulaGarante.Text.Trim();
                 _filagre["Nombres"] = TxtGarante.Text.Trim().ToUpper();
                 _filagre["Apellidos"] = TxtApellidoGarante.Text.Trim().ToUpper();
+                _filagre["Garante"] = TxtGarante.Text.Trim().ToUpper() + "" + TxtApellidoGarante.Text.Trim().ToUpper();
                 _filagre["Operacion"] = TxtNumOperacion.Text.Trim();
                 _filagre["Nuevo"] = "SI";
                 _dtbdeudor.Rows.Add(_filagre);
@@ -1445,17 +1446,19 @@
                 }
 
                 GrdvGarante.Rows[_gvrow.RowIndex].Cells[0].BackColor = System.Drawing.Color.Coral;
-                _codigo = GrdvGarante.DataKeys[_gvrow.RowIndex].Values["CodigoGART"].ToString();
+                _codigo = GrdvGarante.DataKeys[_gvrow.RowIndex].Values["CodigoGART"].ToString();                
                 _dtbgarante = (DataTable)ViewState["DatosGarante"];
 
                 _result = _dtbgarante.Select("CodigoGART='" + _codigo + "'").FirstOrDefault();
 
                 ViewState["CodigoGART"] = _codigo;
                 ViewState["CedulaGarante"] = _result["Cedula"].ToString();
+                ViewState["TipoCliente"] = _result["CodigoTipo"].ToString();
 
                 DdlTipoGarante.SelectedValue = _result["CodigoTipo"].ToString();
                 TxtCedulaGarante.Text = _result["Cedula"].ToString();
                 TxtGarante.Text = _result["Nombres"].ToString();
+                TxtApellidoGarante.Text = _result["Apellidos"].ToString();
                 TxtNumOperacion.Text = _result["Operacion"].ToString();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(208, 3, 0, 0, "", ViewState["CedulaGarante"].ToString(), "",
@@ -1516,18 +1519,27 @@
                 {
                     if (ViewState["CedulaGarante"].ToString() != TxtCedulaGarante.Text.Trim())
                     {
-                        _tblbuscar = (DataTable)ViewState["DatosGarante"];
-                        _result = _tblbuscar.Select("Cedula='" + TxtCedulaGarante.Text.Trim() + "'").FirstOrDefault();
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(107, 0, 0, 0, "", TxtCedulaGarante.Text.Trim(),
+                            "", Session["Conectar"].ToString());
 
-                        if (_result != null) _lexiste = true;
+                        if (_dts.Tables[0].Rows.Count > 0)
+                        {
+                            new FuncionesDAO().FunShowJSMessage("No. de Documento ya Existe..!", this);
+                            TxtCedulaGarante.Text = ViewState["CedulaGarante"].ToString();
+                            return;
+                        }
+                        //_tblbuscar = (DataTable)ViewState["DatosGarante"];
+                        //_result = _tblbuscar.Select("Cedula='" + TxtCedulaGarante.Text.Trim() + "'").FirstOrDefault();
+
+                        //if (_result != null) _lexiste = true;
                     }
                 }
+                //if (_lexiste)
+                //{
+                //    new FuncionesDAO().FunShowJSMessage("Garante ya Existe..!", this);
+                //    return;
+                //}
 
-                if (_lexiste)
-                {
-                    new FuncionesDAO().FunShowJSMessage("Garante ya Existe..!", this);
-                    return;
-                }
 
                 _dtbgarante = (DataTable)ViewState["DatosGarante"];
 
@@ -1536,7 +1548,9 @@
                 _result["Tipo"] = DdlTipoGarante.SelectedItem.ToString();
                 _result["Cedula"] = TxtCedulaGarante.Text.Trim();
                 _result["Nombres"] = TxtGarante.Text.Trim().ToUpper();
-                _result["Operacion"] = TxtNumOperacion;
+                _result["Apellidos"] = TxtApellidoGarante.Text.Trim().ToUpper();
+                _result["Garante"] = TxtGarante.Text.Trim().ToUpper() + "" + TxtApellidoGarante.Text.Trim().ToUpper();
+                _result["Operacion"] = TxtNumOperacion.Text;
                 _dtbgarante.AcceptChanges();
 
                 ViewState["DatosGarante"] = _dtbgarante;
@@ -1545,16 +1559,23 @@
 
                 if (ViewState["CodigoPERS"].ToString() != "0")
                 {
-                    _dts = new ConsultaDatosDAO().FunCrearNuevoDeudor(6, "", "", "", "", "", "",
-                        0, 0, "", "", 0, TxtOperacion.Text.Trim(), "", "", 0, 0, "", DdlTipoGarante.SelectedValue,
-                        "", "", "", "", TxtGarante.Text.Trim().ToUpper(), "", "", "", "", 0, "",
-                        TxtCedulaGarante.Text.Trim(), "", "", int.Parse(ViewState["CodigoGART"].ToString()), 0, 0,
+                    _dts = new ConsultaDatosDAO().FunActualizarDatos(0, int.Parse(ViewState["CodigoGART"].ToString()),
+                        TxtCedulaGarante.Text.Trim(), DdlTipoGarante.SelectedValue, TxtGarante.Text.Trim().ToUpper(),
+                        TxtApellidoGarante.Text.Trim().ToUpper(), TxtNumOperacion.Text, ViewState["CedulaGarante"].ToString(), "", "", 0, 0, 0, 
                         Session["Conectar"].ToString());
+
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(205, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "",
+                        "", "", Session["Conectar"].ToString());
+
+                    ViewState["DatosGarante"] = _dts.Tables[0];
+                    GrdvGarante.DataSource = _dts;
+                    GrdvGarante.DataBind();
                 }
 
                 DdlTipoGarante.SelectedValue = "0";
                 TxtCedulaGarante.Text = "";
                 TxtGarante.Text = "";
+                TxtApellidoGarante.Text = "";
                 TxtNumOperacion.Text = "";
 
                 ImgAddGarante.Enabled = true;
@@ -1639,7 +1660,7 @@
 
                     if (_tblbuscar.Rows.Count > 0)
                         _maxcodigo = _tblbuscar.AsEnumerable()
-                            .Max(row => int.Parse((string)row["CodigoMATD"]));
+                            .Max(row => int.Parse((string)row["CodigoDIGT"]));
                     else _maxcodigo = 0;
 
                     _result = _tblbuscar.Select("Direccion='" + TxtDirGarante.Text.Trim().ToUpper() + "'").FirstOrDefault();
@@ -1655,10 +1676,10 @@
 
                 _dtbdirgarante = (DataTable)ViewState["DireccionGarante"];
                 _filagre = _dtbdirgarante.NewRow();
-                _filagre["CodigoMATD"] = _maxcodigo + 1;
+                _filagre["CodigoDIGT"] = _maxcodigo + 1;
                 _filagre["Cedula"] = ViewState["CedulaGarante"].ToString();
                 _filagre["Tipo"] = DdlDirGarante.SelectedItem.ToString();
-                _filagre["TipoCliente"] = "GAR";
+                _filagre["TipoCliente"] = ViewState["TipoCliente"].ToString();
                 _filagre["Definicion"] = DdlDirGarante.SelectedValue;
                 _filagre["Direccion"] = TxtDirGarante.Text.Trim().ToUpper();
                 _filagre["Referencia"] = TxtRefGarante.Text.Trim().ToUpper();
@@ -1671,8 +1692,8 @@
 
                 if (ViewState["CodigoPERS"].ToString() != "0")
                 {
-                    _dts = new ConsultaDatosDAO().FunNewDireccionEmail(0, 0, TxtNumeroDocumento.Text.Trim(),
-                        "DIRECCION", "GAR", DdlDirGarante.SelectedValue, TxtDirGarante.Text.Trim().ToUpper(),
+                    _dts = new ConsultaDatosDAO().FunNewDireccionEmail(0, 0, ViewState["CedulaGarante"].ToString(),
+                        "DIRECCION", ViewState["TipoCliente"].ToString(), DdlDirGarante.SelectedValue, TxtDirGarante.Text.Trim().ToUpper(),
                         TxtRefGarante.Text.Trim().ToUpper(), "", "", "", "", "", 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
                         Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
@@ -1768,7 +1789,7 @@
                 if (ViewState["CodigoPERS"].ToString() != "0")
                 {
                     _dts = new ConsultaDatosDAO().FunNewDireccionEmail(1, int.Parse(ViewState["CodigoDIGT"].ToString()), "",
-                        "DIRECCION", "TIT", DdlDirGarante.SelectedValue, TxtDirGarante.Text.Trim().ToUpper(),
+                        "DIRECCION", ViewState["TipoCliente"].ToString(), DdlDirGarante.SelectedValue, TxtDirGarante.Text.Trim().ToUpper(),
                         TxtRefGarante.Text.Trim().ToUpper(), "", "", "", "", "", 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
                         Session["MachineName"].ToString(), Session["Conectar"].ToString());
                 }
@@ -1862,7 +1883,7 @@
                 _filagre["CodigoDIGT"] = _maxcodigo + 1;
                 _filagre["Cedula"] = ViewState["CedulaGarante"].ToString();
                 _filagre["Tipo"] = DdlMailGarante.SelectedItem.ToString();
-                _filagre["TipoCliente"] = "GAR";
+                _filagre["TipoCliente"] = ViewState["TipoCliente"].ToString();
                 _filagre["Definicion"] = DdlMailGarante.SelectedValue;
                 _filagre["Email"] = TxtMailGarante.Text.Trim().ToLower();
                 _filagre["Nuevo"] = "SI";
@@ -1875,9 +1896,9 @@
                 if (ViewState["CodigoPERS"].ToString() != "0")
                 {
                     _dts = new ConsultaDatosDAO().FunNewDireccionEmail(3, 0, ViewState["CedulaGarante"].ToString(),
-                        "CORREO", "GAR", DdlMailGarante.SelectedValue, "", "",
-                        TxtMailGarante.Text.Trim().ToLower(), "", "", "", "", 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
+                        "CORREO", ViewState["TipoCliente"].ToString(), DdlMailGarante.SelectedValue, "", "", TxtMailGarante.Text.Trim().ToLower(),
+                        "", "", "", "", 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
+                        Session["Conectar"].ToString());
 
                     ViewState["CorreoGarante"] = _dts.Tables[0];
                     GrdvMailGarante.DataSource = _dts;
@@ -1899,7 +1920,7 @@
             {
                 GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
 
-                foreach (GridViewRow _fr in GrdvDirecTitular.Rows)
+                foreach (GridViewRow _fr in GrdvMailGarante.Rows)
                 {
                     _fr.Cells[0].BackColor = System.Drawing.Color.White;
                 }
