@@ -11,10 +11,12 @@
     <link href="../../css/Estilos.css" rel="stylesheet" />
     <link href="../../Scripts/Tables/jquery.DataTable.min.css" rel="stylesheet" />
     <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
     <script src="../../Scripts/external/jquery/jquery.js"></script>
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
     <script src="../../Scripts/Tables/DataTables.js"></script>
     <script src="../../Scripts/Tables/dataTable.bootstrap.min.js"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">

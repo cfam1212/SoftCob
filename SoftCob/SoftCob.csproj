@@ -298,6 +298,8 @@
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="citacion\0916030687\matricula.pdf" />
+    <Content Include="JS\alertify.min.js" />
+    <Content Include="JS\css\alertify.min.css" />
     <Content Include="Reload.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="SqlServerTypes\readme.htm" />

@@ -228,7 +228,9 @@
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(180, int.Parse(ViewState["CodigoCPCE"].ToString()),
                     0, 0, "", "", "", Session["Conectar"].ToString());
 
-                ViewState["Nivel"] = _dts.Tables[0].Rows[0]["Nivel"].ToString();
+                if (_dts.Tables[0].Rows.Count > 0)
+                    ViewState["Nivel"] = _dts.Tables[0].Rows[0]["Nivel"].ToString();
+                else ViewState["Nivel"] = 4;
             }
             catch (Exception ex)
             {
@@ -365,7 +367,7 @@
                 ChkEstado.Visible = false;
                 TxtDescripcion.Text = "";
 
-                switch (node.Depth)
+                    switch (node.Depth)
                 {
                     case 0:
                         _pathroot = node.ValuePath.Split(new char[] { '/' });
