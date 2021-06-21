@@ -13,7 +13,7 @@
         DataSet dts = new DataSet();
         //string sql = "", estrategia = "", ordenar = "", fechaactual = "", mensaje = "";
         int contador = 0;
-        string redirect = "", mensaje = "";
+        string redirect = "", mensaje = "", _mensaje = "";
         #endregion
 
         #region Load
@@ -37,7 +37,13 @@
                 FunCargarCombos(0);
                 Lbltitulo.Text = "Generar Pagos para BRENCH";
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

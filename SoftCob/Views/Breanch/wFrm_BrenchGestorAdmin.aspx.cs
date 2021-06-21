@@ -26,7 +26,7 @@ namespace SoftCob.Views.Breanch
         int codigoGestor = 0, codigoBRMC = 0;
         DataRow resultado;
         DataRow[] resul;
-        string mensaje = "", redirect = "", _fecha = "";
+        string mensaje = "", redirect = "", _fecha = "", _mensaje = "";
         decimal _totalexigible = 0.00M, _totalpagos = 0.00M, _porcumplido = 0.00M, _valpresupuesto = 0.00M;
         #endregion
 
@@ -50,8 +50,14 @@ namespace SoftCob.Views.Breanch
                 ViewState["MesName"] = DateTime.Now.ToString("MMMM", CultureInfo.InvariantCulture).ToUpper();
                 ViewState["Mes"] = DateTime.Now.ToString("MM");
                 Lbltitulo.Text = "Generar Brench Año: " + ViewState["Anio"].ToString() + " Mes: " + ViewState["MesName"].ToString();
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                    ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
+                //    ":: SoftCob ::", Request["MensajeRetornado"].ToString());
             }
         }
         #endregion

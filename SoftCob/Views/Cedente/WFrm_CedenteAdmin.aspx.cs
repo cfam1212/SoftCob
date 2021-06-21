@@ -8,7 +8,7 @@
     public partial class WFrm_CedenteAdmin : Page
     {
         #region Variables
-        string _codigocedente = "";
+        string _codigocedente = "", _mensaje="";
         DataSet _dts = new DataSet();
         #endregion
 
@@ -30,7 +30,13 @@
                 Lbltitulo.Text = "Administrar Cedente";
                 FunCargarMantenimiento();
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

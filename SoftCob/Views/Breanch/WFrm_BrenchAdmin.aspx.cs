@@ -8,7 +8,7 @@
     public partial class WFrm_BrenchAdmin : Page
     {
         #region Variables
-        string strCodigo = "";
+        string strCodigo = "", _mensaje = "";
         CheckBox chkEstado = new CheckBox();
         DataSet dts = new DataSet();
 
@@ -23,7 +23,13 @@
             {
                 Lbltitulo.Text = "Administrar Brench";
                 FunCargarMantenimiento();
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

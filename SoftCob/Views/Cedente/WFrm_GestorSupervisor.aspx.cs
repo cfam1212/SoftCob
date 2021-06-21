@@ -24,7 +24,7 @@
         ImageButton _editar = new ImageButton();
         ListItem _items = new ListItem();
         ListItem _itemg = new ListItem();
-        string _mensaje = "", _response = "";
+        string _mensaje = "", _response = "", _mensajes = "";
         bool _lexiste = false;
         #endregion
 
@@ -46,8 +46,14 @@
                 ViewState["Gestores"] = _dtbgestores;
                 FunCargarCombos(0);
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                    Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                //    Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensajes = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

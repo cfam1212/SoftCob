@@ -18,7 +18,7 @@
         DataTable _dtbagregar = new DataTable();
         DataTable _dtbasignar = new DataTable();
         bool _lexiste = false, _asignado = false;
-        string _sql = "", _sqlcli = "";
+        string _sql = "", _sqlcli = "", _mensaje = "";
         DataRow[] _rows;
         DataTable _dtbbuscar;
         DataRow _result, _filagre;
@@ -56,7 +56,13 @@
                 GrdvDatosReasignar.DataSource = _dts;
                 GrdvDatosReasignar.DataBind();
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

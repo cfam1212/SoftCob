@@ -22,7 +22,7 @@
         Label _lblest = new Label();
         CheckBox _chkest = new CheckBox();
         ImageButton _editar = new ImageButton();
-        string _mensaje = "", _response = "", _codigousuario = "";
+        string _mensaje = "", _response = "", _codigousuario = "", _mensajes = "";
         bool _lexiste = false;
         #endregion
 
@@ -51,8 +51,14 @@
                 ViewState["Supervisores"] = _dtbsupervisor;
                 FunCargarCombos(0);
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                    Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                //    Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensajes = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

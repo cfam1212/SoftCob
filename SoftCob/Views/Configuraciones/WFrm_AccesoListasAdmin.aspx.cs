@@ -15,7 +15,7 @@
         CheckBox _chklista = new CheckBox();
         DataRow[] _resul;
         DataRow _resultado;
-        string _verlista = "", _codigo = "", _response = "";
+        string _verlista = "", _codigo = "", _response = "", _mensaje = "";
         #endregion
 
         #region Load
@@ -35,8 +35,14 @@
                 ViewState["GestoresAcceso"] = null;
                 Lbltitulo.Text = "Administrar Permisos Acceso Lista Clientes";
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                    Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                //    Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
 
                 FunCargarCombos(0);
             }

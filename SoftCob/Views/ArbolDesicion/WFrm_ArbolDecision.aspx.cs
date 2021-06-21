@@ -26,7 +26,7 @@
         bool _lexiste = false, _estadoact = false, _contactoact = false;
         CheckBox _chkestado, _chkcontacto, _chkpago, _chkllamar, _chkcomisiona, _chkefectivo;
         ImageButton _imgborrar;
-        string _contacto = "", _sql = "", _mensaje = "", _descripcion = "", _response = "";
+        string _contacto = "", _sql = "", _mensaje = "", _descripcion = "", _response = "", _mensajes = "";
         string[] _pathroot;
         #endregion
 
@@ -128,8 +128,14 @@
                 ViewState["CodigoContacto"] = "0";
                 Lbltitulo.Text = "Definir Arbol de Decisión";
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::",
-                    Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::",
+                //    Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensajes = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                }
 
             }
         }

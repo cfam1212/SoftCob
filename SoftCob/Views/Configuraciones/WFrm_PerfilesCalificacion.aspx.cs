@@ -19,7 +19,7 @@
         bool _existe = false;
         ImageButton _imgeliminar = new ImageButton();
         CheckBox _chkestado = new CheckBox();
-        string _mensaje = "", _redirect = "";
+        string _mensaje = "", _redirect = "", _mensajes = "";
         #endregion
 
         #region Load
@@ -43,8 +43,12 @@
                 Lbltitulo.Text = "Administrar Perfiles de Calificación";
                 FunCargarCombos(0);
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::",
-                    Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensajes = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion
