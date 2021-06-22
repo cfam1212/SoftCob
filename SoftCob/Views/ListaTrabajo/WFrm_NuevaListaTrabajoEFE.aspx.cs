@@ -831,7 +831,7 @@
                         return;
                     }
 
-                    if (_mensaje == "OK") Response.Redirect("WFrm_ListaTrabajoAdminEFE.aspx?MensajeRetornado='Guardado con Éxito'", true);
+                    if (_mensaje == "OK") Response.Redirect("WFrm_ListaTrabajoAdminEFE.aspx?MensajeRetornado=Guardado con Éxito", true);
                     else new FuncionesDAO().FunShowJSMessage(_mensaje, this);
                 }
             }

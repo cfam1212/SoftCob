@@ -38,8 +38,6 @@
                     TrvCedenteArbol.Nodes.Add(node);
                     TrvCedenteArbol.CollapseAll();
 
-                    //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                    //    Request["MensajeRetornado"].ToString());
                     if (Request["MensajeRetornado"] != null)
                     {
                         _mensajes = Request["MensajeRetornado"];

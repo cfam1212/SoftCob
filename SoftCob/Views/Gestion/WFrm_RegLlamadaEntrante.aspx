@@ -11,9 +11,13 @@
     <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../css/Estilos.css" rel="stylesheet" />
     <link href="../../css/DatePicker/jquery-ui.css" rel="stylesheet" />
+    <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
+
     <script type="text/javascript" src="../../JS/DatePicker/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="../../JS/DatePicker/jquery-ui.js"></script>
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../JS/alertify.min.js"></script>
+
     <script type="text/javascript">
         function pageLoad(sender, arg) {
             $(document).ready(function () {

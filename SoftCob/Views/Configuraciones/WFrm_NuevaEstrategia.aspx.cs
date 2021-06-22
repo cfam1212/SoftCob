@@ -567,7 +567,7 @@
                     if (_estcab.ESCA_CODIGO == 0) _mensaje = new EstrategiaDAO().FunCrearEstrategia(_estcab);
                     else _mensaje = new EstrategiaDAO().FunEditEstrategia(_estcab);
 
-                    if (_mensaje == "") Response.Redirect("WFrm_EstrategiaAdmin.aspx?MensajeRetornado='Guardado con Éxito'");
+                    if (_mensaje == "") Response.Redirect("WFrm_EstrategiaAdmin.aspx?MensajeRetornado=Guardado con Éxito");
                     else Lblerror.Text = _mensaje;
                 }
                 else new FuncionesDAO().FunShowJSMessage("Ingrese al menos un registro para la Estrategia..!", this);

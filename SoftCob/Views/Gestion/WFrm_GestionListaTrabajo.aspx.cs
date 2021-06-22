@@ -26,25 +26,19 @@
         CheckBox _chkgestion = new CheckBox();
         CheckBox _chktelefec = new CheckBox();
         CheckBox _chkbcast = new CheckBox();
-        ImageButton _imgeliminar = new ImageButton();
         ImageButton _imgmarcar = new ImageButton();
-        ImageButton _imgeditar = new ImageButton();
-        ImageButton _imgphone = new ImageButton();
         DataTable _dtbgestion = new DataTable();
         DataTable _dtbtelefonos = new DataTable();
-        DataTable _dtbarbolaccion = new DataTable();
         DataTable _dtbarbolrespuesta = new DataTable();
         DataTable _dtbcontacto = new DataTable();
         DataTable _tblbuscar = new DataTable();
-        DataTable _tblagre = new DataTable();
         DataRow _filagre;
         DataRow _result;
 
         string _operacion = "", _strrespuesta = "", _valor = "", _strtiempogestion = "", _strtiempollamada = "",
-            _dtmfechaactual = "", _fechapago = "", _fechallamar = "", _valorpago = "", _horallamar = "", _mensaje = "",
-            _redirect = "", _cedulagarante = "", _telefonoctc = "", _proxtelefono = "",
-            _fechalogueo = "", _horalogueo = "", _txtspeech = "", _nuevo = "", _segmento = "", _existe = "", 
-             _sufijo = "", _tipo = "", _codigogarante = "", _bcast = "";
+             _fechapago = "", _fechallamar = "", _valorpago = "", _horallamar = "", _mensaje = "", _dtmfechaactual = "",
+            _redirect = "", _cedulagarante = "", _telefonoctc = "", _proxtelefono = "", _fechalogueo = "", _horalogueo = "", 
+            _txtspeech = "", _nuevo = "", _segmento = "", _sufijo = "", _tipo = "", _codigogarante = "", _bcast = "";
 
         bool _llamar = false, _pago = false, _lexiste = false, _validar = true, _efectivo = false, _nummarcado = false,
             _asignarsig = false, _citacion = false, _mostrarpopup = false, _mostrararbol = false;
@@ -926,7 +920,9 @@
             {
                 if (string.IsNullOrEmpty(TxtCedula.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Cedula a Consultar..", this);
+                    //new FuncionesDAO().FunShowJSMessage("Ingrese Cedula a Consultar..", this);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.info('Ingrese Cedula a Consultar..', 5, function(){console.log('dismissed');});", true);
                     return;
                 }
 
@@ -2117,7 +2113,9 @@
             {
                 if (DdlTipTelefono2.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione tipo teléfono..!", this);
+                    //new FuncionesDAO().FunShowJSMessage("Seleccione tipo teléfono..!", this);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-right'); alertify.warning('Seleccione tipo teléfono..!..', 5, function(){console.log('dismissed');});", true);
                     return;
                 }
 

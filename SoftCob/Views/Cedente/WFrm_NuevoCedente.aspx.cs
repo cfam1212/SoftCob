@@ -1391,7 +1391,7 @@
                 {
                     _mensaje = new CedenteDAO().FunCrearTablaHistorico(TxtCedente.Text.Trim().ToUpper().Replace(" ", "") + "_" + 
                         ViewState["CodigoCedente"].ToString(), ViewState["ConectarEnterprise"].ToString());
-                    Response.Redirect("WFrm_CedenteAdmin.aspx?MensajeRetornado='Guardado con Éxito'", true);
+                    Response.Redirect("WFrm_CedenteAdmin.aspx?MensajeRetornado=Guardado con Éxito", true);
                 }
             }
             catch (Exception ex)

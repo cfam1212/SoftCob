@@ -26,8 +26,6 @@
                     Lblerror.Text = "Usuario no tiene permisos suficientes..!";
                 }
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                //    Request["MensajeRetornado"].ToString());
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];

@@ -128,8 +128,6 @@
                 ViewState["CodigoContacto"] = "0";
                 Lbltitulo.Text = "Definir Arbol de Decisión";
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::",
-                //    Request["MensajeRetornado"].ToString());
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensajes = Request["MensajeRetornado"];

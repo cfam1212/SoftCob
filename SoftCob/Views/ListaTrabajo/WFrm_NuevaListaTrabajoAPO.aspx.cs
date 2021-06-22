@@ -990,7 +990,7 @@
                         return;
                     }
 
-                    if (_mensaje == "OK") Response.Redirect("WFrm_ListaTrabajoAdminAP.aspx?MensajeRetornado='Guardado con Éxito'", true);
+                    if (_mensaje == "OK") Response.Redirect("WFrm_ListaTrabajoAdminAP.aspx?MensajeRetornado=Guardado con Éxito", true);
                     else Lblerror.Text = _mensaje;
                 }
             }

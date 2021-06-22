@@ -70,7 +70,14 @@
 
             if (!IsPostBack)
             {
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
 
                 pnlDatosDeudor.Height = 150;
                 pnlDatosObligacion.Height = 150;
@@ -1184,7 +1191,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Cliente ya tien regitrdo un COMPROMISO en esa Fecha " +
+                        new FuncionesDAO().FunShowJSMessage("Cliente ya tiene regitrado una NEGOCIACION en esa Fecha " +
                             "Verifique el registro o Consulte con el Administrador..!", this);
                         return;
                     }

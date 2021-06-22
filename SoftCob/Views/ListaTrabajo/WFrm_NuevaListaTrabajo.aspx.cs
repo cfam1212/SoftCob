@@ -541,7 +541,7 @@
 
                     if (_mensaje == "OK")
                     {
-                        if (ViewState["Regresar"].ToString() == "L") Response.Redirect("WFrm_ListaTrabajoAdmin.aspx?MensajeRetornado='Guardado con Éxito'", true);
+                        if (ViewState["Regresar"].ToString() == "L") Response.Redirect("WFrm_ListaTrabajoAdmin.aspx?MensajeRetornado=Guardado con Éxito", true);
 
                         if (ViewState["Regresar"].ToString() == "M") Response.Redirect("..\\ReportesManager\\WFrm_MonitoreoLstAdmin.aspx", true);
                     }
