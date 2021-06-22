@@ -10,6 +10,7 @@
         #region Variables
         DataSet _dts = new DataSet();
         int _codigonota = 0;
+        string _mensaje = "";
         #endregion
 
         #region Load
@@ -29,7 +30,13 @@
                 Lbltitulo.Text = "Lista de Notas <<-- NOTAS GESTION -->>";
                 FunCargarMantenimiento();
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

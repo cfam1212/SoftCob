@@ -17,7 +17,7 @@
         DataTable _tblbuscar = new DataTable();
         DataRow _result, _filagre;
         //CheckBox _chkest = new CheckBox();
-        string _codigo = "", _nuevo = "";
+        string _codigo = "", _nuevo = "", _mensaje = "";
         int _maxcodigo = 0;
         bool _lexiste = false;
         #endregion
@@ -38,8 +38,14 @@
                 FunCargarCombos(0);
                 FunCargarCombos(2);
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                    Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                //    Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

@@ -29,7 +29,7 @@
         DataTable _tblbuscar = new DataTable();
         DataRow _result, _filagre;
         CheckBox _chkest = new CheckBox();
-        string _estado = "", _codigocpce = "", _operacion = "", _nuevo = "", _codigo = "", _cedula = "";
+        string _estado = "", _codigocpce = "", _operacion = "", _nuevo = "", _codigo = "", _cedula = "", _mensaje = "";
         int _maxcodigo = 0, _perscodigo = 0;
         decimal _totaldeuda, _exigible;
         bool _lexiste = false, _validar = true;
@@ -57,8 +57,14 @@
                 TxtFechaNacimiento.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 Lbltitulo.Text = "Cliente-Deudor << AGREGAR - ACTUALIZAR >>";
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                    "::SOFTCOB::", Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
+                //    "::SOFTCOB::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

@@ -16,7 +16,7 @@
         string[] _pathroot;
         int _maxcodigo = 0, _orden = 0;
         bool _existe = false;
-        string _descripanterior = "", _response = "";
+        string _descripanterior = "", _response = "", _mensaje ="";
         #endregion
 
         #region Load
@@ -32,7 +32,13 @@
                     Lbltitulo.Text = "Administrar Protocolos << EVALUACIÓN - DESEMPEÑO >>";
                     FunProtocolos();
 
-                    if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                    //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                    if (Request["MensajeRetornado"] != null)
+                    {
+                        _mensaje = Request["MensajeRetornado"];
+                        ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    }
                 }
             }
             catch (Exception ex)

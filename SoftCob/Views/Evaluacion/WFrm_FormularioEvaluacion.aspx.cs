@@ -19,7 +19,7 @@
         DataTable _dtbdepat = new DataTable();
         DataTable _dtbdepcp = new DataTable();
         DataTable _dtbdeptp = new DataTable();
-        string _coddepar = "", _codprotocolo = "", _codpadre = "", _califica = "", _selecc = "", _response = "";
+        string _coddepar = "", _codprotocolo = "", _codpadre = "", _califica = "", _selecc = "", _response = "", _mensaje = "";
         DataRow _resultado;
         DataRow[] _result;
         #endregion
@@ -43,7 +43,13 @@
                 Lbltitulo.Text = "Formulario EVALUACION - DESEMPEÑO << " + DateTime.Now.ToString("MM-dd-yyyy") + " >>";
                 FunCargarCombos(0);
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

@@ -17,7 +17,7 @@
         ListItem itemG = new ListItem();
         DataTable dtbBrench = new DataTable();
         DataTable dtbBrenchDet = new DataTable();
-        string sql = "", casos = "", redirect = "", _mensaje = "";
+        string sql = "", casos = "", redirect = "", _mensaje = "", _mensajes = "";
         DataRow resultado, result;
         decimal tExigible = 0, tMonto = 0, tPorcentaje = 0, tPresupuesto = 0, vExigible = 0, vPorcentaje = 0, vPresupuesto = 0;
         bool continuar = false;
@@ -43,7 +43,13 @@
                 ViewState["Mes"] = DateTime.Now.ToString("MM");
                 ViewState["CodigoBRMC"] = "0";
                 Lbltitulo.Text = "Agregar Nuevo Brench Año: " + ViewState["Anio"].ToString() + " Mes: " + ViewState["MesName"].ToString();
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensajes = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                }
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
             }
         }
         #endregion

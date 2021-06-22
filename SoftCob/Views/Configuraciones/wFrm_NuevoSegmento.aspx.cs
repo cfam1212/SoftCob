@@ -17,7 +17,7 @@
         DataRow _result, _filagre;
         DataRow[] _resultado;
         ImageButton _imgdel = new ImageButton();
-        string _redirect = "";
+        string _redirect = "", _mensaje = "";
         #endregion
 
         #region Load
@@ -30,8 +30,14 @@
 
                 Lbltitulo.Text = "Definir Segmento de Carteras";
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                    Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                //    Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

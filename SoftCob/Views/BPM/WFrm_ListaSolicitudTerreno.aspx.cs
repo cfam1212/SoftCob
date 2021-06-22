@@ -13,7 +13,7 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
-        string _codigo = "", _codigoclde = "", _codigopers = "", _codigocpce = "", _codigogest = "", _codigoesta = "";
+        string _codigo = "", _codigoclde = "", _codigopers = "", _codigocpce = "", _codigogest = "", _codigoesta = "", _mensaje = "";
         DataTable _dtb = new DataTable();
         #endregion
 
@@ -34,8 +34,14 @@
                     Lbltitulo.Text = "Lista Citaciones Solicitadas << VARIOS MEDIOS - TERRENO >>";
                     FunCargarMantenimiento();
 
-                    if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                        "::GSBPO GLOBAL SERVICES::", Request["MensajeRetornado"].ToString());
+                    //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
+                    //    "::GSBPO GLOBAL SERVICES::", Request["MensajeRetornado"].ToString());
+                    if (Request["MensajeRetornado"] != null)
+                    {
+                        _mensaje = Request["MensajeRetornado"];
+                        ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    }
                 }
             }
             catch (Exception ex)

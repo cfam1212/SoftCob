@@ -18,7 +18,7 @@
         ListItem _citem = new ListItem();
         ListItem _ditem = new ListItem();
         int _idciudad = 0, _operaciones = 0, _gestores = 0, _totalasignar = 0, _diferencia = 0, _suma = 0, _resultado = 0, _contar = 0;
-        string _sql = "", _sqlcli = "";
+        string _sql = "", _sqlcli = "", _mensaje = "";
         bool _lexiste = false, _asignado = false;
         DataRow[] _rows;
         DataRow _filagre;
@@ -64,8 +64,14 @@
 
                 Lbltitulo.Text = "Asignar Cartera";
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::",
-                    Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::",
+                //    Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensaje = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

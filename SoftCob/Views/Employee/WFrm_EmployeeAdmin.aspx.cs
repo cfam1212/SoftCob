@@ -12,7 +12,7 @@
         DataSet _dts = new DataSet();
         ImageButton _imgasigna = new ImageButton();
         ImageButton _imgquita = new ImageButton();
-        string _codigoeployee = "0", _codigousu = "0", _mensaje = "0", _redirect = "0";
+        string _codigoeployee = "0", _codigousu = "0", _mensaje = "0", _redirect = "0", _mensajes = "";
         #endregion
 
         #region Load
@@ -33,8 +33,14 @@
                 Lbltitulo.Text = "Administrar Empleados";
                 FunCargarMantenimiento();
 
-                if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                    Request["MensajeRetornado"].ToString());
+                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
+                //    Request["MensajeRetornado"].ToString());
+                if (Request["MensajeRetornado"] != null)
+                {
+                    _mensajes = Request["MensajeRetornado"];
+                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                        "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                }
             }
         }
         #endregion

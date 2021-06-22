@@ -15,7 +15,7 @@ namespace SoftCob.Views.BPM
     {
         #region Variables
         DataSet _dts = new DataSet();
-        string _codigo = "", _codigoclde = "", _codigopers = "", _terreno = "", _email = "", _whastapp = "";
+        string _codigo = "", _codigoclde = "", _codigopers = "", _terreno = "", _email = "", _whastapp = "", _mensaje = "";
         DataTable _dtb = new DataTable();
         Image _imgterreno = new Image();
         Image _imgemail = new Image();
@@ -39,8 +39,14 @@ namespace SoftCob.Views.BPM
                     Lbltitulo.Text = "Citaciones en Proceso";
                     FunCargarMantenimiento();
 
-                    if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                        "::GSBPO GLOBAL SERVICES::", Request["MensajeRetornado"].ToString());
+                    //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
+                    //    "::GSBPO GLOBAL SERVICES::", Request["MensajeRetornado"].ToString());
+                    if (Request["MensajeRetornado"] != null)
+                    {
+                        _mensaje = Request["MensajeRetornado"];
+                        ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    }
                 }
             }
             catch (Exception ex)
