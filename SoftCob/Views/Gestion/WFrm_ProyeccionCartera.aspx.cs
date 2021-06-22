@@ -79,8 +79,6 @@
 
                 FunCargarMantenimiento(0);
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                //    "::SOFTCOB::", Request["MensajeRetornado"].ToString());
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];

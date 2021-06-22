@@ -1054,7 +1054,7 @@
                 _sumarsegundos = double.Parse(ViewState["TiempoMarcado"].ToString());
                 Session["InicioLlamada"] = DateTime.Now.AddSeconds(_sumarsegundos).ToString("HH:mm:ss");
                 Thread.Sleep(300);
-                Session["IN-CALL"] = "SI";
+                //Session["IN-CALL"] = "SI";
                 Session["TrackNumber"] = FunDial(ViewState["DialerNumber"].ToString());
             }
             catch (Exception ex)

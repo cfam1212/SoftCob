@@ -30,7 +30,6 @@
                 Lbltitulo.Text = "Administrar Listas de Trabajo";
                 FunCargarMantenimiento();
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
