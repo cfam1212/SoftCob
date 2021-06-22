@@ -2513,7 +2513,7 @@
                 _fechallamar = TxtFechaLLamar.Text.Trim() == "" ? DateTime.Now.ToString("MM/dd/yyyy") : TxtFechaLLamar.Text;
                 _horallamar = TxtHoraLLamar.Text.Trim() == "" ? "00:00:00" : TxtHoraLLamar.Text.Trim();
 
-                //VALIDAR SI EXISTE UN REGISTRO DE PAGO CON LA MISMA FECHA
+                //VALIDAR SI EXISTE UN REGISTRO DE NEGOCIACION EN LA MISMA FECHA
                 if (ViewState["Pago"].ToString() == "S")
                 {
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(240, int.Parse(ViewState["PersCodigo"].ToString()),
