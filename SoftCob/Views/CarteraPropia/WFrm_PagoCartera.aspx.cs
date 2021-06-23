@@ -22,7 +22,7 @@
         bool _concabecera = false, _continuar = true;
         ImageButton _imgrev = new ImageButton();
         ListItem _itemc = new ListItem();
-        int _tipocliente = 0, _tipooperacion = 0, _efectivo = 0;
+        int _tipocliente = 0, _tipooperacion = 0, _efectivo = 0, _contar = 0;
         #endregion
 
         #region Load
@@ -275,6 +275,19 @@
                     "", "", "", _conexion);
 
                 _rangodias = _dts.Tables[0].Rows[0]["DiasMora"].ToString();
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(105, int.Parse(ViewState["CodCatalogo"].ToString()),
+                    int.Parse(ViewState["CodigoGEST"].ToString()), 0, "", TxtFechaPago.Text,
+                    ViewState["operacion"].ToString(), _conexion);
+
+                _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
+
+                if (_contar == 0)
+                {
+                    new FuncionesDAO().FunShowJSMessage("No Existe una confirmacion de pago, Solicite se realice la gestion " +
+                        "Para registrar el pago", this);
+                    return;
+                }
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(217, int.Parse(ViewState["CodCatalogo"].ToString()),
                     int.Parse(ViewState["CodigoGEST"].ToString()), 0, "", TxtFechaPago.Text,

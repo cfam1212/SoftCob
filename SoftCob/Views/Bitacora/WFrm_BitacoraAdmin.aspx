@@ -12,6 +12,7 @@
     <link href="../../Scripts/Tables/jquery.DataTable.min.css" rel="stylesheet" />
     <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
+
     <script src="../../Scripts/external/jquery/jquery.js"></script>
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
     <script src="../../Scripts/Tables/DataTables.js"></script>
@@ -25,9 +26,7 @@
                 <asp:Label ID="Lbltitulo" runat="server"></asp:Label>
             </div>
             <div class="panel-body">
-                <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-                    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </asp:ToolkitScriptManager>
+                <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
                 <asp:UpdatePanel ID="UpdPrincipal" runat="server">
                     <ContentTemplate>
                         <table class="table table-bordered table-condensed table-hover table-responsive">
