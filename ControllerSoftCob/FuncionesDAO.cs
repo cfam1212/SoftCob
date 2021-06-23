@@ -88,7 +88,10 @@
         #region Procedimientos y Funciones FUNCIONES
         public void FunShowJSMessage(string message, Control pagina)
         {
-            ScriptManager.RegisterClientScriptBlock(pagina, pagina.GetType(), "alert", "alert('" + message + "');", true);
+            //ScriptManager.RegisterClientScriptBlock(pagina, pagina.GetType(), "alert", "alert('" + message + "');", true);
+
+            ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                "'top-right'); alertify.warning('" + message + "', 5, function(){console.log('dismissed');});", true);
         }
 
         public int FunBetween(int valorI, int valorF, int rinicio, int rfinal)

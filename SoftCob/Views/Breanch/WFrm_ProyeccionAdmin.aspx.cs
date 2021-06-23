@@ -19,6 +19,7 @@
         DataRow _fileagre;
         decimal _enero = 0.00M, _febrero = 0.00M, _marzo = 0.00M, _abril = 0.00M, _mayo = 0.00M, _junio = 0.00M,
             _julio = 0.00M, _agosto = 0.00M, _septiembre = 0.00M, _octubre = 0.00M, _noviembre = 0.00M, _diciembre = 0.00M;
+
         int _opcion = 0;
         #endregion
 
@@ -131,6 +132,12 @@
                         DdlCatalogo.Items.Add(_itemc);
                     }
                     break;
+                case 3:
+                    GrdvDatos.DataSource = null;
+                    GrdvDatos.DataBind();
+                    ImgExportar.Visible = false;
+                    LblExportar.Visible = false;
+                    break;
             }
         }
         #endregion
@@ -142,11 +149,31 @@
             {
                 FunCargarCombos(1);
                 FunCargarCombos(2);
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
                 Lblerror.Text = ex.ToString();
             }
+        }
+        protected void DdlTipoPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FunCargarCombos(3);
+        }
+
+        protected void DdlReporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FunCargarCombos(3);
+        }
+
+        protected void DdlYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FunCargarCombos(3);
+        }
+
+        protected void DdlGestor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FunCargarCombos(3);
         }
 
         protected void BtnProcesar_Click(object sender, EventArgs e)
@@ -355,52 +382,52 @@
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[4].Text = _marzo.ToString("N2");
+                    e.Row.Cells[4].Text = "$ " + _marzo.ToString("N2");
                     e.Row.Cells[4].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[5].Text = _abril.ToString("N2");
+                    e.Row.Cells[5].Text = "$ " + _abril.ToString("N2");
                     e.Row.Cells[5].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[6].Text = _mayo.ToString("N2");
+                    e.Row.Cells[6].Text = "$ " + _mayo.ToString("N2");
                     e.Row.Cells[6].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[7].Text = _junio.ToString("N2");
+                    e.Row.Cells[7].Text = "$ " + _junio.ToString("N2");
                     e.Row.Cells[7].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[8].Text = _julio.ToString("N2");
+                    e.Row.Cells[8].Text = "$ " + _julio.ToString("N2");
                     e.Row.Cells[8].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[9].Text = _agosto.ToString("N2");
+                    e.Row.Cells[9].Text = "$ " + _agosto.ToString("N2");
                     e.Row.Cells[9].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[10].Text = _septiembre.ToString("N2");
+                    e.Row.Cells[10].Text = "$ " + _septiembre.ToString("N2");
                     e.Row.Cells[10].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[11].Text = _octubre.ToString("N2");
+                    e.Row.Cells[11].Text = "$ " + _octubre.ToString("N2");
                     e.Row.Cells[11].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[12].Text = _noviembre.ToString("N2");
+                    e.Row.Cells[12].Text = "$ " + _noviembre.ToString("N2");
                     e.Row.Cells[12].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[13].Text = _diciembre.ToString("N2");
+                    e.Row.Cells[13].Text = "$ " + _diciembre.ToString("N2");
                     e.Row.Cells[13].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;

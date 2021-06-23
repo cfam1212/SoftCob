@@ -150,14 +150,14 @@
                                     <h5>Gestor:</h5>
                                 </td>
                                 <td colspan="2">
-                                    <asp:DropDownList ID="DdlGestor" runat="server" CssClass="form-control" Width="100%">
+                                    <asp:DropDownList ID="DdlGestor" runat="server" CssClass="form-control" Width="100%" OnSelectedIndexChanged="DdlGestor_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </td>
                                 <td>
                                     <h5>Año:</h5>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DdlYear" runat="server" CssClass="form-control" TabIndex="5" Width="100%">
+                                    <asp:DropDownList ID="DdlYear" runat="server" CssClass="form-control" TabIndex="5" Width="100%" OnSelectedIndexChanged="DdlYear_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </td>
                                 <td></td>
@@ -168,7 +168,7 @@
                                     <h5>Tipo Pago:</h5>
                                 </td>
                                 <td colspan="2">
-                                    <asp:DropDownList ID="DdlTipoPago" runat="server" CssClass="form-control" Width="100%">
+                                    <asp:DropDownList ID="DdlTipoPago" runat="server" CssClass="form-control" Width="100%" OnSelectedIndexChanged="DdlTipoPago_SelectedIndexChanged">
                                         <asp:ListItem Value="0">--Seleccione Proyección--</asp:ListItem>
                                         <asp:ListItem Value="1">Pagos Efectivos (GESTOR)</asp:ListItem>
                                         <asp:ListItem Value="2">Pagos Efectivos (ENTERPRISE)</asp:ListItem>
@@ -180,7 +180,7 @@
                                     <h5>Reporte:</h5>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DdlReporte" runat="server" CssClass="form-control" TabIndex="5" Width="100%">
+                                    <asp:DropDownList ID="DdlReporte" runat="server" CssClass="form-control" TabIndex="5" Width="100%" OnSelectedIndexChanged="DdlReporte_SelectedIndexChanged">
                                         <asp:ListItem Value="0">--Seleccione Reporte--</asp:ListItem>
                                         <asp:ListItem Value="1">Mensual</asp:ListItem>
                                         <asp:ListItem Value="2">Trimestral</asp:ListItem>
@@ -225,7 +225,7 @@
                             <asp:GridView ID="GrdvDatos" runat="server" Width="100%"
                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
                                 EmptyDataText="No Existen Registros" TabIndex="9" AutoGenerateColumns="False"
-                                ForeColor="#333333" OnRowDataBound="GrdvDatos_RowDataBound" PageSize="5">
+                                ForeColor="#333333" OnRowDataBound="GrdvDatos_RowDataBound" PageSize="5" ShowFooter="True">
                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                 <Columns>
                                     <asp:BoundField DataField="Gestor" HeaderText="Gestor"></asp:BoundField>
@@ -274,19 +274,6 @@
                                 <EditRowStyle BackColor="#2461BF" />
                                 <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                             </asp:GridView>
-                            <script>
-                                var prm = Sys.WebForms.PageRequestManager.getInstance();
-
-                                prm.add_endRequest(function () {
-                                    createDataTable();
-                                });
-
-                                createDataTable();
-
-                                function createDataTable() {
-                                    $('#<%= GrdvDatos.ClientID %>').DataTable();
-                                }
-                            </script>
                         </div>
 
                         <div class="panel panel-default">
