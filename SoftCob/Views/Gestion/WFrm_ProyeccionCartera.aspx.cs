@@ -509,7 +509,7 @@
                             _imgeselecc.ImageUrl = "~/Botones/editargris.png";
                             _imgeselecc.Enabled = false;
                             break;
-                        case "PNR":
+                        case "PPA":
                             e.Row.Cells[0].BackColor = System.Drawing.Color.Cyan;
                             _imgverificar.ImageUrl = "~/Botones/verificar.png";
                             _imgverificar.Enabled = true;
@@ -539,7 +539,7 @@
                         case "PGR":
                             _totalpagos += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "Valor"));
                             break;
-                        case "PNR":
+                        case "PPA":
                             _totalnoefectivos += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "Valor"));
                             break;
                         case "PRS":

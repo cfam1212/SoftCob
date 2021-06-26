@@ -2423,6 +2423,17 @@
                             return;
                         }
                     }
+
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(240, int.Parse(ViewState["PersCodigo"].ToString()),
+                        int.Parse(DdlContacto.SelectedValue), int.Parse(Session["CodigoCPCE"].ToString()), "", TxtFechaPago.Text,
+                        TxtValorAbono.Text, Session["Conectar"].ToString());
+
+                    if (_dts.Tables[0].Rows.Count > 0)
+                    {
+                        new FuncionesDAO().FunShowJSMessage("Cliente ya tien regitrdo un COMPROMISO en esa Fecha " +
+                            "Verifique el registro o Consulte con el Administrador..!", this);
+                        return;
+                    }
                 }
 
                 if (ViewState["Llamar"].ToString() == "S")
@@ -2510,21 +2521,6 @@
                 _valorpago = TxtValorAbono.Text.Trim() == "" ? "0.00" : TxtValorAbono.Text;
                 _fechallamar = TxtFechaLLamar.Text.Trim() == "" ? DateTime.Now.ToString("MM/dd/yyyy") : TxtFechaLLamar.Text;
                 _horallamar = TxtHoraLLamar.Text.Trim() == "" ? "00:00:00" : TxtHoraLLamar.Text.Trim();
-
-                //VALIDAR SI EXISTE UN REGISTRO DE NEGOCIACION EN LA MISMA FECHA
-                if (ViewState["Pago"].ToString() == "S")
-                {
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(240, int.Parse(ViewState["PersCodigo"].ToString()),
-                        int.Parse(DdlContacto.SelectedValue), int.Parse(Session["CodigoCPCE"].ToString()), "", TxtFechaPago.Text,
-                        TxtValorAbono.Text, Session["Conectar"].ToString());
-
-                    if (_dts.Tables[0].Rows.Count > 0)
-                    {
-                        new FuncionesDAO().FunShowJSMessage("Cliente ya tien regitrdo un COMPROMISO en esa Fecha " +
-                            "Verifique el registro o Consulte con el Administrador..!", this);
-                        return;
-                    }
-                }
 
                 FunInsertarGestion();
             }
