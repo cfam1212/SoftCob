@@ -14,6 +14,7 @@
     <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../css/jquery.ui.accordion.css" rel="stylesheet" />
     <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
+
     <script src="../../Scripts/external/jquery/jquery.js"></script>
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
     <script src="../../Scripts/Tables/DataTables.js"></script>
