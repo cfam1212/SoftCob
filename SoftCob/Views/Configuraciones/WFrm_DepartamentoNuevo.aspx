@@ -10,6 +10,9 @@
     <title></title>
     <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../css/Estilos.css" rel="stylesheet" />
+    <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
+
+    <script src="../../JS/alertify.min.js"></script>
     <style type="text/css">
         legend {
             color: darkblue;

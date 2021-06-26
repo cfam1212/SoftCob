@@ -8,10 +8,11 @@
 <head runat="server">
     <link href="../../css/Estilos.css" rel="stylesheet" />
     <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
     <title>Selección Lista Activa</title>
     <script src="../../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../../Scripts/jquery-ui.min.js"></script>
-
+     <script src="../../JS/alertify.min.js"></script>
     <script>
         function SmartPhone(cliente, servidor) {
             try {
