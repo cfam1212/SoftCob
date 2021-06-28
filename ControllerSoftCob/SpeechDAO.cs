@@ -378,7 +378,7 @@
             try
             {
                 var query = from Speech in _dtb.SoftCob_SPEECH_CABECERA
-                            where Speech.spca_cedecodigo == codigocede && Speech.spca_cedecodigo == codigocpce
+                            where Speech.spca_cedecodigo == codigocede && Speech.spca_cpcecodigo == codigocpce
                             select new SpeechCabeceraDTO
                             {
                                 CodigoSpeech = Speech.SPCA_CODIGO,
