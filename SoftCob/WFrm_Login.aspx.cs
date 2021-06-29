@@ -67,7 +67,7 @@
                     //Verificar si el password no esta 
                     if (_user.usua_caducapass)
                     {
-                        if (DateTime.ParseExact(ViewState["FechaCaduca"].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture) <=
+                        if (DateTime.ParseExact(ViewState["usuFechaCaduca"].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture) <=
                             DateTime.ParseExact(DateTime.Now.ToString("MM/dd/yyyy"), "MM/dd/yyyy", CultureInfo.InvariantCulture))
                         {
                             Lblmensaje.Text = "Exipiró Acceso al Usuario, consulte con el Administrador..!";

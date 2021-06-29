@@ -22,7 +22,7 @@
         function pageLoad(sender, arg) {
             $(document).ready(function () {
                 $.datepicker.setDefaults($.datepicker.regional['es']);
-                $('#txtFechaCaduca').datepicker(
+                $('#TxtFechaCaduca').datepicker(
                     {
                         inline: true,
                         dateFormat: "mm/dd/yy",
