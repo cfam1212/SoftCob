@@ -27,6 +27,7 @@
                     Session["Phone"] = ConfigurationManager.AppSettings["Phone"];
                     Session["usuLogin"] = "";
                     Session["usuCodigo"] = "";
+                    Session["IPLocalAdress"] = "";
                     Session["IN-CALL"] = "NO";
                     Session["IPLocalAdress"] = "";
                     IPHostEntry NombreHost = Dns.GetHostEntry(Request.UserHostAddress);
@@ -61,7 +62,7 @@
                     Session["usuNombres"] = _user.usua_nombres + " " + _user.usua_apellidos;
                     Session["usuSoloNombre"] = _user.usua_nombres;
                     Session["usuCambiarPass"] = _user.usua_cambiarpass;
-                    ViewState["usuFechaCaduca"] = _user.usua_fechacaduca.ToString("MM/dd/yyyy");
+                    ViewState["FechaCaduca"] = _user.usua_fechacaduca.ToString("MM/dd/yyyy");
                     Session["IN-CALL"] = "NO";
                     Session["PermisoEspecial"] = _user.usua_permisosespeciales ? "SI" : "NO";
                     Session["CedeCodigo"] = new ControllerDAO().FunGetGestor(_usucodigo);
