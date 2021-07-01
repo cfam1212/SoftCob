@@ -3236,26 +3236,26 @@
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
+                    _totaldeuda += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "ValorDeuda"));
                     _totalcapital += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "CVencido"));
-                    _totalexigible += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "Exigible"));
-                    _totaldeuda += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "MontoGSPBO"));
+                    _totalexigible += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "Exigible"));                    
                 }
 
                 if (e.Row.RowType == DataControlRowType.Footer)
                 {
-                    e.Row.Cells[6].Text = "TOTAL:";
-                    e.Row.Cells[7].Text = _totaldeuda.ToString();
-                    e.Row.Cells[7].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[3].Text = "TOTAL:";
+                    e.Row.Cells[4].Text = _totaldeuda.ToString();
+                    e.Row.Cells[4].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[8].Text = _totalcapital.ToString();
-                    e.Row.Cells[8].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[5].Text = _totalcapital.ToString();
+                    e.Row.Cells[5].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[9].Text = _totalexigible.ToString();
-                    e.Row.Cells[9].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[6].Text = _totalexigible.ToString();
+                    e.Row.Cells[6].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
                 }

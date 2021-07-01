@@ -45,12 +45,10 @@
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
                                             <asp:BoundField DataField="Producto" HeaderText="Producto" />
+                                            <asp:BoundField DataField="Catalogo" HeaderText="Catalogo" />
                                             <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
                                             <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
                                             <asp:BoundField DataField="Operacion" HeaderText="Operación" >
-                                            <ItemStyle HorizontalAlign="Right" />
-                                            </asp:BoundField>
-                                            <asp:BoundField DataField="MontoGSPBO" HeaderText="MontoGS" Visible="False">
                                             <ItemStyle HorizontalAlign="Right" />
                                             </asp:BoundField>
                                             <asp:BoundField DataField="Exigible" HeaderText="Exigible">

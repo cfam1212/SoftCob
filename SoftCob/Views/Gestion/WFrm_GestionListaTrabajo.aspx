@@ -770,28 +770,18 @@
                                                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                                 <Columns>
                                                                                     <asp:BoundField DataField="Producto" HeaderText="Producto" />
+                                                                                    <asp:BoundField DataField="Catalogo" HeaderText="Catalogo">
+                                                                                    </asp:BoundField>
                                                                                     <asp:BoundField DataField="Operacion" HeaderText="Operación">
-                                                                                        <ItemStyle HorizontalAlign="Right" />
-                                                                                    </asp:BoundField>
-                                                                                    <asp:BoundField DataField="Codigo" HeaderText="Código">
-                                                                                        <ItemStyle HorizontalAlign="Right" />
-                                                                                    </asp:BoundField>
-                                                                                    <asp:BoundField DataField="Grupo" HeaderText="Grupo">
-                                                                                        <ItemStyle HorizontalAlign="Right" />
-                                                                                    </asp:BoundField>
-                                                                                    <asp:BoundField DataField="Campa" HeaderText="Camp.">
                                                                                         <ItemStyle HorizontalAlign="Right" />
                                                                                     </asp:BoundField>
                                                                                     <asp:BoundField DataField="HDiasMora" HeaderText="H.Mora">
                                                                                         <ItemStyle HorizontalAlign="Right" />
                                                                                     </asp:BoundField>
-                                                                                    <asp:BoundField HeaderText="Cupo" DataField="MontoOriginal">
+                                                                                    <asp:BoundField HeaderText="Valor Deuda" DataField="ValorDeuda">
                                                                                         <ItemStyle HorizontalAlign="Right" />
                                                                                     </asp:BoundField>
-                                                                                    <asp:BoundField DataField="MontoGSPBO" HeaderText="ValorIni">
-                                                                                        <ItemStyle HorizontalAlign="Right" />
-                                                                                    </asp:BoundField>
-                                                                                    <asp:BoundField DataField="CVencido" HeaderText="C.Vencido">
+                                                                                    <asp:BoundField DataField="CVencido" HeaderText="Capital Vencido">
                                                                                         <ItemStyle HorizontalAlign="Right" />
                                                                                     </asp:BoundField>
                                                                                     <asp:BoundField DataField="Exigible" HeaderText="Exigible">

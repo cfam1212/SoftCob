@@ -28,6 +28,7 @@
                     Session["usuLogin"] = "";
                     Session["usuCodigo"] = "";
                     Session["IN-CALL"] = "NO";
+                    Session["IPLocalAdress"] = "";
                     IPHostEntry NombreHost = Dns.GetHostEntry(Request.UserHostAddress);
                     Session["IPLocalAdress"] = NombreHost.AddressList.First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToString();
                     _IP = NombreHost.HostName;
@@ -35,6 +36,7 @@
                 }
                 catch
                 {
+                    FunGetTerminal();
                     Session["MachineName"] = Session["IPLocalAdress"].ToString();
                 }
             }

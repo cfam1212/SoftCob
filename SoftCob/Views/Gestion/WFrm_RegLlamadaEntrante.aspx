@@ -484,28 +484,19 @@
                                                                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                                         <Columns>
                                                                                             <asp:BoundField DataField="Producto" HeaderText="Producto" />
+                                                                                            <asp:BoundField HeaderText="Catalogo" DataField="Catalogo">
+                                                                                                <ItemStyle HorizontalAlign="Right" />
+                                                                                            </asp:BoundField>
                                                                                             <asp:BoundField DataField="Operacion" HeaderText="Operación">
-                                                                                                <ItemStyle HorizontalAlign="Right" />
-                                                                                            </asp:BoundField>
-                                                                                            <asp:BoundField HeaderText="Código" DataField="Codigo">
-                                                                                                <ItemStyle HorizontalAlign="Right" />
-                                                                                            </asp:BoundField>
-                                                                                            <asp:BoundField HeaderText="Grupo" DataField="Grupo">
-                                                                                                <ItemStyle HorizontalAlign="Right" />
-                                                                                            </asp:BoundField>
-                                                                                            <asp:BoundField DataField="Campa" HeaderText="Camp.">
                                                                                                 <ItemStyle HorizontalAlign="Right" />
                                                                                             </asp:BoundField>
                                                                                             <asp:BoundField DataField="HDiasMora" HeaderText="H.Mora">
                                                                                                 <ItemStyle HorizontalAlign="Right" />
                                                                                             </asp:BoundField>
-                                                                                            <asp:BoundField DataField="MontoOriginal" HeaderText="Cupo">
+                                                                                            <asp:BoundField DataField="ValorDeuda" HeaderText="Valor Deuda">
                                                                                                 <ItemStyle HorizontalAlign="Right" />
                                                                                             </asp:BoundField>
-                                                                                            <asp:BoundField HeaderText="ValorIni" DataField="MontoGSPBO">
-                                                                                                <ItemStyle HorizontalAlign="Right" />
-                                                                                            </asp:BoundField>
-                                                                                            <asp:BoundField DataField="CVencido" HeaderText="C.Vencido">
+                                                                                            <asp:BoundField DataField="CVencido" HeaderText="Capital Vencido">
                                                                                                 <ItemStyle HorizontalAlign="Right" />
                                                                                             </asp:BoundField>
                                                                                             <asp:BoundField HeaderText="Exigible" DataField="Exigible">
@@ -544,7 +535,7 @@
                                                                                 <asp:BoundField DataField="Operacion" HeaderText="Operación" />
                                                                                 <asp:TemplateField HeaderText="Actualizar">
                                                                                     <ItemTemplate>
-                                                                                        <asp:ImageButton ID="ImgEditGarante" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="ImgEditGarante_Click" />
+                                                                                        <asp:ImageButton ID="ImgEditGarante" runat="server" Height="20px" ImageUrl="~/Botones/modificarnew.png" OnClick="ImgEditGarante_Click" />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                                 </asp:TemplateField>
@@ -729,13 +720,13 @@
                                                                                 <asp:BoundField DataField="NomApe" HeaderText="Nombres" />
                                                                                 <asp:TemplateField HeaderText="Selecc">
                                                                                     <ItemTemplate>
-                                                                                        <asp:ImageButton ID="ImgSelectT" runat="server" Height="20px" ImageUrl="~/Botones/selecc.png" OnClick="ImgSelectT_Click" />
+                                                                                        <asp:ImageButton ID="ImgSelectT" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelectT_Click" />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                                 </asp:TemplateField>
                                                                                 <asp:TemplateField HeaderText="Del">
                                                                                     <ItemTemplate>
-                                                                                        <asp:ImageButton ID="ImgEliminar" runat="server" Height="20px" ImageUrl="~/Botones/eliminar.png" OnClick="ImgEliminar_Click" OnClientClick="return asegurar();" />
+                                                                                        <asp:ImageButton ID="ImgEliminar" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliminar_Click" OnClientClick="return asegurar();" />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                                 </asp:TemplateField>
