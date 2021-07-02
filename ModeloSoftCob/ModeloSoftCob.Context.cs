@@ -43,10 +43,6 @@ namespace ModeloSoftCob
         public virtual DbSet<SoftCob_CEDENTE> SoftCob_CEDENTE { get; set; }
         public virtual DbSet<SoftCob_PRODUCTOS_CEDENTE> SoftCob_PRODUCTOS_CEDENTE { get; set; }
         public virtual DbSet<SoftCob_CATALOGO_PRODUCTOS_CEDENTE> SoftCob_CATALOGO_PRODUCTOS_CEDENTE { get; set; }
-        public virtual DbSet<SoftCob_ACCION> SoftCob_ACCION { get; set; }
-        public virtual DbSet<SoftCob_CONTACTO> SoftCob_CONTACTO { get; set; }
-        public virtual DbSet<SoftCob_EFECTO> SoftCob_EFECTO { get; set; }
-        public virtual DbSet<SoftCob_RESPUESTA> SoftCob_RESPUESTA { get; set; }
         public virtual DbSet<SoftCob_SPEECH_CABECERA> SoftCob_SPEECH_CABECERA { get; set; }
         public virtual DbSet<SoftCob_SPEECH_DETALLE> SoftCob_SPEECH_DETALLE { get; set; }
         public virtual DbSet<SoftCob_CAMPOS_SPEECH> SoftCob_CAMPOS_SPEECH { get; set; }

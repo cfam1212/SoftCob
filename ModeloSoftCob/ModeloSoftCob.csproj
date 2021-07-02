@@ -72,9 +72,6 @@
     <Compile Include="SoftCob_ACCESO_CONSULTA_CEDENTES.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
-    <Compile Include="SoftCob_ACCION.cs">
-      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
-    </Compile>
     <Compile Include="SoftCob_ACCIONGESTION.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
@@ -150,9 +147,6 @@
     <Compile Include="SoftCob_CONFIGURACION_PHONE.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
-    <Compile Include="SoftCob_CONTACTO.cs">
-      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
-    </Compile>
     <Compile Include="SoftCob_CONTACTOS_CEDENTE.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
@@ -163,9 +157,6 @@
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_DEUDOR_REFERENCIAS.cs">
-      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SoftCob_EFECTO.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_EMPLOYEE.cs">
@@ -334,9 +325,6 @@
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_REGISTRO_VOLVERALLAMAR.cs">
-      <DependentUpon>ModeloSoftCob.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SoftCob_RESPUESTA.cs">
       <DependentUpon>ModeloSoftCob.tt</DependentUpon>
     </Compile>
     <Compile Include="SoftCob_SCORETELEFONO.cs">

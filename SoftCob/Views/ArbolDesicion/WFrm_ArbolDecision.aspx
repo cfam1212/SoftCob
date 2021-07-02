@@ -129,9 +129,14 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="4">
+                                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
                                                     <asp:UpdatePanel ID="updAccion" runat="server">
                                                         <ContentTemplate>
-                                                            <asp:Panel ID="pnlAccion" runat="server" Height="180px" ScrollBars="Vertical" Visible="false">
+                                                            <asp:Panel ID="pnlAccion" runat="server" Height="320px" ScrollBars="Vertical" Visible="false">
                                                                 <asp:GridView ID="GrdvAccion" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,Estado,Contacto" ForeColor="#333333" PageSize="5" TabIndex="5" Width="100%" OnRowDataBound="GrdvAccion_RowDataBound" OnSelectedIndexChanged="GrdvAccion_SelectedIndexChanged">
                                                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                     <Columns>
@@ -143,21 +148,9 @@
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
-                                                                        <asp:TemplateField HeaderText="Editar">
-                                                                            <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgEdiAccion" runat="server" Height="20px" ImageUrl="~/Botones/seleccionar.png" OnClick="ImgEdiAccion_Click" />
-                                                                            </ItemTemplate>
-                                                                            <ItemStyle HorizontalAlign="Center" />
-                                                                        </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="Contac.Directo">
                                                                             <ItemTemplate>
                                                                                 <asp:CheckBox ID="ChkContacto" runat="server" AutoPostBack="True" OnCheckedChanged="ChkContacto_CheckedChanged" />
-                                                                            </ItemTemplate>
-                                                                            <ItemStyle HorizontalAlign="Center" />
-                                                                        </asp:TemplateField>
-                                                                        <asp:TemplateField HeaderText="Selecc">
-                                                                            <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgSelecAccion" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecAccion_Click" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
@@ -202,55 +195,24 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    <h5 style="color: darkblue">Dias Latencia:</h5>
+                                                <td colspan="4">
+                                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
                                                 </td>
-                                                <td>
-                                                    <asp:UpdatePanel ID="updEtiquetaDias" runat="server">
-                                                        <ContentTemplate>
-                                                            <asp:TextBox ID="TxtDiaLatencia" runat="server" CssClass="form-control alinearDerecha" MaxLength="2" TabIndex="9" Width="100%">0</asp:TextBox>
-                                                            <asp:FilteredTextBoxExtender ID="TxtDiaLatencia_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="TxtDiaLatencia">
-                                                            </asp:FilteredTextBoxExtender>
-                                                        </ContentTemplate>
-                                                    </asp:UpdatePanel>
-                                                </td>
-                                                <td></td>
-                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4">
                                                     <asp:UpdatePanel ID="updEfecto" runat="server">
                                                         <ContentTemplate>
-                                                            <asp:Panel ID="pnlEfecto" runat="server" Height="180px" ScrollBars="Vertical" Visible="false">
+                                                            <asp:Panel ID="pnlEfecto" runat="server" Height="380px" ScrollBars="Vertical" Visible="false">
                                                                 <asp:GridView ID="GrdvEfecto" runat="server" AutoGenerateColumns="False"
-                                                                    CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,CodigoAccion" ForeColor="#333333" PageSize="5" TabIndex="10" Width="100%" OnRowDataBound="GrdvEfecto_RowDataBound">
+                                                                    CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,CodigoAccion" ForeColor="#333333" PageSize="5" TabIndex="10" Width="100%" OnRowDataBound="GrdvEfecto_RowDataBound" OnSelectedIndexChanged="GrdvEfecto_SelectedIndexChanged">
                                                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                     <Columns>
+                                                                        <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
                                                                         <asp:BoundField DataField="Descripcion" HeaderText="Efecto" />
                                                                         <asp:TemplateField HeaderText="Activo">
                                                                             <ItemTemplate>
                                                                                 <asp:CheckBox ID="ChkEstEfecto" runat="server" AutoPostBack="True" OnCheckedChanged="ChkEstEfecto_CheckedChanged" />
-                                                                            </ItemTemplate>
-                                                                            <ItemStyle HorizontalAlign="Center" />
-                                                                        </asp:TemplateField>
-                                                                        <asp:TemplateField HeaderText="Comisiona">
-                                                                            <ItemTemplate>
-                                                                                <asp:CheckBox ID="ChkComisiona" runat="server" AutoPostBack="True" OnCheckedChanged="ChkComisiona_CheckedChanged" Text="NO" />
-                                                                            </ItemTemplate>
-                                                                            <ItemStyle HorizontalAlign="Center" />
-                                                                        </asp:TemplateField>
-                                                                        <asp:BoundField DataField="auxi2" HeaderText="Dias_Latencia">
-                                                                            <ItemStyle HorizontalAlign="Right" />
-                                                                        </asp:BoundField>
-                                                                        <asp:TemplateField HeaderText="Editar">
-                                                                            <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgEdiEfecto" runat="server" Height="20px" ImageUrl="~/Botones/seleccionar.png" OnClick="ImgEdiEfecto_Click" />
-                                                                            </ItemTemplate>
-                                                                            <ItemStyle HorizontalAlign="Center" />
-                                                                        </asp:TemplateField>
-                                                                        <asp:TemplateField HeaderText="Selecc">
-                                                                            <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgSelecEfecto" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecEfecto_Click" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
@@ -296,12 +258,18 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="4">
+                                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
                                                     <asp:UpdatePanel ID="updRespuesta" runat="server">
                                                         <ContentTemplate>
-                                                            <asp:Panel ID="pnlRespuesta" runat="server" Height="180px" ScrollBars="Vertical" Visible="false">
-                                                                <asp:GridView ID="GrdvRespuesta" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,CodigoEfecto" ForeColor="#333333" PageSize="5" TabIndex="14" Width="100%" OnRowDataBound="GrdvRespuesta_RowDataBound">
+                                                            <asp:Panel ID="pnlRespuesta" runat="server" Height="380px" ScrollBars="Vertical" Visible="false">
+                                                                <asp:GridView ID="GrdvRespuesta" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,CodigoEfecto" ForeColor="#333333" PageSize="5" TabIndex="14" Width="100%" OnRowDataBound="GrdvRespuesta_RowDataBound" OnSelectedIndexChanged="GrdvRespuesta_SelectedIndexChanged">
                                                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                     <Columns>
+                                                                        <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
                                                                         <asp:BoundField DataField="Descripcion" HeaderText="Respuesta" />
                                                                         <asp:TemplateField HeaderText="Activo">
                                                                             <ItemTemplate>
@@ -327,15 +295,9 @@
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
-                                                                        <asp:TemplateField HeaderText="Editar">
+                                                                        <asp:TemplateField HeaderText="Comisiona">
                                                                             <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgEdiRespuesta" runat="server" Height="20px" ImageUrl="~/Botones/seleccionar.png" OnClick="ImgEdiRespuesta_Click" />
-                                                                            </ItemTemplate>
-                                                                            <ItemStyle HorizontalAlign="Center" />
-                                                                        </asp:TemplateField>
-                                                                        <asp:TemplateField HeaderText="Selecc">
-                                                                            <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgSelecRespuesta" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecRespuesta_Click" />
+                                                                                <asp:CheckBox ID="ChkComisiona" runat="server" OnCheckedChanged="ChkComisiona_CheckedChanged1" />
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
@@ -381,12 +343,18 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="4">
+                                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
                                                     <asp:UpdatePanel ID="updContacto" runat="server">
                                                         <ContentTemplate>
-                                                            <asp:Panel ID="pnlContacto" runat="server" Height="180px" ScrollBars="Vertical" Visible="false">
-                                                                <asp:GridView ID="GrdvContacto" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,CodigoRespuesta" ForeColor="#333333" PageSize="5" TabIndex="18" Width="100%" OnRowDataBound="GrdvContacto_RowDataBound">
+                                                            <asp:Panel ID="pnlContacto" runat="server" Height="380px" ScrollBars="Vertical" Visible="false">
+                                                                <asp:GridView ID="GrdvContacto" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo,CodigoRespuesta" ForeColor="#333333" PageSize="5" TabIndex="18" Width="100%" OnRowDataBound="GrdvContacto_RowDataBound" OnSelectedIndexChanged="GrdvContacto_SelectedIndexChanged">
                                                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                     <Columns>
+                                                                        <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
                                                                         <asp:BoundField DataField="Descripcion" HeaderText="Contacto" />
                                                                         <asp:TemplateField HeaderText="Activo">
                                                                             <ItemTemplate>
@@ -394,10 +362,11 @@
                                                                             </ItemTemplate>
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
-                                                                        <asp:TemplateField HeaderText="Editar">
+                                                                        <asp:TemplateField HeaderText="Pago">
                                                                             <ItemTemplate>
-                                                                                <asp:ImageButton ID="ImgEdiContacto" runat="server" Height="20px" ImageUrl="~/Botones/seleccionar.png" OnClick="ImgEdiContacto_Click" />
+                                                                                <asp:CheckBox ID="ChkPagoContac" runat="server" OnCheckedChanged="ChkPagoContac_CheckedChanged" />
                                                                             </ItemTemplate>
+                                                                            <HeaderStyle HorizontalAlign="Center" />
                                                                             <ItemStyle HorizontalAlign="Center" />
                                                                         </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="Eliminar">

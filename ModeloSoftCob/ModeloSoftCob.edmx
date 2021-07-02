@@ -47,26 +47,6 @@
           <Property Name="acli_uum" Type="int" Nullable="false" />
           <Property Name="acli_tum" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="SoftCob_ACCION">
-          <Key>
-            <PropertyRef Name="ARAC_CODIGO" />
-          </Key>
-          <Property Name="ARAC_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CPCE_CODIGO" Type="int" Nullable="false" />
-          <Property Name="arac_descripcion" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="arac_estado" Type="bit" Nullable="false" />
-          <Property Name="arac_contacto" Type="bit" Nullable="false" />
-          <Property Name="arac_auxv1" Type="varchar" MaxLength="50" />
-          <Property Name="arac_auxv2" Type="varchar" MaxLength="50" />
-          <Property Name="arac_auxi1" Type="int" />
-          <Property Name="arac_auxi2" Type="int" />
-          <Property Name="arac_fechacreacion" Type="datetime" />
-          <Property Name="arac_usuariocracion" Type="int" />
-          <Property Name="arac_terminalcreacion" Type="varchar" MaxLength="50" />
-          <Property Name="arac_fum" Type="datetime" />
-          <Property Name="arac_uum" Type="int" />
-          <Property Name="arac_tum" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="SoftCob_ACCIONGESTION">
           <Key>
             <PropertyRef Name="ACCI_CODIGO" />
@@ -735,19 +715,6 @@
           <Property Name="cosf_auxi4" Type="int" />
           <Property Name="cosf_auxi5" Type="int" />
         </EntityType>
-        <EntityType Name="SoftCob_CONTACTO">
-          <Key>
-            <PropertyRef Name="ARCO_CODIGO" />
-          </Key>
-          <Property Name="ARCO_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ARRE_CODIGO" Type="int" Nullable="false" />
-          <Property Name="arco_descripcion" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="arco_estado" Type="bit" Nullable="false" />
-          <Property Name="arco_auxv1" Type="varchar" MaxLength="50" />
-          <Property Name="arco_auxv2" Type="varchar" MaxLength="50" />
-          <Property Name="arco_auxi1" Type="int" />
-          <Property Name="arco_auxi2" Type="int" />
-        </EntityType>
         <EntityType Name="SoftCob_CONTACTOS_CEDENTE">
           <Key>
             <PropertyRef Name="COCE_CODIGO" />
@@ -841,19 +808,6 @@
           <Property Name="dere_fechacreacion" Type="datetime" Nullable="false" />
           <Property Name="dere_usuariocreacion" Type="int" Nullable="false" />
           <Property Name="dere_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SoftCob_EFECTO">
-          <Key>
-            <PropertyRef Name="AREF_CODIGO" />
-          </Key>
-          <Property Name="AREF_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ARAC_CODIGO" Type="int" Nullable="false" />
-          <Property Name="aref_descripcion" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="aref_estado" Type="bit" Nullable="false" />
-          <Property Name="aref_auxv1" Type="varchar" MaxLength="50" />
-          <Property Name="aref_auxv2" Type="varchar" MaxLength="50" />
-          <Property Name="aref_auxi1" Type="int" />
-          <Property Name="aref_auxi2" Type="int" />
         </EntityType>
         <EntityType Name="SoftCob_EMPLOYEE">
           <Key>
@@ -1969,21 +1923,6 @@
           <Property Name="revl_usuariocreacion" Type="int" Nullable="false" />
           <Property Name="revl_terminalcreacion" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="SoftCob_RESPUESTA">
-          <Key>
-            <PropertyRef Name="ARRE_CODIGO" />
-          </Key>
-          <Property Name="ARRE_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AREF_CODIGO" Type="int" Nullable="false" />
-          <Property Name="arre_descripcion" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="arre_estado" Type="bit" Nullable="false" />
-          <Property Name="arre_pago" Type="bit" Nullable="false" />
-          <Property Name="arre_llamar" Type="bit" Nullable="false" />
-          <Property Name="arre_auxv1" Type="varchar" MaxLength="50" />
-          <Property Name="arre_auxv2" Type="varchar" MaxLength="50" />
-          <Property Name="arre_auxi1" Type="int" />
-          <Property Name="arre_auxi2" Type="int" />
-        </EntityType>
         <EntityType Name="SoftCob_SCORETELEFONO">
           <Key>
             <PropertyRef Name="SCTE_CODIGO" />
@@ -2213,18 +2152,6 @@
           <Property Name="usua_uum" Type="int" />
           <Property Name="usua_tum" Type="varchar" MaxLength="80" />
         </EntityType>
-        <Association Name="FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
-          <End Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Type="Self.SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Multiplicity="1" />
-          <End Role="SoftCob_ACCION" Type="Self.SoftCob_ACCION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
-              <PropertyRef Name="CPCE_CODIGO" />
-            </Principal>
-            <Dependent Role="SoftCob_ACCION">
-              <PropertyRef Name="CPCE_CODIGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SoftCob_AGENCIAS_CEDENTE_SoftCob_CEDENTE">
           <End Role="SoftCob_CEDENTE" Type="Self.SoftCob_CEDENTE" Multiplicity="1" />
           <End Role="SoftCob_AGENCIAS_CEDENTE" Type="Self.SoftCob_AGENCIAS_CEDENTE" Multiplicity="*" />
@@ -2405,18 +2332,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SoftCob_CONTACTO_SoftCob_RESPUESTA">
-          <End Role="SoftCob_RESPUESTA" Type="Self.SoftCob_RESPUESTA" Multiplicity="1" />
-          <End Role="SoftCob_CONTACTO" Type="Self.SoftCob_CONTACTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SoftCob_RESPUESTA">
-              <PropertyRef Name="ARRE_CODIGO" />
-            </Principal>
-            <Dependent Role="SoftCob_CONTACTO">
-              <PropertyRef Name="ARRE_CODIGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SoftCob_CONTACTOS_CEDENTE_SoftCob_CEDENTE">
           <End Role="SoftCob_CEDENTE" Type="Self.SoftCob_CEDENTE" Multiplicity="1" />
           <End Role="SoftCob_CONTACTOS_CEDENTE" Type="Self.SoftCob_CONTACTOS_CEDENTE" Multiplicity="*" />
@@ -2438,18 +2353,6 @@
             </Principal>
             <Dependent Role="SoftCob_CUENTA_DEUDOR">
               <PropertyRef Name="CLDE_CODIGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SoftCob_EFECTO_SoftCob_ACCION">
-          <End Role="SoftCob_ACCION" Type="Self.SoftCob_ACCION" Multiplicity="1" />
-          <End Role="SoftCob_EFECTO" Type="Self.SoftCob_EFECTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SoftCob_ACCION">
-              <PropertyRef Name="ARAC_CODIGO" />
-            </Principal>
-            <Dependent Role="SoftCob_EFECTO">
-              <PropertyRef Name="ARAC_CODIGO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2813,18 +2716,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SoftCob_RESPUESTA_SoftCob_EFECTO">
-          <End Role="SoftCob_EFECTO" Type="Self.SoftCob_EFECTO" Multiplicity="1" />
-          <End Role="SoftCob_RESPUESTA" Type="Self.SoftCob_RESPUESTA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SoftCob_EFECTO">
-              <PropertyRef Name="AREF_CODIGO" />
-            </Principal>
-            <Dependent Role="SoftCob_RESPUESTA">
-              <PropertyRef Name="AREF_CODIGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA">
           <End Role="SoftCob_SPEECH_CABECERA" Type="Self.SoftCob_SPEECH_CABECERA" Multiplicity="1" />
           <End Role="SoftCob_SPEECH_DETALLE" Type="Self.SoftCob_SPEECH_DETALLE" Multiplicity="*" />
@@ -2911,7 +2802,6 @@
         <EntityContainer Name="SoftCobModelStoreContainer">
           <EntitySet Name="SoftCob_ACCESO_CONSULTA_CEDENTES" EntityType="Self.SoftCob_ACCESO_CONSULTA_CEDENTES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_ACCESOLISTA" EntityType="Self.SoftCob_ACCESOLISTA" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SoftCob_ACCION" EntityType="Self.SoftCob_ACCION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_ACCIONGESTION" EntityType="Self.SoftCob_ACCIONGESTION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_AGENCIAS_CEDENTE" EntityType="Self.SoftCob_AGENCIAS_CEDENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_ARBOL_ACCION" EntityType="Self.SoftCob_ARBOL_ACCION" Schema="dbo" store:Type="Tables" />
@@ -2937,12 +2827,10 @@
           <EntitySet Name="SoftCob_CIUDAD" EntityType="Self.SoftCob_CIUDAD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_CLIENTE_DEUDOR" EntityType="Self.SoftCob_CLIENTE_DEUDOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_CONFIGURACION_PHONE" EntityType="Self.SoftCob_CONFIGURACION_PHONE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SoftCob_CONTACTO" EntityType="Self.SoftCob_CONTACTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_CONTACTOS_CEDENTE" EntityType="Self.SoftCob_CONTACTOS_CEDENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_CUENTA_DEUDOR" EntityType="Self.SoftCob_CUENTA_DEUDOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_DEPARTAMENTO" EntityType="Self.SoftCob_DEPARTAMENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_DEUDOR_REFERENCIAS" EntityType="Self.SoftCob_DEUDOR_REFERENCIAS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SoftCob_EFECTO" EntityType="Self.SoftCob_EFECTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_EMPLOYEE" EntityType="Self.SoftCob_EMPLOYEE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_ESTADOS_DELYO" EntityType="Self.SoftCob_ESTADOS_DELYO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_ESTILOS_NEGOCIACION" EntityType="Self.SoftCob_ESTILOS_NEGOCIACION" Schema="dbo" store:Type="Tables" />
@@ -2999,7 +2887,6 @@
           <EntitySet Name="SoftCob_REGISTRO_ABONOSPAGO" EntityType="Self.SoftCob_REGISTRO_ABONOSPAGO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_REGISTRO_BROADCAST" EntityType="Self.SoftCob_REGISTRO_BROADCAST" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_REGISTRO_VOLVERALLAMAR" EntityType="Self.SoftCob_REGISTRO_VOLVERALLAMAR" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SoftCob_RESPUESTA" EntityType="Self.SoftCob_RESPUESTA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_SCORETELEFONO" EntityType="Self.SoftCob_SCORETELEFONO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_SCORING_TELEFONICO" EntityType="Self.SoftCob_SCORING_TELEFONICO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_SEGMENTO_CABECERA" EntityType="Self.SoftCob_SEGMENTO_CABECERA" Schema="dbo" store:Type="Tables" />
@@ -3010,10 +2897,6 @@
           <EntitySet Name="SoftCob_TAREA" EntityType="Self.SoftCob_TAREA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_TELEFONOS_CEDENTE" EntityType="Self.SoftCob_TELEFONOS_CEDENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftCob_USUARIO" EntityType="Self.SoftCob_USUARIO" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Association="Self.FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
-            <End Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" EntitySet="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
-            <End Role="SoftCob_ACCION" EntitySet="SoftCob_ACCION" />
-          </AssociationSet>
           <AssociationSet Name="FK_SoftCob_AGENCIAS_CEDENTE_SoftCob_CEDENTE" Association="Self.FK_SoftCob_AGENCIAS_CEDENTE_SoftCob_CEDENTE">
             <End Role="SoftCob_CEDENTE" EntitySet="SoftCob_CEDENTE" />
             <End Role="SoftCob_AGENCIAS_CEDENTE" EntitySet="SoftCob_AGENCIAS_CEDENTE" />
@@ -3074,10 +2957,6 @@
             <End Role="SoftCob_USUARIO" EntitySet="SoftCob_USUARIO" />
             <End Role="SoftCob_CONFIGURACION_PHONE" EntitySet="SoftCob_CONFIGURACION_PHONE" />
           </AssociationSet>
-          <AssociationSet Name="FK_SoftCob_CONTACTO_SoftCob_RESPUESTA" Association="Self.FK_SoftCob_CONTACTO_SoftCob_RESPUESTA">
-            <End Role="SoftCob_RESPUESTA" EntitySet="SoftCob_RESPUESTA" />
-            <End Role="SoftCob_CONTACTO" EntitySet="SoftCob_CONTACTO" />
-          </AssociationSet>
           <AssociationSet Name="FK_SoftCob_CONTACTOS_CEDENTE_SoftCob_CEDENTE" Association="Self.FK_SoftCob_CONTACTOS_CEDENTE_SoftCob_CEDENTE">
             <End Role="SoftCob_CEDENTE" EntitySet="SoftCob_CEDENTE" />
             <End Role="SoftCob_CONTACTOS_CEDENTE" EntitySet="SoftCob_CONTACTOS_CEDENTE" />
@@ -3085,10 +2964,6 @@
           <AssociationSet Name="FK_SoftCob_CUENTA_DEUDOR_SoftCob_CLIENTE_DEUDOR" Association="Self.FK_SoftCob_CUENTA_DEUDOR_SoftCob_CLIENTE_DEUDOR">
             <End Role="SoftCob_CLIENTE_DEUDOR" EntitySet="SoftCob_CLIENTE_DEUDOR" />
             <End Role="SoftCob_CUENTA_DEUDOR" EntitySet="SoftCob_CUENTA_DEUDOR" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SoftCob_EFECTO_SoftCob_ACCION" Association="Self.FK_SoftCob_EFECTO_SoftCob_ACCION">
-            <End Role="SoftCob_ACCION" EntitySet="SoftCob_ACCION" />
-            <End Role="SoftCob_EFECTO" EntitySet="SoftCob_EFECTO" />
           </AssociationSet>
           <AssociationSet Name="FK_SoftCob_EMPLOYEE_SoftCob_DEPARTAMENTO" Association="Self.FK_SoftCob_EMPLOYEE_SoftCob_DEPARTAMENTO">
             <End Role="SoftCob_DEPARTAMENTO" EntitySet="SoftCob_DEPARTAMENTO" />
@@ -3209,10 +3084,6 @@
           <AssociationSet Name="FK_SoftCob_REFERENCIASPERSONALES_SoftCob_EMPLOYEE" Association="Self.FK_SoftCob_REFERENCIASPERSONALES_SoftCob_EMPLOYEE">
             <End Role="SoftCob_EMPLOYEE" EntitySet="SoftCob_EMPLOYEE" />
             <End Role="SoftCob_REFERENCIASPERSONALES" EntitySet="SoftCob_REFERENCIASPERSONALES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SoftCob_RESPUESTA_SoftCob_EFECTO" Association="Self.FK_SoftCob_RESPUESTA_SoftCob_EFECTO">
-            <End Role="SoftCob_EFECTO" EntitySet="SoftCob_EFECTO" />
-            <End Role="SoftCob_RESPUESTA" EntitySet="SoftCob_RESPUESTA" />
           </AssociationSet>
           <AssociationSet Name="FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA" Association="Self.FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA">
             <End Role="SoftCob_SPEECH_CABECERA" EntitySet="SoftCob_SPEECH_CABECERA" />
@@ -3529,26 +3400,6 @@
           <AssociationSet Name="FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE" Association="SoftCobModel.FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE">
             <End Role="SoftCob_PRODUCTOS_CEDENTE" EntitySet="SoftCob_PRODUCTOS_CEDENTE" />
             <End Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" EntitySet="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
-          </AssociationSet>
-          <EntitySet Name="SoftCob_ACCION" EntityType="SoftCobModel.SoftCob_ACCION" />
-          <AssociationSet Name="FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Association="SoftCobModel.FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
-            <End Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" EntitySet="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
-            <End Role="SoftCob_ACCION" EntitySet="SoftCob_ACCION" />
-          </AssociationSet>
-          <EntitySet Name="SoftCob_CONTACTO" EntityType="SoftCobModel.SoftCob_CONTACTO" />
-          <EntitySet Name="SoftCob_EFECTO" EntityType="SoftCobModel.SoftCob_EFECTO" />
-          <EntitySet Name="SoftCob_RESPUESTA" EntityType="SoftCobModel.SoftCob_RESPUESTA" />
-          <AssociationSet Name="FK_SoftCob_EFECTO_SoftCob_ACCION" Association="SoftCobModel.FK_SoftCob_EFECTO_SoftCob_ACCION">
-            <End Role="SoftCob_ACCION" EntitySet="SoftCob_ACCION" />
-            <End Role="SoftCob_EFECTO" EntitySet="SoftCob_EFECTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SoftCob_CONTACTO_SoftCob_RESPUESTA" Association="SoftCobModel.FK_SoftCob_CONTACTO_SoftCob_RESPUESTA">
-            <End Role="SoftCob_RESPUESTA" EntitySet="SoftCob_RESPUESTA" />
-            <End Role="SoftCob_CONTACTO" EntitySet="SoftCob_CONTACTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SoftCob_RESPUESTA_SoftCob_EFECTO" Association="SoftCobModel.FK_SoftCob_RESPUESTA_SoftCob_EFECTO">
-            <End Role="SoftCob_EFECTO" EntitySet="SoftCob_EFECTO" />
-            <End Role="SoftCob_RESPUESTA" EntitySet="SoftCob_RESPUESTA" />
           </AssociationSet>
           <EntitySet Name="SoftCob_SPEECH_CABECERA" EntityType="SoftCobModel.SoftCob_SPEECH_CABECERA" />
           <EntitySet Name="SoftCob_SPEECH_DETALLE" EntityType="SoftCobModel.SoftCob_SPEECH_DETALLE" />
@@ -4132,7 +3983,6 @@
           <Property Name="cpce_auxi1" Type="Int32" />
           <Property Name="cpce_auxi2" Type="Int32" />
           <NavigationProperty Name="SoftCob_PRODUCTOS_CEDENTE" Relationship="SoftCobModel.FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE" FromRole="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" ToRole="SoftCob_PRODUCTOS_CEDENTE" />
-          <NavigationProperty Name="SoftCob_ACCION" Relationship="SoftCobModel.FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" FromRole="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" ToRole="SoftCob_ACCION" />
           <NavigationProperty Name="SoftCob_CLIENTE_DEUDOR" Relationship="SoftCobModel.FK_SoftCob_CLIENTE_DEUDOR_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" FromRole="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" ToRole="SoftCob_CLIENTE_DEUDOR" />
           <NavigationProperty Name="SoftCob_ARBOL_ACCION" Relationship="SoftCobModel.FK_SoftCob_ARBOL_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" FromRole="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" ToRole="SoftCob_ARBOL_ACCION" />
         </EntityType>
@@ -4145,122 +3995,6 @@
             </Principal>
             <Dependent Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
               <PropertyRef Name="PRCE_CODIGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="SoftCob_ACCION">
-          <Key>
-            <PropertyRef Name="ARAC_CODIGO" />
-          </Key>
-          <Property Name="ARAC_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CPCE_CODIGO" Type="Int32" Nullable="false" />
-          <Property Name="arac_descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="arac_estado" Type="Boolean" Nullable="false" />
-          <Property Name="arac_contacto" Type="Boolean" Nullable="false" />
-          <Property Name="arac_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="arac_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="arac_auxi1" Type="Int32" />
-          <Property Name="arac_auxi2" Type="Int32" />
-          <Property Name="arac_fechacreacion" Type="DateTime" Precision="3" />
-          <Property Name="arac_usuariocracion" Type="Int32" />
-          <Property Name="arac_terminalcreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="arac_fum" Type="DateTime" Precision="3" />
-          <Property Name="arac_uum" Type="Int32" />
-          <Property Name="arac_tum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Relationship="SoftCobModel.FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" FromRole="SoftCob_ACCION" ToRole="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
-          <NavigationProperty Name="SoftCob_EFECTO" Relationship="SoftCobModel.FK_SoftCob_EFECTO_SoftCob_ACCION" FromRole="SoftCob_ACCION" ToRole="SoftCob_EFECTO" />
-        </EntityType>
-        <Association Name="FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
-          <End Type="SoftCobModel.SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Multiplicity="1" />
-          <End Type="SoftCobModel.SoftCob_ACCION" Role="SoftCob_ACCION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SoftCob_CATALOGO_PRODUCTOS_CEDENTE">
-              <PropertyRef Name="CPCE_CODIGO" />
-            </Principal>
-            <Dependent Role="SoftCob_ACCION">
-              <PropertyRef Name="CPCE_CODIGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="SoftCob_CONTACTO">
-          <Key>
-            <PropertyRef Name="ARCO_CODIGO" />
-          </Key>
-          <Property Name="ARCO_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ARRE_CODIGO" Type="Int32" Nullable="false" />
-          <Property Name="arco_descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="arco_estado" Type="Boolean" Nullable="false" />
-          <Property Name="arco_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="arco_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="arco_auxi1" Type="Int32" />
-          <Property Name="arco_auxi2" Type="Int32" />
-          <NavigationProperty Name="SoftCob_RESPUESTA" Relationship="SoftCobModel.FK_SoftCob_CONTACTO_SoftCob_RESPUESTA" FromRole="SoftCob_CONTACTO" ToRole="SoftCob_RESPUESTA" />
-        </EntityType>
-        <EntityType Name="SoftCob_EFECTO">
-          <Key>
-            <PropertyRef Name="AREF_CODIGO" />
-          </Key>
-          <Property Name="AREF_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ARAC_CODIGO" Type="Int32" Nullable="false" />
-          <Property Name="aref_descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="aref_estado" Type="Boolean" Nullable="false" />
-          <Property Name="aref_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="aref_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="aref_auxi1" Type="Int32" />
-          <Property Name="aref_auxi2" Type="Int32" />
-          <NavigationProperty Name="SoftCob_ACCION" Relationship="SoftCobModel.FK_SoftCob_EFECTO_SoftCob_ACCION" FromRole="SoftCob_EFECTO" ToRole="SoftCob_ACCION" />
-          <NavigationProperty Name="SoftCob_RESPUESTA" Relationship="SoftCobModel.FK_SoftCob_RESPUESTA_SoftCob_EFECTO" FromRole="SoftCob_EFECTO" ToRole="SoftCob_RESPUESTA" />
-        </EntityType>
-        <EntityType Name="SoftCob_RESPUESTA">
-          <Key>
-            <PropertyRef Name="ARRE_CODIGO" />
-          </Key>
-          <Property Name="ARRE_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AREF_CODIGO" Type="Int32" Nullable="false" />
-          <Property Name="arre_descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="arre_estado" Type="Boolean" Nullable="false" />
-          <Property Name="arre_pago" Type="Boolean" Nullable="false" />
-          <Property Name="arre_llamar" Type="Boolean" Nullable="false" />
-          <Property Name="arre_auxv1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="arre_auxv2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="arre_auxi1" Type="Int32" />
-          <Property Name="arre_auxi2" Type="Int32" />
-          <NavigationProperty Name="SoftCob_CONTACTO" Relationship="SoftCobModel.FK_SoftCob_CONTACTO_SoftCob_RESPUESTA" FromRole="SoftCob_RESPUESTA" ToRole="SoftCob_CONTACTO" />
-          <NavigationProperty Name="SoftCob_EFECTO" Relationship="SoftCobModel.FK_SoftCob_RESPUESTA_SoftCob_EFECTO" FromRole="SoftCob_RESPUESTA" ToRole="SoftCob_EFECTO" />
-        </EntityType>
-        <Association Name="FK_SoftCob_EFECTO_SoftCob_ACCION">
-          <End Type="SoftCobModel.SoftCob_ACCION" Role="SoftCob_ACCION" Multiplicity="1" />
-          <End Type="SoftCobModel.SoftCob_EFECTO" Role="SoftCob_EFECTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SoftCob_ACCION">
-              <PropertyRef Name="ARAC_CODIGO" />
-            </Principal>
-            <Dependent Role="SoftCob_EFECTO">
-              <PropertyRef Name="ARAC_CODIGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SoftCob_CONTACTO_SoftCob_RESPUESTA">
-          <End Type="SoftCobModel.SoftCob_RESPUESTA" Role="SoftCob_RESPUESTA" Multiplicity="1" />
-          <End Type="SoftCobModel.SoftCob_CONTACTO" Role="SoftCob_CONTACTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SoftCob_RESPUESTA">
-              <PropertyRef Name="ARRE_CODIGO" />
-            </Principal>
-            <Dependent Role="SoftCob_CONTACTO">
-              <PropertyRef Name="ARRE_CODIGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SoftCob_RESPUESTA_SoftCob_EFECTO">
-          <End Type="SoftCobModel.SoftCob_EFECTO" Role="SoftCob_EFECTO" Multiplicity="1" />
-          <End Type="SoftCobModel.SoftCob_RESPUESTA" Role="SoftCob_RESPUESTA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SoftCob_EFECTO">
-              <PropertyRef Name="AREF_CODIGO" />
-            </Principal>
-            <Dependent Role="SoftCob_RESPUESTA">
-              <PropertyRef Name="AREF_CODIGO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6967,71 +6701,6 @@
                 <ScalarProperty Name="cpce_codigoproducto" ColumnName="cpce_codigoproducto" />
                 <ScalarProperty Name="PRCE_CODIGO" ColumnName="PRCE_CODIGO" />
                 <ScalarProperty Name="CPCE_CODIGO" ColumnName="CPCE_CODIGO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SoftCob_ACCION">
-            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_ACCION">
-              <MappingFragment StoreEntitySet="SoftCob_ACCION">
-                <ScalarProperty Name="arac_tum" ColumnName="arac_tum" />
-                <ScalarProperty Name="arac_uum" ColumnName="arac_uum" />
-                <ScalarProperty Name="arac_fum" ColumnName="arac_fum" />
-                <ScalarProperty Name="arac_terminalcreacion" ColumnName="arac_terminalcreacion" />
-                <ScalarProperty Name="arac_usuariocracion" ColumnName="arac_usuariocracion" />
-                <ScalarProperty Name="arac_fechacreacion" ColumnName="arac_fechacreacion" />
-                <ScalarProperty Name="arac_auxi2" ColumnName="arac_auxi2" />
-                <ScalarProperty Name="arac_auxi1" ColumnName="arac_auxi1" />
-                <ScalarProperty Name="arac_auxv2" ColumnName="arac_auxv2" />
-                <ScalarProperty Name="arac_auxv1" ColumnName="arac_auxv1" />
-                <ScalarProperty Name="arac_contacto" ColumnName="arac_contacto" />
-                <ScalarProperty Name="arac_estado" ColumnName="arac_estado" />
-                <ScalarProperty Name="arac_descripcion" ColumnName="arac_descripcion" />
-                <ScalarProperty Name="CPCE_CODIGO" ColumnName="CPCE_CODIGO" />
-                <ScalarProperty Name="ARAC_CODIGO" ColumnName="ARAC_CODIGO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SoftCob_CONTACTO">
-            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_CONTACTO">
-              <MappingFragment StoreEntitySet="SoftCob_CONTACTO">
-                <ScalarProperty Name="arco_auxi2" ColumnName="arco_auxi2" />
-                <ScalarProperty Name="arco_auxi1" ColumnName="arco_auxi1" />
-                <ScalarProperty Name="arco_auxv2" ColumnName="arco_auxv2" />
-                <ScalarProperty Name="arco_auxv1" ColumnName="arco_auxv1" />
-                <ScalarProperty Name="arco_estado" ColumnName="arco_estado" />
-                <ScalarProperty Name="arco_descripcion" ColumnName="arco_descripcion" />
-                <ScalarProperty Name="ARRE_CODIGO" ColumnName="ARRE_CODIGO" />
-                <ScalarProperty Name="ARCO_CODIGO" ColumnName="ARCO_CODIGO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SoftCob_EFECTO">
-            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_EFECTO">
-              <MappingFragment StoreEntitySet="SoftCob_EFECTO">
-                <ScalarProperty Name="aref_auxi2" ColumnName="aref_auxi2" />
-                <ScalarProperty Name="aref_auxi1" ColumnName="aref_auxi1" />
-                <ScalarProperty Name="aref_auxv2" ColumnName="aref_auxv2" />
-                <ScalarProperty Name="aref_auxv1" ColumnName="aref_auxv1" />
-                <ScalarProperty Name="aref_estado" ColumnName="aref_estado" />
-                <ScalarProperty Name="aref_descripcion" ColumnName="aref_descripcion" />
-                <ScalarProperty Name="ARAC_CODIGO" ColumnName="ARAC_CODIGO" />
-                <ScalarProperty Name="AREF_CODIGO" ColumnName="AREF_CODIGO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SoftCob_RESPUESTA">
-            <EntityTypeMapping TypeName="SoftCobModel.SoftCob_RESPUESTA">
-              <MappingFragment StoreEntitySet="SoftCob_RESPUESTA">
-                <ScalarProperty Name="arre_auxi2" ColumnName="arre_auxi2" />
-                <ScalarProperty Name="arre_auxi1" ColumnName="arre_auxi1" />
-                <ScalarProperty Name="arre_auxv2" ColumnName="arre_auxv2" />
-                <ScalarProperty Name="arre_auxv1" ColumnName="arre_auxv1" />
-                <ScalarProperty Name="arre_llamar" ColumnName="arre_llamar" />
-                <ScalarProperty Name="arre_pago" ColumnName="arre_pago" />
-                <ScalarProperty Name="arre_estado" ColumnName="arre_estado" />
-                <ScalarProperty Name="arre_descripcion" ColumnName="arre_descripcion" />
-                <ScalarProperty Name="AREF_CODIGO" ColumnName="AREF_CODIGO" />
-                <ScalarProperty Name="ARRE_CODIGO" ColumnName="ARRE_CODIGO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

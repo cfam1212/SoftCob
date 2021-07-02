@@ -26,7 +26,7 @@
         bool _lexiste = false, _estadoact = false, _contactoact = false;
         CheckBox _chkestado, _chkcontacto, _chkpago, _chkllamar, _chkcomisiona, _chkefectivo;
         ImageButton _imgborrar;
-        string _contacto = "", _sql = "", _mensaje = "", _descripcion = "", _response = "", _mensajes = "";
+        string _contacto = "", _sql = "", _mensaje = "", _descripcion = "", _response = "";
         string[] _pathroot;
         #endregion
 
@@ -47,78 +47,132 @@
                 }
 
                 _dtbaccion.Columns.Add("Codigo");
-                _dtbaccion.Columns.Add("CodigoCatagolo");
+                _dtbaccion.Columns.Add("CodigoCatalogo");
                 _dtbaccion.Columns.Add("Descripcion");
                 _dtbaccion.Columns.Add("Estado");
                 _dtbaccion.Columns.Add("Contacto");
                 _dtbaccion.Columns.Add("auxv1");
                 _dtbaccion.Columns.Add("auxv2");
+                _dtbaccion.Columns.Add("auxv3");
+                _dtbaccion.Columns.Add("auxv4");
+                _dtbaccion.Columns.Add("auxv5");
                 _dtbaccion.Columns.Add("auxi1");
                 _dtbaccion.Columns.Add("auxi2");
+                _dtbaccion.Columns.Add("auxi3");
+                _dtbaccion.Columns.Add("auxi4");
+                _dtbaccion.Columns.Add("auxi5");
                 ViewState["ArbolAccion"] = _dtbaccion;
 
                 _dtbefecto.Columns.Add("Codigo");
                 _dtbefecto.Columns.Add("CodigoAccion");
+                _dtbefecto.Columns.Add("CodigoCatalogo");
                 _dtbefecto.Columns.Add("Descripcion");
                 _dtbefecto.Columns.Add("Estado");
                 _dtbefecto.Columns.Add("auxv1");
                 _dtbefecto.Columns.Add("auxv2");
+                _dtbefecto.Columns.Add("auxv3");
+                _dtbefecto.Columns.Add("auxv4");
+                _dtbefecto.Columns.Add("auxv5");
                 _dtbefecto.Columns.Add("auxi1");
                 _dtbefecto.Columns.Add("auxi2");
+                _dtbefecto.Columns.Add("auxi3");
+                _dtbefecto.Columns.Add("auxi4");
+                _dtbefecto.Columns.Add("auxi5");
                 ViewState["ArbolEfecto"] = _dtbefecto;
 
                 _dtbefectotemp.Columns.Add("Codigo");
                 _dtbefectotemp.Columns.Add("CodigoAccion");
+                _dtbefectotemp.Columns.Add("CodigoCatalogo");
                 _dtbefectotemp.Columns.Add("Descripcion");
                 _dtbefectotemp.Columns.Add("Estado");
                 _dtbefectotemp.Columns.Add("auxv1");
                 _dtbefectotemp.Columns.Add("auxv2");
+                _dtbefectotemp.Columns.Add("auxv3");
+                _dtbefectotemp.Columns.Add("auxv4");
+                _dtbefectotemp.Columns.Add("auxv5");
                 _dtbefectotemp.Columns.Add("auxi1");
                 _dtbefectotemp.Columns.Add("auxi2");
+                _dtbefectotemp.Columns.Add("auxi3");
+                _dtbefectotemp.Columns.Add("auxi4");
+                _dtbefectotemp.Columns.Add("auxi5");
                 ViewState["ArbolEfectoTemp"] = _dtbefectotemp;
 
                 _dtbrespuesta.Columns.Add("Codigo");
                 _dtbrespuesta.Columns.Add("CodigoEfecto");
+                _dtbrespuesta.Columns.Add("CodigoCatalogo");
                 _dtbrespuesta.Columns.Add("Descripcion");
                 _dtbrespuesta.Columns.Add("Estado");
                 _dtbrespuesta.Columns.Add("Pago");
                 _dtbrespuesta.Columns.Add("Llamar");
+                _dtbrespuesta.Columns.Add("Efectivo");
+                _dtbrespuesta.Columns.Add("Comisiona");
                 _dtbrespuesta.Columns.Add("auxv1");
                 _dtbrespuesta.Columns.Add("auxv2");
+                _dtbrespuesta.Columns.Add("auxv3");
+                _dtbrespuesta.Columns.Add("auxv4");
+                _dtbrespuesta.Columns.Add("auxv5");
                 _dtbrespuesta.Columns.Add("auxi1");
                 _dtbrespuesta.Columns.Add("auxi2");
+                _dtbrespuesta.Columns.Add("auxi3");
+                _dtbrespuesta.Columns.Add("auxi4");
+                _dtbrespuesta.Columns.Add("auxi5");
                 ViewState["ArbolRespuesta"] = _dtbrespuesta;
 
                 _dtbrespuestatemp.Columns.Add("Codigo");
                 _dtbrespuestatemp.Columns.Add("CodigoEfecto");
+                _dtbrespuestatemp.Columns.Add("CodigoCatalogo");
                 _dtbrespuestatemp.Columns.Add("Descripcion");
                 _dtbrespuestatemp.Columns.Add("Estado");
                 _dtbrespuestatemp.Columns.Add("Pago");
                 _dtbrespuestatemp.Columns.Add("Llamar");
+                _dtbrespuestatemp.Columns.Add("Efectivo");
+                _dtbrespuestatemp.Columns.Add("Comisiona");
                 _dtbrespuestatemp.Columns.Add("auxv1");
                 _dtbrespuestatemp.Columns.Add("auxv2");
+                _dtbrespuestatemp.Columns.Add("auxv3");
+                _dtbrespuestatemp.Columns.Add("auxv4");
+                _dtbrespuestatemp.Columns.Add("auxv5");
                 _dtbrespuestatemp.Columns.Add("auxi1");
                 _dtbrespuestatemp.Columns.Add("auxi2");
+                _dtbrespuestatemp.Columns.Add("auxi3");
+                _dtbrespuestatemp.Columns.Add("auxi4");
+                _dtbrespuestatemp.Columns.Add("auxi5");
                 ViewState["ArbolRespuestaTemp"] = _dtbrespuestatemp;
 
                 _dtbcontacto.Columns.Add("Codigo");
                 _dtbcontacto.Columns.Add("CodigoRespuesta");
+                _dtbcontacto.Columns.Add("CodigoCatalogo");
                 _dtbcontacto.Columns.Add("Descripcion");
                 _dtbcontacto.Columns.Add("Estado");
+                _dtbcontacto.Columns.Add("Pago");
                 _dtbcontacto.Columns.Add("auxv1");
                 _dtbcontacto.Columns.Add("auxv2");
+                _dtbcontacto.Columns.Add("auxv3");
+                _dtbcontacto.Columns.Add("auxv4");
+                _dtbcontacto.Columns.Add("auxv5");
                 _dtbcontacto.Columns.Add("auxi1");
                 _dtbcontacto.Columns.Add("auxi2");
+                _dtbcontacto.Columns.Add("auxi3");
+                _dtbcontacto.Columns.Add("auxi4");
+                _dtbcontacto.Columns.Add("auxi5");
                 ViewState["ArbolContacto"] = _dtbcontacto;
 
                 _dtbcontactotemp.Columns.Add("Codigo");
                 _dtbcontactotemp.Columns.Add("CodigoRespuesta");
+                _dtbcontactotemp.Columns.Add("CodigoCatalogo");
                 _dtbcontactotemp.Columns.Add("Descripcion");
                 _dtbcontactotemp.Columns.Add("Estado");
+                _dtbcontactotemp.Columns.Add("Pago");
                 _dtbcontactotemp.Columns.Add("auxv1");
                 _dtbcontactotemp.Columns.Add("auxv2");
+                _dtbcontactotemp.Columns.Add("auxv3");
+                _dtbcontactotemp.Columns.Add("auxv4");
+                _dtbcontactotemp.Columns.Add("auxv5");
                 _dtbcontactotemp.Columns.Add("auxi1");
                 _dtbcontactotemp.Columns.Add("auxi2");
+                _dtbcontactotemp.Columns.Add("auxi3");
+                _dtbcontactotemp.Columns.Add("auxi4");
+                _dtbcontactotemp.Columns.Add("auxi5");
                 ViewState["ArbolContactoTemp"] = _dtbcontactotemp;
 
                 ViewState["codigoCatalogo"] = "0";
@@ -130,11 +184,9 @@
 
                 if (Request["MensajeRetornado"] != null)
                 {
-                    _mensajes = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                    _mensaje = Request["MensajeRetornado"];
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this);
                 }
-
             }
         }
         #endregion
@@ -270,12 +322,19 @@
                             _filagre = _dtbefecto.NewRow();
                             _filagre["Codigo"] = _fila[0].ToString();
                             _filagre["CodigoAccion"] = _fila[1].ToString();
-                            _filagre["Descripcion"] = _fila[2].ToString();
-                            _filagre["Estado"] = _fila[3].ToString();
-                            _filagre["auxv1"] = _fila[4].ToString();
-                            _filagre["auxv2"] = _fila[5].ToString();
-                            _filagre["auxi1"] = _fila[6].ToString();
-                            _filagre["auxi2"] = _fila[7].ToString();
+                            _filagre["CodigoCatalogo"] = _fila[2].ToString();
+                            _filagre["Descripcion"] = _fila[3].ToString();
+                            _filagre["Estado"] = _fila[4].ToString();
+                            _filagre["auxv1"] = _fila[5].ToString();
+                            _filagre["auxv2"] = _fila[6].ToString();
+                            _filagre["auxv3"] = _fila[7].ToString();
+                            _filagre["auxv4"] = _fila[8].ToString();
+                            _filagre["auxv5"] = _fila[9].ToString();
+                            _filagre["auxi1"] = _fila[10].ToString();
+                            _filagre["auxi2"] = _fila[11].ToString();
+                            _filagre["auxi3"] = _fila[12].ToString();
+                            _filagre["auxi4"] = _fila[13].ToString();
+                            _filagre["auxi5"] = _fila[14].ToString();
                             _dtbefecto.Rows.Add(_filagre);
                         }
 
@@ -301,14 +360,23 @@
                                 _filagre = _dtbrespuesta.NewRow();
                                 _filagre["Codigo"] = _fila[0].ToString();
                                 _filagre["CodigoEfecto"] = _fila[1].ToString();
-                                _filagre["Descripcion"] = _fila[2].ToString();
-                                _filagre["Estado"] = _fila[3].ToString();
-                                _filagre["Pago"] = _fila[4].ToString();
-                                _filagre["LLamar"] = _fila[5].ToString();
-                                _filagre["auxv1"] = _fila[6].ToString();
-                                _filagre["auxv2"] = _fila[7].ToString();
-                                _filagre["auxi1"] = _fila[8].ToString();
-                                _filagre["auxi2"] = _fila[9].ToString();
+                                _filagre["CodigoCatalogo"] = _fila[2].ToString();
+                                _filagre["Descripcion"] = _fila[3].ToString();
+                                _filagre["Estado"] = _fila[4].ToString();
+                                _filagre["Pago"] = _fila[5].ToString();
+                                _filagre["LLamar"] = _fila[6].ToString();
+                                _filagre["Efectivo"] = _fila[7].ToString();
+                                _filagre["Comisiona"] = _fila[8].ToString();
+                                _filagre["auxv1"] = _fila[9].ToString();
+                                _filagre["auxv2"] = _fila[10].ToString();
+                                _filagre["auxv3"] = _fila[11].ToString();
+                                _filagre["auxv4"] = _fila[12].ToString();
+                                _filagre["auxv5"] = _fila[13].ToString();
+                                _filagre["auxi1"] = _fila[14].ToString();
+                                _filagre["auxi2"] = _fila[15].ToString();
+                                _filagre["auxi3"] = _fila[16].ToString();
+                                _filagre["auxi4"] = _fila[17].ToString();
+                                _filagre["auxi5"] = _fila[18].ToString();
                                 _dtbrespuesta.Rows.Add(_filagre);
                             }
 
@@ -334,12 +402,20 @@
                                     _filagre = _dtbcontacto.NewRow();
                                     _filagre["Codigo"] = _fila[0].ToString();
                                     _filagre["CodigoRespuesta"] = _fila[1].ToString();
-                                    _filagre["Descripcion"] = _fila[2].ToString();
-                                    _filagre["Estado"] = _fila[3].ToString();
-                                    _filagre["auxv1"] = _fila[4].ToString();
-                                    _filagre["auxv2"] = _fila[5].ToString();
-                                    _filagre["auxi1"] = _fila[6].ToString();
-                                    _filagre["auxi2"] = _fila[7].ToString();
+                                    _filagre["CodigoCatalogo"] = _fila[2].ToString();
+                                    _filagre["Descripcion"] = _fila[3].ToString();
+                                    _filagre["Estado"] = _fila[4].ToString();
+                                    _filagre["Pago"] = _fila[5].ToString();
+                                    _filagre["auxv1"] = _fila[6].ToString();
+                                    _filagre["auxv2"] = _fila[7].ToString();
+                                    _filagre["auxv3"] = _fila[8].ToString();
+                                    _filagre["auxv4"] = _fila[9].ToString();
+                                    _filagre["auxv5"] = _fila[10].ToString();
+                                    _filagre["auxi1"] = _fila[11].ToString();
+                                    _filagre["auxi2"] = _fila[12].ToString();
+                                    _filagre["auxi3"] = _fila[13].ToString();
+                                    _filagre["auxi4"] = _fila[14].ToString();
+                                    _filagre["auxi5"] = _fila[15].ToString();
                                     _dtbcontacto.Rows.Add(_filagre);
                                 }
                                 _dtbcontacto.DefaultView.Sort = "Descripcion";
@@ -397,52 +473,82 @@
 
             _dtbaccion.Clear();
             _dtbaccion.Columns.Add("Codigo");
-            _dtbaccion.Columns.Add("CodigoCatagolo");
+            _dtbaccion.Columns.Add("CodigoCatalogo");
             _dtbaccion.Columns.Add("Descripcion");
             _dtbaccion.Columns.Add("Estado");
             _dtbaccion.Columns.Add("Contacto");
             _dtbaccion.Columns.Add("auxv1");
             _dtbaccion.Columns.Add("auxv2");
+            _dtbaccion.Columns.Add("auxv3");
+            _dtbaccion.Columns.Add("auxv4");
+            _dtbaccion.Columns.Add("auxv5");
             _dtbaccion.Columns.Add("auxi1");
             _dtbaccion.Columns.Add("auxi2");
+            _dtbaccion.Columns.Add("auxi3");
+            _dtbaccion.Columns.Add("auxi4");
+            _dtbaccion.Columns.Add("auxi5");
             ViewState["ArbolAccion"] = _dtbaccion;
 
             _dtbefecto.Clear();
             _dtbefectotemp.Clear();
             _dtbefecto.Columns.Add("Codigo");
             _dtbefecto.Columns.Add("CodigoAccion");
+            _dtbefecto.Columns.Add("CodigoCatalogo");
             _dtbefecto.Columns.Add("Descripcion");
             _dtbefecto.Columns.Add("Estado");
             _dtbefecto.Columns.Add("auxv1");
             _dtbefecto.Columns.Add("auxv2");
+            _dtbefecto.Columns.Add("auxv3");
+            _dtbefecto.Columns.Add("auxv4");
+            _dtbefecto.Columns.Add("auxv5");
             _dtbefecto.Columns.Add("auxi1");
             _dtbefecto.Columns.Add("auxi2");
+            _dtbefecto.Columns.Add("auxi3");
+            _dtbefecto.Columns.Add("auxi4");
+            _dtbefecto.Columns.Add("auxi5");
             ViewState["ArbolEfecto"] = _dtbefecto;
 
             _dtbrespuesta.Clear();
             _dtbrespuestatemp.Clear();
             _dtbrespuesta.Columns.Add("Codigo");
             _dtbrespuesta.Columns.Add("CodigoEfecto");
+            _dtbrespuesta.Columns.Add("CodigoCatalogo");
             _dtbrespuesta.Columns.Add("Descripcion");
             _dtbrespuesta.Columns.Add("Estado");
             _dtbrespuesta.Columns.Add("Pago");
             _dtbrespuesta.Columns.Add("Llamar");
+            _dtbrespuesta.Columns.Add("Efectivo");
+            _dtbrespuesta.Columns.Add("Comisiona");
             _dtbrespuesta.Columns.Add("auxv1");
             _dtbrespuesta.Columns.Add("auxv2");
+            _dtbrespuesta.Columns.Add("auxv3");
+            _dtbrespuesta.Columns.Add("auxv4");
+            _dtbrespuesta.Columns.Add("auxv5");
             _dtbrespuesta.Columns.Add("auxi1");
             _dtbrespuesta.Columns.Add("auxi2");
+            _dtbrespuesta.Columns.Add("auxi3");
+            _dtbrespuesta.Columns.Add("auxi4");
+            _dtbrespuesta.Columns.Add("auxi5");
             ViewState["ArbolRespuesta"] = _dtbrespuesta;
 
             _dtbcontacto.Clear();
             _dtbcontactotemp.Clear();
             _dtbcontacto.Columns.Add("Codigo");
             _dtbcontacto.Columns.Add("CodigoRespuesta");
+            _dtbcontacto.Columns.Add("CodigoCatalogo");
             _dtbcontacto.Columns.Add("Descripcion");
             _dtbcontacto.Columns.Add("Estado");
+            _dtbcontacto.Columns.Add("Pago");
             _dtbcontacto.Columns.Add("auxv1");
             _dtbcontacto.Columns.Add("auxv2");
+            _dtbcontacto.Columns.Add("auxv3");
+            _dtbcontacto.Columns.Add("auxv4");
+            _dtbcontacto.Columns.Add("auxv5");
             _dtbcontacto.Columns.Add("auxi1");
             _dtbcontacto.Columns.Add("auxi2");
+            _dtbcontacto.Columns.Add("auxi3");
+            _dtbcontacto.Columns.Add("auxi4");
+            _dtbcontacto.Columns.Add("auxi5");
             ViewState["ArbolContacto"] = _dtbcontacto;
 
             pnlAccion.Visible = false;
@@ -523,14 +629,20 @@
                 _tblagre = (DataTable)ViewState["ArbolAccion"];
                 _filagre = _tblagre.NewRow();
                 _filagre["Codigo"] = _maxcodigo + 1;
-                _filagre["CodigoCatagolo"] = ViewState["codigoCatalogo"].ToString();
+                _filagre["CodigoCatalogo"] = ViewState["codigoCatalogo"].ToString();
                 _filagre["Descripcion"] = TxtAccion.Text.Trim().ToUpper();
                 _filagre["Estado"] = "Activo";
                 _filagre["Contacto"] = "NO";
                 _filagre["auxv1"] = "";
                 _filagre["auxv2"] = "";
+                _filagre["auxv3"] = "";
+                _filagre["auxv4"] = "";
+                _filagre["auxv5"] = "";
                 _filagre["auxi1"] = "0";
                 _filagre["auxi2"] = "0";
+                _filagre["auxi3"] = "0";
+                _filagre["auxi4"] = "0";
+                _filagre["auxi5"] = "0";
                 _tblagre.Rows.Add(_filagre);
                 _tblagre.DefaultView.Sort = "Descripcion";
                 _tblagre = _tblagre.DefaultView.ToTable();
@@ -545,24 +657,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
-        protected void ImgEdiAccion_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-                _codigo = int.Parse(GrdvAccion.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
-                ViewState["CodigoAccion"] = _codigo;
-                _dtbaccion = (DataTable)ViewState["ArbolAccion"];
-                _result = _dtbaccion.Select("Codigo='" + _codigo + "'").FirstOrDefault();
-                TxtAccion.Text = _result["Descripcion"].ToString();
-            }
-            catch (Exception ex)
-            {
-                Lblerror.Text = ex.ToString();
-            }
-        }
-
         protected void ImgModiAccion_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -581,10 +675,13 @@
 
                 if (ViewState["ArbolAccion"] != null)
                 {
-                    DataTable tblbuscar = (DataTable)ViewState["ArbolAccion"];
-                    _result = tblbuscar.Select("Descripcion='" + TxtAccion.Text.Trim().ToUpper() + "'").FirstOrDefault();
-                    tblbuscar.DefaultView.Sort = "Codigo";
-                    if (_result != null) _lexiste = true;
+                    if (ViewState["NombreAccion"].ToString() != TxtAccion.Text.Trim().ToUpper())
+                    {
+                        DataTable tblbuscar = (DataTable)ViewState["ArbolAccion"];
+                        _result = tblbuscar.Select("Descripcion='" + TxtAccion.Text.Trim().ToUpper() + "'").FirstOrDefault();
+                        tblbuscar.DefaultView.Sort = "Codigo";
+                        if (_result != null) _lexiste = true;
+                    }
                 }
 
                 if (_lexiste)
@@ -595,7 +692,7 @@
 
                 _dtbaccion = (DataTable)ViewState["ArbolAccion"];
 
-                SoftCob_ACCION _datos = new SoftCob_ACCION();
+                SoftCob_ARBOL_ACCION _datos = new SoftCob_ARBOL_ACCION();
                 {
                     _datos.ARAC_CODIGO = int.Parse(ViewState["CodigoAccion"].ToString());
                     _datos.CPCE_CODIGO = int.Parse(ViewState["codigoCatalogo"].ToString());
@@ -623,13 +720,13 @@
             {
                 if (e.Row.RowIndex >= 0)
                 {
-                    _chkestado = (CheckBox)(e.Row.Cells[1].FindControl("ChkEstAccion"));
+                    _chkestado = (CheckBox)(e.Row.Cells[2].FindControl("ChkEstAccion"));
                     _chkcontacto = (CheckBox)(e.Row.Cells[3].FindControl("ChkContacto"));
-                    _imgborrar = (ImageButton)(e.Row.Cells[5].FindControl("ImgDelAccion"));
+                    _imgborrar = (ImageButton)(e.Row.Cells[4].FindControl("ImgDelAccion"));
                     _contacto = GrdvAccion.DataKeys[e.Row.RowIndex].Values["Contacto"].ToString();
                     _codigo = int.Parse(GrdvAccion.DataKeys[e.Row.RowIndex].Values["Codigo"].ToString());
                     _sql = "Select Estado=case arac_estado when 1 then 'Activo' else 'Inactivo' end,";
-                    _sql += "Contacto = case arac_contacto when 1 then 'SI' else 'NO' end from SoftCob_ACCION where ";
+                    _sql += "Contacto = case arac_contacto when 1 then 'SI' else 'NO' end from SoftCob_ARBOL_ACCION where ";
                     _sql += "CPCE_CODIGO=" + ViewState["codigoCatalogo"].ToString() + " and ARAC_CODIGO=" + _codigo;
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
@@ -657,7 +754,7 @@
             try
             {
                 GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-                _chkestado = (CheckBox)(_gvrow.Cells[1].FindControl("ChkEstAccion"));
+                _chkestado = (CheckBox)(_gvrow.Cells[2].FindControl("ChkEstAccion"));
                 _dtbaccion = (DataTable)ViewState["ArbolAccion"];
                 _codigo = int.Parse(GrdvAccion.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
                 _result = _dtbaccion.Select("Codigo='" + _codigo + "'").FirstOrDefault();
@@ -681,59 +778,6 @@
                 _result = _dtbaccion.Select("Codigo='" + _codigo + "'").FirstOrDefault();
                 _result["Contacto"] = _chkcontacto.Checked ? "SI" : "NO";
                 _dtbaccion.AcceptChanges();
-            }
-            catch (Exception ex)
-            {
-                Lblerror.Text = ex.ToString();
-            }
-        }
-        protected void ImgSelecAccion_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-                pnlEfecto.Visible = false;
-                pnlRespuesta.Visible = false;
-                pnlContacto.Visible = false;
-                ViewState["CodigoAccion"] = "0";
-                ViewState["CodigoEfecto"] = "0";
-                ViewState["CodigoRespuesta"] = "0";
-                ViewState["CodigoContacto"] = "0";
-                TxtEfecto.Text = "";
-                TxtRespuesta.Text = "";
-                TxtContacto.Text = "";
-
-                foreach (GridViewRow _fila in GrdvAccion.Rows)
-                {
-                    _fila.Cells[0].BackColor = System.Drawing.Color.White;
-                }
-
-                GrdvAccion.Rows[_gvrow.RowIndex].Cells[0].BackColor = System.Drawing.Color.Gray;
-                ViewState["CodigoAccion"] = int.Parse(GrdvAccion.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
-                _dtbefecto = (DataTable)ViewState["ArbolEfecto"];
-                _dtbefectotemp = (DataTable)ViewState["ArbolEfectoTemp"];
-                _dtbefectotemp.Clear();
-                _dr = _dtbefecto.Select("CodigoAccion='" + ViewState["CodigoAccion"].ToString() + "'");
-
-                foreach (DataRow _fila in _dr)
-                {
-                    _filagre = _dtbefectotemp.NewRow();
-                    _filagre["Codigo"] = _fila[0].ToString();
-                    _filagre["CodigoAccion"] = _fila[1].ToString();
-                    _filagre["Descripcion"] = _fila[2].ToString();
-                    _filagre["Estado"] = _fila[3].ToString();
-                    _filagre["auxv1"] = _fila[4].ToString();
-                    _filagre["auxv2"] = _fila[5].ToString();
-                    _filagre["auxi1"] = _fila[6].ToString();
-                    _filagre["auxi2"] = _fila[7].ToString();
-                    _dtbefectotemp.Rows.Add(_filagre);
-                    _dtbefectotemp.DefaultView.Sort = "Descripcion";
-                }
-
-                if (_dtbefectotemp.Rows.Count > 0) pnlEfecto.Visible = true;
-
-                GrdvEfecto.DataSource = _dtbefectotemp;
-                GrdvEfecto.DataBind();
             }
             catch (Exception ex)
             {
@@ -774,7 +818,6 @@
                 Lblerror.Text = ex.Message;
             }
         }
-
         protected void GrdvAccion_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -784,31 +827,57 @@
                     fr.Cells[0].BackColor = System.Drawing.Color.White;
                 }
 
-                GrdvAccion.Rows[GrdvAccion.SelectedIndex].Cells[0].BackColor = System.Drawing.Color.Coral;
+                GrdvAccion.Rows[GrdvAccion.SelectedIndex].Cells[0].BackColor = System.Drawing.Color.Gray;
+
+                pnlEfecto.Visible = false;
+                pnlRespuesta.Visible = false;
+                pnlContacto.Visible = false;
+                ViewState["CodigoAccion"] = "0";
+                ViewState["CodigoEfecto"] = "0";
+                ViewState["CodigoRespuesta"] = "0";
+                ViewState["CodigoContacto"] = "0";
+                TxtEfecto.Text = "";
+                TxtRespuesta.Text = "";
+                TxtContacto.Text = "";
+
                 _codigo = int.Parse(GrdvAccion.DataKeys[GrdvAccion.SelectedIndex].Values["Codigo"].ToString());
                 ViewState["CodigoAccion"] = _codigo;
                 _dtbaccion = (DataTable)ViewState["ArbolAccion"];
                 _result = _dtbaccion.Select("Codigo='" + _codigo + "'").FirstOrDefault();
                 TxtAccion.Text = _result["Descripcion"].ToString();
-            }
-            catch (Exception ex)
-            {
-                Lblerror.Text = ex.ToString();
-            }
-        }
+                ViewState["NombreAccion"] = TxtAccion.Text;
 
-        protected void ChkEfectivo_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-                _chkefectivo = (CheckBox)(_gvrow.Cells[4].FindControl("ChkEfectivo"));
-                _dtbrespuesta = (DataTable)ViewState["ArbolRespuesta"];
-                _codigo = int.Parse(GrdvRespuesta.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
-                _result = _dtbrespuesta.Select("Codigo='" + _codigo + "'").FirstOrDefault();
-                _result["auxi2"] = _chkefectivo.Checked ? "1" : "0";
-                _dtbrespuesta.AcceptChanges();
-                ViewState["ArbolRespuesta"] = _dtbrespuesta;
+                _dtbefecto = (DataTable)ViewState["ArbolEfecto"];
+                _dtbefectotemp = (DataTable)ViewState["ArbolEfectoTemp"];
+                _dtbefectotemp.Clear();
+                _dr = _dtbefecto.Select("CodigoAccion='" + ViewState["CodigoAccion"].ToString() + "'");
+
+                foreach (DataRow _fila in _dr)
+                {
+                    _filagre = _dtbefectotemp.NewRow();
+                    _filagre["Codigo"] = _fila[0].ToString();
+                    _filagre["CodigoAccion"] = _fila[1].ToString();
+                    _filagre["CodigoCatalogo"] = _fila[2].ToString();
+                    _filagre["Descripcion"] = _fila[3].ToString();
+                    _filagre["Estado"] = _fila[4].ToString();
+                    _filagre["auxv1"] = _fila[5].ToString();
+                    _filagre["auxv2"] = _fila[6].ToString();
+                    _filagre["auxv3"] = _fila[7].ToString();
+                    _filagre["auxv4"] = _fila[8].ToString();
+                    _filagre["auxv5"] = _fila[9].ToString();
+                    _filagre["auxi1"] = _fila[10].ToString();
+                    _filagre["auxi2"] = _fila[11].ToString();
+                    _filagre["auxi3"] = _fila[12].ToString();
+                    _filagre["auxi4"] = _fila[13].ToString();
+                    _filagre["auxi5"] = _fila[14].ToString();
+                    _dtbefectotemp.Rows.Add(_filagre);
+                    _dtbefectotemp.DefaultView.Sort = "Descripcion";
+                }
+
+                if (_dtbefectotemp.Rows.Count > 0) pnlEfecto.Visible = true;
+
+                GrdvEfecto.DataSource = _dtbefectotemp;
+                GrdvEfecto.DataBind();
             }
             catch (Exception ex)
             {
@@ -856,12 +925,19 @@
                 _filagre = _tblagre.NewRow();
                 _filagre["Codigo"] = _maxcodigo + 1;
                 _filagre["CodigoAccion"] = ViewState["CodigoAccion"].ToString();
+                _filagre["CodigoCatalogo"] = ViewState["codigoCatalogo"].ToString();
                 _filagre["Descripcion"] = TxtEfecto.Text.Trim().ToUpper();
                 _filagre["Estado"] = "Activo";
-                _filagre["auxv1"] = "NO";
+                _filagre["auxv1"] = "";
                 _filagre["auxv2"] = "";
-                _filagre["auxi1"] = ViewState["codigoCatalogo"].ToString();
-                _filagre["auxi2"] = TxtDiaLatencia.Text;
+                _filagre["auxv3"] = "";
+                _filagre["auxv4"] = "";
+                _filagre["auxv5"] = "";
+                _filagre["auxi1"] = "0";
+                _filagre["auxi2"] = "0";
+                _filagre["auxi3"] = "0";
+                _filagre["auxi4"] = "0";
+                _filagre["auxi5"] = "0";
                 _tblagre.Rows.Add(_filagre);
                 ViewState["ArbolEfecto"] = _tblagre;
                 _dtbefectotemp = (DataTable)ViewState["ArbolEfectoTemp"];
@@ -873,12 +949,19 @@
                     _filagretem = _dtbefectotemp.NewRow();
                     _filagretem["Codigo"] = _fila[0].ToString();
                     _filagretem["CodigoAccion"] = _fila[1].ToString();
-                    _filagretem["Descripcion"] = _fila[2].ToString();
-                    _filagretem["Estado"] = _fila[3].ToString();
-                    _filagre["auxv1"] = _fila[4].ToString();
-                    _filagre["auxv2"] = _fila[5].ToString();
-                    _filagre["auxi1"] = _fila[6].ToString();
-                    _filagre["auxi2"] = _fila[7].ToString();
+                    _filagretem["CodigoCatalogo"] = _fila[2].ToString();
+                    _filagretem["Descripcion"] = _fila[3].ToString();
+                    _filagretem["Estado"] = _fila[4].ToString();
+                    _filagre["auxv1"] = _fila[5].ToString();
+                    _filagre["auxv2"] = _fila[6].ToString();
+                    _filagre["auxv3"] = _fila[7].ToString();
+                    _filagre["auxv4"] = _fila[8].ToString();
+                    _filagre["auxv5"] = _fila[9].ToString();
+                    _filagre["auxi1"] = _fila[10].ToString();
+                    _filagre["auxi2"] = _fila[11].ToString();
+                    _filagre["auxi3"] = _fila[12].ToString();
+                    _filagre["auxi4"] = _fila[13].ToString();
+                    _filagre["auxi5"] = _fila[14].ToString();
                     _dtbefectotemp.Rows.Add(_filagretem);
                 }
 
@@ -887,7 +970,6 @@
                 GrdvEfecto.DataSource = _dtbefectotemp;
                 GrdvEfecto.DataBind();
                 TxtEfecto.Text = "";
-                TxtDiaLatencia.Text = "0";
                 FunLimpiarCampos(1);
             }
             catch (Exception ex)
@@ -902,11 +984,10 @@
                 if (e.Row.RowIndex >= 0)
                 {
                     _chkestado = (CheckBox)(e.Row.Cells[1].FindControl("ChkEstEfecto"));
-                    _chkcomisiona = (CheckBox)(e.Row.Cells[2].FindControl("ChkComisiona"));
-                    _imgborrar = (ImageButton)(e.Row.Cells[4].FindControl("ImgDelEfecto"));
+                    _imgborrar = (ImageButton)(e.Row.Cells[3].FindControl("ImgDelEfecto"));
                     _codigo = int.Parse(GrdvEfecto.DataKeys[e.Row.RowIndex].Values["Codigo"].ToString());
-                    _sql = "Select Comisiona=aref_auxv1,Estado=case aref_estado when 1 then 'Activo' else 'Inactivo' end from SoftCob_EFECTO where ";
-                    _sql += "aref_auxi1=" + ViewState["codigoCatalogo"].ToString() + " and AREF_CODIGO=" + _codigo + " and ";
+                    _sql = "Select Comisiona=aref_auxv1,Estado=case aref_estado when 1 then 'Activo' else 'Inactivo' end from SoftCob_ARBOL_EFECTO where ";
+                    _sql += "cpcecodigo=" + ViewState["codigoCatalogo"].ToString() + " and AREF_CODIGO=" + _codigo + " and ";
                     _sql += "ARAC_CODIGO=" + ViewState["CodigoAccion"].ToString();
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
@@ -915,14 +996,10 @@
                         _chkestado.Checked = _dts.Tables[0].Rows[0]["Estado"].ToString() == "Activo" ? true : false;
                         _imgborrar.Enabled = false;
                         _imgborrar.ImageUrl = "~/Botones/eliminargris.png";
-                        _chkcomisiona.Checked = _dts.Tables[0].Rows[0]["Comisiona"].ToString() == "SI" ? true : false;
-                        _chkcomisiona.Text = _dts.Tables[0].Rows[0]["Comisiona"].ToString();
                     }
                     else
                     {
                         _chkestado.Checked = true;
-                        _chkcomisiona.Checked = false;
-                        _chkcomisiona.Text = "NO";
                     }
                 }
             }
@@ -949,66 +1026,32 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-        protected void ChkComisiona_CheckedChanged(object sender, EventArgs e)
+        protected void GrdvEfecto_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-                _chkcomisiona = (CheckBox)(_gvrow.Cells[2].FindControl("ChkComisiona"));
-                _dtbefecto = (DataTable)ViewState["ArbolEfecto"];
-                _codigo = int.Parse(GrdvEfecto.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
-                _result = _dtbefecto.Select("Codigo='" + _codigo + "'").FirstOrDefault();
-                _result["auxv1"] = _chkcomisiona.Checked ? "SI" : "NO";
-                _chkcomisiona.Text = _chkcomisiona.Checked ? "SI" : "NO";
-                _dtbefecto.AcceptChanges();
-                ViewState["ArbolEfecto"] = _dtbefecto;
-            }
-            catch (Exception ex)
-            {
-                Lblerror.Text = ex.ToString();
-            }
-        }
-
-        protected void ImgEdiEfecto_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-                _dtbefecto = (DataTable)ViewState["ArbolEfecto"];
-                _codigo = int.Parse(GrdvEfecto.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
-                ViewState["CodigoEfecto"] = _codigo;
-                _result = _dtbefecto.Select("Codigo='" + _codigo + "'").FirstOrDefault();
-                TxtEfecto.Text = _result["Descripcion"].ToString();
-                ViewState["DescipcionEfecto"] = _result["Descripcion"].ToString();
-                TxtDiaLatencia.Text = _result["auxi2"].ToString();
-            }
-            catch (Exception ex)
-            {
-                Lblerror.Text = ex.ToString();
-            }
-        }
-        protected void ImgSelecEfecto_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                Lblerror.Text = "";
                 ViewState["CodigoEfecto"] = "0";
                 ViewState["CodigoRespuesta"] = "0";
                 ViewState["CodigoContacto"] = "0";
                 TxtRespuesta.Text = "";
                 TxtContacto.Text = "";
 
-                GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
                 pnlRespuesta.Visible = false;
                 pnlContacto.Visible = false;
 
-                foreach (GridViewRow _fr in GrdvEfecto.Rows)
+                foreach (GridViewRow fr in GrdvEfecto.Rows)
                 {
-                    _fr.Cells[0].BackColor = System.Drawing.Color.White;
+                    fr.Cells[0].BackColor = System.Drawing.Color.White;
                 }
 
-                GrdvEfecto.Rows[_gvrow.RowIndex].Cells[0].BackColor = System.Drawing.Color.Beige;
-                ViewState["CodigoEfecto"] = int.Parse(GrdvEfecto.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
+                GrdvEfecto.Rows[GrdvEfecto.SelectedIndex].Cells[0].BackColor = System.Drawing.Color.Beige;
+
+                _codigo = int.Parse(GrdvEfecto.DataKeys[GrdvEfecto.SelectedIndex].Values["Codigo"].ToString());
+                ViewState["CodigoEfecto"] = _codigo;
+                _dtbefecto = (DataTable)ViewState["ArbolEfecto"];
+                _result = _dtbefecto.Select("Codigo='" + _codigo + "'").FirstOrDefault();
+                TxtEfecto.Text = _result["Descripcion"].ToString();
+                ViewState["DescipcionEfecto"] = _result["Descripcion"].ToString();
 
                 _dtbrespuesta = (DataTable)ViewState["ArbolRespuesta"];
                 _dtbrespuestatemp = (DataTable)ViewState["ArbolRespuestaTemp"];
@@ -1020,14 +1063,23 @@
                     _filagre = _dtbrespuestatemp.NewRow();
                     _filagre["Codigo"] = _fila[0].ToString();
                     _filagre["CodigoEfecto"] = _fila[1].ToString();
-                    _filagre["Descripcion"] = _fila[2].ToString();
-                    _filagre["Estado"] = _fila[3].ToString();
-                    _filagre["Pago"] = _fila[4].ToString();
-                    _filagre["LLamar"] = _fila[5].ToString();
-                    _filagre["auxv1"] = _fila[6].ToString();
-                    _filagre["auxv2"] = _fila[7].ToString();
-                    _filagre["auxi1"] = _fila[8].ToString();
-                    _filagre["auxi2"] = _fila[9].ToString();
+                    _filagre["CodigoCatalogo"] = _fila[2].ToString();
+                    _filagre["Descripcion"] = _fila[3].ToString();
+                    _filagre["Estado"] = _fila[4].ToString();
+                    _filagre["Pago"] = _fila[5].ToString();
+                    _filagre["LLamar"] = _fila[6].ToString();
+                    _filagre["Efectivo"] = _fila[7].ToString();
+                    _filagre["Comisiona"] = _fila[8].ToString();
+                    _filagre["auxv1"] = _fila[9].ToString();
+                    _filagre["auxv2"] = _fila[10].ToString();
+                    _filagre["auxv3"] = _fila[11].ToString();
+                    _filagre["auxv4"] = _fila[12].ToString();
+                    _filagre["auxv5"] = _fila[13].ToString();
+                    _filagre["auxi1"] = _fila[14].ToString();
+                    _filagre["auxi2"] = _fila[15].ToString();
+                    _filagre["auxi3"] = _fila[16].ToString();
+                    _filagre["auxi4"] = _fila[17].ToString();
+                    _filagre["auxi5"] = _fila[18].ToString();
                     _dtbrespuestatemp.Rows.Add(_filagre);
                     _dtbrespuestatemp.DefaultView.Sort = "Descripcion";
                 }
@@ -1042,7 +1094,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ImgDelEfecto_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -1075,12 +1126,19 @@
                         _filagre = _dtbefectotemp.NewRow();
                         _filagre["Codigo"] = _fila[0].ToString();
                         _filagre["CodigoAccion"] = _fila[1].ToString();
-                        _filagre["Descripcion"] = _fila[2].ToString();
-                        _filagre["Estado"] = _fila[3].ToString();
-                        _filagre["auxv1"] = _fila[4].ToString();
-                        _filagre["auxv2"] = _fila[5].ToString();
-                        _filagre["auxi1"] = _fila[6].ToString();
-                        _filagre["auxi2"] = _fila[7].ToString();
+                        _filagre["CodigoCatalogo"] = _fila[2].ToString();
+                        _filagre["Descripcion"] = _fila[3].ToString();
+                        _filagre["Estado"] = _fila[4].ToString();
+                        _filagre["auxv1"] = _fila[5].ToString();
+                        _filagre["auxv2"] = _fila[6].ToString();
+                        _filagre["auxv3"] = _fila[7].ToString();
+                        _filagre["auxv4"] = _fila[8].ToString();
+                        _filagre["auxv5"] = _fila[9].ToString();
+                        _filagre["auxi1"] = _fila[10].ToString();
+                        _filagre["auxi2"] = _fila[11].ToString();
+                        _filagre["auxi3"] = _fila[12].ToString();
+                        _filagre["auxi4"] = _fila[13].ToString();
+                        _filagre["auxi5"] = _fila[14].ToString();
                         _dtbefectotemp.Rows.Add(_filagre);
                         _dtbefectotemp.DefaultView.Sort = "Descripcion";
                     }
@@ -1139,7 +1197,6 @@
                 _dtbefecto = (DataTable)ViewState["ArbolEfecto"];
                 _change = _dtbefecto.Select("Codigo='" + ViewState["CodigoEfecto"].ToString() + "'").FirstOrDefault();
                 _change["Descripcion"] = TxtEfecto.Text.Trim().ToUpper();
-                _change["auxi2"] = TxtDiaLatencia.Text;
                 _dtbefecto.AcceptChanges();
                 ViewState["ArbolEfecto"] = _dtbefecto;
                 _dtbefectotemp = (DataTable)ViewState["ArbolEfectoTemp"];
@@ -1151,12 +1208,19 @@
                     _filagre = _dtbefectotemp.NewRow();
                     _filagre["Codigo"] = _fila[0].ToString();
                     _filagre["CodigoAccion"] = _fila[1].ToString();
-                    _filagre["Descripcion"] = _fila[2].ToString();
-                    _filagre["Estado"] = _fila[3].ToString();
-                    _filagre["auxv1"] = _fila[4].ToString();
-                    _filagre["auxv2"] = _fila[5].ToString();
-                    _filagre["auxi1"] = _fila[6].ToString();
-                    _filagre["auxi2"] = _fila[7].ToString();
+                    _filagre["CodigoCatalogo"] = _fila[2].ToString();
+                    _filagre["Descripcion"] = _fila[3].ToString();
+                    _filagre["Estado"] = _fila[4].ToString();
+                    _filagre["auxv1"] = _fila[5].ToString();
+                    _filagre["auxv2"] = _fila[6].ToString();
+                    _filagre["auxv3"] = _fila[7].ToString();
+                    _filagre["auxv4"] = _fila[8].ToString();
+                    _filagre["auxv5"] = _fila[9].ToString();
+                    _filagre["auxi1"] = _fila[10].ToString();
+                    _filagre["auxi2"] = _fila[11].ToString();
+                    _filagre["auxi3"] = _fila[12].ToString();
+                    _filagre["auxi4"] = _fila[13].ToString();
+                    _filagre["auxi5"] = _fila[14].ToString();
                     _dtbefectotemp.Rows.Add(_filagre);
                     _dtbefectotemp.DefaultView.Sort = "Descripcion";
                 }
@@ -1164,7 +1228,6 @@
                 GrdvEfecto.DataSource = _dtbefectotemp;
                 GrdvEfecto.DataBind();
                 TxtEfecto.Text = "";
-                TxtDiaLatencia.Text = "0";
                 FunLimpiarCampos(1);
             }
             catch (Exception ex)
@@ -1214,14 +1277,23 @@
                 _filagre = _tblagre.NewRow();
                 _filagre["Codigo"] = _maxcodigo + 1;
                 _filagre["CodigoEfecto"] = ViewState["CodigoEfecto"].ToString();
+                _filagre["CodigoCatalogo"] = ViewState["codigoCatalogo"].ToString();
                 _filagre["Descripcion"] = TxtRespuesta.Text.Trim().ToUpper();
                 _filagre["Estado"] = "Activo";
                 _filagre["Pago"] = "NO";
                 _filagre["Llamar"] = "NO";
+                _filagre["Efectivo"] = "NO";
+                _filagre["Comisiona"] = "NO";
                 _filagre["auxv1"] = "";
                 _filagre["auxv2"] = "";
-                _filagre["auxi1"] = ViewState["codigoCatalogo"].ToString();
+                _filagre["auxv3"] = "";
+                _filagre["auxv4"] = "";
+                _filagre["auxv5"] = "";
+                _filagre["auxi1"] = "0";
                 _filagre["auxi2"] = "0";
+                _filagre["auxi3"] = "0";
+                _filagre["auxi4"] = "0";
+                _filagre["auxi5"] = "0";
                 _tblagre.Rows.Add(_filagre);
 
                 ViewState["ArbolRespuesta"] = _tblagre;
@@ -1234,14 +1306,23 @@
                     _filagretem = _dtbrespuestatemp.NewRow();
                     _filagretem["Codigo"] = _fila[0].ToString();
                     _filagretem["CodigoEfecto"] = _fila[1].ToString();
-                    _filagretem["Descripcion"] = _fila[2].ToString();
-                    _filagretem["Estado"] = _fila[3].ToString();
-                    _filagretem["Pago"] = _fila[4].ToString();
-                    _filagretem["LLamar"] = _fila[5].ToString();
-                    _filagretem["auxv1"] = _fila[6].ToString();
-                    _filagretem["auxv2"] = _fila[7].ToString();
-                    _filagretem["auxi1"] = _fila[8].ToString();
-                    _filagretem["auxi2"] = _fila[9].ToString();
+                    _filagretem["CodigoCatalogo"] = _fila[2].ToString();
+                    _filagretem["Descripcion"] = _fila[3].ToString();
+                    _filagretem["Estado"] = _fila[4].ToString();
+                    _filagretem["Pago"] = _fila[5].ToString();
+                    _filagretem["LLamar"] = _fila[6].ToString();
+                    _filagretem["Efectivo"] = _fila[7].ToString();
+                    _filagretem["Comisiona"] = _fila[8].ToString();
+                    _filagretem["auxv1"] = _fila[9].ToString();
+                    _filagretem["auxv2"] = _fila[10].ToString();
+                    _filagretem["auxv3"] = _fila[11].ToString();
+                    _filagretem["auxv4"] = _fila[12].ToString();
+                    _filagretem["auxv5"] = _fila[13].ToString();
+                    _filagretem["auxi1"] = _fila[14].ToString();
+                    _filagretem["auxi2"] = _fila[15].ToString();
+                    _filagretem["auxi3"] = _fila[16].ToString();
+                    _filagretem["auxi4"] = _fila[17].ToString();
+                    _filagretem["auxi5"] = _fila[18].ToString();
                     _dtbrespuestatemp.Rows.Add(_filagretem);
                 }
 
@@ -1275,12 +1356,15 @@
 
                 if (ViewState["ArbolRespuesta"] != null)
                 {
-                    _tblbuscar = (DataTable)ViewState["ArbolRespuesta"];
-                    _result = _tblbuscar.Select("CodigoEfecto='" + ViewState["CodigoEfecto"].ToString() + "' and Descripcion='" +
-                        TxtRespuesta.Text.Trim().ToUpper() + "'").FirstOrDefault();
-                    _tblbuscar.DefaultView.Sort = "Codigo";
+                    if (ViewState["NombreRespuesta"].ToString() != TxtRespuesta.Text.Trim().ToUpper())
+                    {
+                        _tblbuscar = (DataTable)ViewState["ArbolRespuesta"];
+                        _result = _tblbuscar.Select("CodigoEfecto='" + ViewState["CodigoEfecto"].ToString() + "' and Descripcion='" +
+                            TxtRespuesta.Text.Trim().ToUpper() + "'").FirstOrDefault();
+                        _tblbuscar.DefaultView.Sort = "Codigo";
 
-                    if (_result != null) _lexiste = true;
+                        if (_result != null) _lexiste = true;
+                    }
                 }
 
                 if (_lexiste)
@@ -1304,14 +1388,23 @@
                     _filagre = _dtbrespuestatemp.NewRow();
                     _filagre["Codigo"] = _fila[0].ToString();
                     _filagre["CodigoEfecto"] = _fila[1].ToString();
-                    _filagre["Descripcion"] = _fila[2].ToString();
-                    _filagre["Estado"] = _fila[3].ToString();
-                    _filagre["Pago"] = _fila[4].ToString();
-                    _filagre["LLamar"] = _fila[5].ToString();
-                    _filagre["auxv1"] = _fila[6].ToString();
-                    _filagre["auxv2"] = _fila[7].ToString();
-                    _filagre["auxi1"] = _fila[8].ToString();
-                    _filagre["auxi2"] = _fila[9].ToString();
+                    _filagre["CodigoCatalogo"] = _fila[2].ToString();
+                    _filagre["Descripcion"] = _fila[3].ToString();
+                    _filagre["Estado"] = _fila[4].ToString();
+                    _filagre["Pago"] = _fila[5].ToString();
+                    _filagre["LLamar"] = _fila[6].ToString();
+                    _filagre["Efectivo"] = _fila[7].ToString();
+                    _filagre["Comisiona"] = _fila[8].ToString();
+                    _filagre["auxv1"] = _fila[9].ToString();
+                    _filagre["auxv2"] = _fila[10].ToString();
+                    _filagre["auxv3"] = _fila[11].ToString();
+                    _filagre["auxv4"] = _fila[12].ToString();
+                    _filagre["auxv5"] = _fila[13].ToString();
+                    _filagre["auxi1"] = _fila[14].ToString();
+                    _filagre["auxi2"] = _fila[15].ToString();
+                    _filagre["auxi3"] = _fila[16].ToString();
+                    _filagre["auxi4"] = _fila[17].ToString();
+                    _filagre["auxi5"] = _fila[18].ToString();
                     _dtbrespuestatemp.Rows.Add(_filagre);
                     _dtbrespuestatemp.DefaultView.Sort = "Descripcion";
                 }
@@ -1386,23 +1479,43 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-        protected void ImgEdiRespuesta_Click(object sender, ImageClickEventArgs e)
+        protected void ChkEfectivo_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
                 GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
+                _chkefectivo = (CheckBox)(_gvrow.Cells[4].FindControl("ChkEfectivo"));
                 _dtbrespuesta = (DataTable)ViewState["ArbolRespuesta"];
                 _codigo = int.Parse(GrdvRespuesta.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
-                ViewState["CodigoRespuesta"] = _codigo;
                 _result = _dtbrespuesta.Select("Codigo='" + _codigo + "'").FirstOrDefault();
-                TxtRespuesta.Text = _result["Descripcion"].ToString();
+                _result["Efectivo"] = _chkefectivo.Checked ? "1" : "0";
+                _dtbrespuesta.AcceptChanges();
+                ViewState["ArbolRespuesta"] = _dtbrespuesta;
             }
             catch (Exception ex)
             {
                 Lblerror.Text = ex.ToString();
             }
         }
-        protected void ImgSelecRespuesta_Click(object sender, ImageClickEventArgs e)
+        protected void ChkComisiona_CheckedChanged1(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
+                _chkcomisiona = (CheckBox)(_gvrow.Cells[5].FindControl("ChkComisiona"));
+                _dtbrespuesta = (DataTable)ViewState["ArbolRespuesta"];
+                _codigo = int.Parse(GrdvRespuesta.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
+                _result = _dtbrespuesta.Select("Codigo='" + _codigo + "'").FirstOrDefault();
+                _result["Comisiona"] = _chkcomisiona.Checked ? "1" : "0";
+                _dtbrespuesta.AcceptChanges();
+                ViewState["ArbolRespuesta"] = _dtbrespuesta;
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
+        protected void GrdvRespuesta_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -1410,17 +1523,21 @@
                 ViewState["CodigoContacto"] = "0";
                 TxtRespuesta.Text = "";
                 TxtContacto.Text = "";
-
-                GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
                 pnlContacto.Visible = false;
 
-                foreach (GridViewRow _fr in GrdvRespuesta.Rows)
+                foreach (GridViewRow fr in GrdvRespuesta.Rows)
                 {
-                    _fr.Cells[0].BackColor = System.Drawing.Color.White;
+                    fr.Cells[0].BackColor = System.Drawing.Color.White;
                 }
 
-                GrdvRespuesta.Rows[_gvrow.RowIndex].Cells[0].BackColor = System.Drawing.Color.Coral;
-                ViewState["CodigoRespuesta"] = int.Parse(GrdvRespuesta.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
+                GrdvRespuesta.Rows[GrdvRespuesta.SelectedIndex].Cells[0].BackColor = System.Drawing.Color.Coral;
+                _codigo = int.Parse(GrdvRespuesta.DataKeys[GrdvRespuesta.SelectedIndex].Values["Codigo"].ToString());
+                ViewState["CodigoRespuesta"] = _codigo;
+                _dtbrespuesta = (DataTable)ViewState["ArbolRespuesta"];
+                _result = _dtbrespuesta.Select("Codigo='" + _codigo + "'").FirstOrDefault();
+                TxtRespuesta.Text = _result["Descripcion"].ToString();
+                ViewState["NombreRespuesta"] = TxtRespuesta.Text;
+
                 _dtbcontacto = (DataTable)ViewState["ArbolContacto"];
                 _dtbcontactotemp = (DataTable)ViewState["ArbolContactoTemp"];
                 _dtbcontactotemp.Clear();
@@ -1431,12 +1548,20 @@
                     _filagre = _dtbcontactotemp.NewRow();
                     _filagre["Codigo"] = _fila[0].ToString();
                     _filagre["CodigoRespuesta"] = _fila[1].ToString();
-                    _filagre["Descripcion"] = _fila[2].ToString();
-                    _filagre["Estado"] = _fila[3].ToString();
-                    _filagre["auxv1"] = _fila[4].ToString();
-                    _filagre["auxv2"] = _fila[5].ToString();
-                    _filagre["auxi1"] = _fila[6].ToString();
-                    _filagre["auxi2"] = _fila[7].ToString();
+                    _filagre["CodigoCatalogo"] = _fila[2].ToString();
+                    _filagre["Descripcion"] = _fila[3].ToString();
+                    _filagre["Estado"] = _fila[4].ToString();
+                    _filagre["Pago"] = _fila[5].ToString();
+                    _filagre["auxv1"] = _fila[6].ToString();
+                    _filagre["auxv2"] = _fila[7].ToString();
+                    _filagre["auxv3"] = _fila[8].ToString();
+                    _filagre["auxv4"] = _fila[9].ToString();
+                    _filagre["auxv5"] = _fila[10].ToString();
+                    _filagre["auxi1"] = _fila[11].ToString();
+                    _filagre["auxi2"] = _fila[12].ToString();
+                    _filagre["auxi3"] = _fila[13].ToString();
+                    _filagre["auxi4"] = _fila[14].ToString();
+                    _filagre["auxi5"] = _fila[15].ToString();
                     _dtbcontactotemp.Rows.Add(_filagre);
                     _dtbcontactotemp.DefaultView.Sort = "Descripcion";
                 }
@@ -1515,16 +1640,18 @@
             {
                 if (e.Row.RowIndex >= 0)
                 {
-                    _chkestado = (CheckBox)(e.Row.Cells[1].FindControl("ChkEstRespuesta"));
-                    _chkpago = (CheckBox)(e.Row.Cells[2].FindControl("ChkPago"));
-                    _chkllamar = (CheckBox)(e.Row.Cells[3].FindControl("ChkLlamar"));
-                    _chkefectivo = (CheckBox)(e.Row.Cells[4].FindControl("ChkEfectivo"));
-                    _imgborrar = (ImageButton)(e.Row.Cells[7].FindControl("imgDelRespuesta"));
+                    _chkestado = (CheckBox)(e.Row.Cells[2].FindControl("ChkEstRespuesta"));
+                    _chkpago = (CheckBox)(e.Row.Cells[3].FindControl("ChkPago"));
+                    _chkllamar = (CheckBox)(e.Row.Cells[4].FindControl("ChkLlamar"));
+                    _chkefectivo = (CheckBox)(e.Row.Cells[5].FindControl("ChkEfectivo"));
+                    _chkcomisiona = (CheckBox)(e.Row.Cells[6].FindControl("ChkComisiona"));
+                    _imgborrar = (ImageButton)(e.Row.Cells[7].FindControl("ImgDelRespuesta"));
                     _codigo = int.Parse(GrdvRespuesta.DataKeys[e.Row.RowIndex].Values["Codigo"].ToString());
-                    _sql = "Select Estado=case arre_estado when 1 then 'Activo' else 'Inactivo' end,";
-                    _sql += "Pago = case arre_pago when 1 then 'SI' else 'NO' end,Llamar = case arre_llamar when 1 then 'SI' else 'NO' end,";
-                    _sql += "Efectivo = case arre_auxi2 when 1 then 'SI' else 'NO' end ";
-                    _sql += "from SoftCob_RESPUESTA where arre_auxi1=" + ViewState["codigoCatalogo"].ToString() + " and ARRE_CODIGO=" + _codigo + " and ";
+                    _sql = "SELECT Estado=CASE arre_estado WHEN 1 THEN 'Activo' ELSE 'Inactivo' END,";
+                    _sql += "Pago = CASE arre_pago WHEN 1 THEN 'SI' ELSE 'NO' END,Llamar = CASE arre_llamar WHEN 1 THEN 'SI' ELSE 'NO' END,";
+                    _sql += "Efectivo = CASE arre_efectivo WHEN 1 THEN 'SI' ELSE 'NO' END, ";
+                    _sql += "Comisiona = CASE arre_comisiona WHEN 1 THEN 'SI' ELSE 'NO' END ";
+                    _sql += "FROM SoftCob_ARBOL_RESPUESTA (NOLOCK) WHERE cpcecodigo=" + ViewState["codigoCatalogo"].ToString() + " AND ARRE_CODIGO=" + _codigo + " AND ";
                     _sql += "AREF_CODIGO=" + ViewState["CodigoEfecto"].ToString();
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
@@ -1534,13 +1661,11 @@
                         _chkpago.Checked = _dts.Tables[0].Rows[0]["Pago"].ToString() == "SI" ? true : false;
                         _chkllamar.Checked = _dts.Tables[0].Rows[0]["Llamar"].ToString() == "SI" ? true : false;
                         _chkefectivo.Checked = _dts.Tables[0].Rows[0]["Efectivo"].ToString() == "SI" ? true : false;
+                        _chkcomisiona.Checked = _dts.Tables[0].Rows[0]["Comisiona"].ToString() == "SI" ? true : false;
                         _imgborrar.Enabled = false;
                         _imgborrar.ImageUrl = "~/Botones/eliminargris.png";
                     }
-                    else
-                    {
-                        _chkestado.Checked = true;
-                    }
+                    else _chkestado.Checked = true;
                 }
             }
             catch (Exception ex)
@@ -1646,12 +1771,15 @@
 
                 if (ViewState["ArbolContacto"] != null)
                 {
-                    _tblbuscar = (DataTable)ViewState["ArbolContacto"];
-                    _result = _tblbuscar.Select("CodigoRespuesta='" + ViewState["CodigoRespuesta"].ToString() +
-                        "' and Descripcion='" + TxtContacto.Text.Trim().ToUpper() + "'").FirstOrDefault();
-                    _tblbuscar.DefaultView.Sort = "Codigo";
+                    if (ViewState["NombreContacto"].ToString() != TxtContacto.Text.Trim().ToUpper())
+                    {
+                        _tblbuscar = (DataTable)ViewState["ArbolContacto"];
+                        _result = _tblbuscar.Select("CodigoRespuesta='" + ViewState["CodigoRespuesta"].ToString() +
+                            "' and Descripcion='" + TxtContacto.Text.Trim().ToUpper() + "'").FirstOrDefault();
+                        _tblbuscar.DefaultView.Sort = "Codigo";
 
-                    if (_result != null) _lexiste = true;
+                        if (_result != null) _lexiste = true;
+                    }
                 }
 
                 if (_lexiste)
@@ -1674,12 +1802,20 @@
                     _filagre = _dtbcontactotemp.NewRow();
                     _filagre["Codigo"] = _fila[0].ToString();
                     _filagre["CodigoRespuesta"] = _fila[1].ToString();
-                    _filagre["Descripcion"] = _fila[2].ToString();
-                    _filagre["Estado"] = _fila[3].ToString();
-                    _filagre["auxv1"] = _fila[4].ToString();
-                    _filagre["auxv2"] = _fila[5].ToString();
-                    _filagre["auxi1"] = _fila[6].ToString();
-                    _filagre["auxi2"] = _fila[7].ToString();
+                    _filagre["CodigoCatalogo"] = _fila[2].ToString();
+                    _filagre["Descripcion"] = _fila[3].ToString();
+                    _filagre["Estado"] = _fila[4].ToString();
+                    _filagre["Pago"] = _fila[5].ToString();
+                    _filagre["auxv1"] = _fila[6].ToString();
+                    _filagre["auxv2"] = _fila[7].ToString();
+                    _filagre["auxv3"] = _fila[8].ToString();
+                    _filagre["auxv4"] = _fila[9].ToString();
+                    _filagre["auxv5"] = _fila[10].ToString();
+                    _filagre["auxi1"] = _fila[11].ToString();
+                    _filagre["auxi2"] = _fila[12].ToString();
+                    _filagre["auxi3"] = _fila[13].ToString();
+                    _filagre["auxi4"] = _fila[14].ToString();
+                    _filagre["auxi5"] = _fila[15].ToString();
                     _dtbcontactotemp.Rows.Add(_filagre);
                     _dtbcontactotemp.DefaultView.Sort = "Descripcion";
                 }
@@ -1700,7 +1836,7 @@
             try
             {
                 GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-                _chkestado = (CheckBox)(_gvrow.Cells[1].FindControl("chkEstContacto"));
+                _chkestado = (CheckBox)(_gvrow.Cells[1].FindControl("ChkEstContacto"));
                 _dtbcontacto = (DataTable)ViewState["ArbolContacto"];
                 _codigo = int.Parse(GrdvContacto.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
                 _result = _dtbcontacto.Select("Codigo='" + _codigo + "'").FirstOrDefault();
@@ -1713,23 +1849,47 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
-        protected void ImgEdiContacto_Click(object sender, ImageClickEventArgs e)
+        protected void ChkPagoContac_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
                 GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
+                _chkpago = (CheckBox)(_gvrow.Cells[2].FindControl("ChkPagoContac"));
                 _dtbcontacto = (DataTable)ViewState["ArbolContacto"];
                 _codigo = int.Parse(GrdvContacto.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
-                ViewState["CodigoContacto"] = _codigo;
                 _result = _dtbcontacto.Select("Codigo='" + _codigo + "'").FirstOrDefault();
-                TxtContacto.Text = _result["Descripcion"].ToString();
+                _result["Pago"] = _chkpago.Checked ? "Activo" : "Inactivo";
+                _dtbcontacto.AcceptChanges();
+                ViewState["ArbolContacto"] = _dtbcontacto;
             }
             catch (Exception ex)
             {
                 Lblerror.Text = ex.ToString();
             }
         }
+        protected void GrdvContacto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (GridViewRow fr in GrdvContacto.Rows)
+                {
+                    fr.Cells[0].BackColor = System.Drawing.Color.White;
+                }
+
+                GrdvContacto.Rows[GrdvContacto.SelectedIndex].Cells[0].BackColor = System.Drawing.Color.Coral;
+                _codigo = int.Parse(GrdvContacto.DataKeys[GrdvContacto.SelectedIndex].Values["Codigo"].ToString());
+                ViewState["CodigoContacto"] = _codigo;
+                _dtbcontacto = (DataTable)ViewState["ArbolContacto"];
+                _result = _dtbcontacto.Select("Codigo='" + _codigo + "'").FirstOrDefault();
+                TxtContacto.Text = _result["Descripcion"].ToString();
+                ViewState["NombreContacto"] = TxtContacto.Text.Trim();
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
+
 
         protected void ImgDelContacto_Click(object sender, ImageClickEventArgs e)
         {
@@ -1758,12 +1918,20 @@
                     _filagre = _dtbcontactotemp.NewRow();
                     _filagre["Codigo"] = _fila[0].ToString();
                     _filagre["CodigoRespuesta"] = _fila[1].ToString();
-                    _filagre["Descripcion"] = _fila[2].ToString();
-                    _filagre["Estado"] = _fila[3].ToString();
-                    _filagre["auxv1"] = _fila[4].ToString();
-                    _filagre["auxv2"] = _fila[5].ToString();
-                    _filagre["auxi1"] = _fila[6].ToString();
-                    _filagre["auxi2"] = _fila[7].ToString();
+                    _filagre["CodigoCatalogo"] = _fila[2].ToString();
+                    _filagre["Descripcion"] = _fila[3].ToString();
+                    _filagre["Estado"] = _fila[4].ToString();
+                    _filagre["Pago"] = _fila[5].ToString();
+                    _filagre["auxv1"] = _fila[6].ToString();
+                    _filagre["auxv2"] = _fila[7].ToString();
+                    _filagre["auxv3"] = _fila[8].ToString();
+                    _filagre["auxv4"] = _fila[9].ToString();
+                    _filagre["auxv5"] = _fila[10].ToString();
+                    _filagre["auxi1"] = _fila[11].ToString();
+                    _filagre["auxi2"] = _fila[12].ToString();
+                    _filagre["auxi3"] = _fila[13].ToString();
+                    _filagre["auxi4"] = _fila[14].ToString();
+                    _filagre["auxi5"] = _fila[15].ToString();
                     _dtbcontactotemp.Rows.Add(_filagre);
                     _dtbcontactotemp.DefaultView.Sort = "Descripcion";
                 }
@@ -1790,16 +1958,19 @@
                 if (e.Row.RowIndex >= 0)
                 {
                     _chkestado = (CheckBox)(e.Row.Cells[1].FindControl("ChkEstContacto"));
+                    _chkpago = (CheckBox)(e.Row.Cells[2].FindControl("ChkPagoContac"));
                     _imgborrar = (ImageButton)(e.Row.Cells[3].FindControl("ImgDelContacto"));
                     _codigo = int.Parse(GrdvContacto.DataKeys[e.Row.RowIndex].Values["Codigo"].ToString());
-                    _sql = "Select Estado=case arco_estado when 1 then 'Activo' else 'Inactivo' end from SoftCob_CONTACTO where ";
-                    _sql += "arco_auxi1=" + ViewState["codigoCatalogo"].ToString() + " and ARCO_CODIGO=" + _codigo + " and ";
+                    _sql = "SELECT Estado=case arco_estado WHEN 1 THEN 'Activo' ELSE 'Inactivo' END,";
+                    _sql += "Pago = CASE arco_pago WHEN 1 THEN 'SI' ELSE 'NO' END FROM SoftCob_ARBOL_CONTACTO (NOLOCK) WHERE ";
+                    _sql += "cpcecodigo=" + ViewState["codigoCatalogo"].ToString() + " AND ARCO_CODIGO=" + _codigo + " AND ";
                     _sql += "ARRE_CODIGO=" + ViewState["CodigoRespuesta"].ToString();
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
                         _chkestado.Checked = _dts.Tables[0].Rows[0]["Estado"].ToString() == "Activo" ? true : false;
+                        _chkpago.Checked = _dts.Tables[0].Rows[0]["Pago"].ToString() == "SI" ? true : false;
                         _imgborrar.Enabled = false;
                         _imgborrar.ImageUrl = "~/Botones/eliminargris.png";
                     }
@@ -1854,12 +2025,19 @@
                             _filagre = _dtbefectotemp.NewRow();
                             _filagre["Codigo"] = _fila[0].ToString();
                             _filagre["CodigoAccion"] = _fila[1].ToString();
-                            _filagre["Descripcion"] = _fila[2].ToString();
-                            _filagre["Estado"] = _fila[3].ToString() == "Activo" ? true : false;
-                            _filagre["auxv1"] = _fila[4].ToString();
-                            _filagre["auxv2"] = _fila[5].ToString();
-                            _filagre["auxi1"] = _fila[6].ToString();
-                            _filagre["auxi2"] = _fila[7].ToString();
+                            _filagre["CodigoCatalogo"] = _fila[2].ToString();
+                            _filagre["Descripcion"] = _fila[3].ToString();
+                            _filagre["Estado"] = _fila[4].ToString() == "Activo" ? true : false;
+                            _filagre["auxv1"] = _fila[5].ToString();
+                            _filagre["auxv2"] = _fila[6].ToString();
+                            _filagre["auxv3"] = _fila[7].ToString();
+                            _filagre["auxv4"] = _fila[8].ToString();
+                            _filagre["auxv5"] = _fila[9].ToString();
+                            _filagre["auxi1"] = _fila[10].ToString();
+                            _filagre["auxi2"] = _fila[11].ToString();
+                            _filagre["auxi3"] = _fila[12].ToString();
+                            _filagre["auxi4"] = _fila[13].ToString();
+                            _filagre["auxi5"] = _fila[14].ToString();
 
                             _dtbefectotemp.Rows.Add(_filagre);
                             _dtbefectotemp.DefaultView.Sort = "Descripcion";
@@ -1870,14 +2048,23 @@
                                 _filagretem = _dtbrespuestatemp.NewRow();
                                 _filagretem["Codigo"] = _filrow[0].ToString();
                                 _filagretem["CodigoEfecto"] = _filrow[1].ToString();
-                                _filagretem["Descripcion"] = _filrow[2].ToString();
-                                _filagretem["Estado"] = _filrow[3].ToString() == "Activo" ? true : false;
-                                _filagretem["Pago"] = _filrow[4].ToString() == "SI" ? true : false;
-                                _filagretem["LLamar"] = _filrow[5].ToString() == "SI" ? true : false;
-                                _filagretem["auxv1"] = _filrow[6].ToString();
-                                _filagretem["auxv2"] = _filrow[7].ToString();
-                                _filagretem["auxi1"] = _filrow[8].ToString();
-                                _filagretem["auxi2"] = _filrow[9].ToString();
+                                _filagretem["CodigoCatalogo"] = _filrow[2].ToString();
+                                _filagretem["Descripcion"] = _filrow[3].ToString();
+                                _filagretem["Estado"] = _filrow[4].ToString() == "Activo" ? true : false;
+                                _filagretem["Pago"] = _filrow[5].ToString() == "SI" ? true : false;
+                                _filagretem["LLamar"] = _filrow[6].ToString() == "SI" ? true : false;
+                                _filagretem["Efectivo"] = _filrow[7].ToString() == "SI" ? true : false;
+                                _filagretem["Comisiona"] = _filrow[8].ToString() == "SI" ? true : false;
+                                _filagretem["auxv1"] = _filrow[9].ToString();
+                                _filagretem["auxv2"] = _filrow[10].ToString();
+                                _filagretem["auxv3"] = _filrow[11].ToString();
+                                _filagretem["auxv4"] = _filrow[12].ToString();
+                                _filagretem["auxv5"] = _filrow[13].ToString();
+                                _filagretem["auxi1"] = _filrow[14].ToString();
+                                _filagretem["auxi2"] = _filrow[15].ToString();
+                                _filagretem["auxi3"] = _filrow[16].ToString();
+                                _filagretem["auxi4"] = _filrow[17].ToString();
+                                _filagretem["auxi5"] = _filrow[18].ToString();
                                 _dtbrespuestatemp.Rows.Add(_filagretem);
                                 _dtbrespuestatemp.DefaultView.Sort = "Descripcion";
                                 _drtempx = _dtbcontacto.Select("CodigoRespuesta='" + _filrow[0].ToString() + "'");
@@ -1887,12 +2074,20 @@
                                     _filagretemx = _dtbcontactotemp.NewRow();
                                     _filagretemx["Codigo"] = _filfil[0].ToString();
                                     _filagretemx["CodigoRespuesta"] = _filfil[1].ToString();
-                                    _filagretemx["Descripcion"] = _filfil[2].ToString();
-                                    _filagretemx["Estado"] = _filfil[3].ToString() == "Activo" ? true : false;
-                                    _filagretemx["auxv1"] = _filfil[4].ToString();
-                                    _filagretemx["auxv2"] = _filfil[5].ToString();
-                                    _filagretemx["auxi1"] = _filfil[6].ToString();
-                                    _filagretemx["auxi2"] = _filfil[7].ToString();
+                                    _filagretemx["CodigoCatalogo"] = _filfil[2].ToString();
+                                    _filagretemx["Descripcion"] = _filfil[3].ToString();
+                                    _filagretemx["Estado"] = _filfil[4].ToString() == "Activo" ? true : false;
+                                    _filagretemx["Pago"] = _filfil[5].ToString() == "Activo" ? true : false;
+                                    _filagretemx["auxv1"] = _filfil[6].ToString();
+                                    _filagretemx["auxv2"] = _filfil[7].ToString();
+                                    _filagretemx["auxv3"] = _filfil[8].ToString();
+                                    _filagretemx["auxv4"] = _filfil[9].ToString();
+                                    _filagretemx["auxv5"] = _filfil[10].ToString();
+                                    _filagretemx["auxi1"] = _filfil[11].ToString();
+                                    _filagretemx["auxi2"] = _filfil[12].ToString();
+                                    _filagretemx["auxi3"] = _filfil[13].ToString();
+                                    _filagretemx["auxi4"] = _filfil[14].ToString();
+                                    _filagretemx["auxi5"] = _filfil[15].ToString();
                                     _dtbcontactotemp.Rows.Add(_filagretemx);
                                     _dtbcontactotemp.DefaultView.Sort = "Descripcion";
                                 }

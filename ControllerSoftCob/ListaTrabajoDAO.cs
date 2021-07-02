@@ -449,7 +449,7 @@
         {
             try
             {
-                var query = from Accion in _dtb.SoftCob_ACCION
+                var query = from Accion in _dtb.SoftCob_ARBOL_ACCION
                             where Accion.arac_estado == true
                             select new ArbolContactoEfectivo
                             {
