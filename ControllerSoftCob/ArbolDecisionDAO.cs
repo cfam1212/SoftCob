@@ -159,7 +159,7 @@
             }
         }
 
-        public void FunEditArbolAccion(SoftCob_ACCION _datos)
+        public void FunEditArbolAccion(SoftCob_ARBOL_ACCION _datos)
         {
             try
             {

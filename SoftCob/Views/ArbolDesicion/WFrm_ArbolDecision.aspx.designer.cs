@@ -204,33 +204,6 @@ namespace SoftCob.Views.ArbolDesicion
         protected global::System.Web.UI.WebControls.ImageButton ImgModiEfecto;
 
         /// <summary>
-        /// Control updEtiquetaDias.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updEtiquetaDias;
-
-        /// <summary>
-        /// Control TxtDiaLatencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDiaLatencia;
-
-        /// <summary>
-        /// Control TxtDiaLatencia_FilteredTextBoxExtender.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender TxtDiaLatencia_FilteredTextBoxExtender;
-
-        /// <summary>
         /// Control updEfecto.
         /// </summary>
         /// <remarks>

@@ -34,14 +34,6 @@
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_PRODUCTOS_CEDENTE_SoftCob_CEDENTE" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_CATALOGO_PRODUCTOS_CEDENTE" Width="1.5" PointX="5.25" PointY="18" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_CATALOGO_PRODUCTOS_CEDENTE_SoftCob_PRODUCTOS_CEDENTE" />
-        <EntityTypeShape EntityType="SoftCobModel.SoftCob_ACCION" Width="1.5" PointX="7.5" PointY="19.75" />
-        <AssociationConnector Association="SoftCobModel.FK_SoftCob_ACCION_SoftCob_CATALOGO_PRODUCTOS_CEDENTE" />
-        <EntityTypeShape EntityType="SoftCobModel.SoftCob_CONTACTO" Width="1.5" PointX="14.25" PointY="20.5" />
-        <EntityTypeShape EntityType="SoftCobModel.SoftCob_EFECTO" Width="1.5" PointX="9.75" PointY="20.375" />
-        <EntityTypeShape EntityType="SoftCobModel.SoftCob_RESPUESTA" Width="1.5" PointX="12" PointY="20.25" />
-        <AssociationConnector Association="SoftCobModel.FK_SoftCob_EFECTO_SoftCob_ACCION" />
-        <AssociationConnector Association="SoftCobModel.FK_SoftCob_CONTACTO_SoftCob_RESPUESTA" />
-        <AssociationConnector Association="SoftCobModel.FK_SoftCob_RESPUESTA_SoftCob_EFECTO" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_SPEECH_CABECERA" Width="1.5" PointX="15.375" PointY="14" />
         <EntityTypeShape EntityType="SoftCobModel.SoftCob_SPEECH_DETALLE" Width="1.5" PointX="17.625" PointY="14.25" />
         <AssociationConnector Association="SoftCobModel.FK_SoftCob_SPEECH_DETALLE_SoftCob_SPEECH_CABECERA" />
