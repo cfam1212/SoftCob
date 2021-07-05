@@ -66,6 +66,7 @@
                     Session["IN-CALL"] = "NO";
                     Session["PermisoEspecial"] = _user.usua_permisosespeciales ? "SI" : "NO";
                     Session["CedeCodigo"] = new ControllerDAO().FunGetGestor(_usucodigo);
+                    Session["CrearParam"] = _user.SoftCob_PERFIL.perf_crearparametro == true ? "SI" : "NO";
 
                     //Verificar si el password no esta 
                     if (_user.usua_caducapass)

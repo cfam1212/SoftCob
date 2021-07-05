@@ -182,7 +182,7 @@
                                         <h5>Nombres:</h5>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TxtNombres" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="3" Width="100%" style="margin-bottom: 0"></asp:TextBox>
+                                        <asp:TextBox ID="TxtNombres" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="3" Width="100%" Style="margin-bottom: 0"></asp:TextBox>
                                     </td>
                                     <td>
                                         <h5>Apellidos:</h5>

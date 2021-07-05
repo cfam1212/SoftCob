@@ -94,6 +94,83 @@
                 "'top-right'); alertify.warning('" + message + "', 5, function(){console.log('dismissed');});", true);
         }
 
+        public void FunShowJSMessage(string message, Control pagina, string tipo, string position)
+        {
+            switch (tipo)
+            {
+                case "S":
+                    if (position == "C")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-center'); alertify.success('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    if (position == "R")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-right'); alertify.success('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    if (position == "L")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-left'); alertify.success('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    break;
+                case "W":
+                    if (position == "C")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-center'); alertify.warning('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    if (position == "R")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-right'); alertify.warning('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    if (position == "L")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-left'); alertify.warning('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    break;
+                case "E":
+                    if (position == "C")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-center'); alertify.error('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    if (position == "R")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-right'); alertify.error('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    if (position == "L")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-left'); alertify.error('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    break;
+                case "M":
+                    if (position == "C")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-center'); alertify.message('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    if (position == "R")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-right'); alertify.message('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    if (position == "L")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-left'); alertify.message('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    break;
+                case "N":
+                    if (position == "C")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-center'); alertify.notify('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    if (position == "R")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-right'); alertify.notify('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    if (position == "L")
+                        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+                            "'top-left'); alertify.notify('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+                    break;
+            }
+        }
+
         public int FunBetween(int valorI, int valorF, int rinicio, int rfinal)
         {
             if (rinicio >= valorI && rinicio <= valorF) valorx = 1;
