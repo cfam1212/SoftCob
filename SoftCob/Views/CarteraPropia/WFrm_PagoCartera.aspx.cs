@@ -227,7 +227,8 @@
                 DateTime dtime = DateTime.Now;
                 _fechaactual = dtime.ToString("MM/dd/yyyy");
 
-                if (DateTime.ParseExact(TxtFechaPago.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture) > DateTime.ParseExact(_fechaactual, "MM/dd/yyyy", CultureInfo.InvariantCulture))
+                if (DateTime.ParseExact(TxtFechaPago.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture) > DateTime.ParseExact(_fechaactual, 
+                    "MM/dd/yyyy", CultureInfo.InvariantCulture))
                 {
                     new FuncionesDAO().FunShowJSMessage("La Fecha de Pago no puede ser mayor a la Fecha actual..!", this);
                     return;
@@ -276,18 +277,18 @@
 
                 _rangodias = _dts.Tables[0].Rows[0]["DiasMora"].ToString();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(105, int.Parse(ViewState["CodCatalogo"].ToString()),
-                    int.Parse(ViewState["CodigoGEST"].ToString()), 0, "", TxtFechaPago.Text,
-                    ViewState["operacion"].ToString(), _conexion);
+                //_dts = new ConsultaDatosDAO().FunConsultaDatos(105, int.Parse(ViewState["CodCatalogo"].ToString()),
+                //    int.Parse(ViewState["CodigoGEST"].ToString()), 0, "", TxtFechaPago.Text,
+                //    ViewState["operacion"].ToString(), _conexion);
 
-                _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
+                //_contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
 
-                if (_contar == 0)
-                {
-                    new FuncionesDAO().FunShowJSMessage("No Existe una confirmacion de pago, Solicite se realice la gestion " +
-                        "Para registrar el pago", this);
-                    return;
-                }
+                //if (_contar == 0)
+                //{
+                //    new FuncionesDAO().FunShowJSMessage("No Existe una confirmacion de pago, Solicite se realice la gestion " +
+                //        "Para registrar el pago", this);
+                //    return;
+                //}
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(217, int.Parse(ViewState["CodCatalogo"].ToString()),
                     int.Parse(ViewState["CodigoGEST"].ToString()), 0, "", TxtFechaPago.Text,

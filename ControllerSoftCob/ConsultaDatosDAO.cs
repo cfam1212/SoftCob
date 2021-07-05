@@ -821,8 +821,8 @@
             return _dts;
         }
         public string FunCrearArbolDecision(int codigocatalago, int codigoaccion, string descripcion, bool estado, bool contacto, 
-            string auxv1, string auxv2, int auxi1, int auxi2, int usucodigo, string terminal, DataTable dtbEfecto, 
-            DataTable dtbRespuesta, DataTable dtbContacto,
+            string auxv1, string auxv2, string auxv3, string auxv4, string auxv5, int auxi1, int auxi2, int auxi3, int auxi4, int auxi5,
+            int usucodigo, string terminal, DataTable dtbEfecto,  DataTable dtbRespuesta, DataTable dtbContacto,
             string sp, string conexion)
         {
             try
@@ -842,8 +842,14 @@
                         comm.Parameters.AddWithValue("@in_contacto", contacto);
                         comm.Parameters.AddWithValue("@in_auxv1", auxv1);
                         comm.Parameters.AddWithValue("@in_auxv2", auxv2);
+                        comm.Parameters.AddWithValue("@in_auxv3", auxv3);
+                        comm.Parameters.AddWithValue("@in_auxv4", auxv4);
+                        comm.Parameters.AddWithValue("@in_auxv5", auxv5);
                         comm.Parameters.AddWithValue("@in_auxi1", auxi1);
                         comm.Parameters.AddWithValue("@in_auxi2", auxi2);
+                        comm.Parameters.AddWithValue("@in_auxi3", auxi3);
+                        comm.Parameters.AddWithValue("@in_auxi4", auxi4);
+                        comm.Parameters.AddWithValue("@in_auxi5", auxi5);
                         comm.Parameters.AddWithValue("@in_usucodigo", usucodigo);
                         comm.Parameters.AddWithValue("@in_terminal", terminal);
                         comm.Parameters.AddWithValue("@TablaEfecto", dtbEfecto);

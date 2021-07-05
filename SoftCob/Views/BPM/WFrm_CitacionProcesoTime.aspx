@@ -18,6 +18,13 @@
     <script src="../../Scripts/Tables/DataTables.js"></script>
     <script src="../../Scripts/Tables/dataTable.bootstrap.min.js"></script>
     <script src="../../JS/alertify.min.js"></script>
+
+    <script>
+        function asegurar() {
+            rc = confirm("¿Seguro Cambiar Fecha Citación?");
+            return rc;
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -76,6 +83,12 @@
                                             <asp:TemplateField HeaderText="Generar">
                                                 <ItemTemplate>
                                                     <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btncitaproceso.png" OnClick="ImgCitacion_Click" />
+                                                </ItemTemplate>
+                                                <ItemStyle HorizontalAlign="Center" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Cambiar">
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="ImgCambiar" runat="server" Height="20px" ImageUrl="~/Botones/citamedica.png" OnClientClick="return asegurar();" OnClick="ImgCambiar_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

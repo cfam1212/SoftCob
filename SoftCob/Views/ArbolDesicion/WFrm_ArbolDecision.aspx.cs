@@ -1488,7 +1488,7 @@
                 _dtbrespuesta = (DataTable)ViewState["ArbolRespuesta"];
                 _codigo = int.Parse(GrdvRespuesta.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
                 _result = _dtbrespuesta.Select("Codigo='" + _codigo + "'").FirstOrDefault();
-                _result["Efectivo"] = _chkefectivo.Checked ? "1" : "0";
+                _result["Efectivo"] = _chkefectivo.Checked ? "SI" : "NO";
                 _dtbrespuesta.AcceptChanges();
                 ViewState["ArbolRespuesta"] = _dtbrespuesta;
             }
@@ -1506,7 +1506,7 @@
                 _dtbrespuesta = (DataTable)ViewState["ArbolRespuesta"];
                 _codigo = int.Parse(GrdvRespuesta.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
                 _result = _dtbrespuesta.Select("Codigo='" + _codigo + "'").FirstOrDefault();
-                _result["Comisiona"] = _chkcomisiona.Checked ? "1" : "0";
+                _result["Comisiona"] = _chkcomisiona.Checked ? "SI" : "NO";
                 _dtbrespuesta.AcceptChanges();
                 ViewState["ArbolRespuesta"] = _dtbrespuesta;
             }
@@ -1715,12 +1715,20 @@
                 _filagre = _tblagre.NewRow();
                 _filagre["Codigo"] = _maxcodigo + 1;
                 _filagre["CodigoRespuesta"] = ViewState["CodigoRespuesta"].ToString();
+                _filagre["CodigoCatalogo"] = ViewState["codigoCatalogo"].ToString();
                 _filagre["Descripcion"] = TxtContacto.Text.Trim().ToUpper();
                 _filagre["Estado"] = "Activo";
+                _filagre["Pago"] = "NO";
                 _filagre["auxv1"] = "";
                 _filagre["auxv2"] = "";
-                _filagre["auxi1"] = ViewState["codigoCatalogo"].ToString();
+                _filagre["auxv3"] = "";
+                _filagre["auxv4"] = "";
+                _filagre["auxv5"] = "";
+                _filagre["auxi1"] = "0";
                 _filagre["auxi2"] = "0";
+                _filagre["auxi3"] = "0";
+                _filagre["auxi4"] = "0";
+                _filagre["auxi5"] = "0";
                 _tblagre.Rows.Add(_filagre);
                 ViewState["ArbolContacto"] = _tblagre;
                 _dtbcontactotemp = (DataTable)ViewState["ArbolContactoTemp"];
@@ -1732,12 +1740,20 @@
                     _filagretem = _dtbcontactotemp.NewRow();
                     _filagretem["Codigo"] = _fila[0].ToString();
                     _filagretem["CodigoRespuesta"] = _fila[1].ToString();
-                    _filagretem["Descripcion"] = _fila[2].ToString();
-                    _filagretem["Estado"] = _fila[3].ToString();
-                    _filagretem["auxv1"] = _fila[4].ToString();
-                    _filagretem["auxv2"] = _fila[5].ToString();
-                    _filagretem["auxi1"] = _fila[6].ToString();
-                    _filagretem["auxi2"] = _fila[7].ToString();
+                    _filagretem["CodigoCatalogo"] = _fila[2].ToString();
+                    _filagretem["Descripcion"] = _fila[3].ToString();
+                    _filagretem["Estado"] = _fila[4].ToString();
+                    _filagretem["Pago"] = _fila[5].ToString();
+                    _filagretem["auxv1"] = _fila[6].ToString();
+                    _filagretem["auxv2"] = _fila[7].ToString();
+                    _filagretem["auxv3"] = _fila[8].ToString();
+                    _filagretem["auxv4"] = _fila[9].ToString();
+                    _filagretem["auxv5"] = _fila[10].ToString();
+                    _filagretem["auxi1"] = _fila[11].ToString();
+                    _filagretem["auxi2"] = _fila[12].ToString();
+                    _filagretem["auxi3"] = _fila[13].ToString();
+                    _filagretem["auxi4"] = _fila[14].ToString();
+                    _filagretem["auxi5"] = _fila[15].ToString();
                     _dtbcontactotemp.Rows.Add(_filagretem);
                 }
 
@@ -1858,7 +1874,7 @@
                 _dtbcontacto = (DataTable)ViewState["ArbolContacto"];
                 _codigo = int.Parse(GrdvContacto.DataKeys[_gvrow.RowIndex].Values["Codigo"].ToString());
                 _result = _dtbcontacto.Select("Codigo='" + _codigo + "'").FirstOrDefault();
-                _result["Pago"] = _chkpago.Checked ? "Activo" : "Inactivo";
+                _result["Pago"] = _chkpago.Checked ? "SI" : "NO";
                 _dtbcontacto.AcceptChanges();
                 ViewState["ArbolContacto"] = _dtbcontacto;
             }
@@ -2077,7 +2093,7 @@
                                     _filagretemx["CodigoCatalogo"] = _filfil[2].ToString();
                                     _filagretemx["Descripcion"] = _filfil[3].ToString();
                                     _filagretemx["Estado"] = _filfil[4].ToString() == "Activo" ? true : false;
-                                    _filagretemx["Pago"] = _filfil[5].ToString() == "Activo" ? true : false;
+                                    _filagretemx["Pago"] = _filfil[5].ToString() == "SI" ? true : false;
                                     _filagretemx["auxv1"] = _filfil[6].ToString();
                                     _filagretemx["auxv2"] = _filfil[7].ToString();
                                     _filagretemx["auxv3"] = _filfil[8].ToString();
@@ -2095,7 +2111,9 @@
                         }
 
                         _mensaje = new ConsultaDatosDAO().FunCrearArbolDecision(int.Parse(ViewState["codigoCatalogo"].ToString()),
-                            _codigoarbolaccion, _descripcion, _estadoact, _contactoact, _draccion[5].ToString(), _draccion[6].ToString(), int.Parse(_draccion[7].ToString()), int.Parse(_draccion[8].ToString()), int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbefectotemp, _dtbrespuestatemp, _dtbcontactotemp, "sp_NewAccionEfectoResp", Session["Conectar"].ToString());
+                            _codigoarbolaccion, _descripcion, _estadoact, _contactoact, "", "", "", "", "", 0, 0, 0, 0, 0,
+                            int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbefectotemp,
+                            _dtbrespuestatemp, _dtbcontactotemp, "sp_NewAccionEfectoResp", Session["Conectar"].ToString());
 
                         _response = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Guardado con Éxito");
 
