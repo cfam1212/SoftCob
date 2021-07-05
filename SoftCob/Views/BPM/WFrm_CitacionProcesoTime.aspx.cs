@@ -1,6 +1,4 @@
-﻿
-
-namespace SoftCob.Views.BPM
+﻿namespace SoftCob.Views.BPM
 {
     using ControllerSoftCob;
     using System;
@@ -10,7 +8,6 @@ namespace SoftCob.Views.BPM
     using System.Web.UI.WebControls;
     using ClosedXML.Excel;
     using System.IO;
-
     public partial class WFrm_CitacionProcesoTime : Page
     {
         #region Variables
@@ -106,7 +103,16 @@ namespace SoftCob.Views.BPM
                 Lblerror.Text = ex.ToString();
             }
         }
+        protected void ImgCambiar_Click(object sender, ImageClickEventArgs e)
+        {
+            GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
+            _codigo = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCITA"].ToString();
 
+            _dts = new ConsultaDatosDAO().FunConsultaDatos(247, int.Parse(_codigo), 0, 0, "", "", "",
+                ViewState["Conectar"].ToString());
+
+            Response.Redirect(Request.Url.AbsolutePath, true);
+        }
         protected void GrdvDatos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
