@@ -1413,13 +1413,13 @@
                 if (ViewState["TipoMarcado"].ToString() == "CT") //CLICK TO CALL
                 {
                     TreeNode unnode = new TreeNode("CLICK TO CALL", "CT");
-                    //LLAMAR A FUNCION PARA CARGAR CLIENTES
-                    if (Session["CodigoCPCE"].ToString() == "3")
-                        unnode = FunCargarGrupoCTC(unnode, int.Parse(Session["IdListaCabecera"].ToString()));
-                    else
-                        unnode = FunCargarItemCTC(unnode, int.Parse(Session["IdListaCabecera"].ToString()), "");
-
+                    unnode = FunCargarItemCTC(unnode, int.Parse(Session["IdListaCabecera"].ToString()), "");
                     node.ChildNodes.Add(unnode);
+                    //LLAMAR A FUNCION PARA CARGAR CLIENTES
+                    //if (Session["CodigoCPCE"].ToString() == "3")
+                    //    unnode = FunCargarGrupoCTC(unnode, int.Parse(Session["IdListaCabecera"].ToString()));
+                    //else
+
                 }
             }
             catch (Exception ex)
