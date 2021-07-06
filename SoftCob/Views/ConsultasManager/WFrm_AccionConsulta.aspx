@@ -153,10 +153,7 @@
                                                                 <ItemStyle HorizontalAlign="Right" />
                                                             </asp:BoundField>
                                                             <asp:BoundField DataField="Definicion" HeaderText="Definición" />
-                                                            <asp:BoundField DataField="MontoOriginal" HeaderText="Cupo Original">
-                                                                <ItemStyle HorizontalAlign="Right" />
-                                                            </asp:BoundField>
-                                                            <asp:BoundField HeaderText="Monto GS" DataField="MontoGSPBO">
+                                                            <asp:BoundField DataField="ValorDeuda" HeaderText="Valor Deuda">
                                                                 <ItemStyle HorizontalAlign="Right" />
                                                             </asp:BoundField>
                                                             <asp:BoundField HeaderText="Exigible" DataField="Exigible">

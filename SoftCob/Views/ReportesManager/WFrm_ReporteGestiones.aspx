@@ -107,7 +107,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="panel-info">
-                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
+                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdOpciones">
                     <ProgressTemplate>
                         <div class="overlay" />
                         <div class="overlayContent">
@@ -211,17 +211,21 @@
                             </tr>
                         </table>
                         <div class="panel panel-default">
-                            <table style="width: 100%">
-                                <tr>
-                                    <td style="text-align: right; width: 45%">
-                                        <asp:Button ID="BtnProcesar" runat="server" Text="Procesar" Width="120px" CssClass="button" OnClick="BtnProcesar_Click" TabIndex="7" />
-                                    </td>
-                                    <td style="width: 10%"></td>
-                                    <td style="text-align: left; width: 45%">
-                                        <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="8" />
-                                    </td>
-                                </tr>
-                            </table>
+                            <asp:UpdatePanel runat="server" ID="UpdOpciones">
+                                <ContentTemplate>
+                                    <table style="width: 100%">
+                                        <tr>
+                                            <td style="text-align: right; width: 45%">
+                                                <asp:Button ID="BtnProcesar" runat="server" Text="Procesar" Width="120px" CssClass="button" OnClick="BtnProcesar_Click" TabIndex="7" />
+                                            </td>
+                                            <td style="width: 10%"></td>
+                                            <td style="text-align: left; width: 45%">
+                                                <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="8" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>

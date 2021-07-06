@@ -84,27 +84,34 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(ViewState["codigoPERS"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString().ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(ViewState["codigoPERS"].ToString()), 0, 0, "", "", "", 
+                    Session["Conectar"].ToString().ToString());
 
                 ViewState["Identificacion"] = _dts.Tables[0].Rows[0]["Cedula"].ToString();
                 GrdvDatosDeudor.DataSource = _dts;
                 GrdvDatosDeudor.DataBind();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(58, int.Parse(ViewState["codigoCPCE"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString().ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(58, int.Parse(ViewState["codigoCPCE"].ToString()), 0, 0, "", "", "", 
+                    Session["Conectar"].ToString().ToString());
 
                 ViewState["Catalogo"] = _dts.Tables[0].Rows[0]["Descripcion"].ToString();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(33, int.Parse(ViewState["codigoCEDE"].ToString()), int.Parse(ViewState["codigoCPCE"].ToString()), int.Parse(ViewState["codigoCLDE"].ToString()), ViewState["Catalogo"].ToString(), "", "", Session["Conectar"].ToString().ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(33, int.Parse(ViewState["codigoCEDE"].ToString()), 
+                    int.Parse(ViewState["codigoCPCE"].ToString()), int.Parse(ViewState["codigoCLDE"].ToString()), 
+                    ViewState["Catalogo"].ToString(), "", "", Session["Conectar"].ToString().ToString());
 
                 GrdvDatosObligacion.DataSource = _dts;
                 GrdvDatosObligacion.DataBind();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(107, int.Parse(ViewState["codigoCEDE"].ToString()), int.Parse(ViewState["codigoPERS"].ToString()), int.Parse(ViewState["codigoCLDE"].ToString()), "", "", "", Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(35, int.Parse(ViewState["codigoCEDE"].ToString()), 
+                    int.Parse(ViewState["codigoPERS"].ToString()), int.Parse(ViewState["codigoCLDE"].ToString()), "", "", "", 
+                    Session["Conectar"].ToString());
 
                 GrdvTelefonos.DataSource = _dts;
                 GrdvTelefonos.DataBind();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(96, int.Parse(ViewState["codigoCLDE"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(96, int.Parse(ViewState["codigoCLDE"].ToString()), 0, 0, "", "", "", 
+                    Session["Conectar"].ToString());
                 GrdvGestiones.DataSource = _dts;
                 GrdvGestiones.DataBind();
 
