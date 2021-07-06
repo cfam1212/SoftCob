@@ -145,13 +145,11 @@
                                         <asp:BoundField DataField="Cliente" HeaderText="Cliente" HtmlEncode="false">
                                             <ItemStyle Wrap="False" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Grupo" HeaderText="Grupo" />
-                                        <asp:BoundField DataField="CodigoCNS" HeaderText="Cod.CNS" />
-                                        <asp:BoundField DataField="Cedula" HeaderText="Cedula">
-                                            <ItemStyle HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="Cedula" HeaderText="Cedula" >
+                                        <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Operacion" HeaderText="Operacion">
-                                            <ItemStyle HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="Operacion" HeaderText="Operacion" >
+                                        <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:d}" />
                                         <asp:BoundField DataField="Hora" HeaderText="Hora" />
