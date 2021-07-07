@@ -3,7 +3,7 @@
     using ControllerSoftCob;
     using System;
     using System.Data;
-    using System.Threading;
+    //using System.Threading;
     using System.Web.UI;
     using System.Web.UI.WebControls;
     public partial class WFrm_ArbolRecursivo : Page
@@ -12,7 +12,7 @@
         DataSet _dts = new DataSet();
         string _cedula = "", _redirect = "", _estado = "", _respuesta = "";
         ImageButton _imgphone = new ImageButton();
-        Thread _thrmarcar;
+        //Thread _thrmarcar;
         #endregion
 
         #region Load
@@ -33,13 +33,7 @@
                     FunGuardarconsulta(ViewState["Cedula"].ToString());
                     FunCargarDatos(ViewState["Cedula"].ToString());
                 }
-                //else
-                //{
-                //    GrdvDatos.DataSource = (DataTable)ViewState["Arbol"];
-                //    GrdvDatos.DataBind();
-                //    GrdvDatos.UseAccessibleHeader = true;
-                //    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
-                //}
+                else GrdvDatos.DataSource = ViewState["Arbol"];
             }
             catch (Exception ex)
             {
@@ -178,25 +172,35 @@
             try
             {
                 GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
+
                 foreach (GridViewRow fr in GrdvTelefonos.Rows)
                 {
                     fr.Cells[0].BackColor = System.Drawing.Color.White;
                 }
+
                 GrdvTelefonos.Rows[_gvrow.RowIndex].Cells[0].BackColor = System.Drawing.Color.Coral;
+
                 ViewState["DialerNumber"] = GrdvTelefonos.DataKeys[_gvrow.RowIndex].Values["Telefono"].ToString();
-                _imgphone = (ImageButton)(_gvrow.Cells[2].FindControl("ImgTelefono"));
+                _imgphone = (ImageButton)(_gvrow.Cells[5].FindControl("ImgPhone"));
                 _imgphone.ImageUrl = "~/Botones/call_small_disabled.png";
 
                 if (new FuncionesDAO().FunDesencripta(Session["Phone"].ToString()) == "SiActivado")
                 {
-                    _thrmarcar = new Thread(new ThreadStart(FunDial));
-                    _thrmarcar.Start();
+                    //_thrmarcar = new Thread(new ThreadStart(FunDial));
+                    //_thrmarcar.Start();
+                    FunDial();
                 }
             }
             catch (Exception ex)
             {
                 Lblerror.Text = ex.ToString();
             }
+        }
+
+        protected void GrdvDatos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GrdvDatos.PageIndex = e.NewPageIndex;
+            GrdvDatos.DataBind();
         }
 
         protected void BtnRegresar_Click(object sender, ImageClickEventArgs e)

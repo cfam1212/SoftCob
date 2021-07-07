@@ -56,14 +56,6 @@
                 width: 80px;
                 height: 80px;
             }
-
-        .auto-style1 {
-            height: 20px;
-        }
-
-        .auto-style2 {
-            height: 350px;
-        }
     </style>
 </head>
 <body>
@@ -80,7 +72,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-           <%-- <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="UpdProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdCabecera">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -90,7 +82,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>--%>
+            </div>
             <div class="panel-body">
                 <asp:UpdatePanel ID="UpdCabecera" runat="server">
                     <ContentTemplate>
@@ -256,7 +248,7 @@
 
                         <table style="width: 100%" runat="server" id="TblSRI" visible="false">
                             <tr>
-                                <td class="auto-style1">
+                                <td>
                                     <asp:Panel ID="PnlHeaderSri" runat="server">
                                         Datos SRI
                                         <asp:Image ID="ImgSri" runat="server" Height="20px" ImageUrl="~/Botones/collapseopen.png" />
@@ -372,7 +364,7 @@
                                                         <asp:GridView ID="GrdvTelefonos" runat="server" Width="100%" AutoGenerateColumns="False"
                                                             CssClass="table table-condensed table-bordered table-hover table-responsive"
                                                             ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar"
-                                                            TabIndex="8">
+                                                            TabIndex="8" DataKeyNames="Telefono">
                                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                             <Columns>
                                                                 <asp:BoundField DataField="Telefono" HeaderText="Teléfono" />
@@ -444,29 +436,32 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
-                                        CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                        ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar"
-                                        TabIndex="8" DataKeyNames="Cedula,Consultado" OnRowDataBound="GrdvDatos_RowDataBound">
-                                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                        <Columns>
-                                            <asp:BoundField HeaderText="Cédula" DataField="Cedula" />
-                                            <asp:BoundField DataField="Nombres" HeaderText="Nombres" />
-                                            <asp:BoundField HeaderText="Parentesco" DataField="Parentesco" />
-                                            <asp:BoundField HeaderText="Fecha_Fallece" DataField="FechaFallece" />
-                                            <asp:TemplateField HeaderText="Selecc">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecc_Click" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" />
-                                            </asp:TemplateField>
-                                        </Columns>
-                                        <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
-                                        <RowStyle Font-Size="X-Small" />
-                                        <EditRowStyle BackColor="#2461BF" />
-                                        <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
-                                    </asp:GridView>
-                                    <script>
+                                    <asp:Panel runat="server" Height="350px" ScrollBars="Vertical">
+                                        <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
+                                            CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                            ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar"
+                                            TabIndex="8" DataKeyNames="Cedula,Consultado" OnRowDataBound="GrdvDatos_RowDataBound" AllowPaging="True" OnPageIndexChanging="GrdvDatos_PageIndexChanging">
+                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                            <Columns>
+                                                <asp:BoundField HeaderText="Cédula" DataField="Cedula" />
+                                                <asp:BoundField DataField="Nombres" HeaderText="Nombres" />
+                                                <asp:BoundField HeaderText="Parentesco" DataField="Parentesco" />
+                                                <asp:BoundField HeaderText="Fecha_Fallece" DataField="FechaFallece" />
+                                                <asp:TemplateField HeaderText="Selecc">
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecc_Click" />
+                                                    </ItemTemplate>
+                                                    <ItemStyle HorizontalAlign="Center" />
+                                                </asp:TemplateField>
+                                            </Columns>
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle Font-Size="X-Small" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                        </asp:GridView>
+
+                                    </asp:Panel>
+                                    <%--                                    <script>
                                         var prm = Sys.WebForms.PageRequestManager.getInstance();
 
                                         prm.add_endRequest(function () {
@@ -478,7 +473,7 @@
                                         function createDataTable() {
                                             $('#<%= GrdvDatos.ClientID %>').DataTable();
                                         }
-                                    </script>
+                                    </script>--%>
                                 </td>
                             </tr>
                         </table>
