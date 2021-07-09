@@ -1258,7 +1258,7 @@
 
                         if (_tblbuscar.Rows.Count > 0)
                             _maxcodigo = _tblbuscar.AsEnumerable()
-                                .Max(row => int.Parse((string)row["Codigo"]));
+                                .Max(row => int.Parse((string)row["CodigoTELE"]));
                         else _maxcodigo = 0;
 
                         _result = _tblbuscar.Select("Prefijo='" + DdlPrefijo.SelectedValue + "' and Telefono='" +
@@ -1276,7 +1276,7 @@
                     _dtbtelefonos = (DataTable)ViewState["DatosTelefonos"];
                     _filagre = _dtbtelefonos.NewRow();
                     _filagre["CodigoCEDE"] = DdlCedente.SelectedValue;
-                    _filagre["Codigo"] = _maxcodigo + 1;
+                    _filagre["CodigoTELE"] = _maxcodigo + 1;
                     _filagre["Telefono"] = TxtTelefono.Text.Trim();
                     _filagre["Tipo"] = DdlTipoTelefono.SelectedItem.ToString();
                     _filagre["CodTipo"] = DdlTipoTelefono.SelectedValue;
@@ -1295,13 +1295,12 @@
 
                     if (ViewState["CodigoPERS"].ToString() != "0")
                     {
-                        _dts = new ConsultaDatosDAO().FunCrearNuevoDeudor(5, "", "",
-                            TxtNomReferencia.Text.Trim().ToUpper(), TxtApeReferencia.Text.Trim().ToUpper(), "", "", 0, 0,
-                            "", "", 1, "", "0", "0", 0, 0, "", "", DdlPropietario.SelectedValue,
-                            DdlPrefijo.SelectedValue == "0" ? "" : DdlPrefijo.SelectedValue, TxtTelefono.Text.Trim(),
-                            DdlPropietario.SelectedValue, "", "", "", "", "", int.Parse(Session["usuCodigo"].ToString()),
-                            Session["MachineName"].ToString(), "", "", "", int.Parse(ViewState["CodigoPERS"].ToString()),
-                            0, 0, Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunCrearNuevoDeudor(5, "", TxtTelefono.Text.Trim(), TxtNomReferencia.Text.Trim().ToUpper(),
+                            TxtApeReferencia.Text.Trim().ToUpper(), "", "", 0, 0, "", "", 1, "", "0", "0", 0, 0, "", "",
+                            DdlTipoTelefono.SelectedValue, DdlPrefijo.SelectedValue == "0" ? "" : DdlPrefijo.SelectedValue,
+                            TxtTelefono.Text.Trim(), DdlPropietario.SelectedValue, "", "", "", "", "",
+                            int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), "", "", "",
+                            int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, Session["Conectar"].ToString());
 
                         ViewState["DatosTelefonos"] = _dts.Tables[0];
                         GrdvTelefonos.DataSource = _dts.Tables[0];
