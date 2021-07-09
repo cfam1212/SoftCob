@@ -355,6 +355,7 @@
     <Content Include="Views\Configuraciones\WFrm_AccesoArbolGAdmin.aspx" />
     <Content Include="Views\Configuraciones\WFrm_AccesoListasAdmin.aspx" />
     <Content Include="Views\Configuraciones\wFrm_CopiarArbolDecision.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_CopiarArbolSpeech.aspx" />
     <Content Include="Views\Configuraciones\WFrm_DepartamentoAdmin.aspx" />
     <Content Include="Views\Configuraciones\WFrm_DepartamentoNuevo.aspx" />
     <Content Include="Views\Configuraciones\WFrm_DesloguearAdmin.aspx" />
@@ -818,6 +819,13 @@
     </Compile>
     <Compile Include="Views\Configuraciones\wFrm_CopiarArbolDecision.aspx.designer.cs">
       <DependentUpon>wFrm_CopiarArbolDecision.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_CopiarArbolSpeech.aspx.cs">
+      <DependentUpon>WFrm_CopiarArbolSpeech.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_CopiarArbolSpeech.aspx.designer.cs">
+      <DependentUpon>WFrm_CopiarArbolSpeech.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Configuraciones\WFrm_DepartamentoAdmin.aspx.cs">
       <DependentUpon>WFrm_DepartamentoAdmin.aspx</DependentUpon>
