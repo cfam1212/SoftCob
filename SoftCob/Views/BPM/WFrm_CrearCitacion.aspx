@@ -217,7 +217,7 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Detalle">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgDetalle" runat="server" Height="20px" ImageUrl="~/Botones/busqueda.png" OnClick="ImgDetalle_Click" Enabled="False" />
+                                                            <asp:ImageButton ID="ImgDetalle" runat="server" Height="20px" ImageUrl="~/Botones/busquedabg.png" OnClick="ImgDetalle_Click" Enabled="False" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -353,7 +353,7 @@
                                         <asp:TextBox ID="TxtEmail" runat="server" CssClass="form-control lowCase" MaxLength="100" TabIndex="11" Width="100%"></asp:TextBox>
                                     </td>
                                     <td style="text-align: center">
-                                        <asp:ImageButton ID="ImgAgregarMail" runat="server" Height="25px" ImageUrl="~/Botones/agregar.png" OnClick="ImgAgregarMail_Click" TabIndex="12" />
+                                        <asp:ImageButton ID="ImgAgregarMail" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAgregarMail_Click" TabIndex="12" />
                                     </td>
                                     <td></td>
                                 </tr>
@@ -468,7 +468,7 @@
                                         <asp:TextBox ID="TxtObservaTerreno" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="500" onkeydown="return (event.keyCode!=13);" TabIndex="20" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                     </td>
                                     <td style="text-align: center">
-                                        <asp:ImageButton ID="ImgAgregarTerreno" runat="server" Height="25px" ImageUrl="~/Botones/agregar.png" OnClick="ImgAgregarTerreno_Click" TabIndex="21" />
+                                        <asp:ImageButton ID="ImgAgregarTerreno" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAgregarTerreno_Click" TabIndex="21" />
                                     </td>
                                     <td></td>
                                 </tr>

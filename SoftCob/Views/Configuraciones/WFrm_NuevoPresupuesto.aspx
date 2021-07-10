@@ -168,10 +168,10 @@
                                         <tr>
                                             <td></td>
                                             <td>
-                                                <asp:ImageButton ID="ImgAdd" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="5" OnClick="ImgAdd_Click" />
+                                                <asp:ImageButton ID="ImgAdd" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="5" OnClick="ImgAdd_Click" />
                                             </td>
                                             <td>
-                                                <asp:ImageButton ID="ImgModi" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" TabIndex="6" OnClick="ImgModi_Click" Enabled="False" />
+                                                <asp:ImageButton ID="ImgModi" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" TabIndex="6" OnClick="ImgModi_Click" Enabled="False" />
                                             </td>
                                             <td></td>
                                         </tr>

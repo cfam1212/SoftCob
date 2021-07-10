@@ -82,13 +82,13 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Generar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btncitaproceso.png" OnClick="ImgCitacion_Click" />
+                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btncitaprocesobg.png" OnClick="ImgCitacion_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Cambiar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgCambiar" runat="server" Height="20px" ImageUrl="~/Botones/citamedica.png" OnClientClick="return asegurar();" OnClick="ImgCambiar_Click" />
+                                                    <asp:ImageButton ID="ImgCambiar" runat="server" Height="20px" ImageUrl="~/Botones/citamedicabg.png" OnClientClick="return asegurar();" OnClick="ImgCambiar_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

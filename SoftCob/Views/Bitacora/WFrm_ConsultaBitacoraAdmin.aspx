@@ -45,7 +45,7 @@
                                             <asp:BoundField DataField="Estado" HeaderText="Estado" />
                                             <asp:TemplateField HeaderText="Detalle">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="BtnDetalle" runat="server" Height="20px" ImageUrl="~/Botones/btnnotepad.png" OnClick="BtnDetalle_Click" />
+                                                    <asp:ImageButton ID="BtnDetalle" runat="server" Height="20px" ImageUrl="~/Botones/btnnotepadbg.png" OnClick="BtnDetalle_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

@@ -83,7 +83,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-<%--                <div class="panel-info">
+                <div class="panel-info">
                     <asp:UpdateProgress ID="UpdProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdOpciones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -93,7 +93,7 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>--%>
+                </div>
                 <div class="panel-body">
                     <asp:UpdatePanel ID="UpdCabecera" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
@@ -145,7 +145,7 @@
                                                                     <asp:TextBox ID="TxtArbol" runat="server" CssClass="form-control upperCase" MaxLength="250" TabIndex="3" Width="100%" Visible="False"></asp:TextBox>
                                                                 </td>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgModificar" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModificar_Click" TabIndex="4" Visible="False" />
+                                                                    <asp:ImageButton ID="ImgModificar" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgModificar_Click" TabIndex="4" Visible="False" />
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -200,7 +200,7 @@
                                                             <tr>
                                                                 <td style="text-align: center"></td>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgAdd" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAdd_Click" TabIndex="11" />
+                                                                    <asp:ImageButton ID="ImgAdd" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAdd_Click" TabIndex="11" />
                                                                 </td>
                                                                 <td style="text-align: left"></td>
                                                                 <td></td>

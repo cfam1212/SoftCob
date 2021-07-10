@@ -215,7 +215,7 @@
                                     </asp:FilteredTextBoxExtender>
                                 </td>
                                 <td>
-                                    <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/Buscar.png" OnClick="ImgBuscar_Click" Height="25px" />
+                                    <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/buscarbg.png" OnClick="ImgBuscar_Click" Height="25px" />
                                 </td>
                             </tr>
                             <tr>
@@ -453,10 +453,10 @@
                                     <td></td>
                                     <td></td>
                                     <td style="text-align: center">
-                                        <asp:ImageButton ID="ImgAddGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddGarante_Click" TabIndex="25" />
+                                        <asp:ImageButton ID="ImgAddGarante" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAddGarante_Click" TabIndex="25" />
                                     </td>
                                     <td>
-                                        <asp:ImageButton ID="ImgEditGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgEditGarante_Click" TabIndex="26" Enabled="False" />
+                                        <asp:ImageButton ID="ImgEditGarante" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgEditGarante_Click" TabIndex="26" Enabled="False" />
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -594,10 +594,10 @@
                                     <td></td>
                                     <td></td>
                                     <td style="text-align: center">
-                                        <asp:ImageButton ID="ImgAdd" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAdd_Click" TabIndex="36" />
+                                        <asp:ImageButton ID="ImgAdd" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAdd_Click" TabIndex="36" />
                                     </td>
                                     <td>
-                                        <asp:ImageButton ID="ImgMod" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgMod_Click" TabIndex="37" Enabled="False" />
+                                        <asp:ImageButton ID="ImgMod" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgMod_Click" TabIndex="37" Enabled="False" />
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -743,7 +743,7 @@
                                     <td></td>
                                     <td></td>
                                     <td style="text-align: center">
-                                        <asp:ImageButton ID="ImgAddTel" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddTel_Click" TabIndex="45" />
+                                        <asp:ImageButton ID="ImgAddTel" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAddTel_Click" TabIndex="45" />
                                     </td>
                                     <td></td>
                                     <td></td>

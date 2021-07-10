@@ -209,7 +209,7 @@
                                                                     <h5>Buscar Cliente:</h5>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/user_new.png" OnClick="ImgBuscar_Click" Height="25px" />
+                                                                    <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/user_newbg.png" OnClick="ImgBuscar_Click" Height="25px" />
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>
@@ -283,10 +283,10 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgActualizar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificarnew.png" OnClick="ImgActualizar_Click" TabIndex="5" />
+                                                                    <asp:ImageButton ID="ImgActualizar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgActualizar_Click" TabIndex="5" />
                                                                 </td>
                                                                 <td>
-                                                                    <asp:ImageButton ID="ImgAgregar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/agregar.png" OnClick="ImgAgregar_Click" TabIndex="6" />
+                                                                    <asp:ImageButton ID="ImgAgregar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAgregar_Click" TabIndex="6" />
                                                                 </td>
                                                                 <td>
                                                                     <asp:ImageButton ID="ImgEliminar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliminar_Click" OnClientClick="return asegurar();" TabIndex="7" />

@@ -451,7 +451,7 @@
                                                                                 </asp:BoundField>
                                                                                 <asp:TemplateField HeaderText="Actualizar">
                                                                                     <ItemTemplate>
-                                                                                        <asp:ImageButton ID="Imgupdate" runat="server" Height="20px" ImageUrl="~/Botones/modificarnew.png" OnClick="Imgupdate_Click" />
+                                                                                        <asp:ImageButton ID="Imgupdate" runat="server" Height="20px" ImageUrl="~/Botones/modificarbg.png" OnClick="Imgupdate_Click" />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                                 </asp:TemplateField>
@@ -504,7 +504,7 @@
                                                                                             </asp:BoundField>
                                                                                             <asp:TemplateField HeaderText="Inf.">
                                                                                                 <ItemTemplate>
-                                                                                                    <asp:ImageButton ID="ImgInformacion" runat="server" Height="20px" ImageUrl="~/Botones/informacion.png" OnClick="ImgInformacion_Click" />
+                                                                                                    <asp:ImageButton ID="ImgInformacion" runat="server" Height="20px" ImageUrl="~/Botones/informacionbg.png" OnClick="ImgInformacion_Click" />
                                                                                                 </ItemTemplate>
                                                                                                 <ItemStyle HorizontalAlign="Center" />
                                                                                             </asp:TemplateField>
@@ -535,13 +535,13 @@
                                                                                 <asp:BoundField DataField="Operacion" HeaderText="Operación" />
                                                                                 <asp:TemplateField HeaderText="Actualizar">
                                                                                     <ItemTemplate>
-                                                                                        <asp:ImageButton ID="ImgEditGarante" runat="server" Height="20px" ImageUrl="~/Botones/modificarnew.png" OnClick="ImgEditGarante_Click" />
+                                                                                        <asp:ImageButton ID="ImgEditGarante" runat="server" Height="20px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgEditGarante_Click" />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                                 </asp:TemplateField>
                                                                                 <asp:TemplateField HeaderText="Buscar">
                                                                                     <ItemTemplate>
-                                                                                        <asp:ImageButton ID="ImgBuscarAarbol" runat="server" Height="20px" ImageUrl="~/Botones/con_usuario.jpg" OnClick="ImgBuscarAarbol_Click" />
+                                                                                        <asp:ImageButton ID="ImgBuscarAarbol" runat="server" Height="20px" ImageUrl="~/Botones/con_usuariobg.png" OnClick="ImgBuscarAarbol_Click" />
                                                                                     </ItemTemplate>
                                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                                 </asp:TemplateField>
@@ -688,10 +688,10 @@
                                                                             <tr>
                                                                                 <td></td>
                                                                                 <td style="text-align: center">
-                                                                                    <asp:ImageButton ID="ImgAddTelefono" runat="server" Height="25px" ImageUrl="~/Botones/agregar.png" OnClick="ImgAddTelefono_Click" TabIndex="15" ToolTip="Agregar Teléfono" />
+                                                                                    <asp:ImageButton ID="ImgAddTelefono" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAddTelefono_Click" TabIndex="15" ToolTip="Agregar Teléfono" />
                                                                                 </td>
                                                                                 <td>
-                                                                                    <asp:ImageButton ID="ImgEditelefono" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificarnew.png" OnClick="ImgEditelefono_Click" TabIndex="16" ToolTip="Editar Teléfono" />
+                                                                                    <asp:ImageButton ID="ImgEditelefono" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgEditelefono_Click" TabIndex="16" ToolTip="Editar Teléfono" />
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:ImageButton ID="ImgBuscarFono" runat="server" Height="25px" ImageUrl="~/Botones/bntbuscarfono.png" OnClick="ImgBuscarFono_Click" ToolTip="Buscar Teléfonos" Visible="False" />
@@ -805,19 +805,19 @@
                                                             <tr>
                                                                 <td></td>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgArbolGen" runat="server" Height="30px" ImageUrl="~/Botones/con_usuario.jpg" OnClick="ImgArbolGen_Click" TabIndex="16" ToolTip="Árbol Genealógico" />
+                                                                    <asp:ImageButton ID="ImgArbolGen" runat="server" Height="30px" ImageUrl="~/Botones/con_usuariobg.png" OnClick="ImgArbolGen_Click" TabIndex="16" ToolTip="Árbol Genealógico" />
                                                                 </td>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgSpeechBV" runat="server" Height="30px" ImageUrl="~/Botones/speechBV.png" OnClick="ImgSpeechBV_Click" TabIndex="17" ToolTip="Speech de BienVenida" />
+                                                                    <asp:ImageButton ID="ImgSpeechBV" runat="server" Height="30px" ImageUrl="~/Botones/speechBVbg.png" OnClick="ImgSpeechBV_Click" TabIndex="17" ToolTip="Speech de BienVenida" />
                                                                 </td>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgSpeechAD" runat="server" Height="30px" ImageUrl="~/Botones/speechAB.png" OnClick="ImgSpeechAD_Click" TabIndex="18" ToolTip="Speech Árbol de Decisión" />
+                                                                    <asp:ImageButton ID="ImgSpeechAD" runat="server" Height="30px" ImageUrl="~/Botones/speechABbg.png" OnClick="ImgSpeechAD_Click" TabIndex="18" ToolTip="Speech Árbol de Decisión" />
                                                                 </td>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgNotas" runat="server" Height="30px" ImageUrl="~/Botones/notas.png" OnClick="ImgNotas_Click" TabIndex="19" ToolTip="Registro de Notas" />
+                                                                    <asp:ImageButton ID="ImgNotas" runat="server" Height="30px" ImageUrl="~/Botones/notasbg.png" OnClick="ImgNotas_Click" TabIndex="19" ToolTip="Registro de Notas" />
                                                                 </td>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="30px" ImageUrl="~/Botones/btncitacion.png" OnClick="ImgCitacion_Click" TabIndex="20" ToolTip="Realizar Citación" />
+                                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="30px" ImageUrl="~/Botones/btncitacionbg.png" OnClick="ImgCitacion_Click" TabIndex="20" ToolTip="Realizar Citación" />
                                                                 </td>
                                                                 <td>
                                                                     <asp:ImageButton ID="ImgComparar" runat="server" Height="35px" ImageUrl="~/Botones/comparar.png" OnClick="ImgComparar_Click" TabIndex="21" ToolTip="Compararme con Todos" Visible="False" />
@@ -840,7 +840,7 @@
                                                                     <asp:TextBox ID="TxtCedula" runat="server" CssClass="form-control" MaxLength="20" TabIndex="22"></asp:TextBox>
                                                                 </td>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgArbol" runat="server" Height="35px" ImageUrl="~/Botones/arbol.png" OnClick="ImgArbol_Click" TabIndex="23" ToolTip="Árbol Genealógico" />
+                                                                    <asp:ImageButton ID="ImgArbol" runat="server" Height="35px" ImageUrl="~/Botones/arbolbg.png" OnClick="ImgArbol_Click" TabIndex="23" ToolTip="Árbol Genealógico" />
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>

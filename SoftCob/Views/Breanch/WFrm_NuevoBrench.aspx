@@ -157,10 +157,10 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <asp:ImageButton ID="ImgAgregar" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="5" OnClick="ImgAgregar_Click" />
+                                    <asp:ImageButton ID="ImgAgregar" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="5" OnClick="ImgAgregar_Click" />
                                 </td>
                                 <td>
-                                    <asp:ImageButton ID="ImgModificar" runat="server" Enabled="False" Height="20px" ImageUrl="~/Botones/modificar.png" TabIndex="6" OnClick="ImgModificar_Click" />
+                                    <asp:ImageButton ID="ImgModificar" runat="server" Enabled="False" Height="20px" ImageUrl="~/Botones/modificarbg.png" TabIndex="6" OnClick="ImgModificar_Click" />
                                 </td>
                                 <td></td>
                             </tr>

@@ -136,7 +136,7 @@
                                                     <asp:BoundField DataField="Estado" HeaderText="Estado" />
                                                     <asp:TemplateField HeaderText="Selecc">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/Buscar.png" OnClick="ImgSelecc_Click" />
+                                                            <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/buscarbg.png" OnClick="ImgSelecc_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>

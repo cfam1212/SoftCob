@@ -105,7 +105,7 @@
                                 <asp:ListBox ID="LstOrigen" runat="server" CssClass="form-control" Height="180px" SelectionMode="Multiple" Width="100%"></asp:ListBox>
                             </td>
                             <td style="text-align: center">
-                                <asp:ImageButton ID="ImgAddCampo" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddCampo_Click" TabIndex="29" />
+                                <asp:ImageButton ID="ImgAddCampo" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAddCampo_Click" TabIndex="29" />
                             </td>
                             <td></td>
                         </tr>

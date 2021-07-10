@@ -78,7 +78,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td colspan="2">
-                                                            <asp:ImageButton ID="BtnIngresar" runat="server" ImageUrl="~/Botones/btnInciarsesion.png" OnClick="BtnIngresar_Click" />
+                                                            <asp:ImageButton ID="BtnIngresar" runat="server" ImageUrl="~/Botones/btnIniciarsesionbg.png" OnClick="BtnIngresar_Click" />
                                                         </td>
                                                     </tr>
                                                 </table>

@@ -316,7 +316,7 @@
                             <td></td>
                             <td></td>
                             <td style="text-align: center;">
-                                <asp:ImageButton ID="ImgPreview" runat="server" Height="25px" ImageUrl="~/Botones/Buscar.png" OnClick="ImgPreview_Click" TabIndex="16" />
+                                <asp:ImageButton ID="ImgPreview" runat="server" Height="25px" ImageUrl="~/Botones/buscarbg.png" OnClick="ImgPreview_Click" TabIndex="16" />
                             </td>
                             <td>
                                 <h5 runat="server" id="LblPreview">Preview</h5>

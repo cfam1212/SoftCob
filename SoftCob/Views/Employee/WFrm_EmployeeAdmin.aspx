@@ -73,13 +73,13 @@
                                             </asp:HyperLinkField>
                                             <asp:TemplateField HeaderText="Asignar Usuario">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgAsignarUsu" runat="server" Height="20px" ImageUrl="~/Botones/agregar_usuario.jpg" OnClick="ImgAsignarUsu_Click" />
+                                                    <asp:ImageButton ID="ImgAsignarUsu" runat="server" Height="20px" ImageUrl="~/Botones/agregar_usuariobg.png" OnClick="ImgAsignarUsu_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Desasignar Usuario">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgQuitarUsu" runat="server" Height="20px" ImageUrl="~/Botones/quitar_usuario.jpg" OnClick="ImgQuitarUsu_Click" />
+                                                    <asp:ImageButton ID="ImgQuitarUsu" runat="server" Height="20px" ImageUrl="~/Botones/quitar_usuariobg.png" OnClick="ImgQuitarUsu_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

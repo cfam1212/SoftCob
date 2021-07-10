@@ -144,10 +144,10 @@
                                 <td></td>
                                 <td></td>
                                 <td style="text-align: center">
-                                    <asp:ImageButton ID="ImgAddGestor" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="4" OnClick="ImgAddGestor_Click" />
+                                    <asp:ImageButton ID="ImgAddGestor" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="4" OnClick="ImgAddGestor_Click" />
                                 </td>
                                 <td style="text-align: center">
-                                    <asp:ImageButton ID="ImgEditarGestor" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" TabIndex="5" OnClick="ImgEditarGestor_Click" Enabled="False" />
+                                    <asp:ImageButton ID="ImgEditarGestor" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" TabIndex="5" OnClick="ImgEditarGestor_Click" Enabled="False" />
                                 </td>
                                 <td style="text-align: center"></td>
                                 <td></td>

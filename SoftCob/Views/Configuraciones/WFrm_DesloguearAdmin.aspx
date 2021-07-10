@@ -51,7 +51,7 @@
                                             <asp:BoundField DataField="FechaLogueo" HeaderText="Fecha Logueo" />
                                             <asp:TemplateField HeaderText="Desloguear">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="BtnSelecc" runat="server" Height="20px" ImageUrl="~/Botones/btnllaves.png" OnClick="BtnSelecc_Click" />
+                                                    <asp:ImageButton ID="BtnSelecc" runat="server" Height="20px" ImageUrl="~/Botones/btnllavesbg.png" OnClick="BtnSelecc_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

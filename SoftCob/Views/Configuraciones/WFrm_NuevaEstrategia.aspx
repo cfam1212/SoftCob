@@ -210,10 +210,10 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <asp:ImageButton ID="ImgAddCampo" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddCampo_Click" TabIndex="9" />
+                                <asp:ImageButton ID="ImgAddCampo" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAddCampo_Click" TabIndex="9" />
                             </td>
                             <td>
-                                <asp:ImageButton ID="ImgModCampo" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModCampo_Click" TabIndex="10" />
+                                <asp:ImageButton ID="ImgModCampo" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgModCampo_Click" TabIndex="10" />
                             </td>
                             <td></td>
                             <td></td>
@@ -234,7 +234,7 @@
                                         <asp:BoundField DataField="Orden" HeaderText="Ordenar" />
                                         <asp:TemplateField HeaderText="Prioridad">
                                             <ItemTemplate>
-                                                <asp:ImageButton ID="ImgSubir" runat="server" Height="20px" ImageUrl="~/Botones/activada_up.png" OnClick="ImgSubir_Click" />
+                                                <asp:ImageButton ID="ImgSubir" runat="server" Height="20px" ImageUrl="~/Botones/activada_upbg.png" OnClick="ImgSubir_Click" />
                                             </ItemTemplate>
                                             <ItemStyle HorizontalAlign="Center" />
                                         </asp:TemplateField>

@@ -75,7 +75,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-             <%--   <div class="panel-info">
+                <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updOpciones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -85,7 +85,7 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>--%>
+                </div>
                 <div class="panel-body">
                     <table style="width: 100%" class="table table-bordered table-responsive">
                         <tr>
@@ -267,10 +267,10 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:ImageButton ID="ImgAddSpeech" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="14" OnClick="ImgAddSpeech_Click" />
+                                                    <asp:ImageButton ID="ImgAddSpeech" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="14" OnClick="ImgAddSpeech_Click" />
                                                 </td>
                                                 <td>
-                                                    <asp:ImageButton ID="ImgModiSpeech" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" TabIndex="15" OnClick="ImgModiSpeech_Click" Enabled="False" />
+                                                    <asp:ImageButton ID="ImgModiSpeech" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" TabIndex="15" OnClick="ImgModiSpeech_Click" Enabled="False" />
                                                 </td>
                                                 <td></td>
                                                 <td></td>

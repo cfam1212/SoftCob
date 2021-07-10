@@ -159,7 +159,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Gestiones">
                                             <ItemTemplate>
-                                                <asp:ImageButton ID="ImgGestiones" runat="server" Height="20px" ImageUrl="~/Botones/Buscar.png" OnClick="ImgGestiones_Click" />
+                                                <asp:ImageButton ID="ImgGestiones" runat="server" Height="20px" ImageUrl="~/Botones/buscarbg.png" OnClick="ImgGestiones_Click" />
                                             </ItemTemplate>
                                             <ItemStyle HorizontalAlign="Center" />
                                         </asp:TemplateField>

@@ -66,7 +66,7 @@
                                             </asp:BoundField>
                                             <asp:TemplateField HeaderText="Citación">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btncitaproceso.png" OnClick="ImgCitacion_Click" />
+                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btncitaprocesobg.png" OnClick="ImgCitacion_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

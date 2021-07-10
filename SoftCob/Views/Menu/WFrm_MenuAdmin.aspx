@@ -63,13 +63,13 @@
                                             </asp:HyperLinkField>
                                             <asp:TemplateField HeaderText="Subir Nivel">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgSubirNivel" runat="server" Height="20px" ImageUrl="~/Botones/activada_up.png" OnClick="ImgSubirNivel_Click" />
+                                                    <asp:ImageButton ID="ImgSubirNivel" runat="server" Height="20px" ImageUrl="~/Botones/activada_upbg.png" OnClick="ImgSubirNivel_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Bajar Nivel">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgBajarNivel" runat="server" Height="20px" ImageUrl="~/Botones/activada_down.png" OnClick="ImgBajarNivel_Click" />
+                                                    <asp:ImageButton ID="ImgBajarNivel" runat="server" Height="20px" ImageUrl="~/Botones/activada_downbg.png" OnClick="ImgBajarNivel_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

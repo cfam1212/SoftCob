@@ -74,7 +74,7 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Solicitud">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btnnotepad.png" OnClick="ImgCitacion_Click" />
+                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btnnotepadbg.png" OnClick="ImgCitacion_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

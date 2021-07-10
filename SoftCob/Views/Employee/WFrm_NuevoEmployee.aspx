@@ -605,7 +605,7 @@
                                             <asp:TextBox ID="TxtFecFinOtrosE" runat="server" CssClass="form-control" Width="100%" TabIndex="32"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center;">
-                                            <asp:ImageButton ID="ImgAgregarOtrosEstudios" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAgregarOtrosEstudios_Click" TabIndex="34" />
+                                            <asp:ImageButton ID="ImgAgregarOtrosEstudios" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAgregarOtrosEstudios_Click" TabIndex="34" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -726,7 +726,7 @@
                                             </asp:DropDownList>
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgAgregarIdiomas" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAgregarIdiomas_Click" TabIndex="39" />
+                                            <asp:ImageButton ID="ImgAgregarIdiomas" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAgregarIdiomas_Click" TabIndex="39" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -850,7 +850,7 @@
                                             </asp:DropDownList>
                                         </td>
                                         <td style="text-align: center;">
-                                            <asp:ImageButton ID="ImgAgregarExperiencia" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAgregarExperiencia_Click" TabIndex="47" />
+                                            <asp:ImageButton ID="ImgAgregarExperiencia" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAgregarExperiencia_Click" TabIndex="47" />
                                         </td>
                                     </tr>
 
@@ -977,7 +977,7 @@
                                             <asp:TextBox ID="TxtEmailRefe" runat="server" CssClass="form-control lowCase" MaxLength="80" Width="100%" TabIndex="54"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center;">
-                                            <asp:ImageButton ID="ImgAgregarRefLaboral" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAgregarRefLaboral_Click" TabIndex="55" />
+                                            <asp:ImageButton ID="ImgAgregarRefLaboral" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAgregarRefLaboral_Click" TabIndex="55" />
                                         </td>
                                     </tr>
 
@@ -1090,7 +1090,7 @@
                                             </asp:FilteredTextBoxExtender>
                                         </td>
                                         <td style="text-align: center;">
-                                            <asp:ImageButton ID="ImgAgregarRefPersonal" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAgregarRefPersonal_Click" TabIndex="61" />
+                                            <asp:ImageButton ID="ImgAgregarRefPersonal" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAgregarRefPersonal_Click" TabIndex="61" />
                                         </td>
                                     </tr>
                                     <tr>

@@ -317,7 +317,7 @@
                                                     <asp:TextBox ID="TxtBuscar" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="13" Width="100%" Enabled="False"></asp:TextBox>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgBuscar" runat="server" Height="25px" ImageUrl="~/Botones/Buscar.png" TabIndex="16" Enabled="False" OnClick="ImgBuscar_Click" />
+                                                    <asp:ImageButton ID="ImgBuscar" runat="server" Height="25px" ImageUrl="~/Botones/buscarbg.png" TabIndex="16" Enabled="False" OnClick="ImgBuscar_Click" />
                                                 </td>
                                                 <td>
                                                     <asp:RadioButton ID="RdbIdentificacion" runat="server" CssClass="form-control" AutoPostBack="True" Font-Size="10pt" TabIndex="15" Text="Buscar por Identificación" Enabled="False" OnCheckedChanged="RdbIdentificacion_CheckedChanged" />
@@ -347,7 +347,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgQuitar1" runat="server" Height="25px" ImageUrl="~/Botones/btnquitaruno.png" TabIndex="19" Enabled="False" OnClick="ImgQuitar1_Click" />
+                                                    <asp:ImageButton ID="ImgQuitar1" runat="server" Height="25px" ImageUrl="~/Botones/btnquitarunobg.png" TabIndex="19" Enabled="False" OnClick="ImgQuitar1_Click" />
                                                 </td>
                                             </tr>
                                         </table>

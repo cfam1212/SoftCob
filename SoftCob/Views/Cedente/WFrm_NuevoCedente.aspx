@@ -264,7 +264,7 @@
 
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgNewContacto" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgNewContacto_Click" TabIndex="17" />
+                                            <asp:ImageButton ID="ImgNewContacto" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgNewContacto_Click" TabIndex="17" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -283,7 +283,7 @@
 
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgEditarContacto" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" TabIndex="18" Enabled="False" OnClick="ImgEditarContacto_Click" />
+                                            <asp:ImageButton ID="ImgEditarContacto" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" TabIndex="18" Enabled="False" OnClick="ImgEditarContacto_Click" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -355,7 +355,7 @@
                                             <asp:TextBox ID="TxtProducto" runat="server" CssClass="form-control upperCase" MaxLength="150" Width="100%" TabIndex="20"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgNewProducto" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="22" OnClick="ImgNewProducto_Click" />
+                                            <asp:ImageButton ID="ImgNewProducto" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="22" OnClick="ImgNewProducto_Click" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -367,7 +367,7 @@
                                             <asp:TextBox ID="TxtDescripcion" runat="server" CssClass="form-control upperCase" MaxLength="250" Width="100%" Height="50px" TextMode="MultiLine" TabIndex="21"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgEditarProducto" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" TabIndex="23" OnClick="ImgEditarProducto_Click" />
+                                            <asp:ImageButton ID="ImgEditarProducto" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" TabIndex="23" OnClick="ImgEditarProducto_Click" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -464,7 +464,7 @@
                                             <asp:TextBox ID="TxtCatalgoProducto" runat="server" CssClass="form-control upperCase" MaxLength="250" Width="100%" TabIndex="27"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgNewCatalogo" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="30" OnClick="ImgNewCatalogo_Click" />
+                                            <asp:ImageButton ID="ImgNewCatalogo" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="30" OnClick="ImgNewCatalogo_Click" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -482,7 +482,7 @@
                                             <asp:TextBox ID="TxtFamilia" runat="server" CssClass="form-control upperCase" MaxLength="250" Width="100%" TabIndex="29"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgEditarCatalogo" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" TabIndex="31" OnClick="ImgEditarCatalogo_Click" />
+                                            <asp:ImageButton ID="ImgEditarCatalogo" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" TabIndex="31" OnClick="ImgEditarCatalogo_Click" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -576,7 +576,7 @@
                                             <asp:TextBox ID="TxtAgencia" runat="server" CssClass="form-control upperCase" MaxLength="250" Width="100%" TabIndex="34"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgNewAgencia" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="37" OnClick="ImgNewAgencia_Click" />
+                                            <asp:ImageButton ID="ImgNewAgencia" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="37" OnClick="ImgNewAgencia_Click" />
                                         </td>
                                         <td></td>
                                     </tr>
@@ -597,7 +597,7 @@
                                             </asp:DropDownList>
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgEditarAgencia" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" TabIndex="38" OnClick="ImgEditarAgencia_Click" />
+                                            <asp:ImageButton ID="ImgEditarAgencia" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" TabIndex="38" OnClick="ImgEditarAgencia_Click" />
                                         </td>
                                     </tr>
 

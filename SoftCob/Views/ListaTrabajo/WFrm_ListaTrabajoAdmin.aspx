@@ -63,7 +63,7 @@
                                             <asp:BoundField DataField="Estado" HeaderText="Estado" />
                                             <asp:TemplateField HeaderText="Editar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgEdit" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="ImgEdit_Click" />
+                                                    <asp:ImageButton ID="ImgEdit" runat="server" Height="20px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgEdit_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

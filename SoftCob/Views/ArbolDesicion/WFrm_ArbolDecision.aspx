@@ -121,10 +121,10 @@
                                                     </asp:UpdatePanel>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgAddAccion" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="3" OnClick="ImgAddAccion_Click" />
+                                                    <asp:ImageButton ID="ImgAddAccion" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="3" OnClick="ImgAddAccion_Click" />
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgModiAccion" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModiAccion_Click" TabIndex="4" />
+                                                    <asp:ImageButton ID="ImgModiAccion" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgModiAccion_Click" TabIndex="4" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -188,10 +188,10 @@
                                                     </asp:UpdatePanel>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgAddEfecto" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="7" OnClick="ImgAddEfecto_Click" />
+                                                    <asp:ImageButton ID="ImgAddEfecto" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="7" OnClick="ImgAddEfecto_Click" />
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgModiEfecto" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModiEfecto_Click" TabIndex="8" />
+                                                    <asp:ImageButton ID="ImgModiEfecto" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgModiEfecto_Click" TabIndex="8" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -250,10 +250,10 @@
                                                     </asp:UpdatePanel>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgAddRespuesta" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="12" OnClick="ImgAddRespuesta_Click" />
+                                                    <asp:ImageButton ID="ImgAddRespuesta" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="12" OnClick="ImgAddRespuesta_Click" />
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgModiRespuesta" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModiRespuesta_Click" TabIndex="13" />
+                                                    <asp:ImageButton ID="ImgModiRespuesta" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgModiRespuesta_Click" TabIndex="13" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -335,10 +335,10 @@
                                                     </asp:UpdatePanel>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgAddContacto" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="16" OnClick="ImgAddContacto_Click" />
+                                                    <asp:ImageButton ID="ImgAddContacto" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="16" OnClick="ImgAddContacto_Click" />
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgModiContacto" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModiContacto_Click" TabIndex="17" />
+                                                    <asp:ImageButton ID="ImgModiContacto" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgModiContacto_Click" TabIndex="17" />
                                                 </td>
                                             </tr>
                                             <tr>

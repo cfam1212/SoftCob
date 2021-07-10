@@ -310,7 +310,7 @@
                                             </asp:DropDownList>
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgAgregar" runat="server" Enabled="False" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAgregar_Click" TabIndex="12" Height="25px" />
+                                            <asp:ImageButton ID="ImgAgregar" runat="server" Enabled="False" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAgregar_Click" TabIndex="12" Height="25px" />
                                         </td>
                                         <td></td>
                                         <td></td>

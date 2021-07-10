@@ -433,7 +433,7 @@
                                                     <asp:TextBox ID="TxtBuscar" runat="server" CssClass="form-control upperCase" MaxLength="80" TabIndex="27" Width="100%" Enabled="False"></asp:TextBox>
                                                 </td>
                                                 <td style="text-align: center">
-                                                    <asp:ImageButton ID="ImgBuscar" runat="server" Height="25px" ImageUrl="~/Botones/Buscar.png" TabIndex="28" OnClick="ImgBuscar_Click" Enabled="False" />
+                                                    <asp:ImageButton ID="ImgBuscar" runat="server" Height="25px" ImageUrl="~/Botones/buscarbg.png" TabIndex="28" OnClick="ImgBuscar_Click" Enabled="False" />
                                                 </td>
                                                 <td>
                                                     <asp:RadioButton ID="RdbIdentificacion" runat="server" AutoPostBack="True" Font-Size="10pt" TabIndex="30" Text="Buscar por Identificación" Enabled="False" OnCheckedChanged="RdbIdentificacion_CheckedChanged" />

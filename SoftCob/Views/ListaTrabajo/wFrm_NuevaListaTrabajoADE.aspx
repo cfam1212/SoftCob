@@ -480,7 +480,7 @@
                                 <td style="width: 15%"></td>
                                 <td style="width: 30%"></td>
                                 <td style="width: 10%; text-align: center;">
-                                    <asp:ImageButton ID="ImgPreview" runat="server" Height="25px" ImageUrl="~/Botones/Buscar.png" OnClick="ImgPreview_Click" TabIndex="25" />
+                                    <asp:ImageButton ID="ImgPreview" runat="server" Height="25px" ImageUrl="~/Botones/buscarbg.png" OnClick="ImgPreview_Click" TabIndex="25" />
                                 </td>
                                 <td style="width: 35%">
                                     <h5 runat="server" id="LblPreview">Preview</h5>

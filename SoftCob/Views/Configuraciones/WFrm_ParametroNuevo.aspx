@@ -147,7 +147,7 @@
                                             <asp:TextBox ID="TxtDetalle" runat="server" Width="100%" CssClass="form-control upperCase" MaxLength="80" TabIndex="4"></asp:TextBox>
                                         </td>
                                         <td style="width: 15%; text-align: center;">
-                                            <asp:ImageButton ID="ImgAgregar" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAgregar_Click" TabIndex="8" />
+                                            <asp:ImageButton ID="ImgAgregar" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAgregar_Click" TabIndex="8" />
                                         </td>
                                         <td style="width: 5%"></td>
                                     </tr>
@@ -160,7 +160,7 @@
                                             <asp:TextBox ID="TxtValorV" runat="server" CssClass="form-control" Width="100%" MaxLength="80" TabIndex="5"></asp:TextBox>
                                         </td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgModificar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModificar_Click" TabIndex="9" />
+                                            <asp:ImageButton ID="ImgModificar" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgModificar_Click" TabIndex="9" />
                                         </td>
                                         <td></td>
                                     </tr>
@@ -214,13 +214,13 @@
                                                         <asp:BoundField DataField="Estado" HeaderText="Estado" />
                                                         <asp:TemplateField HeaderText="Subir Nivel">
                                                             <ItemTemplate>
-                                                                <asp:ImageButton ID="ImgSubirNivel" runat="server" Height="20px" ImageUrl="~/Botones/activada_up.png" OnClick="ImgSubirNivel_Click" />
+                                                                <asp:ImageButton ID="ImgSubirNivel" runat="server" Height="20px" ImageUrl="~/Botones/activada_upbg.png" OnClick="ImgSubirNivel_Click" />
                                                             </ItemTemplate>
                                                             <ItemStyle HorizontalAlign="Center" />
                                                         </asp:TemplateField>
                                                         <asp:TemplateField HeaderText="Bajar Nivel">
                                                             <ItemTemplate>
-                                                                <asp:ImageButton ID="ImgBajarNivel" runat="server" Height="20px" ImageUrl="~/Botones/activada_down.png" OnClick="ImgBajarNivel_Click" />
+                                                                <asp:ImageButton ID="ImgBajarNivel" runat="server" Height="20px" ImageUrl="~/Botones/activada_downbg.png" OnClick="ImgBajarNivel_Click" />
                                                             </ItemTemplate>
                                                             <ItemStyle HorizontalAlign="Center" />
                                                         </asp:TemplateField>

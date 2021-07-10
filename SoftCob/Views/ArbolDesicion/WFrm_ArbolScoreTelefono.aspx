@@ -212,10 +212,10 @@
                                     <tr>
                                         <td></td>
                                         <td style="text-align: center">
-                                            <asp:ImageButton ID="ImgAdd" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="9" OnClick="ImgAdd_Click" />
+                                            <asp:ImageButton ID="ImgAdd" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="9" OnClick="ImgAdd_Click" />
                                         </td>
                                         <td>
-                                            <asp:ImageButton ID="ImgModi" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" TabIndex="10" Enabled="False" OnClick="ImgModi_Click" />
+                                            <asp:ImageButton ID="ImgModi" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" TabIndex="10" Enabled="False" OnClick="ImgModi_Click" />
                                         </td>
                                         <td></td>
                                     </tr>

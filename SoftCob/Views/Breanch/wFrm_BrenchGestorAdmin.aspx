@@ -207,7 +207,7 @@
                                                 </asp:BoundField>
                                                 <asp:TemplateField HeaderText="Detalle">
                                                     <ItemTemplate>
-                                                        <asp:ImageButton ID="ImgVer" runat="server" Height="20px" ImageUrl="~/Botones/Buscar.png" OnClick="ImgVer_Click" />
+                                                        <asp:ImageButton ID="ImgVer" runat="server" Height="20px" ImageUrl="~/Botones/buscarbg.png" OnClick="ImgVer_Click" />
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>

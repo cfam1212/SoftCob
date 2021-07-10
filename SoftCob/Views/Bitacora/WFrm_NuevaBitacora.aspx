@@ -101,7 +101,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-      <%--      <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="UpdProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -111,7 +111,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>--%>
+            </div>
             <div class="panel-body">
                 <div>
                     <table style="border: 2px solid #008080; width: 100%">
@@ -1077,10 +1077,10 @@
                                                             <td></td>
                                                             <td></td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgAddGT" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAddGT_Click" TabIndex="57" />
+                                                                <asp:ImageButton ID="ImgAddGT" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAddGT_Click" TabIndex="57" />
                                                             </td>
                                                             <td>
-                                                                <asp:ImageButton ID="ImgModGT" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModGT_Click" TabIndex="58" Visible="False" />
+                                                                <asp:ImageButton ID="ImgModGT" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgModGT_Click" TabIndex="58" Visible="False" />
                                                             </td>
                                                             <td>
                                                                 <asp:ImageButton ID="ImgDelGT" runat="server" Height="25px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDelGT_Click" TabIndex="59" Visible="False" OnClientClick="return asegurar();" />

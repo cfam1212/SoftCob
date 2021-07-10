@@ -67,7 +67,7 @@
                                             </asp:HyperLinkField>
                                             <asp:TemplateField HeaderText="Editar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="Btnselecc" runat="server" Height="20px" ImageUrl="~/Botones/modificar.png" OnClick="Btnselecc_Click" />
+                                                    <asp:ImageButton ID="Btnselecc" runat="server" Height="20px" ImageUrl="~/Botones/modificarbg.png" OnClick="Btnselecc_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

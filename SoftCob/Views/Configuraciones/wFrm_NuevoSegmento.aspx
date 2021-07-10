@@ -154,10 +154,10 @@
                                         <tr>
                                             <td></td>
                                             <td>
-                                                <asp:ImageButton ID="ImgAddSegmento" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" TabIndex="6" OnClick="ImgAddSegmento_Click" />
+                                                <asp:ImageButton ID="ImgAddSegmento" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="6" OnClick="ImgAddSegmento_Click" />
                                             </td>
                                             <td>
-                                                <asp:ImageButton ID="ImgModiSegmento" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" TabIndex="7" OnClick="ImgModiSegmento_Click" />
+                                                <asp:ImageButton ID="ImgModiSegmento" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" TabIndex="7" OnClick="ImgModiSegmento_Click" />
                                             </td>
                                             <td></td>
                                         </tr>

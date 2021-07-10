@@ -171,10 +171,10 @@
                                                             </tr>
                                                             <tr>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgAdd" runat="server" Height="25px" ImageUrl="~/Botones/agregar.jpg" OnClick="ImgAdd_Click" TabIndex="4" Visible="False" />
+                                                                    <asp:ImageButton ID="ImgAdd" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAdd_Click" TabIndex="4" Visible="False" />
                                                                 </td>
                                                                 <td style="text-align: center">
-                                                                    <asp:ImageButton ID="ImgMod" runat="server" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgMod_Click" TabIndex="5" Visible="False" />
+                                                                    <asp:ImageButton ID="ImgMod" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" OnClick="ImgMod_Click" TabIndex="5" Visible="False" />
                                                                 </td>
                                                                 <td style="text-align: center">
                                                                     <asp:ImageButton ID="ImgDel" runat="server" Height="25px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgDel_Click" TabIndex="6" Visible="False" OnClientClick="return asegurar();" />
