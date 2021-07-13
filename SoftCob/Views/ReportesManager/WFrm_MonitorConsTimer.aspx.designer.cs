@@ -69,15 +69,6 @@ namespace SoftCob.Views.ReportesManager
         protected global::System.Web.UI.UpdateProgress updProgress;
 
         /// <summary>
-        /// Control updCabecera.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updCabecera;
-
-        /// <summary>
         /// Control DdlCedente.
         /// </summary>
         /// <remarks>
@@ -114,6 +105,15 @@ namespace SoftCob.Views.ReportesManager
         protected global::System.Web.UI.WebControls.TextBox TxtFechaFin;
 
         /// <summary>
+        /// Control UpdOpciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdOpciones;
+
+        /// <summary>
         /// Control BtnProcesar.
         /// </summary>
         /// <remarks>
@@ -121,15 +121,6 @@ namespace SoftCob.Views.ReportesManager
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnProcesar;
-
-        /// <summary>
-        /// Control BtnSalir.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSalir;
 
         /// <summary>
         /// Control ImgExportar.
@@ -184,5 +175,14 @@ namespace SoftCob.Views.ReportesManager
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GrdvNoEfectivas;
+
+        /// <summary>
+        /// Control BtnSalir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnSalir;
     }
 }

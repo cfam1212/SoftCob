@@ -105,8 +105,9 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
+
             <div class="panel-info">
-                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
+                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdOpciones">
                     <ProgressTemplate>
                         <div class="overlay" />
                         <div class="overlayContent">
@@ -116,112 +117,146 @@
                     </ProgressTemplate>
                 </asp:UpdateProgress>
             </div>
-            <div class="panel-body">
-                <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Conditional">
+
+            <div class="panel-default">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 5%"></td>
+                        <td style="width: 15%"></td>
+                        <td style="width: 15%"></td>
+                        <td style="width: 20%"></td>
+                        <td style="width: 15%"></td>
+                        <td style="width: 25%"></td>
+                        <td style="width: 5%"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">
+                            <asp:Panel runat="server" Height="20px"></asp:Panel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <h5>Cedente:</h5>
+                        </td>
+                        <td colspan="2">
+                            <asp:DropDownList ID="DdlCedente" runat="server" CssClass="form-control" Width="100%" TabIndex="1" AutoPostBack="True" OnSelectedIndexChanged="DdlCedente_SelectedIndexChanged">
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <h5>Catálogo:</h5>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DdlCatalogo" runat="server" CssClass="form-control" TabIndex="2" Width="100%">
+                            </asp:DropDownList>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <h5>Fecha Proceso:</h5>
+                        </td>
+                        <td>
+                            <h5>Desde:</h5>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TxtFechaIni" runat="server" CssClass="form-control" Width="100%" TabIndex="3"></asp:TextBox>
+                        </td>
+                        <td>
+                            <h5>Hasta:</h5>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TxtFechaFin" runat="server" CssClass="form-control" Width="100%" TabIndex="4"></asp:TextBox>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <h5>Gestor:</h5>
+                        </td>
+                        <td colspan="2">
+                            <asp:DropDownList ID="DdlGestores" runat="server" CssClass="form-control" Width="100%" TabIndex="5">
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <h5>Estado:</h5>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DdlEstado" runat="server" CssClass="form-control" TabIndex="6" Width="100%">
+                                <asp:ListItem Value="2">Todos</asp:ListItem>
+                                <asp:ListItem Value="1">Activas</asp:ListItem>
+                                <asp:ListItem Value="0">Inactivas</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr runat="server" visible="false">
+                        <td></td>
+                        <td>
+                            <h5>Proceso Check</h5>
+                        </td>
+                        <td>
+                            <asp:CheckBox ID="ChkProceso" runat="server" />
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">
+                            <asp:Panel ID="Panel1" runat="server" Height="20px"></asp:Panel>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="panel panel-default">
+                <asp:UpdatePanel ID="UpdOpciones" runat="server">
                     <ContentTemplate>
                         <table style="width: 100%">
                             <tr>
                                 <td style="width: 5%"></td>
-                                <td style="width: 15%"></td>
-                                <td style="width: 15%"></td>
-                                <td style="width: 20%"></td>
-                                <td style="width: 15%"></td>
-                                <td style="width: 20%"></td>
-                                <td style="width: 10%"></td>
+                                <td style="width: 30%"></td>
+                                <td style="width: 30%"></td>
+                                <td style="width: 30%"></td>
+                                <td style="width: 5%"></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <h5>Cedente:</h5>
-                                </td>
-                                <td colspan="2">
-                                    <asp:DropDownList ID="DdlCedente" runat="server" CssClass="form-control" Width="100%" TabIndex="1" AutoPostBack="True" OnSelectedIndexChanged="DdlCedente_SelectedIndexChanged">
-                                    </asp:DropDownList>
-                                </td>
-                                <td>
-                                    <h5>Catálogo:</h5>
-                                </td>
-                                <td colspan="2">
-                                    <asp:DropDownList ID="DdlCatalogo" runat="server" CssClass="form-control" TabIndex="2" Width="100%">
-                                    </asp:DropDownList>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <h5>Fecha Proceso:</h5>
-                                </td>
-                                <td>
-                                    <h5>Desde:</h5>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="TxtFechaIni" runat="server" CssClass="form-control" Width="100%" TabIndex="3"></asp:TextBox>
-                                </td>
-                                <td>
-                                    <h5>Hasta:</h5>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="TxtFechaFin" runat="server" CssClass="form-control" Width="100%" TabIndex="4"></asp:TextBox>
+                                    <asp:Button ID="BtnProcesar" runat="server" CssClass="button" OnClick="BtnProcesar_Click" TabIndex="7" Text="Procesar" Width="120px" />
                                 </td>
                                 <td></td>
-                            </tr>
-                            <tr>
+                                <td>&nbsp;</td>
                                 <td></td>
-                                <td>
-                                    <h5>Gestor:</h5>
-                                </td>
-                                <td colspan="2">
-
-                                    <asp:DropDownList ID="DdlGestores" runat="server" CssClass="form-control" Width="100%" TabIndex="5">
-                                    </asp:DropDownList>
-
-                                </td>
-                                <td>
-                                    <h5>Estado:</h5>
-                                </td>
-                                <td>
-                                    <asp:DropDownList ID="DdlEstado" runat="server" CssClass="form-control" TabIndex="6" Width="100%">
-                                        <asp:ListItem Value="2">Todos</asp:ListItem>
-                                        <asp:ListItem Value="1">Activas</asp:ListItem>
-                                        <asp:ListItem Value="0">Inactivas</asp:ListItem>
-                                    </asp:DropDownList>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr runat="server" visible="false">
-                                <td></td>
-                                <td>
-                                    <h5>Proceso Check</h5>
-                                </td>
-                                <td>
-                                    <asp:CheckBox ID="ChkProceso" runat="server" />
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td colspan="7">
-                                    <asp:Panel ID="Panel1" runat="server" Height="20px"></asp:Panel>
-                                </td>
                             </tr>
                         </table>
-                        <div class="panel panel-default">
-                            <table style="width: 100%">
-                                <tr>
-                                    <td style="text-align: right; width: 45%">
-                                        <asp:Button ID="BtnProcesar" runat="server" Text="Procesar" Width="120px" CssClass="button" TabIndex="7" OnClick="BtnProcesar_Click" />
-                                    </td>
-                                    <td style="width: 10%"></td>
-                                    <td style="text-align: left; width: 45%">
-                                        <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" TabIndex="8" OnClick="BtnSalir_Click" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+            </div>
+
+            <div>
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 5%"></td>
+                        <td style="width: 30%"></td>
+                        <td style="width: 30%"></td>
+                        <td style="width: 30%"></td>
+                        <td style="width: 5%"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style="text-align: right">
+                            <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" TabIndex="8" OnClick="BtnSalir_Click" />
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </form>

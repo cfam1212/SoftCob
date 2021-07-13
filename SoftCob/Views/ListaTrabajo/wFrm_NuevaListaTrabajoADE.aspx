@@ -360,7 +360,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:CheckBox ID="ChkGestor" runat="server" AutoPostBack="True" CssClass="form-control" Font-Size="10pt" OnCheckedChanged="ChkGestor_CheckedChanged" TabIndex="13" Text="Gestor" Checked="True" Enabled="False" />
+                                                    <asp:CheckBox ID="ChkGestor" runat="server" AutoPostBack="True" CssClass="form-control" Font-Size="10pt" OnCheckedChanged="ChkGestor_CheckedChanged" TabIndex="13" Text="Gestor" Checked="True" />
                                                 </td>
                                                 <td>
                                                     <asp:DropDownList ID="DdlGestores" runat="server" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="DdlGestores_SelectedIndexChanged" TabIndex="14" Width="100%">
@@ -389,6 +389,14 @@
                                                     <asp:DropDownList ID="DdlGestorApoyo" runat="server" CssClass="form-control" TabIndex="17" Width="100%">
                                                     </asp:DropDownList>
                                                 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <asp:CheckBox ID="ChkGestorSelec" runat="server" AutoPostBack="True" CssClass="form-control" OnCheckedChanged="ChkGestorSelec_CheckedChanged" TabIndex="22" Text="Con el Gestor" />
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                         </table>
                                     </asp:Panel>
@@ -522,7 +530,7 @@
                             <tr>
                                 <td></td>
                                 <td colspan="4">
-                                    <asp:Panel ID="pnlPreview" runat="server" Height="350px" ScrollBars="Vertical">
+                                    <asp:Panel ID="pnlPreview" runat="server" Height="380px" ScrollBars="Vertical">
                                         <asp:GridView ID="GrdvPreview" runat="server" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive"
                                             ForeColor="#333333" TabIndex="26" Width="100%" AllowPaging="True" OnPageIndexChanging="GrdvPreview_PageIndexChanging">

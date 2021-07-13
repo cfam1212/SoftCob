@@ -102,7 +102,7 @@
                     return;
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(258, int.Parse(DdlCatalogoO.SelectedValue),
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(259, int.Parse(DdlCatalogoO.SelectedValue),
                     int.Parse(DdlCedenteD.SelectedValue), int.Parse(DdlCatalogoD.SelectedValue), "",
                     Session["MachineName"].ToString(), "", ViewState["Conectar"].ToString());
 

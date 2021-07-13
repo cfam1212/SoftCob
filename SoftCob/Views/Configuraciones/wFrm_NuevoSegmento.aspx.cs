@@ -466,7 +466,7 @@
                     _datos.sgca_descripcion = _dr["Descripcion"].ToString();
                     _datos.sgca_valorinicial = int.Parse(_dr["ValorI"].ToString());
                     _datos.sgca_valorfinal = int.Parse(_dr["ValorF"].ToString());
-                    _datos.sgca_estado = _dr["Estado"].ToString() == "Activ" ? true : false;
+                    _datos.sgca_estado = _dr["Estado"].ToString() == "Activo" ? true : false;
                     _datos.sgca_auxv1 = _dr["auxv1"].ToString();
                     _datos.sgca_auxv2 = _dr["auxv2"].ToString();
                     _datos.sgca_auxv3 = _dr["auxv3"].ToString();

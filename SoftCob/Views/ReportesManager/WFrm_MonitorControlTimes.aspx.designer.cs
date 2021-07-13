@@ -69,15 +69,6 @@ namespace SoftCob.Views.ReportesManager
         protected global::System.Web.UI.UpdateProgress updProgress;
 
         /// <summary>
-        /// Control updCabecera.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updCabecera;
-
-        /// <summary>
         /// Control DdlCedente.
         /// </summary>
         /// <remarks>
@@ -123,6 +114,15 @@ namespace SoftCob.Views.ReportesManager
         protected global::System.Web.UI.WebControls.DropDownList DdlGestores;
 
         /// <summary>
+        /// Control UpdOpciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdOpciones;
+
+        /// <summary>
         /// Control BtnProcesar.
         /// </summary>
         /// <remarks>
@@ -130,15 +130,6 @@ namespace SoftCob.Views.ReportesManager
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnProcesar;
-
-        /// <summary>
-        /// Control BtnSalir.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSalir;
 
         /// <summary>
         /// Control ImgExportar.
@@ -186,6 +177,15 @@ namespace SoftCob.Views.ReportesManager
         protected global::System.Web.UI.WebControls.ImageButton ImgExportar1;
 
         /// <summary>
+        /// Control LblExportar1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblExportar1;
+
+        /// <summary>
         /// Control pnlMaxLlamada.
         /// </summary>
         /// <remarks>
@@ -213,6 +213,15 @@ namespace SoftCob.Views.ReportesManager
         protected global::System.Web.UI.WebControls.ImageButton ImgExportar2;
 
         /// <summary>
+        /// Control LblExportar2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblExportar2;
+
+        /// <summary>
         /// Control pnlLogueos.
         /// </summary>
         /// <remarks>
@@ -229,5 +238,14 @@ namespace SoftCob.Views.ReportesManager
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GrdvLogueos;
+
+        /// <summary>
+        /// Control BtnSalir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnSalir;
     }
 }

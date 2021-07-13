@@ -63,6 +63,8 @@
                     GrdvEfectivas.DataBind();
                     GrdvNoEfectivas.DataSource = null;
                     GrdvNoEfectivas.DataBind();
+                    ImgExportar.Visible = false;
+                    ImgExportar1.Visible = false;
                     break;
             }
         }
@@ -141,6 +143,7 @@
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(102, int.Parse(ViewState["codigoCPCE"].ToString()), 0, 0, "", 
                     TxtFechaInicio.Text, TxtFechaFin.Text, Session["Conectar"].ToString());
+
                 ViewState["Efectivas"] = _dts.Tables[0].Rows.Count;
                 GrdvEfectivas.DataSource = _dts.Tables[0];
                 GrdvEfectivas.DataBind();

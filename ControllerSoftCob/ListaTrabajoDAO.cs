@@ -625,6 +625,41 @@
                 throw ex;
             }
         }
+        public DataSet FunNewListaExt(int tipo, int gestorapoyo, string sql, string var1, string var2, string var3,
+            string var4, int int1, int int2, int int3, int int4, string conexion)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(conexion))
+                {
+                    using (SqlCommand comm = new SqlCommand())
+                    {
+                        comm.Connection = con;
+                        comm.CommandTimeout = 9000;
+                        comm.CommandType = CommandType.StoredProcedure;
+                        comm.CommandText = "sp_NewListasTrabajoEXT";
+                        comm.Parameters.AddWithValue("@in_tipo", tipo);
+                        comm.Parameters.AddWithValue("@in_gestorapoyo", gestorapoyo);
+                        comm.Parameters.AddWithValue("@in_sql", sql);
+                        comm.Parameters.AddWithValue("@in_var1", var1);
+                        comm.Parameters.AddWithValue("@in_var2", var2);
+                        comm.Parameters.AddWithValue("@in_var3", var3);
+                        comm.Parameters.AddWithValue("@in_var4", var4);
+                        comm.Parameters.AddWithValue("@in_int1", int1);
+                        comm.Parameters.AddWithValue("@in_int2", int2);
+                        comm.Parameters.AddWithValue("@in_int3", int3);
+                        comm.Parameters.AddWithValue("@in_int4", int4);
+                        _dap.SelectCommand = comm;
+                        _dap.Fill(_dts);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return _dts;
+        }
         #endregion
     }
 }

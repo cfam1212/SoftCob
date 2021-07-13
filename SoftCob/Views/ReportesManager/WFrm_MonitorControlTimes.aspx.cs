@@ -73,11 +73,34 @@
                     GrdvMaxLlamada.DataBind();
                     GrdvLogueos.DataSource = null;
                     GrdvLogueos.DataBind();
+
+                    ImgExportar.Visible = false;
+                    LblExportar.Visible = false;
+                    ImgExportar1.Visible = false;
+                    LblExportar1.Visible = false;
+                    ImgExportar2.Visible = false;
+                    LblExportar2.Visible = false;
+
                     _dts = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlGestores.DataSource = _dts;
                     DdlGestores.DataTextField = "Descripcion";
                     DdlGestores.DataValueField = "Codigo";
                     DdlGestores.DataBind();
+                    break;
+                case 2:
+                    GrdvEfectivas.DataSource = null;
+                    GrdvEfectivas.DataBind();
+                    GrdvMaxLlamada.DataSource = null;
+                    GrdvMaxLlamada.DataBind();
+                    GrdvLogueos.DataSource = null;
+                    GrdvLogueos.DataBind();
+
+                    ImgExportar.Visible = false;
+                    LblExportar.Visible = false;
+                    ImgExportar1.Visible = false;
+                    LblExportar1.Visible = false;
+                    ImgExportar2.Visible = false;
+                    LblExportar2.Visible = false;
                     break;
             }
         }
@@ -89,6 +112,7 @@
             try
             {
                 FunCargarCombos(1);
+
                 _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -98,7 +122,6 @@
                     DdlCatalogo.DataValueField = "CodigoCatalogo";
                     DdlCatalogo.DataBind();
                     ViewState["codigoCPCE"] = DdlCatalogo.SelectedValue;
-                    FunCargarCombos(2);
                 }
                 else
                 {
@@ -117,6 +140,10 @@
         protected void DdlCatalogo_SelectedIndexChanged(object sender, EventArgs e)
         {
             ViewState["codigoCPCE"] = DdlCatalogo.SelectedValue;
+            FunCargarCombos(2);
+        }
+        protected void DdlGestores_SelectedIndexChanged(object sender, EventArgs e)
+        {
             FunCargarCombos(2);
         }
 
@@ -255,11 +282,16 @@
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(99, int.Parse(DdlGestores.SelectedValue), 0, 0, "", 
                     TxtFechaInicio.Text, TxtFechaFin.Text, Session["Conectar"].ToString());
+
                 GrdvLogueos.DataSource = _dts;
                 GrdvLogueos.DataBind();
                 ViewState["GrdvLogueo"] = _dts.Tables[0];
 
-                if (_dts.Tables[0].Rows.Count > 0) ImgExportar.Visible = true;
+                if (_dts.Tables[0].Rows.Count > 0)
+                {
+                    ImgExportar.Visible = true;
+                    LblExportar.Visible = true;
+                }
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(100, int.Parse(DdlGestores.SelectedValue), 0, 0, "", 
                     TxtFechaInicio.Text, TxtFechaFin.Text, Session["Conectar"].ToString());
@@ -268,12 +300,20 @@
                 GrdvEfectivas.DataBind();
                 ViewState["GrdvEfectivas"] = _dts.Tables[0];
 
-                if (_dts.Tables[0].Rows.Count > 0) ImgExportar1.Visible = true;
+                if (_dts.Tables[0].Rows.Count > 0)
+                {
+                    ImgExportar1.Visible = true;
+                    LblExportar1.Visible = true;
+                }
 
                 GrdvMaxLlamada.DataSource = _dts.Tables[1];
                 GrdvMaxLlamada.DataBind();
 
-                if (_dts.Tables[1].Rows.Count > 0) ImgExportar2.Visible = true;
+                if (_dts.Tables[1].Rows.Count > 0)
+                {
+                    ImgExportar2.Visible = true;
+                    LblExportar2.Visible = true;
+                }
 
                 ViewState["GrdvMaximo"] = _dts.Tables[1];
             }
