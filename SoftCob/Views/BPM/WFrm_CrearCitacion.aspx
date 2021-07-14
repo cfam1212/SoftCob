@@ -70,7 +70,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="panel-info">
-                <div class="panel-info">
+<%--                <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -80,8 +80,8 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>
-                <div class="panel-info">
+                </div>--%>
+<%--                <div class="panel-info">
                     <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -91,7 +91,7 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>
+                </div>--%>
                 <div class="panel-body">
                     <asp:UpdatePanel ID="updCabecera" runat="server">
                         <ContentTemplate>
@@ -148,10 +148,7 @@
                                                     <asp:BoundField DataField="HDiasMora" HeaderText="H.Mora">
                                                         <ItemStyle HorizontalAlign="Right" />
                                                     </asp:BoundField>
-                                                    <asp:BoundField DataField="MontoOriginal" HeaderText="Cupo">
-                                                        <ItemStyle HorizontalAlign="Right" />
-                                                    </asp:BoundField>
-                                                    <asp:BoundField HeaderText="ValorIni" DataField="MontoGSPBO">
+                                                    <asp:BoundField DataField="ValorDeuda" HeaderText="Valor Deuda">
                                                         <ItemStyle HorizontalAlign="Right" />
                                                     </asp:BoundField>
                                                     <asp:BoundField DataField="Exigible" HeaderText="Exigible">
@@ -186,10 +183,10 @@
                                 <tr>
                                     <td></td>
                                     <td colspan="3">
-                                        <asp:Panel ID="Panel1" runat="server" CssClass="panel panel-primary" Height="200px" GroupingText="Histórico Citación" ScrollBars="Vertical" TabIndex="17">
+                                        <asp:Panel ID="Panel1" runat="server" CssClass="panel panel-primary" Height="250px" GroupingText="Histórico Citación" ScrollBars="Vertical" TabIndex="17">
                                             <asp:GridView ID="GrdvCitaciones" runat="server" AutoGenerateColumns="False"
                                                 CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
-                                                PageSize="5" TabIndex="3" Width="100%" DataKeyNames="Codigo,EstadoCodigo,HoraInicio,HoraFin,CodigoGEST" OnRowDataBound="GrdvCitaciones_RowDataBound">
+                                                PageSize="5" TabIndex="3" Width="100%" DataKeyNames="Codigo,EstadoCodigo,HoraInicio,HoraFin,CodigoGEST">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>
                                                     <asp:BoundField DataField="Hora" HeaderText="Fecha_Solicitud">
@@ -217,7 +214,7 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Detalle">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgDetalle" runat="server" Height="20px" ImageUrl="~/Botones/busquedabg.png" OnClick="ImgDetalle_Click" Enabled="False" />
+                                                            <asp:ImageButton ID="ImgDetalle" runat="server" Height="20px" ImageUrl="~/Botones/busquedabg.png" Enabled="False" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>

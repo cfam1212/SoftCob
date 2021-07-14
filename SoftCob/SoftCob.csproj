@@ -357,6 +357,7 @@
     <Content Include="Views\BPM\WFrm_CitacionProcesoTime.aspx" />
     <Content Include="Views\BPM\WFrm_CrearCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_DatosCanalCitacion.aspx" />
+    <Content Include="Views\BPM\WFrm_DocumentosView.aspx" />
     <Content Include="Views\BPM\WFrm_EfectivoLostPayment.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx" />
@@ -653,6 +654,13 @@
     </Compile>
     <Compile Include="Views\BPM\WFrm_DatosCanalCitacion.aspx.designer.cs">
       <DependentUpon>WFrm_DatosCanalCitacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_DocumentosView.aspx.cs">
+      <DependentUpon>WFrm_DocumentosView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_DocumentosView.aspx.designer.cs">
+      <DependentUpon>WFrm_DocumentosView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\BPM\WFrm_EfectivoLostPayment.aspx.cs">
       <DependentUpon>WFrm_EfectivoLostPayment.aspx</DependentUpon>

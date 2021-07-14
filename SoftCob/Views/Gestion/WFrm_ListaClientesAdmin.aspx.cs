@@ -132,7 +132,7 @@
             }
         }
 
-        protected void grdvDatos_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void GrdvDatos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
             {
@@ -186,7 +186,8 @@
                 GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
                 _codigoclde = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoCLDE"].ToString();
                 _codigopers = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoPERS"].ToString();
-                Response.Redirect("../BPM/WFrm_NuevaCitacion.aspx?CodigoPERS=" + _codigopers + "&CodigoCLDE="
+                _codigocpce = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoCPCE"].ToString();
+                Response.Redirect("../BPM/WFrm_CrearCitacion.aspx?CodigoPERS=" + _codigopers + "&CodigoCPCE=" + _codigocpce + "&CodigoCLDE="
                     + _codigoclde + "&Retornar=0", true);
             }
             catch (Exception ex)

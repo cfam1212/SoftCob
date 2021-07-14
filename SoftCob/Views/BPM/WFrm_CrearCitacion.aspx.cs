@@ -71,14 +71,14 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0,
-                    "", "", "", Session["Conectar"].ToString().ToString());
+                    "", "", "", Session["Conectar"].ToString());
 
                 ViewState["NumeroDocumento"] = _dts.Tables[0].Rows[0]["Cedula"].ToString();
                 GrdvDatosDeudor.DataSource = _dts;
                 GrdvDatosDeudor.DataBind();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(33, 0, 0, int.Parse(ViewState["CodigoCLDE"].ToString()),
-                    "", "", "", Session["Conectar"].ToString().ToString());
+                    "", "", "", Session["Conectar"].ToString());
 
                 GrdvDatosObligacion.DataSource = _dts;
                 GrdvDatosObligacion.DataBind();
@@ -101,8 +101,11 @@
                     DdlDireccion.DataValueField = "Codigo";
                     DdlDireccion.DataBind();
 
-                    DdlTipoMail.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO CLIENTE",
-                        "--Seleccione Tipo Correo--", "S");
+                    //DdlTipoMail.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO CLIENTE",
+                    //    "--Seleccione Tipo Correo--", "S");
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(37, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
+                    DdlTipoMail.DataSource = _dts;
                     DdlTipoMail.DataTextField = "Descripcion";
                     DdlTipoMail.DataValueField = "Codigo";
                     DdlTipoMail.DataBind();
@@ -122,19 +125,19 @@
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
                     _totalExigible += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "Exigible"));
-                    _totalDeuda += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "MontoGSPBO"));
+                    _totalDeuda += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "ValorDeuda"));
                 }
 
                 if (e.Row.RowType == DataControlRowType.Footer)
                 {
-                    e.Row.Cells[3].Text = "TOTAL:";
-                    e.Row.Cells[4].Text = _totalDeuda.ToString();
+                    e.Row.Cells[2].Text = "TOTAL:";
+                    e.Row.Cells[3].Text = _totalDeuda.ToString();
                     e.Row.Cells[4].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
 
-                    e.Row.Cells[5].Text = _totalExigible.ToString();
-                    e.Row.Cells[5].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Cells[4].Text = _totalExigible.ToString();
+                    e.Row.Cells[4].HorizontalAlign = HorizontalAlign.Right;
                     e.Row.Font.Bold = true;
                     e.Row.Font.Size = 8;
                 }
@@ -161,7 +164,7 @@
                 TrWhast3.Visible = true;
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(208, 0, int.Parse(ViewState["CodigoPERS"].ToString()), 0,
-                    "", ViewState["NumeroDocumento"].ToString(), "", Session["Conectar"].ToString().ToString());
+                    "", ViewState["NumeroDocumento"].ToString(), "", Session["Conectar"].ToString());
 
                 ViewState["Whatsapp"] = _dts.Tables[0];
                 GrdvCelulares.DataSource = _dts;
@@ -229,116 +232,114 @@
                 Lblerror.Text = ex.ToString();
             }
         }
+        protected void ImgAgregarMail_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                if (DdlTipoMail.SelectedValue == "0")
+                {
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Mail..!", this);
+                    return;
+                }
 
-        //protected void ImgAgregarMail_Click(object sender, ImageClickEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (DdlTipoMail.SelectedValue == "0")
-        //        {
-        //            new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Mail..!", this);
-        //            return;
-        //        }
+                if (string.IsNullOrEmpty(TxtEmail.Text.Trim()))
+                {
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Email..!", this);
+                    return;
+                }
 
-        //        if (string.IsNullOrEmpty(TxtEmail.Text.Trim()))
-        //        {
-        //            new FuncionesDAO().FunShowJSMessage("Ingrese Email..!", this);
-        //            return;
-        //        }
+                if (!new FuncionesDAO().Email_bien_escrito(TxtEmail.Text.Trim()))
+                {
+                    new FuncionesDAO().FunShowJSMessage("Email Incorrecto..!", this);
+                    return;
+                }
 
-        //        if (!new FuncionesDAO().Email_bien_escrito(TxtEmail.Text.Trim()))
-        //        {
-        //            new FuncionesDAO().FunShowJSMessage("Email Incorrecto..!", this);
-        //            return;
-        //        }
+                _dtbdatos = (DataTable)ViewState["Emails"];
 
-        //        _dtbdatos = (DataTable)ViewState["Emails"];
+                if (ViewState["Emails"] != null)
+                {
+                    _resultado = _dtbdatos.Select("Email='" + TxtEmail.Text.ToLower() + "'").FirstOrDefault();
 
-        //        if (ViewState["Emails"] != null)
-        //        {
-        //            _resultado = _dtbdatos.Select("Email='" + TxtEmail.Text.ToLower() + "'").FirstOrDefault();
+                    if (_resultado != null) _lexiste = true;
+                }
 
-        //            if (_resultado != null) _lexiste = true;
-        //        }
+                if (_lexiste)
+                {
+                    new FuncionesDAO().FunShowJSMessage("Ya Existe Email Agregado..!", this);
+                    return;
+                }
 
-        //        if (_lexiste)
-        //        {
-        //            new FuncionesDAO().FunShowJSMessage("Ya Existe Email Agregado..!", this);
-        //            return;
-        //        }
+                TrEmail5.Visible = true;
+                //_dts = new ConsultaDatosDAO().FunInsertAdicionales(1, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
+                //    "CORREO", DdlTipoMail.SelectedValue, RdbEmail.SelectedValue, TxtEmail.Text.Trim().ToLower(),
+                //    "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+                //    "", "", Session["Conectar"].ToString());
 
-        //        TrEmail5.Visible = true;
-        //        _dts = new ConsultaDatosDAO().FunInsertAdicionales(1, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
-        //            "CORREO", DdlTipoMail.SelectedValue, RdbEmail.SelectedValue, TxtEmail.Text.Trim().ToLower(),
-        //            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            "", "", Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(234, 0, 0, 0, "TIPO CORREO", "CORREO",
+                    ViewState["NumeroDocumento"].ToString(), Session["Conectar"].ToString().ToString());
 
-        //        _dts = new ConsultaDatosDAO().FunInsertAdicionales(6, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
-        //            "CORREO", "TIPO CORREO", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            "", "", "", "", "", "", "", "", "", "", "", "", Session["Conectar"].ToString());
+                ViewState["Emails"] = _dts.Tables[0];
+                GrdvEmails.DataSource = _dts.Tables[0];
+                GrdvEmails.DataBind();
 
-        //        ViewState["Emails"] = _dts.Tables[0];
-        //        GrdvEmails.DataSource = _dts.Tables[0];
-        //        GrdvEmails.DataBind();
+                DdlTipoMail.SelectedValue = "0";
+                TxtEmail.Text = "";
+                TxtObservaEmail.Text = "";
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
 
-        //        DdlTipoMail.SelectedValue = "0";
-        //        TxtEmail.Text = "";
-        //        TxtObservaEmail.Text = "";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Lblerror.Text = ex.ToString();
-        //    }
-        //}
+        protected void ChkSolEmail_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
+                _chkemail = (CheckBox)(gvRow.Cells[4].FindControl("ChkSolEmail"));
+                _txtobserva = (TextBox)(gvRow.Cells[3].FindControl("TxtObservaCorreo"));
 
-        //protected void ChkSolEmail_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
-        //        _chkemail = (CheckBox)(gvRow.Cells[4].FindControl("ChkSolEmail"));
-        //        _txtobserva = (TextBox)(gvRow.Cells[3].FindControl("TxtObservaCorreo"));
+                _dtbemail = (DataTable)ViewState["Emails"];
+                _codigo = GrdvEmails.DataKeys[gvRow.RowIndex].Values["CodigoMATD"].ToString();
+                _resultado = _dtbemail.Select("CodigoMATD='" + _codigo + "'").FirstOrDefault();
+                _resultado["Enviar"] = _chkemail.Checked ? "SI" : "NO";
+                if (!_chkemail.Checked) _txtobserva.Text = "";
 
-        //        _dtbemail = (DataTable)ViewState["Emails"];
-        //        _codigo = GrdvEmails.DataKeys[gvRow.RowIndex].Values["CodigoMATD"].ToString();
-        //        _resultado = _dtbemail.Select("CodigoMATD='" + _codigo + "'").FirstOrDefault();
-        //        _resultado["Enviar"] = _chkemail.Checked ? "SI" : "NO";
-        //        if (!_chkemail.Checked) _txtobserva.Text = "";
+                _dtbemail.AcceptChanges();
+                ViewState["Emails"] = _dtbemail;
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
 
-        //        _dtbemail.AcceptChanges();
-        //        ViewState["Emails"] = _dtbemail;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Lblerror.Text = ex.ToString();
-        //    }
-        //}
+        protected void ImgDelEmail_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
+                _codigo = GrdvEmails.DataKeys[_gvrow.RowIndex].Values["CodigoMATD"].ToString();
+                _correos = GrdvEmails.DataKeys[_gvrow.RowIndex].Values["Email"].ToString();
 
-        //protected void ImgDelEmail_Click(object sender, ImageClickEventArgs e)
-        //{
-        //    try
-        //    {
-        //        GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-        //        _codigo = GrdvEmails.DataKeys[_gvrow.RowIndex].Values["CodigoMATD"].ToString();
-        //        _correos = GrdvEmails.DataKeys[_gvrow.RowIndex].Values["Email"].ToString();
+                _dtbemail = (DataTable)ViewState["Emails"];
+                _resultado = _dtbemail.Select("CodigoMATD='" + _codigo + "'").FirstOrDefault();
+                _resultado.Delete();
+                _dtbdatos.AcceptChanges();
+                GrdvEmails.DataSource = _dtbemail;
+                GrdvEmails.DataBind();
 
-        //        _dtbemail = (DataTable)ViewState["Emails"];
-        //        _resultado = _dtbemail.Select("CodigoMATD='" + _codigo + "'").FirstOrDefault();
-        //        _resultado.Delete();
-        //        _dtbdatos.AcceptChanges();
-        //        GrdvEmails.DataSource = _dtbemail;
-        //        GrdvEmails.DataBind();
-
-        //        _dts = new ConsultaDatosDAO().FunInsertAdicionales(4, int.Parse(_codigo),
-        //            0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            Session["Conectar"].ToString());
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Lblerror.Text = ex.ToString();
-        //    }
-        //}
+                //_dts = new ConsultaDatosDAO().FunInsertAdicionales(4, int.Parse(_codigo),
+                //    0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "",
+                //    "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+                //    Session["Conectar"].ToString());
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
 
         protected void ChkTerreno_CheckedChanged(object sender, EventArgs e)
         {
@@ -384,61 +385,61 @@
             }
         }
 
-        //protected void ImgAgregarTerreno_Click(object sender, ImageClickEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (DdlDireccion.SelectedValue == "0")
-        //        {
-        //            new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Direccion..!", this);
-        //            return;
-        //        }
+        protected void ImgAgregarTerreno_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                if (DdlDireccion.SelectedValue == "0")
+                {
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Direccion..!", this);
+                    return;
+                }
 
-        //        if (string.IsNullOrEmpty(TxtDireccion.Text.Trim()))
-        //        {
-        //            new FuncionesDAO().FunShowJSMessage("Ingrese Direccion..!", this);
-        //            return;
-        //        }
+                if (string.IsNullOrEmpty(TxtDireccion.Text.Trim()))
+                {
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Direccion..!", this);
+                    return;
+                }
 
-        //        _dtbterreno = (DataTable)ViewState["Terreno"];
+                _dtbterreno = (DataTable)ViewState["Terreno"];
 
-        //        if (ViewState["Terreno"] != null)
-        //        {
-        //            _resultado = _dtbterreno.Select("Direccion='" + TxtDireccion.Text.ToUpper() + "'").FirstOrDefault();
+                if (ViewState["Terreno"] != null)
+                {
+                    _resultado = _dtbterreno.Select("Direccion='" + TxtDireccion.Text.ToUpper() + "'").FirstOrDefault();
 
-        //            if (_resultado != null) _lexiste = true;
-        //        }
+                    if (_resultado != null) _lexiste = true;
+                }
 
-        //        if (_lexiste)
-        //        {
-        //            new FuncionesDAO().FunShowJSMessage("Ya Existe Email Agregado..!", this);
-        //            return;
-        //        }
+                if (_lexiste)
+                {
+                    new FuncionesDAO().FunShowJSMessage("Ya Existe Email Agregado..!", this);
+                    return;
+                }
 
-        //        TrTerreno6.Visible = true;
+                TrTerreno6.Visible = true;
 
-        //        _dts = new ConsultaDatosDAO().FunInsertAdicionales(2, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
-        //            "DIRECCION", DdlDireccion.SelectedValue, RdbTerreno.SelectedValue, TxtDireccion.Text.Trim().ToUpper(),
-        //            TxtReferencia.Text.Trim().ToUpper(), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            "", "", "", "", "", "", "", "", Session["Conectar"].ToString());
+                //_dts = new ConsultaDatosDAO().FunInsertAdicionales(2, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
+                //    "DIRECCION", DdlDireccion.SelectedValue, RdbTerreno.SelectedValue, TxtDireccion.Text.Trim().ToUpper(),
+                //    TxtReferencia.Text.Trim().ToUpper(), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+                //    "", "", "", "", "", "", "", "", Session["Conectar"].ToString());
 
-        //        _dts = new ConsultaDatosDAO().FunInsertAdicionales(6, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
-        //            "DIRECCION", "TIPO DIRECCION", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            "", "", "", "", "", "", "", "", "", "", "", "", Session["Conectar"].ToString());
+                //_dts = new ConsultaDatosDAO().FunInsertAdicionales(6, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
+                //    "DIRECCION", "TIPO DIRECCION", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+                //    "", "", "", "", "", "", "", "", "", "", "", "", Session["Conectar"].ToString());
 
-        //        ViewState["Terreno"] = _dts.Tables[0];
-        //        GrdvTerreno.DataSource = _dts;
-        //        GrdvTerreno.DataBind();
+                ViewState["Terreno"] = _dts.Tables[0];
+                GrdvTerreno.DataSource = _dts;
+                GrdvTerreno.DataBind();
 
-        //        DdlDireccion.SelectedValue = "0";
-        //        TxtDireccion.Text = "";
-        //        TxtReferencia.Text = "";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Lblerror.Text = ex.ToString();
-        //    }
-        //}
+                DdlDireccion.SelectedValue = "0";
+                TxtDireccion.Text = "";
+                TxtReferencia.Text = "";
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
 
         protected void ChkSolTerreno_CheckedChanged(object sender, EventArgs e)
         {
@@ -463,30 +464,30 @@
             }
         }
 
-        //protected void ImgDelTerreno_Click(object sender, ImageClickEventArgs e)
-        //{
-        //    try
-        //    {
-        //        GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
-        //        _codigo = GrdvTerreno.DataKeys[_gvrow.RowIndex].Values["CodigoMATD"].ToString();
+        protected void ImgDelTerreno_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
+                _codigo = GrdvTerreno.DataKeys[_gvrow.RowIndex].Values["CodigoMATD"].ToString();
 
-        //        _dtbterreno = (DataTable)ViewState["Terreno"];
-        //        _resultado = _dtbterreno.Select("CodigoMATD='" + _codigo + "'").FirstOrDefault();
-        //        _resultado.Delete();
-        //        _dtbterreno.AcceptChanges();
-        //        GrdvTerreno.DataSource = _dtbterreno;
-        //        GrdvTerreno.DataBind();
+                _dtbterreno = (DataTable)ViewState["Terreno"];
+                _resultado = _dtbterreno.Select("CodigoMATD='" + _codigo + "'").FirstOrDefault();
+                _resultado.Delete();
+                _dtbterreno.AcceptChanges();
+                GrdvTerreno.DataSource = _dtbterreno;
+                GrdvTerreno.DataBind();
 
-        //        _dts = new ConsultaDatosDAO().FunInsertAdicionales(4, int.Parse(_codigo),
-        //            0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        //            Session["Conectar"].ToString());
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Lblerror.Text = ex.ToString();
-        //    }
-        //}
+                //_dts = new ConsultaDatosDAO().FunInsertAdicionales(4, int.Parse(_codigo),
+                //    0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "",
+                //    "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+                //    Session["Conectar"].ToString());
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
 
         protected void BtnGrabar_Click(object sender, EventArgs e)
         {

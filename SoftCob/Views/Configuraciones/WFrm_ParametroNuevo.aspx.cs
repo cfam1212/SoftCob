@@ -153,13 +153,13 @@
 
                     if (!string.IsNullOrEmpty(TxtValorV.Text.Trim()))
                     {
-                        _resultado = _dtbparametro.Select("Detalle='" + TxtDetalle.Text.ToUpper() + "' or ValorV='" +
+                        _resultado = _dtbparametro.Select("Detalle='" + TxtDetalle.Text.ToUpper() + "' AND ValorV='" +
                             TxtValorV.Text.Trim() + "'").FirstOrDefault();
                     }
 
                     if (!string.IsNullOrEmpty(TxtValorI.Text.Trim()))
                     {
-                        _resultado = _dtbparametro.Select("Detalle='" + TxtDetalle.Text.ToUpper() + "' or ValorI='" +
+                        _resultado = _dtbparametro.Select("Detalle='" + TxtDetalle.Text.ToUpper() + "' AND ValorI='" +
                             TxtValorI.Text.Trim() + "'").FirstOrDefault();
                     }
 
