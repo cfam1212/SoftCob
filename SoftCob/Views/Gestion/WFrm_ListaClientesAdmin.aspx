@@ -41,7 +41,7 @@
                                 <td>
                                     <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
                                         CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                        ShowHeaderWhenEmpty="True" DataKeyNames="codigoCEDE,codigoCPCE,codigoCLDE,codigoPERS,Identificacion,Operacion,FechaPago,VolverLLamar" OnRowDataBound="grdvDatos_RowDataBound">
+                                        ShowHeaderWhenEmpty="True" DataKeyNames="codigoCEDE,codigoCPCE,codigoCLDE,codigoPERS,Identificacion,Operacion,FechaPago,VolverLLamar" OnRowDataBound="GrdvDatos_RowDataBound">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
                                             <asp:BoundField DataField="Producto" HeaderText="Producto" />

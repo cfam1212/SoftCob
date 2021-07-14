@@ -510,7 +510,7 @@
                                                                                         <h5>Número:</h5>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <asp:TextBox ID="TxtTelefono" runat="server" CssClass="form-control" MaxLength="10" TabIndex="5" Width="100%"></asp:TextBox>
+                                                                                        <asp:TextBox ID="TxtTelefono" runat="server" CssClass="form-control alinearDerecha" MaxLength="10" TabIndex="5" Width="100%"></asp:TextBox>
                                                                                         <asp:FilteredTextBoxExtender ID="txtTelefono_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtTelefono">
                                                                                         </asp:FilteredTextBoxExtender>
                                                                                     </td>

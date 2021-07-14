@@ -1035,8 +1035,8 @@
                         ViewState["VerGestiones"] = "1";
                         TxtNombres.Text = "";
                         TxtApellidos.Text = "";
-                        TxtNombres.Enabled = false;
-                        TxtApellidos.Enabled = false;
+                        //TxtNombres.Enabled = false;
+                        //TxtApellidos.Enabled = false;
                         updCabecera.Update();
                         break;
                 }
