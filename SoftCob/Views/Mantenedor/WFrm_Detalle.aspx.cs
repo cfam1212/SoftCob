@@ -55,7 +55,7 @@
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     Response.Redirect("~/Reload.html");
                 }
