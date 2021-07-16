@@ -356,6 +356,11 @@
                             <td></td>
                         </tr>
                         <tr>
+                            <td colspan="6">
+                                <asp:Panel runat="server" Height="20px"></asp:Panel>
+                            </td>
+                        </tr>
+                        <tr>
                             <td></td>
                             <td colspan="4">
                                 <asp:Panel ID="pnlPreview" runat="server" Height="350px" ScrollBars="Vertical">
@@ -364,14 +369,12 @@
                                         ForeColor="#333333" TabIndex="17" Width="100%" AllowPaging="True">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
                                             <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
-                                            <asp:BoundField DataField="Operacion" HeaderText="Operación" />
-                                            <asp:BoundField DataField="DiasMora" HeaderText="Días Mora">
-                                                <ItemStyle HorizontalAlign="Right" />
-                                            </asp:BoundField>
-                                            <asp:BoundField DataField="Exigible" HeaderText="Exigible">
-                                                <ItemStyle HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
+                                            <asp:BoundField DataField="Provincia" HeaderText="Provincia" />
+                                            <asp:BoundField DataField="Ciudad" HeaderText="Ciudad" />
+                                            <asp:BoundField DataField="FechaGestion" HeaderText="Fecha Ult. Gestión" >
+                                            <ItemStyle HorizontalAlign="Right" />
                                             </asp:BoundField>
                                         </Columns>
                                         <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
