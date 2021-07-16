@@ -141,19 +141,6 @@
                 SoftCob_CEDENTE cedente = new CedenteDAO().FunGetCedentePorID(int.Parse(ViewState["CodigoCEDE"].ToString()));
                 ViewState["NivelArbol"] = cedente.cede_auxi1;
 
-                //switch (ViewState["NivelArbol"].ToString())
-                //{
-                //    case "3":
-                //        LblContacto.Visible = false;
-                //        DdlContacto.Visible = false;
-                //        Chkcitacion.Visible = true;
-                //        DdlCitacion.Visible = true;
-                //        break;
-                //    default:
-                //        GrdvDatosGarante.Columns[7].Visible = false;
-                //        break;
-                //}
-
                 if (Session["PermisoEspecial"].ToString() == "SI")
                 {
                     ImgComparar.Visible = true;
@@ -275,8 +262,8 @@
                 GrdvDatos.DataBind();
 
                 //Datos Garante
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(45, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(), "",
-                    Session["Conectar"].ToString().ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(45, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "",
+                    ViewState["NumeroDocumento"].ToString(), "", Session["Conectar"].ToString().ToString());
                 GrdvDatosGarante.DataSource = _dts;
                 GrdvDatosGarante.DataBind();
 

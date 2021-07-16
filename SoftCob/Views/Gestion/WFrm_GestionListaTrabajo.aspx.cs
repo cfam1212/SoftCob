@@ -1609,7 +1609,8 @@
                 GrdvDatosObligacion.DataBind();
                 ViewState["DatosObligacion"] = _dts.Tables[0];
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(45, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(), "",
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(45, int.Parse(ViewState["PersCodigo"].ToString()), 0, 0, "", 
+                    ViewState["NumeroDocumento"].ToString(), "",
                     Session["Conectar"].ToString().ToString());
                 GrdvDatosGarante.DataSource = _dts;
                 GrdvDatosGarante.DataBind();

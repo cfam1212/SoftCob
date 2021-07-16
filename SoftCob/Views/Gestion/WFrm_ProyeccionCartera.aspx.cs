@@ -120,7 +120,7 @@
                 _year = int.Parse(_dts.Tables[0].Rows[0]["Anio"].ToString());
                 ViewState["Year"] = _year;
                 ViewState["Mes"] = _mes;
-                _codigocede = int.Parse(_dts.Tables[0].Rows[0]["CodigoCPCE"].ToString());
+                _codigocede = int.Parse(_dts.Tables[0].Rows[0]["CodigoCEDE"].ToString());
                 _codigocpce = int.Parse(_dts.Tables[0].Rows[0]["CodigoCPCE"].ToString());
                 ViewState["CodigoCPCE"] = _codigocpce;
                 _codigogest = int.Parse(_dts.Tables[0].Rows[0]["CodigoGEST"].ToString());

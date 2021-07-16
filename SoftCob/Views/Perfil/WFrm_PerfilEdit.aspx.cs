@@ -67,6 +67,8 @@
             ChkModalidad.Text = (bool)_perfilactual.perf_modalidades ? "Si" : "No";
             ChkEstadosdelYo.Checked = (bool)_perfilactual.perf_estadosdelyo;
             ChkEstadosdelYo.Text = (bool)_perfilactual.perf_estadosdelyo ? "Si" : "No";
+            ChkImpulsores.Text = (bool)_perfilactual.perf_impulsores ? "Si" : "No";
+            ChkImpulsores.Checked = (bool)_perfilactual.perf_impulsores;
             ChkEstado.Checked = (bool)_perfilactual.perf_estado;
             ChkEstado.Text = (bool)_perfilactual.perf_estado ? "Activo" : "Inactivo";
         }

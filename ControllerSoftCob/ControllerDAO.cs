@@ -1086,6 +1086,12 @@
                     _original.perf_crearparametro = _perfiles.perf_crearparametro;
                     _original.perf_modiparametro = _perfiles.perf_modiparametro;
                     _original.perf_eliminaparametro = _perfiles.perf_eliminaparametro;
+                    _original.perf_perfilactitudinal = _perfiles.perf_perfilactitudinal;
+                    _original.perf_estadosdelyo = _perfiles.perf_estadosdelyo;
+                    _original.perf_estilosnegociacion = _perfiles.perf_estilosnegociacion;
+                    _original.perf_modalidades = _perfiles.perf_modalidades;
+                    _original.perf_impulsores = _perfiles.perf_impulsores;
+                    _original.perf_metaprogramas = _perfiles.perf_metaprogramas;
                     _original.perf_auxb1 = _perfiles.perf_auxb1;
                     _original.perf_auxb2 = _perfiles.perf_auxb2;
                     _original.perf_auxb3 = _perfiles.perf_auxb3;
