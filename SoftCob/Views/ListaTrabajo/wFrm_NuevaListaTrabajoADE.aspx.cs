@@ -1,9 +1,9 @@
 ﻿namespace SoftCob.Views.ListaTrabajo
 {
+    using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
     using System.Data;
-    using System.Drawing;
     using System.Globalization;
     using System.IO;
     using System.Web.UI;
@@ -14,11 +14,11 @@
         ListItem _itemc = new ListItem();
         DataSet _dts = new DataSet();
         DataTable _dtbestrategia = new DataTable();
-        string _sql = "", _estrategia = "", _ordenar = "", _fechaactual = "", _mensaje = "", _sql1 = "", _filename = "", 
-            _style = "";
+        string _sql = "", _estrategia = "", _ordenar = "", _fechaactual = "", _mensaje = "", _sql1 = "", _filename = "";
         bool _validar = false, _continuar = true;
         int _codlistaarbol = 0, _pasadas = 0;
         DateTime _dtmfechainicio, _dtmfechafin, _dtmfechaactual;
+        DataTable _dtb = new DataTable();
         CheckBox _chkselected = new CheckBox();
         ListItem _accion = new ListItem();
         ListItem _efecto = new ListItem();
@@ -580,31 +580,23 @@
         {
             try
             {
-                Response.Clear();
-                Response.Buffer = true;
-                _filename = "PreviewExt_" + DdlCedente.SelectedItem.ToString() + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
-                Response.AddHeader("Content-Disposition", "attachment;filename=" + _filename);
-                Response.Charset = "";
-                Response.ContentType = "application/vnd.ms-excel";
-                using (StringWriter sw = new StringWriter())
+                _dtb = (DataTable)ViewState["Preview"];
+                using (XLWorkbook wb = new XLWorkbook())
                 {
-                    HtmlTextWriter hw = new HtmlTextWriter(sw);
-                    GrdvPreview.AllowPaging = false;
-                    GrdvPreview.DataSource = (DataSet)Session["Preview"];
-                    GrdvPreview.DataBind();
-                    GrdvPreview.HeaderRow.BackColor = Color.White;
-                    foreach (GridViewRow _row in GrdvPreview.Rows)
+                    wb.Worksheets.Add(_dtb, "Datos");
+                    _filename = "PreviewExt_" + DdlCedente.SelectedItem.ToString() + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                    Response.Clear();
+                    Response.Buffer = true;
+                    Response.Charset = "";
+                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    Response.AddHeader("Content-Disposition", "attachment;filename=" + _filename);
+                    using (MemoryStream MyMemoryStream = new MemoryStream())
                     {
-                        _row.BackColor = Color.White;
-                        _row.Cells[1].Style.Add("mso-number-format", "\\@");
-                        _row.Cells[2].Style.Add("mso-number-format", "\\@");
+                        wb.SaveAs(MyMemoryStream);
+                        MyMemoryStream.WriteTo(Response.OutputStream);
+                        Response.Flush();
+                        Response.End();
                     }
-                    GrdvPreview.RenderControl(hw);
-                    _style = @"<style> .textmode { } </style>";
-                    Response.Write(_style);
-                    Response.Output.Write(sw.ToString());
-                    Response.Flush();
-                    Response.End();
                 }
             }
             catch (Exception ex)
@@ -782,7 +774,7 @@
                             int.Parse(DdlTipoGestion.SelectedValue), ChkFecha.Checked ? 1 : 0, 0,
                             Session["Conectar"].ToString());
 
-                        Session["Preview"] = _dts;
+                        ViewState["Preview"] = _dts.Tables[0];
 
                         if (_dts.Tables[0].Rows.Count > 0)
                         {
