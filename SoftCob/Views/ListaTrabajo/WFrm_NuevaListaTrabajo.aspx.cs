@@ -6,7 +6,6 @@
     using System.Data;
     using System.Globalization;
     using System.IO;
-    using System.Linq;
     using System.Web.UI;
     using System.Web.UI.WebControls;
     public partial class WFrm_NuevaListaTrabajo : Page
@@ -15,6 +14,7 @@
         ListItem _itemc = new ListItem();
         DataSet _dts = new DataSet();
         DataTable _dtbestrategia = new DataTable();
+        DataView view;
         string _sql = "", _estrategia = "", _ordenar = "", _mensaje = "", _fechaactual = "";
         bool _validar = false, _continuar = true;
         int _codlistaarbol = 0, _pasadas = 0;
@@ -24,7 +24,7 @@
         DateTime _dtmfechainicio, _dtmfechafin, _dtmfechaactual;
         ListItem _asignacion = new ListItem();
         ListItem _campania = new ListItem();
-        DataRow _filagre, _result, _filnew;
+        string[] columnas;
         #endregion
 
         #region Load
@@ -429,11 +429,10 @@
                 if (_continuar)
                 {
                     _dtbestrategia = (DataTable)ViewState["Estrategia"];
-                    _sql = "SELECT DISTINCT Cliente = PE.pers_nombrescompletos,Identificacion = PE.pers_numerodocumento,";
-                    _sql += "Operacion = CD.ctde_operacion, DiasMora = CD.ctde_diasmora,Exigible = CD.ctde_valorexigible,";
-                    _sql += "CodigoCLDE = CD.CLDE_CODIGO,CodigoPERS = PE.PERS_CODIGO,Gestor=" + DdlGestores.SelectedValue + ",";
-                    _sql += "FechaGestion = CONVERT(VARCHAR(10),CD.ctde_auxv3,121),EstadoCivil = PE.pers_estadocivil,";
-                    _sql += "Genero = PE.pers_genero,Provincia = PR.prov_nombre,Ciudad = CI.ciud_nombre ";
+                    _sql = "SELECT Cliente=PE.pers_nombrescompletos,Identificacion=PE.pers_numerodocumento,";
+                    _sql += "CodigoCLDE=CD.CLDE_CODIGO,CodigoPERS=PE.PERS_CODIGO,CodigoGEST=CD.ctde_gestorasignado,Estado=1,";
+                    _sql += "Provincia=prov_nombre,Ciudad=ciud_nombre,Estado=1,FechaGestion=CONVERT(VARCHAR(10),CD.ctde_auxv3,101),";
+                    _sql += "auxv1='',auxv2='',auxv3='',auxi1=0,auxi2=0,auxi3=0 ";
                     _sql = FunFormarSQL(_sql, 1);
 
                     if (!string.IsNullOrEmpty(_sql))
@@ -441,51 +440,24 @@
                         _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "",
                             Session["Conectar"].ToString());
 
-                        _dtbpreview = (DataTable)ViewState["DatosPreview"];
-                        _dtbpreview.Clear();
+                        columnas = new[] { "CodigoCLDE", "CodigoPERS", "CodigoGEST", "Estado", "auxv1", "auxv2", "auxv3",
+                            "auxi1", "auxi2", "auxi3" };
+                        view = new DataView(_dts.Tables[0]);
+                        _dtb = view.ToTable(true, columnas);
 
-                        _dtbgstsave = (DataTable)ViewState["DatosSave"];
-                        _dtbgstsave.Clear();
+                        ViewState["DatosSave"] = _dtb;
 
-                        foreach (DataRow _drfila in _dts.Tables[0].Rows)
-                        {
-                            _result = _dtbpreview.Select("CodigoCLDE=" +
-                                _drfila["CodigoCLDE"].ToString()).FirstOrDefault();
+                        columnas = new[] { "Identificacion", "Cliente", "Provincia", "Ciudad", "FechaGestion" };
+                        view = new DataView(_dts.Tables[0]);
+                        _dtb = view.ToTable(true, columnas);
 
-                            if (_result == null)
-                            {
-                                _filagre = _dtbpreview.NewRow();
-                                _filagre["Identificacion"] = _drfila["Identificacion"].ToString();
-                                _filagre["Cliente"] = _drfila["Cliente"].ToString();
-                                _filagre["Provincia"] = _drfila["Provincia"].ToString();
-                                _filagre["Ciudad"] = _drfila["Ciudad"].ToString();
-                                _filagre["CodigoCLDE"] = _drfila["CodigoCLDE"].ToString();
-                                _filagre["CodigoPERS"] = _drfila["CodigoPERS"].ToString();
-                                _filagre["FechaGestion"] = _drfila["FechaGestion"].ToString();
-                                _dtbpreview.Rows.Add(_filagre);
-
-                                _filnew = _dtbgstsave.NewRow();
-                                _filnew["CodigoCLDE"] = _drfila["CodigoCLDE"].ToString();
-                                _filnew["CodigoPERS"] = _drfila["CodigoPERS"].ToString();
-                                _filnew["Gestorasignado"] = _drfila["Gestor"].ToString();
-                                _filnew["Estado"] = "1";
-                                _filnew["Operacion"] = _drfila["Operacion"].ToString();
-                                _filnew["FechaGestion"] = _drfila["FechaGestion"].ToString();
-                                _filnew["auxv3"] = "";
-                                _filnew["auxi1"] = "";
-                                _filnew["auxi2"] = "";
-                                _filnew["auxi3"] = "";
-                                _dtbgstsave.Rows.Add(_filnew);
-                            }
-                        }
-
-                        ViewState["Preview"] = _dtbpreview;
-
-                        GrdvPreview.DataSource = _dtbpreview;
+                        GrdvPreview.DataSource = _dtb;
                         GrdvPreview.DataBind();
-                        LblTotal.InnerText = _dtbpreview.Rows.Count.ToString();
+                        ViewState["Preview"] = _dtb;
 
-                        if (_dts.Tables[0].Rows.Count > 0) TblLista.Visible = true;
+                        if (_dtb.Rows.Count > 0) TblLista.Visible = true;
+
+                        LblTotal.InnerText = _dtb.Rows.Count.ToString();
                     }
                     else new FuncionesDAO().FunShowJSMessage("No se puede formar la consulta..!", this);
                 }
@@ -587,10 +559,6 @@
             try
             {
                 _dtb = (DataTable)ViewState["Preview"];
-                string[] columnas = new[] { "Identificacion", "Cliente","Provincia", "Ciudad", "FechaGestion"};
-                DataView view = new DataView(_dtb);
-                _dtb = view.ToTable(true, columnas);
-
                 using (XLWorkbook wb = new XLWorkbook())
                 {
                     wb.Worksheets.Add(_dtb, "Datos");

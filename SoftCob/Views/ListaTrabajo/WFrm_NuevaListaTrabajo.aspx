@@ -363,7 +363,7 @@
                         <tr>
                             <td></td>
                             <td colspan="4">
-                                <asp:Panel ID="pnlPreview" runat="server" Height="350px" ScrollBars="Vertical">
+                                <asp:Panel ID="pnlPreview" runat="server" Height="380px" ScrollBars="Vertical">
                                     <asp:GridView ID="GrdvPreview" runat="server" AutoGenerateColumns="False"
                                         CssClass="table table-condensed table-bordered table-hover table-responsive"
                                         ForeColor="#333333" TabIndex="17" Width="100%" AllowPaging="True">

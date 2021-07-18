@@ -528,6 +528,11 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td colspan="6">
+                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td></td>
                                 <td colspan="4">
                                     <asp:Panel ID="pnlPreview" runat="server" Height="380px" ScrollBars="Vertical">
