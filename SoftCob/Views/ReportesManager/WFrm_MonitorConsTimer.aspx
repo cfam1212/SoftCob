@@ -225,7 +225,7 @@
                             <tr>
                                 <td></td>
                                 <td style="text-align: left">
-                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" TabIndex="7" Visible="False" />
+                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excelbg.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" TabIndex="7" Visible="False" />
                                 </td>
                                 <td></td>
                                 <td></td>
@@ -288,7 +288,7 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <asp:ImageButton ID="ImgExportar1" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar1_Click" TabIndex="9" Visible="False" />
+                                    <asp:ImageButton ID="ImgExportar1" runat="server" ImageUrl="~/Botones/excelbg.png" Width="40px" Height="30px" OnClick="ImgExportar1_Click" TabIndex="9" Visible="False" />
                                 </td>
                                 <td></td>
                                 <td></td>

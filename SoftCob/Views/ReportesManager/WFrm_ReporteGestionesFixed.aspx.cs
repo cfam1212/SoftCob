@@ -81,7 +81,7 @@
         {
             try
             {
-                _dtb = (DataTable)Session["GrdvDatos"];
+                _dtb = (DataTable)ViewState["GrdvDatos"];
                 using (XLWorkbook wb = new XLWorkbook())
                 {
                     wb.Worksheets.Add(_dtb, "Datos");

@@ -1,5 +1,6 @@
 ﻿namespace SoftCob.Views.ListaTrabajo
 {
+    using ClosedXML.Excel;
     using ControllerSoftCob;
     using ModeloSoftCob;
     using System;
@@ -17,6 +18,7 @@
         ListItem _itemc = new ListItem();
         DataSet _dts = new DataSet();
         DataSet _dts1 = new DataSet();
+        DataTable _dtb = new DataTable();
         DataTable _dtbestrategia = new DataTable();
         DataTable _dtblistatrabajo = new DataTable();
         DataTable _dtbgestor = new DataTable();
@@ -825,31 +827,50 @@
         {
             try
             {
-                Response.Clear();
-                Response.Buffer = true;
-                _filename = "PreviewApy_" + DdlCedente.SelectedItem.ToString() + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
-                Response.AddHeader("Content-Disposition", "attachment;filename=" + _filename);
-                Response.Charset = "";
-                Response.ContentType = "application/vnd.ms-excel";
-                using (StringWriter sw = new StringWriter())
+                //Response.Clear();
+                //Response.Buffer = true;
+                //_filename = "PreviewApy_" + DdlCedente.SelectedItem.ToString() + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
+                //Response.AddHeader("Content-Disposition", "attachment;filename=" + _filename);
+                //Response.Charset = "";
+                //Response.ContentType = "application/vnd.ms-excel";
+                //using (StringWriter sw = new StringWriter())
+                //{
+                //    HtmlTextWriter hw = new HtmlTextWriter(sw);
+                //    GrdvPreview.AllowPaging = false;
+                //    GrdvPreview.DataSource = (DataSet)Session["Preview"];
+                //    GrdvPreview.DataBind();
+                //    GrdvPreview.HeaderRow.BackColor = Color.White;
+                //    foreach (GridViewRow row in GrdvPreview.Rows)
+                //    {
+                //        row.BackColor = Color.White;
+                //        row.Cells[1].Style.Add("mso-number-format", "\\@");
+                //        row.Cells[2].Style.Add("mso-number-format", "\\@");
+                //    }
+                //    GrdvPreview.RenderControl(hw);
+                //    _style = @"<style> .textmode { } </style>";
+                //    Response.Write(_style);
+                //    Response.Output.Write(sw.ToString());
+                //    Response.Flush();
+                //    Response.End();
+                //}
+
+                _dtb = (DataTable)ViewState["Preview"];
+                using (XLWorkbook wb = new XLWorkbook())
                 {
-                    HtmlTextWriter hw = new HtmlTextWriter(sw);
-                    GrdvPreview.AllowPaging = false;
-                    GrdvPreview.DataSource = (DataSet)Session["Preview"];
-                    GrdvPreview.DataBind();
-                    GrdvPreview.HeaderRow.BackColor = Color.White;
-                    foreach (GridViewRow row in GrdvPreview.Rows)
+                    wb.Worksheets.Add(_dtb, "Datos");
+                    _filename = "PreviewApy_" + DdlCedente.SelectedItem.ToString() + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                    Response.Clear();
+                    Response.Buffer = true;
+                    Response.Charset = "";
+                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    Response.AddHeader("Content-Disposition", "attachment;filename=" + _filename);
+                    using (MemoryStream MyMemoryStream = new MemoryStream())
                     {
-                        row.BackColor = Color.White;
-                        row.Cells[1].Style.Add("mso-number-format", "\\@");
-                        row.Cells[2].Style.Add("mso-number-format", "\\@");
+                        wb.SaveAs(MyMemoryStream);
+                        MyMemoryStream.WriteTo(Response.OutputStream);
+                        Response.Flush();
+                        Response.End();
                     }
-                    GrdvPreview.RenderControl(hw);
-                    _style = @"<style> .textmode { } </style>";
-                    Response.Write(_style);
-                    Response.Output.Write(sw.ToString());
-                    Response.Flush();
-                    Response.End();
                 }
             }
             catch (Exception ex)

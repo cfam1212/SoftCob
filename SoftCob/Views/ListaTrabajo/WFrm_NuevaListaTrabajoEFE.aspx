@@ -468,12 +468,17 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excel.png" OnClick="ImgExportar_Click" TabIndex="9" Visible="false" Width="40px" />
+                                    <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excelbg.png" OnClick="ImgExportar_Click" TabIndex="9" Visible="false" Width="40px" />
                                     <asp:Label ID="LblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
                                 </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">
+                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
+                                </td>
                             </tr>
                             <tr>
                                 <td></td>

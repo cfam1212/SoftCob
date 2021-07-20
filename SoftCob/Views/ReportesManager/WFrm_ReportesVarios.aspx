@@ -195,7 +195,7 @@
                             <table style="width: 100%">
                                 <tr>
                                     <td style="text-align: left">
-                                        <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" Visible="false" TabIndex="6" />
+                                        <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excelbg.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" Visible="false" TabIndex="6" />
                                         <asp:Label ID="LblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
                                     </td>
                                     <td></td>

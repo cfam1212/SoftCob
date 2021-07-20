@@ -119,7 +119,7 @@
 
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();
-                Session["grdvDatos"] = _dts.Tables[0];
+                ViewState["grdvDatos"] = _dts.Tables[0];
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -142,7 +142,7 @@
         {
             try
             {
-                _dtb = (DataTable)Session["grdvDatos"];
+                _dtb = (DataTable)ViewState["grdvDatos"];
                 using (XLWorkbook wb = new XLWorkbook())
                 {
                     wb.Worksheets.Add(_dtb, "Datos");

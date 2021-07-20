@@ -151,7 +151,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-info">
+           <%-- <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -159,7 +159,7 @@
                             <h2>Procesando..</h2>
                             <img src="../../Images/load.gif" alt="Loading" border="1" />
                         </div>
-                    </ProgressTemplate>
+                    </ProgressTemplate>--%>
                 </asp:UpdateProgress>
             </div>
             <div class="panel-body">
@@ -520,7 +520,7 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excel.png" OnClick="ImgExportar_Click" TabIndex="9" Visible="false" Width="40px" />
+                                    <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excelbg.png" OnClick="ImgExportar_Click" TabIndex="9" Visible="false" Width="40px" />
                                     <asp:Label ID="LblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
                                 </td>
                                 <td></td>

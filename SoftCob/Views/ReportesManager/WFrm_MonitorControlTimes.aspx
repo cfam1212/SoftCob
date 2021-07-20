@@ -239,7 +239,7 @@
                             <tr>
                                 <td></td>
                                 <td style="text-align: left">
-                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" Visible="false" TabIndex="8" />
+                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excelbg.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" Visible="false" TabIndex="8" />
                                 </td>
                                 <td>
                                     <h5 runat="server" id="LblExportar" visible="false">Exportar</h5>
@@ -296,7 +296,7 @@
                             <tr>
                                 <td></td>
                                 <td style="text-align: left">
-                                    <asp:ImageButton ID="ImgExportar1" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar1_Click" Visible="false" TabIndex="10" />
+                                    <asp:ImageButton ID="ImgExportar1" runat="server" ImageUrl="~/Botones/excelbg.png" Width="40px" Height="30px" OnClick="ImgExportar1_Click" Visible="false" TabIndex="10" />
                                 </td>
                                 <td>
                                     <h5 runat="server" id="LblExportar1" visible="false">Exportar</h5>
@@ -354,7 +354,7 @@
                             <tr>
                                 <td></td>
                                 <td style="text-align: left">
-                                    <asp:ImageButton ID="ImgExportar2" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar2_Click" Visible="false" TabIndex="12" />
+                                    <asp:ImageButton ID="ImgExportar2" runat="server" ImageUrl="~/Botones/excelbg.png" Width="40px" Height="30px" OnClick="ImgExportar2_Click" Visible="false" TabIndex="12" />
                                 </td>
                                 <td>
                                     <h5 runat="server" id="LblExportar2" visible="false">Exportar</h5>

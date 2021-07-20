@@ -39,45 +39,50 @@
                         <table style="width: 100%">
                             <tr>
                                 <td>
-                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" />
+                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excelbg.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" />
                                     <asp:Label ID="lblExportar" runat="server" Text="Exportar"></asp:Label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
-                                        CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                        ShowHeaderWhenEmpty="True" DataKeyNames="FechaLlamar,HoraLlamar" OnRowDataBound="GrdvDatos_RowDataBound">
+                                    <asp:GridView ID="GrdvDatos" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="FechaLlamar,HoraLlamar" OnRowDataBound="GrdvDatos_RowDataBound" ShowHeaderWhenEmpty="True" Width="100%">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:BoundField DataField="FechaRegistro" HeaderText="Fecha_Registro">
-                                            </asp:BoundField>
+                                            <asp:BoundField DataField="FechaRegistro" HeaderText="Fecha_Registro" />
                                             <asp:BoundField DataField="FechaLlama" HeaderText="Fecha_Llamar">
-                                                <ItemStyle HorizontalAlign="Center" />
+                                            <ItemStyle HorizontalAlign="Center" />
                                             </asp:BoundField>
                                             <asp:BoundField DataField="Producto" HeaderText="Producto" />
                                             <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
                                             <asp:BoundField DataField="Cliente" HeaderText="Cliente">
-                                                <ItemStyle Wrap="True" />
+                                            <ItemStyle Wrap="True" />
                                             </asp:BoundField>
                                             <asp:BoundField DataField="Operacion" HeaderText="Operación" />
                                             <asp:BoundField DataField="Exigible" HeaderText="Exigible">
-                                                <ItemStyle HorizontalAlign="Right" />
+                                            <ItemStyle HorizontalAlign="Right" />
                                             </asp:BoundField>
                                             <asp:BoundField DataField="FechaUltGestion" HeaderText="Fec.Ult_Gestión">
-                                                <ItemStyle HorizontalAlign="Center" />
+                                            <ItemStyle HorizontalAlign="Center" />
                                             </asp:BoundField>
                                             <asp:BoundField DataField="Gestor" HeaderText="Gestor" />
                                         </Columns>
                                         <RowStyle Font-Size="X-Small" />
                                     </asp:GridView>
                                     <script>
+
                                         $(document).ready(function () {
                                             $('#GrdvDatos').dataTable();
                                         });
                                     </script>
                                 </td>
-                            </tr>
                         </table>
                     </ContentTemplate>
                 </asp:UpdatePanel>

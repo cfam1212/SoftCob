@@ -45,7 +45,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" />
+                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excelbg.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" />
                                     <asp:Label ID="LblExportar" runat="server" Text="Exportar"></asp:Label>
                                 </td>
                                 <td>

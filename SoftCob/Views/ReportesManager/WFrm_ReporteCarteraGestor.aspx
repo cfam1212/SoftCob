@@ -39,8 +39,13 @@
                         <table style="width: 100%">
                             <tr>
                                 <td>
-                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" />
+                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excelbg.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" />
                                     <asp:Label ID="lblExportar" runat="server" Text="Exportar"></asp:Label>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td colspan="6">
+                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
                                 </td>
                             </tr>
                             <tr>

@@ -1,9 +1,9 @@
 ﻿namespace SoftCob.Views.ListaTrabajo
 {
+    using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
     using System.Data;
-    using System.Drawing;
     using System.Globalization;
     using System.IO;
     using System.Linq;
@@ -20,6 +20,7 @@
         DataTable _dtbefecto = new DataTable();
         DataTable _dtbcodigos = new DataTable();
         DataTable _dtbgstsave = new DataTable();
+        DataTable _dtb = new DataTable();
         DataRow _result;
         DataRow[] _resultado;
         string _sql = "", _estrategia = "", _ordenar = "", _fechaactual = "", _mensaje = "", _codigo = "",
@@ -656,7 +657,7 @@
                             int.Parse(ViewState["CodigoCPCE"].ToString()), int.Parse(ViewState["CodigoLTCA"].ToString()),
                             _tipogestion, int.Parse(DdlGestor.SelectedValue), 0, 0, 0, 0, int.Parse(DdlGestorApoyo.SelectedValue), TxtFechaDesde.Text, TxtFechaHasta.Text, _sql1, _sql2, "", "", ChkFecha.Checked ? 1 : 0, 0, 0, 0, _dtbgstsave, Session["Conectar"].ToString());
 
-                        Session["Preview"] = _dts;
+                        ViewState["Preview"] = _dts.Tables[0];
 
                         if (_dts.Tables[0].Rows.Count > 0)
                         {
@@ -685,31 +686,50 @@
         {
             try
             {
-                Response.Clear();
-                Response.Buffer = true;
-                string FileName = "PreviewApy_" + DdlCedente.SelectedItem.ToString() + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
-                Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
-                Response.Charset = "";
-                Response.ContentType = "application/vnd.ms-excel";
-                using (StringWriter sw = new StringWriter())
+                //Response.Clear();
+                //Response.Buffer = true;
+                //string FileName = "PreviewApy_" + DdlCedente.SelectedItem.ToString() + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
+                //Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
+                //Response.Charset = "";
+                //Response.ContentType = "application/vnd.ms-excel";
+                //using (StringWriter sw = new StringWriter())
+                //{
+                //    HtmlTextWriter hw = new HtmlTextWriter(sw);
+                //    GrdvPreview.AllowPaging = false;
+                //    GrdvPreview.DataSource = (DataSet)Session["Preview"];
+                //    GrdvPreview.DataBind();
+                //    GrdvPreview.HeaderRow.BackColor = Color.White;
+                //    foreach (GridViewRow row in GrdvPreview.Rows)
+                //    {
+                //        row.BackColor = Color.White;
+                //        row.Cells[1].Style.Add("mso-number-format", "\\@");
+                //        row.Cells[2].Style.Add("mso-number-format", "\\@");
+                //    }
+                //    GrdvPreview.RenderControl(hw);
+                //    string style = @"<style> .textmode { } </style>";
+                //    Response.Write(style);
+                //    Response.Output.Write(sw.ToString());
+                //    Response.Flush();
+                //    Response.End();
+                //}
+
+                _dtb = (DataTable)ViewState["Preview"];
+                using (XLWorkbook wb = new XLWorkbook())
                 {
-                    HtmlTextWriter hw = new HtmlTextWriter(sw);
-                    GrdvPreview.AllowPaging = false;
-                    GrdvPreview.DataSource = (DataSet)Session["Preview"];
-                    GrdvPreview.DataBind();
-                    GrdvPreview.HeaderRow.BackColor = Color.White;
-                    foreach (GridViewRow row in GrdvPreview.Rows)
+                    wb.Worksheets.Add(_dtb, "Datos");
+                    string FileName = "PreviewApy_" + DdlCedente.SelectedItem.ToString() + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                    Response.Clear();
+                    Response.Buffer = true;
+                    Response.Charset = "";
+                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
+                    using (MemoryStream MyMemoryStream = new MemoryStream())
                     {
-                        row.BackColor = Color.White;
-                        row.Cells[1].Style.Add("mso-number-format", "\\@");
-                        row.Cells[2].Style.Add("mso-number-format", "\\@");
+                        wb.SaveAs(MyMemoryStream);
+                        MyMemoryStream.WriteTo(Response.OutputStream);
+                        Response.Flush();
+                        Response.End();
                     }
-                    GrdvPreview.RenderControl(hw);
-                    string style = @"<style> .textmode { } </style>";
-                    Response.Write(style);
-                    Response.Output.Write(sw.ToString());
-                    Response.Flush();
-                    Response.End();
                 }
             }
             catch (Exception ex)

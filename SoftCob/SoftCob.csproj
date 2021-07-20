@@ -250,6 +250,7 @@
     <Content Include="Botones\eliminarbg.png" />
     <Content Include="Botones\eliminargris.png" />
     <Content Include="Botones\excel.png" />
+    <Content Include="Botones\excelbg.png" />
     <Content Include="Botones\gafas.png" />
     <Content Include="Botones\identidad.png" />
     <Content Include="Botones\informacion.png" />

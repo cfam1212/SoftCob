@@ -1,5 +1,6 @@
 ﻿namespace SoftCob.Views.ReportesManager
 {
+     using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
     using System.Data;
@@ -10,6 +11,7 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
+        DataTable _dtb = new DataTable();
         string _sql = "", _filename = "", _style = "";
         #endregion
 
@@ -61,29 +63,48 @@
         {
             try
             {
-                Response.Clear();
-                GrdvDatos.AllowPaging = false;
-                GrdvDatos.DataSource = (DataSet)Session["GrdvDatos"];
-                GrdvDatos.DataBind();
-                _filename = "Operaciones_Historico" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
-                Response.AddHeader("Content-Disposition", "attachment;filename=" + _filename);
-                Response.Charset = "";
-                Response.ContentType = "application/vnd.ms-excel";
-                Response.Buffer = false;
-                using (StringWriter sw = new StringWriter())
+                //Response.Clear();
+                //GrdvDatos.AllowPaging = false;
+                //GrdvDatos.DataSource = (DataSet)Session["GrdvDatos"];
+                //GrdvDatos.DataBind();
+                //_filename = "Operaciones_Historico" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
+                //Response.AddHeader("Content-Disposition", "attachment;filename=" + _filename);
+                //Response.Charset = "";
+                //Response.ContentType = "application/vnd.ms-excel";
+                //Response.Buffer = false;
+                //using (StringWriter sw = new StringWriter())
+                //{
+                //    HtmlTextWriter hw = new HtmlTextWriter(sw);
+                //    foreach (GridViewRow row in GrdvDatos.Rows)
+                //    {
+                //        row.Cells[0].Style.Add("mso-number-format", "\\@");
+                //        row.Cells[1].Style.Add("mso-number-format", "\\@");
+                //    }
+                //    _style = @"<style> .textmode { } </style>";
+                //    Response.Write(_style);
+                //    GrdvDatos.RenderControl(hw);
+                //    Response.Output.Write(sw.ToString());
+                //    Response.Flush();
+                //    Response.End();
+                //}
+
+                _dtb = (DataTable)ViewState["Preview"];
+                using (XLWorkbook wb = new XLWorkbook())
                 {
-                    HtmlTextWriter hw = new HtmlTextWriter(sw);
-                    foreach (GridViewRow row in GrdvDatos.Rows)
+                    wb.Worksheets.Add(_dtb, "Datos");
+                    _filename = "Operaciones_Historico" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                    Response.Clear();
+                    Response.Buffer = true;
+                    Response.Charset = "";
+                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    Response.AddHeader("Content-Disposition", "attachment;filename=" + _filename);
+                    using (MemoryStream MyMemoryStream = new MemoryStream())
                     {
-                        row.Cells[0].Style.Add("mso-number-format", "\\@");
-                        row.Cells[1].Style.Add("mso-number-format", "\\@");
+                        wb.SaveAs(MyMemoryStream);
+                        MyMemoryStream.WriteTo(Response.OutputStream);
+                        Response.Flush();
+                        Response.End();
                     }
-                    _style = @"<style> .textmode { } </style>";
-                    Response.Write(_style);
-                    GrdvDatos.RenderControl(hw);
-                    Response.Output.Write(sw.ToString());
-                    Response.Flush();
-                    Response.End();
                 }
             }
             catch (Exception ex)
