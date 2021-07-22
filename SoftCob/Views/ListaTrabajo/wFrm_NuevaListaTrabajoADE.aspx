@@ -151,7 +151,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-           <%-- <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -159,7 +159,7 @@
                             <h2>Procesando..</h2>
                             <img src="../../Images/load.gif" alt="Loading" border="1" />
                         </div>
-                    </ProgressTemplate>--%>
+                    </ProgressTemplate>
                 </asp:UpdateProgress>
             </div>
             <div class="panel-body">
@@ -209,9 +209,9 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td colspan="4">&nbsp;</td>
-                                <td></td>
+                                <td colspan="6">
+                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
+                                </td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -438,14 +438,14 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:CheckBox ID="ChkFecha" runat="server" AutoPostBack="True" CssClass="form-control" OnCheckedChanged="ChkFecha_CheckedChanged" TabIndex="22" Text="Por Fecha" />
+                                                    <asp:CheckBox ID="ChkFecha" runat="server" AutoPostBack="True" CssClass="form-control" OnCheckedChanged="ChkFecha_CheckedChanged" TabIndex="22" Text="Por Fecha" Checked="True" Enabled="False" />
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtFechaDesde" runat="server" CssClass="form-control" TabIndex="23" Width="100%" Enabled="False"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtFechaDesde" runat="server" CssClass="form-control" TabIndex="23" Width="100%"></asp:TextBox>
                                                 </td>
                                                 <td></td>
                                                 <td>
-                                                    <asp:TextBox ID="TxtFechaHasta" runat="server" CssClass="form-control" TabIndex="24" Width="100%" Enabled="False"></asp:TextBox>
+                                                    <asp:TextBox ID="TxtFechaHasta" runat="server" CssClass="form-control" TabIndex="24" Width="100%"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -520,8 +520,8 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excelbg.png" OnClick="ImgExportar_Click" TabIndex="9" Visible="false" Width="40px" />
-                                    <asp:Label ID="LblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
+                                    <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excelbg.png" OnClick="ImgExportar_Click" TabIndex="9" Width="40px" />
+                                    <asp:Label ID="LblExportar" runat="server" Text="Exportar"></asp:Label>
                                 </td>
                                 <td></td>
                                 <td></td>
@@ -541,16 +541,13 @@
                                             ForeColor="#333333" TabIndex="26" Width="100%" AllowPaging="True" OnPageIndexChanging="GrdvPreview_PageIndexChanging">
                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                             <Columns>
-                                                <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
                                                 <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
-                                                <asp:BoundField DataField="Operacion" HeaderText="Operación" />
-                                                <asp:BoundField DataField="DiasMora" HeaderText="DiasMora">
+                                                <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
+                                                <asp:BoundField DataField="Provincia" HeaderText="Provincia" />
+                                                <asp:BoundField DataField="Ciudad" HeaderText="Ciudad" />
+                                                <asp:BoundField DataField="FechaGestion" HeaderText="Fecha Ult. Gestión">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="Exigible" HeaderText="Exigible">
-                                                    <ItemStyle HorizontalAlign="Right" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="FechaGestion" HeaderText="Fecha" />
                                             </Columns>
                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />

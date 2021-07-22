@@ -60,6 +60,7 @@
                                             <asp:BoundField DataField="FechaFin" HeaderText="Fecha_Fin" />
                                             <asp:BoundField DataField="Gestor" HeaderText="Gestor" />
                                             <asp:BoundField DataField="Marcado" HeaderText="Tipo_Marcado" />
+                                            <asp:BoundField DataField="Usuario" HeaderText="Usuario" />
                                             <asp:BoundField DataField="Estado" HeaderText="Estado" />
                                             <asp:TemplateField HeaderText="Editar">
                                                 <ItemTemplate>
