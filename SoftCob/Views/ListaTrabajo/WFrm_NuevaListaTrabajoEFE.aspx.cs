@@ -833,9 +833,13 @@
                             _tipogestion, int.Parse(DdlGestor.SelectedValue), 0, 0, 0, 0, int.Parse(DdlGestorApoyo.SelectedValue), TxtFechaDesde.Text, TxtFechaHasta.Text, _sql1, _sql2, "", "", ChkFecha.Checked ? 1 : 0, 0, 0, 0, _dtbgstsave, Session["Conectar"].ToString());
 
                         _mensaje = new EstrategiaDAO().FunCrearListaTrabajo(_codlistaarbol, TxtLista.Text.Trim().ToUpper(),
-                            TxtDescripcion.Text.Trim().ToUpper(), TxtFechaInicio.Text, TxtFechaFin.Text, int.Parse(DdlEstrategia.SelectedValue), int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), ChkEstado.Checked, DdlMarcado.SelectedValue, DdlCampania.SelectedValue, ChkGestor.Checked ? 1 : 0, "",
-                            0, 0, ChkFecha.Checked ? 1 : 0, TxtFechaDesde.Text.Trim(), TxtFechaHasta.Text.Trim(), DdlGestor.SelectedValue, DdlAsignacion.SelectedValue, DdlGestorApoyo.SelectedValue, int.Parse(LblTotal.InnerText), 3, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dts.Tables[0], (DataTable)ViewState["Estrategia"],
-                            "sp_NewListaTrabajo", Session["Conectar"].ToString());
+                            TxtDescripcion.Text.Trim().ToUpper(), TxtFechaInicio.Text, TxtFechaFin.Text,
+                            int.Parse(DdlEstrategia.SelectedValue), int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue),
+                            ChkEstado.Checked, DdlMarcado.SelectedValue, DdlCampania.SelectedValue, ChkGestor.Checked ? 1 : 0, "",
+                            0, 0, ChkFecha.Checked ? 1 : 0, TxtFechaDesde.Text.Trim(), TxtFechaHasta.Text.Trim(), DdlGestor.SelectedValue,
+                            DdlAsignacion.SelectedValue, DdlGestorApoyo.SelectedValue, int.Parse(LblTotal.InnerText), 3, 0,
+                            int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dts.Tables[0],
+                            (DataTable)ViewState["Estrategia"], "sp_NewListaTrabajo", Session["Conectar"].ToString());
 
                         if (int.Parse(ViewState["CodigoLista"].ToString()) == 0)
                         {

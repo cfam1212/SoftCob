@@ -521,7 +521,7 @@
                             int.Parse(DdlEstrategia.SelectedValue), int.Parse(DdlCedente.SelectedValue),
                             int.Parse(DdlCatalogo.SelectedValue), ChkEstado.Checked, DdlMarcado.SelectedValue,
                             DdlCampania.SelectedValue, 0, "", 0, 0, 0, "", "", DdlGestores.SelectedValue,
-                            DdlAsignacion.SelectedValue, "", int.Parse(LblTotal.InnerText),
+                            DdlAsignacion.SelectedValue, DdlGestorApoyo.SelectedValue, int.Parse(LblTotal.InnerText),
                             0, int.Parse(DdlGestorApoyo.SelectedValue), int.Parse(Session["usuCodigo"].ToString()),
                             Session["MachineName"].ToString(), _dtbgstsave,
                             (DataTable)ViewState["Estrategia"], "sp_NewListaTrabajo", Session["Conectar"].ToString());

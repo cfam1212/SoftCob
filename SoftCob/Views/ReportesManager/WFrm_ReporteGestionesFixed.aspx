@@ -103,7 +103,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-             <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -134,22 +134,22 @@
                             </table>
                         </div>
                         <div class="panel-info">
-                            <asp:Panel ID="pnlGestiones" runat="server" Width="100%" Height="500px" ScrollBars="Auto">
+                            <asp:Panel ID="pnlGestiones" runat="server" Width="100%" Height="450px" ScrollBars="Auto">
                                 <asp:GridView ID="GrdvDatos" runat="server" Width="100%"
                                     CssClass="table table-condensed table-bordered table-hover table-responsive"
                                     AutoGenerateColumns="False"
                                     ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar" PageSize="15"
-                                    TabIndex="10" OnPageIndexChanging="GrdvDatos_PageIndexChanging" AllowPaging="True">
+                                    TabIndex="10" OnPageIndexChanging="GrdvDatos_PageIndexChanging">
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
                                         <asp:BoundField DataField="Cliente" HeaderText="Cliente" HtmlEncode="false">
                                             <ItemStyle Wrap="False" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Cedula" HeaderText="Cedula" >
-                                        <ItemStyle HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="Cedula" HeaderText="Cedula">
+                                            <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="Operacion" HeaderText="Operacion" >
-                                        <ItemStyle HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="Operacion" HeaderText="Operacion">
+                                            <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:d}" />
                                         <asp:BoundField DataField="Hora" HeaderText="Hora" />

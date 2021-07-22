@@ -948,7 +948,7 @@
                             int.Parse(DdlCatalogo.SelectedValue), ChkEstado.Checked, DdlMarcado.SelectedValue, DdlCampania.SelectedValue,
                             ChkGestion.Checked ? 1 : 0, DdlTipoGestion.SelectedValue, ChkArbol.Checked ? 1 : 0, int.Parse(DdlAccion.SelectedValue),
                             ChkFecha.Checked ? 1 : 0, TxtFechaDesde.Text.Trim(), TxtFechaHasta.Text.Trim(), DdlGestores.SelectedValue,
-                            DdlAsignacion.SelectedValue, "", int.Parse(LblTotal.InnerText),
+                            DdlAsignacion.SelectedValue, DdlGestorApoyo.SelectedValue, int.Parse(LblTotal.InnerText),
                             1, int.Parse(DdlGestorApoyo.SelectedValue), int.Parse(Session["usuCodigo"].ToString()),
                             Session["MachineName"].ToString(), _dtbgstsave, (DataTable)ViewState["Estrategia"],
                             "sp_NewListaTrabajo", Session["Conectar"].ToString());

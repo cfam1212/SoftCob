@@ -57,11 +57,11 @@
                 {
                     ImgExportar.Visible = true;
                     LblExportar.Visible = true;
-                    Session["GrdvDatos"] = _dts.Tables[0];
+                    ViewState["GrdvDatos"] = _dts.Tables[0];
                     GrdvDatos.DataSource = _dts.Tables[0];
                     GrdvDatos.DataBind();
-                    //GrdvDatos.UseAccessibleHeader = true;
-                    //GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                    GrdvDatos.UseAccessibleHeader = true;
+                    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
             }
             catch (Exception ex)
