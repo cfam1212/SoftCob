@@ -62,9 +62,6 @@
                                             <asp:BoundField DataField="Operacion" HeaderText="Operación">
                                                 <ItemStyle HorizontalAlign="Right" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="Codigo" HeaderText="Código">
-                                                <ItemStyle HorizontalAlign="Right" />
-                                            </asp:BoundField>
                                             <asp:BoundField DataField="Cliente" HeaderText="Cliente">
                                                 <ItemStyle Wrap="False" />
                                             </asp:BoundField>

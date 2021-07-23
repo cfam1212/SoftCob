@@ -218,6 +218,12 @@
                     DdlCampania.DataValueField = "Codigo";
                     DdlCampania.DataBind();
                     break;
+                case 3:
+                    GrdvPreview.DataSource = null;
+                    GrdvPreview.DataBind();
+                    TblLista.Visible = false;
+                    LblTotal.InnerText = "0";
+                    break;
             }
         }
 
@@ -369,11 +375,8 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
+                FunCargarCombos(3);
                 ViewState["Estrategia"] = null;
-                LblTotal.InnerText = "0";
                 ViewState["CodigoEstrategia"] = DdlEstrategia.SelectedValue;
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(22, int.Parse(DdlEstrategia.SelectedValue), 0, 0, "", "", "", 
                     Session["Conectar"].ToString());
@@ -391,8 +394,8 @@
         {
             try
             {
-                TblLista.Visible = false;
                 FunCargarCombos(1);
+                FunCargarCombos(3);
                 _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
 
                 if (_dts.Tables[0].Rows.Count > 0)
@@ -592,15 +595,14 @@
             ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
             FunCargarCombos(1);
             FunCargarCombos(2);
+            FunCargarCombos(3);
         }
         protected void ChkGestor_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
+
                 if (ChkGestor.Checked) DdlGestores.Enabled = true;
                 else
                 {
@@ -617,10 +619,7 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
@@ -631,10 +630,7 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
@@ -645,10 +641,7 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
