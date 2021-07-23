@@ -202,23 +202,12 @@
                     GrdvListas.DataBind();
                     GrdvPreview.DataSource = null;
                     GrdvPreview.DataBind();
-                    //LblExportar.Visible = false;
-                    //ImgExportar.Visible = false;
                     LblTotal.InnerText = "0";
 
                     DdlAccion.Items.Clear();
                     _accion.Text = "--Seleccione Acción--";
                     _accion.Value = "0";
                     DdlAccion.Items.Add(_accion);
-
-                    //_efecto.Text = "--Seleccione Efecto--";
-                    //_efecto.Value = "0";
-
-                    //_respuesta.Text = "--Seleccione Respuesta--";
-                    //_respuesta.Value = "0";
-
-                    //_contacto.Text = "--Seleccione Contacto--";
-                    //_contacto.Value = "0";
 
                     DdlGestores.DataSource = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", 
                         int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "", Session["Conectar"].ToString());
@@ -250,6 +239,12 @@
                     DdlCampania.DataTextField = "Descripcion";
                     DdlCampania.DataValueField = "Codigo";
                     DdlCampania.DataBind();
+                    break;
+                case 3:
+                    GrdvPreview.DataSource = null;
+                    GrdvPreview.DataBind();
+                    TblLista.Visible = false;
+                    LblTotal.InnerText = "0";
                     break;
             }
         }
@@ -418,10 +413,7 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
                 ViewState["CodigoEstrategia"] = DdlEstrategia.SelectedValue;
 
                 if (int.Parse(DdlEstrategia.SelectedValue) > 0)
@@ -442,7 +434,7 @@
         {
             try
             {
-                TblLista.Visible = false;
+                FunCargarCombos(3);
                 FunCargarCombos(1);
                 _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
                 if (_dts.Tables[0].Rows.Count > 0)
@@ -477,6 +469,7 @@
                 ViewState["CodigoCPCE"] = DdlCatalogo.SelectedValue;
                 FunCargarCombos(1);
                 FunCargarCombos(2);
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
@@ -513,10 +506,7 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
@@ -528,10 +518,7 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
@@ -543,10 +530,7 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
@@ -558,25 +542,18 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ChkGestion_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
                 DdlAccion.SelectedValue = "0";
                 DdlTipoGestion.Enabled = false;
                 DdlAccion.Enabled = false;
@@ -633,10 +610,7 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
@@ -648,10 +622,7 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
                 DdlAccion.SelectedValue = "0";
                 DdlAccion.Enabled = false;
                 ChkGestion.Checked = false;
