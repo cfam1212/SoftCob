@@ -432,7 +432,7 @@
                                                     <asp:CheckBox ID="ChkArbol" runat="server" AutoPostBack="True" CssClass="form-control" OnCheckedChanged="ChkArbol_CheckedChanged" TabIndex="20" Text="Por Árbol" />
                                                 </td>
                                                 <td>
-                                                    <asp:DropDownList ID="DdlAccion" runat="server" AutoPostBack="True" CssClass="form-control" Enabled="False" OnSelectedIndexChanged="DdlAccion_SelectedIndexChanged" TabIndex="21" Width="100%" OnTextChanged="DdlAccion_TextChanged">
+                                                    <asp:DropDownList ID="DdlAccion" runat="server" AutoPostBack="True" CssClass="form-control" Enabled="False" OnSelectedIndexChanged="DdlAccion_SelectedIndexChanged" TabIndex="21" Width="100%">
                                                     </asp:DropDownList>
                                                 </td>
                                             </tr>
