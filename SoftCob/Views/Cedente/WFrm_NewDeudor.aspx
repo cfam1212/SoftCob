@@ -117,7 +117,7 @@
         }
 
         function asegurar() {
-            rc = confirm("¿Seguro que desea Eliminar?");
+            rc = confirm("¿Seguro que desea Cambiar Datos?");
             return rc;
         }
     </script>
@@ -215,12 +215,12 @@
                                     <h5>Documento:</h5>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtNumeroDocumento" runat="server" CssClass="form-control upperCase" MaxLength="20" TabIndex="2" Width="100%" AutoPostBack="True" OnTextChanged="TxtNumeroDocumento_TextChanged"></asp:TextBox>
+                                    <asp:TextBox ID="TxtNumeroDocumento" runat="server" CssClass="form-control alinearDerecha" MaxLength="20" TabIndex="2" Width="100%" AutoPostBack="True"></asp:TextBox>
                                     <asp:FilteredTextBoxExtender ID="TxtNumeroDocumento_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="TxtNumeroDocumento">
                                     </asp:FilteredTextBoxExtender>
                                 </td>
                                 <td style="text-align: center">
-                                    <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/buscarbg.png" OnClick="ImgBuscar_Click" TabIndex="600" Height="30px" Visible="False" />
+                                    <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/buscarbg.png" OnClick="ImgBuscar_Click" TabIndex="600" Height="30px" />
                                 </td>
                             </tr>
                             <tr>
@@ -289,6 +289,20 @@
                                 <td>
                                     <asp:CheckBox ID="ChkEstado" runat="server" AutoPostBack="True" Checked="True" CssClass="form-control" OnCheckedChanged="ChkEstado_CheckedChanged" TabIndex="10" Text="Activo" />
                                 </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
+                                </td>
+                            </tr>
+                            <tr runat="server" id="TrActualizar" visible="false">
+                                <td></td>
+                                <td></td>
+                                <td colspan="2">
+                                    <asp:LinkButton ID="LnkActualizar" runat="server" Font-Bold="True" Font-Size="12pt" OnClick="LnkActualizar_Click" OnClientClick="return asegurar();">Actualizar Datos</asp:LinkButton>
+                                </td>
+                                <td></td>
                                 <td></td>
                             </tr>
                         </table>

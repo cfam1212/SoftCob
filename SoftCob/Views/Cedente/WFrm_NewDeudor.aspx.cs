@@ -29,7 +29,7 @@
         DataTable _tblbuscar = new DataTable();
         DataRow _result, _filagre;
         CheckBox _chkest = new CheckBox();
-        string _estado = "", _codigocpce = "", _operacion = "", _nuevo = "", _codigo = "", _cedula = "", _mensaje = "";
+        string _estado = "", _codigocpce = "", _operacion = "", _nuevo = "", _codigo = "", _cedula = "", _mensaje = "", _response = "";
         int _maxcodigo = 0, _perscodigo = 0;
         decimal _totaldeuda, _exigible;
         bool _lexiste = false, _validar = true;
@@ -50,20 +50,17 @@
             if (!IsPostBack)
             {
                 TxtFechaNacimiento.Text = DateTime.Now.ToString("MM/dd/yyyy");
-                Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                //Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoPERS"] = "0";
                 ViewState["NumeroDocumento"] = "";
                 FunCargarCombos(0);
                 TxtFechaNacimiento.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 Lbltitulo.Text = "Cliente-Deudor << AGREGAR - ACTUALIZAR >>";
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                //    "::SOFTCOB::", Request["MensajeRetornado"].ToString());
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "C");
                 }
             }
         }
@@ -192,6 +189,8 @@
                         DdlGestor.DataBind();
                         break;
                     case 3:
+                        TrActualizar.Visible = false;
+                        BtnGrabar.Visible = false;
                         ViewState["CodigoPERS"] = "0";
                         DdlDirTitular.SelectedValue = "0";
                         TxtDirTitular.Text = "";
@@ -203,16 +202,27 @@
                         _itemp.Text = "--Seleccione Producto--";
                         _itemp.Value = "0";
                         DdlProducto.Items.Add(_itemp);
-                        //DdlProducto.SelectedValue = "0";
                         TxtOperacion.Text = "";
                         DdlTipoOperacion.SelectedValue = "0";
                         TxtDiasMora.Text = "0";
                         TxtTotalDeuda.Text = "0.00";
                         TxtExigible.Text = "0.00";
                         DdlGestor.SelectedValue = "0";
+                        DdlTipoTelefono.SelectedValue = "0";
+                        DdlPropietario.SelectedValue = "0";
+                        DdlPrefijo.Items.Clear();
+                        _itemr.Text = "--Seleccione Prefijo--";
+                        _itemr.Value = "0";
+                        DdlPrefijo.Items.Add(_itemr);
+                        TxtTelefono.Text = "";
+                        TxtNomReferencia.Text = "";
+                        TxtApeReferencia.Text = "";
+                        TxtNomReferencia.Enabled = false;
+                        TxtApeReferencia.Enabled = false;
                         DdlTipoGarante.SelectedValue = "0";
                         TxtCedulaGarante.Text = "";
                         TxtGarante.Text = "";
+                        TxtApellidoGarante.Text = "";
                         TxtNumOperacion.Text = "";
                         DdlDirGarante.SelectedValue = "0";
                         TxtDirGarante.Text = "";
@@ -274,6 +284,7 @@
                             DdlEstCivil.SelectedValue = _dts.Tables[0].Rows[0]["EstCivil"].ToString();
                             ChkEstado.Text = _dts.Tables[0].Rows[0]["Estado"].ToString();
                             ChkEstado.Checked = _dts.Tables[0].Rows[0]["Estado"].ToString() == "Activo" ? true : false;
+                            TrActualizar.Visible = true;
                         }
                         else BtnGrabar.Visible = true;
 
@@ -372,19 +383,19 @@
 
         protected void TxtNumeroDocumento_TextChanged(object sender, EventArgs e)
         {
-            if (DdlTipoDocumento.SelectedValue == "0")
-            {
-                new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Documento..!", this);
-                return;
-            }
+            //if (DdlTipoDocumento.SelectedValue == "0")
+            //{
+            //    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Documento..!", this);
+            //    return;
+            //}
 
-            if (string.IsNullOrEmpty(TxtNumeroDocumento.Text.Trim()))
-            {
-                new FuncionesDAO().FunShowJSMessage("Ingrese Numero de Documento..!", this);
-                return;
-            }
+            //if (string.IsNullOrEmpty(TxtNumeroDocumento.Text.Trim()))
+            //{
+            //    new FuncionesDAO().FunShowJSMessage("Ingrese Numero de Documento..!", this);
+            //    return;
+            //}
 
-            FunCargarCombos(3);
+            //FunCargarCombos(3);
         }
 
         protected void DdlProvincia_SelectedIndexChanged(object sender, EventArgs e)
@@ -1636,6 +1647,40 @@
                 ImgEditGarante.Enabled = false;
                 ImgAddDirGarante.Enabled = false;
                 ImgAddMailGarante.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
+
+        protected void LnkActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ViewState["NumeroDocumento"].ToString() != TxtNumeroDocumento.Text.Trim())
+                {
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(175, 0, 0, 0, "", TxtNumeroDocumento.Text.Trim(), "",
+                        Session["Conectar"].ToString());
+
+                    if (_dts.Tables[0].Rows.Count > 0)
+                    {
+                        new FuncionesDAO().FunShowJSMessage("No. de Documento ya Existe..!", this, "E", "R");
+                        return;
+                    }
+                }
+
+                _dts = new ConsultaDatosDAO().FunUpdateDeudor(0, int.Parse(ViewState["CodigoPERS"].ToString()),
+                    DdlTipoDocumento.SelectedValue, TxtNumeroDocumento.Text.Trim(), TxtNombres.Text.Trim().ToUpper(),
+                    TxtApellidos.Text.Trim().ToUpper(), TxtFechaNacimiento.Text.Trim(), DdlGenero.SelectedValue, DdlEstCivil.SelectedValue,
+                    int.Parse(DdlProvincia.SelectedValue), int.Parse(DdlCiudad.SelectedValue), "", "", "", "", "", "",
+                    ChkEstado.Checked ? "Activo" : "Inactivo", ViewState["NumeroDocumento"].ToString(), 0, 0, 0,
+                    int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
+
+                _response = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsoluteUri, "Grabado con Éxito");
+
+                Response.Redirect(_response, true);
+
             }
             catch (Exception ex)
             {

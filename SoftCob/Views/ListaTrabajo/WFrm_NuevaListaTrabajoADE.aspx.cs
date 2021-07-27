@@ -24,7 +24,7 @@
         bool _validar = false, _continuar = true;
         int _codlistaarbol = 0, _pasadas = 0, _efectivo = 0;
         string[] columnas;
-        DateTime _dtmfechainicio, _dtmfechafin, _dtmfechaactual;
+        DateTime _dtmfechainicio, _dtmfechafin, _dtmfechaactual, _dtmfecini, _dtmfecfin;
         CheckBox _chkselected = new CheckBox();
         ListItem _accion = new ListItem();
         ListItem _asignacion = new ListItem();
@@ -287,6 +287,10 @@
             _dtmfechafin = DateTime.ParseExact(TxtFechaFin.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             _dtmfechaactual = DateTime.ParseExact(_fechaactual, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
+            _dtmfecini = DateTime.ParseExact(TxtFechaDesde.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            _dtmfecfin = DateTime.ParseExact(TxtFechaHasta.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
+
             if (_dtmfechafin < _dtmfechainicio)
             {
                 new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this);
@@ -300,6 +304,14 @@
                     new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this);
                     _validar = false;
                 }
+            }
+
+            TimeSpan _diferencia = _dtmfecfin.Subtract(_dtmfecini);
+
+            if (_diferencia.Days > 31)
+            {
+                new FuncionesDAO().FunShowJSMessage("Definir la consulta son en rangos de 30 a 31 dias..!", this);
+                _validar = false;
             }
 
             if (int.Parse(ViewState["CodigoLista"].ToString()) == 0)
@@ -364,20 +376,20 @@
                 _pasadas = 0;
                 _sql1 = nuevoSQL;
 
-                if (DdlAsignacion.SelectedValue != "0") _sql1 += "CDE.ctde_auxv2='" + DdlAsignacion.SelectedValue + "' and ";
-                if (DdlCampania.SelectedValue != "0") _sql1 += "CDE.ctde_auxi4=" + DdlCampania.SelectedValue + " and ";
+                if (DdlAsignacion.SelectedValue != "0") _sql1 += "CDE.ctde_auxv2='" + DdlAsignacion.SelectedValue + "' AND ";
+                if (DdlCampania.SelectedValue != "0") _sql1 += "CDE.ctde_auxi4=" + DdlCampania.SelectedValue + " AND ";
 
                 if (_continuar)
                 {
                     _dtbestrategia = (DataTable)ViewState["Estrategia"];
                     foreach (DataRow _row in _dtbestrategia.Rows)
                     {
-                        if (_row["Operacion"].ToString() != "between")
-                            _estrategia += _row["Campo"].ToString() + " " + _row["Operacion"].ToString() + " " + _row["Valor"].ToString() + " and ";
+                        if (_row["Operacion"].ToString() != "BETWEEN")
+                            _estrategia += _row["Campo"].ToString() + " " + _row["Operacion"].ToString() + " " + _row["Valor"].ToString() + " AND ";
                         else
                         {
-                            if (_pasadas == 0) _estrategia += _row["Campo"].ToString() + " " + _row["Operacion"].ToString() + " " + _row["Valor"].ToString() + " and ";
-                            else _estrategia += _row["Valor"].ToString() + " and ";
+                            if (_pasadas == 0) _estrategia += _row["Campo"].ToString() + " " + _row["Operacion"].ToString() + " " + _row["Valor"].ToString() + " AND ";
+                            else _estrategia += _row["Valor"].ToString() + " AND ";
                         }
 
                         if (tipo == 1)

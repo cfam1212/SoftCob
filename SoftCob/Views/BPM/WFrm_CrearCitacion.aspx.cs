@@ -159,16 +159,24 @@
 
             if (ChkWathaspp.Checked)
             {
-                TrWhast1.Visible = true;
-                TrWhast2.Visible = true;
-                TrWhast3.Visible = true;
-
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(208, 0, int.Parse(ViewState["CodigoPERS"].ToString()), 0,
                     "", ViewState["NumeroDocumento"].ToString(), "", Session["Conectar"].ToString());
 
                 ViewState["Whatsapp"] = _dts.Tables[0];
                 GrdvCelulares.DataSource = _dts;
                 GrdvCelulares.DataBind();
+
+                if (_dts.Tables[0].Rows.Count > 0)
+                {
+                    TrWhast1.Visible = true;
+                    TrWhast2.Visible = true;
+                    TrWhast3.Visible = true;
+                }
+                else
+                {
+                    new FuncionesDAO().FunShowJSMessage("No Existen Celulares Efectivos..!", this, "W", "L");
+                    ChkWathaspp.Checked = false;
+                }
             }
         }
 
