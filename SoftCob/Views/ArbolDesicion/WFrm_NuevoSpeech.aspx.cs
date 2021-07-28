@@ -34,12 +34,12 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                //    return;
+                //}
 
                 _dtbspeech.Columns.Add("Codigo");
                 _dtbspeech.Columns.Add("codigoARAC");
@@ -65,12 +65,10 @@
 
                 Lbltitulo.Text = "Administrar Speech Catálogo";
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "C");
                 }
             }
         }
@@ -405,7 +403,7 @@
             {
                 TxtEditor1.Content += LstCamposA.Items[i].ToString();
             }
-            else new FuncionesDAO().FunShowJSMessage("Seleccione Campo..", this);
+            else new FuncionesDAO().FunShowJSMessage("Seleccione Campo..", this, "W", "L");
         }
 
         protected void BtnPasar1_Click(object sender, EventArgs e)
@@ -416,7 +414,7 @@
             {
                 TxtEditor2.Content += LstCamposB.Items[i].ToString();
             }
-            else new FuncionesDAO().FunShowJSMessage("Seleccione Campo..", this);
+            else new FuncionesDAO().FunShowJSMessage("Seleccione Campo..", this, "W", "L");
         }
 
         protected void DdlAccion_SelectedIndexChanged(object sender, EventArgs e)
@@ -525,7 +523,7 @@
             {
                 if (e.Row.RowIndex >= 0)
                 {
-                    _chkestado = (CheckBox)(e.Row.Cells[4].FindControl("chkEstadoD"));
+                    _chkestado = (CheckBox)(e.Row.Cells[4].FindControl("ChkEstadoD"));
                     _codigo = int.Parse(GrdvSpeech.DataKeys[e.Row.RowIndex].Values["Codigo"].ToString());
                     _dts = new ArbolDecisionDAO().FunGetArbolSpeechDetPorID(int.Parse(ViewState["CodigoSpeechCab"].ToString()), _codigo);
 
@@ -551,7 +549,7 @@
             try
             {
                 GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
-                _chkestado = (CheckBox)(gvRow.Cells[4].FindControl("chkEstadoD"));
+                _chkestado = (CheckBox)(gvRow.Cells[4].FindControl("ChkEstadoD"));
                 _dtbspeech = (DataTable)ViewState["SpeechArbol"];
                 _codigo = int.Parse(GrdvSpeech.DataKeys[gvRow.RowIndex].Values["Codigo"].ToString());
                 _result = _dtbspeech.Select("Codigo='" + _codigo + "'").FirstOrDefault();

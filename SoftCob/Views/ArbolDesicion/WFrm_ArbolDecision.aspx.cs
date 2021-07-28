@@ -38,13 +38,13 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(),
-                        true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(),
+                //        true);
+                //    return;
+                //}
 
                 _dtbaccion.Columns.Add("Codigo");
                 _dtbaccion.Columns.Add("CodigoCatalogo");
