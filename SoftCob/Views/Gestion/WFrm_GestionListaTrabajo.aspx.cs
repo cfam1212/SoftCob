@@ -1590,7 +1590,8 @@
                 FunCargarCombos(1);
                 FunClearObject(0);
                 FunClearObject(1);
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(43, codigoLTCA, codigoCLDE, int.Parse(Session["usuCodigo"].ToString()), "", "", "", Session["Conectar"].ToString().ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(43, codigoLTCA, codigoCLDE, int.Parse(Session["usuCodigo"].ToString()), 
+                    "", "", "", Session["Conectar"].ToString().ToString());
                 ViewState["IdSecuencial"] = _dts.Tables[0].Rows[0]["IdSecuencial"].ToString();
                 ViewState["CodigoCLDE"] = codigoCLDE;
                 ViewState["PersCodigo"] = _dts.Tables[0].Rows[0]["PersCodigo"].ToString();

@@ -135,7 +135,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-             <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -468,8 +468,8 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excelbg.png" OnClick="ImgExportar_Click" TabIndex="9" Visible="false" Width="40px" />
-                                    <asp:Label ID="LblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
+                                    <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excelbg.png" OnClick="ImgExportar_Click" TabIndex="9" Width="40px" />
+                                    <asp:Label ID="LblExportar" runat="server" Text="Exportar"></asp:Label>
                                 </td>
                                 <td></td>
                                 <td></td>
@@ -483,19 +483,19 @@
                             <tr>
                                 <td></td>
                                 <td colspan="4">
-                                    <asp:Panel ID="pnlPreview" runat="server" Height="350px" ScrollBars="Vertical">
+                                    <asp:Panel ID="pnlPreview" runat="server" Height="380px" ScrollBars="Vertical">
                                         <asp:GridView ID="GrdvPreview" runat="server" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                            ForeColor="#333333" TabIndex="26" Width="100%" AllowPaging="True">
+                                            ForeColor="#333333" TabIndex="26" Width="100%" AllowPaging="True" OnPageIndexChanging="GrdvPreview_PageIndexChanging">
                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                             <Columns>
-                                                <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
                                                 <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
-                                                <asp:BoundField DataField="Operacion" HeaderText="Operación" />
-                                                <asp:BoundField DataField="DiasMora" HeaderText="DiasMora">
+                                                <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
+                                                <asp:BoundField DataField="Provincia" HeaderText="Provincia">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="Exigible" HeaderText="Exigible">
+                                                <asp:BoundField DataField="Ciudad" HeaderText="Ciudad"></asp:BoundField>
+                                                <asp:BoundField DataField="FechaGestion" HeaderText="Fecha Ult. Gestión">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
                                             </Columns>

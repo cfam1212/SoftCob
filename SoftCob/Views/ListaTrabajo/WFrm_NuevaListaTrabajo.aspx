@@ -366,7 +366,7 @@
                                 <asp:Panel ID="pnlPreview" runat="server" Height="380px" ScrollBars="Vertical">
                                     <asp:GridView ID="GrdvPreview" runat="server" AutoGenerateColumns="False"
                                         CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                        ForeColor="#333333" TabIndex="17" Width="100%" AllowPaging="True">
+                                        ForeColor="#333333" TabIndex="17" Width="100%" AllowPaging="True" OnPageIndexChanging="GrdvPreview_PageIndexChanging">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
                                             <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />

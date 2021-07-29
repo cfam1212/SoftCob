@@ -2111,6 +2111,9 @@
                     case "5":
                         Response.Redirect("../BPM/WFrm_SeguimientoCitacionAdmin.aspx", true);
                         break;
+                    case "6":
+                        Response.Redirect("../Cedente/WFrm_NewDeudor.aspx", true);
+                        break;
                 }
             }
             catch (Exception ex)

@@ -49,7 +49,6 @@
                 }
                 ViewState["CodigoLista"] = Request["CodigoLista"];
                 ViewState["Regresar"] = Request["Regresar"];
-                ViewState["Preview"] = false;
                 ViewState["CodigoCEDE"] = "0";
                 ViewState["CodigoLTCA"] = "0";
                 ViewState["CodigoCPCE"] = "0";
@@ -103,7 +102,7 @@
                     pnlOpcionGestion.Enabled = false;
                 }
             }
-            else GrdvPreview.DataSource = Session["Preview"];
+            else GrdvPreview.DataSource = ViewState["Preview"];
         }
         #endregion
 
@@ -150,7 +149,6 @@
                 GrdvEstrategia.DataSource = _dts;
                 GrdvEstrategia.DataBind();
                 ViewState["Estrategia"] = _dts.Tables[0];
-                ViewState["Preview"] = true;
                 ImgPreview.ImageUrl = "~/Botones/Buscargris.png";
                 ImgPreview.Enabled = false;
                 LblPreview.Visible = false;
@@ -872,9 +870,10 @@
                                 }
                             }
                         }
-
-                        TblLista.Visible = true;
+                        
                         ViewState["Preview"] = _dtbpreview;
+
+                        if(_dtbpreview.Rows.Count>0) TblLista.Visible = true;
 
                         GrdvPreview.DataSource = _dtbpreview;
                         GrdvPreview.DataBind();
@@ -905,8 +904,8 @@
                     return;
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(ViewState["CodigoCEDE"].ToString()),
-                    int.Parse(ViewState["CodigoCPCE"].ToString()), 0, "", TxtLista.Text.Trim().ToUpper(),
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(DdlCedente.SelectedValue),
+                    int.Parse(DdlCatalogo.SelectedValue), 0, "", TxtLista.Text.Trim().ToUpper(),
                     TxtFechaInicio.Text.Trim(), Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)

@@ -2,13 +2,12 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
+    using System.Globalization;
+    using System.Linq;
+    using System.Threading;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using System.Linq;
-    using System.Globalization;
-    using System.Threading;
 
     public partial class WFrm_NewDeudor : Page
     {
@@ -29,7 +28,9 @@
         DataTable _tblbuscar = new DataTable();
         DataRow _result, _filagre;
         CheckBox _chkest = new CheckBox();
-        string _estado = "", _codigocpce = "", _operacion = "", _nuevo = "", _codigo = "", _cedula = "", _mensaje = "", _response = "";
+        ImageButton _imggestion = new ImageButton();
+        string _estado = "", _codigocpce = "", _operacion = "", _nuevo = "", _codigo = "", _cedula = "", _mensaje = "", _response = "",
+            _codigocede = "", _codigoclde = "";
         int _maxcodigo = 0, _perscodigo = 0;
         decimal _totaldeuda, _exigible;
         bool _lexiste = false, _validar = true;
@@ -50,7 +51,6 @@
             if (!IsPostBack)
             {
                 TxtFechaNacimiento.Text = DateTime.Now.ToString("MM/dd/yyyy");
-                //Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 ViewState["CodigoPERS"] = "0";
                 ViewState["NumeroDocumento"] = "";
                 FunCargarCombos(0);
@@ -1043,8 +1043,8 @@
                         DdlTipoOperacion.SelectedValue == "T" ? "T" : ViewState["CodigoTIPO"].ToString(),
                         DdlTipoOperacion.SelectedValue == "C" ? "CREDITO" : "TARJETA",
                         "", "", "", "", "", "", "", "", "", int.Parse(Session["usuCodigo"].ToString()),
-                        Session["MachineName"].ToString(), "", "", "", int.Parse(ViewState["CodigoCTDE"].ToString()), 0, 0,
-                        Session["Conectar"].ToString());
+                        Session["MachineName"].ToString(), "", "", "", int.Parse(ViewState["CodigoCTDE"].ToString()),
+                        int.Parse(DdlProducto.SelectedValue), 0, Session["Conectar"].ToString());
                 }
 
                 TxtOperacion.Text = "";
@@ -1175,9 +1175,17 @@
                 if (e.Row.RowIndex >= 0)
                 {
                     _chkest = (CheckBox)(e.Row.Cells[7].FindControl("ChkEstOperacion"));
+                    _imggestion = (ImageButton)(e.Row.Cells[9].FindControl("ImgGestionar"));
                     _estado = GrdvDatos.DataKeys[e.Row.RowIndex].Values["Estado"].ToString();
+                    _nuevo = GrdvDatos.DataKeys[e.Row.RowIndex].Values["Nuevo"].ToString();
 
                     if (_estado == "Activo") _chkest.Checked = true;
+
+                    if (_nuevo == "NO")
+                    {
+                        _imggestion.ImageUrl = "~/Botones/procesarbg.png";
+                        _imggestion.Enabled = true;
+                    }
                 }
             }
             catch (Exception ex)
@@ -1652,6 +1660,20 @@
             {
                 Lblerror.Text = ex.ToString();
             }
+        }
+
+        protected void ImgGestionar_Click(object sender, ImageClickEventArgs e)
+        {
+            GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
+            _codigocede = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCEDE"].ToString();
+            _codigocpce = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCPCE"].ToString();
+            _codigoclde = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCLDE"].ToString();
+            _perscodigo = int.Parse(GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoPERS"].ToString());
+            _operacion = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Operacion"].ToString();
+
+            Response.Redirect("../Gestion/WFrm_RegLlamadaEntrante.aspx?CodigoCEDE=" + _codigocede + "&CodigoCPCE=" + _codigocpce + "&CodigoCLDE="
+                + _codigoclde + "&CodigoPERS=" + _perscodigo + "&NumeroDocumento=" + ViewState["NumeroDocumento"].ToString()
+                + "&Operacion=" + _operacion + "&CodigoLTCA=0&CodigoUSU=0&Retornar=6", true);
         }
 
         protected void LnkActualizar_Click(object sender, EventArgs e)

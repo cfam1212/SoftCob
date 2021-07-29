@@ -118,6 +118,9 @@
                 width: 80px;
                 height: 80px;
             }
+        .auto-style1 {
+            height: 40px;
+        }
     </style>
 </head>
 <body>
@@ -325,7 +328,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <h5>Gestor Apoyo:</h5>
+                                                <h5>Gestor:</h5>
                                             </td>
                                             <td>
                                                 <asp:Panel ID="Panel1" runat="server" Height="230px">
@@ -354,10 +357,10 @@
                                                             <td></td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="4">
+                                                            <td colspan="4" class="auto-style1">
                                                                 <asp:RadioButtonList ID="RdbOpcionesApoyo" runat="server" Font-Size="8pt" AutoPostBack="True" OnSelectedIndexChanged="RdbOpcionesApoyo_SelectedIndexChanged" TabIndex="17">
-                                                                    <asp:ListItem Value="1" Selected="True">Gestor Apoyo a Gestores (Uno a Varios)</asp:ListItem>
-                                                                    <asp:ListItem Value="2">Gestores a Gestor Apoyo (Varios a Uno)</asp:ListItem>
+                                                                    <asp:ListItem Value="1" Selected="True">De Gestor a uno o varios Gestores Apoyo</asp:ListItem>
+                                                                    <asp:ListItem Value="2">De uno o varios Gestores Apoyo a Gestor</asp:ListItem>
                                                                 </asp:RadioButtonList>
                                                             </td>
                                                         </tr>
@@ -367,7 +370,7 @@
                                             </td>
                                             <td></td>
                                             <td>
-                                                <asp:Panel ID="PnlGestorApoyo" runat="server" Height="230px" GroupingText="Gestores" ScrollBars="Vertical">
+                                                <asp:Panel ID="PnlGestorApoyo" runat="server" Height="230px" GroupingText="Gestores Apoyo" ScrollBars="Vertical">
                                                     <asp:GridView ID="GrdvOrigen" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo" ShowFooter="True" ShowHeaderWhenEmpty="True" TabIndex="18" Width="100%" OnRowDataBound="GrdvOrigen_RowDataBound">
                                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                         <Columns>
@@ -433,14 +436,14 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:CheckBox ID="ChkFecha" runat="server" CssClass="form-control" AutoPostBack="True" OnCheckedChanged="ChkFecha_CheckedChanged" TabIndex="24" Text="Por Fecha" />
+                                                <asp:CheckBox ID="ChkFecha" runat="server" CssClass="form-control" AutoPostBack="True" OnCheckedChanged="ChkFecha_CheckedChanged" TabIndex="24" Text="Por Fecha" Checked="True" Enabled="False" />
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TxtFechaDesde" runat="server" CssClass="form-control" TabIndex="25" Width="100%" Enabled="False"></asp:TextBox>
+                                                <asp:TextBox ID="TxtFechaDesde" runat="server" CssClass="form-control" TabIndex="25" Width="100%"></asp:TextBox>
                                             </td>
                                             <td></td>
                                             <td>
-                                                <asp:TextBox ID="TxtFechaHasta" runat="server" CssClass="form-control" TabIndex="26" Width="100%" Enabled="False"></asp:TextBox>
+                                                <asp:TextBox ID="TxtFechaHasta" runat="server" CssClass="form-control" TabIndex="26" Width="100%"></asp:TextBox>
                                             </td>
                                         </tr>
                                         <tr>
@@ -515,8 +518,8 @@
                         <tr>
                             <td></td>
                             <td>
-                                <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excelbg.png" OnClick="ImgExportar_Click" TabIndex="28" Visible="false" Width="40px" />
-                                <asp:Label ID="LblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
+                                <asp:ImageButton ID="ImgExportar" runat="server" Height="30px" ImageUrl="~/Botones/excelbg.png" OnClick="ImgExportar_Click" TabIndex="28" Width="40px" />
+                                <asp:Label ID="LblExportar" runat="server" Text="Exportar"></asp:Label>
                             </td>
                             <td></td>
                             <td></td>
@@ -531,19 +534,15 @@
                             <td></td>
                             <td colspan="4">
                                 <asp:Panel ID="pnlPreview" runat="server" Height="350px" ScrollBars="Vertical">
-                                    <asp:GridView ID="GrdvPreview" runat="server" AutoGenerateColumns="False"
-                                        CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                        ForeColor="#333333" TabIndex="29" Width="100%" AllowPaging="True">
+                                    <asp:GridView ID="GrdvPreview" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333" OnPageIndexChanging="GrdvPreview_PageIndexChanging" TabIndex="26" Width="100%">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
                                             <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
-                                            <asp:BoundField DataField="Operacion" HeaderText="Operación" />
-                                            <asp:BoundField DataField="DiasMora" HeaderText="DiasMora">
-                                                <ItemStyle HorizontalAlign="Right" />
-                                            </asp:BoundField>
-                                            <asp:BoundField DataField="Exigible" HeaderText="Exigible">
-                                                <ItemStyle HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
+                                            <asp:BoundField DataField="Provincia" HeaderText="Provincia" />
+                                            <asp:BoundField DataField="Ciudad" HeaderText="Ciudad" />
+                                            <asp:BoundField DataField="FechaGestion" HeaderText="Fecha Ult. Gestión">
+                                            <ItemStyle HorizontalAlign="Right" />
                                             </asp:BoundField>
                                         </Columns>
                                         <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
