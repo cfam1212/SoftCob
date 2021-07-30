@@ -182,19 +182,19 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlTipoPago.SelectedValue.ToString() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Proyeccion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Proyeccion..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlReporte.SelectedValue.ToString() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Reporte..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Reporte..!", this, "N", "C");
                     return;
                 }
 
@@ -251,7 +251,7 @@
                 }
                 else
                 {
-                    new FuncionesDAO().FunShowJSMessage("No Existen Registros para Mostrar..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No Existen Registros para Mostrar..!", this, "W", "C");
                 }
             }
             catch (Exception ex)

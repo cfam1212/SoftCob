@@ -131,25 +131,25 @@
             {
                 if (ViewState["Operacion"] == null)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Operación a Cambiar..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Operación a Cambiar..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlAsignar.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor nuevo Asignado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor nuevo Asignado..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlMotivo1.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtObservacion1.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación..!", this, "N", "C");
                     return;
                 }
 
@@ -179,7 +179,7 @@
                 }
 
                 new CedenteDAO().FunInsertarAccionGestion(_newaccion);
-                new FuncionesDAO().FunShowJSMessage("Operacion Cambiada con éxito..!", this);
+                new FuncionesDAO().FunShowJSMessage("Operacion Cambiada con éxito..!", this, "S", "R");
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(33, 0, int.Parse(ViewState["codigoCPCE"].ToString()),
                     int.Parse(ViewState["codigoCLDE"].ToString()), ViewState["Catalogo"].ToString(), "", "", Session["Conectar"].ToString().ToString());
@@ -223,13 +223,13 @@
             {
                 if (DdlMotivo2.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtObservacion2.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación..!", this, "N", "C");
                     return;
                 }
 
@@ -260,7 +260,7 @@
                     _newaccion.acci_terminalcreacion = Session["MachineName"].ToString();
                 }
                 new CedenteDAO().FunInsertarAccionGestion(_newaccion);
-                new FuncionesDAO().FunShowJSMessage("Teléfono eliminado con éxito..!", this);
+                new FuncionesDAO().FunShowJSMessage("Teléfono eliminado con éxito..!", this, "S", "R");
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(35, int.Parse(ViewState["codigoCEDE"].ToString()), int.Parse(ViewState["codigoPERS"].ToString()), int.Parse(ViewState["codigoCLDE"].ToString()), "", "", "", Session["Conectar"].ToString());
 
@@ -281,13 +281,13 @@
             {
                 if (DdlMotivo3.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtObservacion3.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación..!", this, "N", "C");
                     return;
                 }
 
@@ -321,7 +321,7 @@
                     _newaccion.acci_terminalcreacion = Session["MachineName"].ToString();
                 }
                 new CedenteDAO().FunInsertarAccionGestion(_newaccion);
-                new FuncionesDAO().FunShowJSMessage("Gestión eliminado con éxito..!", this);
+                new FuncionesDAO().FunShowJSMessage("Gestión eliminada con éxito..!", this, "S", "R");
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(96, int.Parse(ViewState["codigoCLDE"].ToString()), 0, 0, "", "", "", Session["Conectar"].ToString());
 

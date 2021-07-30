@@ -86,19 +86,19 @@
             {
                 if (DdlCedenteD.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Origen..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Origen..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlCedenteO.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Destino..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Destino..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlCatalogoO.SelectedValue == DdlCatalogoD.SelectedValue)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No se puede Copiar Al mismo Catálogo/Producto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No se puede Copiar Al mismo Catálogo/Producto..!", this, "W", "C");
                     return;
                 }
 
@@ -108,7 +108,7 @@
 
                 if (_dts.Tables[0].Rows[0][0].ToString() == "NO")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Cedente Origen NO tiene creado SPEECH", this);
+                    new FuncionesDAO().FunShowJSMessage("Cedente Origen NO tiene creado SPEECH", this, "W", "C");
                     return;
                 }
 

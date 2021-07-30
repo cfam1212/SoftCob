@@ -53,11 +53,9 @@ namespace SoftCob.Views.Breanch
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                //    ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+             
             }
         }
         #endregion
@@ -354,7 +352,7 @@ namespace SoftCob.Views.Breanch
 
                 if (resul.Count() == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione al Menos un Gestor para el Proceso..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione al Menos un Gestor para el Proceso..!", this,"N","C");
                     return;
                 }
 

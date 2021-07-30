@@ -185,7 +185,7 @@
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    new FuncionesDAO().FunShowJSMessage(_mensaje, this);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this,"S","R");
                 }
             }
         }
@@ -594,13 +594,13 @@
             {
                 if (ViewState["codigoCatalogo"] == null || int.Parse(ViewState["codigoCatalogo"].ToString()) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto/Catálogo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto/Catálogo..!", this, "N", "C");
                     return;
                 }
 
                 if (TxtAccion.Text.Trim() == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Acción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Acción..!", this, "N", "C");
                     return;
                 }
 
@@ -620,7 +620,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe definido Acción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya existe definido Acción..!", this, "W", "C");
                     return;
                 }
 
@@ -663,13 +663,13 @@
             {
                 if (ViewState["CodigoAccion"] == null || int.Parse(ViewState["CodigoAccion"].ToString()) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione definición de Acción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione definición de Acción..!", this, "N", "C");
                     return;
                 }
 
                 if (TxtAccion.Text.Trim() == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Acción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Acción..!", this, "N", "C");
                     return;
                 }
 
@@ -686,7 +686,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe definido Acción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya existe definido Acción..!", this, "W", "C");
                     return;
                 }
 
@@ -811,7 +811,7 @@
                         FunLimpiarCampos(0);
                     }
                 }
-                else new FuncionesDAO().FunShowJSMessage("Elimine antes el efecto asociado..!", this);
+                else new FuncionesDAO().FunShowJSMessage("Elimine antes el efecto asociado..!", this, "W", "C");
             }
             catch (Exception ex)
             {
@@ -890,13 +890,13 @@
             {
                 if (ViewState["CodigoAccion"] == null || int.Parse(ViewState["CodigoAccion"].ToString()) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Definición de Acción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Definición de Acción..!", this, "N", "C");
                     return;
                 }
 
                 if (TxtEfecto.Text.Trim() == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Efecto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Efecto..!", this, "N", "C");
                     return;
                 }
 
@@ -916,7 +916,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe definido el Efecto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya esta definido el Efecto..!", this, "W", "C");
                     return;
                 }
 
@@ -1152,7 +1152,7 @@
                         FunLimpiarCampos(1);
                     }
                 }
-                else new FuncionesDAO().FunShowJSMessage("Elimne antes la respuesta asociada..!", this);
+                else new FuncionesDAO().FunShowJSMessage("Elimne antes la respuesta asociada..!", this, "W", "C");
             }
             catch (Exception ex)
             {
@@ -1165,13 +1165,13 @@
             {
                 if (ViewState["CodigoEfecto"] == null || int.Parse(ViewState["CodigoEfecto"].ToString()) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione definición de Efecto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione definición de Efecto..!", this, "N", "C");
                     return;
                 }
 
                 if (TxtEfecto.Text.Trim() == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Efecto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Efecto..!", this, "N", "C");
                     return;
                 }
 
@@ -1241,13 +1241,13 @@
             {
                 if (ViewState["CodigoEfecto"] == null || int.Parse(ViewState["CodigoEfecto"].ToString()) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Definición de Efecto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Definición de Efecto..!", this, "N", "C");
                     return;
                 }
 
                 if (TxtRespuesta.Text.Trim() == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Respuesta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Respuesta..!", this, "N", "C");
                     return;
                 }
 
@@ -1268,7 +1268,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe definida Respuesta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya existe definida Respuesta..!", this, "W", "C");
                     return;
                 }
 
@@ -1344,13 +1344,13 @@
             {
                 if (ViewState["CodigoRespuesta"] == null || int.Parse(ViewState["CodigoRespuesta"].ToString()) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione definición de Respuesta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione definición de Respuesta..!", this, "N", "C");
                     return;
                 }
 
                 if (TxtRespuesta.Text.Trim() == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Respuesta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Respuesta..!", this, "N", "C");
                     return;
                 }
 
@@ -1369,7 +1369,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe definida Respuesta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya esta definida Respuesta..!", this, "N", "C");
                     return;
                 }
 
@@ -1627,7 +1627,7 @@
                         FunLimpiarCampos(2);
                     }
                 }
-                else new FuncionesDAO().FunShowJSMessage("Elimine antes el Contacto asociado..!", this);
+                else new FuncionesDAO().FunShowJSMessage("Elimine antes el Contacto asociado..!", this, "W", "C");
             }
             catch (Exception ex)
             {
@@ -1679,13 +1679,13 @@
             {
                 if (ViewState["CodigoRespuesta"] == null || int.Parse(ViewState["CodigoRespuesta"].ToString()) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Definición de Respuesta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Definición de Respuesta..!", this, "N", "C");
                     return;
                 }
 
                 if (TxtContacto.Text.Trim() == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Contacto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Contacto..!", this, "N", "C");
                     return;
                 }
 
@@ -1706,7 +1706,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe definido Contacto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya esta definido Contacto..!", this, "W", "C");
                     return;
                 }
 
@@ -1775,13 +1775,13 @@
             {
                 if (ViewState["CodigoContacto"] == null || int.Parse(ViewState["CodigoContacto"].ToString()) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione definición de Contacto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione definición de Contacto..!", this, "N", "C");
                     return;
                 }
 
                 if (TxtContacto.Text.Trim() == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Contacto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Definición de Contacto..!", this, "N", "C");
                     return;
                 }
 
@@ -1800,7 +1800,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe definido Contacto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya esta definido Contacto..!", this, "W", "C");
                     return;
                 }
 
@@ -2010,7 +2010,7 @@
 
                 if (_dtbaccion.Rows.Count == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Agregue al menos definción de Acción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Agregue al menos definción de Acción..!", this, "W", "C");
                     return;
                 }
                 else

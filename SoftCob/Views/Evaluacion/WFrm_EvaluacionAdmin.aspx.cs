@@ -36,8 +36,7 @@
                     if (Request["MensajeRetornado"] != null)
                     {
                         _mensaje = Request["MensajeRetornado"];
-                        ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                            "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                        new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                     }
                 }
             }
@@ -184,13 +183,13 @@
                 //Obtener el siguiente Codigod de Protocolo
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCalificacion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Calificacion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Calificacion..!", this, "N", "C");
                     return;
                 }
 
@@ -202,7 +201,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Descripción ya Existe definida..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Descripción ya Existe definida..!", this, "W", "C");
                     return;
                 }
 
@@ -249,13 +248,13 @@
             {
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCalificacion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Calificacion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Calificacion..!", this, "N", "C");
                     return;
                 }
 
@@ -274,7 +273,7 @@
 
                     if (_existe)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Descripción ya Existe definida..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Descripción ya Existe definida..!", this, "W", "C");
                         return;
                     }
                 }

@@ -22,13 +22,11 @@
                 Lbltitulo.Text = "Copiar Árbol de Decisión";
                 FunCargarCombos(0);
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::",
-                //    Request["MensajeRetornado"].ToString());
+                
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }
@@ -88,19 +86,19 @@
             {
                 if (DdlCedenteD.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Origen..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Origen..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlCedenteO.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Destino..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Destino..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlCatalogoO.SelectedValue == DdlCatalogoD.SelectedValue)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No se puede Copiar Al mismo Catálogo/Producto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No se puede Copiar Al mismo Catálogo/Producto..!", this, "W", "C");
                     return;
                 }
 

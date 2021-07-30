@@ -56,12 +56,11 @@
                 GrdvDatosReasignar.DataSource = _dts;
                 GrdvDatosReasignar.DataBind();
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+               
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }
@@ -321,7 +320,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Gestor ya está agregado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Gestor ya está agregado..!", this, "W", "C");
                     return;
                 }
 
@@ -453,7 +452,7 @@
 
                 if (string.IsNullOrEmpty(LblOperaciones.InnerText))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cartera para tener asignación..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cartera para tener asignación..!", this, "N", "C");
                     return;
                 }
 
@@ -521,25 +520,25 @@
             {
                 if (DdlGestores.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtOperaciones.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese No. operaciones a asignar..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese No. operaciones a asignar..!", this, "N", "C");
                     return;
                 }
 
                 if (int.Parse(TxtOperaciones.Text) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese cantidad de operaciones..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese cantidad de operaciones..!", this, "N", "C");
                     return;
                 }
 
                 if (int.Parse(TxtOperaciones.Text) > int.Parse(LblOperaciones.InnerText))
                 {
-                    new FuncionesDAO().FunShowJSMessage("La cantidad a asignar es mayor a las operaciones totales..!", this);
+                    new FuncionesDAO().FunShowJSMessage("La cantidad a asignar es mayor a las operaciones totales..!", this, "W", "C");
                     return;
                 }
 
@@ -602,19 +601,19 @@
             {
                 if (string.IsNullOrEmpty(TxtBuscar.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Criterio de busqueda..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Criterio de busqueda..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlGestorCli.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "N", "C");
                     return;
                 }
 
                 if (!RdbDeudor.Checked && !RdbIdentificacion.Checked)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Busqueda Deudor o Identificación..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Busqueda Deudor o Identificación..!", this, "N", "C");
                     return;
                 }
 
@@ -780,13 +779,13 @@
             {
                 if (DdlMotivo.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtObservacion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese observación..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese observación..!", this, "N", "C");
                     return;
                 }
 
@@ -808,7 +807,7 @@
                                 Session["Conectar"].ToString());
                         }
                     }
-                    else new FuncionesDAO().FunShowJSMessage("No existen datos para asignar..!", this);
+                    else new FuncionesDAO().FunShowJSMessage("No existen datos para asignar..!", this, "W", "C");
                 }
 
                 if (RdbClientes.Checked)
@@ -818,7 +817,7 @@
                     if (LstDestino.Items.Count == 0)
                     {
                         _asignado = false;
-                        new FuncionesDAO().FunShowJSMessage("Seleccione algún cliente para Asignar..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Seleccione algún cliente para Asignar..!", this, "N", "C");
                         return;
                     }
 
@@ -836,8 +835,8 @@
                 FunClearObjects(1);
                 FunCargarDatos();
 
-                if (_asignado) new FuncionesDAO().FunShowJSMessage("Cartera Re-Asignada..!", this);
-                else new FuncionesDAO().FunShowJSMessage("No Existen Datos para Re-Asignar..!", this);
+                if (_asignado) new FuncionesDAO().FunShowJSMessage("Cartera Re-Asignada..!", this, "S", "R");
+                else new FuncionesDAO().FunShowJSMessage("No Existen Datos para Re-Asignar..!", this, "W", "C");
             }
             catch (Exception ex)
             {

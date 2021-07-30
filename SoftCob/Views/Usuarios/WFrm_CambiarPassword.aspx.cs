@@ -29,8 +29,7 @@
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }
@@ -43,19 +42,19 @@
             {
                 if (string.IsNullOrEmpty(TxtPassAnterior.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Contraseña Anterior..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Contraseña Anterior..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtNuevoPass.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Contraseña Nueva..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Contraseña Nueva..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtConfirmarPass.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Confirmar Contraseña..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Confirmar Contraseña..!", this, "N", "C");
                     return;
                 }
 
@@ -63,13 +62,13 @@
 
                 if (new FuncionesDAO().FunDesencripta(_user.usua_password) != TxtPassAnterior.Text.Trim())
                 {
-                    new FuncionesDAO().FunShowJSMessage("Contraseña anterior incorrecta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Contraseña anterior incorrecta..!", this, "E", "C");
                     return;
                 }
 
                 if (TxtNuevoPass.Text.Trim() != TxtConfirmarPass.Text.Trim())
                 {
-                    new FuncionesDAO().FunShowJSMessage("Contraseñas no Coinciden..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Contraseñas no Coinciden..!", this, "E", "C");
                     return;
                 }
 

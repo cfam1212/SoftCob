@@ -21,12 +21,12 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                //    return;
+                //}
 
                 Lbltitulo.Text = "Administrar Estrategias";
                 FunCargarMantenimiento();
@@ -34,8 +34,7 @@
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }

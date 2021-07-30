@@ -24,11 +24,11 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                //    return;
+                //}
 
                 ViewState["Anio"] = DateTime.Now.Year.ToString();
                 ViewState["Mes"] = DateTime.Now.ToString("MM");
@@ -37,12 +37,11 @@
                 FunCargarCombos(0);
                 Lbltitulo.Text = "Generar Pagos para BRENCH";
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }
@@ -196,19 +195,19 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlCatalogo.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this, "N", "C");
                     return;
                 }
 
                 if (!new FuncionesDAO().IsDate(TxtFechaProceso.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Fecha Incorrecta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Fecha Incorrecta..!", this, "E", "C");
                     return;
                 }
 
@@ -217,7 +216,7 @@
 
                 if (dts.Tables[0].Rows.Count == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No existen pagos registrados en la fecha..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No existen pagos registrados en la fecha..!", this, "W", "C");
                     return;
                 }
 

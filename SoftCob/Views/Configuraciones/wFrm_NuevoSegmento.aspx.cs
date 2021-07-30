@@ -30,13 +30,11 @@
 
                 Lbltitulo.Text = "Definir Segmento de Carteras";
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                //    Request["MensajeRetornado"].ToString());
+              
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }
@@ -210,25 +208,25 @@
             {
                 if (string.IsNullOrEmpty(TxtSegmento.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Segmento..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Segmento..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorInicial.Text.Trim()) || TxtValorInicial.Text.Trim() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor Segmento Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor Segmento Inicial..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorFinal.Text.Trim()) || TxtValorFinal.Text.Trim() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor Segmento Final..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor Segmento Final..!", this, "N", "C");
                     return;
                 }
 
                 if (int.Parse(TxtValorFinal.Text.Trim()) <= int.Parse(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this, "W", "C");
                     return;
                 }
 
@@ -261,7 +259,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Segmento ya Existe Creado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Segmento ya esta Creado..!", this, "W", "C");
                     return;
                 }
 
@@ -301,25 +299,25 @@
             {
                 if (string.IsNullOrEmpty(TxtSegmento.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Segmento..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Segmento..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorInicial.Text.Trim()) || TxtValorInicial.Text.Trim() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor Segmento Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor Segmento Inicial..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorFinal.Text.Trim()) || TxtValorFinal.Text.Trim() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor Segmento Final..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor Segmento Final..!", this, "N", "C");
                     return;
                 }
 
                 if (int.Parse(TxtValorFinal.Text.Trim()) <= int.Parse(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this, "W", "C");
                     return;
                 }
 
@@ -343,7 +341,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Segmento ya Existe Creado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Segmento ya esta Creado..!", this, "W", "C");
                     return;
                 }
 
@@ -432,13 +430,13 @@
             {
                 if (ViewState["CodigoCEDE"].ToString() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
                 if (ViewState["CodigoCPCE"].ToString() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto/Catálogo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto/Catálogo..!", this, "N", "C");
                     return;
                 }
 
@@ -446,7 +444,7 @@
 
                 if (_dtbsegmento.Rows.Count == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No Existen Registros Ingresados..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No Existen Registros Ingresados..!", this, "W", "C");
                     return;
                 }
 

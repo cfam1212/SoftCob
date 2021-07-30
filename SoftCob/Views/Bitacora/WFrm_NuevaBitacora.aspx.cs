@@ -61,12 +61,11 @@
                 TabDatosBitacora.ActiveTabIndex = 0;
                 PnlDatosSupervisor.Height = 100;
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+               
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }
@@ -364,19 +363,19 @@
             {
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDescripAT.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrse Descripcion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrse Descripcion..!", this,"N","C" );
                     return;
                 }
 
                 if (!new FuncionesDAO().IsHour(TxtHoraAT.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Hora ingresada incorrecta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Hora ingresada incorrecta..!", this,"E","C");
                     return;
                 }
 
@@ -386,7 +385,7 @@
 
                 if (_hatraso > _hora)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Hora de Atraso no puede ser mayor a Hora Actual..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Hora de Atraso no puede ser mayor a Hora Actual..!", this,"W","C");
                     return;
                 }
 
@@ -406,7 +405,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Gestor ya existe ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Gestor ya esta ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -509,13 +508,13 @@
             {
                 if (string.IsNullOrEmpty(TxtDescripAT.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrse Descripcion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrse Descripcion..!", this, "N", "C");
                     return;
                 }
 
                 if (!new FuncionesDAO().IsHour(TxtHoraAT.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Hora ingresada incorrecta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Hora ingresada incorrecta..!", this, "E", "C");
                     return;
                 }
 
@@ -525,7 +524,7 @@
 
                 if (_hatraso > _hora)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Hora de Atraso no puede ser mayor a Hora Actual..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Hora de Atraso no puede ser mayor a Hora Actual..!", this, "W", "C");
                     return;
                 }
 
@@ -574,13 +573,13 @@
             {
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrWhiteSpace(TxtDescripFJ.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -600,7 +599,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Gestor ya existe ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Gestor ya esta ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -735,13 +734,13 @@
             {
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrWhiteSpace(TxtDescripFI.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -761,7 +760,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Gestor ya existe ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Gestor ya esta ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -794,7 +793,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripFI.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -895,25 +894,25 @@
             {
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDescripPE.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripcion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripcion..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrWhiteSpace(TxtFechaPE.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Fecha de Permiso Incorrecta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Fecha de Permiso Incorrecta..!", this, "E", "C");
                     return;
                 }
 
                 if (!new FuncionesDAO().IsDate(TxtFechaPE.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Fecha de Permiso Incorrecta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Fecha de Permiso Incorrecta..!", this, "E", "C");
                     return;
                 }
 
@@ -922,7 +921,7 @@
 
                 if (fechapermiso < fechaactual)
                 {
-                    new FuncionesDAO().FunShowJSMessage("La Fecha Permiso no puede ser menor a la actual..!", this);
+                    new FuncionesDAO().FunShowJSMessage("La Fecha Permiso no puede ser menor a la actual..!", this, "W", "C");
                     return;
                 }
 
@@ -942,7 +941,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Gestor ya existe ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Gestor ya eata ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -976,7 +975,7 @@
             {
                 if (string.IsNullOrEmpty(TxtDescripPE.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripcion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripcion..!", this, "N", "C");
                     return;
                 }
 
@@ -985,7 +984,7 @@
 
                 if (fechapermiso < fechaactual)
                 {
-                    new FuncionesDAO().FunShowJSMessage("La Fecha Permiso no puede ser menor a la actual..!", this);
+                    new FuncionesDAO().FunShowJSMessage("La Fecha Permiso no puede ser menor a la actual..!", this, "W", "C");
                     return;
                 }
 
@@ -1090,31 +1089,31 @@
             {
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDescripCT.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripcion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripcion..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlTurnoA.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Turno Actual..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Turno Actual..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlTurnoN.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Turno Cambio..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Turno Cambio..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlTurnoA.SelectedValue == DdlTurnoN.SelectedValue)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione diferentes turnos..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione diferentes turnos..!", this, "N", "C");
                     return;
                 }
 
@@ -1134,7 +1133,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Gestor ya existe ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Gestor ya esta ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -1194,25 +1193,25 @@
             {
                 if (string.IsNullOrEmpty(TxtDescripCT.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripcion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripcion..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlTurnoA.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Turno Actual..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Turno Actual..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlTurnoN.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Turno Cambio..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Turno Cambio..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlTurnoA.SelectedValue == DdlTurnoN.SelectedValue)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione diferentes turnos..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione diferentes turnos..!", this, "N", "C");
                     return;
                 }
 
@@ -1299,13 +1298,13 @@
             {
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrWhiteSpace(TxtDescripVA.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -1358,7 +1357,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripVA.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -1461,7 +1460,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripNV.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -1481,7 +1480,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Descripción ya existe ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Descripción ya esta ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -1538,7 +1537,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripNV.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -1612,13 +1611,13 @@
             {
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Colaborador..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrWhiteSpace(TxtDescripRE.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -1638,7 +1637,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Colaborador ya existe ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Colaborador ya esta ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -1669,7 +1668,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripRE.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -1772,7 +1771,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripGT.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -1792,7 +1791,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Descripción ya existe ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Descripción ya esta ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -1821,7 +1820,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripGT.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -1922,7 +1921,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripNS.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -1942,7 +1941,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Descripción ya existe ingresada..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Descripción ya esta ingresada..!", this, "E", "C");
                     return;
                 }
 
@@ -1972,7 +1971,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripNS.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -2073,7 +2072,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripCP.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -2093,7 +2092,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Descripción ya existe ingresada..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Descripción ya esta ingresada..!", this, "E", "C");
                     return;
                 }
 
@@ -2123,7 +2122,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripCP.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -2223,7 +2222,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripAD.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 
@@ -2243,7 +2242,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Descripción ya existe ingresada..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Descripción ya esta ingresada..!", this, "E", "C");
                     return;
                 }
 
@@ -2273,7 +2272,7 @@
             {
                 if (string.IsNullOrWhiteSpace(TxtDescripAD.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese alguna Descripción..!", this, "N", "C");
                     return;
                 }
 

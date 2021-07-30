@@ -32,7 +32,7 @@
             {
                 if (string.IsNullOrEmpty(TxtCriterio.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese criterio de búsqueda..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese criterio de búsqueda..!", this, "N", "C");
                     return;
                 }
 
@@ -51,7 +51,7 @@
                 {
                     if (TxtCriterio.Text.Trim().Length < 10)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Dato tiene menos de 10 digitos..", this);
+                        new FuncionesDAO().FunShowJSMessage("Dato tiene menos de 10 digitos..", this, "W", "C");
                         return;
                     }
 

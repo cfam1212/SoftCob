@@ -38,12 +38,12 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                //    return;
+                //}
 
                 ViewState["CodigoEstrategia"] = Request["CodigoEstrategia"];
                 ViewState["Codigo"] = "";
@@ -488,13 +488,13 @@
             {
                 if (string.IsNullOrEmpty(TxtEstrategia.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre de la Estrategia...!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre de la Estrategia...!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese descripción de la Estrategia...!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese descripción de la Estrategia...!", this, "N", "C");
                     return;
                 }
 
@@ -570,7 +570,7 @@
                     if (_mensaje == "") Response.Redirect("WFrm_EstrategiaAdmin.aspx?MensajeRetornado=Guardado con Éxito");
                     else Lblerror.Text = _mensaje;
                 }
-                else new FuncionesDAO().FunShowJSMessage("Ingrese al menos un registro para la Estrategia..!", this);
+                else new FuncionesDAO().FunShowJSMessage("Ingrese al menos un registro para la Estrategia..!", this, "W", "C");
             }
             catch (Exception ex)
             {

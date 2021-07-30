@@ -46,8 +46,7 @@
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensajes = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }
@@ -99,13 +98,13 @@
             {
                 if (DdlPerfiles.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Perfil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Perfil..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Perfil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Perfil..!", this, "N", "C");
                     return;
                 }
 
@@ -125,7 +124,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Descripción ya existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Descripción ya existe..!", this, "W", "C");
                     return;
                 }
 
@@ -159,13 +158,13 @@
             {
                 if (DdlPerfiles.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Perfil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Perfil..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Perfil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Perfil..!", this, "N", "C");
                     return;
                 }
 
@@ -179,7 +178,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Descripción ya existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Descripción ya existe..!", this, "W", "C");
                     return;
                 }
 
@@ -258,7 +257,7 @@
                     }
                     else new FuncionesDAO().FunShowJSMessage(_mensaje, this);
                 }
-                else new FuncionesDAO().FunShowJSMessage("No existen datos ingresados..!", this);
+                else new FuncionesDAO().FunShowJSMessage("No existen datos ingresados..!", this, "W", "C");
             }
             catch (Exception ex)
             {

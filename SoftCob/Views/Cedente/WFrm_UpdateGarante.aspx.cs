@@ -38,8 +38,7 @@
                 {
                     _mensaje = Request["MensajeRetornado"];
                     new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "C");
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                    //    "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                  
                 }
             }
         }
@@ -107,13 +106,13 @@
             {
                 if (DdlDirGarante.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Direccion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Direccion..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDirGarante.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Direccion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Direccion..!", this, "N", "C");
                     return;
                 }
 
@@ -128,7 +127,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Direccion ya Existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Direccion ya Existe..!", this, "W", "C");
                     return;
                 }
 
@@ -157,13 +156,13 @@
             {
                 if (DdlDirGarante.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Direccion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Direccion..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDirGarante.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Direccion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Direccion..!", this, "N", "C");
                     return;
                 }
 
@@ -177,7 +176,7 @@
 
                     if (_lexiste)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Direccion ya Existe..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Direccion ya Existe..!", this, "W", "C");
                         return;
                     }
                 }
@@ -272,19 +271,19 @@
             {
                 if (DdlMailGarante.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Email..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Email..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtMailGarante.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese E-Mail..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese E-Mail..!", this, "N", "C");
                     return;
                 }
 
                 if (!new FuncionesDAO().Email_bien_escrito(TxtMailGarante.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Email Incorrecto Garante..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Email Incorrecto Garante..!", this, "E", "C");
                     return;
                 }
 
@@ -299,7 +298,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Correo ya Existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Correo ya Existe..!", this, "W", "C");
                     return;
                 }
 
@@ -327,19 +326,19 @@
             {
                 if (DdlMailGarante.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Email..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Email..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtMailGarante.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese E-Mail..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese E-Mail..!", this, "N", "C");
                     return;
                 }
 
                 if (!new FuncionesDAO().Email_bien_escrito(TxtMailGarante.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Email Incorrecto Titular..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Email Incorrecto Titular..!", this, "E", "C");
                     return;
                 }
 
@@ -353,7 +352,7 @@
 
                     if (_lexiste)
                     {
-                        new FuncionesDAO().FunShowJSMessage("E-Mail ya Existe..!", this);
+                        new FuncionesDAO().FunShowJSMessage("E-Mail ya Existe..!", this, "W", "C");
                         return;
                     }
                 }
@@ -441,13 +440,13 @@
             {
                 if (string.IsNullOrEmpty(TxtNumeroDocumento.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese No. Documento..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese No. Documento..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtNombres.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombres..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombres..!", this, "N", "C");
                     return;
                 }
 
@@ -458,7 +457,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("No. de Documento ya Existe..!", this);
+                        new FuncionesDAO().FunShowJSMessage("No. de Documento ya Existe..!", this, "W", "C");
                         TxtNumeroDocumento.Text = ViewState["CedulaGarante"].ToString();
                         return;
                     }

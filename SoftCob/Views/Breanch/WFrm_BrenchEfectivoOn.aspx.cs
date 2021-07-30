@@ -77,7 +77,7 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
@@ -85,7 +85,7 @@
                 {
                     if (string.IsNullOrEmpty(TxtDocumento.Text.Trim()))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingrese No. de Documento..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingrese No. de Documento..!", this, "N", "C");
                         return;
                     }
                 }

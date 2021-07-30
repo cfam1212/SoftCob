@@ -122,43 +122,43 @@
             {
                 if (string.IsNullOrEmpty(TxtNombres.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Usuario..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Usuario..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtApellidos.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Apellido del Usuario..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Apellido del Usuario..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtUser.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Login del Usuario..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Login del Usuario..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtPassword.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Pasword..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Pasword..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlDepartamento.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Departamento..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Departamento..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlPerfil.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Perfil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Perfil..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlTipoUsuario.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Usuario..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Usuario..!", this, "N", "C");
                     return;
                 }
 
@@ -166,7 +166,7 @@
                 {
                     if (!new FuncionesDAO().IsDate(TxtFechaCaduca.Text))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Fecha no válida..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Fecha no válida..!", this, "W", "C");
                         return;
                     }
                 }
@@ -175,7 +175,7 @@
                 {
                     if (!string.IsNullOrEmpty(new ControllerDAO().FunConsultaLogin(TxtUser.Text, int.Parse(Session["CodigoEMPR"].ToString()))))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Login ya existe creado..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Login ya existe..!", this, "W", "C");
                         return;
                     }
                 }

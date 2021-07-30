@@ -34,12 +34,12 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                //    return;
+                //}
 
                 Lbltitulo.Text = "Registro de Supervisores";
                 _dtbsupervisor.Columns.Add("CodigoSupervisor");
@@ -51,13 +51,11 @@
                 ViewState["Supervisores"] = _dtbsupervisor;
                 FunCargarCombos(0);
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                //    Request["MensajeRetornado"].ToString());
+                
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensajes = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }
@@ -171,7 +169,7 @@
                     else Lblerror.Text = _mensaje;
                     DdlCedente.Enabled = true;
                 }
-                else new FuncionesDAO().FunShowJSMessage("No existen datos ingresados..!", this);
+                else new FuncionesDAO().FunShowJSMessage("No existen datos ingresados..!", this, "W", "C");
             }
             catch (Exception ex)
             {
@@ -218,13 +216,13 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlSupervisor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this, "N", "C");
                     return;
                 }
 
@@ -245,7 +243,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Supervisor ya está ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Supervisor ya está ingresado..!", this, "W", "C");
                     return;
                 }
 
@@ -348,13 +346,13 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlSupervisor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this, "N", "C");
                     return;
                 }
 
@@ -369,7 +367,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Cedente o Supervisor ya está asignado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Cedente o Supervisor ya está asignado..!", this, "W", "C");
                     return;
                 }
 

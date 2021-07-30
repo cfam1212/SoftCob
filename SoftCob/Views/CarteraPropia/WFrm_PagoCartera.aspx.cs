@@ -159,19 +159,19 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlCatalogo.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtBuscarPor.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Dato de consulta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Dato de consulta..!", this, "N", "C");
                     return;
                 }
 
@@ -220,7 +220,7 @@
             {
                 if (!new FuncionesDAO().IsDate(TxtFechaPago.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
                     return;
                 }
 
@@ -230,25 +230,25 @@
                 if (DateTime.ParseExact(TxtFechaPago.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture) > DateTime.ParseExact(_fechaactual, 
                     "MM/dd/yyyy", CultureInfo.InvariantCulture))
                 {
-                    new FuncionesDAO().FunShowJSMessage("La Fecha de Pago no puede ser mayor a la Fecha actual..!", this);
+                    new FuncionesDAO().FunShowJSMessage("La Fecha de Pago no puede ser mayor a la Fecha actual..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValor.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese valor del Abono..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese valor del Abono..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDocumento.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese No. Documento..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese No. Documento..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlTipoPago.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Pago..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Pago..!", this, "N", "C");
                     return;
                 }
 
@@ -265,7 +265,7 @@
 
                 if (_continuar == false)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No. de Documento ya está ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No. de Documento ya está ingresado..!", this, "E", "C");
                     return;
                 }
 

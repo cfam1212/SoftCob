@@ -31,12 +31,11 @@
 
                 FunCargarCombos(0);
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+               
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }
@@ -115,7 +114,7 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
@@ -187,7 +186,7 @@
                 }
                 else
                 {
-                    new FuncionesDAO().FunShowJSMessage("No Existen Datos para Grabar..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No Existen Datos para Grabar..!", this, "W", "C");
                 }
             }
             catch (Exception ex)

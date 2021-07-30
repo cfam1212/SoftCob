@@ -46,10 +46,9 @@
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensajes = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+                
             }
         }
         #endregion
@@ -164,7 +163,7 @@
                     //    grdvBrenchDet.DataBind();
                     //}
                 }
-                else new FuncionesDAO().FunShowJSMessage("No existe Brench Creado para el Cedente..!", this);
+                else new FuncionesDAO().FunShowJSMessage("No existe Brench Creado para el Cedente..!", this, "W","C" );
             }
             catch (Exception ex)
             {
@@ -277,7 +276,7 @@
             {
                 if (string.IsNullOrEmpty(TxtPresupuesto.Text.Trim()) || TxtPresupuesto.Text.Trim() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Presupuesto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Presupuesto..!", this, "N", "C");
                     return;
                 }
 
@@ -348,7 +347,7 @@
                 {
                     if (dr["Presupuesto"].ToString() == "0.00")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Debe registrar todos los Presupuestos..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Debe registrar todos los Presupuestos..!", this, "W", "C");
                         continuar = false;
                         break;
                     }

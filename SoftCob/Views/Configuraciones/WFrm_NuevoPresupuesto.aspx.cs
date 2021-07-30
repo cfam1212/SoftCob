@@ -30,12 +30,11 @@
 
                 Lbltitulo.Text = "Definir Porcentaje Presupuesto de Carteras";
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+               
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }
@@ -209,31 +208,31 @@
             {
                 if (string.IsNullOrEmpty(TxtEtiqueta.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Etiqueta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Etiqueta..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Inicial..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorFinal.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Final..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Final..!", this, "N", "C");
                     return;
                 }
 
                 if (int.Parse(TxtValorFinal.Text.Trim()) <= int.Parse(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(Request.Form[TxtColor.UniqueID]))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Color de Etiqueta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Color de Etiqueta..!", this, "N", "C");
                     return;
                 }
 
@@ -266,7 +265,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Segmento ya Existe Creado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Segmento ya Existe Creado..!", this, "W", "C");
                     return;
                 }
 
@@ -306,31 +305,31 @@
             {
                 if (string.IsNullOrEmpty(TxtEtiqueta.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción Etiqueta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción Etiqueta..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Inicial..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorFinal.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Final..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Final..!", this, "N", "C");
                     return;
                 }
 
                 if (int.Parse(TxtValorFinal.Text.Trim()) <= int.Parse(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(Request.Form[TxtColor.UniqueID]))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Color de Etiqueta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Color de Etiqueta..!", this, "N", "C");
                     return;
                 }
 
@@ -354,7 +353,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Segmento ya Existe Creado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Segmento ya esta Creado..!", this, "W", "C");
                     return;
                 }
 
@@ -460,13 +459,13 @@
             {
                 if (ViewState["CodigoCEDE"].ToString() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
                 if (ViewState["CodigoCPCE"].ToString() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto/Catálogo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto/Catálogo..!", this, "N", "C");
                     return;
                 }
 
@@ -474,7 +473,7 @@
 
                 if (_dtbsegmento.Rows.Count == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No Existen Registros Ingresados..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No Existen Registros Ingresados..!", this, "W", "C");
                     return;
                 }
 

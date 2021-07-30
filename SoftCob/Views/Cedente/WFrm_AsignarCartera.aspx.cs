@@ -32,12 +32,12 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                //    return;
+                //}
 
                 _dtbasignar.Columns.Add("DiasMora");
                 _dtbasignar.Columns.Add("Exigible");
@@ -64,13 +64,11 @@
 
                 Lbltitulo.Text = "Asignar Cartera";
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::",
-                //    Request["MensajeRetornado"].ToString());
+               
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }
@@ -252,7 +250,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Gestor ya está agregado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Gestor ya está agregado..!", this, "E", "C");
                     return;
                 }
 
@@ -373,19 +371,19 @@
             {
                 if (DdlCatalogo.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cartera Producto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cartera Producto..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlDiasMora.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Días Mora..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Días Mora..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtExigible.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese valor exigible >=1..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese valor exigible >=1..!", this, "N", "C");
                     return;
                 }
 
@@ -396,7 +394,7 @@
                 {
                     if (DdlDiasMora1.SelectedValue == "0")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione Días Mora..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Seleccione Días Mora..!", this, "N", "C");
                         return;
                     }
 
@@ -415,7 +413,7 @@
                 {
                     if (string.IsNullOrEmpty(txtExigible0.Text.Trim()))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingrese valor exigible >=1..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingrese valor exigible >=1..!", this, "N", "C");
                         return;
                     }
 
@@ -450,7 +448,7 @@
                     RdbOpera.Enabled = true;
                     RdbClientes.Enabled = true;
                 }
-                else new FuncionesDAO().FunShowJSMessage("No existen operaciones..!", this);
+                else new FuncionesDAO().FunShowJSMessage("No existen operaciones..!", this, "W", "C");
             }
             catch (Exception ex)
             {
@@ -533,7 +531,7 @@
 
                 if (string.IsNullOrEmpty(lblTotal.InnerText))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cartera para tener asignación..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cartera para tener asignación..!", this, "N", "C");
                     return;
                 }
 
@@ -599,25 +597,25 @@
             {
                 if (DdlGestores.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtOperaciones.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese No. operaciones a asignar..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese No. operaciones a asignar..!", this, "N", "C");
                     return;
                 }
 
                 if (int.Parse(TxtOperaciones.Text) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese cantidad de operaciones..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese cantidad de operaciones..!", this, "N", "C");
                     return;
                 }
 
                 if (int.Parse(TxtOperaciones.Text) > int.Parse(lblTotal.InnerText))
                 {
-                    new FuncionesDAO().FunShowJSMessage("La cantidad a asignar es mayor a las operaciones totales..!", this);
+                    new FuncionesDAO().FunShowJSMessage("La cantidad a asignar es mayor a las operaciones totales..!", this, "W", "C");
                     return;
                 }
 
@@ -658,7 +656,7 @@
                         }
                         _asignado = true;
                     }
-                    else new FuncionesDAO().FunShowJSMessage("No existen datos para asignar..!", this);
+                    else new FuncionesDAO().FunShowJSMessage("No existen datos para asignar..!", this, "W", "C");
                 }
 
                 if (RdbClientes.Checked)
@@ -667,7 +665,7 @@
 
                     if (LstDestino.Items.Count == 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione algún cliente para Asignar..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Seleccione algún cliente para Asignar..!", this, "N", "C");
                         _asignado = false;
                         return;
                     }
@@ -684,8 +682,8 @@
                 FunClearObjects();
                 FunConsultarDatos();
 
-                if (_asignado) new FuncionesDAO().FunShowJSMessage("Cartera Asignada..!", this);
-                else new FuncionesDAO().FunShowJSMessage("No existen Datos para Asignar..!", this);
+                if (_asignado) new FuncionesDAO().FunShowJSMessage("Cartera Asignada..!", this, "S", "R");
+                else new FuncionesDAO().FunShowJSMessage("No existen Datos para Asignar..!", this, "W", "C");
 
             }
             catch (Exception ex)
@@ -700,19 +698,19 @@
             {
                 if (string.IsNullOrEmpty(TxtBuscar.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Criterio de busqueda..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Criterio de busqueda..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlGestorCli.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "N", "C");
                     return;
                 }
 
                 if (!RdbDeudor.Checked && !RdbIdentificacion.Checked)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Busqueda Deudor o Identificación..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Busqueda Deudor o Identificación..!", this, "N", "C");
                     return;
                 }
 

@@ -46,13 +46,11 @@
                 ViewState["Gestores"] = _dtbgestores;
                 FunCargarCombos(0);
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                //    Request["MensajeRetornado"].ToString());
+                
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensajes = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }
@@ -229,7 +227,7 @@
                     DdlCedente.Enabled = true;
                     DdlSupervisor.Enabled = true;
                 }
-                else new FuncionesDAO().FunShowJSMessage("No existen datos ingresados..!", this);
+                else new FuncionesDAO().FunShowJSMessage("No existen datos ingresados..!", this, "W", "C");
             }
             catch (Exception ex)
             {
@@ -275,19 +273,19 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlSupervisor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "N", "C");
                     return;
                 }
 
@@ -333,19 +331,19 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlSupervisor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "N", "C");
                     return;
                 }
 
@@ -366,7 +364,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Gestor ya está asignado al Supervisor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Gestor ya está asignado al Supervisor..!", this, "E", "C");
                     return;
                 }
 

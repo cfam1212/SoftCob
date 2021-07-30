@@ -160,12 +160,12 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
                 if (DdlCatalogo.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this, "N", "C");
                     return;
                 }
                 if (string.IsNullOrEmpty(TxtRinicio.Text.Trim()) || TxtRinicio.Text.Trim() == "0")
@@ -180,7 +180,7 @@
                 }
                 if (int.Parse(TxtRFin.Text.Trim()) <= int.Parse(TxtRinicio.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Rango Final no puede ser menor o igual al Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Rango Final no puede ser menor o igual al Inicial..!", this, "W", "C");
                     return;
                 }
                 if (ViewState["BrenchDet"] != null)
@@ -210,7 +210,7 @@
                 }
                 if (lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Rango ya existe creado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Rango ya esta creado..!", this, "E", "C");
                     return;
                 }
                 rangox = orden + 1;
@@ -294,31 +294,31 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlCatalogo.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtRinicio.Text.Trim()) || TxtRinicio.Text.Trim() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Rango Inicio..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Rango Inicio..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtRFin.Text.Trim()) || TxtRFin.Text.Trim() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Rango Fin..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Rango Fin..!", this, "N", "C");
                     return;
                 }
 
                 if (int.Parse(TxtRFin.Text.Trim()) <= int.Parse(TxtRinicio.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Rango Final no puede ser menor o igual al Inicial..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Rango Final no puede ser menor o igual al Inicial..!", this, "W", "C");
                     return;
                 }
 
@@ -340,7 +340,7 @@
 
                 if (lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Rango ya existe creado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Rango ya esta creado..!", this, "E", "C");
                     return;
                 }
 
@@ -460,13 +460,13 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlCatalogo.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this, "N", "C");
                     return;
                 }
 
@@ -474,7 +474,7 @@
 
                 if (dtbBrench.Rows.Count == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese al menos un Rango para Brench..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese al menos un Rango para Brench..!", this, "N", "C");
                     return;
                 }
 

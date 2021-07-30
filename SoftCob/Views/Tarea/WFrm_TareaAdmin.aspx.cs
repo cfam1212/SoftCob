@@ -27,7 +27,7 @@
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "C");
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }
         }

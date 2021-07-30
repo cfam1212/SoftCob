@@ -14,12 +14,12 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                //    return;
+                //}
 
                 ViewState["CodigoEmployee"] = Request["CodigoEmployee"];
                 ViewState["CodigoUsuario"] = Request["CodigoUsuario"];
@@ -114,7 +114,7 @@
         {
             if (DdlAsignarUsuario.SelectedValue == "-1")
             {
-                new FuncionesDAO().FunShowJSMessage("Seleccione Usuario o Cree uno nuevo..!", this);
+                new FuncionesDAO().FunShowJSMessage("Seleccione Usuario o Cree uno nuevo..!", this, "N", "C");
                 return;
             }
 
@@ -122,37 +122,37 @@
             {
                 if (string.IsNullOrEmpty(TxtLogin.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Login para el Usuario..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Login para el Usuario..!", this, "N", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtPassword.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Password..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Password..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlDepartamento.SelectedValue == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Departamento..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Departamento..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlPerfil.SelectedValue == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Perfil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Perfil..!", this, "N", "C");
                     return;
                 }
 
                 if (DdlTipoUsuario.SelectedValue == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Usuario..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Usuario..!", this, "N", "C");
                     return;
                 }
 
                 if (new ControllerDAO().FunConsultaLogin(TxtLogin.Text.Trim()) != "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Login ya existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Login ya existe..!", this, "W", "C");
                     return;
                 }
             }
