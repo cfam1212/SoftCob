@@ -386,6 +386,7 @@
     <Content Include="Views\Cedente\WFrm_UpdateGarante.aspx" />
     <Content Include="Views\Configuraciones\WFrm_AccesoArbolGAdmin.aspx" />
     <Content Include="Views\Configuraciones\WFrm_AccesoListasAdmin.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_ConfigurarAccionEfecto.aspx" />
     <Content Include="Views\Configuraciones\wFrm_CopiarArbolDecision.aspx" />
     <Content Include="Views\Configuraciones\WFrm_CopiarArbolSpeech.aspx" />
     <Content Include="Views\Configuraciones\Wfrm_CopiarSegmento.aspx" />
@@ -852,6 +853,13 @@
     </Compile>
     <Compile Include="Views\Configuraciones\WFrm_AccesoListasAdmin.aspx.designer.cs">
       <DependentUpon>WFrm_AccesoListasAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_ConfigurarAccionEfecto.aspx.cs">
+      <DependentUpon>WFrm_ConfigurarAccionEfecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_ConfigurarAccionEfecto.aspx.designer.cs">
+      <DependentUpon>WFrm_ConfigurarAccionEfecto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Configuraciones\wFrm_CopiarArbolDecision.aspx.cs">
       <DependentUpon>wFrm_CopiarArbolDecision.aspx</DependentUpon>

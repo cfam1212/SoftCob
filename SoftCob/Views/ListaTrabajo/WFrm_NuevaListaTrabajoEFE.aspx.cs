@@ -16,23 +16,24 @@
         DataSet _dts = new DataSet();
         DataSet _dts1 = new DataSet();
         DataTable _dtbestrategia = new DataTable();
-        DataTable _dtblistatrabajo = new DataTable();
         DataTable _dtbefecto = new DataTable();
         DataTable _dtbcodigos = new DataTable();
         DataTable _dtbgstsave = new DataTable();
+        DataTable _dtbpreview = new DataTable();
+        DataTable _dtbgestion = new DataTable();
         DataTable _dtb = new DataTable();
-        DataRow _result;
+        DataView view;
+        DataRow _result, _filnew, _filagre;
         DataRow[] _resultado;
         string _sql = "", _estrategia = "", _ordenar = "", _fechaactual = "", _mensaje = "", _codigo = "",
-            _sql1 = "", _efecto = "", _sql2 = "";
-        string[] _codigosopm;
+            _sql1 = "", _efecto = "", _fechagestion = "";
+        string[] _codigosopm, columnas;
         bool _validar = false, _continuar = true;
-        int _tipogestion = 0, _codlistaarbol = 0, _pasadas = 0;
-        DateTime _dtmfechainicio, _dtmfechafin, _dtmfechaactual;
+        int _codlistaarbol = 0, _pasadas = 0;
+        DateTime _dtmfechainicio, _dtmfechafin, _dtmfechaactual, _dtmfecini, _dtmfecfin;
         CheckBox _chkselected = new CheckBox();
         ListItem _asignacion = new ListItem();
         ListItem _campania = new ListItem();
-        ListItem _lista = new ListItem();
         CheckBox _chkselecc = new CheckBox();
         #endregion
 
@@ -55,18 +56,31 @@
 
                 _dtbcodigos.Columns.Add("Codigo");
                 ViewState["CodigosOPM"] = _dtbcodigos;
-                _dtbgstsave.Columns.Add("CodigoCLDE");
-                _dtbgstsave.Columns.Add("codigoPERS");
-                _dtbgstsave.Columns.Add("gestorasignado");
-                _dtbgstsave.Columns.Add("estado");
-                _dtbgstsave.Columns.Add("operacion");
-                ViewState["DatosSave"] = _dtbgstsave;
                 ViewState["CodigoLista"] = Request["CodigoLista"];
-                ViewState["Preview"] = false;
                 ViewState["CodigoCEDE"] = "0";
                 ViewState["CodigoLTCA"] = "0";
                 ViewState["CodigoCPCE"] = "0";
                 ViewState["CodMarcado"] = "0";
+
+                _dtbgstsave.Columns.Add("CodigoCLDE");
+                _dtbgstsave.Columns.Add("CodigoPERS");
+                _dtbgstsave.Columns.Add("Gestorasignado");
+                _dtbgstsave.Columns.Add("Estado");
+                _dtbgstsave.Columns.Add("auxv1");
+                _dtbgstsave.Columns.Add("auxv2");
+                _dtbgstsave.Columns.Add("auxv3");
+                _dtbgstsave.Columns.Add("auxi1");
+                _dtbgstsave.Columns.Add("auxi2");
+                _dtbgstsave.Columns.Add("auxi3");
+                ViewState["DatosSave"] = _dtbgstsave;
+
+                _dtbpreview.Columns.Add("Cliente");
+                _dtbpreview.Columns.Add("Identificacion");
+                _dtbpreview.Columns.Add("Provincia");
+                _dtbpreview.Columns.Add("Ciudad");
+                _dtbpreview.Columns.Add("FechaGestion");
+                ViewState["DatosPreview"] = _dtbpreview;
+
                 TxtFechaInicio.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 TxtFechaDesde.Text = DateTime.Now.ToString("MM/dd/yyyy");
@@ -110,6 +124,7 @@
                     TxtFechaInicio.Enabled = false;
                 }
             }
+            else GrdvPreview.DataSource = ViewState["Preview"];
         }
         #endregion
 
@@ -151,7 +166,6 @@
                 GrdvEstrategia.DataSource = _dts;
                 GrdvEstrategia.DataBind();
                 ViewState["Estrategia"] = _dts.Tables[0];
-                ViewState["Preview"] = true;
                 ImgPreview.ImageUrl = "~/Botones/Buscargris.png";
                 ImgPreview.Enabled = false;
                 LblPreview.Visible = false;
@@ -203,8 +217,6 @@
                 case 1:
                     GrdvPreview.DataSource = null;
                     GrdvPreview.DataBind();
-                    LblExportar.Visible = false;
-                    ImgExportar.Visible = false;
                     LblTotal.InnerText = "0";
 
                     DdlGestor.DataSource = new ControllerDAO().FunGetConsultasCatalogo(12, "--Seleccione Gestor--", 
@@ -239,6 +251,12 @@
 
                     if (_dts1.Tables[0].Rows.Count > 0) PnlEfecto.Visible = true;
                     else PnlEfecto.Visible = false;
+                    break;
+                case 3:
+                    GrdvPreview.DataSource = null;
+                    GrdvPreview.DataBind();
+                    TblLista.Visible = false;
+                    LblTotal.InnerText = "0";
                     break;
             }
         }
@@ -282,10 +300,21 @@
             _dtmfechafin = DateTime.ParseExact(TxtFechaFin.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             _dtmfechaactual = DateTime.ParseExact(_fechaactual, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
+            _dtmfecini = DateTime.ParseExact(TxtFechaDesde.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            _dtmfecfin = DateTime.ParseExact(TxtFechaHasta.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
             if (_dtmfechafin < _dtmfechainicio)
             {
                 new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this);
                 _validar = false; ;
+            }
+
+            TimeSpan _diferencia = _dtmfecfin.Subtract(_dtmfecini);
+
+            if (_diferencia.Days > 31)
+            {
+                new FuncionesDAO().FunShowJSMessage("Definir la consulta son en rangos de 30 a 31 dias..!", this);
+                _validar = false;
             }
 
             if (int.Parse(ViewState["CodigoLista"].ToString()) == 0)
@@ -308,7 +337,6 @@
 
             return _validar;
         }
-
         private string FunCrearSQL(string sqlformado)
         {
             try
@@ -339,12 +367,7 @@
             {
                 _continuar = true; _estrategia = ""; _ordenar = "";
                 _pasadas = 0;
-                _sql = nuevoSQL;
-                _sql += "From SoftCob_CLIENTE_DEUDOR CL (nolock) INNER JOIN SoftCob_CUENTA_DEUDOR CD (nolock) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO ";
-                _sql += "INNER JOIN SoftCob_PERSONA PE (nolock) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
-                _sql += "INNER JOIN SoftCob_PROVINCIA PR ON PE.pers_provincia=PR.PROV_CODIGO ";
-                _sql += "INNER JOIN SoftCob_CIUDAD CI ON PE.pers_ciudad=CI.CIUD_CODIGO where ";
-                _sql += "CL.CPCE_CODIGO=" + DdlCatalogo.SelectedValue + " and CL.clde_estado=1 and CD.ctde_estado=1 and ";
+                _sql1 = nuevoSQL;
 
                 if (ChkGestor.Checked)
                 {
@@ -354,17 +377,17 @@
                         _continuar = false;
                     }
                     else
-                        _sql += "CL.clde_estado=1 and CD.ctde_gestorasignado=" + DdlGestor.SelectedValue + " and CD.ctde_estado=1 and ";
+                        _sql1 += "CLI.clde_estado=1 AND CDE.ctde_gestorasignado=" + DdlGestor.SelectedValue + " AND CDE.ctde_estado=1 AND ";
                 }
-                else _sql += "CL.clde_estado=1 and CD.ctde_gestorasignado>0 and CD.ctde_estado=1 and ";
+                else _sql1 += "CLI.clde_estado=1 AND CDE.ctde_gestorasignado>0 AND CDE.ctde_estado=1 AND ";
 
-                if (DdlAsignacion.SelectedValue != "0") _sql += "CD.ctde_auxv2='" + DdlAsignacion.SelectedValue + "' and ";
+                if (DdlAsignacion.SelectedValue != "0") _sql1 += "CDE.ctde_auxv2='" + DdlAsignacion.SelectedValue + "' AND ";
 
-                if (DdlCampania.SelectedValue != "0") _sql += "CD.ctde_auxi4=" + DdlCampania.SelectedValue + " and ";
+                if (DdlCampania.SelectedValue != "0") _sql1 += "CDE.ctde_auxi4=" + DdlCampania.SelectedValue + " AND ";
 
-                if (DdlAsignacion.SelectedValue != "0") _sql += "CD.ctde_auxv2='" + DdlAsignacion.SelectedValue + "' and ";
+                if (DdlAsignacion.SelectedValue != "0") _sql1 += "CDE.ctde_auxv2='" + DdlAsignacion.SelectedValue + "' AND ";
 
-                if (DdlCampania.SelectedValue != "0") _sql += "CD.ctde_auxi4=" + DdlCampania.SelectedValue + " and ";
+                if (DdlCampania.SelectedValue != "0") _sql1 += "CDE.ctde_auxi4=" + DdlCampania.SelectedValue + " AND ";
 
                 if (_continuar)
                 {
@@ -377,7 +400,7 @@
                         else
                         {
                             if (_pasadas == 0) _estrategia += _row["Campo"].ToString() + " " + _row["Operacion"].ToString() + " " + _row["Valor"].ToString() + " and ";
-                            else _estrategia += _row["Valor"].ToString() + " and ";
+                            else _estrategia += _row["Valor"].ToString() + " AND ";
                         }
 
                         if (tipo == 1)
@@ -391,19 +414,19 @@
 
                     if (tipo == 1)
                     {
-                        if (!string.IsNullOrEmpty(_ordenar)) _ordenar = "Order by " + _ordenar.Remove(_ordenar.Length - 1);
+                        if (!string.IsNullOrEmpty(_ordenar)) _ordenar = "ORDER BY " + _ordenar.Remove(_ordenar.Length - 1);
                     }
 
-                    _sql += _estrategia;
-                    _sql = _sql.Remove(_sql.Length - 4) + " " + _ordenar;
+                    _sql1 += _estrategia;
+                    _sql1 = _sql1.Remove(_sql1.Length - 4) + " " + _ordenar;
                 }
-                else _sql = "";
+                else _sql1 = "";
             }
             catch (Exception ex)
             {
                 Lblerror.Text = ex.ToString();
             }
-            return _sql;
+            return _sql1;
         }
         #endregion
 
@@ -412,14 +435,9 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
                 GrdvEstrategia.DataSource = null;
                 GrdvEstrategia.DataBind();
-                LblExportar.Visible = false;
-                ImgExportar.Visible = false;
                 ViewState["Estrategia"] = null;
                 ViewState["CodigoEstrategia"] = DdlEstrategia.SelectedValue;
 
@@ -442,10 +460,7 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
 
                 if (ChkGestor.Checked) DdlGestor.Enabled = true;
                 else
@@ -505,6 +520,7 @@
             try
             {
                 FunCargarCombos(1);
+                FunCargarCombos(3);
                 _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
 
                 if (_dts.Tables[0].Rows.Count > 0)
@@ -535,9 +551,9 @@
         {
             try
             {
-                ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
                 FunCargarCombos(1);
                 FunCargarCombos(2);
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
@@ -554,10 +570,7 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
@@ -569,10 +582,7 @@
         {
             try
             {
-                GrdvPreview.DataSource = null;
-                GrdvPreview.DataBind();
-                TblLista.Visible = false;
-                LblTotal.InnerText = "0";
+                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
@@ -608,7 +618,6 @@
             try
             {
                 TblLista.Visible = false;
-                _sql = ""; _sql1 = "";
 
                 if (DdlEstrategia.SelectedValue == "0")
                 {
@@ -620,55 +629,94 @@
 
                 if (_continuar)
                 {
-                    if (ChkFecha.Checked) _tipogestion = 4;
-                    else _tipogestion = 5;
+                    _sql1 = "";
+                    _sql1 = "SELECT CodigoCLDE=CDE.CLDE_CODIGO,CodigoPERS=PER.PERS_CODIGO,";
+                    _sql1 += "Gestorasignado=CDE.ctde_gestorasignado,";
+                    _sql1 += "Cliente=PER.pers_nombrescompletos,Identificacion=PER.pers_numerodocumento,";
+                    _sql1 += "Provincia=(SELECT PRV.prov_nombre FROM SoftCob_Provincia PRV (NOLOCK) WHERE PRV.PROV_CODIGO=PER.pers_provincia),";
+                    _sql1 += "Ciudad=(SELECT CIU.ciud_nombre FROM SoftCob_Ciudad CIU (NOLOCK) WHERE CIU.CIUD_CODIGO=PER.pers_ciudad) ";
+                    _sql1 += "FROM SoftCob_CUENTA_DEUDOR CDE (NOLOCK) INNER JOIN SoftCob_CLIENTE_DEUDOR CLI (NOLOCK) ON CDE.CLDE_CODIGO=CLI.CLDE_CODIGO ";
+                    _sql1 += "INNER JOIN SoftCob_PERSONA PER (NOLOCK) ON CLI.PERS_CODIGO=PER.PERS_CODIGO ";
+                    _sql1 += "WHERE CLI.CPCE_CODIGO=" + DdlCatalogo.SelectedValue + " AND CDE.ctde_estado=1 AND CLI.clde_estado=1 AND ";
 
-                    _sql = "select distinct Cliente = PE.pers_nombrescompletos,Identificacion = PE.pers_numerodocumento,codigoCLDE = CD.CLDE_CODIGO,";
-                    _sql += "Operacion = CD.ctde_operacion, DiasMora = CD.ctde_diasmora,Exigible = CD.ctde_valorexigible,";
-                    _sql += "EstadoCivil = pers_estadocivil,Genero = pers_genero,Provincia = prov_nombre,Ciudad = ciud_nombre ";
-                    _sql = FunFormarSQL(_sql, 1);
+                    _sql1 = FunFormarSQL(_sql1, 0);
 
-                    if (!string.IsNullOrEmpty(_sql))
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql1, "", "",
+                        Session["Conectar"].ToString());
+
+                    columnas = new[] { "Identificacion", "Cliente", "CodigoCLDE", "CodigoPERS", "Provincia", "Ciudad",
+                        "Gestorasignado" };
+
+                    view = new DataView(_dts.Tables[0]);
+                    _dtb = view.ToTable(true, columnas);
+
+                    if (_dtb.Rows.Count == 0)
                     {
-                        _sql1 = "select CodigoCLDE = CDE.CLDE_CODIGO from SoftCob_CUENTA_DEUDOR CDE ";
-                        _sql1 += "INNER JOIN SoftCob_CLIENTE_DEUDOR CLI ON CDE.CLDE_CODIGO=CLI.CLDE_CODIGO ";
-                        _sql1 += " where CLI.CPCE_CODIGO=" + DdlCatalogo.SelectedValue + " and CDE.ctde_estado=1 and ";
+                        new FuncionesDAO().FunShowJSMessage("No Existen Datos para Crear Lista..!", this);
+                        return;
+                    }
 
-                        if (ChkGestor.Checked)
-                            _sql1 += "CDE.ctde_gestorasignado=" + DdlGestor.SelectedValue + " and ";
-                        else _sql1 += "CDE.ctde_gestorasignado>0 and ";
+                    _sql1 = "";
+                    _sql1 = "SELECT DISTINCT CodigoCLDE=GTE.gete_cldecodigo,FechaGestion=CONVERT(VARCHAR(10),GTE.gete_fechagestion,121) ";
+                    _sql1 += "FROM SoftCob_GESTION_TELEFONICA GTE (nolock) INNER JOIN SoftCob_CUENTA_DEUDOR CDE ON GTE.gete_cldecodigo=CDE.CLDE_CODIGO ";
+                    _sql1 += "WHERE CONVERT(date,GTE.gete_fechagestion,101) BETWEEN CONVERT(DATE,'" + TxtFechaDesde.Text.Trim() + "',101) ";
+                    _sql1 += "AND CONVERT(DATE,'" + TxtFechaHasta.Text.Trim() + "',101) AND ";
+                    _sql1 += "GTE.gete_cedecodigo=" + DdlCedente.SelectedValue + " AND GTE.gete_cpcecodigo=" + DdlCatalogo.SelectedValue + " AND ";
+                    _sql1 += "GTE.gete_auxi3=0 AND GTE.gete_arefcodigo IN(";
+                    _sql1 = FunCrearSQL(_sql1);
 
-                        _sql1 = _sql1.Remove(_sql1.Length - 4);
-                        _sql1 = _sql1 + " group by CDE.CLDE_CODIGO";
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql1, "", "",
+                        Session["Conectar"].ToString());
 
-                        _sql2 = "select gete_cldecodigo,gete_arefcodigo,gete_efectivo,";
-                        _sql2 += "gete_fechagestion,gete_fechacreacion,gete_auxi1 ";
-                        _sql2 += "from SoftCob_GESTION_TELEFONICA GTE (nolock) INNER JOIN SoftCob_CUENTA_DEUDOR CDE ON GTE.gete_cldecodigo=CDE.CLDE_CODIGO ";
-                        _sql2 += "where convert(date,GTE.gete_fechagestion,101) between CONVERT(date,'" + TxtFechaDesde.Text.Trim() + "',101) ";
-                        _sql2 += "and CONVERT(date,'" + TxtFechaHasta.Text.Trim() + "',101) and ";
-                        _sql2 += "gete_cedecodigo=" + DdlCedente.SelectedValue + " and gete_cpcecodigo=" + DdlCatalogo.SelectedValue + " and ";
-                        _sql2 += "gete_auxi3=0 and gete_arefcodigo in(";
-                        _sql2 = FunCrearSQL(_sql2);
-                        _sql2 = _sql2 + " order by gete_fechacreacion desc";
+                    if (_dts.Tables[0].Rows.Count > 0)
+                    {
+                        _dtbgestion = _dts.Tables[0];
+
+                        _dtbpreview = (DataTable)ViewState["DatosPreview"];
+                        _dtbpreview.Clear();
 
                         _dtbgstsave = (DataTable)ViewState["DatosSave"];
+                        _dtbgstsave.Clear();
 
-                        _dts = new ListaTrabajoDAO().FunNewLstADE(0, _sql, int.Parse(ViewState["CodigoCEDE"].ToString()),
-                            int.Parse(ViewState["CodigoCPCE"].ToString()), int.Parse(ViewState["CodigoLTCA"].ToString()),
-                            _tipogestion, int.Parse(DdlGestor.SelectedValue), 0, 0, 0, 0, int.Parse(DdlGestorApoyo.SelectedValue), TxtFechaDesde.Text, TxtFechaHasta.Text, _sql1, _sql2, "", "", ChkFecha.Checked ? 1 : 0, 0, 0, 0, _dtbgstsave, Session["Conectar"].ToString());
-
-                        ViewState["Preview"] = _dts.Tables[0];
-
-                        if (_dts.Tables[0].Rows.Count > 0)
+                        foreach (DataRow _drfila in _dtb.Rows)
                         {
-                            TblLista.Visible = true;
-                        }
+                            _result = _dtbgestion.Select("CodigoCLDE='" + _drfila["CodigoCLDE"].ToString() + "'").
+                                FirstOrDefault();
 
-                        GrdvPreview.DataSource = _dts.Tables[0];
-                        GrdvPreview.DataBind();
-                        LblTotal.InnerText = _dts.Tables[1].Rows[0]["Total"].ToString();
+                            if (_result != null && _resultado.Length > 0)
+                            {
+                                _fechagestion = _result["FechaGestion"].ToString();
+
+                                _filagre = _dtbpreview.NewRow();
+                                _filagre["Identificacion"] = _drfila["Identificacion"].ToString();
+                                _filagre["Cliente"] = _drfila["Cliente"].ToString();
+                                _filagre["Provincia"] = _drfila["Provincia"].ToString();
+                                _filagre["Ciudad"] = _drfila["Ciudad"].ToString();
+                                _filagre["FechaGestion"] = _fechagestion;
+                                _dtbpreview.Rows.Add(_filagre);
+
+                                _filnew = _dtbgstsave.NewRow();
+                                _filnew["CodigoCLDE"] = _drfila["CodigoCLDE"].ToString();
+                                _filnew["CodigoPERS"] = _drfila["CodigoPERS"].ToString();
+                                _filnew["Gestorasignado"] = _drfila["Gestorasignado"].ToString();
+                                _filnew["Estado"] = "1";
+                                _filnew["auxv1"] = "";
+                                _filnew["auxv2"] = "";
+                                _filnew["auxv3"] = "";
+                                _filnew["auxi1"] = "";
+                                _filnew["auxi2"] = "";
+                                _filnew["auxi3"] = "";
+                                _dtbgstsave.Rows.Add(_filnew);
+                            }
+                        }
                     }
-                    else new FuncionesDAO().FunShowJSMessage("No se puede formar la consulta..!", this);
+
+                    TblLista.Visible = true;
+                    ViewState["Preview"] = _dtbpreview;
+
+                    GrdvPreview.DataSource = _dtbpreview;
+                    GrdvPreview.DataBind();
+                    LblTotal.InnerText = _dtbpreview.Rows.Count.ToString();
                 }
             }
             catch (Exception ex)
@@ -676,7 +724,11 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
+        protected void GrdvPreview_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GrdvPreview.PageIndex = e.NewPageIndex;
+            GrdvPreview.DataBind();
+        }
         public override void VerifyRenderingInServerForm(Control control)
         {
             /* Verifies that the control is rendered */
@@ -686,33 +738,6 @@
         {
             try
             {
-                //Response.Clear();
-                //Response.Buffer = true;
-                //string FileName = "PreviewApy_" + DdlCedente.SelectedItem.ToString() + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
-                //Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
-                //Response.Charset = "";
-                //Response.ContentType = "application/vnd.ms-excel";
-                //using (StringWriter sw = new StringWriter())
-                //{
-                //    HtmlTextWriter hw = new HtmlTextWriter(sw);
-                //    GrdvPreview.AllowPaging = false;
-                //    GrdvPreview.DataSource = (DataSet)Session["Preview"];
-                //    GrdvPreview.DataBind();
-                //    GrdvPreview.HeaderRow.BackColor = Color.White;
-                //    foreach (GridViewRow row in GrdvPreview.Rows)
-                //    {
-                //        row.BackColor = Color.White;
-                //        row.Cells[1].Style.Add("mso-number-format", "\\@");
-                //        row.Cells[2].Style.Add("mso-number-format", "\\@");
-                //    }
-                //    GrdvPreview.RenderControl(hw);
-                //    string style = @"<style> .textmode { } </style>";
-                //    Response.Write(style);
-                //    Response.Output.Write(sw.ToString());
-                //    Response.Flush();
-                //    Response.End();
-                //}
-
                 _dtb = (DataTable)ViewState["Preview"];
                 using (XLWorkbook wb = new XLWorkbook())
                 {
@@ -742,8 +767,6 @@
         {
             try
             {
-                _sql = ""; _sql1 = "";
-
                 if (string.IsNullOrEmpty(TxtLista.Text.Trim()))
                 {
                     new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Lista de Trabajo..!", this);
@@ -756,8 +779,8 @@
                     return;
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(ViewState["CodigoCEDE"].ToString()),
-                    int.Parse(ViewState["CodigoCPCE"].ToString()), 0, "", TxtLista.Text.Trim().ToUpper(),
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(DdlCedente.SelectedValue),
+                    int.Parse(DdlCatalogo.SelectedValue), 0, "", TxtLista.Text.Trim().ToUpper(),
                     TxtFechaInicio.Text.Trim(), Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
@@ -771,92 +794,35 @@
 
                 if (_continuar)
                 {
-                    _tipogestion = 4;
-
                     if (int.Parse(LblTotal.InnerText) > 0)
                     {
-                        if (int.Parse(ViewState["CodigoLista"].ToString()) > 0)
-                        {
-                            _sql = "Select top 0 codigoCLDE = CL.CLDE_CODIGO,codigoPERS = PE.PERS_CODIGO,codigoGEST = CD.ctde_gestorasignado,";
-                            _sql += "Estado = 1,Operacion = CD.ctde_operacion,";
-                            _sql += "EstadoCivil = pers_estadocivil,Genero = pers_genero,Provincia = prov_nombre,Ciudad = ciud_nombre,";
-                            _sql += "DiasMora = CD.ctde_diasmora,Exigible = CD.ctde_valorexigible ";
-                            _sql += "From SoftCob_CLIENTE_DEUDOR CL (nolock) INNER JOIN SoftCob_CUENTA_DEUDOR CD (nolock) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO ";
-                            _sql += "INNER JOIN SoftCob_PERSONA PE (nolock) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
-                            _sql += "INNER JOIN SoftCob_Provincia PR (nolock) ON PE.pers_provincia=PR.PROV_CODIGO ";
-                            _sql += "INNER JOIN SoftCob_Ciudad CI (nolock) ON PE.pers_ciudad=CI.CIUD_CODIGO where ";
-                            _sql += "CL.CPCE_CODIGO=0 and CL.clde_estado=1 and CD.ctde_estado=1 and ";
-                            _sql += "CD.ctde_gestorasignado=0";
-
-                            _codlistaarbol = int.Parse(ViewState["CodigoLista"].ToString());
-
-                            _sql1 = "select top 0 CodigoCLDE = CDE.CLDE_CODIGO from SoftCob_CUENTA_DEUDOR CDE(nolock) ";
-                            _sql1 += "INNER JOIN SoftCob_CLIENTE_DEUDOR CLI (nolock) ON CDE.CLDE_CODIGO=CLI.CLDE_CODIGO ";
-                            _sql1 += " where CLI.CPCE_CODIGO=0 and CDE.ctde_estado=1 and CDE.ctde_gestorasignado=0 ";
-                        }
-                        else
-                        {
-                            if (DdlGestorApoyo.SelectedValue == "0")
-                                _sql = "Select distinct codigoCLDE = CL.CLDE_CODIGO,codigoPERS = PE.PERS_CODIGO,codigoGEST = CD.ctde_gestorasignado,";
-                            else
-                                _sql = "Select distinct codigoCLDE = CL.CLDE_CODIGO,codigoPERS = PE.PERS_CODIGO,codigoGEST=" + DdlGestorApoyo.SelectedValue + ",";
-                            _sql += "Estado = 1,Operacion = CD.ctde_operacion,";
-                            _sql += "EstadoCivil = pers_estadocivil,Genero = pers_genero,Provincia = prov_nombre,Ciudad = ciud_nombre,";
-                            _sql += "DiasMora = CD.ctde_diasmora,Exigible = CD.ctde_valorexigible ";
-                            _sql = FunFormarSQL(_sql, 1);
-
-                            _sql1 = "select CodigoCLDE = CDE.CLDE_CODIGO from SoftCob_CUENTA_DEUDOR CDE (nolock) ";
-                            _sql1 += "INNER JOIN SoftCob_CLIENTE_DEUDOR CLI (nolock) ON CDE.CLDE_CODIGO=CLI.CLDE_CODIGO ";
-                            _sql1 += " where CLI.CPCE_CODIGO=" + DdlCatalogo.SelectedValue + " and CDE.ctde_estado=1 and ";
-
-                            if (ChkGestor.Checked)
-                                _sql1 += "CDE.ctde_gestorasignado=" + DdlGestor.SelectedValue + " and ";
-                            else _sql1 += "CDE.ctde_gestorasignado>0 and ";
-                            _sql1 = _sql1.Remove(_sql1.Length - 4);
-                            _sql1 = _sql1 + " group by CDE.CLDE_CODIGO";
-
-                            _sql2 = "select gete_cldecodigo,gete_araccodigo,gete_efectivo,";
-                            _sql2 += "gete_fechagestion,gete_fechacreacion,gete_auxi1 ";
-                            _sql2 += "from SoftCob_GESTION_TELEFONICA GTE (nolock) INNER JOIN SoftCob_CUENTA_DEUDOR CDE (nolock) ON GTE.gete_cldecodigo=CDE.CLDE_CODIGO ";
-                            _sql2 += "where convert(date,GTE.gete_fechagestion,101) between CONVERT(date,'" + TxtFechaDesde.Text.Trim() + "',101) ";
-                            _sql2 += "and CONVERT(date,'" + TxtFechaHasta.Text.Trim() + "',101) and ";
-                            _sql2 += "gete_cedecodigo=" + DdlCedente.SelectedValue + " and gete_cpcecodigo=" + DdlCatalogo.SelectedValue + " and ";
-                            _sql2 += "gete_auxi3=0 and gete_arefcodigo in(";
-                            _sql2 = FunCrearSQL(_sql2);
-                            _sql2 = _sql2 + " order by gete_fechacreacion desc";
-                        }
-
                         _dtbgstsave = (DataTable)ViewState["DatosSave"];
-
-                        _dts = new ListaTrabajoDAO().FunNewLstADE(1, _sql, int.Parse(ViewState["CodigoCEDE"].ToString()),
-                            int.Parse(ViewState["CodigoCPCE"].ToString()), int.Parse(ViewState["CodigoLTCA"].ToString()),
-                            _tipogestion, int.Parse(DdlGestor.SelectedValue), 0, 0, 0, 0, int.Parse(DdlGestorApoyo.SelectedValue), TxtFechaDesde.Text, TxtFechaHasta.Text, _sql1, _sql2, "", "", ChkFecha.Checked ? 1 : 0, 0, 0, 0, _dtbgstsave, Session["Conectar"].ToString());
+                        _codlistaarbol = int.Parse(ViewState["CodigoLista"].ToString());
 
                         _mensaje = new EstrategiaDAO().FunCrearListaTrabajo(_codlistaarbol, TxtLista.Text.Trim().ToUpper(),
-                            TxtDescripcion.Text.Trim().ToUpper(), TxtFechaInicio.Text, TxtFechaFin.Text,
-                            int.Parse(DdlEstrategia.SelectedValue), int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue),
-                            ChkEstado.Checked, DdlMarcado.SelectedValue, DdlCampania.SelectedValue, ChkGestor.Checked ? 1 : 0, "",
-                            0, 0, ChkFecha.Checked ? 1 : 0, TxtFechaDesde.Text.Trim(), TxtFechaHasta.Text.Trim(), DdlGestor.SelectedValue,
-                            DdlAsignacion.SelectedValue, DdlGestorApoyo.SelectedValue, int.Parse(LblTotal.InnerText), 3, 0,
-                            int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dts.Tables[0],
+                            TxtDescripcion.Text.Trim().ToUpper(), TxtFechaInicio.Text, TxtFechaFin.Text, int.Parse(DdlEstrategia.SelectedValue),
+                            int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), ChkEstado.Checked, DdlMarcado.SelectedValue, DdlCampania.SelectedValue,
+                            0, "", 0, 0, 0, TxtFechaDesde.Text.Trim(), TxtFechaHasta.Text.Trim(), DdlGestor.SelectedValue,
+                            DdlAsignacion.SelectedValue, DdlGestorApoyo.SelectedValue, int.Parse(LblTotal.InnerText),
+                            3, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbgstsave,
                             (DataTable)ViewState["Estrategia"], "sp_NewListaTrabajo", Session["Conectar"].ToString());
 
                         if (int.Parse(ViewState["CodigoLista"].ToString()) == 0)
                         {
+                            _sql = FunCrearSQL("");
                             _efecto = _efecto.Remove(_efecto.Length - 1);
-                            _dts = new ConsultaDatosDAO().FunConsultaDatos(148, int.Parse(_mensaje), 0, 0, "", _efecto, "",
-                                Session["Conectar"].ToString());
+                            _dts = new ConsultaDatosDAO().FunConsultaDatos(148, int.Parse(_mensaje), 0, 0, "",
+                                _efecto, "", Session["Conectar"].ToString());
                             _mensaje = _dts.Tables[0].Rows[0][0].ToString();
                         }
+                        if (_mensaje == "OK") Response.Redirect("WFrm_ListaTrabajoAdminEFE.aspx?MensajeRetornado='Guardado con Éxito'", true);
+                        else new FuncionesDAO().FunShowJSMessage(_mensaje, this);
                     }
                     else
                     {
                         new FuncionesDAO().FunShowJSMessage("No existen datos para registrar..!", this);
                         return;
                     }
-
-                    if (_mensaje == "OK") Response.Redirect("WFrm_ListaTrabajoAdminEFE.aspx?MensajeRetornado=Guardado con Éxito", true);
-                    else new FuncionesDAO().FunShowJSMessage(_mensaje, this);
                 }
             }
             catch (Exception ex)

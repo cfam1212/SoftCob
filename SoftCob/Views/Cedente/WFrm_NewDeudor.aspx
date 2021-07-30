@@ -520,7 +520,7 @@
                                         </asp:DropDownList>
                                     </td>
                                     <td>
-                                        <h5>Producto:</h5>
+                                        <h5>Producto/Catalogo:</h5>
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="DdlProducto" runat="server" CssClass="form-control" TabIndex="23" Width="100%">
@@ -607,7 +607,7 @@
                                         <asp:Panel ID="Panel3" runat="server" Height="180px" ScrollBars="Vertical">
                                             <asp:GridView ID="GrdvDatos" runat="server" AutoGenerateColumns="False"
                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                                DataKeyNames="CodigoCPCE,CodigoCTDE,Estado,Operacion,Nuevo"
+                                                DataKeyNames="CodigoCPCE,CodigoCTDE,CodigoCLDE,CodigoCEDE,CodigoPERS,Estado,Operacion,Nuevo"
                                                 ForeColor="#333333" PageSize="7" TabIndex="32" Width="100%" OnRowDataBound="GrdvDatos_RowDataBound">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>
@@ -640,6 +640,12 @@
                                                     <asp:TemplateField HeaderText="Eliminar">
                                                         <ItemTemplate>
                                                             <asp:ImageButton ID="ImgEliOperacion" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliOperacion_Click" OnClientClick="return asegurar();" />
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" />
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Gestionar">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="ImgGestionar" runat="server" Enabled="False" Height="20px" ImageUrl="~/Botones/btncitagrisbg.png" OnClick="ImgGestionar_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>

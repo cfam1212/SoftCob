@@ -46,7 +46,6 @@
 
                 ViewState["CodigoLista"] = Request["CodigoLista"];
                 ViewState["Regresar"] = Request["Regresar"];
-                ViewState["Preview"] = false;
                 ViewState["CodLista"] = null;
                 ViewState["CodCatalogo"] = null;
                 ViewState["CodMarcado"] = null;
@@ -102,6 +101,7 @@
                     DdlGestorApoyo.Enabled = false;
                 }
             }
+            else GrdvPreview.DataSource = ViewState["Preview"];
         }
         #endregion
 
@@ -139,7 +139,6 @@
                 GrdvEstrategia.DataSource = _dts;
                 GrdvEstrategia.DataBind();
                 ViewState["Estrategia"] = _dts.Tables[0];
-                ViewState["Preview"] = true;
                 ImgPreview.ImageUrl = "~/Botones/Buscargris.png";
                 ImgPreview.Enabled = false;
                 LblPreview.Visible = false;
@@ -490,8 +489,9 @@
 
                 if (ViewState["Nuevo"].ToString() == "0")
                 {
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(ViewState["CodigoCedente"].ToString()), int.Parse(ViewState["CodCatalogo"].ToString()), 0, "",
-                        TxtLista.Text.Trim().ToUpper(), TxtFechaInicio.Text.Trim(), Session["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(DdlCedente.SelectedValue), 
+                        int.Parse(DdlCatalogo.SelectedValue), 0, "", TxtLista.Text.Trim().ToUpper(), TxtFechaInicio.Text.Trim(), 
+                        Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -555,6 +555,12 @@
         public override void VerifyRenderingInServerForm(Control control)
         {
             /* Verifies that the control is rendered */
+        }
+
+        protected void GrdvPreview_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GrdvPreview.PageIndex = e.NewPageIndex;
+            GrdvPreview.DataBind();
         }
 
         protected void ImgExportar_Click(object sender, ImageClickEventArgs e)
