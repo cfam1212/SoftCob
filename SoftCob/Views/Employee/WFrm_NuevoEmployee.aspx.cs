@@ -747,7 +747,7 @@
                 if (_employee.EMPL_CODIGO == 0) _mensaje = new EmployeeDAO().FunCrearEmployee(_employee);
                 else _mensaje = new EmployeeDAO().FunEditEmployee(_employee);
 
-                if (_mensaje == "") Response.Redirect("WFrm_EmployeeAdmin.aspx?MensajeRetornado=Guardado con Éxito");
+                if (_mensaje == "") Response.Redirect("WFrm_EmployeeAdmin.aspx?MensajeRetornado=Guardado con Exito");
                 else Lblerror.Text = _mensaje;
             }
             catch (Exception ex)

@@ -12,7 +12,7 @@
         DataSet _dts = new DataSet();
         ImageButton _imgasigna = new ImageButton();
         ImageButton _imgquita = new ImageButton();
-        string _codigoeployee = "0", _codigousu = "0", _mensaje = "0", _redirect = "0", _mensajes = "";
+        string _codigoeployee = "0", _codigousu = "0", _mensaje = "0", _redirect = "0";
         #endregion
 
         #region Load
@@ -23,20 +23,12 @@
 
             if (!IsPostBack)
             {
-                //if (Session["IN-CALL"].ToString() == "SI")
-                //{
-                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                //    return;
-                //}
-
                 Lbltitulo.Text = "Administrar Empleados";
                 FunCargarMantenimiento();
-
                 
                 if (Request["MensajeRetornado"] != null)
                 {
-                    _mensajes = Request["MensajeRetornado"];
+                    _mensaje = Request["MensajeRetornado"];
                     new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }

@@ -98,7 +98,6 @@
         {
             /* Verifies that the control is rendered */
         }
-
         protected void ImgExportar_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -143,10 +142,6 @@
                 GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
                 _codigoltca = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoLista"].ToString();
                 _codigogestor = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoGestor"].ToString();
-                //ScriptManager.RegisterStartupScript(this, GetType(), 
-                //    "View", "javascript: var posicion_x; var posicion_y; posicion_x=(screen.width/2)-(900/2); posicion_y=(screen.height/2)-(600/2); window.open('WFrm_MonitorDetalleLista.aspx?codigoLTCA=" +
-                //    _codigoltca + "&codigoGestor=" + _codigogestor + "&codigoCEDE=" + ViewState["CodigoCEDE"].ToString() + 
-                //    "&codigoCPCE=" + ViewState["CodigoCPCE"].ToString() + "',null,'left=' + posicion_x + ', top=' + posicion_y + ', width=1024px, height=600px, status=no,resizable= yes, scrollbars=yes, toolbar=no, location=no, menubar=no,titlebar=0');", true);
 
                 Response.Redirect("WFrm_MonitorDetalleLista.aspx?codigoLTCA=" + _codigoltca + "&codigoGestor=" + _codigogestor +
                     "&codigoCEDE=" + ViewState["CodigoCEDE"].ToString() + "&codigoCPCE=" + ViewState["CodigoCPCE"].ToString() +
