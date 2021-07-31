@@ -114,7 +114,7 @@
         {
             if (DdlAsignarUsuario.SelectedValue == "-1")
             {
-                new FuncionesDAO().FunShowJSMessage("Seleccione Usuario o Cree uno nuevo..!", this, "N", "C");
+                new FuncionesDAO().FunShowJSMessage("Seleccione Usuario o Cree uno nuevo..!", this, "W", "C");
                 return;
             }
 
@@ -122,37 +122,37 @@
             {
                 if (string.IsNullOrEmpty(TxtLogin.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Login para el Usuario..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Login para el Usuario..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtPassword.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Password..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Password..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlDepartamento.SelectedValue == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Departamento..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Departamento..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlPerfil.SelectedValue == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Perfil..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Perfil..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlTipoUsuario.SelectedValue == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Usuario..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Usuario..!", this, "W", "C");
                     return;
                 }
 
                 if (new ControllerDAO().FunConsultaLogin(TxtLogin.Text.Trim()) != "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Login ya existe..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Login ya existe..!", this, "E", "C");
                     return;
                 }
             }

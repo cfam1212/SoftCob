@@ -2123,13 +2123,13 @@
 
                 if (DdlPropietario2.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione propietario teléfono..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione propietario teléfono..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtTelefono.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese teléfono..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese teléfono..!", this, "W", "C");
                     return;
                 }
 
@@ -2137,7 +2137,7 @@
                 {
                     if (DdlPrefijo.SelectedValue == "0")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione Prefijo de Marcación..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Seleccione Prefijo de Marcación..!", this, "W", "C");
                         return;
                     }
                 }
@@ -2147,7 +2147,7 @@
 
                 if (int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString()) >= 2)
                 {
-                    new FuncionesDAO().FunShowJSMessage("El Teléfono fue Eliminado más de una vez..!", this);
+                    new FuncionesDAO().FunShowJSMessage("El Teléfono fue Eliminado más de una vez..!", this, "W", "C");
                     return;
                 }
 
@@ -2166,7 +2166,7 @@
 
                     if (_lexiste)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ya existe teléfono..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ya existe teléfono..!", this, "E", "C");
                         return;
                     }
                     //BUSCAR SI YA EXISTE EL TELEFONO INGRESADO Y ESTA INACTIVADO
@@ -2175,7 +2175,7 @@
 
                     if (_mensaje != "")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Telefono ya Existe..!..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Telefono ya Existe..!..!", this, "E", "C");
                         return;
                     }
 
@@ -2186,13 +2186,13 @@
                     {
                         if (string.IsNullOrEmpty(TxtDocumentoRef.Text.Trim()))
                         {
-                            new FuncionesDAO().FunShowJSMessage("Ingrese No. de Documento..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Ingrese No. de Documento..!", this, "W", "C");
                             return;
                         }
 
                         if (string.IsNullOrEmpty(TxtNombres.Text.Trim()))
                         {
-                            new FuncionesDAO().FunShowJSMessage("Ingrese Al Menos Nombre del Contacto..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Ingrese Al Menos Nombre del Contacto..!", this, "W", "C");
                             return;
                         }
                         //VERIFICAR SI EL NUMERO DE DOCUMENTO YA EXISTE
@@ -2275,7 +2275,7 @@
                     GrdvTelefonos.DataBind();
                     ViewState["TelefonosRegistrados"] = _dts.Tables[0];
                 }
-                else new FuncionesDAO().FunShowJSMessage("Teléfono incorrecto..!", this);
+                else new FuncionesDAO().FunShowJSMessage("Teléfono incorrecto..!", this, "E", "C");
             }
             catch (Exception ex)
             {
@@ -2352,19 +2352,19 @@
             {
                 if (DdlAccion.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Acción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Acción..!", this, "W", "C");
                     return;
                 }
 
                 if (DddlEfecto.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Efecto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Efecto..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlRespuesta.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Respuesta..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Respuesta..!", this, "W", "C");
                     return;
                 }
 
@@ -2372,20 +2372,20 @@
                 {
                     if (DdlContacto.SelectedValue == "0")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione Contacto..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Seleccione Contacto..!", this, "W", "C");
                         return;
                     }
                 }
 
                 if (string.IsNullOrEmpty(TxtObservacion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación de la Gestión..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación de la Gestión..!", this, "W", "C");
                     return;
                 }
 
                 if (ViewState["DatosObligacion"] == null)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No tiene Datos de Obligación para el Registro..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No tiene Datos de Obligación para el Registro..!", this, "W", "C");
                     return;
                 }
 
@@ -2394,7 +2394,7 @@
 
                 if (_contador == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione al menos una operación de Datos Gestión..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione al menos una operación de Datos Gestión..!", this, "W", "C");
                     return;
                 }
 
@@ -2402,7 +2402,7 @@
                 {
                     if (TxtFechaPago.Text.Trim() == "")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingrese Fecha de Pago..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingrese Fecha de Pago..!", this, "W", "C");
                         return;
                     }
 
@@ -2413,7 +2413,7 @@
 
                     if (string.IsNullOrEmpty(TxtValorAbono.Text.Trim()) || TxtValorAbono.Text.Trim() == "0")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingrese valor del pago..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingrese valor del pago..!", this, "W", "C");
                         return;
                     }
 
@@ -2421,7 +2421,7 @@
                     {
                         if (string.IsNullOrEmpty(TxtNumDocumento.Text.Trim()))
                         {
-                            new FuncionesDAO().FunShowJSMessage("Ingrese No. de Documento..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Ingrese No. de Documento..!", this, "W", "C");
                             return;
                         }
                     }
@@ -2433,7 +2433,7 @@
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
                         new FuncionesDAO().FunShowJSMessage("Cliente ya tien regitrdo un COMPROMISO en esa Fecha " +
-                            "Verifique el registro o Consulte con el Administrador..!", this);
+                            "Verifique el registro o Consulte con el Administrador..!", this, "E", "C");
                         return;
                     }
                 }
@@ -2442,13 +2442,13 @@
                 {
                     if (string.IsNullOrEmpty(TxtHoraLLamar.Text.Trim()))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingrese Hora de llamada/ sumando 10 minutos a la hora actual..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ingrese Hora de llamada/ sumando 10 minutos a la hora actual..!", this, "E", "C");
                         return;
                     }
 
                     if (RdbSi.Checked == false && RdbNo.Checked == false)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Elija al mismo número o agregue nuevo..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Elija al mismo número o agregue nuevo..!", this, "W", "C");
                         return;
                     }
 
@@ -2459,7 +2459,7 @@
 
                     if (dtmFechaLLamar < DateTime.Now.AddMinutes(10))
                     {
-                        new FuncionesDAO().FunShowJSMessage("La Fecha/Hora no puede ser menor a la actual..!", this);
+                        new FuncionesDAO().FunShowJSMessage("La Fecha/Hora no puede ser menor a la actual..!", this, "E", "C");
                         return;
                     }
 
@@ -2467,7 +2467,7 @@
                     {
                         if (ViewState["UltimoNumeroAgregado"].ToString() == "")
                         {
-                            new FuncionesDAO().FunShowJSMessage("Ingrese el número de contacto..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Ingrese el número de contacto..!", this, "W", "C");
                             return;
                         }
                     }
@@ -2479,7 +2479,7 @@
                 {
                     if (Session["TrackNumber"] == null)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Datos de Marcado no Disponibles, por favor espere un momento porfavor..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Datos de Marcado no Disponibles, por favor espere un momento porfavor..!", this, "W", "C");
                         return;
                     }
                 }
@@ -2489,7 +2489,7 @@
                 {
                     if (DdlCitacion.SelectedValue == "0")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione Opcion de Cancelacion..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Seleccione Opcion de Cancelacion..!", this, "W", "C");
                         return;
                     }
                 }
@@ -2772,19 +2772,19 @@
             {
                 if (DdlTipTelefono2.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione tipo teléfono..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione tipo teléfono..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlPropietario2.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione propietario teléfono..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione propietario teléfono..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtTelefono.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese teléfono..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese teléfono..!", this, "W", "C");
                     return;
                 }
 
@@ -2792,7 +2792,7 @@
                 {
                     if (DdlPrefijo.SelectedValue == "0")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione Prefijo de Marcación..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Seleccione Prefijo de Marcación..!", this, "W", "C");
                         return;
                     }
                 }
@@ -2803,7 +2803,7 @@
 
                 if (int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString()) >= 2)
                 {
-                    new FuncionesDAO().FunShowJSMessage("El Teléfono fue Eliminado más de una vez..!", this);
+                    new FuncionesDAO().FunShowJSMessage("El Teléfono fue Eliminado más de una vez..!", this, "W", "C");
                     FunCargarCombos(8);
                     return;
                 }
@@ -2822,7 +2822,7 @@
 
                     if (_lexiste)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ya existe teléfono..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Ya existe teléfono..!", this, "E", "C");
                         return;
                     }
 
@@ -2830,13 +2830,13 @@
                     {
                         if (string.IsNullOrEmpty(TxtDocumentoRef.Text.Trim()))
                         {
-                            new FuncionesDAO().FunShowJSMessage("Ingrese No. de Documento..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Ingrese No. de Documento..!", this, "W", "C");
                             return;
                         }
 
                         if (string.IsNullOrEmpty(TxtNombres.Text.Trim()))
                         {
-                            new FuncionesDAO().FunShowJSMessage("Ingrese Al Menos Nombre del Contacto..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Ingrese Al Menos Nombre del Contacto..!", this, "W", "C");
                             return;
                         }
                     }
@@ -2861,7 +2861,7 @@
                     GrdvTelefonos.DataBind();
                     ViewState["TelefonosRegistrados"] = _dts.Tables[0];
                 }
-                else new FuncionesDAO().FunShowJSMessage("Teléfono incorrecto..!", this);
+                else new FuncionesDAO().FunShowJSMessage("Teléfono incorrecto..!", this, "E", "C");
 
             }
             catch (Exception ex)

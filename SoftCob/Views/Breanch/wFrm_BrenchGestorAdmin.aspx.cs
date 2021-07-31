@@ -352,7 +352,7 @@ namespace SoftCob.Views.Breanch
 
                 if (resul.Count() == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione al Menos un Gestor para el Proceso..!", this,"N","C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione al Menos un Gestor para el Proceso..!", this, "W", "C");
                     return;
                 }
 

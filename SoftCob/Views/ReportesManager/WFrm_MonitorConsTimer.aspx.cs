@@ -113,31 +113,31 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlCatalogo.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this, "W", "C");
                     return;
                 }
 
                 if (!new FuncionesDAO().IsDate(TxtFechaInicio.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
                     return;
                 }
 
                 if (!new FuncionesDAO().IsDate(TxtFechaFin.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
                     return;
                 }
 
                 if (DateTime.ParseExact(TxtFechaInicio.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture) > DateTime.ParseExact(TxtFechaFin.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture))
                 {
-                    new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha de Fin..!", this);
+                    new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha de Fin..!", this, "E", "C");
                     return;
                 }
 

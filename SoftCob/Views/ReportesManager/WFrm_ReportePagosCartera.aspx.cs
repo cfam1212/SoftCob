@@ -25,11 +25,11 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                //    return;
+                //}
 
                 ViewState["CodigoCEDE"] = Request["CodigoCEDE"];
                 ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
@@ -206,7 +206,7 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
@@ -245,7 +245,7 @@
                     //    "status=no,resizable= yes, scrollbars=yes, toolbar=no, location=no, menubar=no,titlebar=0');",
                     //    true);
                 }
-                else new FuncionesDAO().FunShowJSMessage("No Existen Datos para Mostrar..!", this);
+                else new FuncionesDAO().FunShowJSMessage("No Existen Datos para Mostrar..!", this, "E", "C");
             }
             catch (Exception ex)
             {

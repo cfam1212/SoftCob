@@ -27,13 +27,11 @@
                 {
                     Lbltitulo.Text = "Buscar Telefonos";
 
-                    //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                    //    Request["MensajeRetornado"].ToString());
+                   
                     if (Request["MensajeRetornado"] != null)
                     {
                         _mensaje = Request["MensajeRetornado"];
-                        ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                            "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                        new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                     }
                 }
             }
@@ -66,13 +64,13 @@
             {
                 if (DdlBuscarPor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Opcion de Busqueda..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Opcion de Busqueda..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCriterio.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Crierio para buscar..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Crierio para buscar..!", this, "W", "C");
                     return;
                 }
 

@@ -403,7 +403,7 @@
             {
                 TxtEditor1.Content += LstCamposA.Items[i].ToString();
             }
-            else new FuncionesDAO().FunShowJSMessage("Seleccione Campo..", this, "W", "L");
+            else new FuncionesDAO().FunShowJSMessage("Seleccione Campo..", this, "W", "C");
         }
 
         protected void BtnPasar1_Click(object sender, EventArgs e)
@@ -414,7 +414,7 @@
             {
                 TxtEditor2.Content += LstCamposB.Items[i].ToString();
             }
-            else new FuncionesDAO().FunShowJSMessage("Seleccione Campo..", this, "W", "L");
+            else new FuncionesDAO().FunShowJSMessage("Seleccione Campo..", this, "W", "C");
         }
 
         protected void DdlAccion_SelectedIndexChanged(object sender, EventArgs e)
@@ -438,25 +438,25 @@
             {
                 if (int.Parse(ViewState["CodigoCPCE"].ToString()) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo del Cedente..", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo del Cedente..", this, "W", "C");
                     return;
                 }
 
                 if (DdlAccion.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Acción..", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Acción..", this, "W", "C");
                     return;
                 }
 
                 if (DdlEfecto.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Efecto..", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Efecto..", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtEditor2.Content) && string.IsNullOrEmpty(txtObservacion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación o Speech..", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación o Speech..", this, "W", "C");
                     return;
                 }
 
@@ -479,7 +479,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe definido Speech..", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya esta definido Speech..", this, "E", "C");
                     return;
                 }
 
@@ -628,7 +628,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe definido Speech..", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya esta definido Speech..", this, "E", "C");
                     return;
                 }
 
@@ -683,13 +683,13 @@
             {
                 if (string.IsNullOrEmpty(TxtEditor1.Content.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Speech de BienVenida..", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Speech de BienVenida..", this, "W", "C");
                     return;
                 }
 
                 if (int.Parse(ViewState["CodigoCPCE"].ToString()) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo del Cedente..", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo del Cedente..", this, "W", "C");
                     return;
                 }
 

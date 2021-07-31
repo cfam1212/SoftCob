@@ -96,7 +96,7 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 

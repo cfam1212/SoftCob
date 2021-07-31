@@ -91,7 +91,7 @@
 
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
@@ -99,7 +99,7 @@
                 {
                     if (string.IsNullOrEmpty(TxtBuscarPor.Text))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingrese dato de busqueda..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Ingrese dato de busqueda..!", this, "W", "C");
                         return;
                     }
                 }

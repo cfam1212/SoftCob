@@ -34,12 +34,12 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                //    return;
+                //}
 
                 ViewState["codigoCatalogo"] = "0";
                 ViewState["codigoCedente"] = "0";
@@ -49,12 +49,11 @@
                 DdlAccion.Items.Add(_accion);
                 FunCargarCombos(0);
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
+               
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensajes = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
 
             }
@@ -331,31 +330,31 @@
             {
                 if (int.Parse(ViewState["codigoCatalogo"].ToString()) == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo del Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo del Cedente..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlAccion.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Acción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Acción..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlCalifica.SelectedValue == "N")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Califica..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Califica..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCantidad.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese cantidad a validar..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese cantidad a validar..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlValor.SelectedValue == "-1")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Valor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Valor..!", this, "W", "C");
                     return;
                 }
 
@@ -375,7 +374,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe definido Árbol Score..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya esta definido Árbol Score..!", this, "E", "C");
                     return;
                 }
 
@@ -452,19 +451,19 @@
             {
                 if (DdlAccion.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Acción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Acción..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCantidad.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese cantidad a validar..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese cantidad a validar..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlValor.SelectedValue == "-1")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Valor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Valor..!", this, "W", "C");
                     return;
                 }
 
@@ -481,7 +480,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe definido Árbol Score..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya esta definido Árbol Score..!", this, "E", "C");
                     return;
                 }
 
@@ -585,7 +584,7 @@
 
                 if (_dtbscore.Rows.Count == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No existen datos para grabar..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No existen datos para grabar..!", this, "E", "C");
                     return;
                 }
 

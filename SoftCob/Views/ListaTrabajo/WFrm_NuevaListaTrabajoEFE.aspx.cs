@@ -48,11 +48,11 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                //    return;
+                //}
 
                 _dtbcodigos.Columns.Add("Codigo");
                 ViewState["CodigosOPM"] = _dtbcodigos;
@@ -267,31 +267,31 @@
 
             if (string.IsNullOrEmpty(TxtLista.Text.Trim()))
             {
-                new FuncionesDAO().FunShowJSMessage("Ingrese nombre de la Lista de Trabajo..!", this);
+                new FuncionesDAO().FunShowJSMessage("Ingrese nombre de la Lista de Trabajo..!", this, "W", "C");
                 _validar = false;
             }
 
             if (int.Parse(DdlCedente.SelectedValue) == 0)
             {
-                new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                 _validar = false;
             }
 
             if (int.Parse(DdlCatalogo.SelectedValue) == 0)
             {
-                new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this);
+                new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this, "W", "C");
                 _validar = false;
             }
 
             if (!new FuncionesDAO().IsDate(TxtFechaInicio.Text))
             {
-                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
+                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this, "E", "C");
                 _validar = false;
             }
 
             if (!new FuncionesDAO().IsDate(TxtFechaFin.Text))
             {
-                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
+                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this, "E", "C");
                 _validar = false;
             }
 
@@ -305,7 +305,7 @@
 
             if (_dtmfechafin < _dtmfechainicio)
             {
-                new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this);
+                new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this, "E", "C");
                 _validar = false; ;
             }
 
@@ -313,7 +313,7 @@
 
             if (_diferencia.Days > 31)
             {
-                new FuncionesDAO().FunShowJSMessage("Definir la consulta son en rangos de 30 a 31 dias..!", this);
+                new FuncionesDAO().FunShowJSMessage("Definir la consulta son en rangos de 30 a 31 dias..!", this, "E", "C");
                 _validar = false;
             }
 
@@ -321,7 +321,7 @@
             {
                 if (_dtmfechainicio < _dtmfechaactual)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this, "E", "C");
                     _validar = false; ;
                 }
 
@@ -330,7 +330,7 @@
 
                 if (_result == null)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione al menos un Efecto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione al menos un Efecto..!", this, "W", "C");
                     _validar = false; ;
                 }
             }
@@ -373,7 +373,7 @@
                 {
                     if (DdlGestor.SelectedValue == "0")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "W", "C");
                         _continuar = false;
                     }
                     else
@@ -621,7 +621,7 @@
 
                 if (DdlEstrategia.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("No existe Estrategia Seleccionada..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No existe Estrategia Seleccionada..!", this, "W", "C");
                     return;
                 }
 
@@ -652,7 +652,7 @@
 
                     if (_dtb.Rows.Count == 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("No Existen Datos para Crear Lista..!", this);
+                        new FuncionesDAO().FunShowJSMessage("No Existen Datos para Crear Lista..!", this, "E", "C");
                         return;
                     }
 
@@ -769,13 +769,13 @@
             {
                 if (string.IsNullOrEmpty(TxtLista.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Lista de Trabajo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Lista de Trabajo..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlMarcado.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Marcado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Marcado..!", this, "W", "C");
                     return;
                 }
 
@@ -785,7 +785,7 @@
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Nombre de la Lista de Trabajo ya Existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Nombre de la Lista de Trabajo ya Existe..!", this, "E", "C");
                     _continuar = false;
                     return;
                 }
@@ -820,7 +820,7 @@
                     }
                     else
                     {
-                        new FuncionesDAO().FunShowJSMessage("No existen datos para registrar..!", this);
+                        new FuncionesDAO().FunShowJSMessage("No existen datos para registrar..!", this, "E", "C");
                         return;
                     }
                 }

@@ -247,7 +247,7 @@
                 _dtbdepli = (DataTable)ViewState["DepartamentoLI"];
                 _resultado = _dtbdepli.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this, "W", "C");
                 else
                 {
                     GrdvEvaluacionLI.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -321,7 +321,7 @@
                 _dtbdepmo = (DataTable)ViewState["DepartamentoMO"];
                 _resultado = _dtbdepmo.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this, "N", "C");
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this, "W", "C");
                 else
                 {
                     GrdvEvaluacionMO.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -394,7 +394,7 @@
                 _dtbdepac = (DataTable)ViewState["DepartamentoAC"];
                 _resultado = _dtbdepac.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this, "W", "C");
                 else
                 {
                     GrdvEvaluacionAC.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -467,7 +467,7 @@
                 _dtbdepsp = (DataTable)ViewState["DepartamentoSP"];
                 _resultado = _dtbdepsp.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this, "W", "C");
                 else
                 {
                     GrdvEvaluacionSP.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -540,7 +540,7 @@
                 _dtbdepat = (DataTable)ViewState["DepartamentoAT"];
                 _resultado = _dtbdepat.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this, "N", "C");
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this, "W", "C");
                 else
                 {
                     GrdvEvaluacionAT.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -613,7 +613,7 @@
                 _dtbdepcp = (DataTable)ViewState["DepartamentoCP"];
                 _resultado = _dtbdepcp.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this);
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this, "W", "C");
                 else
                 {
                     GrdvCapacidadP.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -686,7 +686,7 @@
                 _dtbdeptp = (DataTable)ViewState["DepartamentoTP"];
                 _resultado = _dtbdeptp.Select("Selecc='SI'").FirstOrDefault();
 
-                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this, "N", "C");
+                if (_resultado == null) new FuncionesDAO().FunShowJSMessage("Seleccione Departamento a Calificar..!", this, "W", "C");
                 else
                 {
                     GrdvCostoP.Rows[_gvrow.RowIndex].Cells[2].BackColor = System.Drawing.Color.LightSeaGreen;
@@ -868,7 +868,7 @@
             {
                 if (DddlEvaluacion.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Evaluación Desempeño..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Evaluación Desempeño..!", this, "W", "C");
                     return;
                 }
 
@@ -877,7 +877,7 @@
 
                 if (_resultado != null)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo COMUNICACION..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo COMUNICACION..!", this, "E", "C");
                     return;
                 }
 
@@ -886,7 +886,7 @@
 
                 if (_resultado != null)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo LIDERAZGO..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo LIDERAZGO..!", this, "E", "C");
                     return;
                 }
 
@@ -895,7 +895,7 @@
 
                 if (_resultado != null)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo MOTIVACION..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo MOTIVACION..!", this, "E", "C");
                     return;
                 }
 
@@ -904,7 +904,7 @@
 
                 if (_resultado != null)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo ACTITUD Y COLABORACION..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo ACTITUD Y COLABORACION..!", this, "E", "C");
                     return;
                 }
 
@@ -913,7 +913,7 @@
 
                 if (_resultado != null)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo SOLUCION DE PROBLEMAS..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo SOLUCION DE PROBLEMAS..!", this, "E", "C");
                     return;
                 }
 
@@ -922,7 +922,7 @@
 
                 if (_resultado != null)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo AMBIENTE DE TRABAJO..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo AMBIENTE DE TRABAJO..!", this, "E", "C");
                     return;
                 }
 
@@ -931,7 +931,7 @@
 
                 if (_resultado != null)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo CAPACIDAD PERSONAL..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo CAPACIDAD PERSONAL..!", this, "E", "C");
                     return;
                 }
 
@@ -940,7 +940,7 @@
 
                 if (_resultado != null)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo COSTOS Y PRODUCTIVIDAD..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Termine Calificación Protocolo COSTOS Y PRODUCTIVIDAD..!", this, "E", "C");
                     return;
                 }
 

@@ -42,19 +42,19 @@
             {
                 if (string.IsNullOrEmpty(TxtPassAnterior.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Contraseña Anterior..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Contraseña Anterior..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtNuevoPass.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Contraseña Nueva..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Contraseña Nueva..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtConfirmarPass.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Confirmar Contraseña..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Confirmar Contraseña..!", this, "W", "C");
                     return;
                 }
 

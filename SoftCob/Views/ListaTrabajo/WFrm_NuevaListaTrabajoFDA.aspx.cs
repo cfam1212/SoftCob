@@ -49,11 +49,11 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
+                //if (Session["IN-CALL"].ToString() == "SI")
+                //{
+                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                //    return;
+                //}
                 _dtbcodigos.Columns.Add("Grupo");
                 ViewState["Grupos"] = _dtbcodigos;
                 _dtbgstsave.Columns.Add("CodigoCLDE");
@@ -225,31 +225,31 @@
 
             if (string.IsNullOrEmpty(TxtLista.Text.Trim()))
             {
-                new FuncionesDAO().FunShowJSMessage("Ingrese nombre de la _lista de Trabajo..!", this);
+                new FuncionesDAO().FunShowJSMessage("Ingrese nombre de la _lista de Trabajo..!", this, "W", "C");
                 _validar = false;
             }
 
             if (int.Parse(DdlCedente.SelectedValue) == 0)
             {
-                new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                 _validar = false;
             }
 
             if (int.Parse(DdlCatalogo.SelectedValue) == 0)
             {
-                new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this);
+                new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this, "W", "C");
                 _validar = false;
             }
 
             if (!new FuncionesDAO().IsDate(TxtFechaInicio.Text))
             {
-                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
+                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this, "E", "C");
                 _validar = false;
             }
 
             if (!new FuncionesDAO().IsDate(TxtFechaFin.Text))
             {
-                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
+                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this, "E", "C");
                 _validar = false;
             }
 
@@ -260,7 +260,7 @@
 
             if (_dtmfechafin < _dtmfechainicio)
             {
-                new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this);
+                new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this, "E", "C");
                 _validar = false; ;
             }
 
@@ -268,7 +268,7 @@
             {
                 if (_dtmfechainicio < _dtmfechaactual)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this, "E", "C");
                     _validar = false; ;
                 }
 
@@ -276,7 +276,7 @@
 
                 if (_dtbcodigos.Rows.Count == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Grupo de Focalizacón..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Grupo de Focalizacón..!", this, "W", "C");
                     _validar = false; ;
                 }
             }
@@ -521,7 +521,7 @@
             {
                 if (string.IsNullOrEmpty(TxtGrupo.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Código del _grupo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Código del _grupo..!", this, "W", "C");
                     return;
                 }
 
@@ -535,7 +535,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya Existe Grupo ingresado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya Existe Grupo ingresado..!", this, "E", "C");
                     return;
                 }
                 //Buscar si el _grupo existe y esta activo
@@ -543,7 +543,7 @@
 
                 if (_dts.Tables[0].Rows.Count == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No existen datos en ese Grupo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No existen datos en ese Grupo..!", this, "E", "C");
                     return;
                 }
 
@@ -605,7 +605,7 @@
 
                 if (DdlEstrategia.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("No existe _estrategia Seleccionada..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No existe _estrategia Seleccionada..!", this, "W", "C");
                     return;
                 }
 
@@ -665,7 +665,7 @@
                         GrdvGestores.DataSource = _dts;
                         GrdvGestores.DataBind();
                     }
-                    else new FuncionesDAO().FunShowJSMessage("No se puede formar la consulta..!", this);
+                    else new FuncionesDAO().FunShowJSMessage("No se puede formar la consulta..!", this, "E", "C");
                 }
             }
             catch (Exception ex)
@@ -743,13 +743,13 @@
 
                 if (string.IsNullOrEmpty(TxtLista.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la _lista de Trabajo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la _lista de Trabajo..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlMarcado.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Marcado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Marcado..!", this, "W", "C");
                     return;
                 }
 
@@ -759,7 +759,7 @@
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Nombre de la _lista de Trabajo ya Existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Nombre de la _lista de Trabajo ya Existe..!", this, "E", "C");
                     _continuar = false;
                     return;
                 }
@@ -849,7 +849,7 @@
                     }
                     else
                     {
-                        new FuncionesDAO().FunShowJSMessage("No existen datos para registrar..!", this);
+                        new FuncionesDAO().FunShowJSMessage("No existen datos para registrar..!", this, "E", "C");
                         return;
                     }
 

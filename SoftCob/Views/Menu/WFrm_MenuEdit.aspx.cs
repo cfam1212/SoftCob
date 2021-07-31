@@ -127,7 +127,7 @@
             {
                 if (string.IsNullOrEmpty(TxtNombreMenu.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre del Menú..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre del Menú..!", this, "W", "C");
                     return;
                 }
 
@@ -137,7 +137,7 @@
 
                     if (_contar > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Nombre del Menú ya Existe..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Nombre del Menú ya Existe..!", this, "E", "C");
                         return;
                     }
                 }

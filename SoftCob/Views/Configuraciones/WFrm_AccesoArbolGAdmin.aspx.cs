@@ -114,7 +114,7 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
@@ -186,7 +186,7 @@
                 }
                 else
                 {
-                    new FuncionesDAO().FunShowJSMessage("No Existen Datos para Grabar..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("No Existen Datos para Grabar..!", this, "E", "C");
                 }
             }
             catch (Exception ex)

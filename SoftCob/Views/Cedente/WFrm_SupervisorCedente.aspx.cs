@@ -169,7 +169,7 @@
                     else Lblerror.Text = _mensaje;
                     DdlCedente.Enabled = true;
                 }
-                else new FuncionesDAO().FunShowJSMessage("No existen datos ingresados..!", this, "W", "C");
+                else new FuncionesDAO().FunShowJSMessage("No existen datos ingresados..!", this, "E", "C");
             }
             catch (Exception ex)
             {
@@ -216,13 +216,13 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlSupervisor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this, "W", "C");
                     return;
                 }
 
@@ -243,7 +243,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Supervisor ya está ingresado..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Supervisor ya está ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -346,13 +346,13 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlSupervisor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this, "W", "C");
                     return;
                 }
 
@@ -367,7 +367,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Cedente o Supervisor ya está asignado..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Cedente o Supervisor ya está asignado..!", this, "E", "C");
                     return;
                 }
 

@@ -195,7 +195,7 @@
             {
                 if (string.IsNullOrEmpty(TxtPerfil.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Perfil..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Perfil..!", this, "W", "C");
                     return;
                 }
 
@@ -203,7 +203,7 @@
                 {
                     if (new ControllerDAO().FunConsultaPerfil(TxtPerfil.Text.Trim().ToUpper(), int.Parse(Session["CodigoEMPR"].ToString())) > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Nombre del Perfil ya Existe..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Nombre del Perfil ya Existe..!", this, "E", "C");
                         return;
                     }
                 }

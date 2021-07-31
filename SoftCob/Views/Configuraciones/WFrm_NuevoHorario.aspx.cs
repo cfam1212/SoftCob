@@ -141,7 +141,7 @@
             {
                 if (DdlIntervalo.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Intervalo..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Intervalo..!", this, "W", "C");
                     return;
                 }
 
@@ -150,13 +150,13 @@
 
                 if (_horainicio > _horafin)
                 {
-                    new FuncionesDAO().FunShowJSMessage("La Hora inicio no puede ser menor a la Hora fin..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("La Hora inicio no puede ser menor a la Hora fin..!", this, "E", "C");
                     return;
                 }
 
                 if (_horainicio == _horafin)
                 {
-                    new FuncionesDAO().FunShowJSMessage("La Hora inicio y la Hora fin son iguales..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("La Hora inicio y la Hora fin son iguales..!", this, "E", "C");
                     return;
                 }
 
@@ -165,7 +165,7 @@
 
                 if (int.Parse(DdlIntervalo.SelectedValue) > _inter)
                 {
-                    new FuncionesDAO().FunShowJSMessage("El intervalo entre las horas es menor al valor del Intervalo..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("El intervalo entre las horas es menor al valor del Intervalo..!", this, "E", "C");
                     return;
                 }
 
@@ -216,7 +216,7 @@
             {
                 if (string.IsNullOrEmpty(TxtHorario.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Horario..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Horario..!", this, "W", "C");
                     return;
                 }
 
@@ -224,7 +224,7 @@
 
                 if (_dtbhoras.Rows.Count == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Procese horarios..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Procese horarios..!", this, "W", "C");
                     return;
                 }
 
@@ -236,7 +236,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 1)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ya existe un horario con ese intervalo..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("Ya existe un horario con ese intervalo..!", this, "E", "C");
                         return;
                     }
                 }
@@ -251,7 +251,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 1)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ya existe nombre del horario..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("Ya existe nombre del horario..!", this, "E", "C");
                         return;
                     }
                 }

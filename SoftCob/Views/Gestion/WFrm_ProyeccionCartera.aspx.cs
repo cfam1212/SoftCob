@@ -82,8 +82,8 @@
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
-                    ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                        "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
+
                 }
             }
             else
@@ -210,7 +210,7 @@
                 if (_dtmFecha.Year != int.Parse(ViewState["Year"].ToString()) ||
                     _dtmFecha.Month != int.Parse(ViewState["Mes"].ToString()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("La Proyeccion debe ser del Año y Mes en curso", this);
+                    new FuncionesDAO().FunShowJSMessage("La Proyeccion debe ser del Año y Mes en curso", this, "E", "C");
                     return;
                 }
 
@@ -226,7 +226,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Registro con Fecha Pago ya existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Registro con Fecha Pago ya existe..!", this, "E", "C");
                     return;
                 }
 
@@ -298,14 +298,14 @@
                 if (_dtmFecha.Year != int.Parse(ViewState["Year"].ToString()) ||
                     _dtmFecha.Month != int.Parse(ViewState["Mes"].ToString()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("La Proyeccion debe ser del Año y Mes en curso", this);
+                    new FuncionesDAO().FunShowJSMessage("La Proyeccion debe ser del Año y Mes en curso", this, "E", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValor.Text.Trim()) || TxtValor.Text.Trim() == "0" ||
                     TxtValor.Text.Trim() == "0.00" || TxtValor.Text.Trim() == "0.0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese valor del pago..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese valor del pago..!", this, "W", "C");
                     return;
                 }
 
@@ -321,7 +321,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Fecha ya se encuentra registrada..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Fecha ya se encuentra registrada..!", this, "E", "C");
                     return;
                 }
 

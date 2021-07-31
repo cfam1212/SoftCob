@@ -611,7 +611,7 @@
             {
                 if (ViewState["CodigoArbol"].ToString() == "CEDENTE")
                 {
-                    new FuncionesDAO().FunShowJSMessage("No se puede eliminar Cedente..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No se puede eliminar Cedente..!", this, "E", "C");
                     return;
                 }
 
@@ -627,7 +627,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("No se puede Eliminar, existen gestiones registradas..!", this);
+                        new FuncionesDAO().FunShowJSMessage("No se puede Eliminar, existen gestiones registradas..!", this, "E", "C");
                         return;
                     }
 
@@ -636,7 +636,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Elimine primero los Efectos Registrados..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Elimine primero los Efectos Registrados..!", this, "E", "C");
                         return;
                     }
                 }
@@ -648,7 +648,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("No se puede Eliminar, existen gestiones registradas..!", this);
+                        new FuncionesDAO().FunShowJSMessage("No se puede Eliminar, existen gestiones registradas..!", this, "E", "C");
                         return;
                     }
 
@@ -657,7 +657,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Elimine primero las Respuestas Registradas..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Elimine primero las Respuestas Registradas..!", this, "E", "C");
                         return;
                     }
                 }
@@ -669,7 +669,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("No se puede Eliminar, existen gestiones registradas..!", this);
+                        new FuncionesDAO().FunShowJSMessage("No se puede Eliminar, existen gestiones registradas..!", this, "E", "C");
                         return;
                     }
 
@@ -678,7 +678,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Elimine primero los Contacto Registrados..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Elimine primero los Contacto Registrados..!", this, "E", "C");
                         return;
                     }
                 }
@@ -690,7 +690,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("No se puede Eliminar, existen gestiones registradas..!", this);
+                        new FuncionesDAO().FunShowJSMessage("No se puede Eliminar, existen gestiones registradas..!", this, "E", "C");
                         return;
                     }
                 }

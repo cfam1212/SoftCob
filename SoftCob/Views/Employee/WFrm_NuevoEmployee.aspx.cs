@@ -343,7 +343,7 @@
             {
                 if (string.IsNullOrEmpty(TxtIdentificacion.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese No. de Documento..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese No. de Documento..!", this, "W", "C");
                     return;
                 }
 
@@ -351,44 +351,44 @@
                 {
                     if (!new FuncionesDAO().CedulaBienEscrita(TxtIdentificacion.Text.Trim()))
                     {
-                        new FuncionesDAO().FunShowJSMessage("No. de Cédula es incorrecto..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("No. de Cédula es incorrecto..!", this, "W", "C");
                         return;
                     }
                 }
 
                 if (string.IsNullOrEmpty(TxtNombres.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtApellidos.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Apellido..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Apellido..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlGenero.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Selecciones Género..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Selecciones Género..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlEstadoCivil.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Estado Civil..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Estado Civil..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlNacionalidad.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Nacionalidad..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Nacionalidad..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlDepartamento.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Departamento..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Departamento..!", this, "W", "C");
                     return;
                 }
 
@@ -430,7 +430,7 @@
 
                 if (!new FuncionesDAO().IsDate(TxtFechaNacimiento.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Fecha de Nacimiento Incorrecta..! Formato(MM/dd/yyyy)", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Fecha de Nacimiento Incorrecta..! Formato(MM/dd/yyyy)", this, "E", "C");
                     return;
                 }
 
@@ -440,7 +440,7 @@
                     {
                         if (new EmployeeDAO().FunConsultarEmpleadoPorIdentificacion(TxtIdentificacion.Text.Trim()))
                         {
-                            new FuncionesDAO().FunShowJSMessage("Empleado con Identificación ya existe..!", this, "W", "C");
+                            new FuncionesDAO().FunShowJSMessage("Empleado con Identificación ya existe..!", this, "E", "C");
                             return;
                         }
                     }
@@ -490,19 +490,19 @@
                 {
                     if (DdlFecFinPrimaria.SelectedItem.ToString() == "--Seleccione--")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingrese Fecha Inicio..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Ingrese Fecha Inicio..!", this, "W", "C");
                         return;
                     }
 
                     if (DdlFecIniPrimaria.SelectedItem.ToString() == "--Seleccione--")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingresa Fecha Fin..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Ingresa Fecha Fin..!", this, "W", "C");
                         return;
                     }
 
                     if (int.Parse(DdlFecIniPrimaria.SelectedValue) > int.Parse(DdlFecFinPrimaria.SelectedValue))
                     {
-                        new FuncionesDAO().FunShowJSMessage("La Fecha Incio no puede ser menor a la Fecha Fin..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("La Fecha Incio no puede ser menor a la Fecha Fin..!", this, "E", "C");
                         return;
                     }
 
@@ -513,25 +513,25 @@
                 {
                     if (DdlFecIniSecundaria.SelectedItem.ToString() == "--Seleccione--")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingrese Fecha Inicio..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Ingrese Fecha Inicio..!", this, "W", "C");
                         return;
                     }
 
                     if (DdlFecFinSecundaria.SelectedItem.ToString() == "--Seleccione--")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingresa Fecha Fin..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Ingresa Fecha Fin..!", this, "W", "C");
                         return;
                     }
 
                     if (int.Parse(DdlFecIniSecundaria.SelectedValue) > int.Parse(DdlFecFinSecundaria.SelectedValue))
                     {
-                        new FuncionesDAO().FunShowJSMessage("La Fecha Incio no puede ser menor a la Fecha Fin..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("La Fecha Incio no puede ser menor a la Fecha Fin..!", this, "E", "C");
                         return;
                     }
 
                     if (string.IsNullOrEmpty(TxtTituloS.Text))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingrese Título Obtenido..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Ingrese Título Obtenido..!", this, "W", "C");
                         return;
                     }
 
@@ -542,25 +542,25 @@
                 {
                     if (DdlFecIniSuperior.SelectedItem.ToString() == "--Seleccione--")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingrese Fecha Inicio..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Ingrese Fecha Inicio..!", this, "W", "C");
                         return;
                     }
 
                     if (DdlFecFinSuperior.SelectedItem.ToString() == "--Seleccione--")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingresa Fecha Fin..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Ingresa Fecha Fin..!", this, "W", "C");
                         return;
                     }
 
                     if (int.Parse(DdlFecIniSuperior.SelectedValue) > int.Parse(DdlFecFinSuperior.SelectedValue))
                     {
-                        new FuncionesDAO().FunShowJSMessage("La Fecha Incio no puede ser menor a la Fecha Fin..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("La Fecha Incio no puede ser menor a la Fecha Fin..!", this, "E", "C");
                         return;
                     }
 
                     if (string.IsNullOrEmpty(TxtTituloR.Text))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingrese Título Obtenido..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Ingrese Título Obtenido..!", this, "W", "C");
                         return;
                     }
 
@@ -807,7 +807,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe Idioma ingresado..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ya existe Idioma ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -862,43 +862,43 @@
             {
                 if (string.IsNullOrEmpty(TxtInstitucion.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Institución Estudios..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Institución Estudios..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtFecIniOtrosE.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Fecha de Inicio..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Fecha de Inicio..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtFecFinOtrosE.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Fecha Fin..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Fecha Fin..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtTituloOtrosEstudios.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Título Obtenido..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Título Obtenido..!", this, "W", "C");
                     return;
                 }
 
                 if (!new FuncionesDAO().IsDate(TxtFecIniOtrosE.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
                     return;
                 }
 
                 if (!new FuncionesDAO().IsDate(TxtFecFinOtrosE.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
                     return;
                 }
 
                 if (DateTime.ParseExact(TxtFecIniOtrosE.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture) > DateTime.ParseExact(TxtFecFinOtrosE.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture))
                 {
-                    new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha Fin..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha Fin..!", this, "E", "C");
                     return;
                 }
 
@@ -919,7 +919,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe estudio ingresado..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ya existe estudio ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -951,37 +951,37 @@
             {
                 if (string.IsNullOrEmpty(TxtEmpresa.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Empresa..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Empresa..!", this, "W", "C");
                     return;
                 }
 
                 if (!new FuncionesDAO().IsDate(TxtFecIniEmpre.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "W", "C");
                     return;
                 }
 
                 if (!new FuncionesDAO().IsDate(TxtFecFinEmpre.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "W", "C");
                     return;
                 }
 
                 if (DateTime.ParseExact(TxtFecIniEmpre.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture) > DateTime.ParseExact(TxtFecFinEmpre.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture))
                 {
-                    new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha Fin..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha Fin..!", this, "E", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCargo.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Cargo que ocupó..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Cargo que ocupó..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlMotivo.SelectedValue == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo de Salida..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo de Salida..!", this, "W", "C");
                     return;
                 }
 
@@ -1002,7 +1002,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe Empresa ingresada en el mismo rango de fecha..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ya existe Empresa ingresada en el mismo rango de fecha..!", this, "E", "C");
                     return;
                 }
 
@@ -1065,25 +1065,25 @@
             {
                 if (DdlEmpresa.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Empresa..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Empresa..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtNombreRefe.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de Referencia..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de Referencia..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCargoRefe.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Cargo que ocupa..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Cargo que ocupa..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtTelefonoRefe.Text.Trim() + TxtCelularRefe.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese al menos un número de teléfono..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese al menos un número de teléfono..!", this, "E", "C");
                     return;
                 }
                 else
@@ -1133,7 +1133,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe Referencia ingresada..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ya existe Referencia ingresada..!", this, "E", "C");
                     return;
                 }
 
@@ -1194,19 +1194,19 @@
             {
                 if (DdlParentesco.SelectedValue == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Parentesco..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Parentesco..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtRefePersonal.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de Referencia..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de Referencia..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtTelefonoRefPersonal.Text.Trim() + TxtCelularRefPersonal.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese al menos un número de teléfono..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese al menos un número de teléfono..!", this, "E", "C");
                     return;
                 }
                 else
@@ -1247,7 +1247,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya existe Referencia ingresada..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ya existe Referencia ingresada..!", this, "E", "C");
                     return;
                 }
 

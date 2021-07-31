@@ -230,7 +230,7 @@
 
                     if (_dtbcampos.Rows.Count == 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Ingrese un campo para la estrategía..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Ingrese un campo para la estrategía..!", this, "W", "C");
                         return;
                     }
 
@@ -241,7 +241,7 @@
                     if (_mensaje == "") Response.Redirect(_response, false);
                     else new FuncionesDAO().FunShowJSMessage(_mensaje, this);
                 }
-                else new FuncionesDAO().FunShowJSMessage("No existen Datos en las tablas..!", this, "W", "C");
+                else new FuncionesDAO().FunShowJSMessage("No existen Datos en las tablas..!", this, "E", "C");
             }
             catch (Exception ex)
             {

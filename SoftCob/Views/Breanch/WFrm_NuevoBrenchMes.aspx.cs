@@ -163,7 +163,7 @@
                     //    grdvBrenchDet.DataBind();
                     //}
                 }
-                else new FuncionesDAO().FunShowJSMessage("No existe Brench Creado para el Cedente..!", this, "W","C" );
+                else new FuncionesDAO().FunShowJSMessage("No existe Brench Creado para el Cedente..!", this, "E","C" );
             }
             catch (Exception ex)
             {
@@ -276,7 +276,7 @@
             {
                 if (string.IsNullOrEmpty(TxtPresupuesto.Text.Trim()) || TxtPresupuesto.Text.Trim() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Presupuesto..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Presupuesto..!", this, "W", "C");
                     return;
                 }
 
@@ -347,7 +347,7 @@
                 {
                     if (dr["Presupuesto"].ToString() == "0.00")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Debe registrar todos los Presupuestos..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("Debe registrar todos los Presupuestos..!", this, "E", "C");
                         continuar = false;
                         break;
                     }
@@ -438,7 +438,7 @@
                     redirect = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsolutePath, "Guardado con Exito..!");
                     Response.Redirect(redirect, true);
                 }
-                else new FuncionesDAO().FunShowJSMessage("No Existe Datos para el Brench..!", this);
+                else new FuncionesDAO().FunShowJSMessage("No Existe Datos para el Brench..!", this, "E", "C");
             }
             catch (Exception ex)
             {

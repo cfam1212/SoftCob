@@ -251,13 +251,13 @@
             {
                 if (DdlCargo.SelectedValue == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cargo..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cargo..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtContacto.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del contacto..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del contacto..!", this, "W", "C");
                     return;
                 }
 
@@ -307,7 +307,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Contacto ya está ingresado..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Contacto ya está ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -375,13 +375,13 @@
             {
                 if (DdlCargo.SelectedValue == "")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cargo..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cargo..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtContacto.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del contacto..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del contacto..!", this, "W", "C");
                     return;
                 }
 
@@ -498,7 +498,7 @@
             {
                 if (string.IsNullOrEmpty(TxtProducto.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese producto..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese producto..!", this, "W", "C");
                     return;
                 }
 
@@ -518,7 +518,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Producto ya está ingresado..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Producto ya está ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -612,7 +612,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Nombre de Producto ya existe..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Nombre de Producto ya existe..!", this, "E", "C");
                     return;
                 }
 
@@ -692,19 +692,19 @@
             {
                 if (DdlProducto.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCodigoProd.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Código del Producto..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Código del Producto..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCatalgoProducto.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Catálogo..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Catálogo..!", this, "W", "C");
                     return;
                 }
 
@@ -715,7 +715,7 @@
 
                     if (_resultado != null)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Código Catálogo ya existe..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("Código Catálogo ya existe..!", this, "E", "C");
                         return;
                     }
 
@@ -723,7 +723,7 @@
 
                     if (_resultado != null)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Catálogo Producto ya existe..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("Catálogo Producto ya existe..!", this, "E", "C");
                         return;
                     }
 
@@ -737,7 +737,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Catálogo Producto ya está ingresado..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Catálogo Producto ya está ingresado..!", this, "E", "C");
                     return;
                 }
 
@@ -847,19 +847,19 @@
             {
                 if (DdlProducto.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCodigoProd.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Código del Producto..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Código del Producto..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCatalgoProducto.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Catálogo..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre del Catálogo..!", this, "W", "C");
                     return;
                 }
 
@@ -873,7 +873,7 @@
 
                         if (_resultado != null)
                         {
-                            new FuncionesDAO().FunShowJSMessage("Código Catálogo ya existe..!", this, "W", "C");
+                            new FuncionesDAO().FunShowJSMessage("Código Catálogo ya existe..!", this, "E", "C");
                             return;
                         }
 
@@ -881,7 +881,7 @@
 
                         if (_resultado != null)
                         {
-                            new FuncionesDAO().FunShowJSMessage("Catálogo Producto ya existe..!", this, "W", "C");
+                            new FuncionesDAO().FunShowJSMessage("Catálogo Producto ya existe..!", this, "E", "C");
                             return;
                         }
                     }
@@ -894,7 +894,7 @@
 
                             if (_resultado != null)
                             {
-                                new FuncionesDAO().FunShowJSMessage("Código Catálogo ya existe..!", this, "W", "C");
+                                new FuncionesDAO().FunShowJSMessage("Código Catálogo ya existe..!", this, "E", "C");
                                 return;
                             }
                         }
@@ -905,7 +905,7 @@
 
                             if (_resultado != null)
                             {
-                                new FuncionesDAO().FunShowJSMessage("Catálogo Producto ya existe..!", this, "W", "C");
+                                new FuncionesDAO().FunShowJSMessage("Catálogo Producto ya existe..!", this, "E", "C");
                                 return;
                             }
                         }
@@ -960,13 +960,13 @@
             {
                 if (string.IsNullOrEmpty(TxtCodigoAgencia.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Código de Agencia..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Código de Agencia..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtAgencia.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Agencia..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Agencia..!", this, "W", "C");
                     return;
                 }
 
@@ -986,7 +986,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Agencia ya está ingresada..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Agencia ya está ingresada..!", this, "E", "C");
                     return;
                 }
 
@@ -1021,13 +1021,13 @@
             {
                 if (string.IsNullOrEmpty(TxtCodigoAgencia.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Código de Agencia..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Código de Agencia..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtAgencia.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Agencia..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Agencia..!", this, "W", "C");
                     return;
                 }
 
@@ -1041,7 +1041,7 @@
 
                         if (_resultado != null)
                         {
-                            new FuncionesDAO().FunShowJSMessage("Nombre de Agencia ya existe..!", this, "W", "C");
+                            new FuncionesDAO().FunShowJSMessage("Nombre de Agencia ya existe..!", this, "E", "C");
                             return;
                         }
                     }
@@ -1052,7 +1052,7 @@
 
                         if (_resultado != null)
                         {
-                            new FuncionesDAO().FunShowJSMessage("Datos de Agencia ya están ingresados..!", this, "W", "C");
+                            new FuncionesDAO().FunShowJSMessage("Datos de Agencia ya están ingresados..!", this, "E", "C");
                             return;
                         }
                     }
@@ -1063,7 +1063,7 @@
 
                         if (_resultado != null)
                         {
-                            new FuncionesDAO().FunShowJSMessage("Código de Agencia ya existe..!", this, "W", "C");
+                            new FuncionesDAO().FunShowJSMessage("Código de Agencia ya existe..!", this, "E", "C");
                             return;
                         }
                     }
@@ -1184,25 +1184,25 @@
             {
                 if (DdlProvincia.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Provincia..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Provincia..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlCiudad.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Ciudad..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Ciudad..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCedente.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Cedente..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlNivelArbol.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Nivel del Árbol..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Nivel del Árbol..!", this, "W", "C");
                     return;
                 }
 
@@ -1212,7 +1212,7 @@
                     {
                         if (new CedenteDAO().FunConsultarCedenteporNombre(int.Parse(DdlCiudad.SelectedValue), TxtCedente.Text.Trim().ToUpper()))
                         {
-                            new FuncionesDAO().FunShowJSMessage("Cedente ya se encuentra registrado..!", this, "W", "C");
+                            new FuncionesDAO().FunShowJSMessage("Cedente ya se encuentra registrado..!", this, "E", "C");
                             return;
                         }
                     }
@@ -1221,7 +1221,7 @@
                 {
                     if (new CedenteDAO().FunConsultarCedenteporNombre(int.Parse(DdlCiudad.SelectedValue), TxtCedente.Text.Trim().ToUpper()))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Cedente ya se encuentra registrado..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("Cedente ya se encuentra registrado..!", this, "E", "C");
                         return;
                     }
                 }

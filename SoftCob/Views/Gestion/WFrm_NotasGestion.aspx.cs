@@ -90,19 +90,19 @@
 
                 if (_dtmfecharecordatorio < _dtmfechaactual)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Fecha de Recordatorio no puede ser menor a Fecha Actual..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Fecha de Recordatorio no puede ser menor a Fecha Actual..!", this, "E", "C");
                     return;
                 }
 
                 if (DdlMantener.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Recordatorio..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Recordatorio..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this, "W", "C");
                     return;
                 }
 

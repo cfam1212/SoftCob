@@ -123,19 +123,19 @@
             {
                 if (string.IsNullOrEmpty(TxtDetalle.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Detalle del Parámetro..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Detalle del Parámetro..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorV.Text.Trim()) && string.IsNullOrEmpty(TxtValorI.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor del Parámetro..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor del Parámetro..!", this, "W", "C");
                     return;
                 }
 
                 if (!string.IsNullOrEmpty(TxtValorV.Text.Trim()) && !string.IsNullOrEmpty(TxtValorI.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Defina solo un tipo de valor..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Defina solo un tipo de valor..!", this, "E", "C");
                     return;
                 }
 
@@ -168,7 +168,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya esta definido un Detalle/Valor para el parámetro..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ya esta definido un Detalle/Valor para el parámetro..!", this, "E", "C");
                     return;
                 }
 
@@ -204,19 +204,19 @@
             {
                 if (string.IsNullOrEmpty(TxtDetalle.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Detalle del Parámetro..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Detalle del Parámetro..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorV.Text.Trim()) && string.IsNullOrEmpty(TxtValorI.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor del Parámetro..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor del Parámetro..!", this, "W", "C");
                     return;
                 }
 
                 if (!string.IsNullOrEmpty(TxtValorV.Text.Trim()) && !string.IsNullOrEmpty(TxtValorI.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Defina solo un tipo de valor..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Defina solo un tipo de valor..!", this, "E", "C");
                     return;
                 }
 
@@ -282,7 +282,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya esta definido un Detalle/Valor para el parámetro..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ya esta definido un Detalle/Valor para el parámetro..!", this, "E", "C");
                     return;
                 }
 
@@ -466,7 +466,7 @@
             {
                 if (string.IsNullOrEmpty(TxtParametro.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre del Parámetro..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre del Parámetro..!", this, "W", "C");
                     return;
                 }
 

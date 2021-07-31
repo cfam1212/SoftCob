@@ -208,31 +208,31 @@
             {
                 if (string.IsNullOrEmpty(TxtEtiqueta.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Etiqueta..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Etiqueta..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Inicial..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Inicial..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorFinal.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Final..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Final..!", this, "W", "C");
                     return;
                 }
 
                 if (int.Parse(TxtValorFinal.Text.Trim()) <= int.Parse(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this, "E", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(Request.Form[TxtColor.UniqueID]))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Color de Etiqueta..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Color de Etiqueta..!", this, "W", "C");
                     return;
                 }
 
@@ -265,7 +265,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Segmento ya Existe Creado..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Segmento ya Existe Creado..!", this, "E", "C");
                     return;
                 }
 
@@ -305,31 +305,31 @@
             {
                 if (string.IsNullOrEmpty(TxtEtiqueta.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción Etiqueta..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción Etiqueta..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Inicial..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Inicial..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtValorFinal.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Final..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Porcentaje Final..!", this, "W", "C");
                     return;
                 }
 
                 if (int.Parse(TxtValorFinal.Text.Trim()) <= int.Parse(TxtValorInicial.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Valor Final no puede ser menor o igual al Inicial..!", this, "E", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(Request.Form[TxtColor.UniqueID]))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Color de Etiqueta..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Color de Etiqueta..!", this, "W", "C");
                     return;
                 }
 
@@ -353,7 +353,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Segmento ya esta Creado..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Segmento ya esta Creado..!", this, "E", "C");
                     return;
                 }
 
@@ -459,13 +459,13 @@
             {
                 if (ViewState["CodigoCEDE"].ToString() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
                 if (ViewState["CodigoCPCE"].ToString() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto/Catálogo..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto/Catálogo..!", this, "W", "C");
                     return;
                 }
 
@@ -473,7 +473,7 @@
 
                 if (_dtbsegmento.Rows.Count == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No Existen Registros Ingresados..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("No Existen Registros Ingresados..!", this, "E", "C");
                     return;
                 }
 

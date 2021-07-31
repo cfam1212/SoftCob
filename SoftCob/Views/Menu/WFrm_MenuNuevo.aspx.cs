@@ -36,13 +36,13 @@
             {
                 if (string.IsNullOrEmpty(TxtNombreMenu.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre del Menú..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre del Menú..!", this, "W", "C");
                     return;
                 }
 
                 if (new ControllerDAO().FunConsultaMenu(TxtNombreMenu.Text.Trim(), int.Parse(Session["CodigoEMPR"].ToString())) > 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Nombre del Menú ya Existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Nombre del Menú ya Existe..!", this, "E", "C");
                     return;
                 }
 

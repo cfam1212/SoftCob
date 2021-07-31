@@ -80,25 +80,25 @@
             {
                 if (!new FuncionesDAO().IsDate(TxtFechaIni.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
                     return;
                 }
 
                 if (!new FuncionesDAO().IsDate(TxtFechaFin.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
                     return;
                 }
 
                 if (DateTime.ParseExact(TxtFechaIni.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture) > DateTime.ParseExact(TxtFechaFin.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture))
                 {
-                    new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha de Fin..!", this);
+                    new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha de Fin..!", this, "E", "C");
                     return;
                 }
 
                 if (DdlBuscar.SelectedItem.ToString() != "Todo" && string.IsNullOrEmpty(TxtBuscarPor.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese valor de Operación o Identificación..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese valor de Operación o Identificación..!", this, "W", "C");
                     return;
                 }
 
@@ -115,7 +115,7 @@
                     GrdvDatos.DataSource = _dts;
                     GrdvDatos.DataBind();
                 }
-                else new FuncionesDAO().FunShowJSMessage("No Existen Datos para Mostrar..!", this);
+                else new FuncionesDAO().FunShowJSMessage("No Existen Datos para Mostrar..!", this, "E", "C");
             }
             catch (Exception)
             {

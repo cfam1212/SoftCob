@@ -72,7 +72,7 @@
             {
                 if (string.IsNullOrEmpty(TxtDepartamento.Text))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre del Departamento..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre del Departamento..!", this, "W", "C");
                     return;
                 }
 
@@ -81,7 +81,7 @@
                     if (!string.IsNullOrEmpty(new ControllerDAO().FunConsultaDepartamento(TxtDepartamento.Text.Trim().ToUpper(),
                         int.Parse(Session["CodigoEMPR"].ToString()))))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Departamento ya está creado..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("Departamento ya está creado..!", this, "E", "C");
                         return;
                     }
                 }

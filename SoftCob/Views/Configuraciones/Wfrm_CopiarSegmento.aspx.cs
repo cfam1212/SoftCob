@@ -89,19 +89,19 @@ namespace SoftCob.Views.Configuraciones
             {
                 if (DdlCedenteD.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Origen..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Origen..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlCedenteO.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Destino..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente Destino..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlCatalogoO.SelectedValue == DdlCatalogoD.SelectedValue)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No se puede Copiar Al mismo Catálogo/Producto..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("No se puede Copiar Al mismo Catálogo/Producto..!", this, "E", "C");
                     return;
                 }
 
@@ -111,7 +111,7 @@ namespace SoftCob.Views.Configuraciones
 
                 if (_dts.Tables[0].Rows[0][0].ToString() == "NO")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Cedente Origen NO tiene creado SEGMENTO", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Cedente Origen NO tiene creado SEGMENTO", this, "E", "C");
                     return;
                 }
 

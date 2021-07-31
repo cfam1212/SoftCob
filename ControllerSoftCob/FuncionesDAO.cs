@@ -105,7 +105,7 @@
 
                     if (position == "R")
                         ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                            "'top-right'); alertify.success('" + message + "', 5, function(){console.log('dismissed');});", true);
+                            "'bottom-right'); alertify.success('" + message + "', 5, function(){console.log('dismissed');});", true);
 
                     if (position == "L")
                         ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
@@ -129,7 +129,7 @@
                 case "E":
                     if (position == "C")
                         ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                            "'top-center'); alertify.error('" + message + "', 5, function(){console.log('dismissed');});", true);
+                            "'bottom-center'); alertify.error('" + message + "', 5, function(){console.log('dismissed');});", true);
 
                     if (position == "R")
                         ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
@@ -170,6 +170,86 @@
                     break;
             }
         }
+        //bottom sobrecarga
+        //public void FunShowJSMessage(string message, Control pagina, string tipo, string position, string buttom)
+        //{
+        //    switch (tipo)
+        //    {
+        //        case "S":
+        //            if (buttom == "CB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-center'); alertify.success('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            if (buttom == "RB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-right'); alertify.success('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            if (buttom == "LB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-left'); alertify.success('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            break;
+
+        //        case "W":
+        //            if (buttom == "CB")
+        //                if (position == "C")
+        //                    ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                        "'bottom-center'); alertify.warning('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            if (buttom == "RB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-right'); alertify.warning('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            if (buttom == "LB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-left'); alertify.warning('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            break;
+
+        //        case "E":
+        //            if (position == "CB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-center'); alertify.error('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            if (buttom == "RB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-right'); alertify.error('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            if (buttom == "LB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-left'); alertify.error('" + message + "', 5, function(){console.log('dismissed');});", true);
+        //            break;
+
+        //        case "M":
+        //            if (buttom == "CB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-center'); alertify.message('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            if (buttom == "RB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-right'); alertify.message('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            if (buttom == "LB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-left'); alertify.message('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            break;
+
+        //        case "N":
+        //            if (buttom == "CB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-center'); alertify.notify('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            if (buttom == "RB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-right'); alertify.notify('" + message + "', 5, function(){console.log('dismissed');});", true);
+
+        //            if (buttom == "LB")
+        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
+        //                    "'bottom-left'); alertify.notify('" + message + "', 5, function(){console.log('dismissed');});", true);
+        //            break;
+        //    }
+        //}
 
         public int FunBetween(int valorI, int valorF, int rinicio, int rfinal)
         {

@@ -182,13 +182,13 @@
 
             if (DdlOperacion.SelectedValue.ToString() == "")
             {
-                new FuncionesDAO().FunShowJSMessage("Debe seleccionar tipo de operación", this);
+                new FuncionesDAO().FunShowJSMessage("Debe seleccionar tipo de operación", this, "W", "C");
                 return false;
             }
 
             if (txtValor.Text == "")
             {
-                new FuncionesDAO().FunShowJSMessage("Debe ingresar un valor de comparación para la condición", this);
+                new FuncionesDAO().FunShowJSMessage("Debe ingresar un valor de comparación para la condición", this, "W", "C");
                 return false;
             }
 
@@ -198,7 +198,7 @@
 
             if (_lexiste)
             {
-                new FuncionesDAO().FunShowJSMessage("Ya existe un registro con esta condición", this);
+                new FuncionesDAO().FunShowJSMessage("Ya existe un registro con esta condición", this, "E", "C");
                 return false;
             }
 
@@ -210,7 +210,7 @@
                 case "int":
                     if (DdlOperacion.SelectedValue.ToString() == "like")
                     {
-                        new FuncionesDAO().FunShowJSMessage("No puede utilizar la operacion like para datos numéricos", this);
+                        new FuncionesDAO().FunShowJSMessage("No puede utilizar la operacion like para datos numéricos", this, "E", "C");
                         return false;
                     }
                     break;
@@ -219,7 +219,7 @@
                 case "datetime":
                     if (DdlOperacion.SelectedValue.ToString() == "like")
                     {
-                        new FuncionesDAO().FunShowJSMessage("No puede utilizar la operacion like para datos tipo fecha", this);
+                        new FuncionesDAO().FunShowJSMessage("No puede utilizar la operacion like para datos tipo fecha", this, "E", "C");
                         return false;
                     }
                     break;
@@ -488,13 +488,13 @@
             {
                 if (string.IsNullOrEmpty(TxtEstrategia.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre de la Estrategia...!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese nombre de la Estrategia...!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese descripción de la Estrategia...!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese descripción de la Estrategia...!", this, "W", "C");
                     return;
                 }
 
@@ -570,7 +570,7 @@
                     if (_mensaje == "") Response.Redirect("WFrm_EstrategiaAdmin.aspx?MensajeRetornado=Guardado con Éxito");
                     else Lblerror.Text = _mensaje;
                 }
-                else new FuncionesDAO().FunShowJSMessage("Ingrese al menos un registro para la Estrategia..!", this, "W", "C");
+                else new FuncionesDAO().FunShowJSMessage("Ingrese al menos un registro para la Estrategia..!", this, "E", "C");
             }
             catch (Exception ex)
             {

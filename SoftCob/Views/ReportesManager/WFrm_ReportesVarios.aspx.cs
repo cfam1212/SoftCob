@@ -82,7 +82,7 @@
             {
                 if (DdlTipoReporte.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Reporte..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Reporte..!", this, "W", "C");
                     return;
                 }
 
@@ -97,7 +97,7 @@
                     case "2":
                         if (DdlGestor.SelectedValue == "0")
                         {
-                            new FuncionesDAO().FunShowJSMessage("Seleccione Evaluación..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Seleccione Evaluación..!", this, "W", "C");
                             return;
                         }
 
@@ -117,7 +117,7 @@
                 if (_dts.Tables[0].Rows.Count == 0)
                 {
                     FunCargarCombos(99);
-                    new FuncionesDAO().FunShowJSMessage("No Existen Datos..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No Existen Datos..!", this, "E", "C");
                 }
                 else
                 {

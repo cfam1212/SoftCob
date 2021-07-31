@@ -80,7 +80,7 @@
             {
                 if (DdlTipoAccion.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Acción..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Acción..!", this, "W", "C");
                     return;
                 }
 

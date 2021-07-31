@@ -63,7 +63,7 @@
         {
             if (Session["IN-CALL"].ToString() == "SI")
             {
-                new FuncionesDAO().FunShowJSMessage("Se encuentra en Llamada, en cuanto termine la gestión podrá salir de la Lista de Trabajo..!", this);
+                new FuncionesDAO().FunShowJSMessage("Se encuentra en Llamada, en cuanto termine la gestión podrá salir de la Lista de Trabajo..!", this, "E", "C");
                 return;
             }
 

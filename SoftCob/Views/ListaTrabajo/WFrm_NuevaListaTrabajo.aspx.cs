@@ -232,25 +232,25 @@
 
             if (DdlEstrategia.SelectedValue == "0")
             {
-                new FuncionesDAO().FunShowJSMessage("Seleccione Estrategia..!", this);
+                new FuncionesDAO().FunShowJSMessage("Seleccione Estrategia..!", this, "W", "C");
                 _validar = false;
             }
 
             if (string.IsNullOrEmpty(TxtLista.Text.Trim()))
             {
-                new FuncionesDAO().FunShowJSMessage("Ingrese nombre de la Lista de Trabajo..!", this);
+                new FuncionesDAO().FunShowJSMessage("Ingrese nombre de la Lista de Trabajo..!", this, "W", "C");
                 _validar = false;
             }
 
             if (int.Parse(DdlCedente.SelectedValue) == 0)
             {
-                new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this);
+                new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                 _validar = false;
             }
 
             if (int.Parse(DdlCatalogo.SelectedValue) == 0)
             {
-                new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this);
+                new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this, "W", "C");
                 _validar = false;
             }
 
@@ -258,20 +258,20 @@
             {
                 if (DdlGestores.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "W", "C");
                     _validar = false;
                 }
             }
 
             if (!new FuncionesDAO().IsDate(TxtFechaInicio.Text))
             {
-                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
+                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this, "E", "C");
                 _validar = false;
             }
 
             if (!new FuncionesDAO().IsDate(TxtFechaFin.Text))
             {
-                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this);
+                new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this, "E", "C");
                 _validar = false;
             }
 
@@ -282,7 +282,7 @@
 
             if (_dtmfechafin < _dtmfechainicio)
             {
-                new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this);
+                new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this, "E", "C");
                 _validar = false;
             }
 
@@ -290,7 +290,7 @@
             {
                 if (_dtmfechainicio < _dtmfechaactual)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this, "E", "C");
                     _validar = false;
                 }
             }
@@ -316,7 +316,7 @@
                 {
                     if (DdlGestores.SelectedValue == "0")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "W", "C");
                         _continuar = false;
                     }
                     else
@@ -461,9 +461,9 @@
 
                         LblTotal.InnerText = _dtb.Rows.Count.ToString();
                     }
-                    else new FuncionesDAO().FunShowJSMessage("No se puede formar la consulta..!", this);
+                    else new FuncionesDAO().FunShowJSMessage("No se puede formar la consulta..!", this, "E", "C");
                 }
-                else new FuncionesDAO().FunShowJSMessage("Seleccione Datos para preview / Campos o Datos en Grid..!", this);
+                else new FuncionesDAO().FunShowJSMessage("Seleccione Datos para preview / Campos o Datos en Grid..!", this, "W", "C");
             }
             catch (Exception ex)
             {
@@ -477,13 +477,13 @@
             {
                 if (string.IsNullOrEmpty(TxtLista.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Lista de Trabajo..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Lista de Trabajo..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlMarcado.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Marcado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Marcado..!", this, "W", "C");
                     return;
                 }
 
@@ -495,7 +495,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Nombre de la Lista de Trabajo ya Existe..!", this);
+                        new FuncionesDAO().FunShowJSMessage("Nombre de la Lista de Trabajo ya Existe..!", this, "E", "C");
                         _continuar = false;
                         return;
                     }
@@ -504,7 +504,7 @@
                     {
                         if (DdlGestores.SelectedValue == "0")
                         {
-                            new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this);
+                            new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "W", "C");
                             return;
                         }
                     }
@@ -533,7 +533,7 @@
                     }
                     else
                     {
-                        new FuncionesDAO().FunShowJSMessage("No existen datos para registrar..!", this);
+                        new FuncionesDAO().FunShowJSMessage("No existen datos para registrar..!", this, "E", "C");
                         return;
                     }
 

@@ -183,13 +183,13 @@
                 //Obtener el siguiente Codigod de Protocolo
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCalificacion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Calificacion..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Calificacion..!", this, "W", "C");
                     return;
                 }
 
@@ -201,7 +201,7 @@
 
                 if (_existe)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Descripción ya Existe definida..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Descripción ya Existe definida..!", this, "E", "C");
                     return;
                 }
 
@@ -248,13 +248,13 @@
             {
                 if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Descripción..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCalificacion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Calificacion..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Calificacion..!", this, "W", "C");
                     return;
                 }
 
@@ -273,7 +273,7 @@
 
                     if (_existe)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Descripción ya Existe definida..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("Descripción ya Existe definida..!", this, "E", "C");
                         return;
                     }
                 }

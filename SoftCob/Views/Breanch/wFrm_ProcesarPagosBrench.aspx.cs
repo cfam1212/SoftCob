@@ -195,13 +195,13 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlCatalogo.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo..!", this, "W", "C");
                     return;
                 }
 
@@ -216,7 +216,7 @@
 
                 if (dts.Tables[0].Rows.Count == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No existen pagos registrados en la fecha..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("No existen pagos registrados en la fecha..!", this, "E", "C");
                     return;
                 }
 

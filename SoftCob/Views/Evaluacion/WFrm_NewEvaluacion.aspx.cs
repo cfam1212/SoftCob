@@ -132,7 +132,7 @@
             {
                 if (string.IsNullOrEmpty(TxtEvaluacion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Evaluación..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Evaluación..!", this, "W", "C");
                     return;
                 }
 
@@ -143,7 +143,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Nombre de la Evaluacion ya Existe..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("Nombre de la Evaluacion ya Existe..!", this, "E", "C");
                         return;
                     }
                 }
@@ -167,7 +167,7 @@
 
                 if (_dtmfechafin < _dtmfechainicio)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser mayor a Fecha Fin..!", this, "E", "C");
                     return;
                 }
 
@@ -175,7 +175,7 @@
                 {
                     if (_dtmfechainicio < _dtmfechaactual)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("Fecha Inicio no puede ser menor a la Fecha Actual..!", this, "E", "C");
                         return;
                     }
                 }

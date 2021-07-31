@@ -131,25 +131,25 @@
             {
                 if (ViewState["Operacion"] == null)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Operación a Cambiar..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Operación a Cambiar..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlAsignar.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor nuevo Asignado..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor nuevo Asignado..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlMotivo1.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtObservacion1.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación..!", this, "W", "C");
                     return;
                 }
 
@@ -223,13 +223,13 @@
             {
                 if (DdlMotivo2.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtObservacion2.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación..!", this, "W", "C");
                     return;
                 }
 
@@ -281,13 +281,13 @@
             {
                 if (DdlMotivo3.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Motivo..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtObservacion3.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Observación..!", this, "W", "C");
                     return;
                 }
 

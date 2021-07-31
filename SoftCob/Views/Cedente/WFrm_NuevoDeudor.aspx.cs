@@ -342,31 +342,31 @@
             {
                 if (string.IsNullOrEmpty(TxtNumeroDocumento.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Datos del Deudor..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Datos del Deudor..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlProducto.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtOperacion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Operacion..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Operacion..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDiasMora.Text.Trim()) || TxtDiasMora.Text.Trim() == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Dias Mora..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Dias Mora..!", this, "W", "C");
                     return;
                 }
 
@@ -374,7 +374,7 @@
                     TxtTotalDeuda.Text.Trim() == "0" || TxtTotalDeuda.Text.Trim() == "0.0"
                     || TxtTotalDeuda.Text.Trim() == ".")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Total Deuda..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Total Deuda..!", this, "W", "C");
                     return;
                 }
 
@@ -382,13 +382,13 @@
                     TxtExigible.Text.Trim() == "0" || TxtExigible.Text.Trim() == "0.0"
                     || TxtExigible.Text.Trim() == ".")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Exigible..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Exigible..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione un Gestor..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione un Gestor..!", this, "W", "C");
                     return;
                 }
 
@@ -402,7 +402,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No. de Obligacion ya Existe..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("No. de Obligacion ya Existe..!", this, "E", "C");
                     return;
                 }
 
@@ -445,48 +445,48 @@
             {
                 if (string.IsNullOrEmpty(TxtNumeroDocumento.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Datos del Deudor..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Datos del Deudor..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlProducto.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Producto..!", this, "W", "C");
                     return;
                 }
                 if (string.IsNullOrEmpty(TxtOperacion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Operacion..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Operacion..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDiasMora.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Dias Mora..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Dias Mora..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtTotalDeuda.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Total Deuda..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Total Deuda..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtExigible.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Exigible..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Exigible..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlTipoOperacion.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Operacion..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Operacion..!", this, "W", "C");
                     return;
                 }
 
@@ -504,7 +504,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No. de Obligacion ya Existe..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("No. de Obligacion ya Existe..!", this, "E", "C");
                     return;
                 }
 
@@ -608,25 +608,25 @@
             {
                 if (DdlTipo.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCedula.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Cedula..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Cedula..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtGarante.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombres..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombres..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtNumOperacion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Numero Operacion..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Numero Operacion..!", this, "W", "C");
                     return;
                 }
 
@@ -634,7 +634,7 @@
                 {
                     if (!new FuncionesDAO().Email_bien_escrito(TxtMailPerGar.Text.Trim()))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Email Incorrecto..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Email Incorrecto..!", this, "E", "C");
                         return;
                     }
                 }
@@ -643,7 +643,7 @@
                 {
                     if (!new FuncionesDAO().Email_bien_escrito(TxtMailEmpGar.Text.Trim()))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Email Personal Incorrecto..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Email Personal Incorrecto..!", this, "E", "C");
                         return;
                     }
                 }
@@ -658,7 +658,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No. de Cedula ya Existe..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("No. de Cedula ya Existe..!", this, "E", "C");
                     return;
                 }
 
@@ -702,25 +702,25 @@
             {
                 if (DdlTipo.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtCedula.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Cedula..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Cedula..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtGarante.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombres..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombres..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtNumOperacion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Numero Operacion..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Numero Operacion..!", this, "W", "C");
                     return;
                 }
 
@@ -753,7 +753,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("No. de Cedula ya Existe..!", this);
+                    new FuncionesDAO().FunShowJSMessage("No. de Cedula ya Existe..!", this, "E", "C");
                     return;
                 }
 
@@ -964,25 +964,25 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlTipoTelefono.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Telefono..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Telefono..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlPropietario.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Propietario..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Propietario..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtTelefono.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese numero de telefono..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese numero de telefono..!", this, "W", "C");
                     return;
                 }
 
@@ -990,7 +990,7 @@
                 {
                     if (DdlPrefijo.SelectedValue == "0")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione Prefijo..!", this, "N", "C");
+                        new FuncionesDAO().FunShowJSMessage("Seleccione Prefijo..!", this, "W", "C");
                         return;
                     }
                 }
@@ -1013,7 +1013,7 @@
 
                     if (_lexiste)
                     {
-                        new FuncionesDAO().FunShowJSMessage("No. de Telefono ya Existe..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("No. de Telefono ya Existe..!", this, "E", "C");
                         return;
                     }
 
@@ -1076,25 +1076,25 @@
             {
                 if (string.IsNullOrEmpty(TxtNumeroDocumento.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese No. Documento del Deudor..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese No. Documento del Deudor..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtNombres.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombres del Deudor..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombres del Deudor..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtApellidos.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Apellidos del Deudor..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Apellidos del Deudor..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtFechaNacimiento.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Fecha de nacimiento..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Fecha de nacimiento..!", this, "W", "C");
                     return;
                 }
 
@@ -1111,31 +1111,31 @@
 
                 if (dtmfehaact <= dtmfechanac)
                 {
-                    new FuncionesDAO().FunShowJSMessage("La Fecha no puede ser menor a la actual..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("La Fecha no puede ser menor a la actual..!", this, "E", "C");
                     return;
                 }
 
                 if (DdlGenero.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Genero..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Genero..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlProvincia.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Provincia..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Provincia..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlCiudad.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Ciudad..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Ciudad..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlEstCivil.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Estado Civil..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Estado Civil..!", this, "W", "C");
                     return;
                 }
 
@@ -1163,7 +1163,7 @@
 
                 if (_dtboperacion.Rows.Count == 0)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese al menos una operacion..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese al menos una operacion..!", this, "W", "C");
                     return;
                 }
 
@@ -1174,7 +1174,7 @@
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Numero de Documento ya existe..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("Numero de Documento ya existe..!", this, "E", "C");
                         return;
                     }
                 }

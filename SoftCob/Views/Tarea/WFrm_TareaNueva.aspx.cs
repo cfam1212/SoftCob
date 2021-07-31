@@ -66,13 +66,13 @@
             {
                 if (string.IsNullOrEmpty(TxtTarea.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Tarea..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Nombre de la Tarea..!", this, "W", "C");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtRuta.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Ruta/Página de la Tarea..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Ruta/Página de la Tarea..!", this, "W", "C");
                     return;
                 }
 
@@ -81,14 +81,14 @@
                     if (!string.IsNullOrEmpty(new ControllerDAO().FunConsultaTarea(TxtTarea.Text.Trim(),
                         int.Parse(Session["CodigoEMPR"].ToString()))))
                     {
-                        new FuncionesDAO().FunShowJSMessage("Tarea ya existe..!", this, "W", "C");
+                        new FuncionesDAO().FunShowJSMessage("Tarea ya existe..!", this, "E", "C");
                         return;
                     }
                 }
 
                 if (!new FuncionesDAO().Ruta_bien_escrita(TxtRuta.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Página mal escrita (eje: Views/Contenedor/nombre.aspx)..!", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Página mal escrita (eje: Views/Contenedor/nombre.aspx)..!", this, "E", "C");
                     return;
                 }
 

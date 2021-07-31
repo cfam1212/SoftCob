@@ -227,7 +227,7 @@
                     DdlCedente.Enabled = true;
                     DdlSupervisor.Enabled = true;
                 }
-                else new FuncionesDAO().FunShowJSMessage("No existen datos ingresados..!", this, "W", "C");
+                else new FuncionesDAO().FunShowJSMessage("No existen datos ingresados..!", this, "E", "C");
             }
             catch (Exception ex)
             {
@@ -273,19 +273,19 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlSupervisor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "W", "C");
                     return;
                 }
 
@@ -298,7 +298,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Gestor ya está asignado al Supervisor..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Gestor ya está asignado al Supervisor..!", this, "E", "C");
                     return;
                 }
 
@@ -331,19 +331,19 @@
             {
                 if (DdlCedente.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlSupervisor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Supervisor..!", this, "W", "C");
                     return;
                 }
 
                 if (DdlGestor.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "N", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "W", "C");
                     return;
                 }
 

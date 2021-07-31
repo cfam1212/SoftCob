@@ -38,7 +38,7 @@
                         if (_contar > 0)
                         {
                             _mensaje = "Tiene " + _contar + " SOLICITUD CITACION(ES) Pendiente(s)";
-                            new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "R");
+                            new FuncionesDAO().FunShowJSMessage(_mensaje, this, "E", "R");
                         }
                         else
                         {
@@ -50,7 +50,7 @@
                             if (_contar > 0)
                             {
                                 _mensaje = "Tiene " + _contar + " CITACION(ES) En PROCESO";
-                                new FuncionesDAO().FunShowJSMessage(_mensaje, this, "N", "R");
+                                new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "R");
                             }
                         }
                     }

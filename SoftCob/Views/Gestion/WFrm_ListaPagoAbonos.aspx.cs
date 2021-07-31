@@ -23,24 +23,22 @@
 
                 if (!IsPostBack)
                 {
-                    if (Session["IN-CALL"].ToString() == "SI")
-                    {
-                        new FuncionesDAO().FunShowJSMessage("Se encuentra en Llamada, en cuanto termine la gestión podrá salir de la Lista de Trabajo..!", this);
-                        Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    }
+                    //if (Session["IN-CALL"].ToString() == "SI")
+                    //{
+                    //    new FuncionesDAO().FunShowJSMessage("Se encuentra en Llamada, en cuanto termine la gestión podrá salir de la Lista de Trabajo..!", this);
+                    //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
+                    //}
 
                     Lbltitulo.Text = "Lista de Clientes <<-- ABONOS - PAGOS -->>";
                     ViewState["FechaActual"] = DateTime.Now.ToString("yyyy-MM-dd");
                     ViewState["HoraActual"] = DateTime.Now.ToString("HH:mm");
                     FunCargarMantenimiento();
 
-                    //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", 
-                    //    Request["MensajeRetornado"].ToString());
+                   
                     if (Request["MensajeRetornado"] != null)
                     {
                         _mensaje = Request["MensajeRetornado"];
-                        ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                            "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                        new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                     }
                 }
             }
