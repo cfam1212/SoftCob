@@ -20,13 +20,6 @@
 
             if (!IsPostBack)
             {
-                //if (Session["IN-CALL"].ToString() == "SI")
-                //{
-                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                //    Response.Redirect("../Gestion/WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                //    return;
-                //}
-
                 Lbltitulo.Text = "Administrar Listas de Trabajo";
                 FunCargarMantenimiento();
 

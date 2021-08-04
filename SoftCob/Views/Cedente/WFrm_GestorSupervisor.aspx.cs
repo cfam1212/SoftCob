@@ -24,7 +24,7 @@
         ImageButton _editar = new ImageButton();
         ListItem _items = new ListItem();
         ListItem _itemg = new ListItem();
-        string _mensaje = "", _response = "", _mensajes = "";
+        string _mensaje = "", _response = "";
         bool _lexiste = false;
         #endregion
 
@@ -49,7 +49,7 @@
                 
                 if (Request["MensajeRetornado"] != null)
                 {
-                    _mensajes = Request["MensajeRetornado"];
+                    _mensaje = Request["MensajeRetornado"];
                     new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }

@@ -47,6 +47,12 @@
         {
             try
             {
+                if (numerodocumento.Length < 10)
+                {
+                    new FuncionesDAO().FunShowJSMessage("Cédula Incorrecta..!", this, "E", "C");
+                    return;
+                }
+
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(184, 0, 0, 0, "", numerodocumento.Substring(0, 4),
                      ViewState["Cedula"].ToString(), Session["Conectar"].ToString());
 
