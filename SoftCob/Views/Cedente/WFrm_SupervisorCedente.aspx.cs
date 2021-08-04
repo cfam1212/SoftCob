@@ -19,10 +19,9 @@
         DataRow _result, _filagre;
         bool _existe = false;
         int _maxcodigo = 0, _codigosupervisor = 0, _codigocedente = 0;
-        Label _lblest = new Label();
         CheckBox _chkest = new CheckBox();
         ImageButton _editar = new ImageButton();
-        string _mensaje = "", _response = "", _codigousuario = "", _mensajes = "";
+        string _mensaje = "", _response = "", _codigousuario = "";
         bool _lexiste = false;
         #endregion
 
@@ -34,13 +33,6 @@
 
             if (!IsPostBack)
             {
-                //if (Session["IN-CALL"].ToString() == "SI")
-                //{
-                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                //    return;
-                //}
-
                 Lbltitulo.Text = "Registro de Supervisores";
                 _dtbsupervisor.Columns.Add("CodigoSupervisor");
                 _dtbsupervisor.Columns.Add("Cedente");
@@ -54,7 +46,7 @@
                 
                 if (Request["MensajeRetornado"] != null)
                 {
-                    _mensajes = Request["MensajeRetornado"];
+                    _mensaje = Request["MensajeRetornado"];
                     new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }

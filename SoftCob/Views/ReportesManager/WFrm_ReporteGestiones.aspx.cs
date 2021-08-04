@@ -82,15 +82,6 @@
 
                 if (int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString()) > 0)
                 {
-                    //ScriptManager.RegisterStartupScript(this.updCabecera, GetType(), "View",
-                    //    "javascript: var posicion_x; var posicion_y; posicion_x=(screen.width/2)-(900/2); " +
-                    //    "posicion_y=(screen.height/2)-(600/2); window.open('WFrm_ReporteGestionesFixed.aspx?CodigoCEDE=" +
-                    //    ddlCedente.SelectedValue + "&Catalogo=" + ddlCatalogo.SelectedItem.ToString() + "&CodigoCPCE=" + ddlCatalogo.SelectedValue + "&FechaDesde=" + txtFechaIni.Text.Trim() +
-                    //    "&FechaHasta=" + txtFechaFin.Text.Trim() + "&BuscarPor=" + ddlBuscar.SelectedItem.ToString() +
-                    //    "&Criterio=" + txtBuscarPor.Text.Trim() + "&Gestor=" + DdlGestor.SelectedValue +
-                    //    "',null,'left=' + posicion_x + ', top=' + posicion_y + ', width=1024px, height=600px, " +
-                    //    "status=no,resizable= yes, scrollbars=yes, toolbar=no, location=no, menubar=no,titlebar=0');",
-                    //    true);
                     Response.Redirect("WFrm_ReporteGestionesFixed.aspx?CodigoCEDE=" + DdlCedente.SelectedValue +
                         "&Catalogo=" + DdlCatalogo.SelectedItem.ToString() + "&CodigoCPCE=" + DdlCatalogo.SelectedValue +
                         "&FechaDesde=" + TxtFechaIni.Text.Trim() + "&FechaHasta=" + TxtFechaFin.Text.Trim() +
@@ -168,18 +159,19 @@
                     DdlGestor.DataBind();
                     break;
                 case 2:
-                    _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataTextField = "CatalogoProducto";
-                    DdlCatalogo.DataValueField = "CodigoCatalogo";
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
+                    DdlCatalogo.DataSource = _dts;
+                    DdlCatalogo.DataTextField = "Descripcion";
+                    DdlCatalogo.DataValueField = "Codigo";
                     DdlCatalogo.DataBind();
 
-                    if (_dts.Tables[0].Rows.Count == 0)
-                    {
-                        _itemc.Text = "--Seleccione Catálago/Producto--";
-                        _itemc.Value = "0";
-                        DdlCatalogo.Items.Add(_itemc);
-                    }
+                    //if (_dts.Tables[0].Rows.Count == 0)
+                    //{
+                    //    _itemc.Text = "--Seleccione Catálago/Producto--";
+                    //    _itemc.Value = "0";
+                    //    DdlCatalogo.Items.Add(_itemc);
+                    //}
                     break;
             }
         }

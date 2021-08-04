@@ -22,7 +22,7 @@
         DataRow[] _change;
         int _idciudad = 0, _maxcodigo = 0, _codigo = 0;
         bool _lexiste = false;
-        string _sql = "", _mensaje = "", _response = "", _mensajes = "";
+        string _sql = "", _mensaje = "", _response = "";
         string[] _pathroot, _columnas;
         #endregion
 
@@ -34,13 +34,6 @@
 
             if (!IsPostBack)
             {
-                //if (Session["IN-CALL"].ToString() == "SI")
-                //{
-                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                //    return;
-                //}
-
                 ViewState["codigoCatalogo"] = "0";
                 ViewState["codigoCedente"] = "0";
                 Lbltitulo.Text = "Administrar Árbol Score Telefónico";
@@ -48,11 +41,10 @@
                 _accion.Value = "0";
                 DdlAccion.Items.Add(_accion);
                 FunCargarCombos(0);
-
                
                 if (Request["MensajeRetornado"] != null)
                 {
-                    _mensajes = Request["MensajeRetornado"];
+                    _mensaje = Request["MensajeRetornado"];
                     new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
 

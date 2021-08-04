@@ -19,7 +19,7 @@
         ImageButton _imgdelcampo = new ImageButton();
         DataRow[] _rows;
         DataRow _result;
-        string _mensaje = "", _response = "", _mensajes = "";
+        string _mensaje = "", _response = "";
         #endregion
 
         #region Load
@@ -30,20 +30,13 @@
 
             if (!IsPostBack)
             {
-                //if (Session["IN-CALL"].ToString() == "SI")
-                //{
-                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                //    return;
-                //}
-
                 Lbltitulo.Text = "Agregar Campos Estrategias";
                 FunCargarCombos();
 
                
                 if (Request["MensajeRetornado"] != null)
                 {
-                    _mensajes = Request["MensajeRetornado"];
+                    _mensaje = Request["MensajeRetornado"];
                     new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }

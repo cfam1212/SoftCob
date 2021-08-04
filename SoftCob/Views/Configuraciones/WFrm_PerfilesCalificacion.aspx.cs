@@ -19,7 +19,7 @@
         bool _existe = false;
         ImageButton _imgeliminar = new ImageButton();
         CheckBox _chkestado = new CheckBox();
-        string _mensaje = "", _redirect = "", _mensajes = "";
+        string _mensaje = "", _redirect = "";
         #endregion
 
         #region Load
@@ -45,7 +45,7 @@
 
                 if (Request["MensajeRetornado"] != null)
                 {
-                    _mensajes = Request["MensajeRetornado"];
+                    _mensaje = Request["MensajeRetornado"];
                     new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
             }

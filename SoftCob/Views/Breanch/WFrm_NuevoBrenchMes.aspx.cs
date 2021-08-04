@@ -17,7 +17,7 @@
         ListItem itemG = new ListItem();
         DataTable dtbBrench = new DataTable();
         DataTable dtbBrenchDet = new DataTable();
-        string sql = "", casos = "", redirect = "", _mensaje = "", _mensajes = "";
+        string sql = "", casos = "", redirect = "", _mensaje = "";
         DataRow resultado, result;
         decimal tExigible = 0, tMonto = 0, tPorcentaje = 0, tPresupuesto = 0, vExigible = 0, vPorcentaje = 0, vPresupuesto = 0;
         bool continuar = false;
@@ -45,7 +45,7 @@
                 Lbltitulo.Text = "Agregar Nuevo Brench Año: " + ViewState["Anio"].ToString() + " Mes: " + ViewState["MesName"].ToString();
                 if (Request["MensajeRetornado"] != null)
                 {
-                    _mensajes = Request["MensajeRetornado"];
+                    _mensaje = Request["MensajeRetornado"];
                     new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                 }
                 

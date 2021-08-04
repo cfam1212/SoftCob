@@ -17,7 +17,7 @@
         string[] _pathroot;
         DataRow _resultado;
         string response = "", _codigocpce = "", _namecpce = "", _codigoarac = "", _namearac = "", _codigoaref = "",
-            _namearef = "", _codigoarre = "", _namearre = "", _codigoarco = "", _mensaje = "", _namearco = "", _mensajes = "";
+            _namearef = "", _codigoarre = "", _namearre = "", _codigoarco = "", _mensaje = "", _namearco = "";
         #endregion
 
         #region Load
@@ -40,9 +40,8 @@
 
                     if (Request["MensajeRetornado"] != null)
                     {
-                        _mensajes = Request["MensajeRetornado"];
-                        ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                            "'top-center'); alertify.success('" + _mensajes + "', 5, function(){console.log('dismissed');});", true);
+                        _mensaje = Request["MensajeRetornado"];
+                        new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                     }
                 }
             }
