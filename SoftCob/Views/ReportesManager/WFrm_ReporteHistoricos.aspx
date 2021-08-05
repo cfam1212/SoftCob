@@ -106,7 +106,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="panel-info">
-                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
+                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdOpciones">
                     <ProgressTemplate>
                         <div class="overlay" />
                         <div class="overlayContent">
@@ -173,13 +173,13 @@
                                 <td colspan="3">
                                     <asp:DropDownList ID="DdlTipoReporte" runat="server" CssClass="form-control" Width="100%" TabIndex="5">
                                         <asp:ListItem Value="0">--Seleccione Reporte--</asp:ListItem>
-                                        <asp:ListItem Value="C">Cartera Historica</asp:ListItem>
-                                        <asp:ListItem Value="O">Consolidado_Historico</asp:ListItem>
-                                        <asp:ListItem Value="R">Pagos Cartera</asp:ListItem>
-                                        <asp:ListItem Value="G">Resultado_Gestiones</asp:ListItem>
-                                        <asp:ListItem Value="S">Saldos Historicos</asp:ListItem>
-                                        <asp:ListItem Value="E">Contar Gestiones</asp:ListItem>
-                                        <asp:ListItem Value="F">Datos Actualizados</asp:ListItem>
+                                        <asp:ListItem Value="1">Cartera Historica</asp:ListItem>
+                                        <asp:ListItem Value="2">Consolidado_Historico</asp:ListItem>
+                                        <asp:ListItem Value="3">Pagos Cartera</asp:ListItem>
+                                        <asp:ListItem Value="4">Resultado_Gestiones</asp:ListItem>
+                                        <asp:ListItem Value="5">Saldos Historicos</asp:ListItem>
+                                        <asp:ListItem Value="6">Contar Gestiones</asp:ListItem>
+                                        <asp:ListItem Value="7">Datos Actualizados</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                                 <td></td>
@@ -213,65 +213,81 @@
                                 <td></td>
                             </tr>
                         </table>
-                        <div class="panel panel-default">
-                            <table style="width: 100%">
-                                <tr>
-                                    <td style="text-align: right; width: 45%">
-                                        <asp:Button ID="BtnProcesar" runat="server" Text="Procesar" Width="120px" CssClass="button" OnClick="BtnProcesar_Click" TabIndex="8" />
-                                    </td>
-                                    <td style="width: 10%"></td>
-                                    <td style="text-align: left; width: 45%">
-                                        <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="9" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="panel panel-default">
-                            <table style="width: 100%">
-                                <tr>
-                                    <td style="text-align: left">
-                                        <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excelbg.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" Visible="false" TabIndex="10" />
-                                        <asp:Label ID="lblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="panel-info">
-                            <asp:Panel ID="pnlHistorico1" runat="server" Width="100%" Height="280px" ScrollBars="Auto" Visible="false">
-                                <asp:GridView ID="GrdvDatos" runat="server" Width="100%"
-                                    CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                    ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar" AllowPaging="True" OnPageIndexChanging="GrdvDatos_PageIndexChanging" TabIndex="11">
-                                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                    <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
-                                    <RowStyle Font-Size="X-Small" />
-                                    <EditRowStyle BackColor="#2461BF" />
-                                    <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
-                                </asp:GridView>
-                            </asp:Panel>
-                            <asp:Panel ID="pnlHistorico2" runat="server" Width="100%" Height="250px" ScrollBars="Auto" Visible="false">
-                                <asp:GridView ID="GrdvDatos1" runat="server" Width="100%"
-                                    CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                    ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar" AllowPaging="True" OnPageIndexChanging="GrdvDatos1_PageIndexChanging" TabIndex="12">
-                                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                    <Columns>
-                                        <asp:TemplateField HeaderText="Ver">
-                                            <ItemTemplate>
-                                                <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/Buscar.png" OnClick="ImgSelecc_Click" />
-                                            </ItemTemplate>
-                                            <ItemStyle HorizontalAlign="Center" />
-                                        </asp:TemplateField>
-                                    </Columns>
-                                    <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
-                                    <RowStyle Font-Size="X-Small" />
-                                    <EditRowStyle BackColor="#2461BF" />
-                                    <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
-                                </asp:GridView>
-                            </asp:Panel>
-                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+
+            <div class="panel-body">
+                <asp:UpdatePanel runat="server" ID="UpdOpciones">
+                    <ContentTemplate>
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="text-align: right; width: 45%">
+                                    <asp:Button ID="BtnProcesar" runat="server" Text="Procesar" Width="120px" CssClass="button" OnClick="BtnProcesar_Click" TabIndex="8" />
+                                </td>
+                                <td style="width: 10%"></td>
+                                <td style="text-align: left; width: 45%">
+                                    <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="9" />
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+
+            <div class="panel-body">
+                <asp:UpdatePanel runat="server">
+                    <ContentTemplate>
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="text-align: left">
+                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excelbg.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" Visible="false" TabIndex="10" />
+                                    <asp:Label ID="lblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+
+            <div class="panel-body">
+                <asp:UpdatePanel runat="server">
+                    <ContentTemplate>
+                        <asp:Panel ID="pnlHistorico1" runat="server" Width="100%" Height="280px" ScrollBars="Auto" Visible="false">
+                            <asp:GridView ID="GrdvDatos" runat="server" Width="100%"
+                                CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar" AllowPaging="True" OnPageIndexChanging="GrdvDatos_PageIndexChanging" TabIndex="11">
+                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                <RowStyle Font-Size="X-Small" />
+                                <EditRowStyle BackColor="#2461BF" />
+                                <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                            </asp:GridView>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlHistorico2" runat="server" Width="100%" Height="250px" ScrollBars="Auto" Visible="false">
+                            <asp:GridView ID="GrdvDatos1" runat="server" Width="100%"
+                                CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar" AllowPaging="True" OnPageIndexChanging="GrdvDatos1_PageIndexChanging" TabIndex="12">
+                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Ver">
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/Buscar.png" OnClick="ImgSelecc_Click" />
+                                        </ItemTemplate>
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:TemplateField>
+                                </Columns>
+                                <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                <RowStyle Font-Size="X-Small" />
+                                <EditRowStyle BackColor="#2461BF" />
+                                <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                            </asp:GridView>
+                        </asp:Panel>
+
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
