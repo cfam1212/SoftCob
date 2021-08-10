@@ -203,15 +203,22 @@
                     DdlGestorApoyo.DataValueField = "Codigo";
                     DdlGestorApoyo.DataBind();
 
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
+                    DdlCatalogo.DataSource = _dts;
+                    DdlCatalogo.DataTextField = "Descripcion";
+                    DdlCatalogo.DataValueField = "Codigo";
+                    DdlCatalogo.DataBind();
+
                     break;
                 case 2:
-                    DdlAsignacion.DataSource = new ConsultaDatosDAO().FunConsultaDatos(91, int.Parse(ViewState["CodCatalogo"].ToString()), 0, 0, "",
+                    DdlAsignacion.DataSource = new ConsultaDatosDAO().FunConsultaDatos(91, int.Parse(DdlCatalogo.SelectedValue), 0, 0, "",
                         "", "", Session["Conectar"].ToString());
                     DdlAsignacion.DataTextField = "Descripcion";
                     DdlAsignacion.DataValueField = "Codigo";
                     DdlAsignacion.DataBind();
 
-                    DdlCampania.DataSource = new ConsultaDatosDAO().FunConsultaDatos(119, int.Parse(ViewState["CodCatalogo"].ToString()),
+                    DdlCampania.DataSource = new ConsultaDatosDAO().FunConsultaDatos(119, int.Parse(DdlCatalogo.SelectedValue),
                         0, 0, "", "", "", Session["Conectar"].ToString());
                     DdlCampania.DataTextField = "Descripcion";
                     DdlCampania.DataValueField = "Codigo";
@@ -248,11 +255,11 @@
                 _validar = false;
             }
 
-            if (int.Parse(DdlCatalogo.SelectedValue) == 0)
-            {
-                new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this, "W", "C");
-                _validar = false;
-            }
+            //if (int.Parse(DdlCatalogo.SelectedValue) == 0)
+            //{
+            //    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this, "W", "C");
+            //    _validar = false;
+            //}
 
             if (ChkGestor.Checked)
             {
@@ -306,11 +313,13 @@
                 _ordenar = "";
                 _pasadas = 0;
                 _sql = nuevoSQL;
-                _sql += "From SoftCob_CLIENTE_DEUDOR CL (NOLOCK) INNER JOIN SoftCob_CUENTA_DEUDOR CD (NOLOCK) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO ";
+                _sql += "FROM SoftCob_CLIENTE_DEUDOR CL (NOLOCK) INNER JOIN SoftCob_CUENTA_DEUDOR CD (NOLOCK) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO ";
                 _sql += "INNER JOIN SoftCob_PERSONA PE (NOLOCK) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
                 _sql += "INNER JOIN SoftCob_PROVINCIA PR (NOLOCK) ON PE.pers_provincia=PR.PROV_CODIGO ";
                 _sql += "INNER JOIN SoftCob_CIUDAD CI (NOLOCK) ON PE.pers_ciudad=CI.CIUD_CODIGO WHERE ";
-                _sql += "CL.CPCE_CODIGO=" + DdlCatalogo.SelectedValue + " AND CL.clde_estado=1 AND CD.ctde_estado=1 AND ";
+                _sql += "CL.clde_estado=1 AND CD.ctde_estado=1 AND ";
+                if (DdlCatalogo.SelectedValue != "0")
+                    _sql += "CL.CPCE_CODIGO=" + DdlCatalogo.SelectedValue + " AND ";
 
                 if (ChkGestor.Checked)
                 {
@@ -395,25 +404,25 @@
             {
                 FunCargarCombos(1);
                 FunCargarCombos(3);
-                _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                //_dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
 
-                if (_dts.Tables[0].Rows.Count > 0)
-                {
-                    ViewState["CodigoCedente"] = DdlCedente.SelectedValue;
-                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataTextField = "CatalogoProducto";
-                    DdlCatalogo.DataValueField = "CodigoCatalogo";
-                    DdlCatalogo.DataBind();
-                    ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
-                    FunCargarCombos(2);
-                }
-                else
-                {
-                    DdlCatalogo.Items.Clear();
-                    _itemc.Text = "--Seleccione Catálago/Producto--";
-                    _itemc.Value = "0";
-                    DdlCatalogo.Items.Add(_itemc);
-                }
+                //if (_dts.Tables[0].Rows.Count > 0)
+                //{
+                //    ViewState["CodigoCedente"] = DdlCedente.SelectedValue;
+                //    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                //    DdlCatalogo.DataTextField = "CatalogoProducto";
+                //    DdlCatalogo.DataValueField = "CodigoCatalogo";
+                //    DdlCatalogo.DataBind();
+                //    ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
+                //    FunCargarCombos(2);
+                //}
+                //else
+                //{
+                //    DdlCatalogo.Items.Clear();
+                //    _itemc.Text = "--Seleccione Catálago/Producto--";
+                //    _itemc.Value = "0";
+                //    DdlCatalogo.Items.Add(_itemc);
+                //}
             }
             catch (Exception ex)
             {
@@ -598,8 +607,8 @@
 
         protected void DdlCatalogo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
-            FunCargarCombos(1);
+            //ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
+            //FunCargarCombos(1);
             FunCargarCombos(2);
             FunCargarCombos(3);
         }

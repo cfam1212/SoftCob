@@ -1352,8 +1352,9 @@
                         ViewState["TelefonosMarcados"] = "NO";
                         if (!ChkMantenerReg.Checked)
                         {
-                            new ConsultaDatosDAO().FunConsultaDatos(49, int.Parse(ViewState["CodigoCLDE"].ToString()), 0, 0, "", "", "",
+                            _dts = new ConsultaDatosDAO().FunConsultaDatos(49, int.Parse(ViewState["CodigoCLDE"].ToString()), 0, 0, "", "", "",
                                 Session["Conectar"].ToString());
+                            
                             _dts = new ConsultaDatosDAO().FunConsultaDatos(38, int.Parse(Session["IdListaCabecera"].ToString()),
                                int.Parse(ViewState["CodigoCLDE"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
 

@@ -391,10 +391,9 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
+                                                <td colspan="2">
                                                     <asp:CheckBox ID="ChkGestorSelec" runat="server" AutoPostBack="True" CssClass="form-control" OnCheckedChanged="ChkGestorSelec_CheckedChanged" TabIndex="22" Text="Con el Gestor" />
                                                 </td>
-                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                             </tr>
@@ -404,7 +403,9 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td colspan="6"></td>
+                                <td colspan="6">
+                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
+                                </td>
                             </tr>
                             <tr>
                                 <td></td>
