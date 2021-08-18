@@ -1,19 +1,24 @@
 ﻿namespace SoftCob
 {
     using ControllerSoftCob;
+    using ModeloSoftCob;
     using System;
     using System.Configuration;
+    using System.Data;
     using System.Globalization;
+    using System.Linq;
     using System.Net;
     using System.Web.UI;
-    using System.Linq;
-    using ModeloSoftCob;
 
     public partial class WFrm_Login : Page
     {
         #region Variables
-        string _horalogueo = "", _fechalogueo = "", _IP = "";
+        string _horalogueo = "", _fechalogueo = "", _IP = "", _fechaactual = "", _fechapago = "";
         int _usucodigo = 0;
+        DataSet _dts;
+        DateTime _dtmfechaatual, _dtmfechapago;
+        DataRow _resul;
+        TimeSpan _dias;
         #endregion
 
         #region Load
@@ -25,11 +30,16 @@
                 {
                     Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Session["Phone"] = ConfigurationManager.AppSettings["Phone"];
+                    ViewState["Licencia"] = ConfigurationManager.AppSettings["Licencia"];
+                    ViewState["SQL"] = ConfigurationManager.AppSettings["FormSQL"];                    
                     Session["usuLogin"] = "";
                     Session["usuCodigo"] = "";
                     Session["IPLocalAdress"] = "";
                     Session["IN-CALL"] = "NO";
                     Session["IPLocalAdress"] = "";
+                    Session["LICENCIA"] = "NO";
+                    Session["DiasLIC"] = "0";
+                    FunGetLic();
                     IPHostEntry NombreHost = Dns.GetHostEntry(Request.UserHostAddress);
                     Session["IPLocalAdress"] = NombreHost.AddressList.First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToString();
                     _IP = NombreHost.HostName;
@@ -160,7 +170,67 @@
                 Session["MachineName"] = Session["IPLocalAdress"].ToString();
             }
         }
+        private void FunGetLic()
+        {
+            //List<SoftCob_PARAMETRO_DETALLE> _ldetalle = new ControllerDAO().FunGetLicParametros("PATH LOGOS");
+
+            try
+            {
+                _fechaactual = DateTime.Now.ToString("yyyy-MM-dd");
+                _dtmfechaatual = DateTime.ParseExact(_fechaactual, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+                //_lic = _ldetalle.Single(d => d.pade_nombre == "LCMTO").pade_valorV;
+
+                if (new FuncionesDAO().FunDesencripta(ViewState["Licencia"].ToString()) != "Permanente")
+                {
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0,
+                        new FuncionesDAO().FunDesencripta(ViewState["SQL"].ToString()), "", "",
+                        Session["Conectar"].ToString());
+
+                    if (_dts == null || _dts.Tables[0].Rows.Count == 0)
+                    {
+                        TxtUsuario.Enabled = false;
+                        TxtClave.Enabled = false;
+                        BtnIngresar.Enabled = false;
+                        Lblmensaje.Text = "INGRESE KEY VALIDA PARA ACTIVAR EL SISTEMA";
+                    }
+                    else
+                    {
+                        _resul = _dts.Tables[0].Select("Estado='" + "8NvnWyoj2ew=" + "'").FirstOrDefault();
+                        _fechapago = new FuncionesDAO().FunDesencripta(_resul["Fecha"].ToString());
+
+                        _dtmfechapago = DateTime.ParseExact(_fechapago, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+                        if (_dtmfechaatual > _dtmfechapago)
+                        {
+                            TxtUsuario.Enabled = false;
+                            TxtClave.Enabled = false;
+                            BtnIngresar.Enabled = false;
+                            Lblmensaje.Text = "INGRESE KEY VALIDA PARA ACTIVAR EL SISTEMA";
+                        }
+
+                        if (_dtmfechapago >= _dtmfechaatual)
+                        {
+                            _dias = _dtmfechapago.Subtract(_dtmfechaatual);
+
+                            if (_dias.Days <= 10)
+                            {
+                                Session["LICENCIA"] = "SI";
+                                Session["DiasLIC"] = _dias.Days;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                TxtUsuario.Enabled = false;
+                TxtClave.Enabled = false;
+                BtnIngresar.Enabled = false;
+                Lblmensaje.Text = "INGRESE KEY VALIDA PARA ACTIVAR EL SISTEMA";
+            }
+        }
         #endregion
-        
+
     }
 }
