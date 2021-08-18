@@ -54,6 +54,16 @@
                             }
                         }
                     }
+
+                    if (Session["LICENCIA"].ToString() == "SI")
+                    {
+                        _mensaje = "Estimado Usuario, le quedan " + Session["DiasLIC"].ToString() + " Dia(s) ";
+                        _mensaje += "Para renovar la licencia, Comuniquese con su proveedor";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "pop",
+                            "javascript: alertify.set('notifier','position', 'top-center'); alertify.warning('" +
+                            _mensaje + "', 25, function(){  console.log('dismissed'); });", true);
+                        Session["LICENCIA"] = "NO";
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -1512,6 +1512,20 @@
 
             return new FuncionesDAO().FunCambiarDataSet(_detalle);
         }
+        public List<SoftCob_PARAMETRO_DETALLE> FunGetLicParametros(string parametro)
+        {
+            try
+            {
+                using (SoftCobEntities _db = new SoftCobEntities())
+                {
+                    return _db.SoftCob_PARAMETRO_DETALLE.Where(p => p.SoftCob_PARAMETRO_CABECERA.para_nombre == parametro).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
 
         #region Procedimientos y Funciones CONSULTA DATOS

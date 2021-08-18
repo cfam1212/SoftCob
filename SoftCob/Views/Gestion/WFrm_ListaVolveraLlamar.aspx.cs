@@ -88,7 +88,9 @@
                 _codigopers = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoPERS"].ToString();
                 _identificacion = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Identificacion"].ToString();
                 _operacion = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Operacion"].ToString();
-                Response.Redirect("WFrm_RegLlamadaEntrante.aspx?CodigoCEDE=" + _codigocede + "&CodigoCPCE=" + _codigocpce + "&codigoCLDE=" + _codigoclde + "&CodigoPERS=" + _codigopers + "&NumeroDocumento=" + _identificacion + "&Operacion=" + _operacion + "&CodigoLTCA=0&CodigoUSU=0&Retornar=2", true);
+                Response.Redirect("WFrm_RegLlamadaEntrante.aspx?CodigoCEDE=" + _codigocede + "&CodigoCPCE=" + _codigocpce + "&codigoCLDE=" + 
+                    _codigoclde + "&CodigoPERS=" + _codigopers + "&NumeroDocumento=" + _identificacion + "&Operacion=" + _operacion + 
+                    "&CodigoLTCA=0&CodigoUSU=0&Retornar=2", true);
             }
             catch (Exception ex)
             {

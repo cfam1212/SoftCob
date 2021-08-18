@@ -6,7 +6,11 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+
     <link href="~/css/Estilos.css" rel="stylesheet" />
+    <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
+    <script src="../../JS/alertify.min.js"></script>
+
     <script type="text/jscript">
 
         function salir() {

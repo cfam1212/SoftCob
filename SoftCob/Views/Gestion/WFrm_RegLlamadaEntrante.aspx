@@ -1115,11 +1115,11 @@
                                                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                                             <Columns>
                                                                                 <asp:BoundField DataField="FechaRegistro" HeaderText="Fecha Registro" />
-                                                                                <asp:BoundField DataField="Operacion" HeaderText="Operación" />
                                                                                 <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
-                                                                                <asp:BoundField DataField="Gestor" HeaderText="Gestor" />
+                                                                                <asp:BoundField DataField="Accion" HeaderText="Acción" />
                                                                                 <asp:BoundField DataField="Respuesta" HeaderText="Respuesta" />
                                                                                 <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+                                                                                <asp:BoundField DataField="Gestor" HeaderText="Gestor" />
                                                                             </Columns>
                                                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                                                             <RowStyle Font-Size="X-Small" />
