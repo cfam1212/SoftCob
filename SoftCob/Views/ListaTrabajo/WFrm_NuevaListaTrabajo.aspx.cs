@@ -203,12 +203,12 @@
                     DdlGestorApoyo.DataValueField = "Codigo";
                     DdlGestorApoyo.DataBind();
 
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
-                        Session["Conectar"].ToString());
-                    DdlCatalogo.DataSource = _dts;
-                    DdlCatalogo.DataTextField = "Descripcion";
-                    DdlCatalogo.DataValueField = "Codigo";
-                    DdlCatalogo.DataBind();
+                    //_dts = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
+                    //    Session["Conectar"].ToString());
+                    //DdlCatalogo.DataSource = _dts;
+                    //DdlCatalogo.DataTextField = "Descripcion";
+                    //DdlCatalogo.DataValueField = "Codigo";
+                    //DdlCatalogo.DataBind();
 
                     break;
                 case 2:
@@ -255,11 +255,11 @@
                 _validar = false;
             }
 
-            //if (int.Parse(DdlCatalogo.SelectedValue) == 0)
-            //{
-            //    new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this, "W", "C");
-            //    _validar = false;
-            //}
+            if (int.Parse(DdlCatalogo.SelectedValue) == 0)
+            {
+                new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this, "W", "C");
+                _validar = false;
+            }
 
             if (ChkGestor.Checked)
             {
@@ -404,25 +404,25 @@
             {
                 FunCargarCombos(1);
                 FunCargarCombos(3);
-                //_dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
 
-                //if (_dts.Tables[0].Rows.Count > 0)
-                //{
-                //    ViewState["CodigoCedente"] = DdlCedente.SelectedValue;
-                //    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                //    DdlCatalogo.DataTextField = "CatalogoProducto";
-                //    DdlCatalogo.DataValueField = "CodigoCatalogo";
-                //    DdlCatalogo.DataBind();
-                //    ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
-                //    FunCargarCombos(2);
-                //}
-                //else
-                //{
-                //    DdlCatalogo.Items.Clear();
-                //    _itemc.Text = "--Seleccione Catálago/Producto--";
-                //    _itemc.Value = "0";
-                //    DdlCatalogo.Items.Add(_itemc);
-                //}
+                if (_dts.Tables[0].Rows.Count > 0)
+                {
+                    ViewState["CodigoCedente"] = DdlCedente.SelectedValue;
+                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    DdlCatalogo.DataTextField = "CatalogoProducto";
+                    DdlCatalogo.DataValueField = "CodigoCatalogo";
+                    DdlCatalogo.DataBind();
+                    ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
+                    FunCargarCombos(2);
+                }
+                else
+                {
+                    DdlCatalogo.Items.Clear();
+                    _itemc.Text = "--Seleccione Catálago/Producto--";
+                    _itemc.Value = "0";
+                    DdlCatalogo.Items.Add(_itemc);
+                }
             }
             catch (Exception ex)
             {
