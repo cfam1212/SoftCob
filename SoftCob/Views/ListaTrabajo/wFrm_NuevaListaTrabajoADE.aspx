@@ -360,7 +360,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:CheckBox ID="ChkGestor" runat="server" AutoPostBack="True" CssClass="form-control" Font-Size="10pt" OnCheckedChanged="ChkGestor_CheckedChanged" TabIndex="13" Text="Gestor" Checked="True" />
+                                                    <asp:CheckBox ID="ChkGestor" runat="server" AutoPostBack="True" CssClass="form-control" Font-Size="10pt" OnCheckedChanged="ChkGestor_CheckedChanged" TabIndex="13" Text="Gestor" />
                                                 </td>
                                                 <td>
                                                     <asp:DropDownList ID="DdlGestores" runat="server" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="DdlGestores_SelectedIndexChanged" TabIndex="14" Width="100%">

@@ -752,7 +752,7 @@
 
                     _sql1 = "";
                     _sql1 = "SELECT CodigoCLDE = GTE.gete_cldecodigo,Efectivo = CAST(CASE GTE.gete_efectivo WHEN 1 THEN 1 ELSE 0 END AS varchar),";
-                    _sql1 += "FechaGestion = CONVERT(VARCHAR(10),GTE.gete_fechagestion,121) ";
+                    _sql1 += "FechaGestion = CONVERT(VARCHAR(10),GTE.gete_fechagestion,121), CodigoARAC=GTE.gete_araccodigo ";
                     _sql1 += "FROM SoftCob_GESTION_TELEFONICA GTE (NOLOCK) ";
                     _sql1 += "INNER JOIN SoftCob_CUENTA_DEUDOR CDE ON CDE.ctde_operacion=GTE.gete_operacion ";
                     _sql1 += "WHERE GTE.gete_cpcecodigo=" + DdlCatalogo.SelectedValue + " AND ";
@@ -761,7 +761,7 @@
                     _sql1 += "CONVERT(DATE,GTE.gete_fechagestion,101) BETWEEN ";
                     _sql1 += "CONVERT(DATE,'" + TxtFechaDesde.Text + "',101) AND CONVERT(DATE,'" + TxtFechaHasta.Text + "',101) AND ";
                     _sql1 += "GTE.gete_auxi3=0 AND CDE.ctde_estado=1 ";
-                    if (ChkArbol.Checked) _sql1 += "AND GTE.gete_araccodigo=" + DdlAccion.SelectedValue;
+                    ////if (ChkArbol.Checked) _sql1 += "AND GTE.gete_araccodigo=" + DdlAccion.SelectedValue;
                     _sql1 += " ORDER BY GTE.gete_cldecodigo";
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql1, "", "",
@@ -846,26 +846,40 @@
                                 }
                                 else
                                 {
-                                    _filagre = _dtbpreview.NewRow();
-                                    _filagre["Identificacion"] = _drfila["Identificacion"].ToString();
-                                    _filagre["Cliente"] = _drfila["Cliente"].ToString();
-                                    _filagre["Provincia"] = _drfila["Provincia"].ToString();
-                                    _filagre["Ciudad"] = _drfila["Ciudad"].ToString();
-                                    _filagre["FechaGestion"] = _fechagestion;
-                                    _dtbpreview.Rows.Add(_filagre);
+                                    _continuar = true;
 
-                                    _filnew = _dtbgstsave.NewRow();
-                                    _filnew["CodigoCLDE"] = _drfila["CodigoCLDE"].ToString();
-                                    _filnew["CodigoPERS"] = _drfila["CodigoPERS"].ToString();
-                                    _filnew["Gestorasignado"] = _drfila["Gestorasignado"].ToString();
-                                    _filnew["Estado"] = "1";
-                                    _filnew["auxv1"] = "";
-                                    _filnew["auxv2"] = "";
-                                    _filnew["auxv3"] = "";
-                                    _filnew["auxi1"] = "";
-                                    _filnew["auxi2"] = "";
-                                    _filnew["auxi3"] = "";
-                                    _dtbgstsave.Rows.Add(_filnew);
+                                    foreach (var _arbol in _resultado)
+                                    {
+                                        if (_arbol["CodigoARAC"].ToString() != DdlAccion.SelectedValue)
+                                        {
+                                            _continuar = false;
+                                            break;
+                                        }
+                                    }
+
+                                    if (_continuar)
+                                    {
+                                        _filagre = _dtbpreview.NewRow();
+                                        _filagre["Identificacion"] = _drfila["Identificacion"].ToString();
+                                        _filagre["Cliente"] = _drfila["Cliente"].ToString();
+                                        _filagre["Provincia"] = _drfila["Provincia"].ToString();
+                                        _filagre["Ciudad"] = _drfila["Ciudad"].ToString();
+                                        _filagre["FechaGestion"] = _fechagestion;
+                                        _dtbpreview.Rows.Add(_filagre);
+
+                                        _filnew = _dtbgstsave.NewRow();
+                                        _filnew["CodigoCLDE"] = _drfila["CodigoCLDE"].ToString();
+                                        _filnew["CodigoPERS"] = _drfila["CodigoPERS"].ToString();
+                                        _filnew["Gestorasignado"] = _drfila["Gestorasignado"].ToString();
+                                        _filnew["Estado"] = "1";
+                                        _filnew["auxv1"] = "";
+                                        _filnew["auxv2"] = "";
+                                        _filnew["auxv3"] = "";
+                                        _filnew["auxi1"] = "";
+                                        _filnew["auxi2"] = "";
+                                        _filnew["auxi3"] = "";
+                                        _dtbgstsave.Rows.Add(_filnew);
+                                    }
 
                                 }
                             }
