@@ -14,7 +14,7 @@
         #region Variables
         DataSet _dts = new DataSet();
         DataTable _dtb = new DataTable();
-        string _estado = "", _codigoltca = "", _codigogestor = "", _filename = "";
+        string _estado = "", _codigoltca = "", _codigogestor = "", _filename = "", _codigocpce = "";
         ImageButton _imgselecc = new ImageButton();
         DataRow _resultado;
         int _porgestionar = 0;
@@ -38,7 +38,7 @@
                     ViewState["Gestor"] = Request["Gestor"];
                     ViewState["Consultar"] = "0";
                     ViewState["Estado"] = Request["Estado"];
-                    Lbltitulo.Text = "Tablero de Control Monitoreo Listas << " + ViewState["Catalogo"].ToString() + " >>";
+                    Lbltitulo.Text = "Tablero de Control << MONITOREO LISTAS DE TRABAJO >>";
                     FunCargarMantenimiento();
                 }
             }
@@ -83,8 +83,12 @@
 
                 GrdvDatos.DataSource = _dtb;
                 GrdvDatos.DataBind();
-                GrdvDatos.UseAccessibleHeader = true;
-                GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+                if (_dtb.Rows.Count > 0)
+                {
+                    GrdvDatos.UseAccessibleHeader = true;
+                    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
             }
             catch (Exception ex)
             {
@@ -142,9 +146,10 @@
                 GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
                 _codigoltca = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoLista"].ToString();
                 _codigogestor = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoGestor"].ToString();
+                _codigocpce = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCPCE"].ToString();
 
                 Response.Redirect("WFrm_MonitorDetalleLista.aspx?codigoLTCA=" + _codigoltca + "&codigoGestor=" + _codigogestor +
-                    "&codigoCEDE=" + ViewState["CodigoCEDE"].ToString() + "&codigoCPCE=" + ViewState["CodigoCPCE"].ToString() +
+                    "&codigoCEDE=" + ViewState["CodigoCEDE"].ToString() + "&codigoCPCE=" + _codigocpce +
                     "&Catalogo=" + ViewState["Catalogo"].ToString() + "&FechaDesde=" + ViewState["FechaDesde"].ToString() +
                     "&FechaHasta=" + ViewState["FechaHasta"].ToString() + "&Tipo=" + ViewState["Tipo"].ToString() + "&Gestor=" +
                     ViewState["Gestor"].ToString() + "&Estado=" + ViewState["Estado"].ToString(), false);
@@ -161,21 +166,21 @@
             {
                 if (e.Row.RowIndex >= 0)
                 {
-                    _imgselecc = (ImageButton)(e.Row.Cells[10].FindControl("ImgSelecc"));
+                    _imgselecc = (ImageButton)(e.Row.Cells[11].FindControl("ImgSelecc"));
                     _porgestionar = int.Parse(GrdvDatos.DataKeys[e.Row.RowIndex].Values["PorGestionar"].ToString());
                     _estado = GrdvDatos.DataKeys[e.Row.RowIndex].Values["Estado"].ToString();
                     _codigoltca = GrdvDatos.DataKeys[e.Row.RowIndex].Values["CodigoLista"].ToString();
 
                     if (_porgestionar == 0)
                     {
-                        e.Row.Cells[5].BackColor = Color.Red;
+                        e.Row.Cells[6].BackColor = Color.Red;
                         _imgselecc.ImageUrl = "~/Botones/Buscargris.png";
                         _imgselecc.Enabled = false;
                     }
-                    if (_porgestionar == 0) e.Row.Cells[5].BackColor = Color.Red;
-                    if (_porgestionar > 0 && _porgestionar < 50) e.Row.Cells[5].BackColor = Color.Coral;
-                    if (_porgestionar > 50 && _porgestionar <= 100) e.Row.Cells[5].BackColor = Color.Silver;
-                    if (_porgestionar > 100 && _porgestionar <= 500) e.Row.Cells[5].BackColor = Color.Beige;
+                    if (_porgestionar == 0) e.Row.Cells[6].BackColor = Color.Red;
+                    if (_porgestionar > 0 && _porgestionar < 50) e.Row.Cells[6].BackColor = Color.Coral;
+                    if (_porgestionar > 50 && _porgestionar <= 100) e.Row.Cells[6].BackColor = Color.Silver;
+                    if (_porgestionar > 100 && _porgestionar <= 500) e.Row.Cells[6].BackColor = Color.Beige;
                 }
             }
             catch (Exception ex)

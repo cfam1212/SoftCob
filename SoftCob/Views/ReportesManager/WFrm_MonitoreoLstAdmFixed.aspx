@@ -64,7 +64,7 @@
                                     <asp:GridView ID="GrdvDatos" runat="server" Width="100%"
                                         AutoGenerateColumns="False"
                                         CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                        ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar" DataKeyNames="CodigoLista,CodigoGestor,PorGestionar,Estado" OnRowDataBound="GrdvDatos_RowDataBound">
+                                        ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar" DataKeyNames="CodigoLista,CodigoGestor,PorGestionar,Estado,CodigoCPCE" OnRowDataBound="GrdvDatos_RowDataBound">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
                                             <asp:BoundField DataField="Gestor" HeaderText="Gestor" >
@@ -73,6 +73,7 @@
                                             <asp:BoundField DataField="Lista" HeaderText="Lista" >
                                             <ItemStyle Wrap="True" />
                                             </asp:BoundField>
+                                            <asp:BoundField DataField="Catalogo" HeaderText="Catalogo" />
                                             <asp:BoundField DataField="FechaIni" HeaderText="Fecha_Inicio" DataFormatString="{0:d}" >
                                             <ItemStyle HorizontalAlign="Right" />
                                             </asp:BoundField>

@@ -62,9 +62,15 @@
                     DdlGestores.DataValueField = "Codigo";
                     DdlGestores.DataBind();
 
-                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataTextField = "CatalogoProducto";
-                    DdlCatalogo.DataValueField = "CodigoCatalogo";
+                    //DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                    //DdlCatalogo.DataTextField = "CatalogoProducto";
+                    //DdlCatalogo.DataValueField = "CodigoCatalogo";
+                    //DdlCatalogo.DataBind();
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
+                    DdlCatalogo.DataSource = _dts;
+                    DdlCatalogo.DataTextField = "Descripcion";
+                    DdlCatalogo.DataValueField = "Codigo";
                     DdlCatalogo.DataBind();
                     break;
             }
