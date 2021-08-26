@@ -17,6 +17,7 @@
         ListItem _itemg = new ListItem();
         ListItem _itemr = new ListItem();
         DataSet _dts = new DataSet();
+        DataSet _dtsx = new DataSet();
         DataTable _dtboperacion = new DataTable();
         DataTable _dtbtelefonos = new DataTable();
         DataTable _dtbdeudor = new DataTable();
@@ -59,8 +60,7 @@
 
                 if (Request["MensajeRetornado"] != null)
                 {
-                    _mensaje = Request["MensajeRetornado"];
-                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
+                    new FuncionesDAO().FunShowJSMessage(Request["MensajeRetornado"], this, "S", "R");
                 }
             }
         }
@@ -280,7 +280,14 @@
                             DdlGenero.SelectedValue = _dts.Tables[0].Rows[0]["Genero"].ToString();
                             DdlProvincia.SelectedValue = _dts.Tables[0].Rows[0]["Provincia"].ToString();
                             FunCargarCombos(1);
-                            DdlCiudad.SelectedValue = _dts.Tables[0].Rows[0]["Ciudad"].ToString();
+
+                            _dtsx = new ConsultaDatosDAO().FunConsultaDatos(178, int.Parse(_dts.Tables[0].Rows[0]["Provincia"].ToString()),
+                                int.Parse(_dts.Tables[0].Rows[0]["Ciudad"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
+
+                            if (_dtsx.Tables[0].Rows.Count > 0)
+                            {                                                                
+                                DdlCiudad.SelectedValue = _dts.Tables[0].Rows[0]["Ciudad"].ToString();
+                            }
                             DdlEstCivil.SelectedValue = _dts.Tables[0].Rows[0]["EstCivil"].ToString();
                             ChkEstado.Text = _dts.Tables[0].Rows[0]["Estado"].ToString();
                             ChkEstado.Checked = _dts.Tables[0].Rows[0]["Estado"].ToString() == "Activo" ? true : false;
@@ -1692,6 +1699,30 @@
                     }
                 }
 
+                if (DdlGenero.SelectedValue == "0")
+                {
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Género..!", this, "W", "L");
+                    return;
+                }
+
+                if (DdlProvincia.SelectedValue == "0")
+                {
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Provincia..!", this, "W", "L");
+                    return;
+                }
+
+                if (DdlCiudad.SelectedValue == "0")
+                {
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Ciudad..!", this, "W", "L");
+                    return;
+                }
+
+                if (DdlEstCivil.SelectedValue == "0")
+                {
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Est. Civil..!", this, "W", "L");
+                    return;
+                }
+
                 _dts = new ConsultaDatosDAO().FunUpdateDeudor(0, int.Parse(ViewState["CodigoPERS"].ToString()),
                     DdlTipoDocumento.SelectedValue, TxtNumeroDocumento.Text.Trim(), TxtNombres.Text.Trim().ToUpper(),
                     TxtApellidos.Text.Trim().ToUpper(), TxtFechaNacimiento.Text.Trim(), DdlGenero.SelectedValue, DdlEstCivil.SelectedValue,
@@ -1699,9 +1730,11 @@
                     ChkEstado.Checked ? "Activo" : "Inactivo", ViewState["NumeroDocumento"].ToString(), 0, 0, 0,
                     int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
-                _response = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsoluteUri, "Grabado con Éxito");
+                //_response = string.Format("{0}?MensajeRetornado={1}", Request.Url.AbsoluteUri, "Grabado con Éxito");
 
-                Response.Redirect(_response, true);
+                Response.Redirect("WFrm_NewDeudor.aspx?MensajeRetornado=Guardado con Éxito", true);
+
+                //Response.Redirect(_response, true);
 
             }
             catch (Exception ex)

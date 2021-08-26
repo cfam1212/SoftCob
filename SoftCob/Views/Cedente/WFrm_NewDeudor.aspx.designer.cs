@@ -69,6 +69,15 @@ namespace SoftCob.Views.Cedente
         protected global::System.Web.UI.UpdateProgress updProgress;
 
         /// <summary>
+        /// Control UpdateProgress1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress UpdateProgress1;
+
+        /// <summary>
         /// Control updCabecera.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace SoftCob.Views.Cedente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.FilteredTextBoxExtender TxtNumeroDocumento_FilteredTextBoxExtender;
+
+        /// <summary>
+        /// Control UpdBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdBuscar;
 
         /// <summary>
         /// Control ImgBuscar.

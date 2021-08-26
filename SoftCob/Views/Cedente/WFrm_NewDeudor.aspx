@@ -171,6 +171,7 @@
             <div class="panel-heading" style="background-color: #79BBB8;">
                 <asp:Label ID="Lbltitulo" runat="server"></asp:Label>
             </div>
+
             <asp:UpdatePanel ID="updError" runat="server">
                 <ContentTemplate>
                     <div style="background-color: beige; text-align: left; width: 100%; font-size: 25px">
@@ -178,6 +179,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
+
             <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdBotones">
                     <ProgressTemplate>
@@ -189,6 +191,19 @@
                     </ProgressTemplate>
                 </asp:UpdateProgress>
             </div>
+
+            <div class="panel-info">
+                <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdBuscar">
+                    <ProgressTemplate>
+                        <div class="overlay" />
+                        <div class="overlayContent">
+                            <h2>Procesando..</h2>
+                            <img src="../../Images/load.gif" alt="Loading" border="1" />
+                        </div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+            </div>
+
             <div class="panel-body">
                 <h3 class="label label-primary" style="font-size: 14px; display: block; text-align: left">Datos - TITULAR</h3>
                 <asp:UpdatePanel ID="updCabecera" runat="server">
@@ -220,7 +235,12 @@
                                     </asp:FilteredTextBoxExtender>
                                 </td>
                                 <td style="text-align: center">
-                                    <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/buscarbg.png" OnClick="ImgBuscar_Click" TabIndex="600" Height="30px" />
+                                    <asp:UpdatePanel runat="server" ID="UpdBuscar">
+                                        <ContentTemplate>
+                                            <asp:ImageButton ID="ImgBuscar" runat="server" ImageUrl="~/Botones/buscarbg.png" OnClick="ImgBuscar_Click" TabIndex="600" Height="30px" />
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                    
                                 </td>
                             </tr>
                             <tr>
