@@ -48,12 +48,6 @@
 
             if (!IsPostBack)
             {
-                //if (Session["IN-CALL"].ToString() == "SI")
-                //{
-                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                //    return;
-                //}
-
                 _dtbcodigos.Columns.Add("Codigo");
                 ViewState["CodigosOPM"] = _dtbcodigos;
                 ViewState["CodigoLista"] = Request["CodigoLista"];
@@ -779,15 +773,18 @@
                     return;
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(DdlCedente.SelectedValue),
+                if (ViewState["Nuevo"].ToString() == "0")
+                {
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(DdlCedente.SelectedValue),
                     int.Parse(DdlCatalogo.SelectedValue), 0, "", TxtLista.Text.Trim().ToUpper(),
                     TxtFechaInicio.Text.Trim(), Session["Conectar"].ToString());
 
-                if (_dts.Tables[0].Rows.Count > 0)
-                {
-                    new FuncionesDAO().FunShowJSMessage("Nombre de la Lista de Trabajo ya Existe..!", this, "E", "C");
-                    _continuar = false;
-                    return;
+                    if (_dts.Tables[0].Rows.Count > 0)
+                    {
+                        new FuncionesDAO().FunShowJSMessage("Nombre de la Lista de Trabajo ya Existe..!", this, "E", "C");
+                        _continuar = false;
+                        return;
+                    }
                 }
 
                 _continuar = FunValidarCampos();
@@ -815,7 +812,7 @@
                                 _efecto, "", Session["Conectar"].ToString());
                             _mensaje = _dts.Tables[0].Rows[0][0].ToString();
                         }
-                        if (_mensaje == "OK") Response.Redirect("WFrm_ListaTrabajoAdminEFE.aspx?MensajeRetornado='Guardado con Éxito'", true);
+                        if (_mensaje == "OK") Response.Redirect("WFrm_ListaTrabajoAdminEFE.aspx?MensajeRetornado=Guardado con Éxito", true);
                         else new FuncionesDAO().FunShowJSMessage(_mensaje, this);
                     }
                     else

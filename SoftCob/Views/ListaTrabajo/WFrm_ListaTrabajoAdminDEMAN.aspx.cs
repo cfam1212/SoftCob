@@ -5,7 +5,7 @@
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    public partial class WFrm_ListaTrabajoAdminADE : Page
+    public partial class WFrm_ListaTrabajoAdminDEMAN : Page
     {
         #region Variables
         DataSet _dts = new DataSet();
@@ -20,22 +20,13 @@
 
             if (!IsPostBack)
             {
-            //    if (Session["IN-CALL"].ToString() == "SI")
-            //    {
-            //        new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-            //        Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-            //        return;
-            //    }
-
-                Lbltitulo.Text = "Administrar Listas de Trabajo EXT.";
+                Lbltitulo.Text = "Administrar Listas de Trabajo << ON DEMAND >>";
                 FunCargarMantenimiento();
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
                 if (Request["MensajeRetornado"] != null)
                 {
                     _mensaje = Request["MensajeRetornado"];
                     new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
-
                 }
             }
         }
@@ -46,7 +37,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(24, 1, 0, 0, "", "", "", Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(24, 5, 0, 0, "", "", "", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -70,11 +61,11 @@
         {
             GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
             _codigo = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Codigo"].ToString();
-            Response.Redirect("WFrm_NuevaListaTrabajoADE.aspx?CodigoLista=" + _codigo + "&Regresar=L", true);
+            Response.Redirect("WFrm_NuevaListaOnDemand.aspx?CodigoLista=" + _codigo + "&Regresar=L", true);
         }
         protected void BtnNuevo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("WFrm_NuevaListaTrabajoADE.aspx?CodigoLista=0" + "&Regresar=L", true);
+            Response.Redirect("WFrm_NuevaListaOnDemand.aspx?CodigoLista=0" + "&Regresar=L", true);
         }
 
         #endregion

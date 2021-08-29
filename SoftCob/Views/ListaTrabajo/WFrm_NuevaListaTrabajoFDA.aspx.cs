@@ -4,7 +4,6 @@
     using ControllerSoftCob;
     using System;
     using System.Data;
-    using System.Drawing;
     using System.Globalization;
     using System.IO;
     using System.Linq;
@@ -49,11 +48,6 @@
 
             if (!IsPostBack)
             {
-                //if (Session["IN-CALL"].ToString() == "SI")
-                //{
-                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                //    return;
-                //}
                 _dtbcodigos.Columns.Add("Grupo");
                 ViewState["Grupos"] = _dtbcodigos;
                 _dtbgstsave.Columns.Add("CodigoCLDE");
@@ -64,7 +58,7 @@
 
                 ViewState["DatosSave"] = _dtbgstsave;
                 ViewState["CodigoLista"] = Request["CodigoLista"];
-                ViewState["Preview"] = false;
+                //ViewState["Preview"] = false;
                 ViewState["CodigoCEDE"] = "0";
                 ViewState["CodigoLTCA"] = "0";
                 ViewState["CodigoCPCE"] = "0";
@@ -113,6 +107,7 @@
                     TxtFechaInicio.Enabled = false;
                 }
             }
+            else GrdvPreview.DataSource = ViewState["Preview"];
         }
         #endregion
 
@@ -150,7 +145,7 @@
                 GrdvEstrategia.DataSource = _dts;
                 GrdvEstrategia.DataBind();
                 ViewState["Estrategia"] = _dts.Tables[0];
-                ViewState["Preview"] = true;
+                //ViewState["Preview"] = true;
                 ImgPreview.ImageUrl = "~/Botones/Buscargris.png";
                 ImgPreview.Enabled = false;
                 LblPreview.Visible = false;
@@ -683,33 +678,6 @@
         {
             try
             {
-                //Response.Clear();
-                //Response.Buffer = true;
-                //string FileName = "PreviewApy_" + DdlCedente.SelectedItem.ToString() + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
-                //Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
-                //Response.Charset = "";
-                //Response.ContentType = "application/vnd.ms-excel";
-                //using (StringWriter sw = new StringWriter())
-                //{
-                //    HtmlTextWriter hw = new HtmlTextWriter(sw);
-                //    GrdvPreview.AllowPaging = false;
-                //    GrdvPreview.DataSource = (DataSet)Session["Preview"];
-                //    GrdvPreview.DataBind();
-                //    GrdvPreview.HeaderRow.BackColor = Color.White;
-                //    foreach (GridViewRow row in GrdvPreview.Rows)
-                //    {
-                //        row.BackColor = Color.White;
-                //        row.Cells[1].Style.Add("mso-number-format", "\\@");
-                //        row.Cells[2].Style.Add("mso-number-format", "\\@");
-                //    }
-                //    GrdvPreview.RenderControl(hw);
-                //    string style = @"<style> .textmode { } </style>";
-                //    Response.Write(style);
-                //    Response.Output.Write(sw.ToString());
-                //    Response.Flush();
-                //    Response.End();
-                //}
-
                 _dtb = (DataTable)ViewState["Preview"];
                 using (XLWorkbook wb = new XLWorkbook())
                 {
@@ -753,15 +721,18 @@
                     return;
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(ViewState["CodigoCEDE"].ToString()),
+                if (ViewState["Nuevo"].ToString() == "0")
+                {
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(ViewState["CodigoCEDE"].ToString()),
                     int.Parse(ViewState["CodigoCPCE"].ToString()), 0, "", TxtLista.Text.Trim().ToUpper(),
                     TxtFechaInicio.Text.Trim(), Session["Conectar"].ToString());
 
-                if (_dts.Tables[0].Rows.Count > 0)
-                {
-                    new FuncionesDAO().FunShowJSMessage("Nombre de la _lista de Trabajo ya Existe..!", this, "E", "C");
-                    _continuar = false;
-                    return;
+                    if (_dts.Tables[0].Rows.Count > 0)
+                    {
+                        new FuncionesDAO().FunShowJSMessage("Nombre de la _lista de Trabajo ya Existe..!", this, "E", "C");
+                        _continuar = false;
+                        return;
+                    }
                 }
 
                 _continuar = FunValidarCampos();
@@ -862,7 +833,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void BtnSalir_Click(object sender, EventArgs e)
         {
             Response.Redirect("WFrm_ListaTrabajoAdminFDA.aspx", true);

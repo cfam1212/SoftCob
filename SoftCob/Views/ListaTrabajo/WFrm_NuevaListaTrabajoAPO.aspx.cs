@@ -50,12 +50,6 @@
 
             if (!IsPostBack)
             {
-                //if (Session["IN-CALL"].ToString() == "SI")
-                //{
-                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                //    return;
-                //}
-
                 _dtbcodigos.Columns.Add("Codigo");
                 _dtbcodigos.Columns.Add("Descripcion");
                 ViewState["CodigosOPM"] = _dtbcodigos;
@@ -173,7 +167,6 @@
                 GrdvEstrategia.DataSource = _dts;
                 GrdvEstrategia.DataBind();
                 ViewState["Estrategia"] = _dts.Tables[0];
-                ViewState["Preview"] = true;
                 ImgPreview.ImageUrl = "~/Botones/Buscargris.png";
                 ImgPreview.Enabled = false;
                 LblPreview.Visible = false;
@@ -981,21 +974,24 @@
                     return;
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(DdlCedente.SelectedValue),
+                if (ViewState["Nuevo"].ToString() == "0")
+                {
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(94, int.Parse(DdlCedente.SelectedValue),
                     int.Parse(DdlCatalogo.SelectedValue), 0, "", TxtLista.Text.Trim().ToUpper(),
                     TxtFechaInicio.Text.Trim(), Session["Conectar"].ToString());
 
-                if (_dts.Tables[0].Rows.Count > 0)
-                {
-                    new FuncionesDAO().FunShowJSMessage("Nombre de la Lista de Trabajo ya Existe..!", this, "E", "C");
-                    _continuar = false;
-                    return;
-                }
+                    if (_dts.Tables[0].Rows.Count > 0)
+                    {
+                        new FuncionesDAO().FunShowJSMessage("Nombre de la Lista de Trabajo ya Existe..!", this, "E", "C");
+                        _continuar = false;
+                        return;
+                    }
 
-                if (DdlGestor.SelectedValue == "0")
-                {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "W", "C");
-                    return;
+                    if (DdlGestor.SelectedValue == "0")
+                    {
+                        new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "W", "C");
+                        return;
+                    }
                 }
 
                 _continuar = FunValidarCampos();

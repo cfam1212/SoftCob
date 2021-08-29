@@ -436,8 +436,10 @@
     <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdmin.aspx" />
     <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminADE.aspx" />
     <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminAP.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminDEMAN.aspx" />
     <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminEFE.aspx" />
     <Content Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminFDA.aspx" />
+    <Content Include="Views\ListaTrabajo\WFrm_NuevaListaOnDemand.aspx" />
     <Content Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajo.aspx" />
     <Content Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoADE.aspx" />
     <Content Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajoAPO.aspx" />
@@ -1207,6 +1209,13 @@
     <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminAP.aspx.designer.cs">
       <DependentUpon>WFrm_ListaTrabajoAdminAP.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminDEMAN.aspx.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminDEMAN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminDEMAN.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaTrabajoAdminDEMAN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminEFE.aspx.cs">
       <DependentUpon>WFrm_ListaTrabajoAdminEFE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1220,6 +1229,13 @@
     </Compile>
     <Compile Include="Views\ListaTrabajo\WFrm_ListaTrabajoAdminFDA.aspx.designer.cs">
       <DependentUpon>WFrm_ListaTrabajoAdminFDA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaOnDemand.aspx.cs">
+      <DependentUpon>WFrm_NuevaListaOnDemand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaOnDemand.aspx.designer.cs">
+      <DependentUpon>WFrm_NuevaListaOnDemand.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\ListaTrabajo\WFrm_NuevaListaTrabajo.aspx.cs">
       <DependentUpon>WFrm_NuevaListaTrabajo.aspx</DependentUpon>
@@ -1537,6 +1553,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Archivos\" />
     <Folder Include="CambiosFront\" />
     <Folder Include="SP\" />
   </ItemGroup>

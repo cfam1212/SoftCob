@@ -38,12 +38,6 @@
 
             if (!IsPostBack)
             {
-                if (Session["IN-CALL"].ToString() == "SI")
-                {
-                    Response.Redirect("../Gestion/WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                    return;
-                }
-
                 ViewState["CodigoLista"] = Request["CodigoLista"];
                 ViewState["Regresar"] = Request["Regresar"];
                 ViewState["CodLista"] = null;
@@ -607,8 +601,6 @@
 
         protected void DdlCatalogo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
-            //FunCargarCombos(1);
             FunCargarCombos(2);
             FunCargarCombos(3);
         }
