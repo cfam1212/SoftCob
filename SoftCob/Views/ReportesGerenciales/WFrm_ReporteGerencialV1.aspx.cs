@@ -291,7 +291,9 @@
             {
                 _codigo = int.Parse(e.Parameters["CodigoID"].Values[0].ToString());
 
-                _dts = new ConsultaDatosDAO().FunRepGerencialG(DdlGestor.SelectedValue == "0" ? 2 : 3, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", _codigo, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunRepGerencialG(DdlGestor.SelectedValue == "0" ? 2 : 3, int.Parse(DdlCedente.SelectedValue), 
+                    int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), int.Parse(DdlGestor.SelectedValue), 
+                    "sp_RepGerencialV1", "", "", "", "", "", "", _codigo, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
 
                 _dtbresult = _dts.Tables[0];
 
@@ -310,7 +312,9 @@
             {
                 _codigo = int.Parse(e.Parameters["CodigoID"].Values[0].ToString());
 
-                _dts = new ConsultaDatosDAO().FunRepGerencialG(DdlGestor.SelectedValue == "0" ? 4 : 5, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", _codigo, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunRepGerencialG(DdlGestor.SelectedValue == "0" ? 4 : 5, int.Parse(DdlCedente.SelectedValue), 
+                    int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), int.Parse(DdlGestor.SelectedValue), 
+                    "sp_RepGerencialV1", "", "", "", "", "", "", _codigo, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
 
                 _dtbresult = _dts.Tables[0];
 

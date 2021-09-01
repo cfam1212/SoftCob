@@ -2,7 +2,9 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
+<%@ Register assembly="Microsoft.ReportViewer.WebForms" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
 
 <!DOCTYPE html>
 
@@ -107,7 +109,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-info">
+<%--            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -117,7 +119,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>
+            </div>--%>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Always">
                     <ContentTemplate>
@@ -219,15 +221,15 @@
                         <table style="width: 100%" runat="server" id="TblReporte">
                             <tr>
                                 <td style="width: 5%"></td>
-                                <td style="width: 90%">
-                                    <rsweb:ReportViewer ID="RptViewDatos" runat="server" Width="100%">
-                                    </rsweb:ReportViewer>
-                                </td>
+                                <td style="width: 90%"></td>
                                 <td style="width: 5%"></td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td></td>
+                                <td>
+                                    <rsweb:ReportViewer ID="RptViewDatos" runat="server" Width="100%">
+                                    </rsweb:ReportViewer>
+                                </td>
                                 <td></td>
                             </tr>
                         </table>

@@ -64,7 +64,7 @@
 
                             ScriptManager.RegisterStartupScript(this, GetType(), "pop",
                                 "javascript: alertify.set('notifier','position', 'top-center'); alertify.error('" +
-                                _mensaje + "', 50, function(){  console.log('dismissed'); });", true);
+                                _mensaje + "', 100, function(){  console.log('dismissed'); });", true);
                             Session["LICENCIA"] = "NO";
                         }
                         else
