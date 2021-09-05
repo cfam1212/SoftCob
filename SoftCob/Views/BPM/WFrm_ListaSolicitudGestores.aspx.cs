@@ -12,7 +12,8 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
-        string _codigo = "", _codigoclde = "", _codigopers = "", _codigocpce = "", _codigogest = "", _codigoesta = "", _mensaje = "";
+        string _codigo = "", _codigoclde = "", _codigopers = "", _codigocpce = "", _codigogest = "", _codigoesta = "", _mensaje = "",
+            _numerdocumento = "";
         DataTable _dtb = new DataTable();
         #endregion
 
@@ -30,16 +31,13 @@
                 if (!IsPostBack)
                 {
                     Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
-                    Lbltitulo.Text = "Lista Citaciones Solicitadas << VARIOS MEDIOS >>";
+                    Lbltitulo.Text = "Lista Notificaciones Solicitadas << VARIOS MEDIOS >>";
                     FunCargarMantenimiento();
 
-                    //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                    //    "::GSBPO GLOBAL SERVICES::", Request["MensajeRetornado"].ToString());
                     if (Request["MensajeRetornado"] != null)
                     {
                         _mensaje = Request["MensajeRetornado"];
-                        ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                            "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                        new FuncionesDAO().FunShowJSMessage(_mensaje, this, "N", "L");                            
                     }
                 }
             }
@@ -87,9 +85,10 @@
                 _codigopers = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoPERS"].ToString();
                 _codigoclde = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCLDE"].ToString();
                 _codigogest = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoGEST"].ToString();
+                _numerdocumento = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Identificacion"].ToString();
 
-                Response.Redirect("WFrm_EstablecerFechaCitacion.aspx?CodigoCITA=" + _codigo + "&CodigoPERS=" + _codigopers +
-                    "&CodigoCLDE=" + _codigoclde + "&CodigoCPCE=" + _codigocpce + "&CodigoGEST=" + _codigogest +
+                Response.Redirect("WFrm_RegistrarCitacionTime.aspx?CodigoCITA=" + _codigo + "&CodigoPERS=" + _codigopers +
+                    "&CodigoCLDE=" + _codigoclde + "&NumDocumento=" + _numerdocumento + "&CodigoGEST=" + _codigogest +
                     "&Retornar=0", true);
             }
             catch (Exception ex)
@@ -133,7 +132,7 @@
                 using (XLWorkbook wb = new XLWorkbook())
                 {
                     wb.Worksheets.Add(_dtb, "Datos");
-                    string FileName = "SolicitudCitaciones_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                    string FileName = "Solicitud_Notificacion_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
                     Response.Clear();
                     Response.Buffer = true;
                     Response.Charset = "";

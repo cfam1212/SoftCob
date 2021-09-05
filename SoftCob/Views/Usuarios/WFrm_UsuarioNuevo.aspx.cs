@@ -164,7 +164,7 @@
 
                 if (ChkCaduca.Checked)
                 {
-                    if (!new FuncionesDAO().IsDate(TxtFechaCaduca.Text))
+                    if (!new FuncionesDAO().IsDate(TxtFechaCaduca.Text, "MM/dd/yyyy"))
                     {
                         new FuncionesDAO().FunShowJSMessage("Fecha no válida..!", this, "E", "C");
                         return;

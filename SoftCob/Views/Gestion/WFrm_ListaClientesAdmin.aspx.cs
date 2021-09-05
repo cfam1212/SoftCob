@@ -10,9 +10,11 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
-        string _identificacion = "", _operacion = "", _codigocede = "", _codigocpce = "", _codigoclde = "", _codigopers = "", _fechapago = "", _volverllamar = "", _listaactiva = "", _mensaje="";
+        string _identificacion = "", _operacion = "", _codigocede = "", _codigocpce = "", _codigoclde = "", _codigopers = "", 
+            _fechapago = "", _volverllamar = "", _listaactiva = "", _codigocita = "", _mensaje ="";
         DateTime _nuevafecha;
         int _anio = 0, _mes = 0;
+        ImageButton _imgcitacion = new ImageButton();
         #endregion
 
         #region Load
@@ -139,8 +141,10 @@
             {
                 if (e.Row.RowIndex >= 0)
                 {
+                    _codigocita = GrdvDatos.DataKeys[e.Row.RowIndex].Values["CodigoCITA"].ToString();
                     _fechapago = GrdvDatos.DataKeys[e.Row.RowIndex].Values["FechaPago"].ToString();
                     _volverllamar = GrdvDatos.DataKeys[e.Row.RowIndex].Values["VolverLLamar"].ToString();
+                    _imgcitacion = (ImageButton)(e.Row.Cells[11].FindControl("ImgCitacion"));
 
                     if (_volverllamar == "SI")
                     {
@@ -171,6 +175,18 @@
                                 e.Row.Cells[8].Text = "0.00";
                             }
                         }
+                    }
+
+                    switch (_codigocita)
+                    {
+                        case "CSL":
+                        case "CPR":
+                        case "CCS":
+                        case "CGE":
+                        case "REV":
+                            _imgcitacion.ImageUrl = "~/Botones/btncitagris.png";
+                            _imgcitacion.Enabled = false;
+                            break;
                     }
                 }
             }

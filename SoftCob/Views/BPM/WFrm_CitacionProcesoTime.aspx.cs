@@ -1,18 +1,19 @@
 ﻿namespace SoftCob.Views.BPM
 {
+    using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
+    using System.IO;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using ClosedXML.Excel;
-    using System.IO;
     public partial class WFrm_CitacionProcesoTime : Page
     {
         #region Variables
         DataSet _dts = new DataSet();
-        string _codigo = "", _codigoclde = "", _codigopers = "", _terreno = "", _email = "", _whastapp = "", _mensaje = "";
+        string _codigo = "", _codigoclde = "", _codigopers = "", _terreno = "", _email = "", _whastapp = "", _mensaje = "",
+            _codigogest = "", _numdocumento = "";
+        int _contar = 0;
         DataTable _dtb = new DataTable();
         Image _imgterreno = new Image();
         Image _imgemail = new Image();
@@ -32,17 +33,23 @@
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
-                    Lbltitulo.Text = "Citaciones en Proceso";
+                    Lbltitulo.Text = "Notificaciones en Proceso";
                     FunCargarMantenimiento();
 
-                    //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                    //    "::GSBPO GLOBAL SERVICES::", Request["MensajeRetornado"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 2, 0, 0, "", "", "", Session["Conectar"].ToString());
+
+                    _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
+
+                    if (_contar > 0)
+                    {
+                        _mensaje = "Tiene " + _contar + " NOTIFIACIONES(ES) NO PROCESADA(s)";
+                        new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "C");
+                    }
+
                     if (Request["MensajeRetornado"] != null)
                     {
                         _mensaje = Request["MensajeRetornado"];
-                        ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                            "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                        new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                     }
                 }
             }
@@ -58,25 +65,28 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(247, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(247, 0, 0, 0, "", "CPR", "", Session["Conectar"].ToString());
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();
                 ViewState["GrdvDatos"] = _dts.Tables[0];
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
+                    ImgExportar.Visible = true;
+                    lblExportar.Visible = true;
                     GrdvDatos.UseAccessibleHeader = true;
                     GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(248, 0, 0, 0, "", "", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(248, 0, 0, 0, "", "CGE", "", Session["Conectar"].ToString());
 
-                if (_dts.Tables[0].Rows[0]["Citas"].ToString() != "0")
+                _contar = int.Parse(_dts.Tables[0].Rows[0]["Citas"].ToString());
+
+                if (_contar > 0)
                 {
-                    if (Request["MensajeRetornado"] == null)
-                        SIFunBasicas.Basicas.PresentarMensaje(Page,
-                            "::GSBPO GLOBAL SERVICES::", "Existe(n) " + _dts.Tables[0].Rows[0]["Citas"].ToString() +
-                            " Cita(s) en Proceso con fecha(s) fuera de rango");
+                    _mensaje = "Existe(n) " + _contar + _dts.Tables[0].Rows[0]["Citas"].ToString();
+                    _mensaje += "Notificacion(s) en Proceso con fecha(s) fuera de rango";
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "C");
                 }
             }
             catch (Exception ex)
@@ -95,23 +105,17 @@
                 _codigo = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Codigo"].ToString();
                 _codigoclde = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCLDE"].ToString();
                 _codigopers = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoPERS"].ToString();
-                Response.Redirect("WFrm_GenerarCitacion.aspx?Codigo=" + _codigo + "&CodigoPERS=" + _codigopers +
-                    "&CodigoCLDE=" + _codigoclde, true);
+                _codigogest = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoGEST"].ToString();
+                _numdocumento = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Identificacion"].ToString();
+
+                Response.Redirect("WFrm_RegistrarCitacionTime.aspx?CodigoCITA=" + _codigo + "&CodigoPERS=" + _codigopers +
+                    "&CodigoCLDE=" + _codigoclde + "&CodigoGEST=" + _codigogest + "&NumDocumento=" + _numdocumento +
+                    "&Retornar=1", true);
             }
             catch (Exception ex)
             {
                 Lblerror.Text = ex.ToString();
             }
-        }
-        protected void ImgCambiar_Click(object sender, ImageClickEventArgs e)
-        {
-            GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
-            _codigo = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCITA"].ToString();
-
-            _dts = new ConsultaDatosDAO().FunConsultaDatos(247, int.Parse(_codigo), 0, 0, "", "", "",
-                ViewState["Conectar"].ToString());
-
-            Response.Redirect(Request.Url.AbsolutePath, true);
         }
         protected void GrdvDatos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -150,7 +154,7 @@
                 using (XLWorkbook wb = new XLWorkbook())
                 {
                     wb.Worksheets.Add(_dtb, "Datos");
-                    string FileName = "CitacionesGeneradas_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                    string FileName = "Notificacones_Generadas_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
                     Response.Clear();
                     Response.Buffer = true;
                     Response.Charset = "";

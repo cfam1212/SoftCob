@@ -261,13 +261,13 @@
                     return;
                 }
 
-                if (!new FuncionesDAO().IsDate(TxtFechaInicio.Text))
+                if (!new FuncionesDAO().IsDate(TxtFechaInicio.Text, "MM/dd/yyyy"))
                 {
                     new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
                     return;
                 }
 
-                if (!new FuncionesDAO().IsDate(TxtFechaFin.Text))
+                if (!new FuncionesDAO().IsDate(TxtFechaFin.Text, "MM/dd/yyyy"))
                 {
                     new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
                     return;

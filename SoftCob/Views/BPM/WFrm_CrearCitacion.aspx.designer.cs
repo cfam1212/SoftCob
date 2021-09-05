@@ -447,13 +447,13 @@ namespace SoftCob.Views.BPM
         protected global::System.Web.UI.HtmlControls.HtmlTableRow TrTerreno4;
 
         /// <summary>
-        /// Control TxtObservaTerreno.
+        /// Control DdlSector.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtObservaTerreno;
+        protected global::System.Web.UI.WebControls.DropDownList DdlSector;
 
         /// <summary>
         /// Control ImgAgregarTerreno.
@@ -474,13 +474,13 @@ namespace SoftCob.Views.BPM
         protected global::System.Web.UI.HtmlControls.HtmlTableRow TrTerreno5;
 
         /// <summary>
-        /// Control Panel6.
+        /// Control TxtObservaTerreno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel6;
+        protected global::System.Web.UI.WebControls.TextBox TxtObservaTerreno;
 
         /// <summary>
         /// Control TrTerreno6.
@@ -490,6 +490,24 @@ namespace SoftCob.Views.BPM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow TrTerreno6;
+
+        /// <summary>
+        /// Control Panel6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel6;
+
+        /// <summary>
+        /// Control TrTerreno7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrTerreno7;
 
         /// <summary>
         /// Control PnlTerreno.

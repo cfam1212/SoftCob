@@ -263,13 +263,13 @@
                 _validar = false;
             }
 
-            if (!new FuncionesDAO().IsDate(TxtFechaInicio.Text))
+            if (!new FuncionesDAO().IsDate(TxtFechaInicio.Text, "MM/dd/yyyy"))
             {
                 new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this, "W", "C");
                 _validar = false;
             }
 
-            if (!new FuncionesDAO().IsDate(TxtFechaFin.Text))
+            if (!new FuncionesDAO().IsDate(TxtFechaFin.Text, "MM/dd/yyyy"))
             {
                 new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this, "E", "C");
                 _validar = false;
@@ -344,12 +344,12 @@
 
                 if (ChkFecha.Checked)
                 {
-                    if (!new FuncionesDAO().IsDate(TxtFechaDesde.Text))
+                    if (!new FuncionesDAO().IsDate(TxtFechaDesde.Text, "MM/dd/yyyy"))
                     {
                         new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this, "E", "C");
                         _validar = false;
                     }
-                    if (!new FuncionesDAO().IsDate(TxtFechaHasta.Text))
+                    if (!new FuncionesDAO().IsDate(TxtFechaHasta.Text, "MM/dd/yyyy"))
                     {
                         new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this, "E", "C");
                         _validar = false;

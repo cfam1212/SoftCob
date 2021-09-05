@@ -40,58 +40,10 @@
 
             if (!IsPostBack)
             {
-                //if (Session["IN-CALL"].ToString() == "SI")
-                //{
-                //    new ElastixDAO().ElastixHangUp(Session["IPLocalAdress"].ToString(), 9999);
-                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                //    return;
-                //}
-
                 TxtFechaNacimiento.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 ViewState["Codigo"] = Request["Codigo"];
                 ViewState["Tipo"] = Request["Tipo"];
                 ViewState["CodigoEstu"] = "0";
-
-                //_dtbotrosestudios.Columns.Add("Codigo");
-                //_dtbotrosestudios.Columns.Add("Institucion");
-                //_dtbotrosestudios.Columns.Add("FechaDesde");
-                //_dtbotrosestudios.Columns.Add("FechaHasta");
-                //_dtbotrosestudios.Columns.Add("Titulo");
-                //ViewState["OtrosEstudios"] = _dtbotrosestudios;
-
-                //_dtbidiomas.Columns.Add("Codigo");
-                //_dtbidiomas.Columns.Add("Idioma");
-                //_dtbidiomas.Columns.Add("NivelH");
-                //_dtbidiomas.Columns.Add("NivelE");
-                //_dtbidiomas.Columns.Add("CodigoIdioma");
-                //ViewState["Idiomas"] = _dtbidiomas;
-
-                //_dtbexperiencia.Columns.Add("Codigo");
-                //_dtbexperiencia.Columns.Add("Empresa");
-                //_dtbexperiencia.Columns.Add("FecInicio");
-                //_dtbexperiencia.Columns.Add("FecFin");
-                //_dtbexperiencia.Columns.Add("Cargo");
-                //_dtbexperiencia.Columns.Add("Descripcion");
-                //_dtbexperiencia.Columns.Add("Motivo");
-                //_dtbexperiencia.Columns.Add("CodigoMotivo");
-                //ViewState["Experiencia"] = _dtbexperiencia;
-
-                //_dtbreflaborales.Columns.Add("Codigo");
-                //_dtbreflaborales.Columns.Add("Empresa");
-                //_dtbreflaborales.Columns.Add("Nombre");
-                //_dtbreflaborales.Columns.Add("Cargo");
-                //_dtbreflaborales.Columns.Add("Telefono");
-                //_dtbreflaborales.Columns.Add("Celular");
-                //_dtbreflaborales.Columns.Add("Email");
-                //ViewState["RefLaboral"] = _dtbreflaborales;
-
-                //_dtbrefpersonales.Columns.Add("Codigo");
-                //_dtbrefpersonales.Columns.Add("Nombre");
-                //_dtbrefpersonales.Columns.Add("Parentesco");
-                //_dtbrefpersonales.Columns.Add("Telefono");
-                //_dtbrefpersonales.Columns.Add("Celular");
-                //_dtbrefpersonales.Columns.Add("CodigoParen");
-                //ViewState["RefPersonal"] = _dtbrefpersonales;
                 ViewState["identificacion"] = null;
                 FunCargarCombos();
 
@@ -428,7 +380,7 @@
                     }
                 }
 
-                if (!new FuncionesDAO().IsDate(TxtFechaNacimiento.Text))
+                if (!new FuncionesDAO().IsDate(TxtFechaNacimiento.Text, "MM/dd/yyyy"))
                 {
                     new FuncionesDAO().FunShowJSMessage("Fecha de Nacimiento Incorrecta..! Formato(MM/dd/yyyy)", this, "E", "C");
                     return;
@@ -884,13 +836,13 @@
                     return;
                 }
 
-                if (!new FuncionesDAO().IsDate(TxtFecIniOtrosE.Text))
+                if (!new FuncionesDAO().IsDate(TxtFecIniOtrosE.Text, "MM/dd/yyyy"))
                 {
                     new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
                     return;
                 }
 
-                if (!new FuncionesDAO().IsDate(TxtFecFinOtrosE.Text))
+                if (!new FuncionesDAO().IsDate(TxtFecFinOtrosE.Text, "MM/dd/yyyy"))
                 {
                     new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
                     return;
@@ -955,13 +907,13 @@
                     return;
                 }
 
-                if (!new FuncionesDAO().IsDate(TxtFecIniEmpre.Text))
+                if (!new FuncionesDAO().IsDate(TxtFecIniEmpre.Text, "MM/dd/yyyy"))
                 {
                     new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "W", "C");
                     return;
                 }
 
-                if (!new FuncionesDAO().IsDate(TxtFecFinEmpre.Text))
+                if (!new FuncionesDAO().IsDate(TxtFecFinEmpre.Text, "MM/dd/yyyy"))
                 {
                     new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "W", "C");
                     return;

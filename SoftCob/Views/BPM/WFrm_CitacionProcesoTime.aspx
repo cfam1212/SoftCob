@@ -54,7 +54,7 @@
                                 <td>
                                     <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
                                         CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                        ShowHeaderWhenEmpty="True" DataKeyNames="CodigoCITA,CodigoPERS,CodigoCLDE,Terreno,Email,Whastapp" OnRowDataBound="GrdvDatos_RowDataBound">
+                                        ShowHeaderWhenEmpty="True" DataKeyNames="CodigoCITA,CodigoPERS,CodigoCLDE,Terreno,Email,Whastapp,CodigoGEST,Identificacion" OnRowDataBound="GrdvDatos_RowDataBound">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
                                             <asp:BoundField DataField="FechaCita" HeaderText="Fecha" />
@@ -64,31 +64,25 @@
                                             <asp:BoundField DataField="Observacion" HeaderText="Observación"></asp:BoundField>
                                             <asp:TemplateField HeaderText="Terreno">
                                                 <ItemTemplate>
-                                                    <asp:Image ID="ImgTerreno" runat="server" Height="20px" ImageUrl="~/Botones/vistonegro.png" />
+                                                    <asp:Image ID="ImgTerreno" runat="server" Height="20px" ImageUrl="~/Botones/cerrargris.png" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Email">
                                                 <ItemTemplate>
-                                                    <asp:Image ID="ImgEmail" runat="server" Height="20px" ImageUrl="~/Botones/vistonegro.png" />
+                                                    <asp:Image ID="ImgEmail" runat="server" Height="20px" ImageUrl="~/Botones/cerrargris.png" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Whastapp">
                                                 <ItemTemplate>
-                                                    <asp:Image ID="ImgWhastapp" runat="server" Height="20px" ImageUrl="~/Botones/vistonegro.png" />
+                                                    <asp:Image ID="ImgWhastapp" runat="server" Height="20px" ImageUrl="~/Botones/cerrargris.png" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Generar">
                                                 <ItemTemplate>
                                                     <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btncitaprocesobg.png" OnClick="ImgCitacion_Click" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" />
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Cambiar">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgCambiar" runat="server" Height="20px" ImageUrl="~/Botones/citamedicabg.png" OnClientClick="return asegurar();" OnClick="ImgCambiar_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

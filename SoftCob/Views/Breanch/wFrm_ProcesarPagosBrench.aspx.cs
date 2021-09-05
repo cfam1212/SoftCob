@@ -24,12 +24,6 @@
 
             if (!IsPostBack)
             {
-                //if (Session["IN-CALL"].ToString() == "SI")
-                //{
-                //    Response.Redirect("WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" + Session["IdListaCabecera"].ToString(), true);
-                //    return;
-                //}
-
                 ViewState["Anio"] = DateTime.Now.Year.ToString();
                 ViewState["Mes"] = DateTime.Now.ToString("MM");
                 ViewState["MesName"] = DateTime.Now.ToString("MMMM").ToUpper();
@@ -205,7 +199,7 @@
                     return;
                 }
 
-                if (!new FuncionesDAO().IsDate(TxtFechaProceso.Text))
+                if (!new FuncionesDAO().IsDate(TxtFechaProceso.Text, "MM/dd/yyyy"))
                 {
                     new FuncionesDAO().FunShowJSMessage("Fecha Incorrecta..!", this, "E", "C");
                     return;

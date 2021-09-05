@@ -910,7 +910,7 @@
                     return;
                 }
 
-                if (!new FuncionesDAO().IsDate(TxtFechaPE.Text.Trim()))
+                if (!new FuncionesDAO().IsDate(TxtFechaPE.Text.Trim(), "MM/dd/yy"))
                 {
                     new FuncionesDAO().FunShowJSMessage("Fecha de Permiso Incorrecta..!", this, "E", "C");
                     return;

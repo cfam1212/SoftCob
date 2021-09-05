@@ -9,7 +9,6 @@
     using System.Web.UI;
     using System.Web.UI.WebControls;
     using System.Threading;
-
     public partial class WFrm_CrearCitacion : Page
     {
         #region Variables
@@ -19,7 +18,7 @@
         DataTable _dtbemail = new DataTable();
         DataTable _dtbterreno = new DataTable();
         decimal _totalExigible = 0.00M, _totalDeuda = 0.00M;
-        string _correos = "", _codigo = "0", _observacion = "", _codigocomparar = "0";
+        string _correos = "", _codigo = "0", _observacion = "", _codigocomparar = "0", _tipocliente = "", _cedula = "", _sql = "";
         CheckBox _chkwhatsapp = new CheckBox();
         CheckBox _chkemail = new CheckBox();
         CheckBox _chkterreno = new CheckBox();
@@ -94,21 +93,23 @@
             switch (opcion)
             {
                 case 0:
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(207, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
+                        "", Session["Conectar"].ToString());
 
-                    DdlDireccion.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO CLIENTE",
-                        "--Seleccione Tipo Direccion--", "S");
+                    DdlDireccion.DataSource = _dts;
                     DdlDireccion.DataTextField = "Descripcion";
                     DdlDireccion.DataValueField = "Codigo";
                     DdlDireccion.DataBind();
 
-                    //DdlTipoMail.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO CLIENTE",
-                    //    "--Seleccione Tipo Correo--", "S");
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(37, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0, "", "", "",
-                        Session["Conectar"].ToString());
                     DdlTipoMail.DataSource = _dts;
                     DdlTipoMail.DataTextField = "Descripcion";
                     DdlTipoMail.DataValueField = "Codigo";
                     DdlTipoMail.DataBind();
+
+                    DdlSector.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO SECTOR", "--Seleccione Sector--", "S");
+                    DdlSector.DataTextField = "Descripcion";
+                    DdlSector.DataValueField = "Codigo";
+                    DdlSector.DataBind();
 
                     break;
                 default:
@@ -147,9 +148,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
-  
-
         protected void ChkWathaspp_CheckedChanged(object sender, EventArgs e)
         {
             TxtObservaWhatsapp.Text = "";
@@ -278,10 +276,25 @@
                 }
 
                 TrEmail5.Visible = true;
-                //_dts = new ConsultaDatosDAO().FunInsertAdicionales(1, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
-                //    "CORREO", DdlTipoMail.SelectedValue, RdbEmail.SelectedValue, TxtEmail.Text.Trim().ToLower(),
-                //    "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                //    "", "", Session["Conectar"].ToString());
+
+                if (DdlTipoMail.SelectedItem.ToString() == "TITULAR")
+                {
+                    _tipocliente = "TIT";
+                    _cedula = ViewState["NumeroDocumento"].ToString();
+                }
+                else
+                {
+                    _sql = "SELECT TipoCliente=DER.dere_tiporeferencia,CedulaGAR=DER.dere_numdocumento FROM SoftCob_DEUDOR_REFERENCIAS DER (NOLOCK) ";
+                    _sql += "WHERE DER.pers_codigo=" + ViewState["CodigoPERS"].ToString() + " AND DER.dere_numdocumento='" + DdlTipoMail.SelectedValue + "'";
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
+
+                    _tipocliente = _dts.Tables[0].Rows[0]["TipoCliente"].ToString();
+                    _cedula = _dts.Tables[0].Rows[0]["CedulaGAR"].ToString();
+                }
+
+                _dts = new ConsultaDatosDAO().FunInsertCorreoDireccion(0, _cedula, "CORREO", _tipocliente, RdbEmail.SelectedValue, "",
+                    "", TxtEmail.Text.Trim().ToLower(), "", ViewState["NumeroDocumento"].ToString(), "", "", 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
+                                    Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(234, 0, 0, 0, "TIPO CORREO", "CORREO",
                     ViewState["NumeroDocumento"].ToString(), Session["Conectar"].ToString().ToString());
@@ -338,10 +351,7 @@
                 GrdvEmails.DataSource = _dtbemail;
                 GrdvEmails.DataBind();
 
-                //_dts = new ConsultaDatosDAO().FunInsertAdicionales(4, int.Parse(_codigo),
-                //    0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "",
-                //    "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                //    Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(208, 5, int.Parse(_codigo), 0, "", "", "", Session["Conectar"].ToString().ToString());
             }
             catch (Exception ex)
             {
@@ -363,6 +373,7 @@
                 TrTerreno4.Visible = false;
                 TrTerreno5.Visible = false;
                 TrTerreno6.Visible = false;
+                TrTerreno7.Visible = false;
                 GrdvTerreno.DataSource = null;
                 GrdvTerreno.DataBind();
 
@@ -374,6 +385,7 @@
                     TrTerreno4.Visible = true;
                     TrTerreno5.Visible = true;
                     TrTerreno6.Visible = true;
+                    TrTerreno7.Visible = true;
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(234, 0, 0, 0, "TIPO DIRECCION", "DIRECCION",
                         ViewState["NumeroDocumento"].ToString(), Session["Conectar"].ToString().ToString());
@@ -426,14 +438,28 @@
 
                 TrTerreno6.Visible = true;
 
-                //_dts = new ConsultaDatosDAO().FunInsertAdicionales(2, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
-                //    "DIRECCION", DdlDireccion.SelectedValue, RdbTerreno.SelectedValue, TxtDireccion.Text.Trim().ToUpper(),
-                //    TxtReferencia.Text.Trim().ToUpper(), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                //    "", "", "", "", "", "", "", "", Session["Conectar"].ToString());
+                if (DdlDireccion.SelectedItem.ToString() == "TITULAR")
+                {
+                    _tipocliente = "TIT";
+                    _cedula = ViewState["NumeroDocumento"].ToString();
+                }
+                else
+                {
+                    _sql = "SELECT TipoCliente=DER.dere_tiporeferencia,CedulaGAR=DER.dere_numdocumento FROM SoftCob_DEUDOR_REFERENCIAS DER (NOLOCK) ";
+                    _sql += "WHERE DER.pers_codigo=" + ViewState["CodigoPERS"].ToString() + " AND DER.dere_numdocumento='" + DdlDireccion.SelectedValue + "'";
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
 
-                //_dts = new ConsultaDatosDAO().FunInsertAdicionales(6, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
-                //    "DIRECCION", "TIPO DIRECCION", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                //    "", "", "", "", "", "", "", "", "", "", "", "", Session["Conectar"].ToString());
+                    _tipocliente = _dts.Tables[0].Rows[0]["TipoCliente"].ToString();
+                    _cedula = _dts.Tables[0].Rows[0]["CedulaGAR"].ToString();
+                }
+
+                _dts = new ConsultaDatosDAO().FunInsertCorreoDireccion(1, _cedula, "DIRECCION", _tipocliente, RdbTerreno.SelectedValue,
+                    TxtDireccion.Text.Trim().ToUpper(), TxtReferencia.Text.Trim().ToUpper(), "", DdlSector.SelectedValue,
+                    ViewState["NumeroDocumento"].ToString(), "", "", 0, 0, 0, 0,
+                    int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(234, 0, 0, 0, "TIPO DIRECCION", "DIRECCION",
+                    ViewState["NumeroDocumento"].ToString(), Session["Conectar"].ToString().ToString());
 
                 ViewState["Terreno"] = _dts.Tables[0];
                 GrdvTerreno.DataSource = _dts;
@@ -486,10 +512,7 @@
                 GrdvTerreno.DataSource = _dtbterreno;
                 GrdvTerreno.DataBind();
 
-                //_dts = new ConsultaDatosDAO().FunInsertAdicionales(4, int.Parse(_codigo),
-                //    0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "",
-                //    "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                //    Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(208, 5, int.Parse(_codigo), 0, "", "", "", Session["Conectar"].ToString().ToString());
             }
             catch (Exception ex)
             {
@@ -652,10 +675,10 @@
                 switch (ViewState["Retornar"].ToString())
                 {
                     case "0":
-                        Response.Redirect("../Gestion/WFrm_ListaClientesAdmin.aspx?MensajeRetornado=Citacion Realizada..! ", true);
+                        Response.Redirect("../Gestion/WFrm_ListaClientesAdmin.aspx?MensajeRetornado=Notificación Solicitada..! ", true);
                         break;
                     case "1":
-                        Response.Redirect("WFrm_SeguimientoCitacionAdmin.aspx?MensajeRetornado=Citacion Realizada..! ", true);
+                        Response.Redirect("WFrm_SeguimientoCitacionAdmin.aspx?MensajeRetornado=Notificación Solicitada..! ", true);
                         break;
                     case "2":
                         Response.Redirect("../Gestion/WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" +

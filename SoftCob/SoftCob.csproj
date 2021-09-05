@@ -235,6 +235,7 @@
     <Content Include="Botones\cancelarbg.png" />
     <Content Include="Botones\casa.png" />
     <Content Include="Botones\casabg.png" />
+    <Content Include="Botones\cerrargris.png" />
     <Content Include="Botones\citamedica.png" />
     <Content Include="Botones\citamedicabg.png" />
     <Content Include="Botones\citamedicadesac.png" />
@@ -256,6 +257,7 @@
     <Content Include="Botones\informacion.png" />
     <Content Include="Botones\informacionbg.png" />
     <Content Include="Botones\medico.png" />
+    <Content Include="Botones\minus.png" />
     <Content Include="Botones\modificar.png" />
     <Content Include="Botones\modificarbg.png" />
     <Content Include="Botones\modificarnew.png" />
@@ -362,6 +364,8 @@
     <Content Include="Views\BPM\WFrm_EfectivoLostPayment.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx" />
+    <Content Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx" />
+    <Content Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_ViewPdf.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchAdmin.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchEfectivoOn.aspx" />
@@ -687,6 +691,20 @@
     </Compile>
     <Compile Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx.designer.cs">
       <DependentUpon>WFrm_ListaSolicitudTerreno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx.cs">
+      <DependentUpon>WFrm_RegistrarCitacionTime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx.designer.cs">
+      <DependentUpon>WFrm_RegistrarCitacionTime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx.cs">
+      <DependentUpon>WFrm_SectorVisitaCitacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx.designer.cs">
+      <DependentUpon>WFrm_SectorVisitaCitacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\BPM\WFrm_ViewPdf.aspx.cs">
       <DependentUpon>WFrm_ViewPdf.aspx</DependentUpon>

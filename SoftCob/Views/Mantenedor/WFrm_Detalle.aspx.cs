@@ -37,8 +37,8 @@
 
                         if (_contar > 0)
                         {
-                            _mensaje = "Tiene " + _contar + " SOLICITUD CITACION(ES) Pendiente(s)";
-                            new FuncionesDAO().FunShowJSMessage(_mensaje, this, "E", "R");
+                            _mensaje = "Tiene " + _contar + " SOLICITUD(ES) NOTIFICACION(ES) Pendiente(s)";
+                            //new FuncionesDAO().FunShowJSMessage(_mensaje, this, "E", "R");
                         }
                         else
                         {
@@ -49,10 +49,37 @@
 
                             if (_contar > 0)
                             {
-                                _mensaje = "Tiene " + _contar + " CITACION(ES) En PROCESO";
-                                new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "R");
+                                _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) En PROCESO";
+                                
+                            }
+                            else
+                            {
+                                _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 4, 0, 0, "", "", "",
+                                    ViewState["Conectar"].ToString());
+
+                                _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
+
+                                if (_contar > 0)
+                                {
+                                    _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) TERRENO GENERADAS POR GESTIONAR";
+                                    //new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "R");
+                                }
+                                else
+                                {
+                                    _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 5, 0, 0, "", "", "",
+                                        ViewState["Conectar"].ToString());
+
+                                    _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
+
+                                    if (_contar > 0)
+                                    {
+                                        _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) MAIL GENERADAS POR GESTIONAR";
+                                        //new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "R");
+                                    }
+                                }
                             }
                         }
+                        new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "R");
                     }
 
                     if (Session["LICENCIA"].ToString() == "SI")

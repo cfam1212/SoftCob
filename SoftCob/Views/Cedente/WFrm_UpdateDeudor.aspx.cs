@@ -27,7 +27,7 @@
         {
             if (Session["usuCodigo"] == null || Session["usuCodigo"].ToString() == "")
                 Response.Redirect("~/Reload.html");
-            //TxtNumeroDocumento.Attributes.Add("onchange", "Validar_Cedula();");
+            
             if (!IsPostBack)
             {
                 TxtFechaNacimiento.Text = DateTime.Now.ToString("MM/dd/yyyy");
@@ -617,7 +617,7 @@
                     return;
                 }
 
-                if (!new FuncionesDAO().IsDate(TxtFechaNacimiento.Text.Trim()))
+                if (!new FuncionesDAO().IsDate(TxtFechaNacimiento.Text.Trim(), "MM/dd/yyyy"))
                 {
                     new FuncionesDAO().FunShowJSMessage("Fecha de nacimiento incorrecta..!", this, "E", "C");
                     return;

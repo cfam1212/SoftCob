@@ -15,6 +15,7 @@
         DataSet _dts = new DataSet();
         string _codigo = "", _codigoclde = "", _codigopers = "", _codigocpce = "", _codigogest = "", _codigoesta = "", _mensaje = "";
         DataTable _dtb = new DataTable();
+        int _contar = 0;
         #endregion
 
         #region Load
@@ -30,17 +31,63 @@
 
                 if (!IsPostBack)
                 {
-                    Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
-                    Lbltitulo.Text = "Lista Citaciones Solicitadas << VARIOS MEDIOS - TERRENO >>";
+                    Lbltitulo.Text = "Lista Notificaciones Solicitadas << VARIOS MEDIOS - TERRENO >>";
                     FunCargarMantenimiento();
 
-                    //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                    //    "::GSBPO GLOBAL SERVICES::", Request["MensajeRetornado"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 1, 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
+
+                    _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
+
+                    if (_contar > 0)
+                    {
+                        _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) En PROCESO";
+                        
+                    }
+                    else
+                    {
+                        _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 4, 0, 0, "", "", "",
+                            Session["Conectar"].ToString());
+
+                        _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
+
+                        if (_contar > 0)
+                        {
+                            _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) TERRENO por GESTIONAR";                            
+                        }
+                        else
+                        {
+                            _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 5, 0, 0, "", "", "",
+                                Session["Conectar"].ToString());
+
+                            _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
+
+                            if (_contar > 0)
+                            {
+                                _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) EMAIL por GESTIONAR";                                
+                            }
+                            else
+                            {
+                                _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 2, 0, 0, "", "", "",
+                                    Session["Conectar"].ToString());
+
+                                _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
+
+                                if (_contar > 0)
+                                {
+                                    _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) que no fueron PROCESADA(s)";
+                                    
+                                }
+                            }
+                        }
+                    }
+
+                    if (_contar > 0) new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "L");
+
                     if (Request["MensajeRetornado"] != null)
                     {
                         _mensaje = Request["MensajeRetornado"];
-                        ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-                            "'top-center'); alertify.success('" + _mensaje + "', 5, function(){console.log('dismissed');});", true);
+                        new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
                     }
                 }
             }
@@ -89,7 +136,7 @@
                 _codigoclde = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCLDE"].ToString();
                 _codigogest = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoGEST"].ToString();
 
-                Response.Redirect("WFrm_EstablecerFechaCitacion.aspx?CodigoCITA=" + _codigo + "&CodigoPERS=" + _codigopers +
+                Response.Redirect("WFrm_SectorVisitaCitacion.aspx?CodigoCITA=" + _codigo + "&CodigoPERS=" + _codigopers +
                     "&CodigoCLDE=" + _codigoclde + "&CodigoCPCE=" + _codigocpce + "&CodigoGEST=" + _codigogest +
                     "&Retornar=1", true);
             }
@@ -112,7 +159,7 @@
                 using (XLWorkbook wb = new XLWorkbook())
                 {
                     wb.Worksheets.Add(_dtb, "Datos");
-                    string FileName = "SolicitudCitaciones_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                    string FileName = "Solicitud_Notificacion_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
                     Response.Clear();
                     Response.Buffer = true;
                     Response.Charset = "";

@@ -45,7 +45,7 @@
 
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-EC");
             Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator = ".";
-            //TxtNumeroDocumento.Attributes.Add("onchange", "Validar_Cedula();");
+            
             TxtTotalDeuda.Attributes.Add("onchange", "ValidarDecimales();");
             TxtExigible.Attributes.Add("onchange", "ValidarDecimales1();");
 
@@ -2183,7 +2183,7 @@
                     return;
                 }
 
-                if (!new FuncionesDAO().IsDate(TxtFechaNacimiento.Text.Trim()))
+                if (!new FuncionesDAO().IsDate(TxtFechaNacimiento.Text.Trim(), "MM/dd/yyyy"))
                 {
                     new FuncionesDAO().FunShowJSMessage("Fecha de nacimiento incorrecta..!", this, "E", "C");
                     return;

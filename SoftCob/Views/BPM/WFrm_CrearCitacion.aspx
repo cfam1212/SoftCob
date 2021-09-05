@@ -81,7 +81,7 @@
                         </ProgressTemplate>
                     </asp:UpdateProgress>
                 </div>--%>
-<%--                <div class="panel-info">
+                <%--                <div class="panel-info">
                     <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -459,22 +459,34 @@
                                     <td></td>
                                     <td></td>
                                     <td>
-                                        <h5>Observación:</h5>
+                                        <h5>Sector:</h5>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TxtObservaTerreno" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="500" onkeydown="return (event.keyCode!=13);" TabIndex="20" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                        <asp:DropDownList ID="DdlSector" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="20" Width="100%">
+                                        </asp:DropDownList>
                                     </td>
                                     <td style="text-align: center">
-                                        <asp:ImageButton ID="ImgAgregarTerreno" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAgregarTerreno_Click" TabIndex="21" />
+                                        <asp:ImageButton ID="ImgAgregarTerreno" runat="server" Height="25px" ImageUrl="~/Botones/agregar.png" OnClick="ImgAgregarTerreno_Click" TabIndex="21" />
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr runat="server" id="TrTerreno5" visible="false">
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <h5>Observación:</h5>
+                                    </td>
+                                    <td colspan="2">
+                                        <asp:TextBox ID="TxtObservaTerreno" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="500" onkeydown="return (event.keyCode!=13);" TabIndex="22" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr runat="server" id="TrTerreno6" visible="false">
                                     <td colspan="6">
                                         <asp:Panel ID="Panel6" runat="server" Height="20px"></asp:Panel>
                                     </td>
                                 </tr>
-                                <tr runat="server" id="TrTerreno6" visible="false">
+                                <tr runat="server" id="TrTerreno7" visible="false">
                                     <td></td>
                                     <td colspan="4">
                                         <asp:Panel ID="PnlTerreno" runat="server" CssClass="panel panel-primary"

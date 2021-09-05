@@ -196,13 +196,13 @@
                 }
             }
 
-            if (!new FuncionesDAO().IsDate(TxtFechaInicio.Text))
+            if (!new FuncionesDAO().IsDate(TxtFechaInicio.Text, "MM/dd/yyyy"))
             {
                 new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this, "E", "C");
                 _validar = false;
             }
 
-            if (!new FuncionesDAO().IsDate(TxtFechaFin.Text))
+            if (!new FuncionesDAO().IsDate(TxtFechaFin.Text, "MM/dd/yyyy"))
             {
                 new FuncionesDAO().FunShowJSMessage("Formato Fecha Incorrecta..!", this, "E", "C");
                 _validar = false;

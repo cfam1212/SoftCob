@@ -218,7 +218,7 @@
         {
             try
             {
-                if (!new FuncionesDAO().IsDate(TxtFechaPago.Text))
+                if (!new FuncionesDAO().IsDate(TxtFechaPago.Text, "MM/dd/yyyy"))
                 {
                     new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
                     return;

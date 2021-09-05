@@ -170,87 +170,6 @@
                     break;
             }
         }
-        //bottom sobrecarga
-        //public void FunShowJSMessage(string message, Control pagina, string tipo, string position, string buttom)
-        //{
-        //    switch (tipo)
-        //    {
-        //        case "S":
-        //            if (buttom == "CB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-center'); alertify.success('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            if (buttom == "RB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-right'); alertify.success('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            if (buttom == "LB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-left'); alertify.success('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            break;
-
-        //        case "W":
-        //            if (buttom == "CB")
-        //                if (position == "C")
-        //                    ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                        "'bottom-center'); alertify.warning('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            if (buttom == "RB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-right'); alertify.warning('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            if (buttom == "LB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-left'); alertify.warning('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            break;
-
-        //        case "E":
-        //            if (position == "CB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-center'); alertify.error('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            if (buttom == "RB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-right'); alertify.error('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            if (buttom == "LB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-left'); alertify.error('" + message + "', 5, function(){console.log('dismissed');});", true);
-        //            break;
-
-        //        case "M":
-        //            if (buttom == "CB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-center'); alertify.message('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            if (buttom == "RB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-right'); alertify.message('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            if (buttom == "LB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-left'); alertify.message('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            break;
-
-        //        case "N":
-        //            if (buttom == "CB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-center'); alertify.notify('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            if (buttom == "RB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-right'); alertify.notify('" + message + "', 5, function(){console.log('dismissed');});", true);
-
-        //            if (buttom == "LB")
-        //                ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "pop", "javascript:alertify.set('notifier','position', " +
-        //                    "'bottom-left'); alertify.notify('" + message + "', 5, function(){console.log('dismissed');});", true);
-        //            break;
-        //    }
-        //}
-
         public int FunBetween(int valorI, int valorF, int rinicio, int rfinal)
         {
             if (rinicio >= valorI && rinicio <= valorF) valorx = 1;
@@ -264,11 +183,11 @@
             else return 0;
         }
 
-        public bool IsDate(string strFecha)
+        public bool IsDate(string strFecha, string formato)
         {
             try
             {
-                DateTime myDT = DateTime.ParseExact(strFecha, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                DateTime myDT = DateTime.ParseExact(strFecha, formato, CultureInfo.InvariantCulture);
                 bValid = true;
             }
             catch
@@ -506,6 +425,12 @@
                 bValid = false;
             }
             return bValid;
+        }
+        public bool Between(TimeSpan hora, TimeSpan desde, TimeSpan hasta)
+        {
+            //if (desde > hasta) throw new ArgumentException("dtFrom may not be after dtThru", "dtFrom");
+            bool isBetween = (desde >= hora && hasta >= hora);
+            return isBetween;
         }
         #endregion
 
