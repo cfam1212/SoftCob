@@ -172,14 +172,10 @@
         }
         private void FunGetLic()
         {
-            //List<SoftCob_PARAMETRO_DETALLE> _ldetalle = new ControllerDAO().FunGetLicParametros("PATH LOGOS");
-
             try
             {
                 _fechaactual = DateTime.Now.ToString("yyyy-MM-dd");
                 _dtmfechaatual = DateTime.ParseExact(_fechaactual, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-
-                //_lic = _ldetalle.Single(d => d.pade_nombre == "LCMTO").pade_valorV;
 
                 if (new FuncionesDAO().FunDesencripta(ViewState["Licencia"].ToString()) != "Permanente")
                 {
