@@ -7,25 +7,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Nuevos Campos Estrategia</title>
-
-    <%--    <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../../css/Estilos.css" rel="stylesheet" />
-    <link href="../../css/DatePicker/jquery-ui.css" rel="stylesheet" />
-    <script type="text/javascript" src="../../JS/DatePicker/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="../../JS/DatePicker/jquery-ui.js"></script>
-    <script src="../../Bootstrap/js/bootstrap.min.js"></script>--%>
+    <title>Registro Notificaciones</title>
 
     <link href="../../css/Estilos.css" rel="stylesheet" />
     <link href="../../Scripts/Tables/jquery.DataTable.min.css" rel="stylesheet" />
     <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../css/DatePicker/jquery-ui.css" rel="stylesheet" />
+    <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
 
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
     <script src="../../Scripts/Tables/DataTables.js"></script>
     <script src="../../Scripts/Tables/dataTable.bootstrap.min.js"></script>
     <script src="../../Scripts/jquery.min.js"></script>
     <script src="../../JS/DatePicker/jquery-ui.js"></script>
+    <script src="../../JS/alertify.min.js"></script>
 
     <script type="text/javascript">
         function pageLoad(sender, arg) {
@@ -323,7 +318,7 @@
                                 </td>
                                 <td></td>
                                 <td>
-                                    <asp:Panel ID="Panel3" runat="server" CssClass="panel panel-primary" Height="200px" GroupingText="Horarios Citación" ScrollBars="Vertical" TabIndex="17">
+                                    <asp:Panel ID="Panel3" runat="server" CssClass="panel panel-primary" Height="280px" GroupingText="Horarios Citación" ScrollBars="Vertical" TabIndex="17">
                                         <asp:GridView ID="GrdvHorarios" runat="server" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
                                             PageSize="5" TabIndex="2" Width="100%" DataKeyNames="Codigo,EstadoCodigo,HoraInicio,HoraFin,CodigoUSUA,CodigoPERS" OnRowDataBound="GrdvHorarios_RowDataBound">

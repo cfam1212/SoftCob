@@ -571,7 +571,7 @@
                             if (_codigo == _codigocomparar)
                             {
                                 _dts = new ConsultaDatosDAO().FunNewSolictudCitacion(1, _codigocita, 0, 0, 0, "", "", 0, "",
-                                    1, "", 0, "", 0, "", "Whatsapp", _drfila["Celular"].ToString(), "", "", "", "", "",
+                                    1, "", 0, "", 0, "", "Whatsapp", _drfila["Celular"].ToString(), "", "", "", _drfila["CodigoTipo"].ToString(), "",
                                     _observacion, "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
                                     Session["MachineName"].ToString(), Session["Conectar"].ToString());
 

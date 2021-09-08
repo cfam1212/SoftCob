@@ -32,7 +32,12 @@
                     FunCargaMantenimiento();
 
                     if (ViewState["Codigo"].ToString() == "0") Lbltitulo.Text = "Nuevo Horario";
-                    else Lbltitulo.Text = "Editar Horario";
+                    else
+                    {
+                        Lbltitulo.Text = "Editar Horario";
+                        LblEstado.Visible = true;
+                        ChkEstado.Visible = true;
+                    }
                 }
             }
             catch (Exception ex)

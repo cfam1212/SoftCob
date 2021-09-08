@@ -2,9 +2,8 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
-    using System.Globalization;
     using System.Data;
+    using System.Globalization;
     using System.IO;
     using System.Web;
     using System.Web.UI;
@@ -63,6 +62,8 @@
                     PnlDatosGetion.Height = 120;
                     PnlDatosGarante.Height = 120;
                     PnlCitaciones.Height = 230;
+
+                    CalenCitaciones.SelectedDate = DateTime.Now;
                     FunCargaMantenimiento();
                     FunCitacionHoras(CalenCitaciones.SelectedDate.ToString("MM/dd/yyyy"), 0);
                 }
@@ -447,8 +448,8 @@
 
                         if (_estadocodigo != "DIS")
                         {
-                            new FuncionesDAO().FunShowJSMessage("Cliente ya tiene RESERVADA Fecha: " +
-                                _estadocodigo, this, "w", "C");
+                            new FuncionesDAO().FunShowJSMessage("Cliente ya tiene NOTIFICACION RESERVADA Fecha: " +
+                                _estadocodigo, this, "W", "C");
                             return;
                         }
                     }
@@ -456,7 +457,9 @@
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(132, 1, 0, 0, "MINUTOS CITACION", "TIEMPOS PROGRAMADOS", "",
                         Session["Conectar"].ToString());
 
-                    _minutos = int.Parse(_dts.Tables[0].Rows[0]["Valor"].ToString());
+                    if (_dts.Tables[0].Rows.Count > 0)
+                        _minutos = int.Parse(_dts.Tables[0].Rows[0]["Valor"].ToString());
+                    else _minutos = 60;
 
                     _horacita = DateTime.Parse(_horacita).ToString("HH:mm");
 
@@ -484,7 +487,7 @@
                     ViewState["Agendado"] = "SI";
                 }
 
-                FunCitacionHoras(CalenCitaciones.SelectedDate.ToString("MM/dd/yyyy"), 0);
+                FunCitacionHoras(CalenCitaciones.SelectedDate.ToString("MM/dd/yyyy"), int.Parse(_horacodigo));
             }
             catch (Exception ex)
             {
@@ -507,7 +510,6 @@
         {
             try
             {
-
                 if (ViewState["Agendado"].ToString() == "NO")
                 {
                     new FuncionesDAO().FunShowJSMessage("Seleccione Fecha de Citacion", this, "W", "C");
@@ -555,10 +557,10 @@
                 switch (ViewState["Retornar"].ToString())
                 {
                     case "0":
-                        Response.Redirect("WFrm_ListaSolicitudGestores.aspx?MensajeRetornado=Notifiación Generada", true);
+                        Response.Redirect("WFrm_ListaSolicitudGestores.aspx?MensajeRetornado=Notificación Generada", true);
                         break;
                     case "1":
-                        Response.Redirect("WFrm_CitacionProcesoTime.aspx?MensajeRetornado=Notifiación Generada", true);
+                        Response.Redirect("WFrm_CitacionProcesoTime.aspx?MensajeRetornado=Notificación Generada", true);
                         break;
                 }
             }
