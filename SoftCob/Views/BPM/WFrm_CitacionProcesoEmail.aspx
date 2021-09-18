@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_CitacionProcesoTime.aspx.cs" Inherits="SoftCob.Views.BPM.WFrm_CitacionProcesoTime" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_CitacionProcesoEmail.aspx.cs" Inherits="SoftCob.Views.BPM.WFrm_CitacionProcesoEmail" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -17,19 +17,12 @@
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
     <script src="../../Scripts/Tables/DataTables.js"></script>
     <script src="../../Scripts/Tables/dataTable.bootstrap.min.js"></script>
-    <script src="../../JS/alertify.min.js"></script>
-
-    <script>
-        function asegurar() {
-            rc = confirm("¿Seguro Cambiar Fecha Citación?");
-            return rc;
-        }
-    </script>
+     <script type="text/javascript" src="../../JS/alertify.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
-        <div class="panel panel-primary">
+        <div class="panel panel-primary">            
             <div class="panel-heading">
                 <asp:Label ID="Lbltitulo" runat="server"></asp:Label>
             </div>
@@ -40,48 +33,41 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-body">
+            <div class="panel-body">                
                 <asp:UpdatePanel ID="UpdPrincipal" runat="server">
                     <ContentTemplate>
-                        <table style="width: 100%">
+                        <table style="width:100%">
                             <tr>
                                 <td>
                                     <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" Visible="False" />
-                                    <asp:Label ID="lblExportar" runat="server" Text="Exportar" Visible="false"></asp:Label>
+                                    <asp:Label ID="lblExportar" runat="server" Text="Exportar" Visible="False"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
                                         CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                        ShowHeaderWhenEmpty="True" DataKeyNames="CodigoCITA,CodigoPERS,CodigoCLDE,Terreno,Email,Whastapp,CodigoGEST,Identificacion" OnRowDataBound="GrdvDatos_RowDataBound">
+                                        ShowHeaderWhenEmpty="True" DataKeyNames="CodigoCITA,CodigoPERS,CodigoCLDE,Identificacion">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:BoundField DataField="FechaCita" HeaderText="Fecha Solicitud" />
+                                            <asp:BoundField DataField="FechaCita" HeaderText="Fecha" />
+                                            <asp:BoundField DataField="HoraCita" HeaderText="Hora" />
                                             <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
-                                            <asp:BoundField DataField="Cliente" HeaderText="Cliente"></asp:BoundField>
-                                            <asp:BoundField DataField="Observacion" HeaderText="Observación"></asp:BoundField>
-                                            <asp:TemplateField HeaderText="Terreno">
+                                            <asp:BoundField DataField="Cliente" HeaderText="Cliente">
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="TotalMails" HeaderText="Total Mails">
+                                            <ItemStyle HorizontalAlign="Right" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="Enviado" HeaderText="Enviados">
+                                            <ItemStyle HorizontalAlign="Right" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="ConRespuesta" HeaderText="Con Respuesta">
+                                            <ItemStyle HorizontalAlign="Right" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="Gestor" HeaderText="Gestor" />
+                                            <asp:TemplateField HeaderText="Procesar">
                                                 <ItemTemplate>
-                                                    <asp:Image ID="ImgTerreno" runat="server" Height="20px" ImageUrl="~/Botones/cerrargris.png" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" />
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Email">
-                                                <ItemTemplate>
-                                                    <asp:Image ID="ImgEmail" runat="server" Height="20px" ImageUrl="~/Botones/cerrargris.png" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" />
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Whastapp">
-                                                <ItemTemplate>
-                                                    <asp:Image ID="ImgWhastapp" runat="server" Height="20px" ImageUrl="~/Botones/cerrargris.png" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" />
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Generar">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btncitaprocesobg.png" OnClick="ImgCitacion_Click" />
+                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btnemailcitacion.png" OnClick="ImgCitacion_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>

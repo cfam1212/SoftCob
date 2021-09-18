@@ -53,8 +53,20 @@
                         }
                     }
 
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 3, int.Parse(Session["usuCodigo"].ToString()), 0, "", "",
+                        "", Session["Conectar"].ToString());
+
+                    _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
+
+                    if (_contar > 0)
+                    {
+                        _mensaje = "Tiene " + _contar + " CITACION(ES) por Procesar";
+                        SIFunBasicas.Basicas.PresentarMensaje(Page, "::GSBPO GLOBAL SERVICES::", _mensaje);
+                    }
+
                     if (Session["CrearParam"].ToString() == "SI")
                     {
+
                         _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 0, 0, 0, "", "", "",
                             Session["Conectar"].ToString());
 
@@ -63,7 +75,6 @@
                         if (_contar > 0)
                         {
                             _mensaje = "Tiene " + _contar + " SOLICITUD(ES) NOTIFICACION(ES) Pendiente(s)";
-                            //new FuncionesDAO().FunShowJSMessage(_mensaje, this, "E", "R");
                         }
                         else
                         {

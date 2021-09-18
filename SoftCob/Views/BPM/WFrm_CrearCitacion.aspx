@@ -70,7 +70,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="panel-info">
-<%--                <div class="panel-info">
+                <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -80,8 +80,8 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>--%>
-                <%--                <div class="panel-info">
+                </div>
+                <div class="panel-info">
                     <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -91,7 +91,7 @@
                             </div>
                         </ProgressTemplate>
                     </asp:UpdateProgress>
-                </div>--%>
+                </div>
                 <div class="panel-body">
                     <asp:UpdatePanel ID="updCabecera" runat="server">
                         <ContentTemplate>
@@ -373,7 +373,7 @@
                                     <td colspan="4">
                                         <asp:Panel ID="PnlEmail" runat="server" CssClass="panel panel-primary"
                                             GroupingText="Emails Agregados" Height="350px" ScrollBars="Vertical" TabIndex="17">
-                                            <asp:GridView ID="GrdvEmails" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="CodigoMATD,Email" ForeColor="#333333" PageSize="5" TabIndex="14" Width="100%">
+                                            <asp:GridView ID="GrdvEmails" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="CodigoMATD,Email,DirIncorrecta" ForeColor="#333333" PageSize="5" TabIndex="14" Width="100%" OnRowDataBound="GrdvEmails_RowDataBound">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo Cliente" />
@@ -494,13 +494,13 @@
                                             <asp:GridView ID="GrdvTerreno" runat="server" AutoGenerateColumns="False"
                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
                                                 ForeColor="#333333" PageSize="5" TabIndex="21" Width="100%"
-                                                DataKeyNames="CodigoMATD,CodigoTIPO">
+                                                DataKeyNames="CodigoMATD,CodigoTIPO,DirIncorrecta" OnRowDataBound="GrdvTerreno_RowDataBound">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
                                                     <asp:BoundField DataField="Definicion" HeaderText="Definicion" />
                                                     <asp:BoundField DataField="Direccion" HeaderText="Dirección" />
-                                                    <asp:BoundField DataField="Referencia" HeaderText="Referencia" />
+                                                    <asp:BoundField DataField="Sector" HeaderText="Sector" />
                                                     <asp:TemplateField HeaderText="Observación">
                                                         <ItemTemplate>
                                                             <asp:TextBox ID="TxtObservaTerreno" runat="server" CssClass="form-control upperCase"></asp:TextBox>

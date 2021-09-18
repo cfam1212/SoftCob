@@ -22,6 +22,7 @@
         CheckBox _chkwhatsapp = new CheckBox();
         CheckBox _chkemail = new CheckBox();
         CheckBox _chkterreno = new CheckBox();
+        CheckBox _chksolicitar = new CheckBox();
         ImageButton _imgcitacion = new ImageButton();
         TextBox _txtobserva = new TextBox();
         TextBox _observa;
@@ -50,7 +51,7 @@
                     ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
                     ViewState["CodigoCLDE"] = Request["CodigoCLDE"];
                     ViewState["Retornar"] = Request["Retornar"];
-                    Lbltitulo.Text = "Nuevo Solicitud de Citacion";
+                    Lbltitulo.Text = "Nuevo Solicitud de Notificación";
                     PnlDatosDeudor.Height = 100;
                     PnlDatosGetion.Height = 120;
                     FunCargaMantenimiento();
@@ -93,8 +94,8 @@
             switch (opcion)
             {
                 case 0:
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(207, 0, 0, 0, "", ViewState["NumeroDocumento"].ToString(),
-                        "", Session["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(207, 0, int.Parse(ViewState["CodigoPERS"].ToString()), 0, "",
+                        ViewState["NumeroDocumento"].ToString(), "", Session["Conectar"].ToString());
 
                     DdlDireccion.DataSource = _dts;
                     DdlDireccion.DataTextField = "Descripcion";
@@ -329,6 +330,56 @@
 
                 _dtbemail.AcceptChanges();
                 ViewState["Emails"] = _dtbemail;
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
+
+        protected void GrdvEmails_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowIndex >= 0)
+                {
+                    _chksolicitar = (CheckBox)(e.Row.Cells[4].FindControl("ChkSolEmail"));
+                    _observacion = GrdvEmails.DataKeys[e.Row.RowIndex].Values["DirIncorrecta"].ToString();
+
+                    switch (_observacion)
+                    {
+                        case "CLI":
+                            e.Row.Cells[1].BackColor = System.Drawing.Color.Red;
+                            _chksolicitar.Enabled = false;
+                            break;
+                        case "MRB":
+                            e.Row.Cells[1].BackColor = System.Drawing.Color.Yellow;
+                            _chksolicitar.Enabled = false;
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
+
+        protected void GrdvTerreno_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowIndex >= 0)
+                {
+                    _chksolicitar = (CheckBox)(e.Row.Cells[5].FindControl("ChkSolTerreno"));
+                    _observacion = GrdvTerreno.DataKeys[e.Row.RowIndex].Values["DirIncorrecta"].ToString();
+
+                    if (_observacion == "CMI")
+                    {
+                        e.Row.Cells[2].BackColor = System.Drawing.Color.Red;
+                        _chksolicitar.Enabled = false;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -640,7 +691,7 @@
                     _dts = new ConsultaDatosDAO().FunNewSolictudCitacion(0, 0, int.Parse(ViewState["CodigoCPCE"].ToString()),
                         int.Parse(ViewState["CodigoPERS"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()), "CSL",
                         TxtValor.Text.Trim(), int.Parse(Session["usuCodigo"].ToString()), TxtObservacion.Text.Trim().ToUpper(),
-                        ChkWathaspp.Checked ? 1 : 0, "", ChkEmail.Checked ? 1 : 0, TxtObservaEmail.Text.Trim().ToUpper(),
+                        ChkWathaspp.Checked ? 1 : 0, TxtObservaWhatsapp.Text.Trim().ToUpper(), ChkEmail.Checked ? 1 : 0, TxtObservaEmail.Text.Trim().ToUpper(),
                         1, TxtObservaTerreno.Text.Trim().ToUpper(), "", "", "", "", "", "", "",
                         "", "", "", "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
                         Session["MachineName"].ToString(), Session["Conectar"].ToString());
@@ -662,9 +713,10 @@
                                 _dts = new ConsultaDatosDAO().FunNewSolictudCitacion(1, _codigocita, 0, 0, 0, "", "", 0, "",
                                     1, "", 0, "", 0, "", "Terreno", "", "", _drfila["Direccion"].ToString(),
                                     _drfila["Referencia"].ToString(), _drfila["CodigoTIPO"].ToString(),
-                                    _drfila["CodigoDEFI"].ToString(), _observacion, "", "", "", "", "", 0, 0, 0, 0, 0,
-                                    int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                                    Session["Conectar"].ToString());
+                                    _drfila["CodigoDEFI"].ToString(), _observacion, "",
+                                    _drfila["CodigoSECT"].ToString(), _drfila["Documento"].ToString(), "", "",
+                                    int.Parse(_codigocomparar), 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
+                                    Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                                 break;
                             }
@@ -699,7 +751,24 @@
 
         protected void BtnSalir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Mantenedor/WFrm_Detalle.aspx", true);
+            switch (ViewState["Retornar"].ToString())
+            {
+                case "0":
+                    Response.Redirect("../Gestion/WFrm_ListaClientesAdmin.aspx?MensajeRetornado=Notificación Solicitada..! ", true);
+                    break;
+                case "1":
+                    Response.Redirect("WFrm_SeguimientoCitacionAdmin.aspx?MensajeRetornado=Notificación Solicitada..! ", true);
+                    break;
+                case "2":
+                    Response.Redirect("../Gestion/WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" +
+                        Session["IdListaCabecera"].ToString(), true);
+                    break;
+                case "3":
+                    Response.Redirect("../ReportesManager/WFrm_ReporteGestorCedente.aspx?codigoCEDE=" +
+                        ViewState["codigoCEDE"].ToString() + "&codigoCPCE=" +
+                        ViewState["codigoCPCE"].ToString(), true);
+                    break;
+            }
         }
         #endregion
 

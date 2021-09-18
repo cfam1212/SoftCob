@@ -101,7 +101,7 @@
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
                     _totalExigible += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "Exigible"));
-                    _totalDeuda += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "MontoGSPBO"));
+                    _totalDeuda += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "ValorDeuda"));
                 }
 
                 if (e.Row.RowType == DataControlRowType.Footer)
@@ -261,16 +261,7 @@
                         if (_contar == 0)
                             _mensaje = "No se Registro fecha de Visita..";
 
-                        else
-                        {
-                            _mensaje = "Se registro " + _contar.ToString() + " Visitas Terreno de " + _totalregistro.ToString();
-                            //_redirect = string.Format("{0}?CodigoCITA={1}&CodigoPERS={2}&CodigoCLDE={3}&NumDocumento={4}" +
-                            //    "&MensajeRetornado={5}", Request.Url.AbsolutePath, ViewState["CodigoCITA"].ToString(),
-                            //    ViewState["CodigoPERS"].ToString(), ViewState["CodigoCLDE"].ToString(),
-                            //    ViewState["NumDocumento"].ToString(), "Falta Gestionar Terrenos");
-
-                            //Response.Redirect(_redirect);
-                        }
+                        else _mensaje = "Se registro " + _contar.ToString() + " Visitas Terreno de " + _totalregistro.ToString();
 
                         Response.Redirect("WFrm_ListaSolicitudTerreno.aspx?MensajeRetornado=" + _mensaje, true);
                     }

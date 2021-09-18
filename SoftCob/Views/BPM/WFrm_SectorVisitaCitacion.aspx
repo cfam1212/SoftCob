@@ -86,7 +86,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <%--            <div class="panel-info">
+<%--            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -141,7 +141,7 @@
                             <tr>
                                 <td></td>
                                 <td colspan="3">
-                                    <asp:Panel ID="PnlDatosGetion" runat="server" CssClass="panel panel-primary" Height="200px"
+                                    <asp:Panel ID="PnlDatosGetion" runat="server" CssClass="panel panel-primary" Height="250px"
                                         GroupingText="Datos Operación" ScrollBars="Vertical" TabIndex="17">
                                         <asp:GridView ID="GrdvDatosObligacion" runat="server" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
@@ -236,7 +236,7 @@
                                                     <ItemTemplate>
                                                         <asp:TextBox ID="TxtFechaVisita" runat="server" CssClass="form-control alinearDerecha" MaxLength="10"
                                                             Enabled="False"></asp:TextBox>
-                                                        <asp:CalendarExtender ID="TxtFechaVisita_CalendarExtender" runat="server" Enabled="True" Format="yyyy-mm-dd" TargetControlID="TxtFechaVisita">
+                                                        <asp:CalendarExtender ID="TxtFechaVisita_CalendarExtender" runat="server" Enabled="True" Format="yyyy-MM-dd" TargetControlID="TxtFechaVisita">
                                                         </asp:CalendarExtender>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
