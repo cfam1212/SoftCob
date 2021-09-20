@@ -402,7 +402,8 @@
                 GrdvEmails.DataSource = _dtbemail;
                 GrdvEmails.DataBind();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(208, 5, int.Parse(_codigo), 0, "", "", "", Session["Conectar"].ToString().ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(208, 5, int.Parse(_codigo), 0, "", "", "", 
+                    Session["Conectar"].ToString().ToString());
             }
             catch (Exception ex)
             {
@@ -563,7 +564,8 @@
                 GrdvTerreno.DataSource = _dtbterreno;
                 GrdvTerreno.DataBind();
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(208, 5, int.Parse(_codigo), 0, "", "", "", Session["Conectar"].ToString().ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(208, 5, int.Parse(_codigo), 0, "", "", "", 
+                    Session["Conectar"].ToString().ToString());
             }
             catch (Exception ex)
             {

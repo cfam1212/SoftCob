@@ -250,6 +250,7 @@
     <Content Include="Botones\eliminar.png" />
     <Content Include="Botones\eliminarbg.png" />
     <Content Include="Botones\eliminargris.png" />
+    <Content Include="Botones\eliminargrisbg.png" />
     <Content Include="Botones\excel.png" />
     <Content Include="Botones\excelbg.png" />
     <Content Include="Botones\gafas.png" />
@@ -366,6 +367,7 @@
     <Content Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx" />
+    <Content Include="Views\BPM\WFrm_RegistroCitacionMail.aspx" />
     <Content Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_ViewPdf.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchAdmin.aspx" />
@@ -706,6 +708,13 @@
     </Compile>
     <Compile Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx.designer.cs">
       <DependentUpon>WFrm_RegistrarCitacionTime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistroCitacionMail.aspx.cs">
+      <DependentUpon>WFrm_RegistroCitacionMail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistroCitacionMail.aspx.designer.cs">
+      <DependentUpon>WFrm_RegistroCitacionMail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx.cs">
       <DependentUpon>WFrm_SectorVisitaCitacion.aspx</DependentUpon>

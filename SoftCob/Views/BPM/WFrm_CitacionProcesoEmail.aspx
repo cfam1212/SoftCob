@@ -67,7 +67,7 @@
                                             <asp:BoundField DataField="Gestor" HeaderText="Gestor" />
                                             <asp:TemplateField HeaderText="Procesar">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btnemailcitacion.png" OnClick="ImgCitacion_Click" />
+                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btnemailcitacionbg.png" OnClick="ImgCitacion_Click" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
