@@ -2,28 +2,26 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
+    using System.Globalization;
     using System.Linq;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    public partial class WFrm_RegistroCitacionMail : Page
+    public partial class WFrm_RegistroCitacionTerreno : Page
     {
         #region Variables
         DataSet _dts = new DataSet();
         DataTable _dtb = new DataTable();
-        CheckBox _chkenviado = new CheckBox();
         DropDownList _ddlrepuesta = new DropDownList();
-        ImageButton _imgeliminar = new ImageButton();
-        string _ext = "", _path = "", _enviado = "", _email = "", _redirect = "", _emailcomparar = "", _respuesta = "",
-            _codigomatd = "", _codigohcit = "";
+        TextBox _txtobservacion = new TextBox();
+        string _ext = "", _path = "", _codigo = "", _redirect = "", _codigoterreno = "", _respuesta = "",
+             _observacion = "", _codiomatd = "", _fechavisita = "";
         decimal _totalExigible = 0.00M, _totalDeuda = 0.00M;
         int _totalregistros = 0, _contar = 0;
         DataTable _dtbcitaciones = new DataTable();
         DataTable _tblagre = new DataTable();
-        TextBox _txtfecha = new TextBox();
-        DataRow _result;
         DataRow[] _resultado;
+        DateTime _dtmfechavisita;
         #endregion
 
         #region Load
@@ -38,7 +36,6 @@
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     ViewState["CodigoCITA"] = Request["CodigoCITA"];
                     ViewState["CodigoPERS"] = Request["CodigoPERS"];
                     ViewState["CodigoCLDE"] = Request["CodigoCLDE"];
@@ -48,7 +45,7 @@
                     _dtbcitaciones.Columns.Add("Canal");
                     ViewState["Citaciones"] = _dtbcitaciones;
 
-                    Lbltitulo.Text = "Registro Citación Mail";
+                    Lbltitulo.Text = "Registrar Entrega Citacion << TERRENO >>";
                     PnlDatosDeudor.Height = 100;
                     PnlDatosGetion.Height = 120;
                     PnlDatosGarante.Height = 120;
@@ -56,7 +53,7 @@
                     FunCargaMantenimiento();
 
                     if (Request["MensajeRetornado"] != null) new FuncionesDAO().FunShowJSMessage(Request["MensajeRetornado"],
-                        this, "W", "R");
+                        this, "E", "R");
                 }
             }
             catch (Exception ex)
@@ -72,19 +69,19 @@
             try
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(32, int.Parse(ViewState["CodigoPERS"].ToString()), 0, 0,
-                    "", "", "", ViewState["Conectar"].ToString().ToString());
+                    "", "", "", Session["Conectar"].ToString().ToString());
 
                 GrdvDatosDeudor.DataSource = _dts;
                 GrdvDatosDeudor.DataBind();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(33, 0, 0, int.Parse(ViewState["CodigoCLDE"].ToString()),
-                    "", "", "", ViewState["Conectar"].ToString());
+                    "", "", "", Session["Conectar"].ToString());
 
                 GrdvDatosObligacion.DataSource = _dts;
                 GrdvDatosObligacion.DataBind();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(45, 0, 0, 0, "", ViewState["NumDocumento"].ToString(), "",
-                    ViewState["Conectar"].ToString().ToString());
+                    Session["Conectar"].ToString().ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -93,8 +90,8 @@
                     GrdvDatosGarante.DataBind();
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(246, 1, int.Parse(ViewState["CodigoCITA"].ToString()), 0,
-                    "", "Email", "", ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(246, 2, int.Parse(ViewState["CodigoCITA"].ToString()), 0,
+                    "", "Terreno", "VIS", Session["Conectar"].ToString());
 
                 ViewState["Citaciones"] = _dts.Tables[0];
                 GrdvCitaciones.DataSource = _dts;
@@ -106,6 +103,27 @@
                 Lblerror.Text = ex.ToString();
             }
         }
+
+        //private string Funguardararchivo(HttpPostedFile file)
+        //{
+        //    _ruta = Server.MapPath("~/citacion/" + ViewState["NumDocumento"].ToString());
+
+        //    if (file.FileName.ToString().Length > 80)
+        //    {
+        //        new FuncionesBAS().FunShowJSMessage("Nombre del archivo debe contener hasta 80 caracteres..!", this);
+        //        return _ruta = "";
+        //    }
+
+        //    if (!Directory.Exists(_ruta))
+        //        Directory.CreateDirectory(_ruta);
+
+        //    _archivo = String.Format("{0}\\{1}", _ruta, file.FileName);
+
+        //    if (File.Exists(_archivo)) File.Delete(_archivo);
+
+        //    file.SaveAs(_archivo);
+        //    return _ruta;
+        //}
         #endregion
 
         #region Botones
@@ -173,27 +191,6 @@
             }
         }
 
-        protected void ChkEnviar_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                GridViewRow _gvRow = (GridViewRow)(sender as Control).Parent.Parent;
-
-                _chkenviado = (CheckBox)(_gvRow.Cells[4].FindControl("ChkEnviar"));
-                _email = GrdvCitaciones.DataKeys[_gvRow.RowIndex].Values["Email"].ToString();
-
-                _dtb = (DataTable)ViewState["Citaciones"];
-                _result = _dtb.Select("Email='" + _email + "'").FirstOrDefault();
-                _result["Enviado"] = _chkenviado.Checked ? "SI" : "NO";
-                _dtb.AcceptChanges();
-                ViewState["Citaciones"] = _dtb;
-            }
-            catch (Exception ex)
-            {
-                Lblerror.Text = ex.ToString();
-            }
-        }
-
         protected void GrdvCitaciones_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -201,7 +198,7 @@
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
                     DropDownList _ddlrespuesta = (e.Row.FindControl("DdlRespuesta") as DropDownList);
-                    _dts = new ControllerDAO().FunGetParametroDetalle("TIPO MAIL", "--Seleccione Opcion--", "S");
+                    _dts = new ControllerDAO().FunGetParametroDetalle("TIPO TERRENO", "--Seleccione Opcion--", "S");
 
                     _ddlrespuesta.DataSource = _dts;
                     _ddlrespuesta.DataTextField = "Descripcion";
@@ -211,49 +208,34 @@
 
                 if (e.Row.RowIndex >= 0)
                 {
-                    _chkenviado = (CheckBox)(e.Row.Cells[4].FindControl("ChkEnviar"));
-                    _ddlrepuesta = (DropDownList)(e.Row.Cells[5].FindControl("DdlRespuesta"));
-                    _imgeliminar = (ImageButton)(e.Row.Cells[6].FindControl("ImgEliminar"));
-                    _enviado = GrdvCitaciones.DataKeys[e.Row.RowIndex].Values["Enviado"].ToString();
                     _respuesta = GrdvCitaciones.DataKeys[e.Row.RowIndex].Values["Respuesta"].ToString();
+                    _observacion = GrdvCitaciones.DataKeys[e.Row.RowIndex].Values["Registro"].ToString();
+                    _fechavisita = GrdvCitaciones.DataKeys[e.Row.RowIndex].Values["FechaVisita"].ToString();
 
-                    if (_enviado == "SEND")
+                    _ddlrepuesta = (DropDownList)(e.Row.Cells[3].FindControl("DdlRespuesta"));
+                    _txtobservacion = (TextBox)(e.Row.Cells[4].FindControl("TxtObservacion"));
+
+                    _dtmfechavisita = DateTime.ParseExact(_fechavisita, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+                    if (DateTime.ParseExact(DateTime.Now.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture) >=
+                        _dtmfechavisita)
                     {
-                        _chkenviado.Checked = true;
-                        _chkenviado.Enabled = false;
                         _ddlrepuesta.Enabled = true;
-
-                        _imgeliminar.ImageUrl = "~/Botones/eliminar.png";
-                        _imgeliminar.Enabled = true;
-                        _imgeliminar.Height = 15;
+                        _txtobservacion.Enabled = true;
                     }
+
+                    //FileUpload _file = (FileUpload)(e.Row.Cells[5].FindControl("FileUpload1"));
+
+                    if (_respuesta != "")
+                    {
+                        _ddlrepuesta.Enabled = false;
+                        _txtobservacion.ReadOnly = true;
+                        //_file.Enabled = false;
+                    }
+
                     _ddlrepuesta.SelectedValue = _respuesta;
+                    _txtobservacion.Text = _observacion;
                 }
-            }
-            catch (Exception ex)
-            {
-                Lblerror.Text = ex.ToString();
-            }
-        }
-
-        protected void ImgEliminar_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                GridViewRow _gvRow = (GridViewRow)(sender as Control).Parent.Parent;
-
-                _email = GrdvCitaciones.DataKeys[_gvRow.RowIndex].Values["Email"].ToString();
-
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(255, int.Parse(ViewState["CodigoCITA"].ToString()),
-                    int.Parse(Session["usuCodigo"].ToString()), 0, "", ViewState["NumDocumento"].ToString(), _email,
-                    Session["Conectar"].ToString());
-
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(246, 1, int.Parse(ViewState["CodigoCITA"].ToString()), 0,
-                    "", "Email", "", Session["Conectar"].ToString());
-
-                ViewState["Citaciones"] = _dts.Tables[0];
-                GrdvCitaciones.DataSource = _dts;
-                GrdvCitaciones.DataBind();
             }
             catch (Exception ex)
             {
@@ -266,63 +248,68 @@
             try
             {
                 _dtb = (DataTable)ViewState["Citaciones"];
-                _resultado = _dtb.Select("Enviado='SI'");
+                _resultado = _dtb.Select("Respuesta=''");
 
-                _totalregistros = _dtb.Rows.Count;
-
-                if (_resultado.Count() > 0)
-                {
-                    foreach (DataRow _drfila in _resultado)
-                    {
-                        _dts = new ConsultaDatosDAO().FunAgendaCitaciones(11, 0, 0, "", 0, "0", 0, "MAIL ENVIADO",
-                            "", "", "", "", "", "", "", "", _drfila["Email"].ToString(), new byte[0], "", "", "", "",
-                            "0", "0", 0, "", 0, "SEND", "Email", "MEV", "", "", "", "", "", "", "",
-                            int.Parse(ViewState["CodigoCITA"].ToString()), 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                            Session["MachineName"].ToString(), Session["Conectar"].ToString());
-                    }
-                }
-
-                _resultado = _dtb.Select("Enviado='SEND'");
+                _totalregistros = _resultado.Count();
 
                 foreach (DataRow _drfila in _resultado)
                 {
-                    _email = _drfila["Email"].ToString();
+                    _codigo = _drfila["CodigoTERR"].ToString();
 
                     foreach (GridViewRow i_row in GrdvCitaciones.Rows)
                     {
-                        _ddlrepuesta = (DropDownList)GrdvCitaciones.Rows[i_row.RowIndex].Cells[5].FindControl("DdlRespuesta");
-                        _emailcomparar = GrdvCitaciones.DataKeys[i_row.RowIndex]["Email"].ToString();
-                        _codigomatd = GrdvCitaciones.DataKeys[i_row.RowIndex]["CodigoMATD"].ToString();
-                        _codigohcit = GrdvCitaciones.DataKeys[i_row.RowIndex]["CodigoHCIT"].ToString();
+                        _ddlrepuesta = (DropDownList)GrdvCitaciones.Rows[i_row.RowIndex].Cells[4].FindControl("DdlRespuesta");
+                        _txtobservacion = (TextBox)GrdvCitaciones.Rows[i_row.RowIndex].Cells[4].FindControl("TxtObservacion");
+                        _codigoterreno = GrdvCitaciones.DataKeys[i_row.RowIndex]["CodigoTERR"].ToString();
+                        _codiomatd = GrdvCitaciones.DataKeys[i_row.RowIndex]["CodigoMATD"].ToString();
 
-                        if (_ddlrepuesta.SelectedValue == "0")
+                        if (_ddlrepuesta.SelectedValue != "0")
                         {
-                            new FuncionesDAO().FunShowJSMessage("Seleccione Respuesta..!", this, "W", "L");
-                            break;
-                        }
+                            //FileUpload _file = (FileUpload)GrdvCitaciones.Rows[i_row.RowIndex].Cells[5].FindControl("FileUpload1");
 
-                        if (_email == _emailcomparar)
-                        {
-                            _dts = new ConsultaDatosDAO().FunAgendaCitaciones(12, int.Parse(ViewState["CodigoCLDE"].ToString()),
-                                0, "", 0, "0", 0, "", "", "", "", "", "", "", "", "", _drfila["Email"].ToString(), new byte[0],
-                                "", "", "", "", "0", "0", 0, "", 0, _ddlrepuesta.SelectedValue, "Email",
-                                "", "", "", "", "", "", "", "", int.Parse(ViewState["CodigoCITA"].ToString()), 0,
-                                int.Parse(_codigomatd), int.Parse(_codigohcit), 0, int.Parse(Session["usuCodigo"].ToString()),
-                                Session["MachineName"].ToString(), Session["Conectar"].ToString());
+                            //if (_file.HasFile)
+                            //{
+                            //    _ext = _file.PostedFile.FileName;
+                            //    _ext = _ext.Substring(_ext.LastIndexOf(".") + 1).ToLower();
+                            //    _formatos = new string[] { "jpg", "jpeg", "bmp", "png", "gif", "pdf" };
 
-                            _contar++;
+                            //    if (Array.IndexOf(_formatos, _ext) < 0)
+                            //    {
+                            //        new FuncionesBAS().FunShowJSMessage("Formato de imagen inválido..!", this);
+                            //        return;
+                            //    }
+
+                            //    _nombre = _file.FileName.Substring(0, _file.FileName.LastIndexOf("."));
+                            //    _contentType = _file.PostedFile.ContentType;
+                            //    _ruta = Funguardararchivo(_file.PostedFile);
+                            //    _path = "~/citacion/" + ViewState["NumDocumento"].ToString();
+
+                            //    _totalname = _path + " " + _nombre + " " + _ext;
+                            //}
+
+                            if (_codigo == _codigoterreno)
+                            {
+                                _dts = new ConsultaDatosDAO().FunAgendaCitaciones(15, int.Parse(ViewState["CodigoCLDE"].ToString()),
+                                    0, "", 0, "0", 0, _txtobservacion.Text.Trim().ToUpper(), "", "", "", "", "", "", "", "", "",
+                                    new byte[0], "", "", "", "", "0", "0", 0, "", 0, _ddlrepuesta.SelectedValue,
+                                    "Terreno", "", "", "", "", "", "", "", "", int.Parse(ViewState["CodigoCITA"].ToString()),
+                                    int.Parse(_codigoterreno), int.Parse(_codiomatd), 0, 0, int.Parse(Session["usuCodigo"].ToString()),
+                                    Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+
+                                _contar++;
+                            }
                         }
                     }
                 }
 
                 if (_totalregistros == _contar)
-                    Response.Redirect("WFrm_CitacionProcesoEmail.aspx?MensajeRetornado=Mails Gestionados..!");
+                    Response.Redirect("WFrm_CitacionProcesoTerreno.aspx?MensajeRetornado=Gestion Terreno Realizada..!");
                 else
                 {
                     _redirect = string.Format("{0}?CodigoCITA={1}&CodigoPERS={2}&CodigoCLDE={3}&NumDocumento={4}" +
                         "&MensajeRetornado={5}", Request.Url.AbsolutePath, ViewState["CodigoCITA"].ToString(),
                         ViewState["CodigoPERS"].ToString(), ViewState["CodigoCLDE"].ToString(),
-                        ViewState["NumDocumento"].ToString(), "Falta Responder Mails");
+                        ViewState["NumDocumento"].ToString(), "Falta Gestionar Terrenos");
 
                     Response.Redirect(_redirect);
                 }
@@ -335,8 +322,9 @@
 
         protected void BtnSalir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("WFrm_CitacionProcesoEmail.aspx", true);
+            Response.Redirect("WFrm_CitacionProcesoTerreno.aspx", true);
         }
+
         #endregion
     }
 }

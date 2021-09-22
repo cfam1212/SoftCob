@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_RegistroCitacionMail.aspx.cs" Inherits="SoftCob.Views.BPM.WFrm_RegistroCitacionMail" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_RegistroCitacionTerreno.aspx.cs" Inherits="SoftCob.Views.BPM.WFrm_RegistroCitacionTerreno" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -70,7 +70,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-info">
+            <%--            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -80,7 +80,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>
+            </div>--%>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server">
                     <ContentTemplate>
@@ -175,7 +175,7 @@
                                                 <asp:BoundField DataField="Garante" HeaderText="Nombres"></asp:BoundField>
                                                 <asp:BoundField DataField="Operacion" HeaderText="Operación"></asp:BoundField>
                                             </Columns>
-                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
                                             <EditRowStyle BackColor="#2461BF" />
                                             <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
@@ -201,8 +201,7 @@
                                 <td>
                                     <asp:ImageButton ID="ImgCitacion" runat="server" Height="25px" ImageUrl="~/Botones/Buscar.png" OnClick="ImgCitacion_Click" TabIndex="4" />
                                 </td>
-                                <td>
-                                    &nbsp;</td>
+                                <td></td>
                                 <td></td>
                             </tr>
                         </table>
@@ -218,23 +217,19 @@
                                 <td></td>
                                 <td colspan="3">
                                     <asp:Panel ID="PnlCitaciones" runat="server" CssClass="panel panel-primary"
-                                        GroupingText="Proceso Envío Mail Citacion" Height="350px" ScrollBars="Vertical"
-                                        TabIndex="17">
+                                        GroupingText="Proceso Registro Terreno" Height="390px" ScrollBars="Vertical"
+                                        TabIndex="6">
                                         <asp:GridView ID="GrdvCitaciones" runat="server" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
-                                            Height="25px" OnRowDataBound="GrdvCitaciones_RowDataBound" PageSize="5" TabIndex="6" Width="100%" DataKeyNames="Enviado,Email,Respuesta,CodigoMATD,CodigoHCIT">
+                                            Height="25px" OnRowDataBound="GrdvCitaciones_RowDataBound" PageSize="5" TabIndex="7" Width="100%" DataKeyNames="Respuesta,CodigoTERR,Registro,FechaVisita,CodigoMATD">
                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                             <Columns>
                                                 <asp:BoundField DataField="TipoCliente" HeaderText="Tipo Cliente" />
                                                 <asp:BoundField DataField="Definicion" HeaderText="Definición" />
-                                                <asp:BoundField DataField="Email" HeaderText="Email" />
-                                                <asp:BoundField DataField="Observacion" HeaderText="Observación" />
-                                                <asp:TemplateField HeaderText="Enviado">
-                                                    <ItemTemplate>
-                                                        <asp:CheckBox ID="ChkEnviar" runat="server" AutoPostBack="True" OnCheckedChanged="ChkEnviar_CheckedChanged" />
-                                                    </ItemTemplate>
-                                                    <ItemStyle HorizontalAlign="Center" />
-                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="Direccion" HeaderText="Dirección" />
+                                                <asp:BoundField DataField="FechaVisita" HeaderText="Fecha Visita">
+                                                <ItemStyle HorizontalAlign="Right" />
+                                                </asp:BoundField>
                                                 <asp:TemplateField HeaderText="Respuesta">
                                                     <ItemTemplate>
                                                         <asp:DropDownList ID="DdlRespuesta" runat="server" CssClass="form-control" Enabled="False">
@@ -242,11 +237,10 @@
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Eliminar">
+                                                <asp:TemplateField HeaderText="Observación">
                                                     <ItemTemplate>
-                                                        <asp:ImageButton ID="ImgEliminar" runat="server" Height="20px" ImageUrl="~/Botones/eliminargrisbg.png" OnClick="ImgEliminar_Click" Enabled="False" OnClientClick="return asegurar();" />
+                                                        <asp:TextBox ID="TxtObservacion" runat="server" CssClass="form-control upperCase" Width="100%" MaxLength="150" Height="50px" TextMode="MultiLine" Enabled="False"></asp:TextBox>
                                                     </ItemTemplate>
-                                                    <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
                                             </Columns>
                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
@@ -289,11 +283,6 @@
             </div>
         </div>
     </form>
-    <script type="text/javascript">
-        function asegurar() {
-            rc = confirm("¿El registro será enviado a Listas Negras, Está Deacuerdo?");
-            return rc;
-        }
-    </script>
 </body>
 </html>
+

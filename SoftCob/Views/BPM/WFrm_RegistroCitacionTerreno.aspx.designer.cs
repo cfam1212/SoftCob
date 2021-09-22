@@ -11,7 +11,7 @@ namespace SoftCob.Views.BPM
 {
 
 
-    public partial class WFrm_RegistroCitacionMail
+    public partial class WFrm_RegistroCitacionTerreno
     {
 
         /// <summary>
@@ -58,15 +58,6 @@ namespace SoftCob.Views.BPM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Lblerror;
-
-        /// <summary>
-        /// Control updProgress.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress updProgress;
 
         /// <summary>
         /// Control updCabecera.

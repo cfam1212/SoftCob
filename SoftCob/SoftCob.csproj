@@ -359,6 +359,7 @@
     <Content Include="Views\Bitacora\WFrm_DatosBitacora.aspx" />
     <Content Include="Views\Bitacora\WFrm_NuevaBitacora.aspx" />
     <Content Include="Views\BPM\WFrm_CitacionProcesoEmail.aspx" />
+    <Content Include="Views\BPM\WFrm_CitacionProcesoTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_CitacionProcesoTime.aspx" />
     <Content Include="Views\BPM\WFrm_CrearCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_DatosCanalCitacion.aspx" />
@@ -368,6 +369,7 @@
     <Content Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionMail.aspx" />
+    <Content Include="Views\BPM\WFrm_RegistroCitacionTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_ViewPdf.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchAdmin.aspx" />
@@ -653,6 +655,13 @@
     <Compile Include="Views\BPM\WFrm_CitacionProcesoEmail.aspx.designer.cs">
       <DependentUpon>WFrm_CitacionProcesoEmail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BPM\WFrm_CitacionProcesoTerreno.aspx.cs">
+      <DependentUpon>WFrm_CitacionProcesoTerreno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_CitacionProcesoTerreno.aspx.designer.cs">
+      <DependentUpon>WFrm_CitacionProcesoTerreno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\BPM\WFrm_CitacionProcesoTime.aspx.cs">
       <DependentUpon>WFrm_CitacionProcesoTime.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -715,6 +724,13 @@
     </Compile>
     <Compile Include="Views\BPM\WFrm_RegistroCitacionMail.aspx.designer.cs">
       <DependentUpon>WFrm_RegistroCitacionMail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistroCitacionTerreno.aspx.cs">
+      <DependentUpon>WFrm_RegistroCitacionTerreno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistroCitacionTerreno.aspx.designer.cs">
+      <DependentUpon>WFrm_RegistroCitacionTerreno.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx.cs">
       <DependentUpon>WFrm_SectorVisitaCitacion.aspx</DependentUpon>
