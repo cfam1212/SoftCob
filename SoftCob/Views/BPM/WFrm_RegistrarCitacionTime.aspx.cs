@@ -533,7 +533,7 @@
                     _ruta = FunGuardarArchivo(FileUpload1.PostedFile);
                     _path = "~/citacion/" + ViewState["NumDocumento"].ToString();
 
-                    _totalname = _path + " " + _nombre + " " + _ext;
+                    _totalname = _path + "/" + _nombre + "." + _ext;
                 }
                 else
                 {

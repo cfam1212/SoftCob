@@ -53,7 +53,7 @@
                     FunCargaMantenimiento();
 
                     if (Request["MensajeRetornado"] != null) new FuncionesDAO().FunShowJSMessage(Request["MensajeRetornado"],
-                        this, "E", "R");
+                        this, "W", "R");
                 }
             }
             catch (Exception ex)
@@ -294,7 +294,7 @@
                                     new byte[0], "", "", "", "", "0", "0", 0, "", 0, _ddlrepuesta.SelectedValue,
                                     "Terreno", "", "", "", "", "", "", "", "", int.Parse(ViewState["CodigoCITA"].ToString()),
                                     int.Parse(_codigoterreno), int.Parse(_codiomatd), 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                                    Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                                    Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                                 _contar++;
                             }

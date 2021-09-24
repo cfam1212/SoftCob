@@ -38,6 +38,7 @@
                             ScriptManager.RegisterStartupScript(this, GetType(), "pop",
                                 "javascript: alertify.set('notifier','position', 'top-center'); alertify.error('" +
                                 _mensaje + "', 100, function(){  console.log('dismissed'); });", true);
+
                             Session["LICENCIA"] = "NO";
                         }
                         else
@@ -48,8 +49,8 @@
                             ScriptManager.RegisterStartupScript(this, GetType(), "pop",
                                 "javascript: alertify.set('notifier','position', 'top-center'); alertify.warning('" +
                                 _mensaje + "', 50, function(){  console.log('dismissed'); });", true);
-                            Session["LICENCIA"] = "NO";
 
+                            Session["LICENCIA"] = "NO";
                         }
                     }
 
@@ -60,22 +61,18 @@
 
                     if (_contar > 0)
                     {
-                        _mensaje = "Tiene " + _contar + " CITACION(ES) por Procesar";
-                        SIFunBasicas.Basicas.PresentarMensaje(Page, "::GSBPO GLOBAL SERVICES::", _mensaje);
+                        _mensaje = "TIENE " + _contar + " NOTIFICACION(ES) POR PROCESAR";
+                        new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "R");
                     }
 
                     if (Session["CrearParam"].ToString() == "SI")
                     {
-
                         _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 0, 0, 0, "", "", "",
                             Session["Conectar"].ToString());
 
                         _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
 
-                        if (_contar > 0)
-                        {
-                            _mensaje = "Tiene " + _contar + " SOLICITUD(ES) NOTIFICACION(ES) Pendiente(s)";
-                        }
+                        if (_contar > 0) _mensaje = "Tiene " + _contar + " SOLICITUD(ES) NOTIFICACION(ES) PENDIENTE(s)";
                         else
                         {
                             _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 1, 0, 0, "", "", "",
@@ -83,11 +80,7 @@
 
                             _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
 
-                            if (_contar > 0)
-                            {
-                                _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) En PROCESO";
-                                
-                            }
+                            if (_contar > 0) _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) EN PROCESO";
                             else
                             {
                                 _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 4, 0, 0, "", "", "",
@@ -95,11 +88,7 @@
 
                                 _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
 
-                                if (_contar > 0)
-                                {
-                                    _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) TERRENO GENERADAS POR GESTIONAR";
-                                    //new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "R");
-                                }
+                                if (_contar > 0) _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) TERRENO GENERADAS POR GESTIONAR";
                                 else
                                 {
                                     _dts = new ConsultaDatosDAO().FunConsultaDatos(252, 5, 0, 0, "", "", "",
@@ -107,11 +96,7 @@
 
                                     _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
 
-                                    if (_contar > 0)
-                                    {
-                                        _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) MAIL GENERADAS POR GESTIONAR";
-                                        //new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "R");
-                                    }
+                                    if (_contar > 0) _mensaje = "Tiene " + _contar + " NOTIFICACION(ES) MAIL GENERADAS POR GESTIONAR";
                                 }
                             }
                         }

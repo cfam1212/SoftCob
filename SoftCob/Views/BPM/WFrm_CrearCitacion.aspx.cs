@@ -245,19 +245,19 @@
             {
                 if (DdlTipoMail.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Mail..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Mail..!", this, "W", "R");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtEmail.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Email..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Email..!", this, "W", "R");
                     return;
                 }
 
                 if (!new FuncionesDAO().Email_bien_escrito(TxtEmail.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Email Incorrecto..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Email Incorrecto..!", this, "W", "R");
                     return;
                 }
 
@@ -272,7 +272,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya Existe Email Agregado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya Existe Email Agregado..!", this, "W", "R");
                     return;
                 }
 
@@ -463,13 +463,13 @@
             {
                 if (DdlDireccion.SelectedValue == "0")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Direccion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Direccion..!", this, "W", "R");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(TxtDireccion.Text.Trim()))
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Direccion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Direccion..!", this, "W", "R");
                     return;
                 }
 
@@ -484,7 +484,7 @@
 
                 if (_lexiste)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ya Existe Email Agregado..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ya Existe Email Agregado..!", this, "W", "R");
                     return;
                 }
 
@@ -580,13 +580,13 @@
                 if (string.IsNullOrEmpty(TxtValor.Text.Trim()) || TxtValor.Text.Trim() == "0" || TxtValor.Text.Trim() == "0."
                     || TxtValor.Text.Trim() == "0.0" || TxtValor.Text.Trim() == ".")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor Citacion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Valor Citacion..!", this, "W", "L");
                     return;
                 }
 
                 if (!ChkWathaspp.Checked && !ChkEmail.Checked && !ChkTerreno.Checked)
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Envio Citacion..!", this);
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo de Envio Citacion..!", this, "W", "L");
                     return;
                 }
 
@@ -597,9 +597,39 @@
 
                     if (_result.Count() == 0)
                     {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione al menos un numero de Celular...!", this);
+                        new FuncionesDAO().FunShowJSMessage("Seleccione al menos un numero de Celular...!", this, "W", "L");
                         return;
                     }
+                }
+
+                if (ChkEmail.Checked)
+                {
+                    _dtbemail = (DataTable)ViewState["Emails"];
+                    _result = _dtbemail.Select("Enviar='SI'");
+
+                    if (_result.Count() == 0)
+                    {
+                        new FuncionesDAO().FunShowJSMessage("Seleccione al menos un Mail...!", this, "W", "L");
+                        return;
+                    }
+                }
+
+                if (ChkTerreno.Checked)
+                {
+                    _dtbterreno = (DataTable)ViewState["Terreno"];
+                    _result = _dtbterreno.Select("Enviar='SI'");
+
+                    if (_result.Count() == 0)
+                    {
+                        new FuncionesDAO().FunShowJSMessage("Seleccione al menos una Direccion...!", this, "W", "L");
+                        return;
+                    }
+                }
+
+                if (ChkWathaspp.Checked)
+                {
+                    _dtbwhastapp = (DataTable)ViewState["Whatsapp"];
+                    _result = _dtbwhastapp.Select("Enviar='SI'");
 
                     _dts = new ConsultaDatosDAO().FunNewSolictudCitacion(0, 0, int.Parse(ViewState["CodigoCPCE"].ToString()),
                         int.Parse(ViewState["CodigoPERS"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()), "CSL",
@@ -639,12 +669,6 @@
                     _dtbemail = (DataTable)ViewState["Emails"];
                     _result = _dtbemail.Select("Enviar='SI'");
 
-                    if (_result.Count() == 0)
-                    {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione al menos un Mail...!", this);
-                        return;
-                    }
-
                     _dts = new ConsultaDatosDAO().FunNewSolictudCitacion(0, 0, int.Parse(ViewState["CodigoCPCE"].ToString()),
                         int.Parse(ViewState["CodigoPERS"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()), "CSL",
                         TxtValor.Text.Trim(), int.Parse(Session["usuCodigo"].ToString()), TxtObservacion.Text.Trim().ToUpper(),
@@ -683,12 +707,6 @@
                 {
                     _dtbterreno = (DataTable)ViewState["Terreno"];
                     _result = _dtbterreno.Select("Enviar='SI'");
-
-                    if (_result.Count() == 0)
-                    {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione al menos una Direccion...!", this);
-                        return;
-                    }
 
                     _dts = new ConsultaDatosDAO().FunNewSolictudCitacion(0, 0, int.Parse(ViewState["CodigoCPCE"].ToString()),
                         int.Parse(ViewState["CodigoPERS"].ToString()), int.Parse(ViewState["CodigoCLDE"].ToString()), "CSL",

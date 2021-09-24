@@ -235,6 +235,7 @@
     <Content Include="Botones\cancelarbg.png" />
     <Content Include="Botones\casa.png" />
     <Content Include="Botones\casabg.png" />
+    <Content Include="Botones\casagris.png" />
     <Content Include="Botones\cerrargris.png" />
     <Content Include="Botones\citamedica.png" />
     <Content Include="Botones\citamedicabg.png" />
@@ -251,6 +252,7 @@
     <Content Include="Botones\eliminarbg.png" />
     <Content Include="Botones\eliminargris.png" />
     <Content Include="Botones\eliminargrisbg.png" />
+    <Content Include="Botones\emailgris.png" />
     <Content Include="Botones\excel.png" />
     <Content Include="Botones\excelbg.png" />
     <Content Include="Botones\gafas.png" />
@@ -297,6 +299,7 @@
     <Content Include="Botones\vistonegro.png" />
     <Content Include="Botones\vistoverde.png" />
     <Content Include="Botones\vistoverdebg.png" />
+    <Content Include="Botones\whastappgris.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -365,12 +368,14 @@
     <Content Include="Views\BPM\WFrm_DatosCanalCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_DocumentosView.aspx" />
     <Content Include="Views\BPM\WFrm_EfectivoLostPayment.aspx" />
+    <Content Include="Views\BPM\WFrm_ListaSeguimientoTime.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionMail.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx" />
+    <Content Include="Views\BPM\WFrm_SeguimientoCitacionTime.aspx" />
     <Content Include="Views\BPM\WFrm_ViewPdf.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchAdmin.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchEfectivoOn.aspx" />
@@ -697,6 +702,13 @@
     <Compile Include="Views\BPM\WFrm_EfectivoLostPayment.aspx.designer.cs">
       <DependentUpon>WFrm_EfectivoLostPayment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BPM\WFrm_ListaSeguimientoTime.aspx.cs">
+      <DependentUpon>WFrm_ListaSeguimientoTime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_ListaSeguimientoTime.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaSeguimientoTime.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx.cs">
       <DependentUpon>WFrm_ListaSolicitudGestores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -738,6 +750,13 @@
     </Compile>
     <Compile Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx.designer.cs">
       <DependentUpon>WFrm_SectorVisitaCitacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_SeguimientoCitacionTime.aspx.cs">
+      <DependentUpon>WFrm_SeguimientoCitacionTime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_SeguimientoCitacionTime.aspx.designer.cs">
+      <DependentUpon>WFrm_SeguimientoCitacionTime.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\BPM\WFrm_ViewPdf.aspx.cs">
       <DependentUpon>WFrm_ViewPdf.aspx</DependentUpon>
