@@ -53,7 +53,31 @@
                 width: 80px;
                 height: 80px;
             }
+
+        .ChildGrid td {
+            background-color: #eee !important;
+            color: black;
+            font-size: 8pt;
+            line-height: 200%
+        }
+
+        .ChildGrid th {
+            background-color: #6C6C6C !important;
+            color: White;
+            font-size: 10pt;
+            line-height: 200%
+        }
     </style>
+    <script type="text/javascript">
+        $("[src*=agregar]").live("click", function () {
+            $(this).closest("tr").after("<tr><td></td><td colspan = '999'>" + $(this).next().html() + "</td></tr>")
+            $(this).attr("src", "../../Botones/minus.png");
+        });
+        $("[src*=minus]").live("click", function () {
+            $(this).attr("src", "../../Botones/agregar.png");
+            $(this).closest("tr").next().remove();
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -171,6 +195,30 @@
                                     </td>
                                     <td></td>
                                 </tr>
+                                <tr runat="server" id="TrGarantes" visible="false">
+                                    <td></td>
+                                    <td colspan="3">
+                                        <asp:Panel ID="PnlDatosGarante" runat="server" CssClass="panel panel-primary" Height="200px"
+                                            GroupingText="Datos Garante" ScrollBars="Vertical" TabIndex="17">
+                                            <asp:GridView ID="GrdvDatosGarante" runat="server" AutoGenerateColumns="False"
+                                                CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
+                                                PageSize="3" TabIndex="16" Width="100%" DataKeyNames="CedulaGarante,Existe,CodigoGARA,Operacion">
+                                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                                <Columns>
+                                                    <asp:BoundField DataField="Tipo" HeaderText="Tipo"></asp:BoundField>
+                                                    <asp:BoundField DataField="CedulaGarante" HeaderText="Cédula" />
+                                                    <asp:BoundField DataField="Garante" HeaderText="Nombres"></asp:BoundField>
+                                                    <asp:BoundField DataField="Operacion" HeaderText="Operación"></asp:BoundField>
+                                                </Columns>
+                                                <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                                <RowStyle Font-Size="X-Small" />
+                                                <EditRowStyle BackColor="#2461BF" />
+                                                <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                            </asp:GridView>
+                                        </asp:Panel>
+                                    </td>
+                                    <td></td>
+                                </tr>
                             </table>
                             <table style="width: 100%" runat="server" id="TblHistorial" visible="false">
                                 <tr>
@@ -183,41 +231,44 @@
                                 <tr>
                                     <td></td>
                                     <td colspan="3">
-                                        <asp:Panel ID="Panel1" runat="server" CssClass="panel panel-primary" Height="250px" GroupingText="Histórico Citación" ScrollBars="Vertical" TabIndex="17">
+                                        <asp:Panel ID="Panel1" runat="server" CssClass="panel panel-primary" Height="290px" GroupingText="Histórico Citación" ScrollBars="Vertical" TabIndex="17">
                                             <asp:GridView ID="GrdvCitaciones" runat="server" AutoGenerateColumns="False"
                                                 CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
-                                                PageSize="5" TabIndex="3" Width="100%" DataKeyNames="Codigo,EstadoCodigo,HoraInicio,HoraFin,CodigoGEST">
+                                                PageSize="5" TabIndex="7" Width="100%" DataKeyNames="Canal,CodigoCITA" Height="25px" OnRowDataBound="GrdvCitaciones_RowDataBound">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>
-                                                    <asp:BoundField DataField="Hora" HeaderText="Fecha_Solicitud">
-                                                        <ItemStyle HorizontalAlign="Center" />
-                                                    </asp:BoundField>
-                                                    <asp:BoundField DataField="Estado" HeaderText="No.Citaciones" />
-                                                    <asp:BoundField DataField="Cliente" HeaderText="Estado"></asp:BoundField>
-                                                    <asp:TemplateField HeaderText="Terreno">
+                                                    <asp:TemplateField>
                                                         <ItemTemplate>
-                                                            <asp:Image ID="ImgTerreno" runat="server" Height="20px" ImageUrl="~/Botones/eliminargris.png" />
+                                                            <img alt="" style="cursor: pointer" src="../../Botones/agregarbg.png" width="20" height="20" id="btnplus" />
+                                                            <asp:Panel runat="server" Style="display: none">
+                                                                <asp:GridView ID="GrdvCanales" runat="server" AutoGenerateColumns="false" CssClass="table table-condensed table-bordered table-hover table-responsive">
+                                                                    <Columns>
+                                                                        <asp:BoundField DataField="TipoCliente" HeaderText="Tipo" />
+                                                                        <asp:BoundField DataField="Definicion" HeaderText="Definicion" />
+                                                                        <asp:BoundField DataField="Celular" HeaderText="Celular" />
+                                                                        <asp:BoundField DataField="Email" HeaderText="Email" />
+                                                                        <asp:BoundField DataField="Direccion" HeaderText="Direccion" />
+                                                                        <asp:BoundField DataField="Referencia" HeaderText="Referencia" />
+                                                                        <asp:BoundField DataField="Sector" HeaderText="Sector" />
+                                                                        <asp:BoundField DataField="FechaVisita" HeaderText="Fecha Visita" />
+                                                                        <asp:BoundField DataField="RespuestaGeneral" HeaderText="Respuesta" />
+                                                                        <asp:BoundField DataField="Registro" HeaderText="Observación" />
+                                                                    </Columns>
+                                                                    <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                                                    <RowStyle Font-Size="X-Small" />
+                                                                    <EditRowStyle BackColor="#2461BF" />
+                                                                    <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                                                </asp:GridView>
+                                                            </asp:Panel>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Logo">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="ImgLogo" runat="server" Height="20px" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Email">
-                                                        <ItemTemplate>
-                                                            <asp:Image ID="ImgMail" runat="server" Height="20px" ImageUrl="~/Botones/eliminargris.png" />
-                                                        </ItemTemplate>
-                                                        <ItemStyle HorizontalAlign="Center" />
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Whastapp">
-                                                        <ItemTemplate>
-                                                            <asp:Image ID="ImgWhastapp" runat="server" Height="20px" ImageUrl="~/Botones/eliminargris.png" />
-                                                        </ItemTemplate>
-                                                        <ItemStyle HorizontalAlign="Center" />
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Detalle">
-                                                        <ItemTemplate>
-                                                            <asp:ImageButton ID="ImgDetalle" runat="server" Height="20px" ImageUrl="~/Botones/busquedabg.png" Enabled="False" />
-                                                        </ItemTemplate>
-                                                        <ItemStyle HorizontalAlign="Center" />
-                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="Canal" HeaderText="Canal" />
                                                 </Columns>
                                                 <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                                 <RowStyle Font-Size="X-Small" />

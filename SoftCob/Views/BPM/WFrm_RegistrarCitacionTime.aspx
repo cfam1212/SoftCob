@@ -100,7 +100,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-info">
+<%--            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -110,7 +110,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>
+            </div>--%>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server">
                     <ContentTemplate>
@@ -236,7 +236,7 @@
                                             <Columns>
                                                 <asp:TemplateField>
                                                     <ItemTemplate>
-                                                        <img alt="" style="cursor: pointer" src="../../Botones/agregar.png" width="15" height="15" id="btnplus" />
+                                                        <img alt="" style="cursor: pointer" src="../../Botones/agregar.png" width="20" height="20" id="btnplus" />
                                                         <asp:Panel runat="server" Style="display: none">
                                                             <asp:GridView ID="GrdvCanales" runat="server" AutoGenerateColumns="false"
                                                                 CssClass="table table-condensed table-bordered table-hover table-responsive">
@@ -260,7 +260,7 @@
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Logo">
                                                     <ItemTemplate>
-                                                        <asp:ImageButton ID="ImgLogo" runat="server" Height="15px" />
+                                                        <asp:ImageButton ID="ImgLogo" runat="server" Height="20px" />
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>

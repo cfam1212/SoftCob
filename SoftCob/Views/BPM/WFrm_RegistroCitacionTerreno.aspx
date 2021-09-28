@@ -70,7 +70,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <%--            <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -80,7 +80,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>--%>
+            </div>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server">
                     <ContentTemplate>
@@ -175,7 +175,7 @@
                                                 <asp:BoundField DataField="Garante" HeaderText="Nombres"></asp:BoundField>
                                                 <asp:BoundField DataField="Operacion" HeaderText="Operación"></asp:BoundField>
                                             </Columns>
-                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
                                             <EditRowStyle BackColor="#2461BF" />
                                             <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
@@ -228,7 +228,7 @@
                                                 <asp:BoundField DataField="Definicion" HeaderText="Definición" />
                                                 <asp:BoundField DataField="Direccion" HeaderText="Dirección" />
                                                 <asp:BoundField DataField="FechaVisita" HeaderText="Fecha Visita">
-                                                <ItemStyle HorizontalAlign="Right" />
+                                                    <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
                                                 <asp:TemplateField HeaderText="Respuesta">
                                                     <ItemTemplate>

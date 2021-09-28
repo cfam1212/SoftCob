@@ -259,13 +259,13 @@
                             }
                             break;
                         case "REV":
-                            if (_codigogest != Session["usuCodigo"].ToString()) _imgcitacion.ImageUrl = "~/Botones/btncitagris.png";
+                            if (_codigogest != Session["usuCodigo"].ToString()) _imgcitacion.ImageUrl = "~/Botones/btncitagrisbg.png";
                             else
                             {
-                                if (_codigopers != ViewState["CodigoPERS"].ToString()) _imgcitacion.ImageUrl = "~/Botones/btncitagris.png";
+                                if (_codigopers != ViewState["CodigoPERS"].ToString()) _imgcitacion.ImageUrl = "~/Botones/btncitagrisbg.png";
                                 else
                                 {
-                                    _imgcitacion.ImageUrl = "~/Botones/btncitaelimina.png";
+                                    _imgcitacion.ImageUrl = "~/Botones/btncitaeliminabg.png";
                                     _imgcitacion.Enabled = true;
                                 }
                             }
@@ -273,11 +273,11 @@
                             break;
                         case "CSL":
                             e.Row.Cells[1].BackColor = System.Drawing.Color.DarkOrange;
-                            _imgcitacion.ImageUrl = "~/Botones/btncitasolicita.jpg";
+                            _imgcitacion.ImageUrl = "~/Botones/btncitasolicitabg.png";
                             break;
                         case "CPR":
                             e.Row.Cells[1].BackColor = System.Drawing.Color.Coral;
-                            _imgcitacion.ImageUrl = "~/Botones/btncitaproceso.png";
+                            _imgcitacion.ImageUrl = "~/Botones/btncitaprocesobg.png";
                             break;
                         case "CRE":
                             e.Row.Cells[1].BackColor = System.Drawing.Color.Bisque;
@@ -285,54 +285,36 @@
                             break;
                         case "CMI":
                             e.Row.Cells[1].BackColor = System.Drawing.Color.Red;
-                            _imgcitacion.ImageUrl = "~/Botones/btnnoemail.jpg";
+                            _imgcitacion.ImageUrl = "~/Botones/btnnoemailbg.png";
                             break;
                         case "CGE":
                             e.Row.Cells[1].BackColor = System.Drawing.Color.Cyan;
-                            _imgcitacion.ImageUrl = "~/Botones/btncitagenerada.png";
-                            break;
-                        case "CRR":
-                            e.Row.Cells[1].BackColor = System.Drawing.Color.Azure;
+                            _imgcitacion.ImageUrl = "~/Botones/btncitageneradabg.png";
                             break;
                         case "CCS":
                             e.Row.Cells[1].BackColor = System.Drawing.Color.LimeGreen;
-                            _imgcitacion.ImageUrl = "~/Botones/btntodos.jpg";
+                            _imgcitacion.ImageUrl = "~/Botones/btntodosbg.png";
                             break;
                         case "CNA":
                             e.Row.Cells[1].BackColor = System.Drawing.Color.BurlyWood;
-                            _imgcitacion.ImageUrl = "~/Botones/quitar_usuario.jpg";
+                            _imgcitacion.ImageUrl = "~/Botones/quitar_usuariobg.png";
                             break;
                         case "CSV":
                             e.Row.Cells[1].BackColor = System.Drawing.Color.SeaGreen;
-                            _imgcitacion.ImageUrl = "~/Botones/btncitagris.png";
-                            break;
-                        case "CSR":
-                            e.Row.Cells[1].BackColor = System.Drawing.Color.Orange;
-                            break;
-                        case "CCA":
-                            e.Row.Cells[1].BackColor = System.Drawing.Color.Chartreuse;
-                            break;
-                        case "CCP":
-                            e.Row.Cells[1].BackColor = System.Drawing.Color.Khaki;
-                            break;
-                        case "CCD":
-                            e.Row.Cells[1].BackColor = System.Drawing.Color.Ivory;
-                            break;
-                        case "CEW":
-                            e.Row.Cells[1].BackColor = System.Drawing.Color.Gold;
-                            break;
-                        case "CCF":
-                            e.Row.Cells[1].BackColor = System.Drawing.Color.DarkTurquoise;
-                            break;
-                        case "CCL":
-                            e.Row.Cells[1].BackColor = System.Drawing.Color.Lime;
+                            _imgcitacion.ImageUrl = "~/Botones/btncitagrisbg.png";
                             break;
                         case "CLI":
                             e.Row.Cells[1].BackColor = System.Drawing.Color.Gray;
                             break;
+                        case "CCV":
+                            e.Row.Cells[1].BackColor = System.Drawing.Color.AliceBlue;
+                            break;
+                        case "CAS":
+                            e.Row.Cells[1].BackColor = System.Drawing.Color.Gold;
+                            break;
                         case "CLT":
                             e.Row.Cells[1].BackColor = System.Drawing.Color.DarkSalmon;
-                            _imgcitacion.ImageUrl = "~/Botones/btncitaelimina.png";
+                            _imgcitacion.ImageUrl = "~/Botones/btncitaeliminabg.png";
                             break;
                     }
                 }
@@ -357,10 +339,10 @@
                             _imglogo.ImageUrl = "~/Botones/btnwhastapp.png";
                             break;
                         case "Email":
-                            _imglogo.ImageUrl = "~/Botones/btnemailcitacion.png";
+                            _imglogo.ImageUrl = "~/Botones/btnemailcitacionbg.png";
                             break;
                         case "Terreno":
-                            _imglogo.ImageUrl = "~/Botones/casa.png";
+                            _imglogo.ImageUrl = "~/Botones/casabg.png";
                             _txtfecha.Enabled = true;
                             break;
                     }

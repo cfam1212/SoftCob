@@ -224,7 +224,7 @@
                                             <Columns>
                                                 <asp:TemplateField>
                                                     <ItemTemplate>
-                                                        <img alt="" style="cursor: pointer" src="../../Botones/agregar.png" width="15" height="15" id="btnplus" />
+                                                        <img alt="" style="cursor: pointer" src="../../Botones/agregar.png" width="20" height="20" id="btnplus" />
                                                         <asp:Panel runat="server" Style="display: none">
                                                             <asp:GridView ID="GrdvCanales" runat="server" AutoGenerateColumns="false"
                                                                 CssClass="table table-condensed table-bordered table-hover table-responsive">
@@ -246,7 +246,7 @@
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Logo">
                                                     <ItemTemplate>
-                                                        <asp:ImageButton ID="ImgLogo" runat="server" Height="15px" />
+                                                        <asp:ImageButton ID="ImgLogo" runat="server" Height="20px" />
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>

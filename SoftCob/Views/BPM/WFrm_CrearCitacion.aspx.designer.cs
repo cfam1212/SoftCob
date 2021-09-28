@@ -141,6 +141,33 @@ namespace SoftCob.Views.BPM
         protected global::System.Web.UI.WebControls.Panel Panel2;
 
         /// <summary>
+        /// Control TrGarantes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrGarantes;
+
+        /// <summary>
+        /// Control PnlDatosGarante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlDatosGarante;
+
+        /// <summary>
+        /// Control GrdvDatosGarante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrdvDatosGarante;
+
+        /// <summary>
         /// Control TblHistorial.
         /// </summary>
         /// <remarks>

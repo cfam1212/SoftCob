@@ -2,13 +2,12 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
     using System.Globalization;
     using System.Linq;
+    using System.Threading;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using System.Threading;
     public partial class WFrm_CrearCitacion : Page
     {
         #region Variables
@@ -17,18 +16,24 @@
         DataTable _dtbwhastapp = new DataTable();
         DataTable _dtbemail = new DataTable();
         DataTable _dtbterreno = new DataTable();
+        DataTable _dtbcitaciones = new DataTable();
+        DataTable _tblagre = new DataTable();
+        DataRow _filagre;
+        GridView _grdvCanales;
         decimal _totalExigible = 0.00M, _totalDeuda = 0.00M;
-        string _correos = "", _codigo = "0", _observacion = "", _codigocomparar = "0", _tipocliente = "", _cedula = "", _sql = "";
+        string _correos = "", _codigo = "0", _observacion = "", _codigocomparar = "0", _tipocliente = "", _cedula = "", _sql = "",
+            _whastapp = "", _email = "", _terreno = "", _canal = "", _codcita = "";
         CheckBox _chkwhatsapp = new CheckBox();
         CheckBox _chkemail = new CheckBox();
         CheckBox _chkterreno = new CheckBox();
         CheckBox _chksolicitar = new CheckBox();
         ImageButton _imgcitacion = new ImageButton();
+        ImageButton _imglogo = new ImageButton();
         TextBox _txtobserva = new TextBox();
         TextBox _observa;
         DataRow _resultado;
         DataRow[] _result;
-        int _codigocita = 0;
+        int _codigocita = 0, _opcion = 0;
         bool _lexiste = false;
         #endregion
 
@@ -45,15 +50,21 @@
                 TxtValor.Attributes.Add("onchange", "ValidarDecimales();");
 
                 if (!IsPostBack)
-                {
-                    Session["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                {                    
                     ViewState["CodigoPERS"] = Request["CodigoPERS"];
                     ViewState["CodigoCPCE"] = Request["CodigoCPCE"];
                     ViewState["CodigoCLDE"] = Request["CodigoCLDE"];
+                    ViewState["NumDocumento"] = Request["NumDocumento"];
                     ViewState["Retornar"] = Request["Retornar"];
+
+                    _dtbcitaciones.Columns.Add("CodigoCITA");
+                    _dtbcitaciones.Columns.Add("Canal");
+                    ViewState["Citaciones"] = _dtbcitaciones;
+
                     Lbltitulo.Text = "Nuevo Solicitud de Notificación";
                     PnlDatosDeudor.Height = 100;
                     PnlDatosGetion.Height = 120;
+                    PnlDatosGarante.Height = 120;
                     FunCargaMantenimiento();
                     FunCargarCombos(0);
                 }
@@ -82,6 +93,58 @@
 
                 GrdvDatosObligacion.DataSource = _dts;
                 GrdvDatosObligacion.DataBind();
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(45, 0, 0, 0, "", ViewState["NumDocumento"].ToString(), "",
+                    ViewState["Conectar"].ToString().ToString());
+
+                if (_dts.Tables[0].Rows.Count > 0)
+                {
+                    TrGarantes.Visible = true;
+                    GrdvDatosGarante.DataSource = _dts;
+                    GrdvDatosGarante.DataBind();
+                }
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(242, int.Parse(ViewState["CodigoPERS"].ToString()), 1, 0,
+                    "", "", "", ViewState["Conectar"].ToString());
+
+                if (_dts.Tables[0].Rows.Count > 0)
+                {
+                    TblHistorial.Visible = true;
+                    _codcita = _dts.Tables[0].Rows[0]["CitaCodigo"].ToString();
+                    _whastapp = _dts.Tables[0].Rows[0]["Whastapp"].ToString();
+                    _email = _dts.Tables[0].Rows[0]["Email"].ToString();
+                    _terreno = _dts.Tables[0].Rows[0]["Terreno"].ToString();
+
+                    _tblagre = new DataTable();
+                    _tblagre = (DataTable)ViewState["Citaciones"];
+
+                    if (!string.IsNullOrEmpty(_whastapp))
+                    {
+                        _filagre = _tblagre.NewRow();
+                        _filagre["CodigoCITA"] = _codcita;
+                        _filagre["Canal"] = _whastapp;
+                        _tblagre.Rows.Add(_filagre);
+                    }
+
+                    if (!string.IsNullOrEmpty(_email))
+                    {
+                        _filagre = _tblagre.NewRow();
+                        _filagre["CodigoCITA"] = _codcita;
+                        _filagre["Canal"] = _email;
+                        _tblagre.Rows.Add(_filagre);
+                    }
+
+                    if (!string.IsNullOrEmpty(_terreno))
+                    {
+                        _filagre = _tblagre.NewRow();
+                        _filagre["CodigoCITA"] = _codcita;
+                        _filagre["Canal"] = _terreno;
+                        _tblagre.Rows.Add(_filagre);
+                    }
+
+                    GrdvCitaciones.DataSource = _tblagre;
+                    GrdvCitaciones.DataBind();
+                }
             }
             catch (Exception ex)
             {
@@ -194,6 +257,79 @@
 
                 _dtbwhastapp.AcceptChanges();
                 ViewState["Whatsapp"] = _dtbwhastapp;
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
+
+        protected void GrdvCitaciones_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowIndex >= 0)
+                {
+                    _imglogo = (ImageButton)(e.Row.Cells[1].FindControl("ImgLogo"));
+                    _canal = GrdvCitaciones.DataKeys[e.Row.RowIndex].Values["Canal"].ToString();
+
+                    switch (_canal)
+                    {
+                        case "Whatsapp":
+                            _imglogo.ImageUrl = "~/Botones/btnwhastapp.png";
+                            break;
+                        case "Email":
+                            _imglogo.ImageUrl = "~/Botones/btnemailcitacion.png";
+                            break;
+                        case "Terreno":
+                            _imglogo.ImageUrl = "~/Botones/casa.png";
+                            break;
+                    }
+                }
+
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    _canal = GrdvCitaciones.DataKeys[e.Row.RowIndex].Values["Canal"].ToString();
+                    _codcita = GrdvCitaciones.DataKeys[e.Row.RowIndex].Values["CodigoCITA"].ToString();
+                    _grdvCanales = e.Row.FindControl("GrdvCanales") as GridView;
+
+                    switch (_canal)
+                    {
+                        case "Whatsapp":
+                            _grdvCanales.Columns[1].Visible = false;
+                            _grdvCanales.Columns[3].Visible = false;
+                            _grdvCanales.Columns[4].Visible = false;
+                            _grdvCanales.Columns[5].Visible = false;
+                            _grdvCanales.Columns[6].Visible = false;
+                            _grdvCanales.Columns[7].Visible = false;
+                            _grdvCanales.Columns[9].Visible = false;
+                            _opcion = 4;
+                            break;
+                        case "Email":
+                            _grdvCanales.Columns[2].Visible = false;
+                            _grdvCanales.Columns[4].Visible = false;
+                            _grdvCanales.Columns[5].Visible = false;
+                            _grdvCanales.Columns[6].Visible = false;
+                            _grdvCanales.Columns[7].Visible = false;
+                            _grdvCanales.Columns[9].Visible = false;
+                            _opcion = 5;
+                            break;
+                        case "Terreno":
+                            _grdvCanales.Columns[2].Visible = false;
+                            _grdvCanales.Columns[3].Visible = false;
+                            _opcion = 6;
+                            break;
+                    }
+
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(246, _opcion, int.Parse(_codcita), 0, "", _canal,
+                        "VIS", ViewState["Conectar"].ToString());
+
+                    if (_canal == "Terreno") ViewState["CitasTerreno"] = _dts.Tables[0];
+
+                    _grdvCanales.DataSource = _dts;
+                    _grdvCanales.DataBind();
+
+                }
             }
             catch (Exception ex)
             {
