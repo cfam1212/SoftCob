@@ -4,11 +4,8 @@
     using System;
     using System.Configuration;
     using System.Data;
-    using System.Globalization;
-    using System.Linq;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using System.Threading;
     public partial class WFrm_SeguimientoCitacionTime : Page
     {
         #region Variables
@@ -250,7 +247,8 @@
                             _grdvCanales.Columns[5].Visible = false;
                             _grdvCanales.Columns[6].Visible = false;
                             _grdvCanales.Columns[7].Visible = false;
-                            _opcion = 0;
+                            _grdvCanales.Columns[9].Visible = false;
+                            _opcion = 4;
                             break;
                         case "Email":
                             _grdvCanales.Columns[2].Visible = false;
@@ -258,12 +256,13 @@
                             _grdvCanales.Columns[5].Visible = false;
                             _grdvCanales.Columns[6].Visible = false;
                             _grdvCanales.Columns[7].Visible = false;
-                            _opcion = 1;
+                            _grdvCanales.Columns[9].Visible = false;
+                            _opcion = 5;
                             break;
                         case "Terreno":
                             _grdvCanales.Columns[2].Visible = false;
                             _grdvCanales.Columns[3].Visible = false;
-                            _opcion = 2;
+                            _opcion = 6;
                             break;
                     }
 

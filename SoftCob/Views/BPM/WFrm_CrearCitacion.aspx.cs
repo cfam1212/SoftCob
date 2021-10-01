@@ -95,7 +95,7 @@
                 GrdvDatosObligacion.DataBind();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(45, 0, 0, 0, "", ViewState["NumDocumento"].ToString(), "",
-                    ViewState["Conectar"].ToString().ToString());
+                    Session["Conectar"].ToString().ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -105,7 +105,7 @@
                 }
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(242, int.Parse(ViewState["CodigoPERS"].ToString()), 1, 0,
-                    "", "", "", ViewState["Conectar"].ToString());
+                    "", "", "", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {

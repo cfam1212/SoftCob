@@ -364,6 +364,7 @@
     <Content Include="Views\BPM\WFrm_CitacionProcesoEmail.aspx" />
     <Content Include="Views\BPM\WFrm_CitacionProcesoTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_CitacionProcesoTime.aspx" />
+    <Content Include="Views\BPM\WFrm_CitacionProcesoWhastapp.aspx" />
     <Content Include="Views\BPM\WFrm_CrearCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_DatosCanalCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_DocumentosView.aspx" />
@@ -374,6 +375,7 @@
     <Content Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionMail.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionTerreno.aspx" />
+    <Content Include="Views\BPM\WFrm_RegistroCitacionWhatsapp.aspx" />
     <Content Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_SeguimientoCitacionTime.aspx" />
     <Content Include="Views\BPM\WFrm_ViewPdf.aspx" />
@@ -674,6 +676,13 @@
     <Compile Include="Views\BPM\WFrm_CitacionProcesoTime.aspx.designer.cs">
       <DependentUpon>WFrm_CitacionProcesoTime.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BPM\WFrm_CitacionProcesoWhastapp.aspx.cs">
+      <DependentUpon>WFrm_CitacionProcesoWhastapp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_CitacionProcesoWhastapp.aspx.designer.cs">
+      <DependentUpon>WFrm_CitacionProcesoWhastapp.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\BPM\WFrm_CrearCitacion.aspx.cs">
       <DependentUpon>WFrm_CrearCitacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -743,6 +752,13 @@
     </Compile>
     <Compile Include="Views\BPM\WFrm_RegistroCitacionTerreno.aspx.designer.cs">
       <DependentUpon>WFrm_RegistroCitacionTerreno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistroCitacionWhatsapp.aspx.cs">
+      <DependentUpon>WFrm_RegistroCitacionWhatsapp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistroCitacionWhatsapp.aspx.designer.cs">
+      <DependentUpon>WFrm_RegistroCitacionWhatsapp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx.cs">
       <DependentUpon>WFrm_SectorVisitaCitacion.aspx</DependentUpon>

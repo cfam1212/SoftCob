@@ -1,13 +1,14 @@
 ﻿namespace SoftCob.Views.BPM
 {
-    using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
+    using System.Configuration;
     using System.Data;
-    using System.IO;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    public partial class WFrm_CitacionProcesoTerreno : Page
+    using ClosedXML.Excel;
+    using System.IO;
+    public partial class WFrm_CitacionProcesoWhastapp : Page
     {
         #region Variables
         DataSet _dts = new DataSet();
@@ -28,7 +29,8 @@
 
                 if (!IsPostBack)
                 {
-                    Lbltitulo.Text = "Notificaciones en Proceso << NOTIFICACION POR TERRENO >>";
+                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                    Lbltitulo.Text = "Notificaciones en Proceso << NOTIFICACION POR WHATSAPP >>";
                     FunCargarMantenimiento();
 
                     if (Request["MensajeRetornado"] != null) new FuncionesDAO().FunShowJSMessage(Request["MensajeRetornado"],
@@ -47,8 +49,8 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(254, 2, 0, 0, "", "CGE", "",
-                    Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(254, 1, int.Parse(Session["usuCodigo"].ToString()), 0,
+                    "", "CGE", "", ViewState["Conectar"].ToString());
 
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();
@@ -80,13 +82,25 @@
                 _codigopers = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoPERS"].ToString();
                 _numdocumento = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Identificacion"].ToString();
 
-                Response.Redirect("WFrm_RegistroCitacionTerreno.aspx?CodigoCITA=" + _codigo + "&CodigoPERS=" + _codigopers +
+                Response.Redirect("WFrm_RegistroCitacionWhatsapp.aspx?CodigoCITA=" + _codigo + "&CodigoPERS=" + _codigopers +
                     "&CodigoCLDE=" + _codigoclde + "&NumDocumento=" + _numdocumento, true);
             }
             catch (Exception ex)
             {
                 Lblerror.Text = ex.ToString();
             }
+        }
+
+        protected void ImgCambiar_Click(object sender, ImageClickEventArgs e)
+        {
+            GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
+            _codigo = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCITA"].ToString();
+            _codigoclde = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCLDE"].ToString();
+
+            _dts = new ConsultaDatosDAO().FunConsultaDatos(257, int.Parse(_codigo), int.Parse(_codigoclde), 0, "", "", "",
+                ViewState["Conectar"].ToString());
+
+            Response.Redirect(Request.Url.AbsolutePath, true);
         }
 
         public override void VerifyRenderingInServerForm(Control control)

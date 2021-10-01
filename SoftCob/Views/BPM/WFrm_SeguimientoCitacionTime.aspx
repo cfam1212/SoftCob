@@ -237,6 +237,8 @@
                                                                     <asp:BoundField DataField="Referencia" HeaderText="Referencia" />
                                                                     <asp:BoundField DataField="Sector" HeaderText="Sector" />
                                                                     <asp:BoundField DataField="FechaVisita" HeaderText="Fecha Visita" />
+                                                                    <asp:BoundField DataField="RespuestaGeneral" HeaderText="Respuesta" />
+                                                                    <asp:BoundField DataField="Registro" HeaderText="Observación" />
                                                                 </Columns>
                                                                 <HeaderStyle Font-Size="X-Small" />
                                                                 <RowStyle Font-Bold="true" Font-Size="XX-Small" />

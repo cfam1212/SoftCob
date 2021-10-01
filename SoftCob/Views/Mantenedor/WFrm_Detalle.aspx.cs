@@ -104,8 +104,6 @@
                         if (_contar > 0)
                             new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "R");
                     }
-
-
                 }
                 catch (Exception ex)
                 {

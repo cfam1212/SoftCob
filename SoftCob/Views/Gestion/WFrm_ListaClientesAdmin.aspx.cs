@@ -125,6 +125,7 @@
                 _codigopers = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoPERS"].ToString();
                 _identificacion = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Identificacion"].ToString();
                 _operacion = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Operacion"].ToString();
+
                 Response.Redirect("WFrm_RegLlamadaEntrante.aspx?CodigoCEDE=" + _codigocede + "&CodigoCPCE=" + _codigocpce + "&CodigoCLDE=" 
                     + _codigoclde + "&CodigoPERS=" + _codigopers + "&NumeroDocumento=" + _identificacion + "&Operacion=" + _operacion + 
                     "&CodigoLTCA=0&CodigoUSU=0&Retornar=1", true);
@@ -204,8 +205,10 @@
                 _codigoclde = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoCLDE"].ToString();
                 _codigopers = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoPERS"].ToString();
                 _codigocpce = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoCPCE"].ToString();
+                _identificacion = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoCPCE"].ToString();
+
                 Response.Redirect("../BPM/WFrm_CrearCitacion.aspx?CodigoPERS=" + _codigopers + "&CodigoCPCE=" + _codigocpce + "&CodigoCLDE="
-                    + _codigoclde + "&Retornar=0", true);
+                    + _codigoclde + "&NumDocumento=" + _identificacion + "&Retornar=0", true);
             }
             catch (Exception ex)
             {

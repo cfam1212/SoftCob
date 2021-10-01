@@ -386,8 +386,7 @@
                     if (_canal == "Terreno") ViewState["CitasTerreno"] = _dts.Tables[0];
 
                     _grdvCanales.DataSource = _dts;
-                    _grdvCanales.DataBind();
-
+                    _grdvCanales.DataBind();                    
                 }
             }
             catch (Exception ex)
