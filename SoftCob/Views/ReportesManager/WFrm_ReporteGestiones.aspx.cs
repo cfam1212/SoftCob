@@ -165,13 +165,6 @@
                     DdlCatalogo.DataTextField = "Descripcion";
                     DdlCatalogo.DataValueField = "Codigo";
                     DdlCatalogo.DataBind();
-
-                    //if (_dts.Tables[0].Rows.Count == 0)
-                    //{
-                    //    _itemc.Text = "--Seleccione Catálago/Producto--";
-                    //    _itemc.Value = "0";
-                    //    DdlCatalogo.Items.Add(_itemc);
-                    //}
                     break;
             }
         }

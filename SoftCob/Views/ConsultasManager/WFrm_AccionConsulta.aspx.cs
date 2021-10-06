@@ -57,7 +57,7 @@
                 DdlAsignar.DataValueField = "Codigo";
                 DdlAsignar.DataBind();
 
-                _dts = new ControllerDAO().FunGetParametroDetalle("CAMBIAR OPERACION", "--Seleccione Motivo--", "S");
+                _dts = new ControllerDAO().FunGetParametroDetalle("CAMBIAR OPERACION", "--Seleccione Motivo--", "I");
 
                 DdlMotivo1.DataSource = _dts;
                 DdlMotivo1.DataTextField = "Descripcion";
@@ -297,6 +297,7 @@
                 _operacion = GrdvGestiones.DataKeys[_gvrow.RowIndex].Values["Operacion"].ToString();
                 _codigogestor = int.Parse(GrdvGestiones.DataKeys[_gvrow.RowIndex].Values["codigoGESTOR"].ToString());
                 _descripcion = GrdvGestiones.DataKeys[_gvrow.RowIndex].Values["Descripcion"].ToString();
+
                 new ConsultaDatosDAO().FunConsultaDatos(98, _codigogete, 0, 0, "", _telefono, "", Session["Conectar"].ToString());
 
                 SoftCob_ACCIONGESTION _newaccion = new SoftCob_ACCIONGESTION();
@@ -320,6 +321,7 @@
                     _newaccion.acci_usuariocreacion = int.Parse(Session["usuCodigo"].ToString());
                     _newaccion.acci_terminalcreacion = Session["MachineName"].ToString();
                 }
+
                 new CedenteDAO().FunInsertarAccionGestion(_newaccion);
                 new FuncionesDAO().FunShowJSMessage("Gestión eliminada con éxito..!", this, "S", "R");
 

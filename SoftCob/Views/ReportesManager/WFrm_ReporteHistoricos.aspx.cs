@@ -51,6 +51,14 @@
                     _itemc.Value = "0";
                     DdlCatalogo.Items.Add(_itemc);
                     break;
+                case 1:
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
+                    DdlCatalogo.DataSource = _dts;
+                    DdlCatalogo.DataTextField = "Descripcion";
+                    DdlCatalogo.DataValueField = "Codigo";
+                    DdlCatalogo.DataBind();
+                    break;
             }
         }
         #endregion
@@ -102,7 +110,9 @@
                     return;
                 }
 
-                ViewState["Cedente"] = DdlCedente.SelectedItem.ToString().Replace(" ", "").Replace(".","") + "_" + DdlCedente.SelectedValue;
+                ViewState["Cedente"] = DdlCedente.SelectedItem.ToString().Replace(" ", "").Replace(".","") + "_" + 
+                    DdlCedente.SelectedValue;
+
                 switch (DdlTipoReporte.SelectedValue)
                 {
                     case "1":
@@ -146,8 +156,10 @@
                         break;
                     case "4":
                         _sql = "SELECT DISTINCT Accion_Respuesta=(SELECT XC.arac_descripcion FROM SoftCob_ARBOL_ACCION XC (NOLOCK) WHERE XC.ARAC_CODIGO=GT.gete_araccodigo), ";
-                        _sql += "Total=count(*) FROM SoftCob_GESTION_TELEFONICA GT (NOLOCK) WHERE GT.gete_cpcecodigo=" + DdlCatalogo.SelectedValue + " AND ";
-                        _sql += "GT.gete_fechagestion BETWEEN CONVERT(DATE,'" + TxtFechaIni.Text + "',101) AND CONVERT(DATE,'" + TxtFechaFin.Text + "',101) ";
+                        _sql += "Total=count(*) FROM SoftCob_GESTION_TELEFONICA GT (NOLOCK) ";
+                        _sql += "WHERE GT.gete_fechagestion BETWEEN CONVERT(DATE,'" + TxtFechaIni.Text + "',101) AND CONVERT(DATE,'" + TxtFechaFin.Text + "',101) AND ";
+
+                        if(DdlCatalogo.SelectedValue!="0") _sql+= "GT.gete_cpcecodigo=" + DdlCatalogo.SelectedValue + " AND ";
 
                         if (DdlBuscar.SelectedValue == "I") _sql += "GT.gete_numerodocumento='" + TxtBuscarPor.Text + "' ";
 
@@ -167,14 +179,16 @@
                         _sql += "FechaRegistro=CONVERT(VARCHAR(10),PC.pacp_fechacreacion,121),";
                         _sql += "Usuario=(SELECT US.usua_nombres+' '+US.usua_apellidos FROM SoftCob_USUARIO US (NOLOCK) WHERE US.USUA_CODIGO=PC.pacp_usuariocreacion) ";
                         _sql += "FROM SoftCob_PAGOSCARTERA PC INNER JOIN SoftCob_PERSONA PE (NOLOCK) ON PC.pacp_numerodocumento=PE.pers_numerodocumento ";
-                        _sql += "WHERE PC.pacp_cpcecodigo=" + DdlCatalogo.SelectedValue + " AND PC.pacp_fechapago BETWEEN CONVERT(DATE,'" + TxtFechaIni.Text + "',101) AND ";
-                        _sql += "CONVERT(DATE,'" + TxtFechaFin.Text + "',101) ";
+                        _sql += "WHERE PC.pacp_fechapago BETWEEN CONVERT(DATE,'" + TxtFechaIni.Text + "',101) AND ";
+                        _sql += "CONVERT(DATE,'" + TxtFechaFin.Text + "',101) AND ";
+
+                        if (DdlCatalogo.SelectedValue != "0") _sql += "GT.gete_cpcecodigo=" + DdlCatalogo.SelectedValue + " AND ";
 
                         if (DdlBuscar.SelectedValue == "I") _sql += "AND PC.pacp_numerodocumento='" + TxtBuscarPor.Text + "' ";
 
                         if (DdlBuscar.SelectedValue == "O") _sql += "AND PC.pacp_operacion='" + TxtBuscarPor.Text + "' ";
 
-                        _sql += "order by PC.pacp_fechacreacion";
+                        _sql += "ORDER BY PC.pacp_fechacreacion";
                         _tipo = 1;
                         _intgridview = 1;
                         break;
@@ -199,6 +213,23 @@
                         _intgridview = 1;
                         _dts = new ConsultaDatosDAO().FunConsultaDatos(226, int.Parse(DdlCatalogo.SelectedValue), 0, 0,
                             "", "", "", Session["Conectar"].ToString());
+                        break;
+                    case "8":
+                        _sql = "";
+                        _sql += "SELECT IDENTIFICACION=(SELECT PER.pers_numerodocumento FROM SoftCob_PERSONA PER (NOLOCK) WHERE PER.PERS_CODIGO=CLI.PERS_CODIGO),";
+                        _sql += "OPERACION=CDU.ctde_operacion,DATO=(SELECT USU.usua_nombres+' '+USU.usua_apellidos FROM SoftCob_USUARIO USU (NOLOCK) WHERE USU.USUA_CODIGO=CDU.ctde_gestorasignado),";
+                        _sql += "CODIGOCPCE=CLI.CPCE_CODIGO,CEDENTE=(SELECT CED.cede_nombre FROM SoftCob_CEDENTE CED (NOLOCK) WHERE CED.CEDE_CODIGO=";
+                        _sql += "(SELECT PRC.CEDE_CODIGO FROM SoftCob_PRODUCTOS_CEDENTE PRC (NOLOCK) WHERE PRC.PRCE_CODIGO=";
+                        _sql += "(SELECT CPC.PRCE_CODIGO FROM SoftCob_CATALOGO_PRODUCTOS_CEDENTE CPC (NOLOCK) WHERE CPC.CPCE_CODIGO=CLI.CPCE_CODIGO))),";
+                        _sql += "CATALOGO=(SELECT CPC.cpce_producto FROM SoftCob_CATALOGO_PRODUCTOS_CEDENTE CPC (NOLOCK) WHERE CPC.CPCE_CODIGO=CLI.CPCE_CODIGO),";
+                        _sql += "EXIGIBLE=CDU.ctde_valorexigible FROM SoftCob_CLIENTE_DEUDOR CLI (NOLOCK) ";
+                        _sql += "INNER JOIN SoftCob_CUENTA_DEUDOR CDU (NOLOCK) ON CDU.CLDE_CODIGO=CLI.CLDE_CODIGO ";
+                        _sql += "WHERE CLI.clde_estado=1 AND CDU.ctde_estado=1 ";
+
+                        if (DdlCatalogo.SelectedValue != "0") _sql += "AND CLI.CPCE_CODIGO=" + DdlCatalogo.SelectedValue;
+
+                        _tipo = 1;
+                        _intgridview = 1;
                         break;
                 }
 
@@ -313,32 +344,34 @@
             GrdvDatos1.DataBind();
         }
 
-        protected void DdlCatalogo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
-        }
+        //protected void DdlCatalogo_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
+        //}
 
         protected void DdlCedente_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                if (_dts.Tables[0].Rows.Count > 0)
-                {
-                    ViewState["CodigoCedente"] = DdlCedente.SelectedValue;
-                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataTextField = "CatalogoProducto";
-                    DdlCatalogo.DataValueField = "CodigoCatalogo";
-                    DdlCatalogo.DataBind();
-                    ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
-                }
-                else
-                {
-                    DdlCatalogo.Items.Clear();
-                    _itemc.Text = "--Seleccione Catálago/Producto--";
-                    _itemc.Value = "0";
-                    DdlCatalogo.Items.Add(_itemc);
-                }
+                FunCargarCombos(1);
+                //_dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+
+                //if (_dts.Tables[0].Rows.Count > 0)
+                //{
+                //    ViewState["CodigoCedente"] = DdlCedente.SelectedValue;
+                //    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
+                //    DdlCatalogo.DataTextField = "CatalogoProducto";
+                //    DdlCatalogo.DataValueField = "CodigoCatalogo";
+                //    DdlCatalogo.DataBind();
+                //    //ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
+                //}
+                //else
+                //{
+                //    DdlCatalogo.Items.Clear();
+                //    _itemc.Text = "--Seleccione Catálago/Producto--";
+                //    _itemc.Value = "0";
+                //    DdlCatalogo.Items.Add(_itemc);
+                //}
             }
             catch (Exception ex)
             {

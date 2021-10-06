@@ -142,7 +142,7 @@
                                     <h5>Catálogo:</h5>
                                 </td>
                                 <td colspan="2">
-                                    <asp:DropDownList ID="DdlCatalogo" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="2" Width="100%">
+                                    <asp:DropDownList ID="DdlCatalogo" runat="server" CssClass="form-control" TabIndex="2" Width="100%">
                                     </asp:DropDownList>
                                 </td>
                             </tr>
@@ -180,6 +180,7 @@
                                         <asp:ListItem Value="5">Saldos Historicos</asp:ListItem>
                                         <asp:ListItem Value="6">Contar Gestiones</asp:ListItem>
                                         <asp:ListItem Value="7">Datos Actualizados</asp:ListItem>
+                                        <asp:ListItem Value="8">Datos Reasignar</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                                 <td></td>

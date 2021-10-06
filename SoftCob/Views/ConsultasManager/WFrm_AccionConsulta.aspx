@@ -109,7 +109,7 @@
                         <td colspan="4">
                             <asp:UpdatePanel ID="updDatosDeudor" runat="server">
                                 <ContentTemplate>
-                                    <asp:Panel ID="pnlDatosDeudor" runat="server" CssClass="panel panel-primary" Height="200px" GroupingText="Datos Deudor">
+                                    <asp:Panel ID="pnlDatosDeudor" runat="server" CssClass="panel panel-primary" Height="250px" GroupingText="Datos Deudor">
                                         <asp:GridView ID="GrdvDatosDeudor" runat="server" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
                                             PageSize="3" TabIndex="1" Width="100%">
@@ -138,7 +138,7 @@
                         <td colspan="4">
                             <asp:UpdatePanel ID="updDatosObligacion" runat="server">
                                 <ContentTemplate>
-                                    <asp:Panel ID="pnlDatosObligacion" runat="server" Height="200px" ScrollBars="Vertical" GroupingText="Datos Obligación" TabIndex="5">
+                                    <asp:Panel ID="pnlDatosObligacion" runat="server" Height="250px" ScrollBars="Vertical" GroupingText="Datos Obligación" TabIndex="5">
                                         <table style="width: 100%">
                                             <tr>
                                                 <td>
@@ -331,7 +331,7 @@
                                     <tr>
                                         <td></td>
                                         <td colspan="4">
-                                            <asp:Panel ID="pnlGestiones" runat="server" Height="200px" ScrollBars="Vertical" GroupingText="Gestiones">
+                                            <asp:Panel ID="pnlGestiones" runat="server" Height="250px" ScrollBars="Vertical" GroupingText="Gestiones">
                                                 <asp:GridView ID="GrdvGestiones" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333" PageSize="5" TabIndex="10" Width="100%" DataKeyNames="codigoGETE,Identificacion,Operacion,codigoGESTOR,Descripcion">
                                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                     <Columns>

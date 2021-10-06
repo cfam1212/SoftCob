@@ -105,7 +105,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="panel-info">
-                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
+                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
                         <div class="overlayContent">
@@ -186,12 +186,28 @@
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr>
-                                <td colspan="6" style="text-align: center">
-                                    <asp:Button ID="BtnBuscar" runat="server" CausesValidation="False" CssClass="button" OnClick="BtnBuscar_Click" Text="Buscar" Width="120px" TabIndex="6" />
-                                </td>
-                            </tr>
                         </table>
+                        <asp:UpdatePanel runat="server" ID="UpdBotones">
+                            <ContentTemplate>
+                                <table style="width: 100%">
+                                    <tr>
+                                        <td style="width: 5%"></td>
+                                        <td style="width: 10%"></td>
+                                        <td style="width: 35%"></td>
+                                        <td style="width: 10%"></td>
+                                        <td style="width: 35%"></td>
+                                        <td style="width: 5%"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6" style="text-align: center">
+                                            <asp:Button ID="BtnBuscar" runat="server" CausesValidation="False" CssClass="button" OnClick="BtnBuscar_Click" Text="Buscar" Width="120px" TabIndex="6" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+
+
                         <div class="panel panel-default">
                             <table style="width: 100%">
                                 <tr>
@@ -244,17 +260,13 @@
                 </asp:UpdatePanel>
             </div>
             <div class="panel panel-default">
-                <asp:UpdatePanel ID="updBotones" runat="server">
-                    <ContentTemplate>
-                        <table style="width: 100%">
-                            <tr>
-                                <td style="text-align: center; width: 100%">
-                                    <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="9" />
-                                </td>
-                            </tr>
-                        </table>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                <table style="width: 100%">
+                    <tr>
+                        <td style="text-align: center; width: 100%">
+                            <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="9" />
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </form>

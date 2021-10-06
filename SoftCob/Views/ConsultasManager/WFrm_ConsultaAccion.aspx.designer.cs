@@ -132,6 +132,15 @@ namespace SoftCob.Views.ConsultasManager
         protected global::System.Web.UI.WebControls.TextBox TxtBuscarPor;
 
         /// <summary>
+        /// Control UpdBotones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdBotones;
+
+        /// <summary>
         /// Control BtnBuscar.
         /// </summary>
         /// <remarks>
@@ -175,15 +184,6 @@ namespace SoftCob.Views.ConsultasManager
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GrdvDatos;
-
-        /// <summary>
-        /// Control updBotones.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updBotones;
 
         /// <summary>
         /// Control BtnSalir.
