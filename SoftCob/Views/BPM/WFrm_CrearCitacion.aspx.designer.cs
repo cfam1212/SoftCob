@@ -69,15 +69,6 @@ namespace SoftCob.Views.BPM
         protected global::System.Web.UI.UpdateProgress updProgress;
 
         /// <summary>
-        /// Control UpdateProgress1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress UpdateProgress1;
-
-        /// <summary>
         /// Control updCabecera.
         /// </summary>
         /// <remarks>
@@ -483,6 +474,42 @@ namespace SoftCob.Views.BPM
         protected global::System.Web.UI.WebControls.TextBox TxtReferencia;
 
         /// <summary>
+        /// Control TrTerreno8.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrTerreno8;
+
+        /// <summary>
+        /// Control DdlProvincia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlProvincia;
+
+        /// <summary>
+        /// Control TrTerreno9.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrTerreno9;
+
+        /// <summary>
+        /// Control DdlCiudad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlCiudad;
+
+        /// <summary>
         /// Control TrTerreno4.
         /// </summary>
         /// <remarks>
@@ -508,6 +535,15 @@ namespace SoftCob.Views.BPM
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImgAgregarTerreno;
+
+        /// <summary>
+        /// Control ImgModificaTerreno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgModificaTerreno;
 
         /// <summary>
         /// Control TrTerreno5.

@@ -22,13 +22,15 @@
         GridView _grdvCanales;
         decimal _totalExigible = 0.00M, _totalDeuda = 0.00M;
         string _correos = "", _codigo = "0", _observacion = "", _codigocomparar = "0", _tipocliente = "", _cedula = "", _sql = "",
-            _whastapp = "", _email = "", _terreno = "", _canal = "", _codcita = "";
+            _whastapp = "", _email = "", _terreno = "", _canal = "", _codcita = "", _codigociud = "";
         CheckBox _chkwhatsapp = new CheckBox();
         CheckBox _chkemail = new CheckBox();
         CheckBox _chkterreno = new CheckBox();
         CheckBox _chksolicitar = new CheckBox();
         ImageButton _imgcitacion = new ImageButton();
         ImageButton _imglogo = new ImageButton();
+        ImageButton _imgselecc = new ImageButton();
+        ListItem _itemc = new ListItem();
         TextBox _txtobserva = new TextBox();
         TextBox _observa;
         DataRow _resultado;
@@ -170,13 +172,27 @@
                     DdlTipoMail.DataValueField = "Codigo";
                     DdlTipoMail.DataBind();
 
+                    DdlProvincia.DataSource = new ConsultaDatosDAO().FunConsultaDatos(186, 0, 0, 0, "", "", "", Session["Conectar"].ToString());
+                    DdlProvincia.DataTextField = "Descripcion";
+                    DdlProvincia.DataValueField = "Codigo";
+                    DdlProvincia.DataBind();
+
+                    _itemc.Text = "--Seleccione Ciudad--";
+                    _itemc.Value = "0";
+                    DdlCiudad.Items.Add(_itemc);
+
                     DdlSector.DataSource = new ControllerDAO().FunGetParametroDetalle("TIPO SECTOR", "--Seleccione Sector--", "S");
                     DdlSector.DataTextField = "Descripcion";
                     DdlSector.DataValueField = "Codigo";
                     DdlSector.DataBind();
 
                     break;
-                default:
+                case 1:
+                    DdlCiudad.DataSource = new ConsultaDatosDAO().FunConsultaDatos(186,
+                        1, int.Parse(DdlProvincia.SelectedValue), 0, "", "", "", Session["Conectar"].ToString());
+                    DdlCiudad.DataTextField = "Descripcion";
+                    DdlCiudad.DataValueField = "Codigo";
+                    DdlCiudad.DataBind();
                     break;
             }
         }
@@ -215,7 +231,7 @@
         protected void ChkWathaspp_CheckedChanged(object sender, EventArgs e)
         {
             TxtObservaWhatsapp.Text = "";
-            TrWhast1.Visible = false;
+            //TrWhast1.Visible = false;
             TrWhast2.Visible = false;
             TrWhast3.Visible = false;
 
@@ -230,7 +246,7 @@
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
-                    TrWhast1.Visible = true;
+                    //TrWhast1.Visible = true;
                     TrWhast2.Visible = true;
                     TrWhast3.Visible = true;
                 }
@@ -263,7 +279,6 @@
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void GrdvCitaciones_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -337,6 +352,11 @@
             }
         }
 
+        protected void DdlProvincia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FunCargarCombos(1);
+        }
+
         protected void ChkEmail_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -347,7 +367,7 @@
                 TxtObservaEmail.Text = "";
                 TrEmail1.Visible = false;
                 TrEmail2.Visible = false;
-                TrEmail3.Visible = false;
+                //TrEmail3.Visible = false;
                 TrEmail4.Visible = false;
                 TrEmail5.Visible = false;
                 GrdvEmails.DataSource = null;
@@ -357,7 +377,7 @@
                 {
                     TrEmail1.Visible = true;
                     TrEmail2.Visible = true;
-                    TrEmail3.Visible = true;
+                    //TrEmail3.Visible = true;
                     TrEmail4.Visible = true;
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(234, 0, 0, 0, "TIPO CORREO", "CORREO",
@@ -429,12 +449,12 @@
                     _cedula = _dts.Tables[0].Rows[0]["CedulaGAR"].ToString();
                 }
 
-                _dts = new ConsultaDatosDAO().FunInsertCorreoDireccion(0, _cedula, "CORREO", _tipocliente, RdbEmail.SelectedValue, "",
-                    "", TxtEmail.Text.Trim().ToLower(), "", ViewState["NumeroDocumento"].ToString(), "", "", 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                                    Session["MachineName"].ToString(), Session["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunInsertCorreoDireccion(0, ViewState["NumDocumento"].ToString(), _cedula, "CORREO", _tipocliente, RdbEmail.SelectedValue, "",
+                    "", TxtEmail.Text.Trim().ToLower(), "", "", "", "", 0, 0, 0, 0,
+                    int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(234, 0, 0, 0, "TIPO CORREO", "CORREO",
-                    ViewState["NumeroDocumento"].ToString(), Session["Conectar"].ToString().ToString());
+                    ViewState["NumDocumento"].ToString(), Session["Conectar"].ToString().ToString());
 
                 ViewState["Emails"] = _dts.Tables[0];
                 GrdvEmails.DataSource = _dts.Tables[0];
@@ -508,13 +528,20 @@
                 if (e.Row.RowIndex >= 0)
                 {
                     _chksolicitar = (CheckBox)(e.Row.Cells[5].FindControl("ChkSolTerreno"));
+                    _imgselecc = (ImageButton)(e.Row.Cells[7].FindControl("ImgSelecc"));
+
                     _observacion = GrdvTerreno.DataKeys[e.Row.RowIndex].Values["DirIncorrecta"].ToString();
+                    _codigociud = GrdvTerreno.DataKeys[e.Row.RowIndex].Values["CodigoCIUD"].ToString();
 
                     if (_observacion == "CMI")
                     {
                         e.Row.Cells[2].BackColor = System.Drawing.Color.Red;
                         _chksolicitar.Enabled = false;
+                        _imgselecc.ImageUrl = "~/Botones/seleccgris.png";
+                        _imgselecc.Enabled = false;
                     }
+
+                    if (_codigociud == "0") _chksolicitar.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -559,9 +586,11 @@
                 TrTerreno2.Visible = false;
                 TrTerreno3.Visible = false;
                 TrTerreno4.Visible = false;
-                TrTerreno5.Visible = false;
+                //TrTerreno5.Visible = false;
                 TrTerreno6.Visible = false;
                 TrTerreno7.Visible = false;
+                TrTerreno8.Visible = false;
+                TrTerreno9.Visible = false;
                 GrdvTerreno.DataSource = null;
                 GrdvTerreno.DataBind();
 
@@ -571,12 +600,14 @@
                     TrTerreno2.Visible = true;
                     TrTerreno3.Visible = true;
                     TrTerreno4.Visible = true;
-                    TrTerreno5.Visible = true;
+                    //TrTerreno5.Visible = true;
                     TrTerreno6.Visible = true;
                     TrTerreno7.Visible = true;
+                    TrTerreno8.Visible = true;
+                    TrTerreno9.Visible = true;
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(234, 0, 0, 0, "TIPO DIRECCION", "DIRECCION",
-                        ViewState["NumeroDocumento"].ToString(), Session["Conectar"].ToString().ToString());
+                        ViewState["NumDocumento"].ToString(), Session["Conectar"].ToString().ToString());
 
                     GrdvTerreno.DataSource = _dts;
                     GrdvTerreno.DataBind();
@@ -606,6 +637,18 @@
                 if (string.IsNullOrEmpty(TxtDireccion.Text.Trim()))
                 {
                     new FuncionesDAO().FunShowJSMessage("Ingrese Direccion..!", this, "W", "R");
+                    return;
+                }
+
+                if (DdlProvincia.SelectedValue == "0")
+                {
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Provincia..!", this, "W", "R");
+                    return;
+                }
+
+                if (DdlCiudad.SelectedValue == "0")
+                {
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Ciudad..!", this, "W", "R");
                     return;
                 }
 
@@ -641,10 +684,121 @@
                     _cedula = _dts.Tables[0].Rows[0]["CedulaGAR"].ToString();
                 }
 
-                _dts = new ConsultaDatosDAO().FunInsertCorreoDireccion(1, _cedula, "DIRECCION", _tipocliente, RdbTerreno.SelectedValue,
-                    TxtDireccion.Text.Trim().ToUpper(), TxtReferencia.Text.Trim().ToUpper(), "", DdlSector.SelectedValue,
-                    ViewState["NumeroDocumento"].ToString(), "", "", 0, 0, 0, 0,
+                _dts = new ConsultaDatosDAO().FunInsertCorreoDireccion(1, ViewState["NumDocumento"].ToString(), _cedula, "DIRECCION",
+                    _tipocliente, RdbTerreno.SelectedValue, TxtDireccion.Text.Trim().ToUpper(), TxtReferencia.Text.Trim().ToUpper(), "",
+                    DdlSector.SelectedValue, "", "", "", int.Parse(DdlProvincia.SelectedValue), int.Parse(DdlCiudad.SelectedValue), 0, 0, 
                     int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(234, 0, 0, 0, "TIPO DIRECCION", "DIRECCION",
+                    ViewState["NumDocumento"].ToString(), Session["Conectar"].ToString().ToString());
+
+                ViewState["Terreno"] = _dts.Tables[0];
+                GrdvTerreno.DataSource = _dts;
+                GrdvTerreno.DataBind();
+
+                DdlDireccion.SelectedValue = "0";
+                TxtDireccion.Text = "";
+                TxtReferencia.Text = "";
+                DdlSector.SelectedValue = "0";
+                DdlProvincia.SelectedValue = "0";
+                DdlCiudad.Items.Clear();
+                _itemc.Text = "--Seleccione Ciudad--";
+                _itemc.Value = "0";
+                DdlCiudad.Items.Add(_itemc);
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
+        protected void ImgSelecc_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                GridViewRow _gvrow = (GridViewRow)(sender as Control).Parent.Parent;
+
+                foreach (GridViewRow _fr in GrdvTerreno.Rows)
+                {
+                    _fr.Cells[0].BackColor = System.Drawing.Color.White;
+                }
+
+                GrdvTerreno.Rows[_gvrow.RowIndex].Cells[0].BackColor = System.Drawing.Color.Coral;
+
+                _codigo = GrdvTerreno.DataKeys[_gvrow.RowIndex].Values["CodigoMATD"].ToString();
+                ViewState["CodigoMATD"] = _codigo;
+
+                _dtbterreno = (DataTable)ViewState["Terreno"];
+                _resultado = _dtbterreno.Select("CodigoMATD='" + _codigo + "'").FirstOrDefault();
+
+                ViewState["Direccion"] = _resultado["Direccion"].ToString();
+
+                DdlDireccion.SelectedValue = _resultado["CodigoTIPO"].ToString() == "TIT" ? ViewState["NumDocumento"].ToString()
+                    : _resultado["Documento"].ToString();
+
+                RdbTerreno.SelectedValue = _resultado["CodigoDEFI"].ToString();
+                TxtDireccion.Text = _resultado["Direccion"].ToString();
+                TxtReferencia.Text = _resultado["Referencia"].ToString();
+                DdlProvincia.SelectedValue = _resultado["CodigoPROV"].ToString();
+                FunCargarCombos(1);
+                DdlCiudad.SelectedValue = _resultado["CodigoCIUD"].ToString();
+                DdlSector.SelectedValue = _resultado["CodigoSECT"].ToString();
+
+                ImgAgregarTerreno.Enabled = false;
+                ImgModificaTerreno.Enabled = true;
+
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
+        protected void ImgModificaTerreno_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                if (DdlDireccion.SelectedValue == "0")
+                {
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Tipo Direccion..!", this, "W", "R");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(TxtDireccion.Text.Trim()))
+                {
+                    new FuncionesDAO().FunShowJSMessage("Ingrese Direccion..!", this, "W", "R");
+                    return;
+                }
+
+                if (DdlProvincia.SelectedValue == "0")
+                {
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Provincia..!", this, "W", "R");
+                    return;
+                }
+
+                if (DdlCiudad.SelectedValue == "0")
+                {
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Ciudad..!", this, "W", "R");
+                    return;
+                }
+
+                if (DdlDireccion.SelectedItem.ToString() == "TITULAR")
+                {
+                    _tipocliente = "TIT";
+                    _cedula = ViewState["NumDocumento"].ToString();
+                }
+                else
+                {
+                    _sql = "SELECT TipoCliente=DER.dere_tiporeferencia,CedulaGAR=DER.dere_numdocumento FROM SoftCob_DEUDOR_REFERENCIAS DER (NOLOCK) ";
+                    _sql += "WHERE DER.pers_codigo=" + ViewState["CodigoPERS"].ToString() + " AND DER.dere_numdocumento='" + DdlDireccion.SelectedValue + "'";
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql, "", "", Session["Conectar"].ToString());
+
+                    _tipocliente = _dts.Tables[0].Rows[0]["TipoCliente"].ToString();
+                    _cedula = _dts.Tables[0].Rows[0]["CedulaGAR"].ToString();
+                }
+
+                _dts = new ConsultaDatosDAO().FunInsertCorreoDireccion(2, ViewState["NumDocumento"].ToString(), _cedula, "DIRECCION", _tipocliente, RdbTerreno.SelectedValue,
+                    TxtDireccion.Text.Trim().ToUpper(), TxtReferencia.Text.Trim().ToUpper(), "", DdlSector.SelectedValue,
+                    "", "", "", int.Parse(DdlProvincia.SelectedValue), int.Parse(DdlCiudad.SelectedValue), int.Parse(ViewState["CodigoMATD"].ToString()),
+                    0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(234, 0, 0, 0, "TIPO DIRECCION", "DIRECCION",
                     ViewState["NumeroDocumento"].ToString(), Session["Conectar"].ToString().ToString());
@@ -656,25 +810,36 @@
                 DdlDireccion.SelectedValue = "0";
                 TxtDireccion.Text = "";
                 TxtReferencia.Text = "";
+                DdlProvincia.SelectedValue = "0";
+                DdlCiudad.Items.Clear();
+                _itemc.Text = "--Seleccione Ciudad--";
+                _itemc.Value = "0";
+                DdlCiudad.Items.Add(_itemc);
+                DdlSector.SelectedValue = "0";
+
+                ImgAgregarTerreno.Enabled = true;
+                ImgModificaTerreno.Enabled = false;
+
             }
             catch (Exception ex)
             {
                 Lblerror.Text = ex.ToString();
             }
         }
-
         protected void ChkSolTerreno_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
                 GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
-                _chkterreno = (CheckBox)(gvRow.Cells[5].FindControl("ChkSolTerreno"));
-                _txtobserva = (TextBox)(gvRow.Cells[4].FindControl("TxtObservaCorreo"));
 
+                _txtobserva = (TextBox)(gvRow.Cells[5].FindControl("TxtObservaTerreno"));
+                _chkterreno = (CheckBox)(gvRow.Cells[6].FindControl("ChkSolTerreno"));
+                
                 _dtbterreno = (DataTable)ViewState["Terreno"];
                 _codigo = GrdvTerreno.DataKeys[gvRow.RowIndex].Values["CodigoMATD"].ToString();
                 _resultado = _dtbterreno.Select("CodigoMATD='" + _codigo + "'").FirstOrDefault();
                 _resultado["Enviar"] = _chkterreno.Checked ? "SI" : "NO";
+
                 if (!_chkterreno.Checked) _txtobserva.Text = "";
 
                 _dtbterreno.AcceptChanges();
@@ -871,8 +1036,8 @@
                                     _drfila["Referencia"].ToString(), _drfila["CodigoTIPO"].ToString(),
                                     _drfila["CodigoDEFI"].ToString(), _observacion, "",
                                     _drfila["CodigoSECT"].ToString(), _drfila["Documento"].ToString(), "", "",
-                                    int.Parse(_codigocomparar), 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                                    Session["MachineName"].ToString(), Session["Conectar"].ToString());
+                                    int.Parse(_codigocomparar), 0, int.Parse(_drfila["CodigoPROV"].ToString()), int.Parse(_drfila["CodigoCIUD"].ToString()),
+                                    0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                                 break;
                             }
@@ -910,10 +1075,10 @@
             switch (ViewState["Retornar"].ToString())
             {
                 case "0":
-                    Response.Redirect("../Gestion/WFrm_ListaClientesAdmin.aspx?MensajeRetornado=Notificación Solicitada..! ", true);
+                    Response.Redirect("../Gestion/WFrm_ListaClientesAdmin.aspx", true);
                     break;
                 case "1":
-                    Response.Redirect("WFrm_SeguimientoCitacionAdmin.aspx?MensajeRetornado=Notificación Solicitada..! ", true);
+                    Response.Redirect("WFrm_SeguimientoCitacionAdmin.aspx?", true);
                     break;
                 case "2":
                     Response.Redirect("../Gestion/WFrm_GestionListaTrabajo.aspx?IdListaCabecera=" +

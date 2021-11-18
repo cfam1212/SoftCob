@@ -85,6 +85,12 @@
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Cambiar">
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="ImgCambiar" runat="server" Enabled="False" Height="20px" ImageUrl="~/Botones/btnnotepadgris.png" OnClick="ImgCambiar_Click" />
+                                                </ItemTemplate>
+                                                <ItemStyle HorizontalAlign="Center" />
+                                            </asp:TemplateField>
                                         </Columns>
                                         <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                         <RowStyle Font-Size="X-Small" />

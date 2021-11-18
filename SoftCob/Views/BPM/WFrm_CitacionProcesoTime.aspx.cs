@@ -18,6 +18,7 @@
         Image _imgterreno = new Image();
         Image _imgemail = new Image();
         Image _imgwhastapp = new Image();
+        ImageButton _imgcambiar = new ImageButton();
         #endregion
 
         #region Load
@@ -129,8 +130,14 @@
                     _imgterreno = (Image)(e.Row.Cells[5].FindControl("ImgTerreno"));
                     _imgemail = (Image)(e.Row.Cells[6].FindControl("ImgEmail"));
                     _imgwhastapp = (Image)(e.Row.Cells[7].FindControl("ImgWhastapp"));
+                    _imgcambiar = (ImageButton)(e.Row.Cells[8].FindControl("ImgCambiar"));
 
-                    if(_terreno=="SI") _imgterreno.ImageUrl= "~/Botones/vistoverde.png";
+                    if (_terreno == "SI")
+                    {
+                        _imgterreno.ImageUrl = "~/Botones/vistoverde.png";
+                        _imgcambiar.ImageUrl = "~/Botones/btnnotepad.png";
+                        _imgcambiar.Enabled = true;
+                    }
                     if (_email == "SI") _imgemail.ImageUrl = "~/Botones/vistoverde.png";
                     if (_whastapp == "SI") _imgwhastapp.ImageUrl = "~/Botones/vistoverde.png";
                 }
@@ -173,6 +180,17 @@
             {
                 Lblerror.Text = ex.ToString();
             }
+        }
+        protected void ImgCambiar_Click(object sender, ImageClickEventArgs e)
+        {
+            GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
+            _codigo = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCITA"].ToString();
+            _codigoclde = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCLDE"].ToString();
+
+            _dts = new ConsultaDatosDAO().FunConsultaDatos(257, int.Parse(_codigo), int.Parse(_codigoclde), 0, "",
+                "CGE", "", ViewState["Conectar"].ToString());
+
+            Response.Redirect(Request.Url.AbsolutePath, true);
         }
     }
     #endregion

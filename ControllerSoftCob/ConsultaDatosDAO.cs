@@ -1138,7 +1138,7 @@
             }
             return _dts;
         }
-        public DataSet FunInsertCorreoDireccion(int tipo, string cedula, string tipodato, string tipocliente, string definicion,
+        public DataSet FunInsertCorreoDireccion(int tipo, string cedula, string cedulagarente, string tipodato, string tipocliente, string definicion,
             string direccion, string referencia, string email, string auxv1, string auxv2, string auxv3, string auxv4,
             int auxi1, int auxi2, int auxi3, int auxi4, int usuacodigo, string terminal, string conexion)
         {
@@ -1154,6 +1154,7 @@
                         comm.CommandText = "sp_InsertCorreoDireccion";
                         comm.Parameters.AddWithValue("@in_tipo", tipo);
                         comm.Parameters.AddWithValue("@in_cedula", cedula);
+                        comm.Parameters.AddWithValue("@in_cedulagarante", cedulagarente);
                         comm.Parameters.AddWithValue("@in_tipodato", tipodato);
                         comm.Parameters.AddWithValue("@in_tipocliente", tipocliente);
                         comm.Parameters.AddWithValue("@in_definicion", definicion);

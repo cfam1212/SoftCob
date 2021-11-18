@@ -12,11 +12,13 @@
     <link href="../../css/Estilos.css" rel="stylesheet" />
     <link href="../../css/DatePicker/jquery-ui.css" rel="stylesheet" />
     <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../Style/chosen.css" />
 
     <script type="text/javascript" src="../../JS/DatePicker/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="../../JS/DatePicker/jquery-ui.js"></script>
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
     <script src="../../JS/alertify.min.js"></script>
+
     <style type="text/css">
         legend {
             color: darkblue;
@@ -96,17 +98,6 @@
             <div class="panel-info">
                 <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
-                        <ProgressTemplate>
-                            <div class="overlay" />
-                            <div class="overlayContent">
-                                <h2>Procesando..</h2>
-                                <img src="../../Images/load.gif" alt="Loading" border="1" />
-                            </div>
-                        </ProgressTemplate>
-                    </asp:UpdateProgress>
-                </div>
-                <div class="panel-info">
-                    <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
                         <ProgressTemplate>
                             <div class="overlay" />
                             <div class="overlayContent">
@@ -293,7 +284,7 @@
                                     <td style="width: 15%"></td>
                                     <td style="width: 15%"></td>
                                     <td style="width: 35%"></td>
-                                    <td style="width: 25%"></td>
+                                    <td style="width: 25%" colspan="2"></td>
                                     <td style="width: 5%"></td>
                                 </tr>
                                 <tr>
@@ -303,7 +294,7 @@
                                     <td style="text-align: right">
                                         <h5>Valor Citación:</h5>
                                     </td>
-                                    <td>
+                                    <td colspan="2">
                                         <asp:TextBox ID="TxtValor" runat="server" CssClass="form-control alinearDerecha" MaxLength="9" TabIndex="4"></asp:TextBox>
                                     </td>
                                     <td></td>
@@ -315,7 +306,7 @@
                                     </td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
+                                    <td colspan="2"></td>
                                     <td></td>
                                 </tr>
                                 <tr runat="server" id="TrWhast1" visible="false">
@@ -324,19 +315,19 @@
                                     <td>
                                         <h5>Observación:</h5>
                                     </td>
-                                    <td colspan="2">
+                                    <td colspan="3">
                                         <asp:TextBox ID="TxtObservaWhatsapp" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" MaxLength="500" TabIndex="6" Width="100%" Height="50px" TextMode="MultiLine"></asp:TextBox>
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr runat="server" id="TrWhast2" visible="false">
-                                    <td colspan="6">
+                                    <td colspan="7">
                                         <asp:Panel ID="Panel5" runat="server" Height="20px"></asp:Panel>
                                     </td>
                                 </tr>
                                 <tr runat="server" id="TrWhast3" visible="false">
                                     <td></td>
-                                    <td colspan="4">
+                                    <td colspan="5">
                                         <asp:Panel ID="Panel4" runat="server" CssClass="panel panel-primary"
                                             GroupingText="Celulares Agregados" Height="350px" ScrollBars="Vertical" TabIndex="17">
                                             <asp:GridView ID="GrdvCelulares" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333" PageSize="5" TabIndex="7" Width="100%" DataKeyNames="Codigo">
@@ -372,7 +363,7 @@
                                     </td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
+                                    <td colspan="2"></td>
                                     <td></td>
                                 </tr>
                                 <tr runat="server" id="TrEmail1" visible="false">
@@ -383,7 +374,7 @@
                                         <asp:DropDownList ID="DdlTipoMail" runat="server" CssClass="form-control" TabIndex="9" Width="100%">
                                         </asp:DropDownList>
                                     </td>
-                                    <td>
+                                    <td colspan="2">
                                         <asp:RadioButtonList ID="RdbEmail" runat="server" AutoPostBack="True" CellSpacing="10" RepeatDirection="Horizontal" TabIndex="10">
                                             <asp:ListItem Selected="True" Value="PER">Personal</asp:ListItem>
                                             <asp:ListItem Value="TRA">Trabajo</asp:ListItem>
@@ -400,7 +391,7 @@
                                     <td>
                                         <asp:TextBox ID="TxtEmail" runat="server" CssClass="form-control lowCase" MaxLength="100" TabIndex="11" Width="100%"></asp:TextBox>
                                     </td>
-                                    <td style="text-align: center">
+                                    <td style="text-align: center" colspan="2">
                                         <asp:ImageButton ID="ImgAgregarMail" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" OnClick="ImgAgregarMail_Click" TabIndex="12" />
                                     </td>
                                     <td></td>
@@ -409,19 +400,19 @@
                                     <td></td>
                                     <td></td>
                                     <td>Observación:</td>
-                                    <td colspan="2">
+                                    <td colspan="3">
                                         <asp:TextBox ID="TxtObservaEmail" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" MaxLength="500" TabIndex="13" Width="100%" Height="50px" TextMode="MultiLine"></asp:TextBox>
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr runat="server" id="TrEmail4" visible="false">
-                                    <td colspan="6">
+                                    <td colspan="7">
                                         <asp:Panel ID="Panel7" runat="server" Height="20px"></asp:Panel>
                                     </td>
                                 </tr>
                                 <tr runat="server" id="TrEmail5" visible="false">
                                     <td></td>
-                                    <td colspan="4">
+                                    <td colspan="5">
                                         <asp:Panel ID="PnlEmail" runat="server" CssClass="panel panel-primary"
                                             GroupingText="Emails Agregados" Height="350px" ScrollBars="Vertical" TabIndex="17">
                                             <asp:GridView ID="GrdvEmails" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="CodigoMATD,Email,DirIncorrecta" ForeColor="#333333" PageSize="5" TabIndex="14" Width="100%" OnRowDataBound="GrdvEmails_RowDataBound">
@@ -463,7 +454,7 @@
                                         <asp:CheckBox ID="ChkTerreno" runat="server" Text="Terreno" TabIndex="15" OnCheckedChanged="ChkTerreno_CheckedChanged" AutoPostBack="True" />
                                     </td>
                                     <td></td>
-                                    <td colspan="2"></td>
+                                    <td colspan="3"></td>
                                     <td></td>
                                 </tr>
                                 <tr runat="server" id="TrTerreno1" visible="false">
@@ -476,7 +467,7 @@
                                         <asp:DropDownList ID="DdlDireccion" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="16" Width="100%">
                                         </asp:DropDownList>
                                     </td>
-                                    <td>
+                                    <td colspan="2">
                                         <asp:RadioButtonList ID="RdbTerreno" runat="server" AutoPostBack="True" RepeatDirection="Horizontal" CellSpacing="10" TabIndex="17">
                                             <asp:ListItem Selected="True" Value="DOM">Domicilio</asp:ListItem>
                                             <asp:ListItem Value="TRA">Trabajo</asp:ListItem>
@@ -490,7 +481,7 @@
                                     <td>
                                         <h5>Dirección:</h5>
                                     </td>
-                                    <td colspan="2">
+                                    <td colspan="3">
                                         <asp:TextBox ID="TxtDireccion" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="250" onkeydown="return (event.keyCode!=13);" TabIndex="18" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                     </td>
                                     <td></td>
@@ -501,10 +492,38 @@
                                     <td>
                                         <h5>Referencia:</h5>
                                     </td>
-                                    <td colspan="2">
+                                    <td colspan="3">
                                         <asp:TextBox ID="TxtReferencia" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" MaxLength="250" TabIndex="19" Width="100%" Height="50px" TextMode="MultiLine"></asp:TextBox>
                                     </td>
                                     <td></td>
+                                </tr>
+                                <tr runat="server" id="TrTerreno8" visible="false">
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <h5>Provincia:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="DdlProvincia" runat="server" AutoPostBack="True" CssClass="form-control chzn-select" OnSelectedIndexChanged="DdlProvincia_SelectedIndexChanged" TabIndex="20" Width="100%">
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td colspan="2"></td>
+                                    <td></td>
+
+                                </tr>
+                                <tr runat="server" id="TrTerreno9" visible="false">
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <h5>Ciudad:</h5>
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="DdlCiudad" runat="server" CssClass="form-control chzn-select" TabIndex="21" Width="100%">
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td colspan="2"></td>
+                                    <td></td>
+
                                 </tr>
                                 <tr runat="server" id="TrTerreno4" visible="false">
                                     <td></td>
@@ -519,6 +538,9 @@
                                     <td style="text-align: center">
                                         <asp:ImageButton ID="ImgAgregarTerreno" runat="server" Height="25px" ImageUrl="~/Botones/agregar.png" OnClick="ImgAgregarTerreno_Click" TabIndex="21" />
                                     </td>
+                                    <td style="text-align: center">
+                                        <asp:ImageButton ID="ImgModificaTerreno" runat="server" Enabled="False" Height="25px" ImageUrl="~/Botones/modificar.png" OnClick="ImgModificaTerreno_Click" TabIndex="23" />
+                                    </td>
                                     <td></td>
                                 </tr>
                                 <tr runat="server" id="TrTerreno5" visible="false">
@@ -527,30 +549,30 @@
                                     <td>
                                         <h5>Observación:</h5>
                                     </td>
-                                    <td colspan="2">
+                                    <td colspan="3">
                                         <asp:TextBox ID="TxtObservaTerreno" runat="server" CssClass="form-control upperCase" Height="50px" MaxLength="500" onkeydown="return (event.keyCode!=13);" TabIndex="22" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr runat="server" id="TrTerreno6" visible="false">
-                                    <td colspan="6">
+                                    <td colspan="7">
                                         <asp:Panel ID="Panel6" runat="server" Height="20px"></asp:Panel>
                                     </td>
                                 </tr>
                                 <tr runat="server" id="TrTerreno7" visible="false">
-                                    <td></td>
-                                    <td colspan="4">
+                                    <td colspan="7">
                                         <asp:Panel ID="PnlTerreno" runat="server" CssClass="panel panel-primary"
                                             GroupingText="Direcciones Agregadas" Height="350px" ScrollBars="Vertical" TabIndex="22">
                                             <asp:GridView ID="GrdvTerreno" runat="server" AutoGenerateColumns="False"
                                                 CssClass="table table-condensed table-bordered table-hover table-responsive"
                                                 ForeColor="#333333" PageSize="5" TabIndex="21" Width="100%"
-                                                DataKeyNames="CodigoMATD,CodigoTIPO,DirIncorrecta" OnRowDataBound="GrdvTerreno_RowDataBound">
+                                                DataKeyNames="CodigoMATD,CodigoTIPO,DirIncorrecta,CodigoCIUD" OnRowDataBound="GrdvTerreno_RowDataBound">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
                                                     <asp:BoundField DataField="Definicion" HeaderText="Definicion" />
                                                     <asp:BoundField DataField="Direccion" HeaderText="Dirección" />
+                                                    <asp:BoundField DataField="Ciudad" HeaderText="Ciudad" />
                                                     <asp:BoundField DataField="Sector" HeaderText="Sector" />
                                                     <asp:TemplateField HeaderText="Observación">
                                                         <ItemTemplate>
@@ -560,6 +582,12 @@
                                                     <asp:TemplateField HeaderText="Solicitar">
                                                         <ItemTemplate>
                                                             <asp:CheckBox ID="ChkSolTerreno" runat="server" AutoPostBack="True" OnCheckedChanged="ChkSolTerreno_CheckedChanged" />
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" />
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Selecc">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecc_Click" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -577,14 +605,13 @@
                                             </asp:GridView>
                                         </asp:Panel>
                                     </td>
-                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>
                                         <h5>Observación:</h5>
                                     </td>
-                                    <td colspan="3">
+                                    <td colspan="4">
                                         <asp:TextBox ID="TxtObservacion" runat="server" CssClass="form-control upperCase" Height="80px" MaxLength="500" onkeydown="return (event.keyCode!=13);" TabIndex="23" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                     </td>
                                     <td></td>
@@ -612,6 +639,16 @@
                 </div>
             </div>
         </div>
+        <script src="../../Scripts/chosen.jquery.js" type="text/javascript"></script>
+        <script type="text/javascript"> $(".chzn-select").chosen(); $(".chzn-select-deselect").chosen({ allow_single_deselect: true }); </script>
+        <script>
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequestHandler);
+            function endRequestHandler() {
+                $(".chzn-select").chosen({ width: "100%" });
+                $(".chzn-container").css({ "width": "100%" });
+                $(".chzn-drop").css({ "width": "95%" });
+            }
+        </script>
     </form>
     <script type="text/javascript">
         var cronometro;

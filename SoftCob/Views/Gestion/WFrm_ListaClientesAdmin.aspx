@@ -44,9 +44,10 @@
                                         ShowHeaderWhenEmpty="True" DataKeyNames="codigoCEDE,codigoCPCE,codigoCLDE,codigoPERS,Identificacion,Operacion,FechaPago,VolverLLamar,CodigoCITA" OnRowDataBound="GrdvDatos_RowDataBound">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:BoundField DataField="Producto" HeaderText="Producto" />
                                             <asp:BoundField DataField="Catalogo" HeaderText="Catalogo" />
-                                            <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
+                                            <asp:BoundField DataField="Cliente" HeaderText="Cliente" >
+                                            <ItemStyle Wrap="False" />
+                                            </asp:BoundField>
                                             <asp:BoundField DataField="Identificacion" HeaderText="Identificación" />
                                             <asp:BoundField DataField="Operacion" HeaderText="Operación" >
                                             <ItemStyle HorizontalAlign="Right" />
@@ -72,6 +73,7 @@
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
+                                            <asp:BoundField DataField="Estado" HeaderText="Estado" />
                                             <asp:TemplateField HeaderText="Solicitud">
                                                 <ItemTemplate>
                                                     <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btnnotepadbg.png" OnClick="ImgCitacion_Click" />

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_RegistrarCitacionTime.aspx.cs" Inherits="SoftCob.Views.BPM.WFrm_RegistrarCitacionTime" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_SeguimientoConvenio.aspx.cs" Inherits="SoftCob.Views.BPM.WFrm_SeguimientoConvenio" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -7,20 +7,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Registro Notificaciones</title>
+    <title></title>
 
     <link href="../../css/Estilos.css" rel="stylesheet" />
     <link href="../../Scripts/Tables/jquery.DataTable.min.css" rel="stylesheet" />
     <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../css/DatePicker/jquery-ui.css" rel="stylesheet" />
-    <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
 
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
     <script src="../../Scripts/Tables/DataTables.js"></script>
     <script src="../../Scripts/Tables/dataTable.bootstrap.min.js"></script>
     <script src="../../Scripts/jquery.min.js"></script>
     <script src="../../JS/DatePicker/jquery-ui.js"></script>
-    <script src="../../JS/alertify.min.js"></script>
 
     <style type="text/css">
         legend {
@@ -100,17 +98,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-<%--            <div class="panel-info">
-                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
-                    <ProgressTemplate>
-                        <div class="overlay" />
-                        <div class="overlayContent">
-                            <h2>Procesando..</h2>
-                            <img src="../../Images/load.gif" alt="Loading" border="1" />
-                        </div>
-                    </ProgressTemplate>
-                </asp:UpdateProgress>
-            </div>--%>
+
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server">
                     <ContentTemplate>
@@ -125,7 +113,7 @@
                             <tr>
                                 <td></td>
                                 <td colspan="3">
-                                    <asp:Panel ID="PnlDatosDeudor" runat="server" CssClass="panel panel-primary" Height="200px"
+                                    <asp:Panel ID="PnlDatosDeudor" runat="server" CssClass="panel panel-primary" Height="250px"
                                         GroupingText="Datos Deudor" TabIndex="15">
                                         <asp:GridView ID="GrdvDatosDeudor" runat="server" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
@@ -155,7 +143,7 @@
                             <tr>
                                 <td></td>
                                 <td colspan="3">
-                                    <asp:Panel ID="PnlDatosGetion" runat="server" CssClass="panel panel-primary" Height="200px"
+                                    <asp:Panel ID="PnlDatosGetion" runat="server" CssClass="panel panel-primary" Height="250px"
                                         GroupingText="Datos Operación" ScrollBars="Vertical" TabIndex="17">
                                         <asp:GridView ID="GrdvDatosObligacion" runat="server" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
@@ -167,7 +155,7 @@
                                                 <asp:BoundField DataField="HDiasMora" HeaderText="H.Mora">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="ValorDeuda" HeaderText="Valor Deuda">
+                                                <asp:BoundField HeaderText="Valor Deuda" DataField="ValorDeuda">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Exigible" HeaderText="Exigible">
@@ -193,7 +181,7 @@
                             <tr runat="server" id="TrGarantes" visible="false">
                                 <td></td>
                                 <td colspan="3">
-                                    <asp:Panel ID="PnlDatosGarante" runat="server" CssClass="panel panel-primary" Height="200px"
+                                    <asp:Panel ID="PnlDatosGarante" runat="server" CssClass="panel panel-primary" Height="250px"
                                         GroupingText="Datos Garante" ScrollBars="Vertical" TabIndex="17">
                                         <asp:GridView ID="GrdvDatosGarante" runat="server" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
@@ -249,6 +237,8 @@
                                                                     <asp:BoundField DataField="Referencia" HeaderText="Referencia" />
                                                                     <asp:BoundField DataField="Sector" HeaderText="Sector" />
                                                                     <asp:BoundField DataField="FechaVisita" HeaderText="Fecha Visita" />
+                                                                    <asp:BoundField DataField="RespuestaGeneral" HeaderText="Respuesta" />
+                                                                    <asp:BoundField DataField="Registro" HeaderText="Observación" />
                                                                 </Columns>
                                                                 <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                                                 <RowStyle Font-Size="X-Small" />
@@ -287,37 +277,39 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <asp:Calendar ID="CalenCitaciones" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="200px" Width="100%" OnSelectionChanged="CalenCitaciones_SelectionChanged" TabIndex="1">
-                                        <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
-                                        <NextPrevStyle VerticalAlign="Bottom" />
-                                        <OtherMonthDayStyle ForeColor="#808080" />
-                                        <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
-                                        <SelectorStyle BackColor="#CCCCCC" />
-                                        <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
-                                        <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
-                                        <WeekendDayStyle BackColor="#FFFFCC" />
-                                    </asp:Calendar>
+                                    <asp:LinkButton ID="LnkHistorial" runat="server" OnClick="LnkHistorial_Click">Todo el Historial</asp:LinkButton>
                                 </td>
                                 <td></td>
-                                <td>
-                                    <asp:Panel ID="Panel3" runat="server" CssClass="panel panel-primary" Height="280px" GroupingText="Horarios Citación" ScrollBars="Vertical" TabIndex="17">
-                                        <asp:GridView ID="GrdvHorarios" runat="server" AutoGenerateColumns="False"
+                                <td>&nbsp;</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="3">
+                                    <asp:Panel ID="Panel3" runat="server" CssClass="panel panel-primary" Height="350px" GroupingText="Historial Citaciones" ScrollBars="Vertical" TabIndex="17">
+                                        <asp:GridView ID="GrdvDetalle" runat="server" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
-                                            PageSize="5" TabIndex="2" Width="100%" DataKeyNames="Codigo,EstadoCodigo,HoraInicio,HoraFin,CodigoUSUA,CodigoPERS" OnRowDataBound="GrdvHorarios_RowDataBound">
+                                            PageSize="3" TabIndex="1" Width="100%" DataKeyNames="PathArchivo,Content,CodigoESTA" OnRowDataBound="GrdvDetalle_RowDataBound">
                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                             <Columns>
-                                                <asp:TemplateField HeaderText="Citación">
+                                                <asp:BoundField DataField="Fecha" HeaderText="Fecha">
+                                                    <ItemStyle Wrap="False" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Estado" HeaderText="Estado"></asp:BoundField>
+                                                <asp:BoundField DataField="Observacion" HeaderText="Observación" />
+                                                <asp:BoundField DataField="Usuario" HeaderText="Usuario" />
+                                                <asp:TemplateField HeaderText="Archivo">
                                                     <ItemTemplate>
-                                                        <asp:ImageButton ID="Imgcitacion" runat="server" Height="20px" ImageUrl="~/Botones/citamedica.png" OnClick="Imgcitacion_Click" Enabled="False" />
+                                                        <asp:ImageButton ID="ImgArchivo" runat="server" Height="20px" ImageUrl="~/Botones/Buscargris.png" Enabled="False" OnClick="ImgArchivo_Click" />
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
-                                                <asp:BoundField DataField="Hora" HeaderText="Hora">
+                                                <asp:TemplateField HeaderText="Tabla">
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton ID="ImgTabla" runat="server" Height="20px" ImageUrl="~/Botones/productos.png" OnClick="ImgTabla_Click" Visible="False" />
+                                                    </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="Estado" HeaderText="Estado" />
-                                                <asp:BoundField DataField="Usuario" HeaderText="Usuario Agenda" />
-                                                <asp:BoundField DataField="Gestor" HeaderText="Gestor" />
+                                                </asp:TemplateField>
                                             </Columns>
                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
@@ -336,55 +328,9 @@
                                 <td style="width: 20%"></td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td>
-                                    <asp:Panel ID="Panel1" runat="server" Height="250px" GroupingText="Cargar Archivo Citación">
-                                        <table style="width: 100%">
-                                            <tr>
-                                                <td style="width: 35%"></td>
-                                                <td style="width: 65%"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h5>Valor Citación:</h5>
-                                                </td>
-                                                <td style="text-align: left">
-                                                    <asp:Label ID="LblValor" runat="server" Text="Label" Font-Bold="True" ForeColor="#CC3300"></asp:Label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h5>Solicitado Por:</h5>
-                                                </td>
-                                                <td>
-                                                    <asp:Label ID="LblGestor" runat="server" Font-Bold="True" ForeColor="Blue" Text="Label"></asp:Label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h5>Documento Citación:</h5>
-                                                </td>
-                                                <td>
-                                                    <asp:FileUpload ID="FileUpload1" runat="server" TabIndex="14" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <asp:Label ID="LblObservacion" runat="server" Font-Bold="True" ForeColor="#0000CC"></asp:Label>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                <td colspan="3">
+                                    <asp:Panel ID="Panel5" runat="server" Height="20px">
                                     </asp:Panel>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="5">
-                                    <asp:Panel ID="Panel5" runat="server" Height="20px"></asp:Panel>
                                 </td>
                             </tr>
                         </table>
@@ -396,9 +342,7 @@
                     <ContentTemplate>
                         <table style="width: 100%">
                             <tr>
-                                <td style="text-align: right; width: 45%">
-                                    <asp:Button ID="BtnGrabar" runat="server" Text="Grabar" Width="120px" CssClass="button" TabIndex="8" OnClick="BtnGrabar_Click" />
-                                </td>
+                                <td style="text-align: right; width: 45%"></td>
                                 <td style="width: 5%"></td>
                                 <td style="text-align: left; width: 45%">
                                     <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="9" />
@@ -406,9 +350,6 @@
                             </tr>
                         </table>
                     </ContentTemplate>
-                    <Triggers>
-                        <asp:PostBackTrigger ControlID="BtnGrabar" />
-                    </Triggers>
                 </asp:UpdatePanel>
             </div>
         </div>

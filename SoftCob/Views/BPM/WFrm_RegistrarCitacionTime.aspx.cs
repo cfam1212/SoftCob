@@ -107,6 +107,7 @@
 
                 LblObservacion.Text = _dts.Tables[0].Rows[0]["Observacion"].ToString();
                 LblValor.Text = _dts.Tables[0].Rows[0]["ValorCitacion"].ToString();
+                LblGestor.Text = _dts.Tables[0].Rows[0]["Gestor"].ToString();
 
                 if (_dts.Tables[0].Rows[0]["Estado"].ToString() == "REV") ViewState["Agendado"] = "SI";
 

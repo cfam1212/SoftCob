@@ -13,7 +13,7 @@
         string _identificacion = "", _operacion = "", _codigocede = "", _codigocpce = "", _codigoclde = "", _codigopers = "", 
             _fechapago = "", _volverllamar = "", _listaactiva = "", _codigocita = "", _mensaje ="";
         DateTime _nuevafecha;
-        int _anio = 0, _mes = 0;
+        int _anio = 0, _mes = 0, _contar = 0;
         ImageButton _imgcitacion = new ImageButton();
         #endregion
 
@@ -33,15 +33,35 @@
 
                 ViewState["MesActual"] = DateTime.Today.Month;
                 ViewState["AnioActual"] = DateTime.Today.Year;
+                ViewState["CodigoCPCE"] = "0";
                 Lbltitulo.Text = "Lista de Clientes";
                 FunConsultarAgendamiento();
                 FunCargarMantenimiento();
 
-                //if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page, ":: SoftCob ::", Request["MensajeRetornado"].ToString());
-                if (Request["MensajeRetornado"] != null)
+                if (Request["MensajeRetornado"] != null) new FuncionesDAO().FunShowJSMessage(Request["MensajeRetornado"], this, "S", "R");
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(264, int.Parse(Session["usuCodigo"].ToString()),
+                    0, 0, "", "", "", Session["Conectar"].ToString());
+
+                _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
+
+                if (_contar > 0)
                 {
-                    _mensaje = Request["MensajeRetornado"];
-                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "S", "R");
+                    _mensaje = "Tiene " + _contar + " CONVENIO(S) Pendiente(s) SIN PAGO";
+                    new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "C");
+                }
+                else
+                {
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(250, int.Parse(Session["usuCodigo"].ToString()),
+                        int.Parse(ViewState["CodigoCPCE"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
+
+                    _contar = int.Parse(_dts.Tables[0].Rows[0]["Contar"].ToString());
+
+                    if (_contar > 0)
+                    {
+                        _mensaje = "Tiene " + _contar + " NEGOCIACION(ES) Pendiente(s) por GESTIONAR";
+                        new FuncionesDAO().FunShowJSMessage(_mensaje, this, "W", "C");
+                    }
                 }
             }
         }
@@ -60,6 +80,8 @@
                 {
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(82, int.Parse(Session["usuCodigo"].ToString()), 0, 0,
                         "", "", "", Session["Conectar"].ToString());
+
+                    ViewState["CodigoCPCE"] = _dts.Tables[0].Rows[0]["codigoCPCE"].ToString();
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -180,13 +202,49 @@
 
                     switch (_codigocita)
                     {
-                        case "CSL":
-                        case "CPR":
-                        case "CCS":
-                        case "CGE":
-                        case "REV":
+                        case "CSL": //SOLICITADA
+                        case "CPR": //EN PROCESO
+                        case "CCS": //EN SEGUIMIENTO
+                        case "CGE": //GENERADA
+                        case "CCV": //CON CONVENIO
+                        case "REV": //RESERVADO
+                        case "CAS": //CLIENTE ASISTE
                             _imgcitacion.ImageUrl = "~/Botones/btncitagris.png";
                             _imgcitacion.Enabled = false;
+                            break;
+                    }
+
+                    switch (_codigocita)
+                    {
+                        case "CSL":
+                            e.Row.Cells[10].BackColor = System.Drawing.Color.DarkOrange;
+                            break;
+                        case "CMI":
+                            e.Row.Cells[10].BackColor = System.Drawing.Color.Red;
+                            break;
+                        case "CPR":
+                            e.Row.Cells[10].BackColor = System.Drawing.Color.Coral;
+                            break;
+                        case "CGE":
+                            e.Row.Cells[10].BackColor = System.Drawing.Color.Cyan;
+                            break;
+                        case "CRE":
+                            e.Row.Cells[10].BackColor = System.Drawing.Color.Bisque;
+                            break;
+                        case "CCV":
+                            e.Row.Cells[10].BackColor = System.Drawing.Color.AliceBlue;
+                            break;
+                        case "CCS":
+                            e.Row.Cells[10].BackColor = System.Drawing.Color.LimeGreen;
+                            break;
+                        case "CNA":
+                            e.Row.Cells[10].BackColor = System.Drawing.Color.Beige;
+                            break;
+                        case "CSV":
+                            e.Row.Cells[10].BackColor = System.Drawing.Color.SeaGreen;
+                            break;
+                        case "CAS":
+                            e.Row.Cells[10].BackColor = System.Drawing.Color.Gold;
                             break;
                     }
                 }
@@ -205,7 +263,7 @@
                 _codigoclde = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoCLDE"].ToString();
                 _codigopers = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoPERS"].ToString();
                 _codigocpce = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoCPCE"].ToString();
-                _identificacion = GrdvDatos.DataKeys[gvRow.RowIndex].Values["codigoCPCE"].ToString();
+                _identificacion = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Identificacion"].ToString();
 
                 Response.Redirect("../BPM/WFrm_CrearCitacion.aspx?CodigoPERS=" + _codigopers + "&CodigoCPCE=" + _codigocpce + "&CodigoCLDE="
                     + _codigoclde + "&NumDocumento=" + _identificacion + "&Retornar=0", true);

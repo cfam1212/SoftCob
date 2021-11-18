@@ -227,7 +227,10 @@
                         _imgeliminar.Enabled = true;
                         _imgeliminar.Height = 15;
                     }
+
                     _ddlrepuesta.SelectedValue = _respuesta;
+
+                    if (!string.IsNullOrEmpty(_respuesta)) _ddlrepuesta.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -295,22 +298,19 @@
                         _codigomatd = GrdvCitaciones.DataKeys[i_row.RowIndex]["CodigoMATD"].ToString();
                         _codigohcit = GrdvCitaciones.DataKeys[i_row.RowIndex]["CodigoHCIT"].ToString();
 
-                        if (_ddlrepuesta.SelectedValue == "0")
-                        {
-                            new FuncionesDAO().FunShowJSMessage("Seleccione Respuesta..!", this, "W", "L");
-                            break;
-                        }
-
                         if (_email == _emailcomparar)
                         {
-                            _dts = new ConsultaDatosDAO().FunAgendaCitaciones(12, int.Parse(ViewState["CodigoCLDE"].ToString()),
-                                0, "", 0, "0", 0, "", "", "", "", "", "", "", "", "", _drfila["Email"].ToString(), new byte[0],
-                                "", "", "", "", "0", "0", 0, "", 0, _ddlrepuesta.SelectedValue, "Email",
-                                "", "", "", "", "", "", "", "", int.Parse(ViewState["CodigoCITA"].ToString()), 0,
-                                int.Parse(_codigomatd), int.Parse(_codigohcit), 0, int.Parse(Session["usuCodigo"].ToString()),
-                                Session["MachineName"].ToString(), Session["Conectar"].ToString());
+                            if(_ddlrepuesta.SelectedValue != "0")
+                            {
+                                _dts = new ConsultaDatosDAO().FunAgendaCitaciones(12, int.Parse(ViewState["CodigoCLDE"].ToString()),
+                                    0, "", 0, "0", 0, "", "", "", "", "", "", "", "", "", _drfila["Email"].ToString(), new byte[0],
+                                    "", "", "", "", "0", "0", 0, "", 0, _ddlrepuesta.SelectedValue, "Email",
+                                    "", "", "", "", "", "", "", "", int.Parse(ViewState["CodigoCITA"].ToString()), 0,
+                                    int.Parse(_codigomatd), int.Parse(_codigohcit), 0, int.Parse(Session["usuCodigo"].ToString()),
+                                    Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
-                            _contar++;
+                                _contar++;
+                            }
                         }
                     }
                 }

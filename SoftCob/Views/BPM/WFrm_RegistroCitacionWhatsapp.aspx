@@ -11,9 +11,12 @@
     <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../css/Estilos.css" rel="stylesheet" />
     <link href="../../css/DatePicker/jquery-ui.css" rel="stylesheet" />
+    <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
+
     <script type="text/javascript" src="../../JS/DatePicker/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="../../JS/DatePicker/jquery-ui.js"></script>
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../JS/alertify.min.js"></script>
 
     <style type="text/css">
         legend {
@@ -67,7 +70,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-<%--            <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -77,7 +80,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>--%>
+            </div>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server">
                     <ContentTemplate>

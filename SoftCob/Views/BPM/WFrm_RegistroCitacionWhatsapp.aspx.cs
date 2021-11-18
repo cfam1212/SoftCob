@@ -55,8 +55,8 @@
                     PnlCitaciones.Height = 230;
                     FunCargaMantenimiento();
 
-                    if (Request["MensajeRetornado"] != null) SIFunBasicas.Basicas.PresentarMensaje(Page,
-                        "::GSBPO GLOBAL SERVICES::", Request["MensajeRetornado"].ToString());
+                    if (Request["MensajeRetornado"] != null) new FuncionesDAO().FunShowJSMessage(Request["MensajeRetornado"], this,
+                        "W", "C");
                 }
             }
             catch (Exception ex)
@@ -116,7 +116,7 @@
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
                     _totalExigible += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "Exigible"));
-                    _totalDeuda += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "MontoGSPBO"));
+                    _totalDeuda += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "ValorDeuda"));
                 }
 
                 if (e.Row.RowType == DataControlRowType.Footer)
@@ -296,7 +296,7 @@
 
                         if (_ddlrepuesta.SelectedValue == "0")
                         {
-                            new FuncionesDAO().FunShowJSMessage("Seleccione Respuesta..!", this, "W", "C");
+                            //new FuncionesDAO().FunShowJSMessage("Seleccione Respuesta..!", this, "W", "C");
                             break;
                         }
 

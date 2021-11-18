@@ -105,8 +105,7 @@
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(241, 1, 0, 0, "", "", "", Session["Conectar"].ToString());
 
                 GrdvDatos.DataSource = _dts;
-                GrdvDatos.DataBind();
-                ViewState["GrdvDatos"] = _dts.Tables[0];
+                GrdvDatos.DataBind();                
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
@@ -115,6 +114,9 @@
                     GrdvDatos.UseAccessibleHeader = true;
                     GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
+
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(241, 2, 0, 0, "", "", "Terreno", Session["Conectar"].ToString());
+                ViewState["GrdvDatos"] = _dts.Tables[0];
             }
             catch (Exception ex)
             {

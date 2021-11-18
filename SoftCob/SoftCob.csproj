@@ -282,6 +282,7 @@
     <Content Include="Botones\ressetpasswordbg.png" />
     <Content Include="Botones\selecc.png" />
     <Content Include="Botones\seleccbg.png" />
+    <Content Include="Botones\seleccgris.png" />
     <Content Include="Botones\seleccionar.png" />
     <Content Include="Botones\sin_usuario.png" />
     <Content Include="Botones\sin_usuariobg.png" />
@@ -334,7 +335,6 @@
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="citacion\0916030687\matricula.pdf" />
     <Content Include="JS\alertify.min.js" />
     <Content Include="JS\css\alertify.min.css" />
     <Content Include="Reload.html" />
@@ -372,12 +372,14 @@
     <Content Include="Views\BPM\WFrm_ListaSeguimientoTime.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudGestores.aspx" />
     <Content Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx" />
+    <Content Include="Views\BPM\WFrm_ListaTipoConvenio.aspx" />
     <Content Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionMail.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionWhatsapp.aspx" />
     <Content Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_SeguimientoCitacionTime.aspx" />
+    <Content Include="Views\BPM\WFrm_SeguimientoConvenio.aspx" />
     <Content Include="Views\BPM\WFrm_ViewPdf.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchAdmin.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchEfectivoOn.aspx" />
@@ -732,6 +734,13 @@
     <Compile Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx.designer.cs">
       <DependentUpon>WFrm_ListaSolicitudTerreno.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BPM\WFrm_ListaTipoConvenio.aspx.cs">
+      <DependentUpon>WFrm_ListaTipoConvenio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_ListaTipoConvenio.aspx.designer.cs">
+      <DependentUpon>WFrm_ListaTipoConvenio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx.cs">
       <DependentUpon>WFrm_RegistrarCitacionTime.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -773,6 +782,13 @@
     </Compile>
     <Compile Include="Views\BPM\WFrm_SeguimientoCitacionTime.aspx.designer.cs">
       <DependentUpon>WFrm_SeguimientoCitacionTime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_SeguimientoConvenio.aspx.cs">
+      <DependentUpon>WFrm_SeguimientoConvenio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_SeguimientoConvenio.aspx.designer.cs">
+      <DependentUpon>WFrm_SeguimientoConvenio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\BPM\WFrm_ViewPdf.aspx.cs">
       <DependentUpon>WFrm_ViewPdf.aspx</DependentUpon>
@@ -1641,6 +1657,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Archivos\" />
     <Folder Include="CambiosFront\" />
+    <Folder Include="citacion\" />
     <Folder Include="SP\" />
   </ItemGroup>
   <ItemGroup>
