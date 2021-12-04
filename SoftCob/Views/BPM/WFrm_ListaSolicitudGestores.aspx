@@ -17,7 +17,8 @@
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
     <script src="../../Scripts/Tables/DataTables.js"></script>
     <script src="../../Scripts/Tables/dataTable.bootstrap.min.js"></script>
-    <script src="../../JS/alertify.min.js"></script>
+    <script type="text/javascript" src="../../JS/alertify.min.js"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -62,11 +63,20 @@
                                             <asp:BoundField DataField="Valor" HeaderText="Valor" />
                                             <asp:BoundField DataField="Gestor" HeaderText="Gestor" >
                                             </asp:BoundField>
+                                            <asp:BoundField DataField="TotalCitas" HeaderText="No. Citas">
+                                            <ItemStyle HorizontalAlign="Right" />
+                                            </asp:BoundField>
                                             <asp:BoundField DataField="Observacion" HeaderText="Observacion">
                                             </asp:BoundField>
                                             <asp:TemplateField HeaderText="Citación">
                                                 <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btncitaprocesobg.png" OnClick="ImgCitacion_Click" />
+                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="15px" ImageUrl="~/Botones/btncitaproceso.png" OnClick="ImgCitacion_Click" />
+                                                </ItemTemplate>
+                                                <ItemStyle HorizontalAlign="Center" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Cambiar">
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="ImgCambiar" runat="server" Height="15px" ImageUrl="~/Botones/btnnotepad.png" OnClick="ImgCambiar_Click" OnClientClick="return asegurar();" />
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
@@ -89,5 +99,11 @@
             </div>
         </div>
     </form>
+    <script type="text/javascript">
+        function asegurar() {
+            rc = confirm("¿Está Seguro Quitar Solicitud Citación?");
+            return rc;
+        }
+    </script>
 </body>
 </html>

@@ -29,7 +29,7 @@
 
                 if (!IsPostBack)
                 {
-                    ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
+                    //ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                     Lbltitulo.Text = "Citaciones en Proceso << CITACIONES POR MAIL >>";
                     FunCargarMantenimiento();
 
@@ -49,8 +49,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(254, 0, 0, 0, "", "CGE", "",
-                    ViewState["Conectar"].ToString());
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(254, 0, 0, 0, "", "CGE", "", Session["Conectar"].ToString());
 
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();

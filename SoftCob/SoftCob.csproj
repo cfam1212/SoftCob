@@ -374,6 +374,7 @@
     <Content Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_ListaTipoConvenio.aspx" />
     <Content Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx" />
+    <Content Include="Views\BPM\WFrm_RegistroCitacionAdmin.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionMail.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionWhatsapp.aspx" />
@@ -747,6 +748,13 @@
     </Compile>
     <Compile Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx.designer.cs">
       <DependentUpon>WFrm_RegistrarCitacionTime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistroCitacionAdmin.aspx.cs">
+      <DependentUpon>WFrm_RegistroCitacionAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistroCitacionAdmin.aspx.designer.cs">
+      <DependentUpon>WFrm_RegistroCitacionAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\BPM\WFrm_RegistroCitacionMail.aspx.cs">
       <DependentUpon>WFrm_RegistroCitacionMail.aspx</DependentUpon>
