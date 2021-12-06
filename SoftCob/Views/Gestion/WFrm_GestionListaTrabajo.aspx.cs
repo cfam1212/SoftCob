@@ -193,6 +193,14 @@
                     }
                 }
 
+                switch (ViewState["NivelArbol"].ToString())
+                {
+                    case "3":
+                        LblContacto.Visible = false;
+                        DdlContacto.Visible = false;
+                        break;
+                }
+
                 Lbltitulo.Text = "Gestion Lista de Trabajo " + ViewState["Catalogo"].ToString();
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(36, int.Parse(Session["IdListaCabecera"].ToString()),

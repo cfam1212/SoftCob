@@ -485,7 +485,6 @@
                                                                                         <Columns>
                                                                                             <asp:BoundField DataField="Producto" HeaderText="Producto" />
                                                                                             <asp:BoundField HeaderText="Catalogo" DataField="Catalogo">
-                                                                                                <ItemStyle HorizontalAlign="Right" />
                                                                                             </asp:BoundField>
                                                                                             <asp:BoundField DataField="Operacion" HeaderText="Operación">
                                                                                                 <ItemStyle HorizontalAlign="Right" />

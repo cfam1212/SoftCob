@@ -140,6 +140,14 @@
                 SoftCob_CEDENTE cedente = new CedenteDAO().FunGetCedentePorID(int.Parse(ViewState["CodigoCEDE"].ToString()));
                 ViewState["NivelArbol"] = cedente.cede_auxi1;
 
+                switch (ViewState["NivelArbol"].ToString())
+                {
+                    case "3":
+                        LblContacto.Visible = false;
+                        DdlContacto.Visible = false;
+                        break;
+                }
+
                 if (Session["PermisoEspecial"].ToString() == "SI")
                 {
                     ImgComparar.Visible = true;
