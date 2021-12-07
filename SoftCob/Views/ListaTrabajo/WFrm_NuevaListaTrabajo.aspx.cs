@@ -243,13 +243,13 @@
                 _validar = false;
             }
 
-            if (int.Parse(DdlCedente.SelectedValue) == 0)
+            if (DdlCedente.SelectedValue == "0")
             {
                 new FuncionesDAO().FunShowJSMessage("Seleccione Cedente..!", this, "W", "C");
                 _validar = false;
             }
 
-            if (int.Parse(DdlCatalogo.SelectedValue) == 0)
+            if (DdlCatalogo.SelectedValue == "0")
             {
                 new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this, "W", "C");
                 _validar = false;
