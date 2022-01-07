@@ -352,6 +352,8 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Template\HtmlMailSEND.html" />
+    <Content Include="Template\HtmlSendMail.html" />
     <Content Include="Views\ArbolDesicion\WFrm_ArbolDecision.aspx" />
     <Content Include="Views\ArbolDesicion\WFrm_ArbolDecisionNew.aspx" />
     <Content Include="Views\ArbolDesicion\WFrm_ArbolScoreTelefono.aspx" />
@@ -408,6 +410,8 @@
     <Content Include="Views\Configuraciones\WFrm_ConfigurarAccionEfecto.aspx" />
     <Content Include="Views\Configuraciones\wFrm_CopiarArbolDecision.aspx" />
     <Content Include="Views\Configuraciones\WFrm_CopiarArbolSpeech.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_CopiarBrench.aspx" />
+    <Content Include="Views\Configuraciones\WFrm_CopiarEtiqueta.aspx" />
     <Content Include="Views\Configuraciones\Wfrm_CopiarSegmento.aspx" />
     <Content Include="Views\Configuraciones\WFrm_DepartamentoAdmin.aspx" />
     <Content Include="Views\Configuraciones\WFrm_DepartamentoNuevo.aspx" />
@@ -986,6 +990,20 @@
     </Compile>
     <Compile Include="Views\Configuraciones\WFrm_CopiarArbolSpeech.aspx.designer.cs">
       <DependentUpon>WFrm_CopiarArbolSpeech.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_CopiarBrench.aspx.cs">
+      <DependentUpon>WFrm_CopiarBrench.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_CopiarBrench.aspx.designer.cs">
+      <DependentUpon>WFrm_CopiarBrench.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_CopiarEtiqueta.aspx.cs">
+      <DependentUpon>WFrm_CopiarEtiqueta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones\WFrm_CopiarEtiqueta.aspx.designer.cs">
+      <DependentUpon>WFrm_CopiarEtiqueta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Configuraciones\Wfrm_CopiarSegmento.aspx.cs">
       <DependentUpon>Wfrm_CopiarSegmento.aspx</DependentUpon>

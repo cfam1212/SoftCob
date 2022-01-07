@@ -773,7 +773,7 @@
                     _sql1 += "CONVERT(DATE,GTE.gete_fechagestion,101) BETWEEN ";
                     _sql1 += "CONVERT(DATE,'" + TxtFechaDesde.Text + "',101) AND CONVERT(DATE,'" + TxtFechaHasta.Text + "',101) AND ";
                     _sql1 += "GTE.gete_auxi3=0 AND CDE.ctde_estado=1 AND ";
-                    if (ChkArbol.Checked) _sql1 += "AND GTE.gete_araccodigo=" + DdlAccion.SelectedValue + " AND ";
+                    if (ChkArbol.Checked) _sql1 += "GTE.gete_araccodigo=" + DdlAccion.SelectedValue + " AND ";
                     _sql1 += "CDE.ctde_gestorasignado IN(";
                     _sql1 = FunFormarSQL(_sql1, 0);
                     _sql1 += "ORDER BY GTE.gete_cldecodigo";

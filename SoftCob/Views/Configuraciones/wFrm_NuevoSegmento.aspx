@@ -70,7 +70,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                    <div class="panel-info">
+                <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updOpciones">
                         <ProgressTemplate>
                             <div class="overlay" />
@@ -82,159 +82,159 @@
                     </asp:UpdateProgress>
                 </div>
                 <div class="panel-body">
-                <asp:UpdatePanel ID="updCabecera" runat="server">
-                    <ContentTemplate>
-                        <table style="width: 100%" class="table table-bordered table-responsive">
-                            <tr>
-                                <td style="width: 20%">
-                                    <div style="display: inline-block;">
-                                        <asp:TreeView ID="TrvCedentes" runat="server" ImageSet="Arrows" OnTreeNodePopulate="TrvCedentes_TreeNodePopulate" OnSelectedNodeChanged="TrvCedentes_SelectedNodeChanged" TabIndex="1">
-                                            <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
-                                            <Nodes>
-                                                <asp:TreeNode PopulateOnDemand="True" SelectAction="Expand" Text="Cedentes/Productos" Value="Cedentes/Productos"></asp:TreeNode>
-                                            </Nodes>
-                                            <NodeStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
-                                            <ParentNodeStyle Font-Bold="False" />
-                                            <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="0px" />
-                                        </asp:TreeView>
-                                    </div>
-                                </td>
-                                <td style="width: 80%">
-                                    <table style="width: 100%">
-                                        <tr>
-                                            <td style="width: 15%"></td>
-                                            <td style="width: 35%"></td>
-                                            <td style="width: 15%"></td>
-                                            <td style="width: 35%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td colspan="2">
-                                                <h3 runat="server" id="lblCatalogo"></h3>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h5>Segmento:</h5>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="TxtSegmento" runat="server" CssClass="form-control upperCase" MaxLength="150" Width="100%" TabIndex="2"></asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <h5>Descripción:</h5>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Height="50px" MaxLength="150" TabIndex="3" TextMode="MultiLine" Width="100%"></asp:TextBox>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h5>Valor Inicial:</h5>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="TxtValorInicial" runat="server" CssClass="form-control alinearDerecha" MaxLength="4" TabIndex="4" Width="100%"></asp:TextBox>
-                                                <asp:FilteredTextBoxExtender ID="txtValorInicial_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtValorInicial">
-                                                </asp:FilteredTextBoxExtender>
-                                            </td>
-                                            <td>
-                                                <h5>Valor Final:</h5>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="TxtValorFinal" runat="server" CssClass="form-control alinearDerecha" MaxLength="4" TabIndex="5" Width="100%"></asp:TextBox>
-                                                <asp:FilteredTextBoxExtender ID="txtValorFinal_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtValorFinal">
-                                                </asp:FilteredTextBoxExtender>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4">
-                                                <asp:Panel ID="Panel1" runat="server" Height="20px"></asp:Panel>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <asp:ImageButton ID="ImgAddSegmento" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="6" OnClick="ImgAddSegmento_Click" />
-                                            </td>
-                                            <td>
-                                                <asp:ImageButton ID="ImgModiSegmento" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" TabIndex="7" OnClick="ImgModiSegmento_Click" />
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4">
-                                                <asp:Panel ID="Panel2" runat="server" Height="20px"></asp:Panel>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4">
-                                                <asp:UpdatePanel ID="updAccion" runat="server">
-                                                    <ContentTemplate>
-                                                        <asp:Panel ID="pnlAccion" runat="server" Height="180px" ScrollBars="Vertical">
-                                                            <asp:GridView ID="GrdvSegmento" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo" ForeColor="#333333" PageSize="5" TabIndex="8" Width="100%">
-                                                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                                                <Columns>
-                                                                    <asp:BoundField DataField="Segmento" HeaderText="Segmento" />
-                                                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
-                                                                    <asp:BoundField DataField="ValorI" HeaderText="Valor Inicial">
-                                                                        <ItemStyle HorizontalAlign="Right" />
-                                                                    </asp:BoundField>
-                                                                    <asp:BoundField DataField="ValorF" HeaderText="Valor Final">
-                                                                        <ItemStyle HorizontalAlign="Right" />
-                                                                    </asp:BoundField>
-                                                                    <asp:TemplateField HeaderText="Selecc">
-                                                                        <ItemTemplate>
-                                                                            <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecc_Click" />
-                                                                        </ItemTemplate>
-                                                                        <ItemStyle HorizontalAlign="Center" />
-                                                                    </asp:TemplateField>
-                                                                    <asp:TemplateField HeaderText="Eliminar">
-                                                                        <ItemTemplate>
-                                                                            <asp:ImageButton ID="ImgEliminar" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliminar_Click" OnClientClick="return asegurar();" />
-                                                                        </ItemTemplate>
-                                                                        <ItemStyle HorizontalAlign="Center" />
-                                                                    </asp:TemplateField>
-                                                                </Columns>
-                                                                <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
-                                                                <RowStyle Font-Size="X-Small" />
-                                                                <EditRowStyle BackColor="#2461BF" />
-                                                                <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
-                                                            </asp:GridView>
-                                                        </asp:Panel>
-                                                    </ContentTemplate>
-                                                </asp:UpdatePanel>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4">
-                                                <asp:Panel ID="pnlSepara1" runat="server" Height="30px"></asp:Panel>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                    <asp:UpdatePanel ID="updCabecera" runat="server">
+                        <ContentTemplate>
+                            <table style="width: 100%" class="table table-bordered table-responsive">
+                                <tr>
+                                    <td style="width: 20%">
+                                        <div style="display: inline-block;">
+                                            <asp:TreeView ID="TrvCedentes" runat="server" ImageSet="Arrows" OnTreeNodePopulate="TrvCedentes_TreeNodePopulate" OnSelectedNodeChanged="TrvCedentes_SelectedNodeChanged" TabIndex="1">
+                                                <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                                                <Nodes>
+                                                    <asp:TreeNode PopulateOnDemand="True" SelectAction="Expand" Text="Cedentes/Productos" Value="Cedentes/Productos"></asp:TreeNode>
+                                                </Nodes>
+                                                <NodeStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
+                                                <ParentNodeStyle Font-Bold="False" />
+                                                <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="0px" />
+                                            </asp:TreeView>
+                                        </div>
+                                    </td>
+                                    <td style="width: 80%">
+                                        <table style="width: 100%">
+                                            <tr>
+                                                <td style="width: 15%"></td>
+                                                <td style="width: 35%"></td>
+                                                <td style="width: 15%"></td>
+                                                <td style="width: 35%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td colspan="2">
+                                                    <h3 runat="server" id="lblCatalogo"></h3>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h5>Segmento:</h5>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="TxtSegmento" runat="server" CssClass="form-control upperCase" MaxLength="150" Width="100%" TabIndex="2"></asp:TextBox>
+                                                </td>
+                                                <td>
+                                                    <h5>Descripción:</h5>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="TxtDescripcion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Height="50px" MaxLength="150" TabIndex="3" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h5>Valor Inicial:</h5>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="TxtValorInicial" runat="server" CssClass="form-control alinearDerecha" MaxLength="4" TabIndex="4" Width="100%"></asp:TextBox>
+                                                    <asp:FilteredTextBoxExtender ID="txtValorInicial_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtValorInicial">
+                                                    </asp:FilteredTextBoxExtender>
+                                                </td>
+                                                <td>
+                                                    <h5>Valor Final:</h5>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="TxtValorFinal" runat="server" CssClass="form-control alinearDerecha" MaxLength="4" TabIndex="5" Width="100%"></asp:TextBox>
+                                                    <asp:FilteredTextBoxExtender ID="txtValorFinal_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtValorFinal">
+                                                    </asp:FilteredTextBoxExtender>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <asp:Panel ID="Panel1" runat="server" Height="20px"></asp:Panel>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <asp:ImageButton ID="ImgAddSegmento" runat="server" Height="25px" ImageUrl="~/Botones/agregarbg.png" TabIndex="6" OnClick="ImgAddSegmento_Click" />
+                                                </td>
+                                                <td>
+                                                    <asp:ImageButton ID="ImgModiSegmento" runat="server" Height="25px" ImageUrl="~/Botones/modificarbg.png" TabIndex="7" OnClick="ImgModiSegmento_Click" />
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <asp:Panel ID="Panel2" runat="server" Height="20px"></asp:Panel>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <asp:UpdatePanel ID="updAccion" runat="server">
+                                                        <ContentTemplate>
+                                                            <asp:Panel ID="pnlAccion" runat="server" Height="180px" ScrollBars="Vertical">
+                                                                <asp:GridView ID="GrdvSegmento" runat="server" AutoGenerateColumns="False" CssClass="table table-condensed table-bordered table-hover table-responsive" DataKeyNames="Codigo" ForeColor="#333333" PageSize="5" TabIndex="8" Width="100%">
+                                                                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                                                    <Columns>
+                                                                        <asp:BoundField DataField="Segmento" HeaderText="Segmento" />
+                                                                        <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+                                                                        <asp:BoundField DataField="ValorI" HeaderText="Valor Inicial">
+                                                                            <ItemStyle HorizontalAlign="Right" />
+                                                                        </asp:BoundField>
+                                                                        <asp:BoundField DataField="ValorF" HeaderText="Valor Final">
+                                                                            <ItemStyle HorizontalAlign="Right" />
+                                                                        </asp:BoundField>
+                                                                        <asp:TemplateField HeaderText="Selecc">
+                                                                            <ItemTemplate>
+                                                                                <asp:ImageButton ID="ImgSelecc" runat="server" Height="20px" ImageUrl="~/Botones/seleccbg.png" OnClick="ImgSelecc_Click" />
+                                                                            </ItemTemplate>
+                                                                            <ItemStyle HorizontalAlign="Center" />
+                                                                        </asp:TemplateField>
+                                                                        <asp:TemplateField HeaderText="Eliminar">
+                                                                            <ItemTemplate>
+                                                                                <asp:ImageButton ID="ImgEliminar" runat="server" Height="20px" ImageUrl="~/Botones/eliminarbg.png" OnClick="ImgEliminar_Click" OnClientClick="return asegurar();" />
+                                                                            </ItemTemplate>
+                                                                            <ItemStyle HorizontalAlign="Center" />
+                                                                        </asp:TemplateField>
+                                                                    </Columns>
+                                                                    <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                                                    <RowStyle Font-Size="X-Small" />
+                                                                    <EditRowStyle BackColor="#2461BF" />
+                                                                    <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                                                </asp:GridView>
+                                                            </asp:Panel>
+                                                        </ContentTemplate>
+                                                    </asp:UpdatePanel>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <asp:Panel ID="pnlSepara1" runat="server" Height="30px"></asp:Panel>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="panel panel-default">
+                    <asp:UpdatePanel ID="updOpciones" runat="server">
+                        <ContentTemplate>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="text-align: center; width: 45%">
+                                        <asp:Button ID="BtnGrabar" runat="server" CssClass="button" TabIndex="6" Text="Grabar" Width="120px" OnClick="BtnGrabar_Click" />
+                                    </td>
+                                    <td style="width: 10%"></td>
+                                    <td style="text-align: center; width: 45%">
+                                        <asp:Button ID="BtnSalir" runat="server" CssClass="button" TabIndex="7" Text="Salir" Width="120px" OnClick="BtnSalir_Click" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
             </div>
-            <div class="panel panel-default">
-                <asp:UpdatePanel ID="updOpciones" runat="server">
-                    <ContentTemplate>
-                        <table style="width: 100%">
-                            <tr>
-                                <td style="text-align: center; width: 45%">
-                                    <asp:Button ID="BtnGrabar" runat="server" CssClass="button" TabIndex="6" Text="Grabar" Width="120px" OnClick="BtnGrabar_Click" />
-                                </td>
-                                <td style="width: 10%"></td>
-                                <td style="text-align: center; width: 45%">
-                                    <asp:Button ID="BtnSalir" runat="server" CssClass="button" TabIndex="7" Text="Salir" Width="120px" OnClick="BtnSalir_Click" />
-                                </td>
-                            </tr>
-                        </table>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-        </div>
         </div>
     </form>
 </body>

@@ -2,11 +2,10 @@
 {
     using ControllerSoftCob;
     using System;
-    using System.Web.UI;
-    using System.Configuration;
     using System.Data;
+    using System.Web.UI;
     using System.Web.UI.WebControls;
-    public partial class WFrm_CopiarArbolSpeech : Page
+    public partial class WFrm_CopiarEtiqueta : Page
     {
         #region Varibales
         DataSet _dts = new DataSet();
@@ -19,7 +18,7 @@
         {
             if (!IsPostBack)
             {
-                Lbltitulo.Text = "Copiar Árbol SPEECH";
+                Lbltitulo.Text = "Copiar Etiqueta Presupuesto";
                 FunCargarCombos(0);
 
                 if (Request["MensajeRetornado"] != null)
@@ -101,13 +100,13 @@
                     return;
                 }
 
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(258, int.Parse(DdlCatalogoO.SelectedValue),
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(259, int.Parse(DdlCatalogoO.SelectedValue),
                     int.Parse(DdlCedenteD.SelectedValue), int.Parse(DdlCatalogoD.SelectedValue), "",
-                    Session["MachineName"].ToString(), "", Session["Conectar"].ToString());
+                    Session["MachineName"].ToString(), "ETIQUETA", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows[0][0].ToString() == "NO")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Cedente Origen NO tiene creado SPEECH", this, "E", "C");
+                    new FuncionesDAO().FunShowJSMessage("Cedente Origen NO tiene creado BRENCH", this, "E", "C");
                     return;
                 }
 

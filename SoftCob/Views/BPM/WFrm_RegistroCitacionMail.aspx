@@ -229,7 +229,7 @@
                                                 <asp:BoundField DataField="Definicion" HeaderText="Definición" />
                                                 <asp:BoundField DataField="Email" HeaderText="Email" />
                                                 <asp:BoundField DataField="Observacion" HeaderText="Observación" />
-                                                <asp:TemplateField HeaderText="Enviado">
+                                                <asp:TemplateField HeaderText="Enviar">
                                                     <ItemTemplate>
                                                         <asp:CheckBox ID="ChkEnviar" runat="server" AutoPostBack="True" OnCheckedChanged="ChkEnviar_CheckedChanged" />
                                                     </ItemTemplate>

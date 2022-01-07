@@ -74,6 +74,7 @@
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(155, int.Parse(Session["usuCodigo"].ToString()), 0, 0, "", "", "", 
                     Session["Conectar"].ToString());
+
                 _listaactiva = _dts.Tables[0].Rows[0][0].ToString();
 
                 if (_listaactiva == "SI")
@@ -90,8 +91,6 @@
                         GrdvDatos.UseAccessibleHeader = true;
                         GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
                     }
-
-                    ViewState["grdvDatos"] = GrdvDatos.DataSource;
                 }
             }
             catch (Exception ex)

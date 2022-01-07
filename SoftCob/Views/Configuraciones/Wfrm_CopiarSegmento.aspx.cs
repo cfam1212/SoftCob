@@ -1,12 +1,9 @@
-﻿
-
-namespace SoftCob.Views.Configuraciones
+﻿namespace SoftCob.Views.Configuraciones
 {
     using ControllerSoftCob;
     using System;
-    using System.Web.UI;
-    using System.Configuration;
     using System.Data;
+    using System.Web.UI;
     using System.Web.UI.WebControls;
 
     public partial class Wfrm_CopiarSegmento : Page
@@ -23,7 +20,6 @@ namespace SoftCob.Views.Configuraciones
             if (!IsPostBack)
             {
                 Lbltitulo.Text = "Copiar Segmento";
-                ViewState["Conectar"] = ConfigurationManager.AppSettings["SqlConn"];
                 FunCargarCombos(0);
 
                 if (Request["MensajeRetornado"] != null)
@@ -107,7 +103,7 @@ namespace SoftCob.Views.Configuraciones
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(259, int.Parse(DdlCatalogoO.SelectedValue),
                     int.Parse(DdlCedenteD.SelectedValue), int.Parse(DdlCatalogoD.SelectedValue), "",
-                    Session["MachineName"].ToString(), "", ViewState["Conectar"].ToString());
+                    Session["MachineName"].ToString(), "SEGMENTO", Session["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows[0][0].ToString() == "NO")
                 {
