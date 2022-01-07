@@ -10,8 +10,10 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
-        string _cedula = "", _redirect = "", _estado = "", _respuesta = "";
+        DataSet _dtsx = new DataSet();
+        string _cedula = "", _redirect = "", _estado = "", _respuesta = "", _numafi = "", _anio = "", _mes = "";
         ImageButton _imgphone = new ImageButton();
+        GridView _grdvafiliados;
         //Thread _thrmarcar;
         #endregion
 
@@ -24,10 +26,8 @@
                 {
                     Lbltitulo.Text = "CONSULTA RECURSIVA << ARBOL GENEALOGICO >>";
                     ViewState["Cedula"] = Request["Cedula"];
-                    //ViewState["PhoneLocalize"] = Request["PhoneLocalize"];
                     LblCedula.InnerText = ViewState["Cedula"].ToString();
                     PnlRegCivil.Height = 180;
-                    PnlIess.Height = 180;
                     PnlOtros.Height = 210;
                     PnlSri.Height = 280;
                     FunGuardarconsulta(ViewState["Cedula"].ToString());
@@ -69,11 +69,10 @@
                 if (_dts.Tables[1].Rows.Count > 0) //IESS
                 {
                     Tbldatosiess.Visible = true;
-                    Grdvdatosiess1.DataSource = _dts.Tables[1];
-                    Grdvdatosiess1.DataBind();
-
-                    Grdvdatosiess2.DataSource = _dts.Tables[1];
-                    Grdvdatosiess2.DataBind();
+                    //Grdvdatosiess1.DataSource = _dts.Tables[1];
+                    //Grdvdatosiess1.DataBind();
+                    GrdvDatosIess.DataSource = _dts.Tables[1];
+                    GrdvDatosIess.DataBind();
                 }
                 else Tbldatosiess.Visible = false;
 
@@ -166,6 +165,30 @@
                 _cedula = GrdvDatos.DataKeys[_gvrow.RowIndex].Values["Cedula"].ToString();
                 _redirect = string.Format("{0}?Cedula={1}", Request.Url.AbsolutePath, _cedula);
                 Response.Redirect(_redirect);
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = ex.ToString();
+            }
+        }
+
+        protected void GrdvDatosIess_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    _numafi = GrdvDatosIess.DataKeys[e.Row.RowIndex].Values["NumAfi"].ToString();
+                    _anio = GrdvDatosIess.DataKeys[e.Row.RowIndex].Values["V19"].ToString();
+                    _mes = GrdvDatosIess.DataKeys[e.Row.RowIndex].Values["Mes"].ToString();
+                    _grdvafiliados = e.Row.FindControl("GrdvAfiliado") as GridView;
+
+                    _dtsx = new ConsultaDatosDAO().FunConsultaDatos(273, int.Parse(_anio), int.Parse(_mes), 0, "", _numafi,
+                        "", Session["Conectar"].ToString());
+
+                    _grdvafiliados.DataSource = _dtsx;
+                    _grdvafiliados.DataBind();
+                }
             }
             catch (Exception ex)
             {

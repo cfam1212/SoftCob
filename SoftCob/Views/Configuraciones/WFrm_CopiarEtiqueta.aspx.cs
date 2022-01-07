@@ -106,7 +106,7 @@
 
                 if (_dts.Tables[0].Rows[0][0].ToString() == "NO")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Cedente Origen NO tiene creado BRENCH", this, "E", "C");
+                    new FuncionesDAO().FunShowJSMessage("Cedente Origen NO tiene creado ETIQUETA", this, "E", "C");
                     return;
                 }
 

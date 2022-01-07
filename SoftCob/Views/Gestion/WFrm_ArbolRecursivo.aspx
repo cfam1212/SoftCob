@@ -11,15 +11,16 @@
     <link href="../../css/Estilos.css" rel="stylesheet" />
     <link href="../../Scripts/Tables/jquery.DataTable.min.css" rel="stylesheet" />
     <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../css/DatePicker/jquery-ui.css" rel="stylesheet" />
     <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
 
-    <script src="../../Scripts/external/jquery/jquery.js"></script>
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../JS/alertify.min.js"></script>
     <script src="../../Scripts/Tables/DataTables.js"></script>
     <script src="../../Scripts/Tables/dataTable.bootstrap.min.js"></script>
-    <link href="../../css/DatePicker/jquery-ui.css" rel="stylesheet" />
-    <script type="text/javascript" src="../../JS/DatePicker/jquery-ui.js"></script>
+    <script src="../../Scripts/jquery.min.js"></script>
+    <script src="../../JS/DatePicker/jquery-ui.js"></script>
+    <script src="../../JS/alertify.min.js"></script>
+
     <style type="text/css">
         legend {
             color: darkblue;
@@ -57,6 +58,17 @@
                 height: 80px;
             }
     </style>
+
+    <script type="text/javascript">
+        $("[src*=agregar]").live("click", function () {
+            $(this).closest("tr").after("<tr><td></td><td colspan = '999'>" + $(this).next().html() + "</td></tr>")
+            $(this).attr("src", "../../Botones/minus.png");
+        });
+        $("[src*=minus]").live("click", function () {
+            $(this).attr("src", "../../Botones/agregar.png");
+            $(this).closest("tr").next().remove();
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -72,7 +84,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="panel-info">
+            <%--            <div class="panel-info">
                 <asp:UpdateProgress ID="UpdProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdCabecera">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -82,7 +94,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>
+            </div>--%>
             <div class="panel-body">
                 <asp:UpdatePanel ID="UpdCabecera" runat="server">
                     <ContentTemplate>
@@ -187,33 +199,35 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Panel ID="PnlIess" runat="server" CssClass="panel panel-primary" Height="410px"
-                                        GroupingText="Datos IESS" TabIndex="15">
-                                        <asp:GridView ID="Grdvdatosiess1" runat="server" AutoGenerateColumns="False"
+                                    <asp:Panel ID="PnlIess" runat="server" Height="350px" ScrollBars="Vertical" GroupingText="Datos IESS">
+                                        <asp:GridView ID="GrdvDatosIess" runat="server" Width="100%" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                            ForeColor="#333333"
-                                            PageSize="3" TabIndex="1" Width="100%">
+                                            ShowHeaderWhenEmpty="True" EmptyDataText="No existen datos para mostrar"
+                                            TabIndex="8" DataKeyNames="NumAfi,V19,Mes" OnRowDataBound="GrdvDatosIess_RowDataBound">
                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                             <Columns>
-                                                <asp:BoundField DataField="TeleAfi" HeaderText="Teléfono">
-                                                    <ItemStyle Wrap="False" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="Celular" HeaderText="Celular" />
-                                                <asp:BoundField DataField="DirAfi" HeaderText="Dirección" />
-                                                <asp:BoundField DataField="Email" HeaderText="Email" />
-                                                <asp:BoundField DataField="Ocupacion" HeaderText="Ocupación" />
-                                                <asp:BoundField DataField="Salario" HeaderText="Salario" />
-                                            </Columns>
-                                            <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
-                                            <RowStyle Font-Size="X-Small" />
-                                            <EditRowStyle BackColor="#2461BF" />
-                                            <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
-                                        </asp:GridView>
-                                        <asp:GridView ID="Grdvdatosiess2" runat="server" AutoGenerateColumns="False"
-                                            CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
-                                            PageSize="3" TabIndex="1" Width="100%">
-                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                            <Columns>
+                                                <asp:TemplateField>
+                                                    <ItemTemplate>
+                                                        <img alt="" style="cursor: pointer" src="../../Botones/agregar.png" width="15" height="15" id="btnplus" />
+                                                        <asp:Panel runat="server" Style="display: none">
+                                                            <asp:GridView ID="GrdvAfiliado" runat="server" AutoGenerateColumns="false"
+                                                                CssClass="table table-condensed table-bordered table-hover table-responsive">
+                                                                <Columns>
+                                                                    <asp:BoundField DataField="TeleAfi" HeaderText="Telefono" />
+                                                                    <asp:BoundField DataField="Celular" HeaderText="Celular" />
+                                                                    <asp:BoundField DataField="DirAfi" HeaderText="Direccion" />
+                                                                    <asp:BoundField DataField="Email" HeaderText="Email" />
+                                                                    <asp:BoundField DataField="Salario" HeaderText="Salario" />
+                                                                    <asp:BoundField DataField="Ocupacion" HeaderText="Ocupación" />
+                                                                </Columns>
+                                                                <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                                                <RowStyle Font-Size="X-Small" />
+                                                                <EditRowStyle BackColor="#2461BF" />
+                                                                <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                                            </asp:GridView>
+                                                        </asp:Panel>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                                 <asp:BoundField DataField="Ruc" HeaderText="Ruc">
                                                     <ItemStyle Wrap="False" />
                                                 </asp:BoundField>
@@ -223,6 +237,7 @@
                                                 <asp:BoundField DataField="DirEmpre" HeaderText="Dirección" />
                                                 <asp:BoundField DataField="FechaIng" HeaderText="Fec.Ingreso" />
                                                 <asp:BoundField DataField="FechaSal" HeaderText="Fec.Salida" />
+                                                <asp:BoundField DataField="Anio" HeaderText="Año" />
                                             </Columns>
                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />

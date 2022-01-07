@@ -204,22 +204,13 @@ namespace SoftCob.Views.Gestion
         protected global::System.Web.UI.WebControls.Panel PnlIess;
 
         /// <summary>
-        /// Control Grdvdatosiess1.
+        /// Control GrdvDatosIess.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Grdvdatosiess1;
-
-        /// <summary>
-        /// Control Grdvdatosiess2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Grdvdatosiess2;
+        protected global::System.Web.UI.WebControls.GridView GrdvDatosIess;
 
         /// <summary>
         /// Control PnlIess_CollapsiblePanelExtender.
