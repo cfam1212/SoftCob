@@ -30,7 +30,8 @@
         {
             if (Session["usuCodigo"] == null || Session["usuCodigo"].ToString() == "")
                 Response.Redirect("~/Reload.html");
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-EC");
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("es-EC");
             System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator = ".";
             TxtPresupuesto.Attributes.Add("onchange", "ValidarDecimales();");
 
@@ -355,6 +356,8 @@
                 }
                 if (continuar)
                 {
+                    //decimal xvalor = decimal.Parse(TxtPresupuesto.Text.Trim(), CultureInfo.InvariantCulture);
+
                     _mensaje = new ConsultaDatosDAO().FunProcesoBrenchGestor(1, 0, 0, int.Parse(DdlGestores.SelectedValue),
                         0, decimal.Parse(TxtPresupuesto.Text.Trim(), CultureInfo.InvariantCulture), "",
                         int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),

@@ -100,7 +100,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-<%--            <div class="panel-info">
+            <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
                         <div class="overlay" />
@@ -110,7 +110,7 @@
                         </div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </div>--%>
+            </div>
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server">
                     <ContentTemplate>
