@@ -9,13 +9,13 @@
     using System.Security.Cryptography;
     using System.Text;
     using System.Text.RegularExpressions;
-    using MimeKit;
-    using MailKit.Net.Smtp;
-    using MailKit.Security;
-    using MimeKit.Utils;
+    //using MimeKit;
+    //using MailKit.Net.Smtp;
+    //using MailKit.Security;
+    //using MimeKit.Utils;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    //using System.Net.Mail;
+    using System.Net.Mail;
 
     public class FuncionesDAO
     {
@@ -472,134 +472,134 @@
             return _body;
         }
 
-        //private string SendHtmlEmail(string mailTO, string subject, string body, string ehost, int eport, bool eEnableSSL,
-        //    string eusername, string epassword, string pathAttach, string pathLogo, string mailAlter, string conexion)
-        //{
-
-        //    using (MailMessage mailMessage = new MailMessage())
-        //    {
-        //        try
-        //        {
-        //            Attachment archivo = new Attachment(pathAttach);
-        //            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
-        //            LinkedResource theEmailImage = new LinkedResource(pathLogo);
-        //            {
-        //                theEmailImage.ContentId = "myImageID";
-        //            }
-        //            htmlView.LinkedResources.Add(theEmailImage);
-        //            mailMessage.AlternateViews.Add(htmlView);
-        //            mailMessage.From = new MailAddress(eusername);
-        //            mailMessage.Subject = subject;
-        //            mailMessage.Body = body;
-        //            mailMessage.IsBodyHtml = true;
-
-        //            if (!string.IsNullOrEmpty(mailTO))
-        //            {
-        //                string[] manyMails = mailTO.Split(',');
-        //                foreach (string toMails in manyMails)
-        //                {
-        //                    mailMessage.To.Add(new MailAddress(toMails));
-        //                }
-        //            }
-
-        //            if (!string.IsNullOrEmpty(mailAlter))
-        //            {
-        //                string[] alterMails = mailAlter.Split(',');
-        //                foreach (string alMalis in alterMails)
-        //                {
-        //                    mailMessage.CC.Add(alMalis);
-        //                }
-        //            }
-
-        //            mailMessage.Attachments.Add(archivo);
-
-        //            System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
-        //            {
-        //                NetworkCred.UserName = eusername;
-        //                NetworkCred.Password = epassword;
-        //            }
-
-        //            SmtpClient smtp = new SmtpClient();
-        //            {
-        //                smtp.UseDefaultCredentials = false;
-        //                smtp.Credentials = NetworkCred;
-        //                smtp.Host = ehost;
-        //                smtp.Port = 587;//eport;
-        //                smtp.EnableSsl = true;
-        //                //smtp.EnableSsl = false;
-        //                smtp.Send(mailMessage);
-        //            }
-        //            _mensaje = "";
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            new ConsultaDatosDAO().FunConsultaDatos(269, 1, 0, 0, ex.ToString(), "SendMail", "", conexion);
-        //            _mensaje = ex.Message;
-        //        }
-        //        return _mensaje;
-        //    }
-        //}
         private string SendHtmlEmail(string mailTO, string subject, string body, string ehost, int eport, bool eEnableSSL,
-            string eusername, string epassword, string pathAttach, string pathLogo, string mailAlter,
-            string conexion)
+            string eusername, string epassword, string pathAttach, string pathLogo, string mailAlter, string conexion)
         {
-            try
+
+            using (MailMessage mailMessage = new MailMessage())
             {
-                _mensaje = "";
-                var mailMessage = new MimeMessage();
-                mailMessage.From.Add(new MailboxAddress("Departamento Jurídico", eusername));
-
-                if (!string.IsNullOrEmpty(mailTO))
+                try
                 {
-                    string[] manyMails = mailTO.Split(',');
-                    foreach (string toMails in manyMails)
+                    Attachment archivo = new Attachment(pathAttach);
+                    AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+                    LinkedResource theEmailImage = new LinkedResource(pathLogo);
                     {
-                        mailMessage.To.Add(new MailboxAddress("", toMails.ToString().Trim()));
+                        theEmailImage.ContentId = "myImageID";
                     }
-                }
+                    htmlView.LinkedResources.Add(theEmailImage);
+                    mailMessage.AlternateViews.Add(htmlView);
+                    mailMessage.From = new MailAddress(eusername);
+                    mailMessage.Subject = subject;
+                    mailMessage.Body = body;
+                    mailMessage.IsBodyHtml = true;
 
-                if (!string.IsNullOrEmpty(mailAlter))
-                {
-                    string[] alterMails = mailAlter.Split(',');
-                    foreach (string alMalis in alterMails)
+                    if (!string.IsNullOrEmpty(mailTO))
                     {
-                        mailMessage.Cc.Add(new MailboxAddress("", alMalis.ToString().Trim()));
+                        string[] manyMails = mailTO.Split(',');
+                        foreach (string toMails in manyMails)
+                        {
+                            mailMessage.To.Add(new MailAddress(toMails));
+                        }
                     }
+
+                    if (!string.IsNullOrEmpty(mailAlter))
+                    {
+                        string[] alterMails = mailAlter.Split(',');
+                        foreach (string alMalis in alterMails)
+                        {
+                            mailMessage.CC.Add(alMalis);
+                        }
+                    }
+
+                    mailMessage.Attachments.Add(archivo);
+
+                    System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
+                    {
+                        NetworkCred.UserName = eusername;
+                        NetworkCred.Password = epassword;
+                    }
+
+                    SmtpClient smtp = new SmtpClient();
+                    {
+                        smtp.UseDefaultCredentials = false;
+                        smtp.Credentials = NetworkCred;
+                        smtp.Host = ehost;
+                        smtp.Port = eport;
+                        smtp.EnableSsl = eEnableSSL;
+                        smtp.Send(mailMessage);
+                    }
+                    _mensaje = "";
                 }
-
-                mailMessage.Subject = subject;
-                var builder = new BodyBuilder();
-
-                var image = builder.LinkedResources.Add(pathLogo);
-                image.ContentId = MimeUtils.GenerateMessageId();
-                body = body.Replace("cid:myImageID", string.Format(@"'cid:{0}'", image.ContentId));
-                //builder.HtmlBody = string.Format(@" < img src='cid:{0}'><br>{1}", image.ContentId, body);
-                builder.HtmlBody = body;
-                builder.Attachments.Add(pathAttach);
-                mailMessage.Body = builder.ToMessageBody();
-
-                using (var client = new SmtpClient())
+                catch (Exception ex)
                 {
-                    //client.CheckCertificateRevocation = false;
-                    client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-                    //client.SslProtocols = SslProtocols.Ssl3 | SslProtocols.Tls | SslProtocols.Tls11 | SslProtocols.Tls12 | SslProtocols.Tls13;
-
-                    client.Connect(ehost, eport, SecureSocketOptions.SslOnConnect);
-                    client.Authenticate(eusername, epassword);
-
-                    client.Send(mailMessage);
-                    client.Disconnect(true);
+                    new ConsultaDatosDAO().FunConsultaDatos(269, 1, 0, 0, ex.ToString(), "SendMail", "", conexion);
+                    _mensaje = ex.Message;
                 }
-
-                _mensaje = "";
+                return _mensaje;
             }
-            catch (Exception ex)
-            {
-                new ConsultaDatosDAO().FunConsultaDatos(269, 1, 0, 0, ex.ToString(), "SendMail", "", conexion);
-                _mensaje = ex.Message;
-            }
-            return _mensaje;
         }
+        //private string SendHtmlEmail(string mailTO, string subject, string body, string ehost, int eport, bool eEnableSSL,
+        //    string eusername, string epassword, string pathAttach, string pathLogo, string mailAlter,
+        //    string conexion)
+        //{
+        //    try
+        //    {
+        //        _mensaje = "";
+        //        var mailMessage = new MimeMessage();
+        //        mailMessage.From.Add(new MailboxAddress("Departamento Jurídico", eusername));
+
+        //        if (!string.IsNullOrEmpty(mailTO))
+        //        {
+        //            string[] manyMails = mailTO.Split(',');
+        //            foreach (string toMails in manyMails)
+        //            {
+        //                mailMessage.To.Add(new MailboxAddress("", toMails.ToString().Trim()));
+        //            }
+        //        }
+
+        //        if (!string.IsNullOrEmpty(mailAlter))
+        //        {
+        //            string[] alterMails = mailAlter.Split(',');
+        //            foreach (string alMalis in alterMails)
+        //            {
+        //                mailMessage.Cc.Add(new MailboxAddress("", alMalis.ToString().Trim()));
+        //            }
+        //        }
+
+        //        mailMessage.Subject = subject;
+        //        var builder = new BodyBuilder();
+
+        //        var image = builder.LinkedResources.Add(pathLogo);
+        //        image.ContentId = MimeUtils.GenerateMessageId();
+        //        body = body.Replace("cid:myImageID", string.Format(@"'cid:{0}'", image.ContentId));
+        //        //builder.HtmlBody = string.Format(@" < img src='cid:{0}'><br>{1}", image.ContentId, body);
+        //        builder.HtmlBody = body;
+        //        builder.Attachments.Add(pathAttach);
+        //        mailMessage.Body = builder.ToMessageBody();
+
+        //        using (var client = new SmtpClient())
+        //        {
+        //            //client.CheckCertificateRevocation = false;
+        //            client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+        //            //client.SslProtocols = SslProtocols.Ssl3 | SslProtocols.Tls | SslProtocols.Tls11 | SslProtocols.Tls12 | SslProtocols.Tls13;
+
+        //            //client.Connect(ehost, eport, SecureSocketOptions.SslOnConnect);
+        //            client.Connect(ehost, eport, false);
+        //            client.Authenticate(eusername, epassword);
+
+        //            client.Send(mailMessage);
+        //            client.Disconnect(true);
+        //        }
+
+        //        _mensaje = "";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        new ConsultaDatosDAO().FunConsultaDatos(269, 1, 0, 0, ex.ToString(), "SendMail", "", conexion);
+        //        _mensaje = ex.Message;
+        //    }
+        //    return _mensaje;
+        //}
         #endregion
 
     }
