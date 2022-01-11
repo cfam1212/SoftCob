@@ -336,7 +336,7 @@
                     }
                     else _sql += "CL.clde_estado=1 AND CD.ctde_gestorasignado>0 AND CD.ctde_estado=1 AND ";
 
-                    if (DdlGestorApoyo.SelectedValue != "0") _sql += "CD.ctde_auxv2='" + DdlGestorApoyo.SelectedValue + "' AND ";
+                    //if (DdlGestorApoyo.SelectedValue != "0") _sql += "CD.ctde_auxv2='" + DdlGestorApoyo.SelectedValue + "' AND ";
                     //_sql = FunFormarSQL(_sql, 1);
 
                     _sql = _sql.Remove(_sql.Length - 4);
@@ -535,11 +535,10 @@
 
                         _mensaje = new EstrategiaDAO().FunCrearListaTrabajo(_codlistaarbol, TxtLista.Text.Trim().ToUpper(),
                             TxtDescripcion.Text.Trim().ToUpper(), TxtFechaInicio.Text, TxtFechaFin.Text,
-                            0, int.Parse(DdlCedente.SelectedValue),
-                            int.Parse(DdlCatalogo.SelectedValue), ChkEstado.Checked, DdlMarcado.SelectedValue,
+                            0, int.Parse(DdlCedente.SelectedValue),int.Parse(DdlCatalogo.SelectedValue), ChkEstado.Checked, DdlMarcado.SelectedValue,
                             FileUpload1.FileName, 0, "", 0, 0, 0, "", "", DdlGestores.SelectedValue,
                             DdlGestorApoyo.SelectedValue, DdlGestorApoyo.SelectedValue, int.Parse(LblTotal.InnerText),
-                            5, 0, int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbgstsave,
+                            5, int.Parse(DdlGestorApoyo.SelectedValue), int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(), _dtbgstsave,
                             (DataTable)ViewState["Estrategia"], "sp_NewListaTrabajo", Session["Conectar"].ToString());
 
                         if (int.Parse(ViewState["CodigoLista"].ToString()) == 0) _mensaje = "OK";
