@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SoftCob.Views.Perfil
+namespace SoftCob.Views.BPM
 {
 
 
-    public partial class WFrm_PerfilEdit
+    public partial class WFrm_RegistroPagos
     {
 
         /// <summary>
@@ -78,22 +78,139 @@ namespace SoftCob.Views.Perfil
         protected global::System.Web.UI.UpdatePanel updCabecera;
 
         /// <summary>
-        /// Control TxtPerfil.
+        /// Control TblHistorial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtPerfil;
+        protected global::System.Web.UI.HtmlControls.HtmlTable TblHistorial;
 
         /// <summary>
-        /// Control TxtDescripcion.
+        /// Control LblExigible.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
+        protected global::System.Web.UI.WebControls.Label LblExigible;
+
+        /// <summary>
+        /// Control TxtPorcentaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtPorcentaje;
+
+        /// <summary>
+        /// Control LblDescuento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblDescuento;
+
+        /// <summary>
+        /// Control ImgVisto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgVisto;
+
+        /// <summary>
+        /// Control LblPago.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblPago;
+
+        /// <summary>
+        /// Control RdbPagoTotal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RdbPagoTotal;
+
+        /// <summary>
+        /// Control RdbPagoDiferido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RdbPagoDiferido;
+
+        /// <summary>
+        /// Control RdbSinAcuerdo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RdbSinAcuerdo;
+
+        /// <summary>
+        /// Control Panel5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel5;
+
+        /// <summary>
+        /// Control TrTiempo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrTiempo;
+
+        /// <summary>
+        /// Control DdlPagos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlPagos;
+
+        /// <summary>
+        /// Control LblMeses.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblMeses;
+
+        /// <summary>
+        /// Control TxtMeses.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtMeses;
+
+        /// <summary>
+        /// Control TxtMeses_FilteredTextBoxExtender.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender TxtMeses_FilteredTextBoxExtender;
 
         /// <summary>
         /// Control Panel1.
@@ -105,121 +222,148 @@ namespace SoftCob.Views.Perfil
         protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
-        /// Control ChkCrear.
+        /// Control TrTablaPagos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkCrear;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrTablaPagos;
 
         /// <summary>
-        /// Control ChkModificar.
+        /// Control Panel4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkModificar;
+        protected global::System.Web.UI.WebControls.Panel Panel4;
 
         /// <summary>
-        /// Control ChkEliminar.
+        /// Control TxtFechaPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkEliminar;
+        protected global::System.Web.UI.WebControls.TextBox TxtFechaPago;
 
         /// <summary>
-        /// Control ChkPerfil.
+        /// Control ImgModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkPerfil;
+        protected global::System.Web.UI.WebControls.ImageButton ImgModificar;
 
         /// <summary>
-        /// Control ChkEstilos.
+        /// Control TxtAbono.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkEstilos;
+        protected global::System.Web.UI.WebControls.TextBox TxtAbono;
 
         /// <summary>
-        /// Control ChkMetaprogramas.
+        /// Control ImgProcesar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkMetaprogramas;
+        protected global::System.Web.UI.WebControls.ImageButton ImgProcesar;
 
         /// <summary>
-        /// Control ChkModalidad.
+        /// Control TrFila1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkModalidad;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrFila1;
 
         /// <summary>
-        /// Control ChkEstadosdelYo.
+        /// Control ImgExportar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkEstadosdelYo;
+        protected global::System.Web.UI.WebControls.ImageButton ImgExportar;
 
         /// <summary>
-        /// Control ChkImpulsores.
+        /// Control TrFila2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkImpulsores;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrFila2;
 
         /// <summary>
-        /// Control Lblestado.
+        /// Control GrdvPagos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Lblestado;
+        protected global::System.Web.UI.WebControls.GridView GrdvPagos;
 
         /// <summary>
-        /// Control ChkEstado.
+        /// Control TrArchivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkEstado;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrArchivo;
 
         /// <summary>
-        /// Control updGrid.
+        /// Control FileUpload1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updGrid;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
 
         /// <summary>
-        /// Control GrdvDatos.
+        /// Control TxtObservacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GrdvDatos;
+        protected global::System.Web.UI.WebControls.TextBox TxtObservacion;
+
+        /// <summary>
+        /// Control Panel7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel7;
+
+        /// <summary>
+        /// Control TrTerreno6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrTerreno6;
+
+        /// <summary>
+        /// Control Panel6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel6;
 
         /// <summary>
         /// Control updBotones.

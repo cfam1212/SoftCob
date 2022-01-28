@@ -24,7 +24,7 @@
                 if (!IsPostBack)
                 {
                     
-                    Lbltitulo.Text = "Lista Registro de Citaciones";
+                    Lbltitulo.Text = "Lista Registro de Notificaciones";
                     FunCargarMantenimiento();
 
                     if (Request["MensajeRetornado"] != null) new FuncionesDAO().FunShowJSMessage(Request["MensajeRetornado"],

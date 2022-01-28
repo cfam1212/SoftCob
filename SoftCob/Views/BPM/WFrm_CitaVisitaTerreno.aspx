@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_RegistroCitacionAdmin.aspx.cs" Inherits="SoftCob.Views.BPM.WFrm_RegistroCitacionAdmin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_CitaVisitaTerreno.aspx.cs" Inherits="SoftCob.Views.BPM.WFrm_CitaVisitaTerreno" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -11,10 +11,20 @@
     <link href="../../css/Estilos.css" rel="stylesheet" />
     <link href="../../Scripts/Tables/jquery.DataTable.min.css" rel="stylesheet" />
     <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
+
     <script src="../../Scripts/external/jquery/jquery.js"></script>
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
     <script src="../../Scripts/Tables/DataTables.js"></script>
     <script src="../../Scripts/Tables/dataTable.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../JS/alertify.min.js"></script>
+
+    <style type="text/css">
+        .auto-style1 {
+            margin-left: 40px;
+        }
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -36,26 +46,29 @@
                         <table style="width: 100%">
                             <tr>
                                 <td>
+                                    <asp:ImageButton ID="ImgExportar" runat="server" ImageUrl="~/Botones/excel.png" Width="40px" Height="30px" OnClick="ImgExportar_Click" Visible="False" />
+                                    <asp:Label ID="lblExportar" runat="server" Text="Exportar" Visible="False"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style1">
                                     <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
                                         CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                        ShowHeaderWhenEmpty="True" DataKeyNames="Codigo,CodigoCLDE,CodigoPERS,FechaCita,CodigoESTA,CodigoGEST,NumDocumento,Cliente" OnRowDataBound="GrdvDatos_RowDataBound">
+                                        ShowHeaderWhenEmpty="True">
                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                         <Columns>
-                                            <asp:BoundField DataField="FechaCita" HeaderText="Fecha" />
-                                            <asp:BoundField DataField="HoraCita" HeaderText="Hora" />
-                                            <asp:BoundField DataField="Estado" HeaderText="Estado" />
-                                            <asp:BoundField DataField="NumDocumento" HeaderText="No. Documento" />
-                                            <asp:BoundField DataField="Cliente" HeaderText="Cliente"></asp:BoundField>
-                                            <asp:BoundField DataField="ValorTotal" HeaderText="Valor Total">
-                                                <ItemStyle HorizontalAlign="Right" />
-                                            </asp:BoundField>
-                                            <asp:BoundField DataField="Gestor" HeaderText="Gestor"></asp:BoundField>
-                                            <asp:TemplateField HeaderText="Notificar">
-                                                <ItemTemplate>
-                                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="20px" ImageUrl="~/Botones/btncitaprocesobg.png" OnClick="ImgCitacion_Click" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" />
-                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="FechaVisita" HeaderText="Visita" />
+                                            <asp:BoundField DataField="TipoCliente" HeaderText="Tipo" />
+                                            <asp:BoundField DataField="Documento" HeaderText="Documento" />
+                                            <asp:BoundField DataField="Nombres" HeaderText="Nombres" />
+                                            <asp:BoundField DataField="Definicion" HeaderText="Definición" />
+                                            <asp:BoundField DataField="Ciudad" HeaderText="Ciudad" />
+                                            <asp:BoundField DataField="Direccion" HeaderText="Dirección"></asp:BoundField>
+                                            <asp:BoundField DataField="Referencia" HeaderText="Referencia"></asp:BoundField>
+                                            <asp:BoundField DataField="Sector" HeaderText="Sector" />
+                                            <asp:BoundField DataField="Observacion" HeaderText="Observación" />
+                                            <asp:BoundField DataField="Exigible" HeaderText="Exigible" />
+                                            <asp:BoundField DataField="ValorCita" HeaderText="V. Cita" />
                                         </Columns>
                                         <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                         <RowStyle Font-Size="X-Small" />

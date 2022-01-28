@@ -367,6 +367,7 @@
     <Content Include="Views\BPM\WFrm_CitacionProcesoTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_CitacionProcesoTime.aspx" />
     <Content Include="Views\BPM\WFrm_CitacionProcesoWhastapp.aspx" />
+    <Content Include="Views\BPM\WFrm_CitaVisitaTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_CrearCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_DatosCanalCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_DocumentosView.aspx" />
@@ -376,13 +377,16 @@
     <Content Include="Views\BPM\WFrm_ListaSolicitudTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_ListaTipoConvenio.aspx" />
     <Content Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx" />
+    <Content Include="Views\BPM\WFrm_RegistrarConvenio.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionAdmin.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionMail.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionTerreno.aspx" />
     <Content Include="Views\BPM\WFrm_RegistroCitacionWhatsapp.aspx" />
+    <Content Include="Views\BPM\WFrm_RegistroPagos.aspx" />
     <Content Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx" />
     <Content Include="Views\BPM\WFrm_SeguimientoCitacionTime.aspx" />
     <Content Include="Views\BPM\WFrm_SeguimientoConvenio.aspx" />
+    <Content Include="Views\BPM\WFrm_TablaPagosConvenio.aspx" />
     <Content Include="Views\BPM\WFrm_ViewPdf.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchAdmin.aspx" />
     <Content Include="Views\Breanch\WFrm_BrenchEfectivoOn.aspx" />
@@ -690,6 +694,13 @@
     <Compile Include="Views\BPM\WFrm_CitacionProcesoWhastapp.aspx.designer.cs">
       <DependentUpon>WFrm_CitacionProcesoWhastapp.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BPM\WFrm_CitaVisitaTerreno.aspx.cs">
+      <DependentUpon>WFrm_CitaVisitaTerreno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_CitaVisitaTerreno.aspx.designer.cs">
+      <DependentUpon>WFrm_CitaVisitaTerreno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\BPM\WFrm_CrearCitacion.aspx.cs">
       <DependentUpon>WFrm_CrearCitacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -753,6 +764,13 @@
     <Compile Include="Views\BPM\WFrm_RegistrarCitacionTime.aspx.designer.cs">
       <DependentUpon>WFrm_RegistrarCitacionTime.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistrarConvenio.aspx.cs">
+      <DependentUpon>WFrm_RegistrarConvenio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistrarConvenio.aspx.designer.cs">
+      <DependentUpon>WFrm_RegistrarConvenio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\BPM\WFrm_RegistroCitacionAdmin.aspx.cs">
       <DependentUpon>WFrm_RegistroCitacionAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -781,6 +799,13 @@
     <Compile Include="Views\BPM\WFrm_RegistroCitacionWhatsapp.aspx.designer.cs">
       <DependentUpon>WFrm_RegistroCitacionWhatsapp.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistroPagos.aspx.cs">
+      <DependentUpon>WFrm_RegistroPagos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_RegistroPagos.aspx.designer.cs">
+      <DependentUpon>WFrm_RegistroPagos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\BPM\WFrm_SectorVisitaCitacion.aspx.cs">
       <DependentUpon>WFrm_SectorVisitaCitacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -801,6 +826,13 @@
     </Compile>
     <Compile Include="Views\BPM\WFrm_SeguimientoConvenio.aspx.designer.cs">
       <DependentUpon>WFrm_SeguimientoConvenio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_TablaPagosConvenio.aspx.cs">
+      <DependentUpon>WFrm_TablaPagosConvenio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BPM\WFrm_TablaPagosConvenio.aspx.designer.cs">
+      <DependentUpon>WFrm_TablaPagosConvenio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\BPM\WFrm_ViewPdf.aspx.cs">
       <DependentUpon>WFrm_ViewPdf.aspx</DependentUpon>

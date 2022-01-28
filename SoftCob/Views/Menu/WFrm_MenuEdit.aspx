@@ -76,7 +76,7 @@
                 </asp:UpdateProgress>
             </div>
             <div class="panel-body">
-                <asp:UpdatePanel ID="updCabecera" runat="server">
+                <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Always">
                     <ContentTemplate>
                         <table style="width: 100%">
                             <tr>
@@ -85,9 +85,14 @@
                                     <h5>Nombre del Menú:</h5>
                                 </td>
                                 <td style="width: 60%">
-                                    <asp:TextBox ID="TxtNombreMenu" runat="server" Width="100%" MaxLength="80" TabIndex="1"></asp:TextBox>
+                                    <asp:TextBox ID="TxtNombreMenu" runat="server" CssClass="form-control" Width="100%" MaxLength="80" TabIndex="1"></asp:TextBox>
                                 </td>
                                 <td style="width: 10%"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -114,7 +119,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <asp:UpdatePanel ID="updGrid" runat="server" UpdateMode="Conditional">
+                        <asp:UpdatePanel ID="updGrid" runat="server" UpdateMode="Always">
                             <ContentTemplate>
                                 <asp:GridView ID="GrdvDatos" runat="server" Width="100%" AutoGenerateColumns="False"
                                     CssClass="table table-condensed table-bordered table-hover table-responsive" EmptyDataText="No existe ningún menú agregado" DataKeyNames="Codigo,Selecc" PageSize="100" TabIndex="3">

@@ -439,6 +439,16 @@
                     _tipocliente = "TIT";
                     _cedula = ViewState["NumeroDocumento"].ToString();
                 }
+                else if (DdlTipoMail.SelectedItem.ToString() == "Familiar/Otros")
+                {
+                    if (RdbEmail.SelectedValue == "TRA")
+                    {
+                        new FuncionesDAO().FunShowJSMessage("Mail No Permitido..!", this, "W", "R");
+                        return;
+                    }
+                    _tipocliente = "FAM";
+                    _cedula = DdlTipoMail.SelectedValue;
+                }
                 else
                 {
                     _sql = "SELECT TipoCliente=DER.dere_tiporeferencia,CedulaGAR=DER.dere_numdocumento FROM SoftCob_DEUDOR_REFERENCIAS DER (NOLOCK) ";
@@ -995,7 +1005,7 @@
                                 _dts = new ConsultaDatosDAO().FunNewSolictudCitacion(1, _codigocita, 0, 0, 0, "", "", 0, "",
                                     1, "", 0, "", 0, "", "Email", "", _drfila["Email"].ToString(), "", "",
                                     _drfila["CodigoTIPO"].ToString(), _drfila["CodigoDEFI"].ToString(), _observacion, "", "",
-                                    "", "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
+                                    _drfila["Documento"].ToString(), "", "", 0, 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
                                     Session["MachineName"].ToString(), Session["Conectar"].ToString());
 
                                 break;

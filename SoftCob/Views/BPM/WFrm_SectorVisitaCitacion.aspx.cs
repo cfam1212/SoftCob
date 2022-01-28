@@ -26,6 +26,7 @@
         DateTime _dtmvisita, _dtmfechahoy;
         bool _continuar;
         string _mensaje = "";
+        DataRow[] _resultado;
         #endregion
 
         #region Load
@@ -187,57 +188,62 @@
                 try
                 {
                     _dtb = (DataTable)ViewState["Terreno"];
+                    _resultado = _dtb.Select("Visitar='SI'");
                     _totalregistro = _dtb.Rows.Count;
 
                     _continuar = true;
-
-                    foreach (DataRow _drfila in _dtb.Rows)
+                    if (_resultado.Count() > 0)
                     {
-                        _codigo = _drfila["CodigoTERR"].ToString();
-
-                        foreach (GridViewRow i_row in GrdvTerreno.Rows)
+                        foreach (DataRow _drfila in _dtb.Rows)
                         {
-                            _ddlsector = (DropDownList)GrdvTerreno.Rows[i_row.RowIndex].Cells[4].FindControl("DdlSector");
-                            _txtfecha = (TextBox)GrdvTerreno.Rows[i_row.RowIndex].Cells[2].FindControl("TxtFechaVisita");
-                            _codigoterreno = GrdvTerreno.DataKeys[i_row.RowIndex]["CodigoTERR"].ToString();
-                            _fecha = _txtfecha.Text;
+                            _codigo = _drfila["CodigoTERR"].ToString();
 
-                            if (_codigo == _codigoterreno)
+                            foreach (GridViewRow i_row in GrdvTerreno.Rows)
                             {
-                                if (_drfila["Visitar"].ToString() == "SI")
+                                _ddlsector = (DropDownList)GrdvTerreno.Rows[i_row.RowIndex].Cells[4].FindControl("DdlSector");
+                                _txtfecha = (TextBox)GrdvTerreno.Rows[i_row.RowIndex].Cells[2].FindControl("TxtFechaVisita");
+                                _codigoterreno = GrdvTerreno.DataKeys[i_row.RowIndex]["CodigoTERR"].ToString();
+                                _fecha = _txtfecha.Text;
+
+                                if (_codigo == _codigoterreno)
                                 {
-                                    if (!new FuncionesDAO().IsDate(_fecha, "yyyy-MM-dd"))
+                                    if (_drfila["Visitar"].ToString() == "SI")
                                     {
-                                        new FuncionesDAO().FunShowJSMessage("Fecha de Visita Incorrecta..!", this);
+                                        if (!new FuncionesDAO().IsDate(_fecha, "yyyy-MM-dd"))
+                                        {
+                                            new FuncionesDAO().FunShowJSMessage("Fecha de Visita Incorrecta..!", this, "W", "L");
+                                            _continuar = false;
+                                            break;
+                                        }
+
+                                        _dtmvisita = DateTime.ParseExact(String.Format("{0}", _fecha), "yyyy-MM-dd",
+                                            CultureInfo.InvariantCulture);
+
+                                        _dtmfechahoy = DateTime.ParseExact(String.Format("{0}", DateTime.Now.ToString("yyyy-MM-dd")),
+                                            "yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+                                        if (_dtmvisita < _dtmfechahoy)
+                                        {
+                                            new FuncionesDAO().FunShowJSMessage("Fecha Visita, No debe ser menor a la fecha Actual", this, 
+                                                "W", "L");
+                                            _continuar = false;
+                                            break;
+                                        }
+
+                                        _contar++;
+                                    }
+
+                                    if (_ddlsector.SelectedValue == "0")
+                                    {
+                                        new FuncionesDAO().FunShowJSMessage("Defina Sector de la Direccion..!", this, "W", "L");
                                         _continuar = false;
                                         break;
                                     }
-
-                                    _dtmvisita = DateTime.ParseExact(String.Format("{0}", _fecha), "yyyy-MM-dd",
-                                        CultureInfo.InvariantCulture);
-
-                                    _dtmfechahoy = DateTime.ParseExact(String.Format("{0}", DateTime.Now.ToString("yyyy-MM-dd")),
-                                        "yyyy-MM-dd", CultureInfo.InvariantCulture);
-
-                                    if (_dtmvisita <= _dtmfechahoy)
-                                    {
-                                        new FuncionesDAO().FunShowJSMessage("Fecha Visita, No debe ser menor a la fecha Actual", this);
-                                        _continuar = false;
-                                        break;
-                                    }
-
-                                    _contar++;
-                                }
-
-                                if (_ddlsector.SelectedValue == "0")
-                                {
-                                    new FuncionesDAO().FunShowJSMessage("Defina Sector de la Direccion..!", this);
-                                    _continuar = false;
-                                    break;
                                 }
                             }
                         }
                     }
+                    else _continuar = false;
 
                     if (_continuar)
                     {
@@ -255,7 +261,7 @@
                                 "0", 0, "", 0, "", _ddlsector.SelectedValue, _chkvisita.Checked ? "VIS" : "",
                                 "Terreno", "", "", "", "", "", "", int.Parse(ViewState["CodigoCITA"].ToString()),
                                 int.Parse(_codigoterreno), _codigomatd, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                                Session["MachineName"].ToString(), ViewState["Conectar"].ToString());
+                                Session["MachineName"].ToString(), Session["Conectar"].ToString());
                         }
 
                         if (_contar == 0)
@@ -264,6 +270,10 @@
                         else _mensaje = "Se registro " + _contar.ToString() + " Visitas Terreno de " + _totalregistro.ToString();
 
                         Response.Redirect("WFrm_ListaSolicitudTerreno.aspx?MensajeRetornado=" + _mensaje, true);
+                    }
+                    else
+                    {
+                        new FuncionesDAO().FunShowJSMessage("Seleccione al menos una dirección..!", this, "W", "L");
                     }
                 }
                 catch (Exception ex)

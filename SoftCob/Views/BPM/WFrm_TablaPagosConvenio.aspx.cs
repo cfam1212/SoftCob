@@ -1,19 +1,18 @@
 ﻿namespace SoftCob.Views.BPM
 {
+    using ClosedXML.Excel;
     using ControllerSoftCob;
     using System;
-    using System.Configuration;
     using System.Data;
+    using System.IO;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using ClosedXML.Excel;
-    using System.IO;
-    public partial class WFrm_CitacionProcesoEmail : Page
+    public partial class WFrm_TablaPagosConvenio : Page
     {
         #region Variables
         DataSet _dts = new DataSet();
-        string _codigo = "", _codigoclde = "", _codigopers = "", _numdocumento = "";
-        DataTable _dtb = new DataTable();
+        DataTable _dtbpagos = new DataTable();
+        decimal _totalpago = 0.00M;
         #endregion
 
         #region Load
@@ -29,11 +28,10 @@
 
                 if (!IsPostBack)
                 {
-                    Lbltitulo.Text = "Notificaciones en Proceso << NOTIFICACIONES POR MAIL >>";
-                    FunCargarMantenimiento();
+                    ViewState["CodigoCITA"] = Request["CodigoCITA"];
+                    Lbltitulo.Text = "Tabla de Acuerdo << TABLA DE AMORTIZACION >>";
 
-                    if (Request["MensajeRetornado"] != null) new FuncionesDAO().FunShowJSMessage(Request["MensajeRetornado"],
-                        this, "W", "R");
+                    FunCargarMantenimiento();
                 }
             }
             catch (Exception ex)
@@ -48,40 +46,50 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(254, 0, 0, 0, "", "CGE", "", Session["Conectar"].ToString());
-
-                GrdvDatos.DataSource = _dts;
-                GrdvDatos.DataBind();
-                ViewState["GrdvDatos"] = _dts.Tables[0];
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(263, int.Parse(ViewState["CodigoCITA"].ToString()),
+                    0, 0, "", "", "", ViewState["Conectar"].ToString());
 
                 if (_dts.Tables[0].Rows.Count > 0)
                 {
-                    ImgExportar.Visible = true;
-                    lblExportar.Visible = true;
-                    GrdvDatos.UseAccessibleHeader = true;
-                    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                    LblFechaAcuerdo.Text = _dts.Tables[0].Rows[0]["FechaAcuerdo"].ToString();
+                    LblNumDocu.Text = _dts.Tables[0].Rows[0]["NumDocu"].ToString();
+                    LblNombres.Text = _dts.Tables[0].Rows[0]["Nombres"].ToString();
+                    LblValorCita.Text = _dts.Tables[0].Rows[0]["ValorCita"].ToString();
+                    LblDescuento.Text = _dts.Tables[0].Rows[0]["Descuento"].ToString();
+                    LblPago.Text = _dts.Tables[0].Rows[0]["Pago"].ToString();
+                    LblTipoPago.Text = _dts.Tables[0].Rows[0]["TipoPago"].ToString();
+
+                    GrdvPagos.DataSource = _dts.Tables[1];
+                    GrdvPagos.DataBind();
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                Lblerror.Text = ex.ToString();
             }
         }
+
         #endregion
 
         #region Botones y Eventos
-        protected void ImgCitacion_Click(object sender, ImageClickEventArgs e)
+        protected void GrdvPagos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
             {
-                GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
-                _codigo = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCITA"].ToString();
-                _codigoclde = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCLDE"].ToString();
-                _codigopers = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoPERS"].ToString();
-                _numdocumento = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Identificacion"].ToString();
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    _totalpago += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "ValorPago"));
+                }
 
-                Response.Redirect("WFrm_RegistroCitacionMail.aspx?CodigoCITA=" + _codigo + "&CodigoPERS=" + _codigopers +
-                    "&CodigoCLDE=" + _codigoclde + "&NumDocumento=" + _numdocumento, true);
+                if (e.Row.RowType == DataControlRowType.Footer)
+                {
+                    e.Row.Cells[1].Text = "TOTAL:";
+                    e.Row.Cells[2].Text = _totalpago.ToString();
+                    e.Row.Cells[2].HorizontalAlign = HorizontalAlign.Right;
+                    e.Row.Font.Bold = true;
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                    e.Row.Font.Size = 11;
+                }
             }
             catch (Exception ex)
             {
@@ -98,11 +106,12 @@
         {
             try
             {
-                _dtb = (DataTable)ViewState["GrdvDatos"];
+                _dtbpagos = (DataTable)ViewState["TablaPagos"];
                 using (XLWorkbook wb = new XLWorkbook())
                 {
-                    wb.Worksheets.Add(_dtb, "Datos");
-                    string FileName = "CitacionesGeneradas_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                    wb.Worksheets.Add(_dtbpagos, "Datos");
+                    string FileName = "Tabla_Amortizacion" + ViewState["NumDocumento"].ToString() + "-" +
+                        DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
                     Response.Clear();
                     Response.Buffer = true;
                     Response.Charset = "";
@@ -121,6 +130,11 @@
             {
                 Lblerror.Text = ex.ToString();
             }
+        }
+
+        protected void BtnSalir_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "pop", "javascript:window.close();", true);
         }
         #endregion
     }

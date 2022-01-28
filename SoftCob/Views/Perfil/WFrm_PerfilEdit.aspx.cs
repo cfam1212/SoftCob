@@ -4,6 +4,7 @@
     using ModeloSoftCob;
     using System;
     using System.Data;
+    using System.Linq;
     using System.Web.UI;
     using System.Web.UI.WebControls;
     public partial class WFrm_PerfilEdit : Page
@@ -12,7 +13,7 @@
         DataSet _dts = new DataSet();
         CheckBox _chkagre = new CheckBox();
         string _estado = "", _mensaje = "";
-        int _codigometa = 0, _codigotare = 0;
+        int _codigometa = 0, _codigotare = 0, _codigoperfil = 0;
         #endregion
 
         #region Load
@@ -80,11 +81,14 @@
                 _dts = new ConsultaDatosDAO().FunConsultaDatosNew(13, int.Parse(Session["CodigoEMPR"].ToString()),
                     "", "", "", "", "", "", int.Parse(ViewState["CodigoPERF"].ToString()), 0, 0, 0, 0, 0, Session["Conectar"].ToString());
 
-                GrdvDatos.DataSource = _dts;
-                GrdvDatos.DataBind();
+                if (_dts.Tables[0].Rows.Count > 0)
+                {
+                    GrdvDatos.DataSource = _dts;
+                    GrdvDatos.DataBind();
 
-                //GrdvDatos.UseAccessibleHeader = true;
-                //GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                    GrdvDatos.UseAccessibleHeader = true;
+                    GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
 
             }
             catch (Exception ex)
@@ -98,51 +102,151 @@
         protected void ChkCrear_CheckedChanged(object sender, EventArgs e)
         {
             ChkCrear.Text = ChkCrear.Checked == true ? "Si" : "No";
+            _codigoperfil = int.Parse(ViewState["CodigoPERF"].ToString());
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                 SoftCob_PERFIL _original = _db.SoftCob_PERFIL.Where(x => x.PERF_CODIGO == _codigoperfil).FirstOrDefault();
+                _db.SoftCob_PERFIL.Attach(_original);
+                _original.perf_crearparametro = ChkCrear.Checked;
+                _db.SaveChanges();
+            }
+            FunCargaMantenimiento();
         }
 
         protected void ChkModificar_CheckedChanged(object sender, EventArgs e)
         {
             ChkModificar.Text = ChkModificar.Checked == true ? "Si" : "No";
+            _codigoperfil = int.Parse(ViewState["CodigoPERF"].ToString());
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                SoftCob_PERFIL _original = _db.SoftCob_PERFIL.Where(x => x.PERF_CODIGO == _codigoperfil).FirstOrDefault();
+                _db.SoftCob_PERFIL.Attach(_original);
+                _original.perf_modiparametro = ChkModificar.Checked;
+                _db.SaveChanges();
+            }
+            FunCargaMantenimiento();
         }
 
         protected void ChkEliminar_CheckedChanged(object sender, EventArgs e)
         {
             ChkEliminar.Text = ChkEliminar.Checked == true ? "Si" : "No";
+            _codigoperfil = int.Parse(ViewState["CodigoPERF"].ToString());
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                SoftCob_PERFIL _original = _db.SoftCob_PERFIL.Where(x => x.PERF_CODIGO == _codigoperfil).FirstOrDefault();
+                _db.SoftCob_PERFIL.Attach(_original);
+                _original.perf_eliminaparametro = ChkEliminar.Checked;
+                _db.SaveChanges();
+            }
+            FunCargaMantenimiento();
         }
 
         protected void ChkPerfil_CheckedChanged(object sender, EventArgs e)
         {
             ChkPerfil.Text = ChkPerfil.Checked == true ? "Si" : "No";
+            _codigoperfil = int.Parse(ViewState["CodigoPERF"].ToString());
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                SoftCob_PERFIL _original = _db.SoftCob_PERFIL.Where(x => x.PERF_CODIGO == _codigoperfil).FirstOrDefault();
+                _db.SoftCob_PERFIL.Attach(_original);
+                _original.perf_perfilactitudinal = ChkPerfil.Checked;
+                _db.SaveChanges();
+            }
+            FunCargaMantenimiento();
         }
 
         protected void ChkEstilos_CheckedChanged(object sender, EventArgs e)
         {
             ChkEstilos.Text = ChkEstilos.Checked == true ? "Si" : "No";
+            _codigoperfil = int.Parse(ViewState["CodigoPERF"].ToString());
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                SoftCob_PERFIL _original = _db.SoftCob_PERFIL.Where(x => x.PERF_CODIGO == _codigoperfil).FirstOrDefault();
+                _db.SoftCob_PERFIL.Attach(_original);
+                _original.perf_estilosnegociacion = ChkEstilos.Checked;
+                _db.SaveChanges();
+            }
+            FunCargaMantenimiento();
         }
 
         protected void ChkMetaprogramas_CheckedChanged(object sender, EventArgs e)
         {
             ChkMetaprogramas.Text = ChkMetaprogramas.Checked == true ? "Si" : "No";
+            _codigoperfil = int.Parse(ViewState["CodigoPERF"].ToString());
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                SoftCob_PERFIL _original = _db.SoftCob_PERFIL.Where(x => x.PERF_CODIGO == _codigoperfil).FirstOrDefault();
+                _db.SoftCob_PERFIL.Attach(_original);
+                _original.perf_metaprogramas = ChkMetaprogramas.Checked;
+                _db.SaveChanges();
+            }
+            FunCargaMantenimiento();
         }
 
         protected void ChkModalidad_CheckedChanged(object sender, EventArgs e)
         {
             ChkModalidad.Text = ChkModalidad.Checked == true ? "Si" : "No";
+            _codigoperfil = int.Parse(ViewState["CodigoPERF"].ToString());
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                SoftCob_PERFIL _original = _db.SoftCob_PERFIL.Where(x => x.PERF_CODIGO == _codigoperfil).FirstOrDefault();
+                _db.SoftCob_PERFIL.Attach(_original);
+                _original.perf_modalidades = ChkModalidad.Checked;
+                _db.SaveChanges();
+            }
+            FunCargaMantenimiento();
         }
 
         protected void ChkEstadosdelYo_CheckedChanged(object sender, EventArgs e)
         {
             ChkEstadosdelYo.Text = ChkEstadosdelYo.Checked == true ? "Si" : "No";
+            _codigoperfil = int.Parse(ViewState["CodigoPERF"].ToString());
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                SoftCob_PERFIL _original = _db.SoftCob_PERFIL.Where(x => x.PERF_CODIGO == _codigoperfil).FirstOrDefault();
+                _db.SoftCob_PERFIL.Attach(_original);
+                _original.perf_estadosdelyo = ChkEstadosdelYo.Checked;
+                _db.SaveChanges();
+            }
+            FunCargaMantenimiento();
         }
 
         protected void ChkImpulsores_CheckedChanged(object sender, EventArgs e)
         {
             ChkImpulsores.Text = ChkImpulsores.Checked == true ? "Si" : "No";
+            _codigoperfil = int.Parse(ViewState["CodigoPERF"].ToString());
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                SoftCob_PERFIL _original = _db.SoftCob_PERFIL.Where(x => x.PERF_CODIGO == _codigoperfil).FirstOrDefault();
+                _db.SoftCob_PERFIL.Attach(_original);
+                _original.perf_impulsores = ChkImpulsores.Checked;
+                _db.SaveChanges();
+            }
+            FunCargaMantenimiento();
         }
 
         protected void ChkEstado_CheckedChanged(object sender, EventArgs e)
         {
             ChkEstado.Text = ChkEstado.Checked == true ? "Activo" : "Inactivo";
+            _codigoperfil = int.Parse(ViewState["CodigoPERF"].ToString());
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                SoftCob_PERFIL _original = _db.SoftCob_PERFIL.Where(x => x.PERF_CODIGO == _codigoperfil).FirstOrDefault();
+                _db.SoftCob_PERFIL.Attach(_original);
+                _original.perf_estado = ChkEstado.Checked;
+                _db.SaveChanges();
+            }
+            FunCargaMantenimiento();
         }
         protected void GrdvDatos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -213,16 +317,16 @@
                     _pernew.PERF_CODIGO = int.Parse(ViewState["CodigoPERF"].ToString());
                     _pernew.perf_descripcion = TxtPerfil.Text.ToUpper();
                     _pernew.perf_observacion = TxtDescripcion.Text.ToUpper();
-                    _pernew.perf_estado = ChkEstado.Checked;
-                    _pernew.perf_crearparametro = ChkCrear.Checked;
-                    _pernew.perf_modiparametro = ChkModificar.Checked;
-                    _pernew.perf_eliminaparametro = ChkEliminar.Checked;
-                    _pernew.perf_perfilactitudinal = ChkPerfil.Checked;
-                    _pernew.perf_estilosnegociacion = ChkEstilos.Checked;
-                    _pernew.perf_metaprogramas = ChkMetaprogramas.Checked;
-                    _pernew.perf_modalidades = ChkModalidad.Checked;
-                    _pernew.perf_estadosdelyo = ChkEstadosdelYo.Checked;
-                    _pernew.perf_impulsores = ChkImpulsores.Checked;
+                    //_pernew.perf_estado = ChkEstado.Checked;
+                    //_pernew.perf_crearparametro = ChkCrear.Checked;
+                    //_pernew.perf_modiparametro = ChkModificar.Checked;
+                    //_pernew.perf_eliminaparametro = ChkEliminar.Checked;
+                    //_pernew.perf_perfilactitudinal = ChkPerfil.Checked;
+                    //_pernew.perf_estilosnegociacion = ChkEstilos.Checked;
+                    //_pernew.perf_metaprogramas = ChkMetaprogramas.Checked;
+                    //_pernew.perf_modalidades = ChkModalidad.Checked;
+                    //_pernew.perf_estadosdelyo = ChkEstadosdelYo.Checked;
+                    //_pernew.perf_impulsores = ChkImpulsores.Checked;
                     _pernew.perf_fum = DateTime.Now;
                     _pernew.perf_uum = int.Parse(Session["usuCodigo"].ToString());
                     _pernew.perf_tum = Session["MachineName"].ToString();

@@ -8,11 +8,10 @@
     using System.Web.UI.WebControls;
     using ClosedXML.Excel;
     using System.IO;
-    public partial class WFrm_CitacionProcesoEmail : Page
+    public partial class WFrm_CitaVisitaTerreno : Page
     {
         #region Variables
         DataSet _dts = new DataSet();
-        string _codigo = "", _codigoclde = "", _codigopers = "", _numdocumento = "";
         DataTable _dtb = new DataTable();
         #endregion
 
@@ -29,11 +28,8 @@
 
                 if (!IsPostBack)
                 {
-                    Lbltitulo.Text = "Notificaciones en Proceso << NOTIFICACIONES POR MAIL >>";
+                    Lbltitulo.Text = "Notificación VISITA TERRENO";
                     FunCargarMantenimiento();
-
-                    if (Request["MensajeRetornado"] != null) new FuncionesDAO().FunShowJSMessage(Request["MensajeRetornado"],
-                        this, "W", "R");
                 }
             }
             catch (Exception ex)
@@ -48,8 +44,7 @@
         {
             try
             {
-                _dts = new ConsultaDatosDAO().FunConsultaDatos(254, 0, 0, 0, "", "CGE", "", Session["Conectar"].ToString());
-
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(247, 1, 0, 0, "", "CGE", "Terreno", Session["Conectar"].ToString());
                 GrdvDatos.DataSource = _dts;
                 GrdvDatos.DataBind();
                 ViewState["GrdvDatos"] = _dts.Tables[0];
@@ -70,25 +65,6 @@
         #endregion
 
         #region Botones y Eventos
-        protected void ImgCitacion_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                GridViewRow gvRow = (GridViewRow)(sender as Control).Parent.Parent;
-                _codigo = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCITA"].ToString();
-                _codigoclde = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoCLDE"].ToString();
-                _codigopers = GrdvDatos.DataKeys[gvRow.RowIndex].Values["CodigoPERS"].ToString();
-                _numdocumento = GrdvDatos.DataKeys[gvRow.RowIndex].Values["Identificacion"].ToString();
-
-                Response.Redirect("WFrm_RegistroCitacionMail.aspx?CodigoCITA=" + _codigo + "&CodigoPERS=" + _codigopers +
-                    "&CodigoCLDE=" + _codigoclde + "&NumDocumento=" + _numdocumento, true);
-            }
-            catch (Exception ex)
-            {
-                Lblerror.Text = ex.ToString();
-            }
-        }
-
         public override void VerifyRenderingInServerForm(Control control)
         {
             /* Verifies that the control is rendered */
@@ -102,7 +78,7 @@
                 using (XLWorkbook wb = new XLWorkbook())
                 {
                     wb.Worksheets.Add(_dtb, "Datos");
-                    string FileName = "CitacionesGeneradas_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                    string FileName = "VisitaTerreno_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
                     Response.Clear();
                     Response.Buffer = true;
                     Response.Charset = "";

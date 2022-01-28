@@ -57,7 +57,7 @@
                     _dtbcitaciones.Columns.Add("Canal");
                     ViewState["Citaciones"] = _dtbcitaciones;
 
-                    Lbltitulo.Text = "Registrar Citacion";
+                    Lbltitulo.Text = "Registrar Notificación << SUBIR ARCHIVO DE NOTIFICACIONES - ESTABLECER FECHA >>";
                     PnlDatosDeudor.Height = 100;
                     PnlDatosGetion.Height = 120;
                     PnlDatosGarante.Height = 120;
@@ -494,7 +494,7 @@
             {
                 if (ViewState["Agendado"].ToString() == "NO")
                 {
-                    new FuncionesDAO().FunShowJSMessage("Seleccione Fecha de Citacion", this, "W", "C");
+                    new FuncionesDAO().FunShowJSMessage("Seleccione Fecha de Notificación", this, "W", "C");
                     return;
                 }
 

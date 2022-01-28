@@ -327,7 +327,7 @@
                 ViewState["Codigo"] = int.Parse(GrdvBrenchDet.DataKeys[gvRow.RowIndex].Values["CodigoAlter"].ToString());
                 dtbBrench = (DataTable)ViewState["BrenchDet"];
                 resultado = dtbBrench.Select("CodigoAlter='" + ViewState["Codigo"].ToString() + "'").FirstOrDefault();
-                TxtPresupuesto.Text = resultado["Presupuesto"].ToString();
+                TxtPresupuesto.Text = resultado["PresupuestoValor"].ToString();
                 ViewState["Exigible"] = resultado["ExigibleValor"].ToString();
                 TxtPresupuesto.Enabled = true;
                 ImgModificar.Enabled = true;
@@ -356,8 +356,6 @@
                 }
                 if (continuar)
                 {
-                    //decimal xvalor = decimal.Parse(TxtPresupuesto.Text.Trim(), CultureInfo.InvariantCulture);
-
                     _mensaje = new ConsultaDatosDAO().FunProcesoBrenchGestor(1, 0, 0, int.Parse(DdlGestores.SelectedValue),
                         0, decimal.Parse(TxtPresupuesto.Text.Trim(), CultureInfo.InvariantCulture), "",
                         int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),

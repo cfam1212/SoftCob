@@ -202,32 +202,32 @@
                 <tr>
                     <td></td>
                     <td>
-                        <asp:UpdatePanel ID="updGrid" runat="server" UpdateMode="Conditional">
+                        <asp:UpdatePanel ID="updGrid" runat="server" UpdateMode="Always">
                             <ContentTemplate>
-                                <asp:Panel ID="Panel2" runat="server" CssClass="panel panel-primary" Height="420px" ScrollBars="Vertical">
-                                    <asp:GridView ID="GrdvDatos" runat="server" AutoGenerateColumns="False"
-                                        CssClass="table table-condensed table-bordered table-hover table-responsive"
-                                        DataKeyNames="Codigo,Estado,CodigoTARE" EmptyDataText="No existe ningún menú agregado"
-                                        OnRowDataBound="GrdvDatos_RowDataBound" TabIndex="7" Width="100%">
-                                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                        <Columns>
-                                            <asp:BoundField DataField="Codigo" HeaderText="Código" Visible="False" />
-                                            <asp:BoundField DataField="Menu" HeaderText="Menú" />
-                                            <asp:BoundField DataField="SubMenu" HeaderText="SubMenu" />
-                                            <asp:BoundField DataField="Estado" HeaderText="Estado" />
-                                            <asp:TemplateField HeaderText="Agregar">
-                                                <ItemTemplate>
-                                                    <asp:CheckBox ID="ChkAgregar" runat="server" AutoPostBack="True" OnCheckedChanged="ChkAgregar_CheckedChanged" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" />
-                                            </asp:TemplateField>
-                                        </Columns>
-                                        <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
-                                        <RowStyle Font-Size="X-Small" />
-                                        <EditRowStyle BackColor="#2461BF" />
-                                        <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
-                                    </asp:GridView>
-                                    <%--                                <script>
+                                <%--<asp:Panel ID="Panel2" runat="server" CssClass="panel panel-primary" Height="420px" ScrollBars="Vertical">--%>
+                                <asp:GridView ID="GrdvDatos" runat="server" AutoGenerateColumns="False"
+                                    CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                    DataKeyNames="Codigo,Estado,CodigoTARE" EmptyDataText="No existe ningún menú agregado"
+                                    OnRowDataBound="GrdvDatos_RowDataBound" TabIndex="7" Width="100%">
+                                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                    <Columns>
+                                        <asp:BoundField DataField="Codigo" HeaderText="Código" Visible="False" />
+                                        <asp:BoundField DataField="Menu" HeaderText="Menú" />
+                                        <asp:BoundField DataField="SubMenu" HeaderText="SubMenu" />
+                                        <asp:BoundField DataField="Estado" HeaderText="Estado" />
+                                        <asp:TemplateField HeaderText="Agregar">
+                                            <ItemTemplate>
+                                                <asp:CheckBox ID="ChkAgregar" runat="server" AutoPostBack="True" OnCheckedChanged="ChkAgregar_CheckedChanged" />
+                                            </ItemTemplate>
+                                            <ItemStyle HorizontalAlign="Center" />
+                                        </asp:TemplateField>
+                                    </Columns>
+                                    <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
+                                    <RowStyle Font-Size="X-Small" />
+                                    <EditRowStyle BackColor="#2461BF" />
+                                    <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                </asp:GridView>
+                                <script>
                                     var prm = Sys.WebForms.PageRequestManager.getInstance();
                                     prm.add_endRequest(function () {
                                         createDataTable();
@@ -239,8 +239,8 @@
                                             "ordering": false
                                         });
                                     }
-                                </script>--%>
-                                </asp:Panel>
+                                </script>
+                                <%--</asp:Panel>--%>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>

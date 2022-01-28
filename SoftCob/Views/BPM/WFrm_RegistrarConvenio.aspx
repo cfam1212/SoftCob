@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_RegistroCitacionTerreno.aspx.cs" Inherits="SoftCob.Views.BPM.WFrm_RegistroCitacionTerreno" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WFrm_RegistrarConvenio.aspx.cs" Inherits="SoftCob.Views.BPM.WFrm_RegistrarConvenio" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -8,15 +8,17 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../../css/Estilos.css" rel="stylesheet" />
-    <link href="../../css/DatePicker/jquery-ui.css" rel="stylesheet" />
-    <link href="../../JS/css/alertify.min.css" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../JS/DatePicker/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="../../JS/DatePicker/jquery-ui.js"></script>
+    <link href="../../css/Estilos.css" rel="stylesheet" />
+    <link href="../../Scripts/Tables/jquery.DataTable.min.css" rel="stylesheet" />
+    <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../css/DatePicker/jquery-ui.css" rel="stylesheet" />
+
     <script src="../../Bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../JS/alertify.min.js"></script>
+    <script src="../../Scripts/Tables/DataTables.js"></script>
+    <script src="../../Scripts/Tables/dataTable.bootstrap.min.js"></script>
+    <script src="../../Scripts/jquery.min.js"></script>
+    <script src="../../JS/DatePicker/jquery-ui.js"></script>
 
     <style type="text/css">
         legend {
@@ -54,7 +56,33 @@
                 width: 80px;
                 height: 80px;
             }
+
+        .ChildGrid td {
+            background-color: #eee !important;
+            color: black;
+            font-size: 8pt;
+            line-height: 200%
+        }
+
+        .ChildGrid th {
+            background-color: #6C6C6C !important;
+            color: White;
+            font-size: 10pt;
+            line-height: 200%
+        }
     </style>
+
+    <script type="text/javascript">
+        $("[src*=agregar]").live("click", function () {
+            $(this).closest("tr").after("<tr><td></td><td colspan = '999'>" + $(this).next().html() + "</td></tr>")
+            $(this).attr("src", "../../Botones/minus.png");
+        });
+        $("[src*=minus]").live("click", function () {
+            $(this).attr("src", "../../Botones/agregar.png");
+            $(this).closest("tr").next().remove();
+        });
+    </script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -129,7 +157,7 @@
                                         GroupingText="Datos Operación" ScrollBars="Vertical" TabIndex="17">
                                         <asp:GridView ID="GrdvDatosObligacion" runat="server" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
-                                            PageSize="5" TabIndex="2" Width="100%" DataKeyNames="Operacion,DiasMora" OnRowDataBound="GrdvDatosObligacion_RowDataBound" ShowFooter="True">
+                                            PageSize="5" TabIndex="2" Width="100%">
                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                             <Columns>
                                                 <asp:BoundField DataField="Producto" HeaderText="Producto" />
@@ -137,10 +165,13 @@
                                                 <asp:BoundField DataField="HDiasMora" HeaderText="H.Mora">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
-                                                <asp:BoundField HeaderText="Valor Deuda" DataField="ValorDeuda">
+                                                <asp:BoundField DataField="MontoOriginal" HeaderText="Cupo" Visible="False">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="Exigible" HeaderText="Exigible">
+                                                <asp:BoundField HeaderText="ValorIni" DataField="MontoGSPBO" Visible="False">
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Exigible" HeaderText="Exigible" Visible="False">
                                                     <ItemStyle HorizontalAlign="Right" />
                                                 </asp:BoundField>
                                             </Columns>
@@ -167,7 +198,7 @@
                                         GroupingText="Datos Garante" ScrollBars="Vertical" TabIndex="17">
                                         <asp:GridView ID="GrdvDatosGarante" runat="server" AutoGenerateColumns="False"
                                             CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
-                                            PageSize="3" TabIndex="3" Width="100%" DataKeyNames="CedulaGarante,Existe,CodigoGARA,Operacion">
+                                            PageSize="3" TabIndex="16" Width="100%" DataKeyNames="CedulaGarante,Existe,CodigoGARA,Operacion">
                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                             <Columns>
                                                 <asp:BoundField DataField="Tipo" HeaderText="Tipo"></asp:BoundField>
@@ -195,53 +226,44 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>
-                                    <h5>Archivo Citación:</h5>
-                                </td>
-                                <td>
-                                    <asp:ImageButton ID="ImgCitacion" runat="server" Height="25px" ImageUrl="~/Botones/Buscar.png" OnClick="ImgCitacion_Click" TabIndex="4" />
-                                </td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </table>
-                        <table style="width: 100%">
-                            <tr>
-                                <td style="width: 5%"></td>
-                                <td style="width: 40%"></td>
-                                <td style="width: 5%"></td>
-                                <td style="width: 45%"></td>
-                                <td style="width: 5%"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
                                 <td colspan="3">
-                                    <asp:Panel ID="PnlCitaciones" runat="server" CssClass="panel panel-primary"
-                                        GroupingText="Proceso Registro Terreno" Height="390px" ScrollBars="Vertical"
-                                        TabIndex="6">
+                                    <asp:Panel ID="PnlCitaciones" runat="server" CssClass="panel panel-primary" GroupingText="Canales para Citaciones"
+                                        Height="250px" ScrollBars="Vertical" TabIndex="17">
                                         <asp:GridView ID="GrdvCitaciones" runat="server" AutoGenerateColumns="False"
-                                            CssClass="table table-condensed table-bordered table-hover table-responsive" ForeColor="#333333"
-                                            Height="25px" OnRowDataBound="GrdvCitaciones_RowDataBound" PageSize="5" TabIndex="7" Width="100%" DataKeyNames="Respuesta,CodigoTERR,Registro,FechaVisita,CodigoMATD">
+                                            CssClass="table table-condensed table-bordered table-hover table-responsive"
+                                            DataKeyNames="Canal,CodigoCITA" ForeColor="#333333" Height="25px"
+                                            OnRowDataBound="GrdvCitaciones_RowDataBound" PageSize="5" TabIndex="7" Width="100%">
                                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                             <Columns>
-                                                <asp:BoundField DataField="TipoCliente" HeaderText="Tipo Cliente" />
-                                                <asp:BoundField DataField="Definicion" HeaderText="Definición" />
-                                                <asp:BoundField DataField="Direccion" HeaderText="Dirección" />
-                                                <asp:BoundField DataField="FechaVisita" HeaderText="Fecha Visita">
-                                                    <ItemStyle HorizontalAlign="Right" />
-                                                </asp:BoundField>
-                                                <asp:TemplateField HeaderText="Respuesta">
+                                                <asp:TemplateField>
                                                     <ItemTemplate>
-                                                        <asp:DropDownList ID="DdlRespuesta" runat="server" CssClass="form-control" Enabled="False">
-                                                        </asp:DropDownList>
+                                                        <img alt="" style="cursor: pointer" src="../../Botones/agregar.png" width="15" height="15" id="btnplus" />
+                                                        <asp:Panel runat="server" Style="display: none">
+                                                            <asp:GridView ID="GrdvCanales" runat="server" AutoGenerateColumns="false"
+                                                                CssClass="table table-condensed table-bordered table-hover table-responsive">
+                                                                <Columns>
+                                                                    <asp:BoundField DataField="TipoCliente" HeaderText="Tipo" />
+                                                                    <asp:BoundField DataField="Definicion" HeaderText="Definicion" />
+                                                                    <asp:BoundField DataField="Celular" HeaderText="Celular" />
+                                                                    <asp:BoundField DataField="Email" HeaderText="Email" />
+                                                                    <asp:BoundField DataField="Direccion" HeaderText="Direccion" />
+                                                                    <asp:BoundField DataField="Referencia" HeaderText="Referencia" />
+                                                                    <asp:BoundField DataField="Sector" HeaderText="Sector" />
+                                                                    <asp:BoundField DataField="RespuestaGeneral" HeaderText="Respuesta" />
+                                                                </Columns>
+                                                                <HeaderStyle Font-Size="X-Small" />
+                                                                <RowStyle Font-Bold="true" Font-Size="XX-Small" />
+                                                            </asp:GridView>
+                                                        </asp:Panel>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Logo">
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton ID="ImgLogo" runat="server" Height="15px" />
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Observación">
-                                                    <ItemTemplate>
-                                                        <asp:TextBox ID="TxtObservacion" runat="server" onkeydown="return (event.keyCode!=13);" CssClass="form-control upperCase" Width="100%" MaxLength="150" Height="50px" TextMode="MultiLine" Enabled="False"></asp:TextBox>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="Canal" HeaderText="Canal" />
                                             </Columns>
                                             <HeaderStyle CssClass="GVFixedHeader" Font-Bold="True" ForeColor="White" />
                                             <RowStyle Font-Size="X-Small" />
@@ -251,6 +273,86 @@
                                     </asp:Panel>
                                 </td>
                                 <td></td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="width: 5%"></td>
+                                <td style="width: 20%"></td>
+                                <td style="width: 5%"></td>
+                                <td style="width: 65%"></td>
+                                <td style="width: 5%"></td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="width: 10%"></td>
+                                <td style="width: 80%"></td>
+                                <td style="width: 10%"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <asp:Panel ID="Panel1" runat="server" Height="280px" GroupingText="Datos Convenio">
+                                        <table style="width: 100%">
+                                            <tr>
+                                                <td style="width: 20%"></td>
+                                                <td style="width: 30%"></td>
+                                                <td style="width: 15%"></td>
+                                                <td style="width: 35%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h5>Registro:</h5>
+                                                </td>
+                                                <td colspan="2">
+                                                    <asp:DropDownList ID="DdlRegistro" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="16" Width="100%" OnSelectedIndexChanged="DdlRegistro_SelectedIndexChanged">
+                                                    </asp:DropDownList>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr runat="server" id="TrConevio" visible="false">
+                                                <td>
+                                                    <h5>Convenio por:</h5>
+                                                </td>
+                                                <td colspan="2">
+                                                    <asp:DropDownList ID="DdlConvenio" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="16" Width="100%" OnSelectedIndexChanged="DdlConvenio_SelectedIndexChanged">
+                                                    </asp:DropDownList>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
+                                                </td>
+                                            </tr>
+                                            <tr runat="server" id="TrDatos" visible="false">
+                                                <td>
+                                                    <h5>No. Documento:</h5>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="TxtDocumento" runat="server" CssClass="form-control" MaxLength="10" TabIndex="11" Width="100%"></asp:TextBox>
+                                                </td>
+                                                <td>
+                                                    <h5>Nombres:</h5>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="TxtNombres" runat="server" CssClass="form-control upperCase" MaxLength="150" TabIndex="11" Width="100%"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <asp:Panel runat="server" Height="20px"></asp:Panel>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </asp:Panel>
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="5">
@@ -267,22 +369,18 @@
                         <table style="width: 100%">
                             <tr>
                                 <td style="text-align: right; width: 45%">
-                                    <asp:Button ID="BtnGrabar" runat="server" Text="Grabar" Width="120px" CssClass="button" TabIndex="7" OnClick="BtnGrabar_Click" />
+                                    <asp:Button ID="BtnGenerar" runat="server" CssClass="button" OnClick="BtnGrabar_Click" TabIndex="8" Text="Grabar" Width="120px" />
                                 </td>
                                 <td style="width: 5%"></td>
                                 <td style="text-align: left; width: 45%">
-                                    <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="8" />
+                                    <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" OnClick="BtnSalir_Click" TabIndex="9" />
                                 </td>
                             </tr>
                         </table>
                     </ContentTemplate>
-                    <Triggers>
-                        <asp:PostBackTrigger ControlID="BtnGrabar" />
-                    </Triggers>
                 </asp:UpdatePanel>
             </div>
         </div>
     </form>
 </body>
 </html>
-

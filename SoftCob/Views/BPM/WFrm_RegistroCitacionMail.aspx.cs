@@ -16,7 +16,7 @@
         ImageButton _imgeliminar = new ImageButton();
         Object[] _objdatosmail = new Object[1];
         Object[] _objdatospie = new Object[5];
-        string _ext = "", _path = "", _enviado = "", _email = "", _emailcomparar = "", _respuesta = "", _mensaje = "",
+        string _ext = "", _path = "", _enviado = "", _email = "", _emailcomparar = "", _respuesta = "", _mensaje = "", _mensajem = "",
             _codigomatd = "", _codigohcit = "", _filepdf = "", _fileLogo = "", _fileTemplate = "", _mailsalterna = "", _subject = "",
             _cedula = "", _mails = "";
         decimal _totalExigible = 0.00M, _totalDeuda = 0.00M;
@@ -42,17 +42,13 @@
                     ViewState["CodigoCLDE"] = Request["CodigoCLDE"];
                     ViewState["NumDocumento"] = Request["NumDocumento"];
 
-                    //_dtbcitaciones.Columns.Add("CodigoCITA");
-                    //_dtbcitaciones.Columns.Add("Canal");
-                    //ViewState["Citaciones"] = _dtbcitaciones;
-
                     Lbltitulo.Text = "Registro Citación Mail";
                     PnlDatosDeudor.Height = 100;
                     PnlDatosGetion.Height = 120;
                     PnlDatosGarante.Height = 120;
                     PnlCitaciones.Height = 230;
 
-                    _dts = new ConsultaDatosDAO().FunConsultaDatos(132, 0, 0, 0, "", "LOGOMN", "PATH LOGOS", Session["Conectar"].ToString());
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(132, 0, 0, 0, "", "LOGOFIRMA", "PATH LOGOS", Session["Conectar"].ToString());
 
                     if (_dts.Tables[0].Rows.Count > 0)
                     {
@@ -350,6 +346,8 @@
 
                     foreach (DataRow _drfila in _resultado)
                     {
+                        _objdatosmail[0] = null;
+
                         _objdatosmail[0] = "<table border=\"1\" style=\"width: 100%\">" +
                             "<tr>" +
                                 "<td style=\"width: 10%; text-align:center\">" +
@@ -360,32 +358,33 @@
                                     "<span style=\"font-weight:bold\">Observacion</span>" + "</td>" +
                             "</tr>";
 
-                            //_dts = new ConsultaDatosDAO().FunAgendaCitaciones(11, 0, 0, "", 0, "0", 0, "MAIL ENVIADO",
-                            //"", "", "", "", "", "", "", "", _drfila["Email"].ToString(), new byte[0], "", "", "", "",
-                            //"0", "0", 0, "", 0, "SEND", "Email", "MEV", "", "", "", "", "", "", "",
-                            //int.Parse(ViewState["CodigoCITA"].ToString()), 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
-                            //Session["MachineName"].ToString(), Session["Conectar"].ToString());
+                        if (_drfila["CodigoTIPO"].ToString() == "TIT") _respuesta = "REMITIR A SU COLABORADOR QUIEN CONSTA COMO TITULAR DE LA OBLIGACION";
 
-                        if (_drfila["CodigoTIPO"].ToString() != "FAM")
-                        {
-                            if (_drfila["CodigoTIPO"].ToString() == "TIT") _respuesta = "REMITIR A SU COLABORADOR QUIEN CONSTA COMO TITULAR DE LA OBLIGACION";
+                        if (_drfila["CodigoTIPO"].ToString() == "GAR") _respuesta = "REMITIR A SU COLABORADOR QUIEN CONSTA COMO GARANTE DE LA OBLIGACION";
 
-                            if (_drfila["CodigoTIPO"].ToString() == "GAR") _respuesta = "REMITIR A SU COLABORADOR QUIEN CONSTA COMO GARANTE DE LA OBLIGACION";
+                        if (_drfila["CodigoTIPO"].ToString() == "CDU") _respuesta = "REMITIR A SU COLABORADOR QUIEN CONSTA COMO CODEUDOR DE LA OBLIGACION";
 
-                            if (_drfila["CodigoTIPO"].ToString() == "CDU") _respuesta = "REMITIR A SU COLABORADOR QUIEN CONSTA COMO CODEUDOR DE LA OBLIGACION";
+                        _objdatosmail[0] +=
+                            "<tr>" +
+                                "<td>" + _drfila["TipoCliente"].ToString() + "</td>" +
+                                "<td>" + _drfila["Cliente"].ToString() + "</td>" +
+                                "<td>" + _respuesta + "</td>" +
+                            "</tr></table>";
 
-                            _objdatosmail[0] +=
-                                "<tr>" +
-                                    "<td>" + _drfila["TipoCliente"].ToString() + "</td>" +
-                                    "<td>" + _drfila["Cliente"].ToString() + "</td>" +
-                                    "<td>" + _respuesta + "</td>" +
-                                "</tr></table>";
+                        _mensaje = new FuncionesDAO().FunEnviarMail(_drfila["Email"].ToString(), _subject, _objdatosmail, _objdatospie,
+                            _fileTemplate, ViewState["_smpt"].ToString(), int.Parse(ViewState["_port"].ToString()),
+                            bool.Parse(ViewState["_enablessl"].ToString()), ViewState["_username"].ToString(),
+                            ViewState["_password"].ToString(), _filepdf, _fileLogo, _mailsalterna, Session["Conectar"].ToString());
 
-                            _mensaje = new FuncionesDAO().FunEnviarMail(_drfila["Email"].ToString(), _subject, _objdatosmail, _objdatospie,
-                                _fileTemplate, ViewState["_smpt"].ToString(), int.Parse(ViewState["_port"].ToString()),
-                                bool.Parse(ViewState["_enablessl"].ToString()), ViewState["_username"].ToString(),
-                                ViewState["_password"].ToString(), _filepdf, _fileLogo, _mailsalterna, Session["Conectar"].ToString());
-                        }
+                        if (string.IsNullOrEmpty(_mensaje)) _mensajem = "MAIL ENVIADO";
+                        else _mensajem = _mensaje;
+
+                        _dts = new ConsultaDatosDAO().FunAgendaCitaciones(11, 0, 0, "", 0, "0", 0, _mensajem,
+                        "", "", "", "", "", "", "", "", _drfila["Email"].ToString(), new byte[0], "", "", "", "",
+                        "0", "0", 0, "", 0, "SEND", "Email", "MEV", "", "", "", "", "", "", "",
+                        int.Parse(ViewState["CodigoCITA"].ToString()), 0, 0, 0, 0, int.Parse(Session["usuCodigo"].ToString()),
+                        Session["MachineName"].ToString(), Session["Conectar"].ToString());
+
                     }
                 }
 
@@ -398,66 +397,73 @@
                     _respuesta = "";
                     _objdatosmail[0] = null;
                     _objdatospie[4] = "Por favor revise la información Adjunta";
-                    _subject = "AVISO DE DEMANDA A: " + ViewState["Cliente"].ToString();
-
-                    _objdatosmail[0] = "<table border=\"1\" style=\"width: 100%\">" +
-                        "<tr>" +
-                            "<td style=\"width: 10%; text-align:center\">" +
-                                "<span style=\"font-weight:bold\">Tipo</span>" + "</td>" +
-                            "<td style=\"width: 35%; text-align:center\">" +
-                                "<span style=\"font-weight:bold\">Nombres</span>" + "</td>" +
-                            "<td style=\"width: 55%; text-align:center\">" +
-                                "<span style=\"font-weight:bold\">Observacion</span>" + "</td>" +
-                        "</tr>";
-
+                    
                     foreach (DataRow _drfila in _resultado)
                     {
-                        _dts = new ConsultaDatosDAO().FunAgendaCitaciones(11, 0, 0, "", 0, "0", 0, "MAIL ENVIADO",
-                            "", "", "", "", "", "", "", "", _drfila["Email"].ToString(), new byte[0], "", "", "", "",
-                            "0", "0", 0, "", 0, "SEND", "Email", "MEV", "", "", "", "", "", "", "",
-                            int.Parse(ViewState["CodigoCITA"].ToString()), 0, 0, 0, 0,
-                            int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
-                            ViewState["Conectar"].ToString());
+                        _subject = "AVISO DE DEMANDA A: " + _drfila["Cliente"].ToString();
+
+                        _objdatosmail[0] = null;
 
                         if (_drfila["CodigoTIPO"].ToString() == "FAM") _respuesta = "POR FAVOR INFORMAR AL TITULAR SOBRE LA DEUDA";
                         if (_drfila["CodigoTIPO"].ToString() == "GAR") _respuesta = "CONSTA COMO GARANTE DEL TITULAR DE LA DEUDA";
                         if (_drfila["CodigoTIPO"].ToString() == "CDU") _respuesta = "CONSTA COMO CODEUDOR DEL TITULAR DE LA DEUDA";
 
-                        if (_drfila["CodigoTIPO"].ToString() == "TIT")
-                        {
-                            if (_cedula != _drfila["Cedula"].ToString())
-                            {
-                                _objdatosmail[0] +=
-                                "<tr>" +
-                                    "<td>" + _drfila["TipoCliente"].ToString() + "</td>" +
-                                    "<td>" + _drfila["Cliente"].ToString() + "</td>" +
-                                    "<td>" + _respuesta + "</td>" +
-                                "</tr>";
-                            }
-                        }
-                        else
-                        {
-                            _objdatosmail[0] +=
-                            "<tr>" +
-                                "<td>" + _drfila["TipoCliente"].ToString() + "</td>" +
-                                "<td>" + _drfila["Cliente"].ToString() + "</td>" +
-                                "<td>" + _respuesta + "</td>" +
-                            "</tr>";
-                        }
+                        //if (_drfila["CodigoTIPO"].ToString() == "TIT")
+                        //{
+                        //    if (_cedula != _drfila["Cedula"].ToString())
+                        //    {
+                        //        _objdatosmail[0] +=
+                        //        "<tr>" +
+                        //            "<td>" + _drfila["TipoCliente"].ToString() + "</td>" +
+                        //            "<td>" + _drfila["Cliente"].ToString() + "</td>" +
+                        //            "<td>" + _respuesta + "</td>" +
+                        //        "</tr>";
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //}
 
-                        _cedula = _drfila["Cedula"].ToString();
-                        _mails = _mails + _drfila["Email"].ToString() + ",";
+                        _objdatosmail[0] = "<table border=\"1\" style=\"width: 100%\">" +
+                            "<tr>" +
+                                "<td style=\"width: 10%; text-align:center\">" +
+                                    "<span style=\"font-weight:bold\">Tipo</span>" + "</td>" +
+                                "<td style=\"width: 35%; text-align:center\">" +
+                                    "<span style=\"font-weight:bold\">Nombres</span>" + "</td>" +
+                                "<td style=\"width: 55%; text-align:center\">" +
+                                    "<span style=\"font-weight:bold\">Observacion</span>" + "</td>" +
+                            "</tr>";
+
+                        _objdatosmail[0] +=
+                        "<tr>" +
+                            "<td>" + _drfila["TipoCliente"].ToString() + "</td>" +
+                            "<td>" + _drfila["Cliente"].ToString() + "</td>" +
+                            "<td>" + _respuesta + "</td>" +
+                        "</tr>";
+
+                        //_cedula = _drfila["Cedula"].ToString();
+                        //_mails = _mails + _drfila["Email"].ToString() + ",";
+
+                        _objdatosmail[0] += "</table>";
+
+                        _mensaje = new FuncionesDAO().FunEnviarMail(_drfila["Email"].ToString(), _subject, _objdatosmail, _objdatospie,
+                            _fileTemplate, ViewState["_smpt"].ToString(), int.Parse(ViewState["_port"].ToString()),
+                            bool.Parse(ViewState["_enablessl"].ToString()), ViewState["_username"].ToString(),
+                            ViewState["_password"].ToString(), _filepdf, _fileLogo, _mailsalterna,
+                            Session["Conectar"].ToString());
+
+                        if (string.IsNullOrEmpty(_mensaje)) _mensajem = "MAIL ENVIADO";
+                        else _mensajem = _mensaje;
+
+                        _dts = new ConsultaDatosDAO().FunAgendaCitaciones(11, 0, 0, "", 0, "0", 0, _mensajem,
+                            "", "", "", "", "", "", "", "", _drfila["Email"].ToString(), new byte[0], "", "", "", "",
+                            "0", "0", 0, "", 0, "SEND", "Email", "MEV", "", "", "", "", "", "", "",
+                            int.Parse(ViewState["CodigoCITA"].ToString()), 0, 0, 0, 0,
+                            int.Parse(Session["usuCodigo"].ToString()), Session["MachineName"].ToString(),
+                            Session["Conectar"].ToString());
                     }
 
-                    _objdatosmail[0] += "</table>";
-
-                    _mails = _mails.Remove(_mails.Length - 1);
-
-                    _mensaje = new FuncionesDAO().FunEnviarMail(_mails, _subject, _objdatosmail, _objdatospie,
-                        _fileTemplate, ViewState["_smpt"].ToString(), int.Parse(ViewState["_port"].ToString()),
-                        bool.Parse(ViewState["_enablessl"].ToString()), ViewState["_username"].ToString(),
-                        ViewState["_password"].ToString(), _filepdf, _fileLogo, _mailsalterna,
-                        Session["Conectar"].ToString());
+                    //_mails = _mails.Remove(_mails.Length - 1);
 
                     _dts = new ConsultaDatosDAO().FunAgendaCitaciones(9, 0, 0, "", 0, "0", 0, "MAIL ENVIADO",
                         "", "", "", "", "", "", "", "", "", new byte[0], "", "", "", "", "0", "0", 0, "", 0,

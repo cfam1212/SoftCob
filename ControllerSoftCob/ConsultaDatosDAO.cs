@@ -1183,6 +1183,75 @@
             return _dts;
         }
 
+        public DataSet FunInsertRegistroPagos(int tipo, int pacocodigo, int citacodigo, int perscodigo, int cldecodigo,
+            string numdocumento, string valorexigible, string valordescuento, string valorporcentaje, string valorpago,
+            string valorcitacion, string tipopago, string fechainicio, int mesdiferido, string valorabono,
+            string docuconvenio, string nomconvenio, string fechacuota, string valorcuota, string tipocuota,
+            string patharchivo, string nomarchivo, string extarchivo, string contentarchivo, string observacion,
+            string auxv1, string auxv2, string auxv3, string auxv4, string auxv5, int auxi1, int auxi2,
+            int auxi3, int auxi4, int auxi5, int usucodigo, string terminal, string conection)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(conection))
+                {
+                    using (SqlCommand comm = new SqlCommand())
+                    {
+                        comm.Connection = con;
+                        comm.CommandTimeout = 9000;
+                        comm.CommandType = CommandType.StoredProcedure;
+                        comm.CommandText = "sp_InsertRegistroPagos";
+                        comm.Parameters.AddWithValue("@in_tipo", tipo);
+                        comm.Parameters.AddWithValue("@in_pacocodigo", pacocodigo);
+                        comm.Parameters.AddWithValue("@in_citacodigo", citacodigo);
+                        comm.Parameters.AddWithValue("@in_perscodigo", perscodigo);
+                        comm.Parameters.AddWithValue("@in_cldecodigo", cldecodigo);
+                        comm.Parameters.AddWithValue("@in_numdocumento", numdocumento);
+                        comm.Parameters.AddWithValue("@in_valorexigible", valorexigible);
+                        comm.Parameters.AddWithValue("@in_valordescuento", valordescuento);
+                        comm.Parameters.AddWithValue("@in_valorporcentaje", valorporcentaje);
+                        comm.Parameters.AddWithValue("@in_valorpago", valorpago);
+                        comm.Parameters.AddWithValue("@in_valorcitacion", valorcitacion);
+                        comm.Parameters.AddWithValue("@in_tipopago", tipopago);
+                        comm.Parameters.AddWithValue("@in_fechainicio", fechainicio);
+                        comm.Parameters.AddWithValue("@in_mesdiferido", mesdiferido);
+                        comm.Parameters.AddWithValue("@in_valorabono", valorabono);
+                        comm.Parameters.AddWithValue("@in_docuconvenio", docuconvenio);
+                        comm.Parameters.AddWithValue("@in_nomconvenio", nomconvenio);
+                        comm.Parameters.AddWithValue("@in_fechacuota", fechacuota);
+                        comm.Parameters.AddWithValue("@in_valorcuota", valorcuota);
+                        comm.Parameters.AddWithValue("@in_tipocuota", tipocuota);
+                        comm.Parameters.AddWithValue("@in_patharchivo", patharchivo);
+                        comm.Parameters.AddWithValue("@in_nomarchivo", nomarchivo);
+                        comm.Parameters.AddWithValue("@in_extarchivo", extarchivo);
+                        comm.Parameters.AddWithValue("@in_contentarchivo", contentarchivo);
+                        comm.Parameters.AddWithValue("@in_observacion", observacion);
+                        comm.Parameters.AddWithValue("@in_auxv1", auxv1);
+                        comm.Parameters.AddWithValue("@in_auxv2", auxv2);
+                        comm.Parameters.AddWithValue("@in_auxv3", auxv3);
+                        comm.Parameters.AddWithValue("@in_auxv4", auxv4);
+                        comm.Parameters.AddWithValue("@in_auxv5", auxv5);
+                        comm.Parameters.AddWithValue("@in_auxi1", auxi1);
+                        comm.Parameters.AddWithValue("@in_auxi2", auxi2);
+                        comm.Parameters.AddWithValue("@in_auxi3", auxi3);
+                        comm.Parameters.AddWithValue("@in_auxi4", auxi4);
+                        comm.Parameters.AddWithValue("@in_auxi5", auxi5);
+                        comm.Parameters.AddWithValue("@in_usucodigo", usucodigo);
+                        comm.Parameters.AddWithValue("@in_terminal", terminal);
+                        _dap.SelectCommand = comm;
+                        _dap.Fill(_dts);
+                    }
+                }
+
+                return _dts;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         #endregion
     }
 }

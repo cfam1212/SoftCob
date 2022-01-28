@@ -3,6 +3,7 @@
     using ControllerSoftCob;
     using ModeloSoftCob;
     using System;
+    using System.Linq;
     using System.Data;
     using System.Web.UI;
     using System.Web.UI.WebControls;
@@ -13,7 +14,7 @@
         ImageButton _imgbajar = new ImageButton();
         CheckBox _chkagregar = new CheckBox();
         DataSet _dts = new DataSet();
-        int _contar = 0, _fila = 0, _codigotarea = 0;
+        int _contar = 0, _fila = 0, _codigotarea = 0, _codigomenu = 0;
         string _mensaje = ""; 
         #endregion
 
@@ -45,36 +46,40 @@
 
             _dts = new ControllerDAO().FunGetMenuNewEdit(int.Parse(ViewState["CodigoMENU"].ToString()),
                 int.Parse(Session["CodigoEMPR"].ToString()));
-            
-            GrdvDatos.DataSource = _dts;
-            GrdvDatos.DataBind();
 
-            GrdvDatos.UseAccessibleHeader = true;
-            GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
-
-            _imgsubir = (ImageButton)GrdvDatos.Rows[0].Cells[3].FindControl("ImgSubirNivel");
-            _imgsubir.ImageUrl = "~/Botones/desactivada_up.png";
-            _imgsubir.Enabled = false;
-
-            foreach (GridViewRow _row in GrdvDatos.Rows)
+            if (_dts.Tables[0].Rows.Count > 0)
             {
-                _imgsubir = _row.FindControl("ImgSubirNivel") as ImageButton;
-                _imgbajar = _row.FindControl("ImgBajarNivel") as ImageButton;
-                _chkagregar = _row.FindControl("ChkAgregar") as CheckBox;
-                if (GrdvDatos.DataKeys[_row.RowIndex].Values["Selecc"].ToString() == "SI") _chkagregar.Checked = true;
-                else _chkagregar.Checked = false;
-                if (_chkagregar.Checked == false)
+                ViewState["MenuEdit"] = _dts;
+                GrdvDatos.DataSource = _dts;
+                GrdvDatos.DataBind();
+
+                GrdvDatos.UseAccessibleHeader = true;
+                GrdvDatos.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+                _imgsubir = (ImageButton)GrdvDatos.Rows[0].Cells[3].FindControl("ImgSubirNivel");
+                _imgsubir.ImageUrl = "~/Botones/desactivada_up.png";
+                _imgsubir.Enabled = false;
+
+                foreach (GridViewRow _row in GrdvDatos.Rows)
                 {
-                    _imgsubir.ImageUrl = "~/Botones/desactivada_up.png";
-                    _imgsubir.Enabled = false;
-                    _imgbajar.ImageUrl = "~/Botones/desactivada_down.png";
-                    _imgbajar.Enabled = false;
+                    _imgsubir = _row.FindControl("ImgSubirNivel") as ImageButton;
+                    _imgbajar = _row.FindControl("ImgBajarNivel") as ImageButton;
+                    _chkagregar = _row.FindControl("ChkAgregar") as CheckBox;
+                    if (GrdvDatos.DataKeys[_row.RowIndex].Values["Selecc"].ToString() == "SI") _chkagregar.Checked = true;
+                    else _chkagregar.Checked = false;
+                    if (_chkagregar.Checked == false)
+                    {
+                        _imgsubir.ImageUrl = "~/Botones/desactivada_up.png";
+                        _imgsubir.Enabled = false;
+                        _imgbajar.ImageUrl = "~/Botones/desactivada_down.png";
+                        _imgbajar.Enabled = false;
+                    }
+                    else _fila = _row.RowIndex;
                 }
-                else _fila = _row.RowIndex;
+                _imgbajar = (ImageButton)GrdvDatos.Rows[_fila].FindControl("imgBajarNivel");
+                _imgbajar.ImageUrl = "~/Botones/desactivada_down.png";
+                _imgbajar.Enabled = false;
             }
-            _imgbajar = (ImageButton)GrdvDatos.Rows[_fila].FindControl("imgBajarNivel");
-            _imgbajar.ImageUrl = "~/Botones/desactivada_down.png";
-            _imgbajar.Enabled = false;
         }
         #endregion
 
@@ -82,6 +87,16 @@
         protected void ChkEstado_CheckedChanged(object sender, EventArgs e)
         {
             ChkEstado.Text = ChkEstado.Checked ? "Activo" : "Inactivo";
+            _codigomenu = int.Parse(ViewState["CodigoMENU"].ToString());
+
+            using (SoftCobEntities _db = new SoftCobEntities())
+            {
+                SoftCob_MENU _original = _db.SoftCob_MENU.Where(x => x.MENU_CODIGO == _codigomenu).FirstOrDefault();
+                _db.SoftCob_MENU.Attach(_original);
+                _original.menu_estado = ChkEstado.Checked ? true : false;
+                _db.SaveChanges();
+            }
+            FunCargarMantenimiento();
         }
 
         protected void ImgSubirNivel_Click(object sender, ImageClickEventArgs e)
@@ -146,7 +161,6 @@
                 {
                     _menunew.MENU_CODIGO = int.Parse(ViewState["CodigoMENU"].ToString());
                     _menunew.menu_descripcion = TxtNombreMenu.Text.Trim();
-                    _menunew.menu_estado = ChkEstado.Checked ? true : false;
                     _menunew.menu_fum = DateTime.Now;
                     _menunew.menu_uum = int.Parse(Session["usuCodigo"].ToString());
                     _menunew.menu_tum = Session["MachineName"].ToString();

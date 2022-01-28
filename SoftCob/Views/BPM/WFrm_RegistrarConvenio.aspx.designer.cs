@@ -11,7 +11,7 @@ namespace SoftCob.Views.BPM
 {
 
 
-    public partial class WFrm_SectorVisitaCitacion
+    public partial class WFrm_RegistrarConvenio
     {
 
         /// <summary>
@@ -132,22 +132,112 @@ namespace SoftCob.Views.BPM
         protected global::System.Web.UI.WebControls.Panel Panel2;
 
         /// <summary>
-        /// Control Panel7.
+        /// Control TrGarantes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel7;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrGarantes;
 
         /// <summary>
-        /// Control GrdvTerreno.
+        /// Control PnlDatosGarante.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GrdvTerreno;
+        protected global::System.Web.UI.WebControls.Panel PnlDatosGarante;
+
+        /// <summary>
+        /// Control GrdvDatosGarante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrdvDatosGarante;
+
+        /// <summary>
+        /// Control PnlCitaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlCitaciones;
+
+        /// <summary>
+        /// Control GrdvCitaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrdvCitaciones;
+
+        /// <summary>
+        /// Control Panel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+
+        /// <summary>
+        /// Control DdlRegistro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlRegistro;
+
+        /// <summary>
+        /// Control TrConevio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrConevio;
+
+        /// <summary>
+        /// Control DdlConvenio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlConvenio;
+
+        /// <summary>
+        /// Control TrDatos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrDatos;
+
+        /// <summary>
+        /// Control TxtDocumento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtDocumento;
+
+        /// <summary>
+        /// Control TxtNombres.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtNombres;
 
         /// <summary>
         /// Control Panel5.
@@ -159,33 +249,6 @@ namespace SoftCob.Views.BPM
         protected global::System.Web.UI.WebControls.Panel Panel5;
 
         /// <summary>
-        /// Control TrEmail4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrEmail4;
-
-        /// <summary>
-        /// Control TrTerreno5.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrTerreno5;
-
-        /// <summary>
-        /// Control Panel6.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel6;
-
-        /// <summary>
         /// Control updBotones.
         /// </summary>
         /// <remarks>
@@ -195,13 +258,13 @@ namespace SoftCob.Views.BPM
         protected global::System.Web.UI.UpdatePanel updBotones;
 
         /// <summary>
-        /// Control BtnGrabar.
+        /// Control BtnGenerar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnGrabar;
+        protected global::System.Web.UI.WebControls.Button BtnGenerar;
 
         /// <summary>
         /// Control BtnSalir.

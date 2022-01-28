@@ -44,7 +44,7 @@
                     ViewState["Citaciones"] = _dtbcitaciones;
                     ViewState["VerHistorial"] = "0";
 
-                    Lbltitulo.Text = "Segumiento Citacion << CONVENIO REALIZADO >>";
+                    Lbltitulo.Text = "Segumiento Notificación << REGISTROS REALIZADOS >>";
                     PnlDatosDeudor.Height = 100;
                     PnlDatosGetion.Height = 120;
                     PnlDatosGarante.Height = 120;
