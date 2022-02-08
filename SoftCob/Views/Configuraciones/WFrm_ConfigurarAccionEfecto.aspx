@@ -78,21 +78,34 @@
                         <table style="width: 100%">
                             <tr>
                                 <td style="width: 5%"></td>
-                                <td style="width: 15%">
+                                <td style="width: 15%"></td>
+                                <td style="width: 30%"></td>
+                                <td style="width: 15%"></td>
+                                <td style="width: 30%"></td>
+                                <td style="width: 5%"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <asp:Panel runat="server" Height="10px"></asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
                                     <h5>Cedente:</h5>
                                 </td>
-                                <td style="width: 30%">
+                                <td>
                                     <asp:DropDownList ID="DdlCedente" runat="server" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="DdlCedente_SelectedIndexChanged" TabIndex="1" Width="100%">
                                     </asp:DropDownList>
                                 </td>
-                                <td style="width: 15%">
+                                <td>
                                     <h5>Catálogo/Producto:</h5>
                                 </td>
-                                <td style="width: 30%">
+                                <td>
                                     <asp:DropDownList ID="DdlCatalogo" runat="server" CssClass="form-control" TabIndex="2" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="DdlCatalogo_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </td>
-                                <td style="width: 5%"></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td colspan="6">

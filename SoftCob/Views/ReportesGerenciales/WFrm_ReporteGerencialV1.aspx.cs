@@ -32,8 +32,13 @@
                 {
                     TxtFechaIni.Text = DateTime.Now.ToString("MM/dd/yyyy");
                     TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
-                    Lbltitulo.Text = "Reporte Gerencial POR ARBOL-GESTIONES << BUSISSNESS INTELLIGENCE >>";
+                    Lbltitulo.Text = "Reporte Gerencial POR ARBOL-GESTIONES << BUSINESS INTELLIGENCE >>";
                     ViewState["Boton"] = "0";
+
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(132, 0, 0, 0, "", "LOGOFIRMA", "PATH LOGOS", Session["Conectar"].ToString());
+                    if (_dts.Tables[0].Rows.Count > 0) ViewState["LogoReporte"] = _dts.Tables[0].Rows[0]["Valor"].ToString();
+                    else ViewState["LogoReporte"] = "~/Images/LogoBBP.png";
+
                     FunCargarCombos(0);
                     if (ViewState["CodigoCEDE"] != null) FunCargarMantenimiento();
                 }
@@ -76,10 +81,11 @@
                     DdlGestor.DataBind();
                     break;
                 case 2:
-                    _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataTextField = "CatalogoProducto";
-                    DdlCatalogo.DataValueField = "CodigoCatalogo";
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
+                    DdlCatalogo.DataSource = _dts;
+                    DdlCatalogo.DataTextField = "Descripcion";
+                    DdlCatalogo.DataValueField = "Codigo";
                     DdlCatalogo.DataBind();
                     break;
             }
@@ -132,52 +138,76 @@
                         return;
                     }
 
+                    if (DdlCatalogo.SelectedValue == "0")
+                    {
+                        new FuncionesDAO().FunShowJSMessage("Seleccione Catálogo/Producto..!", this, "W", "C");
+                        return;
+                    }
+
                     if (!new FuncionesDAO().IsDate(TxtFechaIni.Text, "MM/dd/yyyy"))
                     {
-                        new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
+                        new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "W", "C");
                         return;
                     }
 
                     if (!new FuncionesDAO().IsDate(TxtFechaFin.Text, "MM/dd/yyyy"))
                     {
-                        new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "E", "C");
+                        new FuncionesDAO().FunShowJSMessage("No es una fecha válida..!", this, "W", "C");
                         return;
                     }
 
                     if (DateTime.ParseExact(TxtFechaIni.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture) > DateTime.ParseExact(TxtFechaFin.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture))
                     {
-                        new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha de Fin..!", this, "E", "C");
+                        new FuncionesDAO().FunShowJSMessage("La Fecha de Inicio no puede ser mayor a la Fecha de Fin..!", this, "W", "C");
                         return;
                     }
 
                     if (DdlTipo.SelectedValue == "0")
                     {
-                        _dts = new ConsultaDatosDAO().FunRepGerencialG(DdlGestor.SelectedValue == "0" ? 0 : 1, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunRepGerencialG(DdlGestor.SelectedValue == "0" ? 0 : 1, 
+                            int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), 
+                            TxtFechaFin.Text.Trim(), int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", 0, 
+                            0, 0, 0, 0, 0, Session["Conectar"].ToString());
                         _dtbaccion = _dts.Tables[0];
                     }
 
                     if (DdlTipo.SelectedValue == "1")
                     {
-                        _dts = new ConsultaDatosDAO().FunRepGerencialG(6, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", DdlGestor.SelectedValue == "0" ? 0 : 1, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunRepGerencialG(6, int.Parse(DdlCedente.SelectedValue), 
+                            int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), 
+                            int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", 
+                            DdlGestor.SelectedValue == "0" ? 0 : 1, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
 
                         _dtbefectivo = _dts.Tables[0];
 
-                        _dts = new ConsultaDatosDAO().FunRepGerencialG(7, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", DdlGestor.SelectedValue == "0" ? 0 : 1, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunRepGerencialG(7, int.Parse(DdlCedente.SelectedValue), 
+                            int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), 
+                            int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", 
+                            DdlGestor.SelectedValue == "0" ? 0 : 1, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
 
                         _dtbcomision = _dts.Tables[0];
 
-                        _dts = new ConsultaDatosDAO().FunRepGerencialG(8, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", DdlGestor.SelectedValue == "0" ? 0 : 1, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunRepGerencialG(8, int.Parse(DdlCedente.SelectedValue), 
+                            int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), 
+                            int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", 
+                            DdlGestor.SelectedValue == "0" ? 0 : 1, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
 
                         _dtbpago = _dts.Tables[0];
 
-                        _dts = new ConsultaDatosDAO().FunRepGerencialG(9, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", DdlGestor.SelectedValue == "0" ? 0 : 1, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunRepGerencialG(9, int.Parse(DdlCedente.SelectedValue), 
+                            int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), 
+                            int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", 
+                            DdlGestor.SelectedValue == "0" ? 0 : 1, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
 
                         _dtbgestion = _dts.Tables[0];
                     }
 
                     if (DdlTipo.SelectedValue == "2")
                     {
-                        _dts = new ConsultaDatosDAO().FunRepGerencialG(10, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", DdlGestor.SelectedValue == "0" ? 0 : 1, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
+                        _dts = new ConsultaDatosDAO().FunRepGerencialG(10, int.Parse(DdlCedente.SelectedValue), 
+                            int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text.Trim(), TxtFechaFin.Text.Trim(), 
+                            int.Parse(DdlGestor.SelectedValue), "sp_RepGerencialV1", "", "", "", "", "", "", 
+                            DdlGestor.SelectedValue == "0" ? 0 : 1, 0, 0, 0, 0, 0, Session["Conectar"].ToString());
 
                         _dtbaccion = _dts.Tables[0];
                     }
@@ -195,7 +225,7 @@
 
                     RptViewDatos.LocalReport.DataSources.Clear();
                     RptViewDatos.LocalReport.EnableExternalImages = true;
-                    _imagepath = new Uri(Server.MapPath("~/Images/LogoGS1.png")).AbsoluteUri;
+                    _imagepath = new Uri(Server.MapPath(ViewState["LogoReporte"].ToString())).AbsoluteUri;
 
                     ReportParameter[] parameters = new ReportParameter[6];
                     parameters[0] = new ReportParameter("Cedente", DdlCedente.SelectedItem.ToString());

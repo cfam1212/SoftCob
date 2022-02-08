@@ -14,6 +14,7 @@
         #region Variables
         ListItem _itemc = new ListItem();
         DataSet _dts = new DataSet();
+        DataSet _dtsx = new DataSet();
         DataTable _dtbestrategia = new DataTable();
         DataTable _dtbgstsave = new DataTable();
         DataTable _dtbpreview = new DataTable();
@@ -115,13 +116,9 @@
                 DdlEstrategia.SelectedValue = _dts.Tables[0].Rows[0]["Codigoesca"].ToString();
                 DdlCedente.SelectedValue = _dts.Tables[0].Rows[0]["Codigocedente"].ToString();
                 FunCargarCombos(1);
-                ViewState["CodigoCPCE"] = _dts.Tables[0].Rows[0]["Codigocatalogo"].ToString();
-                FunCargarCombos(2);
-                DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                DdlCatalogo.DataTextField = "CatalogoProducto";
-                DdlCatalogo.DataValueField = "CodigoCatalogo";
-                DdlCatalogo.DataBind();
                 DdlCatalogo.SelectedValue = _dts.Tables[0].Rows[0]["Codigocatalogo"].ToString();
+                FunCargarCombos(2);
+                DdlAccion.SelectedValue = _dts.Tables[0].Rows[0]["Codigoarac"].ToString();
                 DdlMarcado.SelectedValue = _dts.Tables[0].Rows[0]["Marcado"].ToString();
                 DdlAsignacion.Items.Clear();
                 _asignacion.Text = _dts.Tables[0].Rows[0]["Asignacion"].ToString();
@@ -214,20 +211,27 @@
                     DdlGestorApoyo.DataValueField = "Codigo";
                     DdlGestorApoyo.DataBind();
 
+                    _dtsx = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
+                    DdlCatalogo.DataSource = _dtsx;
+                    DdlCatalogo.DataTextField = "Descripcion";
+                    DdlCatalogo.DataValueField = "Codigo";
+                    DdlCatalogo.DataBind();
+
                     break;
                 case 2:
-                    DdlAccion.DataSource = new SpeechDAO().FunGetArbolNewAccion(int.Parse(ViewState["CodigoCPCE"].ToString()));
+                    DdlAccion.DataSource = new SpeechDAO().FunGetArbolNewAccion(int.Parse(DdlCatalogo.SelectedValue));
                     DdlAccion.DataTextField = "Descripcion";
                     DdlAccion.DataValueField = "Codigo";
                     DdlAccion.DataBind();
 
-                    DdlAsignacion.DataSource = new ConsultaDatosDAO().FunConsultaDatos(91, int.Parse(ViewState["CodigoCPCE"].ToString()), 0, 0, "",
+                    DdlAsignacion.DataSource = new ConsultaDatosDAO().FunConsultaDatos(91, int.Parse(DdlCatalogo.SelectedValue), 0, 0, "",
                         "", "", Session["Conectar"].ToString());
                     DdlAsignacion.DataTextField = "Descripcion";
                     DdlAsignacion.DataValueField = "Codigo";
                     DdlAsignacion.DataBind();
 
-                    DdlCampania.DataSource = new ConsultaDatosDAO().FunConsultaDatos(119, int.Parse(ViewState["CodigoCPCE"].ToString()), 0, 0, "",
+                    DdlCampania.DataSource = new ConsultaDatosDAO().FunConsultaDatos(119, int.Parse(DdlCatalogo.SelectedValue), 0, 0, "",
                         "", "", Session["Conectar"].ToString());
                     DdlCampania.DataTextField = "Descripcion";
                     DdlCampania.DataValueField = "Codigo";
@@ -441,40 +445,6 @@
             {
                 FunCargarCombos(3);
                 FunCargarCombos(1);
-                _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                if (_dts.Tables[0].Rows.Count > 0)
-                {
-                    ViewState["CodigoCEDE"] = DdlCedente.SelectedValue;
-                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataTextField = "CatalogoProducto";
-                    DdlCatalogo.DataValueField = "CodigoCatalogo";
-                    DdlCatalogo.DataBind();
-                    ViewState["CodigoCPCE"] = DdlCatalogo.SelectedValue;
-                    FunCargarCombos(2);
-                }
-                else
-                {
-                    DdlCatalogo.Items.Clear();
-                    _itemc.Text = "--Seleccione Catálago/Producto--";
-                    _itemc.Value = "0";
-                    DdlCatalogo.Items.Add(_itemc);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Lblerror.Text = ex.ToString();
-            }
-        }
-
-        protected void DdlCatalogo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                ViewState["CodigoCPCE"] = DdlCatalogo.SelectedValue;
-                FunCargarCombos(1);
-                FunCargarCombos(2);
-                FunCargarCombos(3);
             }
             catch (Exception ex)
             {
@@ -529,6 +499,11 @@
             {
                 Lblerror.Text = ex.ToString();
             }
+        }
+
+        protected void DdlCatalogo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FunCargarCombos(2);
         }
 
         protected void ChkGestorSelec_CheckedChanged(object sender, EventArgs e)

@@ -39,7 +39,7 @@
                     Session["IPLocalAdress"] = "";
                     Session["LICENCIA"] = "NO";
                     Session["DiasLIC"] = "0";
-                    //FunGetLic();
+                    FunGetLic();
                     IPHostEntry NombreHost = Dns.GetHostEntry(Request.UserHostAddress);
                     Session["IPLocalAdress"] = NombreHost.AddressList.First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToString();
                     _IP = NombreHost.HostName;

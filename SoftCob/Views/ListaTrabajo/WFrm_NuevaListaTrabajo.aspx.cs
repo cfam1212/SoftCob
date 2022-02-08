@@ -13,6 +13,7 @@
         #region Variables
         ListItem _itemc = new ListItem();
         DataSet _dts = new DataSet();
+        DataSet _dtsx = new DataSet();
         DataTable _dtbestrategia = new DataTable();
         DataView view;
         string _sql = "", _estrategia = "", _ordenar = "", _mensaje = "", _fechaactual = "";
@@ -41,7 +42,6 @@
                 ViewState["CodigoLista"] = Request["CodigoLista"];
                 ViewState["Regresar"] = Request["Regresar"];
                 ViewState["CodLista"] = null;
-                ViewState["CodCatalogo"] = null;
                 ViewState["CodMarcado"] = null;
                 TxtFechaInicio.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 TxtFechaFin.Text = DateTime.Now.ToString("MM/dd/yyyy");
@@ -112,10 +112,6 @@
                 DdlEstrategia.SelectedValue = _dts.Tables[0].Rows[0]["Codigoesca"].ToString();
                 DdlCedente.SelectedValue = _dts.Tables[0].Rows[0]["Codigocedente"].ToString();
                 FunCargarCombos(1);
-                DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                DdlCatalogo.DataTextField = "CatalogoProducto";
-                DdlCatalogo.DataValueField = "CodigoCatalogo";
-                DdlCatalogo.DataBind();
                 DdlCatalogo.SelectedValue = _dts.Tables[0].Rows[0]["Codigocatalogo"].ToString();
                 DdlMarcado.SelectedValue = _dts.Tables[0].Rows[0]["Marcado"].ToString();
                 ChkEstado.Text = _dts.Tables[0].Rows[0]["Estado"].ToString();
@@ -197,12 +193,12 @@
                     DdlGestorApoyo.DataValueField = "Codigo";
                     DdlGestorApoyo.DataBind();
 
-                    //_dts = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
-                    //    Session["Conectar"].ToString());
-                    //DdlCatalogo.DataSource = _dts;
-                    //DdlCatalogo.DataTextField = "Descripcion";
-                    //DdlCatalogo.DataValueField = "Codigo";
-                    //DdlCatalogo.DataBind();
+                    _dtsx = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
+                    DdlCatalogo.DataSource = _dtsx;
+                    DdlCatalogo.DataTextField = "Descripcion";
+                    DdlCatalogo.DataValueField = "Codigo";
+                    DdlCatalogo.DataBind();
 
                     break;
                 case 2:
@@ -398,25 +394,6 @@
             {
                 FunCargarCombos(1);
                 FunCargarCombos(3);
-                _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-
-                if (_dts.Tables[0].Rows.Count > 0)
-                {
-                    ViewState["CodigoCedente"] = DdlCedente.SelectedValue;
-                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataTextField = "CatalogoProducto";
-                    DdlCatalogo.DataValueField = "CodigoCatalogo";
-                    DdlCatalogo.DataBind();
-                    ViewState["CodCatalogo"] = DdlCatalogo.SelectedValue;
-                    FunCargarCombos(2);
-                }
-                else
-                {
-                    DdlCatalogo.Items.Clear();
-                    _itemc.Text = "--Seleccione Catálago/Producto--";
-                    _itemc.Value = "0";
-                    DdlCatalogo.Items.Add(_itemc);
-                }
             }
             catch (Exception ex)
             {

@@ -109,6 +109,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
+
             <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdProcesar">
                     <ProgressTemplate>
@@ -120,6 +121,7 @@
                     </ProgressTemplate>
                 </asp:UpdateProgress>
             </div>
+
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Always">
                     <ContentTemplate>
@@ -151,6 +153,11 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td colspan="7">
+                                    <asp:Panel runat="server" Height="10px"></asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td></td>
                                 <td>
                                     <h5>Fecha Proceso:</h5>
@@ -168,6 +175,11 @@
                                     <asp:TextBox ID="TxtFechaFin" runat="server" CssClass="form-control" Width="100%" TabIndex="4"></asp:TextBox>
                                 </td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="7">
+                                    <asp:Panel runat="server" Height="10px"></asp:Panel>
+                                </td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -188,15 +200,6 @@
                                         <asp:ListItem Value="2">Compromisos Pago</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                             </tr>
                         </table>
                     </ContentTemplate>

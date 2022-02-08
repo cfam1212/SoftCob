@@ -224,6 +224,13 @@
                     DdlGestorApoyo.DataTextField = "Descripcion";
                     DdlGestorApoyo.DataValueField = "Codigo";
                     DdlGestorApoyo.DataBind();
+
+                    _dts1 = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
+                    DdlCatalogo.DataSource = _dts1;
+                    DdlCatalogo.DataTextField = "Descripcion";
+                    DdlCatalogo.DataValueField = "Codigo";
+                    DdlCatalogo.DataBind();
                     break;
                 case 2:
                     DdlAsignacion.DataSource = new ConsultaDatosDAO().FunConsultaDatos(91, int.Parse(DdlCatalogo.SelectedValue), 0, 0, "",
@@ -515,25 +522,6 @@
             {
                 FunCargarCombos(1);
                 FunCargarCombos(3);
-                _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-
-                if (_dts.Tables[0].Rows.Count > 0)
-                {
-                    ViewState["CodigoCEDE"] = DdlCedente.SelectedValue;
-                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataTextField = "CatalogoProducto";
-                    DdlCatalogo.DataValueField = "CodigoCatalogo";
-                    DdlCatalogo.DataBind();
-                    ViewState["CodigoCPCE"] = DdlCatalogo.SelectedValue;
-                    FunCargarCombos(2);
-                }
-                else
-                {
-                    DdlCatalogo.Items.Clear();
-                    _itemc.Text = "--Seleccione Catálago/Producto--";
-                    _itemc.Value = "0";
-                    DdlCatalogo.Items.Add(_itemc);
-                }
             }
             catch (Exception ex)
             {
@@ -545,7 +533,6 @@
         {
             try
             {
-                FunCargarCombos(1);
                 FunCargarCombos(2);
                 FunCargarCombos(3);
             }
