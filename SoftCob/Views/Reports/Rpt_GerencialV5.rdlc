@@ -282,7 +282,7 @@ Fields!FechaPago.Value=11,"Noviembre",Fields!FechaPago.Value=12,"Diciembre")</Va
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Str(Round((Fields!ValorPago.Value/Sum(Fields!Exigible.Value, "DtsAbonoYear"))*100,2))+"%"</Value>
+                                  <Value>=Str(Round((Fields!ValorPago.Value/Fields!Exigible.Value)*100,2))+"%"</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -560,7 +560,7 @@ Fields!FechaPago.Value=11,"Noviembre",Fields!FechaPago.Value=12,"Diciembre")</La
                           <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
-                        <Label>=Str(Round((Fields!ValorPago.Value/Sum(Fields!Exigible.Value, "DtsAbonoYear"))*100,2))+"%"</Label>
+                        <Label>=Str(Round((Fields!ValorPago.Value/Fields!Exigible.Value)*100,2))+"%"</Label>
                         <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style />
@@ -596,8 +596,6 @@ Fields!FechaPago.Value=11,"Noviembre",Fields!FechaPago.Value=12,"Diciembre")</La
                       <ChartDataLabel>
                         <Style>
                           <FontSize>8pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                          <Format>#,0.00;(#,0.00)</Format>
                         </Style>
                         <UseValueAsLabel>true</UseValueAsLabel>
                         <Visible>true</Visible>
@@ -1052,7 +1050,7 @@ Fields!FechaPago.Value=11,"Noviembre",Fields!FechaPago.Value=12,"Diciembre")</La
                   <Top>0.26458cm</Top>
                   <Left>2.30598cm</Left>
                   <Height>0.6cm</Height>
-                  <Width>6.17771cm</Width>
+                  <Width>10.38988cm</Width>
                   <ZIndex>2</ZIndex>
                   <Style>
                     <Border>
@@ -1082,7 +1080,7 @@ Fields!FechaPago.Value=11,"Noviembre",Fields!FechaPago.Value=12,"Diciembre")</La
                   <Top>1.06906cm</Top>
                   <Left>2.30598cm</Left>
                   <Height>0.6cm</Height>
-                  <Width>6.17771cm</Width>
+                  <Width>10.38988cm</Width>
                   <ZIndex>3</ZIndex>
                   <Style>
                     <Border>
@@ -1110,7 +1108,7 @@ Fields!FechaPago.Value=11,"Noviembre",Fields!FechaPago.Value=12,"Diciembre")</La
                   </Paragraphs>
                   <rd:DefaultName>Textbox6</rd:DefaultName>
                   <Top>0.26458cm</Top>
-                  <Left>8.77094cm</Left>
+                  <Left>13.18949cm</Left>
                   <Height>0.6cm</Height>
                   <Width>1.67979cm</Width>
                   <ZIndex>4</ZIndex>
@@ -1140,7 +1138,7 @@ Fields!FechaPago.Value=11,"Noviembre",Fields!FechaPago.Value=12,"Diciembre")</La
                   </Paragraphs>
                   <rd:DefaultName>Textbox11</rd:DefaultName>
                   <Top>0.26458cm</Top>
-                  <Left>11.00666cm</Left>
+                  <Left>15.42521cm</Left>
                   <Height>0.6cm</Height>
                   <Width>2.55291cm</Width>
                   <ZIndex>5</ZIndex>
@@ -1170,7 +1168,7 @@ Fields!FechaPago.Value=11,"Noviembre",Fields!FechaPago.Value=12,"Diciembre")</La
                   </Paragraphs>
                   <rd:DefaultName>FechaH</rd:DefaultName>
                   <Top>0.26458cm</Top>
-                  <Left>15.42521cm</Left>
+                  <Left>19.84376cm</Left>
                   <Height>0.6cm</Height>
                   <Width>3.90229cm</Width>
                   <ZIndex>6</ZIndex>
@@ -1202,7 +1200,7 @@ Fields!FechaPago.Value=11,"Noviembre",Fields!FechaPago.Value=12,"Diciembre")</La
                   </Paragraphs>
                   <rd:DefaultName>Textbox6</rd:DefaultName>
                   <Top>0.26458cm</Top>
-                  <Left>13.55957cm</Left>
+                  <Left>17.97812cm</Left>
                   <Height>0.6cm</Height>
                   <Width>1.67979cm</Width>
                   <ZIndex>7</ZIndex>
@@ -1232,7 +1230,7 @@ Fields!FechaPago.Value=11,"Noviembre",Fields!FechaPago.Value=12,"Diciembre")</La
                   </Paragraphs>
                   <rd:DefaultName>Textbox6</rd:DefaultName>
                   <Top>1.06906cm</Top>
-                  <Left>8.77094cm</Left>
+                  <Left>13.18949cm</Left>
                   <Height>0.6cm</Height>
                   <Width>1.67979cm</Width>
                   <ZIndex>8</ZIndex>
@@ -1262,7 +1260,7 @@ Fields!FechaPago.Value=11,"Noviembre",Fields!FechaPago.Value=12,"Diciembre")</La
                   </Paragraphs>
                   <rd:DefaultName>Textbox14</rd:DefaultName>
                   <Top>1.06906cm</Top>
-                  <Left>11.00666cm</Left>
+                  <Left>15.42521cm</Left>
                   <Height>0.6cm</Height>
                   <Width>8.32084cm</Width>
                   <ZIndex>9</ZIndex>
@@ -1281,7 +1279,7 @@ Fields!FechaPago.Value=11,"Noviembre",Fields!FechaPago.Value=12,"Diciembre")</La
               <Top>3.16562cm</Top>
               <Left>0.50625cm</Left>
               <Height>2.02875cm</Height>
-              <Width>19.565cm</Width>
+              <Width>24.16875cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>

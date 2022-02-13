@@ -483,6 +483,7 @@
     <Content Include="Views\Perfil\WFrm_PerfilNuevo.aspx" />
     <Content Include="Views\ReportesGerenciales\WFrm_ReporteGerencialV1.aspx" />
     <Content Include="Views\ReportesGerenciales\WFrm_ReporteGerencialV2.aspx" />
+    <Content Include="Views\ReportesGerenciales\WFrm_ReporteGerencialV3.aspx" />
     <Content Include="Views\ReportesManager\WFrm_ListLLamarFixed.aspx" />
     <Content Include="Views\ReportesManager\WFrm_MonitorCheckProceso.aspx" />
     <Content Include="Views\ReportesManager\WFrm_MonitorConsTimer.aspx" />
@@ -1508,6 +1509,13 @@
     </Compile>
     <Compile Include="Views\ReportesGerenciales\WFrm_ReporteGerencialV2.aspx.designer.cs">
       <DependentUpon>WFrm_ReporteGerencialV2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportesGerenciales\WFrm_ReporteGerencialV3.aspx.cs">
+      <DependentUpon>WFrm_ReporteGerencialV3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ReportesGerenciales\WFrm_ReporteGerencialV3.aspx.designer.cs">
+      <DependentUpon>WFrm_ReporteGerencialV3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\ReportesManager\WFrm_ListLLamarFixed.aspx.cs">
       <DependentUpon>WFrm_ListLLamarFixed.aspx</DependentUpon>
