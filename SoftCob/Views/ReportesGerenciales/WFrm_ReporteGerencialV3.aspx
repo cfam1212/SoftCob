@@ -113,8 +113,9 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
+
             <div class="panel-info">
-                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
+                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdProcesar">
                     <ProgressTemplate>
                         <div class="overlay" />
                         <div class="overlayContent">
@@ -124,6 +125,7 @@
                     </ProgressTemplate>
                 </asp:UpdateProgress>
             </div>
+
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Always">
                     <ContentTemplate>
@@ -299,22 +301,28 @@
                                 </td>
                             </tr>
                         </table>
-                        <div class="panel panel-default">
-                            <table style="width: 100%">
-                                <tr>
-                                    <td style="text-align: right; width: 45%">
-                                        <asp:Button ID="BtnProcesar" runat="server" Text="Procesar" Width="120px" CssClass="button" TabIndex="12" OnClick="BtnProcesar_Click" />
-                                    </td>
-                                    <td style="width: 10%"></td>
-                                    <td style="text-align: left; width: 45%">
-                                        <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" TabIndex="13" OnClick="BtnSalir_Click" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
+
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
+
+            <asp:UpdatePanel runat="server" ID="UpdProcesar">
+                <ContentTemplate>
+                    <div class="panel panel-default">
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="text-align: right; width: 45%">
+                                    <asp:Button ID="BtnProcesar" runat="server" Text="Procesar" Width="120px" CssClass="button" TabIndex="12" OnClick="BtnProcesar_Click" />
+                                </td>
+                                <td style="width: 10%"></td>
+                                <td style="text-align: left; width: 45%">
+                                    <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" TabIndex="13" OnClick="BtnSalir_Click" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
 
 
             <div class="panel-body">
