@@ -77,6 +77,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+
                 <div class="panel-info">
                     <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updOpciones">
                         <ProgressTemplate>
@@ -88,6 +89,7 @@
                         </ProgressTemplate>
                     </asp:UpdateProgress>
                 </div>
+
                 <div class="panel-body">
                     <asp:UpdatePanel ID="updCabecera" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
@@ -95,7 +97,7 @@
                                 <tr>
                                     <td style="width: 20%">
                                         <div style="display: inline-block;">
-                                            <asp:TreeView ID="TrvCedentes" runat="server" ImageSet="Arrows" OnTreeNodePopulate="trvCedentes_TreeNodePopulate" OnSelectedNodeChanged="trvCedentes_SelectedNodeChanged" TabIndex="1">
+                                            <asp:TreeView ID="TrvCedentes" runat="server" ImageSet="Arrows" OnTreeNodePopulate="TrvCedentes_TreeNodePopulate" OnSelectedNodeChanged="TrvCedentes_SelectedNodeChanged" TabIndex="1">
                                                 <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
                                                 <Nodes>
                                                     <asp:TreeNode PopulateOnDemand="True" SelectAction="Expand" Text="Cedentes/Productos" Value="Cedentes/Productos"></asp:TreeNode>
