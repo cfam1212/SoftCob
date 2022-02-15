@@ -31,7 +31,7 @@
             _sql1 = "", _gestor = "", _apoyogestor = "", _filename = "", _apoyo = "";
         string[] _codigosopm, columnas;
         bool _validar = false, _continuar = true;
-        int _codlistaarbol = 0, _codgestor = 0, _contar = 0, _otcontar = 0, _pasadas = 0, _efectivo = 0;
+        int _codlistaarbol = 0, _codgestor = 0, _contar = 0, _otcontar = 0, _pasadas = 0, _efectivo = 0, _contarx = 0;
         DateTime _dtmfechainicio, _dtmfechafin, _dtmfechaactual, _dtmfecini, _dtmfecfin;
         CheckBox _chkselected = new CheckBox();
         ListItem _asignacion = new ListItem();
@@ -178,6 +178,17 @@
             {
                 Lblerror.Text = ex.ToString();
             }
+        }
+
+        private void FunLimpiar()
+        {
+            GrdvPreview.DataSource = null;
+            GrdvPreview.DataBind();
+            LblTotal.InnerText = "0";
+            _dtbgstsave = (DataTable)ViewState["DatosSave"];
+            _dtbgstsave.Clear();
+            _dtbpreview = (DataTable)ViewState["DatosPreview"];
+            _dtbpreview.Clear();
         }
 
         private void FunCargarCombos(int opcion)
@@ -377,7 +388,7 @@
                 _pasadas = 0;
                 _sql = nuevoSQL;
 
-                if (RdbOpcionesApoyo.SelectedValue == "1")
+                if (RdbOpcionesApoyo.SelectedValue == "2")
                 {
                     _dtbgestor = (DataTable)ViewState["GestorApoyo"];
                     _resultado = _dtbgestor.Select("Selecc='SI'");
@@ -386,11 +397,17 @@
                     {
                         _gestor += _row["Codigo"] + ",";
                     }
-                }
-                else _gestor = DdlGestor.SelectedValue + ",";
 
-                _sql += _gestor;
-                _sql = _sql.Remove(_sql.Length - 1) + ") AND ";
+                    _sql += _gestor;
+                    _sql = _sql.Remove(_sql.Length - 1) + ") AND ";
+                }
+                else
+                {
+                    //_sql = _sql.Remove(_sql.Length - 1) + " AND ";
+                }
+
+                
+                //_sql = _sql.Remove(_sql.Length - 1) + ") AND ";
 
                 if (DdlAsignacion.SelectedValue != "0") _sql += "CDE.ctde_auxv2='" + DdlAsignacion.SelectedValue + "' AND ";
 
@@ -572,7 +589,18 @@
                 Lblerror.Text = ex.ToString();
             }
         }
+        protected void ChkOpciones_CheckedChanged(object sender, EventArgs e)
+        {
+            PnlOpcionGestion.Visible = false;
 
+            if (ChkOpciones.Checked)
+                PnlOpcionGestion.Visible = true;
+        }
+
+        protected void DdlGestor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FunLimpiar();
+        }
         protected void GrdvOrigen_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -731,6 +759,7 @@
 
                 if (_continuar)
                 {
+                    _sql1 = "";
                     _sql1 = "SELECT CodigoCLDE=CDE.CLDE_CODIGO,CodigoPERS=PER.PERS_CODIGO,";
                     _sql1 += "Gestorasignado=CDE.ctde_gestorasignado,Estado=1,FechaGestion=CONVERT(DATE,CDE.ctde_auxv3,121),";
                     _sql1 += "Cliente=PER.pers_nombrescompletos,Identificacion=PER.pers_numerodocumento,";
@@ -739,158 +768,237 @@
                     _sql1 += "FROM SoftCob_CUENTA_DEUDOR CDE (NOLOCK) INNER JOIN SoftCob_CLIENTE_DEUDOR CLI (NOLOCK) ON CDE.CLDE_CODIGO=CLI.CLDE_CODIGO ";
                     _sql1 += "INNER JOIN SoftCob_PERSONA PER (NOLOCK) ON CLI.PERS_CODIGO=PER.PERS_CODIGO ";
                     _sql1 += "WHERE CLI.CPCE_CODIGO=" + DdlCatalogo.SelectedValue + " AND CDE.ctde_estado=1 AND CLI.clde_estado=1 AND ";
-                    _sql1 += "CDE.ctde_gestorasignado IN(";
+
+                    if (RdbOpcionesApoyo.SelectedValue == "1")
+                    {
+                        if (DdlGestor.SelectedValue != "0")
+                        {
+                            _sql1 += "CDE.ctde_gestorasignado=" + DdlGestor.SelectedValue + " AND ";
+                            
+                        }
+                        else _sql1 += "CDE.ctde_gestorasignado>0 AND ";
+                    }
+                    else
+                    {
+                        _sql1 += "CDE.ctde_gestorasignado IN(";
+                    }
 
                     _sql1 = FunFormarSQL(_sql1, 0);
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql1, "", "", Session["Conectar"].ToString());
 
                     columnas = new[] { "Identificacion", "Cliente", "CodigoCLDE", "CodigoPERS", "Provincia", "Ciudad",
-                        "Gestorasignado" };
+                        "Gestorasignado", "FechaGestion" };
 
                     view = new DataView(_dts.Tables[0]);
                     _dtb = view.ToTable(true, columnas);
 
-                    _sql1 = "";
-                    _sql1 = "SELECT CodigoCLDE = GTE.gete_cldecodigo,Efectivo = CAST(CASE GTE.gete_efectivo WHEN 1 THEN 1 ELSE 0 END AS varchar),";
-                    _sql1 += "FechaGestion = CONVERT(VARCHAR(10),GTE.gete_fechagestion,121) ";
-                    _sql1 += "FROM SoftCob_GESTION_TELEFONICA GTE (NOLOCK) ";
-                    _sql1 += "INNER JOIN SoftCob_CUENTA_DEUDOR CDE ON CDE.ctde_operacion=GTE.gete_operacion ";
-                    _sql1 += "WHERE GTE.gete_cpcecodigo=" + DdlCatalogo.SelectedValue + " AND ";
-                    _sql1 += "CONVERT(DATE,GTE.gete_fechagestion,101) BETWEEN ";
-                    _sql1 += "CONVERT(DATE,'" + TxtFechaDesde.Text + "',101) AND CONVERT(DATE,'" + TxtFechaHasta.Text + "',101) AND ";
-                    _sql1 += "GTE.gete_auxi3=0 AND CDE.ctde_estado=1 AND ";
-                    if (ChkArbol.Checked) _sql1 += "GTE.gete_araccodigo=" + DdlAccion.SelectedValue + " AND ";
+                    _dtbpreview = _dtb;
+
+                    if (ChkOpciones.Checked)
+                    {
+                        _sql1 = "";
+                        _sql1 = "SELECT CodigoCLDE = GTE.gete_cldecodigo,Efectivo = CAST(CASE GTE.gete_efectivo WHEN 1 THEN 1 ELSE 0 END AS varchar),";
+                        _sql1 += "FechaGestion = CONVERT(VARCHAR(10),GTE.gete_fechagestion,121) ";
+                        _sql1 += "FROM SoftCob_GESTION_TELEFONICA GTE (NOLOCK) ";
+                        _sql1 += "INNER JOIN SoftCob_CUENTA_DEUDOR CDE ON CDE.ctde_operacion=GTE.gete_operacion ";
+                        _sql1 += "WHERE GTE.gete_cpcecodigo=" + DdlCatalogo.SelectedValue + " AND ";
+                        _sql1 += "CONVERT(DATE,GTE.gete_fechagestion,101) BETWEEN ";
+                        _sql1 += "CONVERT(DATE,'" + TxtFechaDesde.Text + "',101) AND CONVERT(DATE,'" + TxtFechaHasta.Text + "',101) AND ";
+                        _sql1 += "GTE.gete_auxi3=0 AND CDE.ctde_estado=1 AND ";
+                        if (ChkArbol.Checked) _sql1 += "GTE.gete_araccodigo=" + DdlAccion.SelectedValue + " AND ";
+                    
+
                     _sql1 += "CDE.ctde_gestorasignado IN(";
                     _sql1 = FunFormarSQL(_sql1, 0);
                     _sql1 += "ORDER BY GTE.gete_cldecodigo";
 
                     _dts = new ConsultaDatosDAO().FunConsultaDatos(15, 0, 0, 0, _sql1, "", "", Session["Conectar"].ToString());
 
-                    if (_dts.Tables[0].Rows.Count > 0)
-                    {
-                        _dtbgestion = _dts.Tables[0];
+                        if (_dts.Tables[0].Rows.Count > 0)
+                        {
+                            _dtbgestion = _dts.Tables[0];
 
-                        _dtbpreview = (DataTable)ViewState["DatosPreview"];
-                        _dtbpreview.Clear();
+                            _dtbpreview = (DataTable)ViewState["DatosPreview"];
+                            _dtbpreview.Clear();
+
+                            _dtbgstsave = (DataTable)ViewState["DatosSave"];
+                            _dtbgstsave.Clear();
+
+                            _dtbgestor = (DataTable)ViewState["GestorApoyo"];
+                            _resulgestor = _dtbgestor.Select("Selecc='SI'");
+
+                            _contar = _resulgestor.Count();
+
+                            foreach (DataRow _drfila in _dtb.Rows)
+                            {
+                                _resultado = _dtbgestion.Select("CodigoCLDE='" + _drfila["CodigoCLDE"].ToString() + "'");
+
+                                _fechagestion = Convert.ToString(_resultado.AsEnumerable()
+                                                        .Max(row => row["FechaGestion"]));
+
+                                if (_resultado != null && _resultado.Length > 0)
+                                {
+                                    if (RdbOpcionesApoyo.SelectedValue == "2")
+                                    {
+
+                                        if (_dtbgestor.Rows.Count == 1)
+                                        {
+                                            _codgestor = int.Parse(_resulgestor[0]["Codigo"].ToString());
+                                        }
+                                        else
+                                        {
+                                            if (_contar == _otcontar) _otcontar = 0;
+                                            _codgestor = int.Parse(_resulgestor[_otcontar]["Codigo"].ToString());
+                                        }
+                                        _otcontar++;
+                                    }
+                                    else _codgestor = int.Parse(DdlGestor.SelectedValue);
+
+                                    if (ChkOpciones.Checked)
+                                    {
+                                        if (ChkGestion.Checked)
+                                        {
+                                            _efectivo = Convert.ToInt32(_resultado.AsEnumerable()
+                                                                    .Max(row => row["Efectivo"]));
+
+                                            if (DdlTipoGestion.SelectedValue == "0")
+                                            {
+                                                if (_efectivo == 0)
+                                                {
+                                                    _filagre = _dtbpreview.NewRow();
+                                                    _filagre["Identificacion"] = _drfila["Identificacion"].ToString();
+                                                    _filagre["Cliente"] = _drfila["Cliente"].ToString();
+                                                    _filagre["Provincia"] = _drfila["Provincia"].ToString();
+                                                    _filagre["Ciudad"] = _drfila["Ciudad"].ToString();
+                                                    _filagre["FechaGestion"] = _fechagestion;
+                                                    _dtbpreview.Rows.Add(_filagre);
+
+                                                    _filnew = _dtbgstsave.NewRow();
+                                                    _filnew["CodigoCLDE"] = _drfila["CodigoCLDE"].ToString();
+                                                    _filnew["CodigoPERS"] = _drfila["CodigoPERS"].ToString();
+                                                    _filnew["Gestorasignado"] = _codgestor;
+                                                    _filnew["Estado"] = "1";
+                                                    _filnew["auxv1"] = "";
+                                                    _filnew["auxv2"] = "";
+                                                    _filnew["auxv3"] = "";
+                                                    _filnew["auxi1"] = "";
+                                                    _filnew["auxi2"] = "";
+                                                    _filnew["auxi3"] = "";
+                                                    _dtbgstsave.Rows.Add(_filnew);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (_efectivo == 1)
+                                                {
+                                                    _filagre = _dtbpreview.NewRow();
+                                                    _filagre["Identificacion"] = _drfila["Identificacion"].ToString();
+                                                    _filagre["Cliente"] = _drfila["Cliente"].ToString();
+                                                    _filagre["Provincia"] = _drfila["Provincia"].ToString();
+                                                    _filagre["Ciudad"] = _drfila["Ciudad"].ToString();
+                                                    _filagre["FechaGestion"] = _fechagestion;
+                                                    _dtbpreview.Rows.Add(_filagre);
+
+                                                    _filnew = _dtbgstsave.NewRow();
+                                                    _filnew["CodigoCLDE"] = _drfila["CodigoCLDE"].ToString();
+                                                    _filnew["CodigoPERS"] = _drfila["CodigoPERS"].ToString();
+                                                    _filnew["Gestorasignado"] = _codgestor;
+                                                    _filnew["Estado"] = "1";
+                                                    _filnew["auxv1"] = "";
+                                                    _filnew["auxv2"] = "";
+                                                    _filnew["auxv3"] = "";
+                                                    _filnew["auxi1"] = "";
+                                                    _filnew["auxi2"] = "";
+                                                    _filnew["auxi3"] = "";
+                                                    _dtbgstsave.Rows.Add(_filnew);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            _filagre = _dtbpreview.NewRow();
+                                            _filagre["Identificacion"] = _drfila["Identificacion"].ToString();
+                                            _filagre["Cliente"] = _drfila["Cliente"].ToString();
+                                            _filagre["Provincia"] = _drfila["Provincia"].ToString();
+                                            _filagre["Ciudad"] = _drfila["Ciudad"].ToString();
+                                            _filagre["FechaGestion"] = _fechagestion;
+                                            _dtbpreview.Rows.Add(_filagre);
+
+                                            _filnew = _dtbgstsave.NewRow();
+                                            _filnew["CodigoCLDE"] = _drfila["CodigoCLDE"].ToString();
+                                            _filnew["CodigoPERS"] = _drfila["CodigoPERS"].ToString();
+                                            _filnew["Gestorasignado"] = _codgestor;
+                                            _filnew["Estado"] = "1";
+                                            _filnew["auxv1"] = "";
+                                            _filnew["auxv2"] = "";
+                                            _filnew["auxv3"] = "";
+                                            _filnew["auxi1"] = "";
+                                            _filnew["auxi2"] = "";
+                                            _filnew["auxi3"] = "";
+                                            _dtbgstsave.Rows.Add(_filnew);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        _dtbgestor = (DataTable)ViewState["GestorApoyo"];
+
+                        _resulgestor = _dtbgestor.Select("Selecc='SI'");
+                        _contar = _resulgestor.Count();
 
                         _dtbgstsave = (DataTable)ViewState["DatosSave"];
                         _dtbgstsave.Clear();
 
-                        _dtbgestor = (DataTable)ViewState["GestorApoyo"];
-                        _resulgestor = _dtbgestor.Select("Selecc='SI'");
-
-                        _contar = _resulgestor.Count();
+                        if (_contar == 0) new FuncionesDAO().FunShowJSMessage("Debe Seleccionar al menos un gestor..!", this, "E", "C");
+                        _contarx = 0;
 
                         foreach (DataRow _drfila in _dtb.Rows)
                         {
-                            _resultado = _dtbgestion.Select("CodigoCLDE='" + _drfila["CodigoCLDE"].ToString() + "'");
-
-                            _fechagestion = Convert.ToString(_resultado.AsEnumerable()
-                                                    .Max(row => row["FechaGestion"]));
-
-                            if (_resultado != null && _resultado.Length > 0)
+                            if (RdbOpcionesApoyo.SelectedValue == "1")
                             {
-                                if (RdbOpcionesApoyo.SelectedValue == "2")
+                                _codgestor = FunCodigoGestor();
+                                _contarx++;
+                            }
+                            else _codgestor = int.Parse(DdlGestor.SelectedValue);
+
+                            _filnew = _dtbgstsave.NewRow();
+                            _filnew["CodigoCLDE"] = _drfila["CodigoCLDE"].ToString();
+                            _filnew["CodigoPERS"] = _drfila["CodigoPERS"].ToString();
+                            _filnew["Gestorasignado"] = _codgestor;
+                            _filnew["Estado"] = "1";
+                            _filnew["auxv1"] = "";
+                            _filnew["auxv2"] = "";
+                            _filnew["auxv3"] = "";
+                            _filnew["auxi1"] = "";
+                            _filnew["auxi2"] = "";
+                            _filnew["auxi3"] = "";
+                            _dtbgstsave.Rows.Add(_filnew);
+
+                            if (RdbOpcionesApoyo.SelectedValue == "1")
+                            {
+                                if (_contar == _contarx)
                                 {
-
-                                    if (_dtbgestor.Rows.Count == 1)
+                                    _dtbgestor = (DataTable)ViewState["GestorApoyo"];
+                                    _resulgestor = _dtbgestor.Select("Selecc='ASIGNADO'");
+                                    foreach (var _drgestor in _resulgestor)
                                     {
-                                        _codgestor = int.Parse(_resulgestor[0]["Codigo"].ToString());
+                                        _drgestor["Selecc"] = "SI";
+                                        _dtbgestor.AcceptChanges();
                                     }
-                                    else
-                                    {
-                                        if (_contar == _otcontar) _otcontar = 0;
-                                        _codgestor = int.Parse(_resulgestor[_otcontar]["Codigo"].ToString());
-                                    }
-                                    _otcontar++;
-                                }
-                                else _codgestor = int.Parse(DdlGestor.SelectedValue);
-
-                                if (ChkGestion.Checked)
-                                {
-                                    _efectivo = Convert.ToInt32(_resultado.AsEnumerable()
-                                                            .Max(row => row["Efectivo"]));
-
-                                    if (DdlTipoGestion.SelectedValue == "0")
-                                    {
-                                        if (_efectivo == 0)
-                                        {
-                                            _filagre = _dtbpreview.NewRow();
-                                            _filagre["Identificacion"] = _drfila["Identificacion"].ToString();
-                                            _filagre["Cliente"] = _drfila["Cliente"].ToString();
-                                            _filagre["Provincia"] = _drfila["Provincia"].ToString();
-                                            _filagre["Ciudad"] = _drfila["Ciudad"].ToString();
-                                            _filagre["FechaGestion"] = _fechagestion;
-                                            _dtbpreview.Rows.Add(_filagre);
-
-                                            _filnew = _dtbgstsave.NewRow();
-                                            _filnew["CodigoCLDE"] = _drfila["CodigoCLDE"].ToString();
-                                            _filnew["CodigoPERS"] = _drfila["CodigoPERS"].ToString();
-                                            _filnew["Gestorasignado"] = _codgestor;
-                                            _filnew["Estado"] = "1";
-                                            _filnew["auxv1"] = "";
-                                            _filnew["auxv2"] = "";
-                                            _filnew["auxv3"] = "";
-                                            _filnew["auxi1"] = "";
-                                            _filnew["auxi2"] = "";
-                                            _filnew["auxi3"] = "";
-                                            _dtbgstsave.Rows.Add(_filnew);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (_efectivo == 1)
-                                        {
-                                            _filagre = _dtbpreview.NewRow();
-                                            _filagre["Identificacion"] = _drfila["Identificacion"].ToString();
-                                            _filagre["Cliente"] = _drfila["Cliente"].ToString();
-                                            _filagre["Provincia"] = _drfila["Provincia"].ToString();
-                                            _filagre["Ciudad"] = _drfila["Ciudad"].ToString();
-                                            _filagre["FechaGestion"] = _fechagestion;
-                                            _dtbpreview.Rows.Add(_filagre);
-
-                                            _filnew = _dtbgstsave.NewRow();
-                                            _filnew["CodigoCLDE"] = _drfila["CodigoCLDE"].ToString();
-                                            _filnew["CodigoPERS"] = _drfila["CodigoPERS"].ToString();
-                                            _filnew["Gestorasignado"] = _codgestor;
-                                            _filnew["Estado"] = "1";
-                                            _filnew["auxv1"] = "";
-                                            _filnew["auxv2"] = "";
-                                            _filnew["auxv3"] = "";
-                                            _filnew["auxi1"] = "";
-                                            _filnew["auxi2"] = "";
-                                            _filnew["auxi3"] = "";
-                                            _dtbgstsave.Rows.Add(_filnew);
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    _filagre = _dtbpreview.NewRow();
-                                    _filagre["Identificacion"] = _drfila["Identificacion"].ToString();
-                                    _filagre["Cliente"] = _drfila["Cliente"].ToString();
-                                    _filagre["Provincia"] = _drfila["Provincia"].ToString();
-                                    _filagre["Ciudad"] = _drfila["Ciudad"].ToString();
-                                    _filagre["FechaGestion"] = _fechagestion;
-                                    _dtbpreview.Rows.Add(_filagre);
-
-                                    _filnew = _dtbgstsave.NewRow();
-                                    _filnew["CodigoCLDE"] = _drfila["CodigoCLDE"].ToString();
-                                    _filnew["CodigoPERS"] = _drfila["CodigoPERS"].ToString();
-                                    _filnew["Gestorasignado"] = _codgestor;
-                                    _filnew["Estado"] = "1";
-                                    _filnew["auxv1"] = "";
-                                    _filnew["auxv2"] = "";
-                                    _filnew["auxv3"] = "";
-                                    _filnew["auxi1"] = "";
-                                    _filnew["auxi2"] = "";
-                                    _filnew["auxi3"] = "";
-                                    _dtbgstsave.Rows.Add(_filnew);
+                                    ViewState["GestorApoyo"] = _dtbgestor;
+                                    _contarx = 0;
                                 }
                             }
                         }
-                        
+                    }
+
+
+                    if (_dtbpreview.Rows.Count > 0)
+                    {
                         ViewState["Preview"] = _dtbpreview;
 
                         if (_dtbpreview.Rows.Count > 0) TblLista.Visible = true;
@@ -974,10 +1082,13 @@
                         return;
                     }
 
-                    if (DdlGestor.SelectedValue == "0")
+                    if (RdbOpcionesApoyo.SelectedValue == "2")
                     {
-                        new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "W", "C");
-                        return;
+                        if (DdlGestor.SelectedValue == "0")
+                        {
+                            new FuncionesDAO().FunShowJSMessage("Seleccione Gestor..!", this, "W", "C");
+                            return;
+                        }
                     }
                 }
 
@@ -996,7 +1107,7 @@
                             int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), ChkEstado.Checked,
                             DdlMarcado.SelectedValue, DdlCampania.SelectedValue, ChkGestion.Checked ? 1 : 0, DdlTipoGestion.SelectedValue,
                             ChkArbol.Checked ? 1 : 0, int.Parse(DdlAccion.SelectedValue), ChkFecha.Checked ? 1 : 0, TxtFechaDesde.Text.Trim(),
-                            TxtFechaHasta.Text.Trim(), "0", DdlAsignacion.SelectedValue, DdlGestor.SelectedValue,
+                            TxtFechaHasta.Text.Trim(), "0", DdlAsignacion.SelectedValue, DdlGestor.SelectedValue == "0" ? "1" : DdlGestor.SelectedValue,
                             int.Parse(LblTotal.InnerText), 2, 0, int.Parse(Session["usuCodigo"].ToString()),
                             Session["MachineName"].ToString(), _dtbgstsave, (DataTable)ViewState["Estrategia"],
                             "sp_NewListaTrabajo", Session["Conectar"].ToString());

@@ -90,6 +90,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
+
             <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
@@ -101,6 +102,7 @@
                     </ProgressTemplate>
                 </asp:UpdateProgress>
             </div>
+
             <div class="panel-body">
                 <asp:UpdatePanel ID="updCabecera" runat="server">
                     <ContentTemplate>

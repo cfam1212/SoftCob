@@ -137,6 +137,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
+
               <div class="panel-info">
                 <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updBotones">
                     <ProgressTemplate>
@@ -148,6 +149,7 @@
                     </ProgressTemplate>
                 </asp:UpdateProgress>
             </div>
+
             <div class="panel-body">
             <asp:UpdatePanel ID="updCabecera" runat="server">
                 <ContentTemplate>
@@ -346,7 +348,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td colspan="4">
-                                                                <asp:DropDownList ID="DdlGestor" runat="server" CssClass="form-control" TabIndex="16" Width="100%">
+                                                                <asp:DropDownList ID="DdlGestor" runat="server" CssClass="form-control" TabIndex="16" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="DdlGestor_SelectedIndexChanged">
                                                                 </asp:DropDownList>
                                                             </td>
                                                         </tr>
@@ -406,8 +408,18 @@
                         </tr>
                         <tr>
                             <td></td>
+                            <td></td>
+                            <td>
+                                <asp:CheckBox ID="ChkOpciones" runat="server" AutoPostBack="True" CssClass="form-control" TabIndex="20" Text="Opciones" OnCheckedChanged="ChkOpciones_CheckedChanged" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
                             <td colspan="4">
-                                <asp:Panel ID="PnlOpcionGestion" runat="server" GroupingText="Opción Gestiones" TabIndex="19">
+                                <asp:Panel ID="PnlOpcionGestion" runat="server" GroupingText="Opción Gestiones" TabIndex="19" Visible="false">
                                     <table style="width: 100%">
                                         <tr>
                                             <td style="width: 15%"></td>

@@ -230,8 +230,11 @@
                     {
                         new ControllerDAO().FunEditarUsuario(_user);
 
-                        _dts = new ConsultaDatosDAO().FunConsultaDatos(211, ChkEstado.Checked ? 1 : 0,
-                            int.Parse(ViewState["CodigoUsuario"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
+                        if (ChkEstado.Checked == false)
+                        {
+                            _dts = new ConsultaDatosDAO().FunConsultaDatos(211, ChkEstado.Checked ? 1 : 0,
+                                int.Parse(ViewState["CodigoUsuario"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
+                        }
                     }
 
                     Response.Redirect("WFrm_UsuarioAdmin.aspx?MensajeRetornado=Guardado con Éxito");

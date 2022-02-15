@@ -294,6 +294,15 @@ namespace SoftCob.Views.ListaTrabajo
         protected global::System.Web.UI.WebControls.GridView GrdvOrigen;
 
         /// <summary>
+        /// Control ChkOpciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ChkOpciones;
+
+        /// <summary>
         /// Control PnlOpcionGestion.
         /// </summary>
         /// <remarks>
