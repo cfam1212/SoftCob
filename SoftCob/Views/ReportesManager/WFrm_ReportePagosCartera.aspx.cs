@@ -10,6 +10,7 @@
         #region Variables
         ListItem _itemc = new ListItem();
         DataSet _dts = new DataSet();
+        DataSet _dtsx = new DataSet();
         ListItem _accion = new ListItem();
         ListItem _efecto = new ListItem();
         ListItem _respuesta = new ListItem();
@@ -138,9 +139,11 @@
                     DdlContacto.DataBind();
                     break;
                 case 5:
-                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataTextField = "CatalogoProducto";
-                    DdlCatalogo.DataValueField = "CodigoCatalogo";
+                    _dtsx = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
+                    DdlCatalogo.DataSource = _dtsx;
+                    DdlCatalogo.DataTextField = "Descripcion";
+                    DdlCatalogo.DataValueField = "Codigo";
                     DdlCatalogo.DataBind();
                     break;
             }
@@ -211,19 +214,19 @@
                 }
 
                 _sql = "";
-                _sql = "Select Contar = COUNT(1) ";
-                _sql += "from SoftCob_REGISTRO_ABONOSPAGO AP (nolock) INNER JOIN SoftCob_CLIENTE_DEUDOR CL (nolock) ON AP.rpab_cldecodigo=CL.CLDE_CODIGO ";
-                _sql += "INNER JOIN SoftCob_CUENTA_DEUDOR CD (nolock) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO INNER JOIN SoftCob_PERSONA PE (nolock) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
-                _sql += "where CL.CPCE_CODIGO=" + DdlCatalogo.SelectedValue + " and AP.rpab_fechapago between CONVERT(date,'" + TxtFechaIni.Text + "',101) and CONVERT(date,'";
-                _sql += TxtFechaFin.Text + "',101) and ";
+                _sql = "SELECT Contar = COUNT(1) ";
+                _sql += "FROM SoftCob_REGISTRO_ABONOSPAGO AP (NOLOCK) INNER JOIN SoftCob_CLIENTE_DEUDOR CL (nolock) ON AP.rpab_cldecodigo=CL.CLDE_CODIGO ";
+                _sql += "INNER JOIN SoftCob_CUENTA_DEUDOR CD (NOLOCK) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO INNER JOIN SoftCob_PERSONA PE (NOLOCK) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
+                _sql += "WHERE CL.CPCE_CODIGO=" + DdlCatalogo.SelectedValue + " AND AP.rpab_fechapago BETWEEN CONVERT(DATE,'" + TxtFechaIni.Text + "',101) AND CONVERT(DATE,'";
+                _sql += TxtFechaFin.Text + "',101) AND ";
 
-                if (DdlAccion.SelectedValue != "0") _sql += "AP.rpab_araccodigo=" + DdlAccion.SelectedValue + " and ";
+                if (DdlAccion.SelectedValue != "0") _sql += "AP.rpab_araccodigo=" + DdlAccion.SelectedValue + " AND ";
 
-                if (DdlEfecto.SelectedValue != "0") _sql += "AP.rpab_arefcodigo=" + DdlEfecto.SelectedValue + " and ";
+                if (DdlEfecto.SelectedValue != "0") _sql += "AP.rpab_arefcodigo=" + DdlEfecto.SelectedValue + " AND ";
 
-                if (DdlRespuesta.SelectedValue != "0") _sql += "AP.rpab_arrecodigo=" + DdlRespuesta.SelectedValue + " and ";
+                if (DdlRespuesta.SelectedValue != "0") _sql += "AP.rpab_arrecodigo=" + DdlRespuesta.SelectedValue + " AND ";
 
-                if (DdlContacto.SelectedValue != "0") _sql += "AP.rpab_arcocodigo=" + DdlContacto.SelectedValue + " and ";
+                if (DdlContacto.SelectedValue != "0") _sql += "AP.rpab_arcocodigo=" + DdlContacto.SelectedValue + " AND ";
 
                 _sql = _sql.Remove(_sql.Length - 4);
                 _dts = new ConsultaDatosDAO().FunGetRerporteGestiones(1, int.Parse(DdlCedente.SelectedValue), int.Parse(DdlCatalogo.SelectedValue), TxtFechaIni.Text, TxtFechaFin.Text, "", "", _sql, "", 0, 0, Session["Conectar"].ToString());

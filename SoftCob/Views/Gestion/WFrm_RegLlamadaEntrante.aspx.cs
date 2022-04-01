@@ -246,6 +246,13 @@
             {
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(213, int.Parse(Session["usuCodigo"].ToString()),
                     int.Parse(Session["CodigoCPCE"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
+
+                if (_dts.Tables[0].Rows.Count == 0)
+                {
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(213, int.Parse(Session["usuCodigo"].ToString()),
+                        int.Parse(Session["CodigoCPCE"].ToString()), 1, "", "", "", Session["Conectar"].ToString());
+                }
+
                 GrdvBrenchGestor.DataSource = _dts;
                 GrdvBrenchGestor.DataBind();
 

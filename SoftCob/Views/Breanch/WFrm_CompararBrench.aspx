@@ -60,13 +60,13 @@
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
                                         <asp:BoundField DataField="Gestor" HeaderText="Gestor" />
-                                        <asp:BoundField DataField="Presupuesto" HeaderText="Presupuesto">
+                                        <asp:BoundField DataField="Presupuesto" HeaderText="Presupuesto" DataFormatString="{0:c}">
                                             <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="ValCumplido" HeaderText="Pagos">
+                                        <asp:BoundField DataField="ValCumplido" HeaderText="Pagos" DataFormatString="{0:c}">
                                             <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="PorCumplido" HeaderText="% Cumplido">
+                                        <asp:BoundField DataField="PorCumplido" HeaderText="% Cumplido" DataFormatString="{0:F2}">
                                             <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
                                         <asp:TemplateField HeaderText="Calificación"></asp:TemplateField>
@@ -118,13 +118,13 @@
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
                                         <asp:BoundField DataField="Gestor" HeaderText="Gestor" />
-                                        <asp:BoundField DataField="Presupuesto" HeaderText="Presupuesto">
+                                        <asp:BoundField DataField="Presupuesto" HeaderText="Presupuesto" DataFormatString="{0:c}">
                                             <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="ValCumplido" HeaderText="Compromisos">
+                                        <asp:BoundField DataField="ValCumplido" HeaderText="Compromisos" DataFormatString="{0:c}">
                                             <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="PorCumplido" HeaderText="% Cumplido">
+                                        <asp:BoundField DataField="PorCumplido" HeaderText="% Cumplido" DataFormatString="{0:F2}">
                                             <ItemStyle HorizontalAlign="Right" />
                                         </asp:BoundField>
                                         <asp:TemplateField HeaderText="Calificación"></asp:TemplateField>

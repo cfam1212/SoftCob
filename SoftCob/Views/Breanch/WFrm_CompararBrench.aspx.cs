@@ -35,6 +35,13 @@
         {
             _dts = new ConsultaDatosDAO().FunConsultaDatos(218, int.Parse(ViewState["CodigoCPCE"].ToString()),
                 0, 0, "", "", "", Session["Conectar"].ToString());
+
+            if (_dts.Tables[0].Rows.Count == 0)
+            {
+                _dts = new ConsultaDatosDAO().FunConsultaDatos(218, int.Parse(ViewState["CodigoCPCE"].ToString()),
+                    1, 0, "", "", "", Session["Conectar"].ToString());
+            }
+
             GrdvCompromisos.DataSource = _dts;
             GrdvCompromisos.DataBind();
 

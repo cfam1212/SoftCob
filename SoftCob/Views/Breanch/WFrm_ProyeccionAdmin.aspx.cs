@@ -12,6 +12,7 @@
     {
         #region Variables
         DataSet _dts = new DataSet();
+        DataSet _dtsx = new DataSet();
         DataTable _dtb = new DataTable();
         DataTable _dtbproyecc = new DataTable();
         ListItem _itemc = new ListItem();
@@ -119,18 +120,12 @@
                     DdlGestor.DataBind();
                     break;
                 case 2:
-                    _dts = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataSource = new CedenteDAO().FunGetCatalogoProducto(int.Parse(DdlCedente.SelectedValue));
-                    DdlCatalogo.DataTextField = "CatalogoProducto";
-                    DdlCatalogo.DataValueField = "CodigoCatalogo";
+                    _dtsx = new ConsultaDatosDAO().FunConsultaDatos(81, int.Parse(DdlCedente.SelectedValue), 0, 0, "", "", "",
+                        Session["Conectar"].ToString());
+                    DdlCatalogo.DataSource = _dtsx;
+                    DdlCatalogo.DataTextField = "Descripcion";
+                    DdlCatalogo.DataValueField = "Codigo";
                     DdlCatalogo.DataBind();
-
-                    if (_dts.Tables[0].Rows.Count == 0)
-                    {
-                        _itemc.Text = "--Seleccione Catálago/Producto--";
-                        _itemc.Value = "0";
-                        DdlCatalogo.Items.Add(_itemc);
-                    }
                     break;
                 case 3:
                     GrdvDatos.DataSource = null;

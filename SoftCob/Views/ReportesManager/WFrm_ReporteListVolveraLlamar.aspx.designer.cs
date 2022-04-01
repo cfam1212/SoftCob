@@ -60,6 +60,15 @@ namespace SoftCob.Views.ReportesManager
         protected global::System.Web.UI.WebControls.Label LblError;
 
         /// <summary>
+        /// Control updProgress.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress updProgress;
+
+        /// <summary>
         /// Control updCabecera.
         /// </summary>
         /// <remarks>
@@ -130,6 +139,15 @@ namespace SoftCob.Views.ReportesManager
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel1;
+
+        /// <summary>
+        /// Control UpdOpciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdOpciones;
 
         /// <summary>
         /// Control BtnProcesar.

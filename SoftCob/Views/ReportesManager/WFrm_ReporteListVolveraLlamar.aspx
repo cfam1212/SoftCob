@@ -106,7 +106,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="panel-info">
-                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updCabecera">
+                <asp:UpdateProgress ID="updProgress" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdOpciones">
                     <ProgressTemplate>
                         <div class="overlay" />
                         <div class="overlayContent">
@@ -148,6 +148,11 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td colspan="7">
+                                    <asp:Panel runat="server" Height="10px"></asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td></td>
                                 <td>
                                     <asp:CheckBox ID="ChkFecha" runat="server" Text="Fecha Registro" OnCheckedChanged="ChkFecha_CheckedChanged" TabIndex="3" AutoPostBack="True" />
@@ -165,6 +170,11 @@
                                     <asp:TextBox ID="TxtFechaFin" runat="server" CssClass="form-control" Width="100%" TabIndex="5"></asp:TextBox>
                                 </td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="7">
+                                    <asp:Panel runat="server" Height="10px"></asp:Panel>
+                                </td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -185,22 +195,27 @@
                                 </td>
                             </tr>
                         </table>
-                        <div class="panel panel-default">
-                            <table style="width: 100%">
-                                <tr>
-                                    <td style="text-align: right; width: 45%">
-                                        <asp:Button ID="BtnProcesar" runat="server" Text="Procesar" Width="120px" CssClass="button" TabIndex="8" OnClick="BtnProcesar_Click" />
-                                    </td>
-                                    <td style="width: 10%"></td>
-                                    <td style="text-align: left; width: 45%">
-                                        <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" TabIndex="9" OnClick="BtnSalir_Click" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
+        </div>
+
+        <div class="panel panel-default">
+            <asp:UpdatePanel ID="UpdOpciones" runat="server">
+                <ContentTemplate>
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="text-align: right; width: 45%">
+                                <asp:Button ID="BtnProcesar" runat="server" Text="Procesar" Width="120px" CssClass="button" TabIndex="8" OnClick="BtnProcesar_Click" />
+                            </td>
+                            <td style="width: 10%"></td>
+                            <td style="text-align: left; width: 45%">
+                                <asp:Button ID="BtnSalir" runat="server" Text="Salir" Width="120px" CausesValidation="False" CssClass="button" TabIndex="9" OnClick="BtnSalir_Click" />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </form>
 </body>

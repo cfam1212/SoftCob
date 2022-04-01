@@ -49,28 +49,28 @@
         {
             try
             {
-                _sql = "select Cliente = PE.pers_nombrescompletos,Identificacion = PE.pers_numerodocumento,Operacion = CD.ctde_operacion,";
-                _sql += "Documento = AP.rpab_auxv2,FechaPago = convert(date,AP.rpab_fechapago,103),ValorPago = AP.rpab_valorpago,";
-                _sql += "Gestor = (select US.usua_nombres+' '+US.usua_apellidos from SoftCob_USUARIO US where US.USUA_CODIGO=AP.rpab_gestorasignado),";
-                _sql += "Accion = (select AC.arac_descripcion from SoftCob_ACCION AC where AC.ARAC_CODIGO=AP.rpab_araccodigo),";
-                _sql += "Efecto = (select EF.aref_descripcion from SoftCob_EFECTO EF where EF.AREF_CODIGO=AP.rpab_arefcodigo),";
-                _sql += "Respuesta = (select RE.arre_descripcion from SoftCob_RESPUESTA RE where RE.ARRE_CODIGO=AP.rpab_arrecodigo),";
-                _sql += "Contacto = (select CO.arco_descripcion from SoftCob_CONTACTO CO where CO.ARCO_CODIGO=AP.rpab_arcocodigo) ";
-                _sql += "from SoftCob_REGISTRO_ABONOSPAGO AP (nolock) INNER JOIN SoftCob_CLIENTE_DEUDOR CL (nolock) ON AP.rpab_cldecodigo=CL.CLDE_CODIGO ";
-                _sql += "INNER JOIN SoftCob_CUENTA_DEUDOR CD (nolock) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO INNER JOIN SoftCob_PERSONA PE (nolock) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
-                _sql += "where CL.CPCE_CODIGO=" + ViewState["CodigoCPCE"].ToString() + " and AP.rpab_fechapago between CONVERT(date,'" + ViewState["FechaDesde"].ToString() + "',101) and CONVERT(date,'";
-                _sql += ViewState["FechaHasta"].ToString() + "',101) and ";
+                _sql = "SELECT Cliente = PE.pers_nombrescompletos,Identificacion = PE.pers_numerodocumento,Operacion = CD.ctde_operacion,";
+                _sql += "Documento = AP.rpab_auxv2,FechaPago = CONVERT(DATE,AP.rpab_fechapago,103),ValorPago = AP.rpab_valorpago,";
+                _sql += "Gestor = (SELECT US.usua_nombres+' '+US.usua_apellidos FROM SoftCob_USUARIO US WHERE US.USUA_CODIGO=AP.rpab_gestorasignado),";
+                _sql += "Accion = (SELECT AC.arac_descripcion FROM SoftCob_ARBOL_ACCION AC WHERE AC.ARAC_CODIGO=AP.rpab_araccodigo),";
+                _sql += "Efecto = (SELECT EF.aref_descripcion FROM SoftCob_ARBOL_EFECTO EF WHERE EF.AREF_CODIGO=AP.rpab_arefcodigo),";
+                _sql += "Respuesta = (SELECT RE.arre_descripcion FROM SoftCob_ARBOL_RESPUESTA RE WHERE RE.ARRE_CODIGO=AP.rpab_arrecodigo),";
+                _sql += "Contacto = (SELECT CO.arco_descripcion FROM SoftCob_ARBOL_CONTACTO CO WHERE CO.ARCO_CODIGO=AP.rpab_arcocodigo) ";
+                _sql += "FROM SoftCob_REGISTRO_ABONOSPAGO AP (NOLOCK) INNER JOIN SoftCob_CLIENTE_DEUDOR CL (NOLOCK) ON AP.rpab_cldecodigo=CL.CLDE_CODIGO ";
+                _sql += "INNER JOIN SoftCob_CUENTA_DEUDOR CD (NOLOCK) ON CL.CLDE_CODIGO=CD.CLDE_CODIGO INNER JOIN SoftCob_PERSONA PE (NOLOCK) ON CL.PERS_CODIGO=PE.PERS_CODIGO ";
+                _sql += "WHERE CL.CPCE_CODIGO=" + ViewState["CodigoCPCE"].ToString() + " AND AP.rpab_fechapago BETWEEN CONVERT(DATE,'" + ViewState["FechaDesde"].ToString() + "',101) AND CONVERT(DATE,'";
+                _sql += ViewState["FechaHasta"].ToString() + "',101) AND ";
 
-                if (ViewState["Accion"].ToString() != "0") _sql += "AP.rpab_araccodigo=" + ViewState["Accion"].ToString() + " and ";
+                if (ViewState["Accion"].ToString() != "0") _sql += "AP.rpab_araccodigo=" + ViewState["Accion"].ToString() + " AND ";
 
-                if (ViewState["Efecto"].ToString() != "0") _sql += "AP.rpab_arefcodigo=" + ViewState["Efecto"].ToString() + " and ";
+                if (ViewState["Efecto"].ToString() != "0") _sql += "AP.rpab_arefcodigo=" + ViewState["Efecto"].ToString() + " AND ";
 
-                if (ViewState["Respuesta"].ToString() != "0") _sql += "AP.rpab_arrecodigo=" + ViewState["Respuesta"].ToString() + " and ";
+                if (ViewState["Respuesta"].ToString() != "0") _sql += "AP.rpab_arrecodigo=" + ViewState["Respuesta"].ToString() + " AND ";
 
-                if (ViewState["Contacto"].ToString() != "0") _sql += "AP.rpab_arcocodigo=" + ViewState["Contacto"].ToString() + " and ";
+                if (ViewState["Contacto"].ToString() != "0") _sql += "AP.rpab_arcocodigo=" + ViewState["Contacto"].ToString() + " AND ";
 
                 _sql = _sql.Remove(_sql.Length - 4);
-                _sql += " order by AP.rpab_fechapago";
+                _sql += " ORDER BY AP.rpab_fechapago";
                 _dts = new ConsultaDatosDAO().FunGetRerporteGestiones(1, int.Parse(ViewState["CodigoCEDE"].ToString()),
                     int.Parse(ViewState["CodigoCPCE"].ToString()), ViewState["FechaDesde"].ToString(),
                     ViewState["FechaHasta"].ToString(), "", "", _sql, "", 0, 0, Session["Conectar"].ToString());

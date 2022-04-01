@@ -105,6 +105,11 @@
                                     <EditRowStyle BackColor="#2461BF" />
                                     <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
                                 </asp:GridView>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#GrdvDatos').dataTable();
+                                    });
+                                </script>
                             </asp:Panel>
                         </div>
                     </ContentTemplate>

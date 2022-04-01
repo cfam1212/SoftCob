@@ -222,9 +222,10 @@
                 pnlDatosDeudor.Height = 150;
                 PnlDatosGarante.Height = 150;
                 pnlDatosGetion.Height = 150;
-                PnlPresuCompromiso.Height = 120;
-                PnlBrenchPagos.Height = 120;
+                PnlPresuCompromiso.Height = 150;
+                PnlBrenchPagos.Height = 150;
                 PnlResultadoGestiones.Height = 180;
+                PnlPresupuesto.Height = 180;
 
                 if (Session["PermisoEspecial"].ToString() == "SI") DivPresupuesto.Visible = true;
 
@@ -651,6 +652,14 @@
 
                 _dts = new ConsultaDatosDAO().FunConsultaDatos(213, int.Parse(Session["usuCodigo"].ToString()),
                     int.Parse(Session["CodigoCPCE"].ToString()), 0, "", "", "", Session["Conectar"].ToString());
+
+                if (_dts.Tables[0].Rows.Count == 0)
+                {
+                    _dts = new ConsultaDatosDAO().FunConsultaDatos(213, int.Parse(Session["usuCodigo"].ToString()),
+                        int.Parse(Session["CodigoCPCE"].ToString()), 1, "", "", "", Session["Conectar"].ToString());
+                }
+
+
                 GrdvBrenchGestor.DataSource = _dts;
                 GrdvBrenchGestor.DataBind();
 
