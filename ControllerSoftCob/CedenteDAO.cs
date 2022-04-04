@@ -1061,10 +1061,9 @@
             try
             {
                 var query = from SCA in _dtb.SoftCob_SEGMENTO_CABECERA
-                            join CDE in _dtb.SoftCob_CEDENTE on SCA.sgca_cedecodigo equals CDE.CEDE_CODIGO
-                            join CTP in _dtb.SoftCob_CATALOGO_PRODUCTOS_CEDENTE on SCA.sgca_cpcecodigo equals CTP.CPCE_CODIGO
-                            where SCA.sgca_cedecodigo == _codigocede && SCA.sgca_cpcecodigo == _codigocpce
-                            && SCA.sgca_auxi1 == _tipo
+                            //join CDE in _dtb.SoftCob_CEDENTE on SCA.sgca_cedecodigo equals CDE.CEDE_CODIGO
+                            //join CTP in _dtb.SoftCob_CATALOGO_PRODUCTOS_CEDENTE on SCA.sgca_cpcecodigo equals CTP.CPCE_CODIGO
+                            where SCA.sgca_cedecodigo == _codigocede && SCA.sgca_cpcecodigo == _codigocpce  && SCA.sgca_auxi1 == _tipo
                             orderby SCA.sgca_valorinicial
                             select new SegmentoAdmin
                             {
